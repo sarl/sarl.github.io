@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Event Reference</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header passed">
+					<h1>Event Reference</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>This document defines who to declare events in SARL.</p>
+<ul>
+<li>
+<p id="Define_an_event" class="example passed"><strong>Define an event</strong></p>
+<pre class="prettyprint lang-spec linenums">
+package events
+event MyEvent {
+  var number : Integer
+}</pre>
+</li>
+<li>
+<p id="Declare_event_with_attributes" class="example passed"><strong>Declare event with attributes</strong></p>
+<p>Events in SARL can carry information</p>
+<pre class="prettyprint lang-spec linenums">
+package myapp.demo
+event MyEvent {
+  var number : Integer
+}</pre>
+</li>
+<li>
+<p id="Declare_event_with_value_attributes" class="example passed"><strong>Declare event with value attributes</strong></p>
+<p>Events in SARL can carry information that is unmodifiable using <code>val</code> d</p>
+<pre class="prettyprint lang-spec linenums">
+package myapp.demo
+import io.sarl.lang.core.Agent
+event MyEvent {
+  val number : Integer
+  
+  new(nb:Integer){
+    number = nb
+  }
+}</pre>
+</li>
+</ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Event.spec</h3>
+						    	<p>
+</p>
+<pre class="prettyprint lang-spec linenums">
+package io.sarl.docs.reference
+
+import com.google.inject.Inject
+import io.sarl.docs.utils.SARLParser
+import io.sarl.docs.utils.SARLSpecCreator
+import io.sarl.lang.sarl.Attribute
+import io.sarl.lang.sarl.Event
+import io.sarl.lang.sarl.Model
+import org.jnario.runner.CreateWith
+
+import static org.junit.Assert.*
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+
+/**
+ * This document defines who to declare events in SARL.
+ */
+@CreateWith(SARLSpecCreator)
+describe "Event Reference"{
+  
+    @Inject extension SARLParser
+    @Inject extension IQualifiedNameProvider
+    /*
+     * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+     */
+    fact "Define an event"{
+      val Model model = '''
+      package events
+      event MyEvent {
+        var number : Integer
+      }
+      '''.parsesSuccessfully
+      val evt = model.elements.filter(Event).head
+      assertEquals("events.MyEvent", evt.fullyQualifiedName.toString)
+    }
+  
+    /**
+     * Events in SARL can carry information
+     * 
+     * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+     */
+    fact "Declare event with attributes"{
+      val Model model = '''
+      package myapp.demo
+      event MyEvent {
+        var number : Integer
+      }
+      '''.parsesSuccessfully
+      val evt = model.elements.filter(Event).head
+      assertEquals(1,evt.features.size)
+      val att = evt.features.filter(Attribute).head
+      assertEquals("number",att.name)
+      assertEquals("java.lang.Integer", att.type.identifier)
+    }
+    
+    /**
+     * Events in SARL can carry information that is unmodifiable using `val` d
+     * 
+     * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+     */
+    fact "Declare event with value attributes"{
+      val Model model = '''
+      package myapp.demo
+      import io.sarl.lang.core.Agent
+      event MyEvent {
+        val number : Integer
+        
+        new(nb:Integer){
+          number = nb
+        }
+      }
+      '''.parsesSuccessfully
+      val evt = model.elements.filter(Event).head
+      assertEquals(2,evt.features.size)//attribute and constructor
+      val att = evt.features.filter(Attribute).head
+      assertEquals("number",att.name)
+      assertEquals("java.lang.Integer", att.type.identifier)
+    }
+}
+</pre>
+						    </div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

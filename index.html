@@ -1,78 +1,188 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="SARL : Agent-oriented programming language" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <title>SARL Agent-Oriented Programming Language</title>
 
-    <title>SARL</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/sarl">View on GitHub</a>
+    <!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+    <div class="container">
+      <a href="https://github.com/sarl/sarl"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
-          <h1 id="project_title">SARL</h1>
-          <h2 id="project_tagline">Agent-oriented programming language</h2>
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+	<h1>SARL</h1>
+	<p>General-purpose Agent-Oriented Programming Language.</p>
+	<p>
+   <a class="btn btn-lg btn-success" href="/download" role="button">Download &raquo;</a>
+   <a class="btn btn-lg btn-primary" href="/docs" role="button">Documentation &raquo;</a>
+ </p>
+</div>
 
-        </header>
+
+
+
+ <!-- Marketing messaging and featurettes
+ ================================================== -->
+ <!-- Wrap the rest of the page in another container to center all the content. -->
+
+ <div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="img-circle" src="/images/java-logo-140.png" alt="Java Interoperability">
+      <h2>Java Interoperability</h2>
+      <p>SARL code is ultimately translated to JVM bytecode. You can create Java objects, call their methods transparently from SARL Agents.</p>
+      <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="img-circle" src="/images/eclipse-logo-140.png" alt="Eclipse Plugin">
+      <h2>Advanced IDE Support</h2>
+      <p>SARL SDK provides full integration with the Eclipse Java IDE and giving a great user experience with all expected features, such as auto-completion, syntax highlighting and much more.</p>
+      <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <a href="https://github.com/sarl/sarl"><img class="img-circle" src="/images/github-140.png" alt="Fork us on github"></a>
+      <h2>Open Source</h2>
+      <p>SARL tooling is released under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License Version 2.0</a> giving you flexibility to develop your projects.</p>
+      <p style="text-align:right"><a class="btn btn-default" href="https://github.com/sarl/sarl" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+     <h2 class="featurette-heading">Intuitive Syntax. <span class="text-muted">Develop faster.</span></h2>
+
+     <p class="lead">SARL is develop on top of Xtext and Xbase and inherits great features like extension methods, closures and much more.
+       Create agents faster with an intuitive syntax that lets you concentrate on your Multiagent System, not the framework.</p>
+     </div>
+     <div class="col-md-5">
+      <img class="featurette-image img-responsive" src="/images/syntax.png" alt="Intuitive Syntax">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" src="/images/capacities.png" alt="Extensible Agent Features">
+    </div>
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Extensible Agent Features. <span class="text-muted">Keep it DRY</span></h2>
+      <p class="lead">
+        SARL define reusable components to describe what the agent is able to do using Capacities and Skills.
+        Easily reuse agent capacities and behaviors between agents, modules or entire applications.
+        Profit from <b>uses</b> clause to extend your agent easily.
+
+      </p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">True Holonic Agents. <span class="text-muted">The whole is greater than the sum of its parts.</span></h2>
+      <p class="lead">
+        SARL Agents are in fact holons. This lets you create agents composed of other agents possibly providing its parent with new capacities. <b>Yes, capacities can emerge for the members interactions!</b>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" src="/images/holonic.png" alt="Holonic Agents">
+    </div>
+  </div>
+
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive" src="/images/janus.png" alt="Janus Platform.">
+    </div>
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Fully Distributed MAS. <span class="text-muted">Janus Platform for SARL.</span></h2>
+      <p class="lead"><a href="http://www.janusproject.io">Janus</a> is an open-source multi-agent platform fully implemented in Java 1.7. <a href="http://www.janusproject.io">Janus</a> enables developers to quickly create web, enterprise and desktop multiagent-based applications. It provides a comprehensive set of features to develop, run, display and monitor multiagent-based applications. Janus-based applications can be distributed across a network. <a href="http://www.janusproject.io">Janus</a> could be used as an agent-oriented platform, an organizational platform. It also natively manages the concept of recursive agents or holons.</p>
+    </div>
+  </div>
+  
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette" id="news">
+   <h2 class="featurette-heading">And Stay tunned... <span class="text-muted">Latest News.</span></h2>
+   <ul class="posts">
+     
+     <li><span>29 Jan 2014</span> &raquo; <a href="/news/2014/01/29/sarl-is-now-available-on-github.html">SARL is now available on Github</a></li>
+     
+   </ul>
+ </div>
+
+ <hr class="featurette-divider">
+
+ <!-- /END THE FEATURETTES -->
+</div>
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+      <!-- FOOTER -->
+    <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2014 SARL &middot;</p>
+    </footer>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="sarl" class="anchor" href="#sarl"><span class="octicon octicon-link"></span></a>SARL</h1>
-
-<p>SARL is a general-purpose agent-oriented language.</p>
-
-<p>SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. 
-These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. 
-We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.</p>
-
-<p>Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent. </p>
-
-<p>However, we provide a first set of tools to support its execution based on the new version 2.0 of the Janus (see <a href="http://www.janusproject.io">http://www.janusproject.io</a>) platform, but it can be linked with other existing agent platforms and frameworks. </p>
-
-<h1>
-<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h1>
-
-<p>Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND.</p>
-
-<h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
-
-<pre><code>Copyright 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-</code></pre>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

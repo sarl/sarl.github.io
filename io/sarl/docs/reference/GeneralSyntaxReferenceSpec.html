@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>General Syntax Reference</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header pending">
+					<h1>General Syntax Reference</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>This document describes the general syntax of the SARL Language. While we will use the agent definition, it is also valid for other concepts. Please see the specific Reference documentation for details.</p>
+<ul>
+<li>
+<p id="Variable_definition" class="example passed"><strong>Variable definition</strong></p>
+<pre class="prettyprint lang-spec linenums">
+agent A {
+  //Variable defnition
+  var name : String
+  
+  //final variable definition - It can not be reassigned
+  val string : String = "string value"
+  
+  //Infered type to String
+  var lastname = "Lastname"
+}</pre>
+</li>
+<li>
+<p id="Java_compatibility" class="example passed"><strong>Java compatibility</strong></p>
+<pre class="prettyprint lang-spec linenums">
+agent A {
+  //Variable defnition
+  var date : java.util.Date = new java.util.Date()
+  
+  //final variable definition - It can not be reassigned
+  val otherDate : java.util.Date = new java.util.Date()
+  
+  //Infered type to java.lang.String
+  var lastname = "Lastname"
+}</pre>
+</li>
+<li>
+<p id="Action_definition" class="example pending"><strong>Action definition [PENDING]</strong></p>
+</li>
+</ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>GeneralSyntax.spec</h3>
+						    	<p>
+</p>
+<pre class="prettyprint lang-spec linenums">
+/*
+ * Copyright 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.sarl.docs.reference
+
+import com.google.inject.Inject
+import io.sarl.docs.utils.SARLParser
+import io.sarl.docs.utils.SARLSpecCreator
+import org.jnario.runner.CreateWith
+
+/*
+ * This document describes the general syntax of the SARL Language.
+ * While we will use the agent definition, it is also valid for other concepts.
+ * Please see the specific Reference documentation for details.
+ * 
+ */
+@CreateWith(SARLSpecCreator)
+describe "General Syntax Reference"{
+
+  @Inject extension SARLParser
+  /*
+   * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+   */
+  fact "Variable definition"{
+    '''
+    agent A {
+      //Variable defnition
+      var name : String
+      
+      //final variable definition - It can not be reassigned
+      val string : String = "string value"
+      
+      //Infered type to String
+      var lastname = "Lastname"
+    }
+    '''.parsesSuccessfully
+  }
+  
+  /*
+   * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+   */
+  fact "Java compatibility" {
+    '''
+    agent A {
+      //Variable defnition
+      var date : java.util.Date = new java.util.Date()
+      
+      //final variable definition - It can not be reassigned
+      val otherDate : java.util.Date = new java.util.Date()
+      
+      //Infered type to java.lang.String
+      var lastname = "Lastname"
+    }
+    '''.parsesSuccessfully
+  }
+  
+  /*
+   * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+   */
+  fact "Action definition"
+  
+}
+</pre>
+						    </div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>
