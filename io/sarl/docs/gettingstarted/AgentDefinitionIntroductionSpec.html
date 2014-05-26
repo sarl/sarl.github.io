@@ -6,14 +6,21 @@
 <title>Agent Definition Introduction</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
+
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="../../../../css/custom.css">
 <link rel="stylesheet" href="../../../../css/prettify.css">
-<script type="text/javascript" src="../../../../js/prettify.js"></script><script type="text/javascript" src="../../../../js/lang-jnario.js"></script><script type="text/javascript" src="../../../../js/jquery.js"></script><script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+<script type="text/javascript" src="../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
 </head>
+
 <body onload="prettyPrint()">
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -29,13 +36,13 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li class="active"><a href="/">Home</a></li>
+        <li class="active"><a href="/">Home</a></li>
         <li><a href="/docs">Documentation</a></li>
         <li><a href="/download">Download</a></li>
         <li><a href="/news">News &amp; Events</a></li>
         <li><a href="/about">About</a></li>
       </ul>
-</div>
+    </div>
 <!--/.nav-collapse -->
   </div>
 </div>
@@ -45,10 +52,10 @@
 				<div class="page-header passed">
 					<h1>Agent Definition Introduction</h1>
 					  <ul class="nav nav-tabs pull-right">
-<li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
 					  </ul>
-</div>
+				</div>
 				<div class="row">
 					<div class="span12">
 						  <div class="tab-content">
@@ -81,13 +88,13 @@ agent SecondAgent {}</pre>
 <p>Agents need to perceive their environment in order to react to external stimuli. Perceptions take the form of events.</p>
 <ul>
 <li>
-<p id="Declare_an_Event" class="example pending"><strong>Declare an Event</strong></p>
+<p id="Declare_an_Event" class="example passed"><strong>Declare an Event</strong></p>
 <p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code></p>
 <pre class="prettyprint lang-spec linenums">
 event MyEvent {}</pre>
 </li>
 <li>
-<p id="Define_an_agent_Perceptions" class="example pending"><strong>Define an agent Perceptions</strong></p>
+<p id="Define_an_agent_Perceptions" class="example passed"><strong>Define an agent Perceptions</strong></p>
 <p>Now we will want our agent to react to <code>MyEvent</code> and print a message on the console</p>
 <pre class="prettyprint lang-spec linenums">
 package myapp.demo
@@ -101,10 +108,10 @@ agent MyAgent {
 }</pre>
 </li>
 <li>
-<p id="Lifecycle_events" class="example pending"><strong>Lifecycle events</strong></p>
+<p id="Lifecycle_events" class="example passed"><strong>Lifecycle events</strong></p>
 <p>SARL defines two <strong>lifecycle</strong> events :</p>
 <ul>
-<li>
+  <li>
 <code>Initialize</code>: Notifies the creation of the agent and passes it initialization parameters.</li>
   <li>
 <code>Destroy</code>: Notifies the Destruction of the agent.</li>
@@ -129,7 +136,7 @@ agent MyAgent {
 }</pre>
 </li>
 <li>
-<p id="Accessing_the_event_s_occurrence" class="example pending"><strong>Accessing the event's occurrence</strong></p>
+<p id="Accessing_the_event_s_occurrence" class="example passed"><strong>Accessing the event's occurrence</strong></p>
 <p>Inside a behavior declaration you may need to access the event instance the agent is reacting to.</p>
 <p>This instance is called an <code>occurrence</code>.</p>
 <p>In the case of an Initialize events you can access the parameters for the agent spawn using <code>occurrence.parameters</code></p>
@@ -157,7 +164,7 @@ agent MyAgent {
 <p>In the next section we will learn how to start a SARL agent.</p>
 <p><strong><a href="RunningSARLSpec.html">Next</a></strong>.</p>
 </li></ul>
-</div>
+							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>AgentIntroduction.spec</h3>
 						    	<p>
@@ -186,7 +193,7 @@ import io.sarl.docs.utils.SARLSpecCreator
 import io.sarl.lang.sarl.Agent
 import io.sarl.lang.sarl.BehaviorUnit
 import io.sarl.lang.sarl.Event
-import io.sarl.lang.sarl.Model
+import io.sarl.lang.sarl.SarlScript
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.jnario.runner.CreateWith
 
@@ -275,7 +282,7 @@ describe "Agent Definition Introduction" {
      * @filter(.* = '''|'''|.parsesSuccessfully.*) 
      */
     fact "Define an agent Perceptions"{
-      val Model model = '''
+      val SarlScript model = '''
       package myapp.demo
       
       event MyEvent {  }
@@ -379,9 +386,10 @@ describe "Agent Definition Introduction" {
 				</div> <!-- /row -->
 			</div> <!-- /content -->
 		</div> <!-- /tabbable -->
-		<footer><p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
 		</footer>
-</div> <!-- /container -->
+	</div> <!-- /container -->
 
 </body>
 </html>
