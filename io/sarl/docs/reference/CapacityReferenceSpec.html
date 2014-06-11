@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Capacity Reference</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script><script type="text/javascript" src="../../../../js/lang-jnario.js"></script><script type="text/javascript" src="../../../../js/jquery.js"></script><script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+<body onload="prettyPrint()">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+<li class="active"><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header pending">
+					<h1>Capacity Reference</h1>
+					  <ul class="nav nav-tabs pull-right">
+<li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>This document describes how to define capacities in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>An Action is a specification of a transformation of a part of the designed system or its environment. This transformation guarantees resulting properties if the system before the transformation satisfies a set of constraints. An action is defined in terms of pre- and post-conditions.</p>
+<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
+<p>An agent can dynamically evolve by learning/acquiring new Capacities, but it can also dynamically change the Skill associated to a given capacity. Acquiring new capacities also enables an agent to get access to new behaviors requiring these capacities. This provides agents with a self-adaptation mechanism that allow them to dynamically change their architecture according to their current needs and goals.</p>
+<h3 class="exampleGroup passed" id="Defining_a_Capacity">Defining a Capacity</h3>
+<ul>
+<li>
+<p id="Capacity_Definition" class="example passed"><strong>Capacity Definition</strong></p>
+<p>A capacity is the specification of a collection of actions. Consequently, only action's signatures can be defined inside a capacity: no attribute nor field is allowed, and no body for the actions.</p>
+<p>The definition of a capacity is done with the <code>capacity</code> keyword. Below, a capacity that permits to log messages is defined. This capacity enables to log information and debugging messages.</p>
+<p><span class="label label-warning">Note</span> Defining a capacity without action inside is a symptom of a design problem.</p>
+<pre class="prettyprint lang-spec linenums">
+capacity Logging {
+  // Log an information message
+  def info(text : String)
+  // Log a debugging message
+  def debug(text : String)
+}</pre>
+</li>
+<li>
+<p id="Extending_a_Capacity" class="example passed"><strong>Extending a Capacity</strong></p>
+<p>In some use cases, it is useful to specialize the definition of a capacity. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
+<p>The extended capacity is specified just after the <code>extends</code> keyword.</p>
+<p><span class="label label-warning">Important</span> A capacity can extend more than one other capacity type (same constrain as for the interfaces in the Java language).</p>
+<p>In the following code, the <code>Logging</code> capacity (defined previously) is extended for enabling to output error messages.</p>
+<pre class="prettyprint lang-spec linenums">
+capacity ErrorLogging extends Logging {
+  // Log a error message
+  def error(text : String)
+}</pre>
+</li>
+<li>
+<p id="Extending_Multiple_Capacities" class="example passed"><strong>Extending Multiple Capacities</strong></p>
+<p>In some use cases, it is useful to define a capacity by extending more than one capacity. Below, the <code>Cap3</code> capacity is defined as an extension of the capacities <code>Cap1</code> and <code>Cap2</code>.</p>
+<pre class="prettyprint lang-spec linenums">
+capacity Cap1 {
+  def action1
+}
+capacity Cap2 {
+  def action2
+}
+capacity Cap3 extends Cap1, Cap2 {
+  def action3
+}</pre>
+</li>
+</ul>
+<h3 class="exampleGroup pending" id="Builtin_Capacities">Builtin Capacities</h3>
+<p>Several capacities are defined and reserved by the SARL Core Specification. They are composing the minimal set of capacities that a runtime environment must support for running a SARL program.</p>
+<p><span class="label label-warning">Important</span> You must not define a capacity with a fully qualified name equals to one of the reserved capacities.</p>
+<p>The builtin capacities are defined in the <a href="./BuiltinCapacityReferenceSpec.html">Builtin Capacity Reference</a>.</p>
+<h3 class="exampleGroup pending" id="Use_of_the_Capacities">Use of the Capacities</h3>
+<p>The use of the capacity is related to the associated <a href="./SkillReferenceSpec.html">skills</a>. It means that a capacity cannot be called by itself since it is not providing an implementation: this is the role of the skill.</p>
+<p>When a function <code>fct</code> of the capacity <code>C</code> is called, it means that the caller does:</p>
+<ol>
+<li>Find the skill <code>S</code> associated to <code>C</code>; and</li> <li>Call <code>fct</code> on the object <code>S</code>.</li> </ol>
+<p>Details on the use of the capacities may be found in the references of the major behavior-based concepts of SARL:</p>
+<ul>
+<li><a href="AgentReferenceSpec.html">Agent</a></li> <li><a href="BehaviorReferenceSpec.html">Behavior</a></li> </ul>
+</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Capacity.spec</h3>
+						    	<p>
+</p>
+<pre class="prettyprint lang-spec linenums">
+/*
+ * Copyright 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.sarl.docs.reference
+
+import com.google.inject.Inject
+import io.sarl.docs.utils.SARLParser
+import io.sarl.docs.utils.SARLSpecCreator
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.jnario.runner.CreateWith
+
+/**
+ * This document describes how to define capacities in SARL.
+ * Before reading this document, it is recommended to read
+ * the [General Syntax Reference](./GeneralSyntaxReferenceSpec.html).
+ * 
+ * An Action is a specification of a transformation of a part of the 
+ * designed system or its environment. This transformation guarantees 
+ * resulting properties if the system before the transformation satisfies 
+ * a set of constraints. An action is defined in terms of pre- and post-conditions.
+ * 
+ * A *Capacity* is the specification of a collection of actions. This specification 
+ * makes no assumptions about its implementation. It could be used to specify 
+ * what an agent can do, what a behavior requires for its execution.
+ * 
+ * A *Skill* is a possible implementation of a capacity fulfilling all the 
+ * constraints of this specification.
+ * 
+ * An agent can dynamically evolve by learning/acquiring new Capacities, but it 
+ * can also dynamically change the Skill associated to a given capacity.
+ * Acquiring new capacities also enables an agent to get access to new 
+ * behaviors requiring these capacities. This provides agents with a self-adaptation 
+ * mechanism that allow them to dynamically change their architecture according to 
+ * their current needs and goals.
+ */
+@CreateWith(SARLSpecCreator)
+describe "Capacity Reference"{
+
+    @Inject extension SARLParser
+    @Inject extension IQualifiedNameProvider
+
+    describe "Defining a Capacity" {
+      
+      /* A capacity is the specification of a collection of actions. 
+       * Consequently, only action's signatures can be defined inside
+       * a capacity: no attribute nor field is allowed, and no body
+       * for the actions.
+       * 
+       * The definition of a capacity is done with the &lt;code&gt;capacity&lt;/code&gt;
+       * keyword. Below, a capacity that permits to log messages is defined.
+       * This capacity enables to log information and debugging messages.
+       * 
+       * &lt;span class="label label-warning"&gt;Note&lt;/span&gt; Defining a capacity 
+       * without action inside is a symptom of a design problem.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+       */
+      fact "Capacity Definition"{
+        val model = '''
+        capacity Logging {
+          // Log an information message
+          def info(text : String)
+          // Log a debugging message
+          def debug(text : String)
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.reference.cr",
+          // TEXT
+          ""
+        )
+        model.mustHavePackage("io.sarl.docs.reference.cr")
+        model.mustNotHaveImport
+        model.mustHaveTopElements(1)
+        var c = model.elements.get(0).mustBeCapacity("Logging").mustHaveFeatures(2)
+        c.features.get(0).mustBeActionSignature("info", null, 1, false).mustHaveParameter(0, "text", "java.lang.String", false)
+        c.features.get(1).mustBeActionSignature("debug", null, 1, false).mustHaveParameter(0, "text", "java.lang.String", false)
+      }
+    
+      /* In some use cases, it is useful to specialize the definition
+       * of a capacity. This mechanism is supported by the inheritance
+       * feature of SARL, which has the same semantic as the inheritance
+       * mechanism as the Java object-oriented language.
+       * 
+       * The extended capacity is specified just after the &lt;code&gt;extends&lt;/code&gt;
+       * keyword.
+       * 
+       * &lt;span class="label label-warning"&gt;Important&lt;/span&gt; A capacity can
+       * extend more than one other capacity type (same constrain as for
+       * the interfaces in the Java language).
+       * 
+       * In the following code, the &lt;code&gt;Logging&lt;/code&gt; capacity (defined
+       * previously) is extended for enabling to output error messages.
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+       */
+      fact "Extending a Capacity"{
+        val model = '''
+        capacity ErrorLogging extends Logging {
+          // Log a error message
+          def error(text : String)
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.reference.cr
+          capacity Logging {
+            // Log an information message
+            def info(text : String)
+            // Log a debugging message
+            def debug(text : String)
+          }",
+          // TEXT
+          ""
+        )
+        model.mustHavePackage("io.sarl.docs.reference.cr")
+        model.mustNotHaveImport
+        model.mustHaveTopElements(2)
+        var c1 = model.elements.get(0).mustBeCapacity("Logging").mustHaveFeatures(2)
+        c1.features.get(0).mustBeActionSignature("info", null, 1, false).mustHaveParameter(0, "text", "java.lang.String", false)
+        c1.features.get(1).mustBeActionSignature("debug", null, 1, false).mustHaveParameter(0, "text", "java.lang.String", false)
+        var c2 = model.elements.get(1).mustBeCapacity("ErrorLogging", "io.sarl.docs.reference.cr.Logging").mustHaveFeatures(1)
+        c2.features.get(0).mustBeActionSignature("error", null, 1, false).mustHaveParameter(0, "text", "java.lang.String", false)
+      }
+
+      /* In some use cases, it is useful to define a capacity by
+       * extending more than one capacity.
+       * Below, the &lt;code&gt;Cap3&lt;/code&gt; capacity is defined as an extension of the capacities
+       * &lt;code&gt;Cap1&lt;/code&gt; and &lt;code&gt;Cap2&lt;/code&gt;.
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*) 
+       */
+      fact "Extending Multiple Capacities"{
+        val model = '''
+        capacity Cap1 {
+          def action1
+        }
+        capacity Cap2 {
+          def action2
+        }
+        capacity Cap3 extends Cap1, Cap2 {
+          def action3
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.reference.cr",
+          // TEXT
+          ""
+        )
+        model.mustHavePackage("io.sarl.docs.reference.cr")
+        model.mustNotHaveImport
+        model.mustHaveTopElements(3)
+        var c1 = model.elements.get(0).mustBeCapacity("Cap1").mustHaveFeatures(1)
+        c1.features.get(0).mustBeActionSignature("action1", null, 0, false)
+        var c2 = model.elements.get(1).mustBeCapacity("Cap2").mustHaveFeatures(1)
+        c2.features.get(0).mustBeActionSignature("action2", null, 0, false)
+        var c3 = model.elements.get(2).mustBeCapacity("Cap3", "io.sarl.docs.reference.cr.Cap1", "io.sarl.docs.reference.cr.Cap2").mustHaveFeatures(1)
+        c3.features.get(0).mustBeActionSignature("action3", null, 0, false)
+      }
+
+    }
+    
+    /* Several capacities are defined and reserved by the SARL Core
+     * Specification.
+     * They are composing the minimal set of capacities that a runtime
+     * environment must support for running a SARL program.
+     *
+     * &lt;span class="label label-warning"&gt;Important&lt;/span&gt; You must not
+     * define a capacity with a fully qualified name equals to one
+     * of the reserved capacities.
+     * 
+     * The builtin capacities are defined in the 
+     * [Builtin Capacity Reference](./BuiltinCapacityReferenceSpec.html).
+     */
+    describe "Builtin Capacities"{
+    }
+
+    /* The use of the capacity is related to the associated [skills](./SkillReferenceSpec.html).
+     * It means that a capacity cannot be called by itself since it is not providing
+     * an implementation: this is the role of the skill.
+     * 
+     * When a function &lt;code&gt;fct&lt;/code&gt; of the capacity &lt;code&gt;C&lt;/code&gt; is called, 
+     * it means that the caller does:&lt;ol&gt;
+     * &lt;li&gt;Find the skill &lt;code&gt;S&lt;/code&gt; associated to &lt;code&gt;C&lt;/code&gt;; and&lt;/li&gt;
+     * &lt;li&gt;Call &lt;code&gt;fct&lt;/code&gt; on the object &lt;code&gt;S&lt;/code&gt;.&lt;/li&gt; 
+     * &lt;/ol&gt; 
+     * 
+     * Details on the use of the capacities may be found in the references of
+     * the major behavior-based concepts of SARL:&lt;ul&gt;
+     * &lt;li&gt;[Agent](AgentReferenceSpec.html)&lt;/li&gt;
+     * &lt;li&gt;[Behavior](BehaviorReferenceSpec.html)&lt;/li&gt;
+     * &lt;/ul&gt;
+     */
+    describe "Use of the Capacities"{
+    }
+
+}
+</pre>
+						    </div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer><p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+</div> <!-- /container -->
+
+</body>
+</html>
