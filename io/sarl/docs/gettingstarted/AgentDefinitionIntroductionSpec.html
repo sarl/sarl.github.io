@@ -42,7 +42,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header passed">
+				<div class="page-header pending">
 					<h1>Agent Definition Introduction</h1>
 					  <ul class="nav nav-tabs pull-right">
 <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -53,7 +53,6 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p>Once you have installed SARL SDK in eclipse you can create a new Maven project and reuse the pom found on the demos.</p>
 <p>To create our first agent, right click on the project and follow <strong>New</strong> &gt; <strong>File</strong>. Name the file <strong>demosarl.sarl</strong>.</p>
 <p>The SARL default editor will open.</p>
 <ul>
@@ -61,42 +60,50 @@
 <p id="Basic_agent_definition" class="example passed"><strong>Basic agent definition</strong></p>
 <p>Agents are defined using the <code>agent</code> keyword.</p>
 <p>SARL elements are organized in packages. You can define the package using the <code>package</code> keyword.</p>
-<p>The following code will define an agent with a fully qualified name of <code>myapp.demo.MyAgent</code>.</p>
+<p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.agent.MyAgent</code>. The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
 <pre class="prettyprint lang-spec linenums">
-package myapp.demo
+package io.sarl.docs.gettingstarted.^agent
 
-agent MyAgent {}</pre>
+agent MyAgent {
+}</pre>
 </li>
 <li>
 <p id="Package_definition" class="example passed"><strong>Package definition</strong></p>
-<p><span class="label label-info">Important</span> The package keyword defines the package for all elements in the same SARL file.</p>
-<p>Therefore FirstAgent and SecondAgent belong to the same package (i.e. <code>myapp.demo</code>).</p>
+<p><span class="label label-info">Important</span> The package keyword defines the package for all elements in the same SARL file (see the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> for details).</p>
+<p>Therefore FirstAgent and SecondAgent belong to the same package (i.e. <code>io.sarl.docs.gettingstarted.agent</code>).</p>
 <pre class="prettyprint lang-spec linenums">
-package myapp.demo
+package io.sarl.docs.gettingstarted.^agent
 agent MyAgent {}
 agent SecondAgent {}</pre>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Agent_Perceptions">Agent Perceptions</h3>
-<p>Agents need to perceive their environment in order to react to external stimuli. Perceptions take the form of events.</p>
+<p>Agents need to perceive their environment in order to react to external stimuli. Perceptions take the form of events (see <a href="../reference/EventReferenceSpec.html">Event</a> and <a href="../reference/AgentReferenceSpec.html">Agent</a> References for details).</p>
 <ul>
 <li>
 <p id="Declare_an_Event" class="example passed"><strong>Declare an Event</strong></p>
-<p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code></p>
+<p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code>.</p>
 <pre class="prettyprint lang-spec linenums">
-event MyEvent {}</pre>
+var model = 
+event MyEvent
+(
+  "package io.sarl.docs.gettingstarted.^agent",
+  // TEXT
+  ""
+)
+model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+model.mustNotHaveImport
+model.mustHaveTopElements(1)
+model.elements.get(0).mustBeEvent("MyEvent", null).mustHaveFeatures(0)</pre>
 </li>
 <li>
 <p id="Define_an_agent_Perceptions" class="example passed"><strong>Define an agent Perceptions</strong></p>
-<p>Now we will want our agent to react to <code>MyEvent</code> and print a message on the console</p>
+<p>Now we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
+<p>Note that <code>println</code> is a shortcut for the Java function <code>System.out.println</code>.</p>
 <pre class="prettyprint lang-spec linenums">
-package myapp.demo
-
-event MyEvent
-
 agent MyAgent {
   on MyEvent {
-    System.out.println("Received MyEvent")
+    println("Received MyEvent")
   }
 }</pre>
 </li>
@@ -112,19 +119,17 @@ agent MyAgent {
 <p>This means that when agent has been spawned and its ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
 <p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any System resources properly.</p>
 <pre class="prettyprint lang-spec linenums">
-package myapp.demo
-
 import io.sarl.core.Initialize
 import io.sarl.core.Destroy
 
 agent MyAgent {
   
   on Initialize {
-    System.out.println("MyAgent spawned")
+    println("MyAgent spawned")
   }
   
   on Destroy {
-    System.out.println("MyAgent destroyed")
+    println("MyAgent destroyed")
   }
 }</pre>
 </li>
@@ -134,30 +139,24 @@ agent MyAgent {
 <p>This instance is called an <code>occurrence</code>.</p>
 <p>In the case of an Initialize events you can access the parameters for the agent spawn using <code>occurrence.parameters</code></p>
 <pre class="prettyprint lang-spec linenums">
-package myapp.demo
-
-import io.sarl.core.Initialize
-import io.sarl.core.Destroy
-
 agent MyAgent {
   
   on Initialize {
-    System.out.println("MyAgent spawned")
-    System.out.println("My Parameters are :" + occurrence.parameters.toString)
+    println("MyAgent spawned")
+    println("My Parameters are :"
+      + occurrence.parameters.toString)
   }
   
   on Destroy {
-    System.out.println("MyAgent destroyed")
+    println("MyAgent destroyed")
   }
 }</pre>
 </li>
 </ul>
-<ul><li>
-<p id="What_s_next" class="example passed"><strong>What's next?</strong></p>
-<p>In the next section we will learn how to start a SARL agent.</p>
-<p><strong><a href="RunningSARLSpec.html">Next</a></strong>.</p>
-</li></ul>
-</div>
+<h3 class="exampleGroup pending" id="What_s_next">What's next?</h3>
+<p>In the next section, we will learn how to start a SARL agent.</p>
+<p><a href="RunSARLAgentSpec.html">Next</a>.</p>
+							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>AgentIntroduction.spec</h3>
 						    	<p>
@@ -183,19 +182,9 @@ package io.sarl.docs.gettingstarted
 import com.google.inject.Inject
 import io.sarl.docs.utils.SARLParser
 import io.sarl.docs.utils.SARLSpecCreator
-import io.sarl.lang.sarl.Agent
-import io.sarl.lang.sarl.BehaviorUnit
-import io.sarl.lang.sarl.Event
-import io.sarl.lang.sarl.SarlScript
-import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.jnario.runner.CreateWith
 
-import static org.junit.Assert.*
-
 /**
- * Once you have installed SARL SDK in eclipse you can create a new Maven project and 
- * reuse the pom found on the demos.
- * 
  * To create our first agent, right click on the project and follow **New** &gt; **File**.
  * Name the file **demosarl.sarl**.
  * 
@@ -205,87 +194,116 @@ import static org.junit.Assert.*
 describe "Agent Definition Introduction" {
   
   @Inject extension SARLParser
-  @Inject extension IQualifiedNameProvider
   
   
   /*
-   * 
    * Agents are defined using the `agent` keyword.
    * 
    * SARL elements are organized in packages.
    * You can define the package using the &lt;code&gt;package&lt;/code&gt; keyword.
    * 
-   * The following code will define an agent with a fully qualified name of `myapp.demo.MyAgent`.
-   * 
-   * 
+   * The following code will define an agent with a fully qualified 
+   * name of `io.sarl.docs.gettingstarted.agent.MyAgent`.
+   * The character `^` in the package name permits to use a SARL
+   * keyword into a package name.
    * 
    * @filter(.* = '''|'''|.parsesSuccessfully.*) 
    */
   fact "Basic agent definition" {
     val model = '''
-      package myapp.demo
+      package io.sarl.docs.gettingstarted.^agent
       
-      agent MyAgent {}
+      agent MyAgent {
+      }
     '''.parsesSuccessfully
-    assertEquals("myapp.demo.MyAgent",model.elements.filter(Agent).head.fullyQualifiedName.toString)
+    model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+    model.mustNotHaveImport
+    model.mustHaveTopElements(1)
+    model.elements.get(0).mustBeAgent("MyAgent", null).mustHaveFeatures(0)
   } 
   
   /*
-   * &lt;span class="label label-info"&gt;Important&lt;/span&gt; The package keyword defines the package 
-   * for all elements in the same SARL file. 
+   * &lt;span class="label label-info"&gt;Important&lt;/span&gt; The package keyword defines 
+   * the package for all elements in the same SARL file (see the
+   * [General Syntax Reference](../reference/GeneralSyntaxReferenceSpec.html)
+   * for details). 
    * 
-   * Therefore FirstAgent and SecondAgent belong to the same package (i.e. `myapp.demo`).
+   * Therefore FirstAgent and SecondAgent belong to the same package 
+   * (i.e. `io.sarl.docs.gettingstarted.agent`).
    * 
    * @filter(.* = '''|'''|.parsesSuccessfully.*) 
    */
   fact "Package definition" {
     val model = '''
-      package myapp.demo
+      package io.sarl.docs.gettingstarted.^agent
       agent MyAgent {}
       agent SecondAgent {}
     '''.parsesSuccessfully
-    assertEquals("myapp.demo.MyAgent",model.elements.filter(Agent).head.fullyQualifiedName.toString)
-    assertEquals("myapp.demo.SecondAgent",model.elements.filter(Agent).last.fullyQualifiedName.toString)
+    model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+    model.mustNotHaveImport
+    model.mustHaveTopElements(2)
+    model.elements.get(0).mustBeAgent("MyAgent", null).mustHaveFeatures(0)
+    model.elements.get(1).mustBeAgent("SecondAgent", null).mustHaveFeatures(0)
   }
 
   /*
    * Agents need to perceive their environment in order to react to external stimuli.
-   * Perceptions take the form of events.
-   * 
+   * Perceptions take the form of events
+   * (see [Event](../reference/EventReferenceSpec.html) and
+   * [Agent](../reference/AgentReferenceSpec.html) References for details).
    */
-  context "Agent Perceptions"{
-    
+  context "Agent Perceptions" {
     
     /*
      * To declare a new event use the `event` keyword.
-     * The following code defines a new event `MyEvent`
+     * The following code defines a new event `MyEvent`.
+     * 
      * @filter('''|.parsesSuccessfully) 
      */
     fact "Declare an Event"{
-      '''
-      event MyEvent {}
-      '''.parsesSuccessfully
+      var model = '''
+      event MyEvent
+      '''.parsesSuccessfully(
+        "package io.sarl.docs.gettingstarted.^agent",
+        // TEXT
+        ""
+      )
+      model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+      model.mustNotHaveImport
+      model.mustHaveTopElements(1)
+      model.elements.get(0).mustBeEvent("MyEvent", null).mustHaveFeatures(0)
     }
     
 
     
     /* 
-     * Now we will want our agent to react to `MyEvent` and print a message on the console
+     * Now we will want our agent to react to `MyEvent` and 
+     * print a message on the console.
+     * 
+     * Note that `println` is a shortcut for the Java function
+     * `System.out.println`.
      * 
      * @filter(.* = '''|'''|.parsesSuccessfully.*) 
      */
     fact "Define an agent Perceptions"{
-      val SarlScript model = '''
-      package myapp.demo
-      
-      event MyEvent
-      
+      val model = '''
       agent MyAgent {
         on MyEvent {
-          System.out.println("Received MyEvent")
+          println("Received MyEvent")
         }
       } 
-      '''.parsesSuccessfully
+      '''.parsesSuccessfully(
+        "package io.sarl.docs.gettingstarted.^agent
+        event MyEvent",
+        // TEXT
+        ""
+      )
+      model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+      model.mustNotHaveImport
+      model.mustHaveTopElements(2)
+      model.elements.get(0).mustBeEvent("MyEvent", null).mustHaveFeatures(0)
+      var a = model.elements.get(1).mustBeAgent("MyAgent", null).mustHaveFeatures(1)
+      a.features.get(0).mustBeBehaviorUnit("io.sarl.docs.gettingstarted.agent.MyEvent", false)
     }
     
     /*
@@ -294,33 +312,45 @@ describe "Agent Definition Introduction" {
      *  * `Initialize`:  Notifies the creation of the agent and passes it initialization parameters.
      *  * `Destroy`: Notifies the Destruction of the agent.
      * 
-     * This means that when agent has been spawned and its ready to begin its execution, it will receive an `Initialize` event.
+     * This means that when agent has been spawned and its ready to 
+     * begin its execution, it will receive an `Initialize` event.
      * You can react to this event just like with any other event defined in SARL.
      * 
-     * Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will 
-     * receive a `Destroy` Event. The purpose of this event is to release any System resources properly.
+     * Likewise, when the agent is going to stop its execution 
+     * (we will see how to stop an agent later on), it will 
+     * receive a `Destroy` Event. The purpose of this event is to 
+     * release any System resources properly.
      *
-     * 
      * @filter(.* = '''|'''|.parsesSuccessfully.*) 
      */
     fact "Lifecycle events" {
       val model = '''
-        package myapp.demo
-        
         import io.sarl.core.Initialize
         import io.sarl.core.Destroy
         
         agent MyAgent {
           
           on Initialize {
-            System.out.println("MyAgent spawned")
+            println("MyAgent spawned")
           }
           
           on Destroy {
-            System.out.println("MyAgent destroyed")
+            println("MyAgent destroyed")
           }
         }
-      '''.parsesSuccessfully
+      '''.parsesSuccessfully(
+        "package io.sarl.docs.gettingstarted.^agent",
+        // TEXT
+        ""
+      )
+      model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+      model.mustHaveImports(2)
+      model.mustHaveImport(0, "io.sarl.core.Initialize", false, false, false)
+      model.mustHaveImport(1, "io.sarl.core.Destroy", false, false, false)
+      model.mustHaveTopElements(1)
+      var a = model.elements.get(0).mustBeAgent("MyAgent", null).mustHaveFeatures(2)
+      a.features.get(0).mustBeBehaviorUnit("io.sarl.core.Initialize", false)
+      a.features.get(1).mustBeBehaviorUnit("io.sarl.core.Destroy", false)
     }
     
     /*
@@ -336,36 +366,44 @@ describe "Agent Definition Introduction" {
      */
     fact "Accessing the event's occurrence" {
       val model = '''
-        package myapp.demo
-        
-        import io.sarl.core.Initialize
-        import io.sarl.core.Destroy
-        
         agent MyAgent {
           
           on Initialize {
-            System.out.println("MyAgent spawned")
-            System.out.println("My Parameters are :" + occurrence.parameters.toString)
+            println("MyAgent spawned")
+            println("My Parameters are :"
+              + occurrence.parameters.toString)
           }
           
           on Destroy {
-            System.out.println("MyAgent destroyed")
+            println("MyAgent destroyed")
           }
         }
-      '''.parsesSuccessfully
+      '''.parsesSuccessfully(
+        "package io.sarl.docs.gettingstarted.^agent
+        import io.sarl.core.Initialize
+        import io.sarl.core.Destroy",
+        // TEXT
+        ""
+      )
+      model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
+      model.mustHaveImports(2)
+      model.mustHaveImport(0, "io.sarl.core.Initialize", false, false, false)
+      model.mustHaveImport(1, "io.sarl.core.Destroy", false, false, false)
+      model.mustHaveTopElements(1)
+      var a = model.elements.get(0).mustBeAgent("MyAgent", null).mustHaveFeatures(2)
+      a.features.get(0).mustBeBehaviorUnit("io.sarl.core.Initialize", false)
+      a.features.get(1).mustBeBehaviorUnit("io.sarl.core.Destroy", false)
     }
+    
   }
   
   
   /*
-   * In the next section we will learn how to start a SARL agent.
+   * In the next section, we will learn how to start a SARL agent.
    * 
-   * 
-   * **[Next](RunningSARLSpec.html)**.
-   * @filter(.*)
+   * [Next](RunSARLAgentSpec.html).
    */
-  fact "What's next?"{assertTrue(true)}
-  
+  describe "What's next?" { }
 
 }
 </pre>
