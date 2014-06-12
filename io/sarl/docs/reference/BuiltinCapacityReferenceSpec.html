@@ -57,7 +57,8 @@
 <p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
 <p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
 <p>Every agent in SARL has a set of <em>built-in capacities</em> considered essential to respect the commonly accepted competences of agents. These capacities are considered the main building blocks on top of which other higher level capacities and skills can be constructed. They are defined on the SARL language but the skill implementing them are provided by the runtime environment, e.g. the [Janus platform)(http://www.janus-project.io). This runtime environmentis responsible for creating them and injecting them on the agent before their execution begins. Therefore, when the agent receives the <code>Initialize</code> event they are already available.</p>
-<p>The following figure presents the different contexts assocated to an agent. Several builtin capacities permit to access and manage these contexts. The agents are represented by stylized humans, the contexts by the blue boxes, and the spaces by the small colorized boxes in the contexts. <img src="./Contexts.png" alt="Contexts and Spaces."></p>
+<p>The following figure presents the different contexts assocated to an agent. Several builtin capacities permit to access and manage these contexts. The agents are represented by stylized humans, the contexts by the blue boxes, and the spaces by the small colorized boxes in the contexts.</p>
+<center><img alt="Contexts and Spaces" src="./Contexts.png" width="60%"></center>
 <h3 class="exampleGroup passed" id="ExternalContextAccess">ExternalContextAccess</h3>
 <p>The builtin capacity <code>ExternalContextAccess</code> provides access to the <a href="SpaceReferenceSpec.html">context</a> that the agent is a part of, and actions required to join new <a href="SpaceReferenceSpec.html">contexts</a>, and leave them.</p>
 <p>The context supported by this builtin capacity is the "external contexts", illustrated by the top-right context in the figure above.</p>
@@ -305,8 +306,9 @@ import org.jnario.runner.CreateWith
  * The following figure presents the different contexts assocated to an agent.
  * Several builtin capacities permit to access and manage these contexts.
  * The agents are represented by stylized humans, the contexts by the blue boxes,
- * and the spaces by the small colorized boxes in the contexts.   
- * ![Contexts and Spaces.](./Contexts.png)
+ * and the spaces by the small colorized boxes in the contexts.
+ * 
+ * &lt;center&gt;&lt;img alt="Contexts and Spaces" src="./Contexts.png" width="60%" /&gt;&lt;/center&gt;
  */
 @CreateWith(SARLSpecCreator)
 describe "Builtin Capacity Reference" {

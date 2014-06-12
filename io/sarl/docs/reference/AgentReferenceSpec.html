@@ -54,7 +54,8 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>This document describes the features related to the definition of an agent in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./SkillReferenceSpec.html">Skill Reference</a>, and the <a href="./BuiltinCapacityReferenceSpec.html">Builtin Capacity Reference</a>.</p>
-<p><em>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits</em>. An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, proactivity and social capacities. Figure below describes the open architecture of an Agent in SARL. <img src="./AgentBehaviors.png" alt="An Agent in SARL"></p>
+<p><em>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits</em>. An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, proactivity and social capacities. Figure below describes the open architecture of an Agent in SARL.</p>
+<center><img alt="An Agent in SARL" src="./AgentBehaviors.png" width="60%"></center>
 <p>The full set of Builtin Capacities will be presented in the corresponding <a href="./BuiltinCapacityReferenceSpec.html">Reference document</a>. Among these builtin capacities, is the <code>Behaviors</code> capacity that enables agents to incorporate a collection of behaviors that will determine its global conduct.</p>
 <p>An agent has also a default behavior directly described within its definition. *A Behavior maps a collection of perceptions represented by Events to a sequence of Actions. The various behaviors of an agent communicates using an event-driven approach. <em>An Event is the specification of some occurrence in a Space that may potentially trigger effects by a listener</em> (e.g. agent, behavior, etc.)</p>
 <h3 class="exampleGroup passed" id="Defining_an_Agent">Defining an Agent</h3>
@@ -62,7 +63,7 @@
 <ul>
 <li>
 <p id="Defining_an_empty_agent" class="example passed"><strong>Defining an empty agent</strong></p>
-<p>The following code illustration the definition of an agent named <code>MyAgent</code>, and that is empty.</p>
+<p>The following code illustres the definition of an agent named <code>MyAgent</code>, and that is empty.</p>
 <p>Basically, this agent does nothing, and does not react on events.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -70,7 +71,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Agent_Attributes" class="example passed"><strong>Agent Attributes</strong></p>
-<p>The mental state of an agent is composed by all the data inthe knowledge of the agent. Most of the time, the mental state is implemented as a collection of attributes in the agent.</p>
+<p>The mental state of an agent is composed by all the data in the knowledge of the agent. Most of the time, the mental state is implemented as a collection of attributes in the agent.</p>
 <p>According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the attributes may be modifiable (when declared with the <code>var</code> keyword), or unmodifiable (when declared with the <code>val</code> keyword).</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -121,7 +122,7 @@ agent MySubAgent extends MyAgent {
 <li>reactive: the agent react when it is receiving events, or</li>  <li>pro-active: the agent executes by itself one of its behaviors.</li>
 </ul>
 </li> <li>Destruction: the agent react on the <code>Destroy</code> event.</li> </ol>
-<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents belonging to these spaces. An agent may specify it is interesting for receiving an event by specifying an event handler using the following syntax: </p>
+<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents belonging to these spaces. An agent may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax: </p>
 <pre class="prettyprint"> on &lt;EventName&gt; [&lt;Guard&gt;] {  &lt;Statements&gt; } </pre> <code>&lt;EventName&gt;</code> is the name of event to wait for. <code>&lt;Guard&gt;</code> is the optional specification of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <em>and</em> if the guard is true.<p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
 <ul>
 <li>
@@ -182,7 +183,7 @@ agent MyAgent {
 <p id="Reactive_Behaviors" class="example passed"><strong>Reactive Behaviors</strong></p>
 <p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the behavior when something has appening in the agent or in its environment.</p>
 <p>In the following example, the agent is reacting to the reception of the <code>SomethingChanged</code> event.</p>
-<p>As for all the event handler, it could be guarded by a predicate.</p>
+<p>As for all the event handlers, it could be guarded by a predicate.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on SomethingChanged {
@@ -230,8 +231,8 @@ agent MyAgent {
 </li>
 <li>
 <p id="Giving_a_Skill_to_an_Agent" class="example passed"><strong>Giving a Skill to an Agent</strong></p>
-<p>When a agent must use a capacity in one of its behaviors, it must own an implementation of this capacity: a skill.</p>
-<p>For assigning a skill to an agent, the instance of the skill must be created. Then it must be associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated to the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
+<p>When an agent must use a capacity in one of its behaviors, it must own an implementation of this capacity: a skill.</p>
+<p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated to the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
 <p>When the function <code>setSkill</code> is returning, the agent becomes able to use the skill.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -248,7 +249,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Using_a_Capacity_with_the_Getters" class="example passed"><strong>Using a Capacity with the Getters</strong></p>
-<p>After a skill is registered into the agent, it may be invoked.</p>
+<p>After a skill is registered into the agent, it could be invoked.</p>
 <p>For invoking a function implemented by a skill, the two following steps must be done: </p>
 <ol>
 <li>Retreive the skill instance: the function <code>getSkill(Class&lt;? extends Capacity&gt;)</code> permits to retreive the skill associated to the given capacity;</li> <li>Invoke the capacity's action on the retreived skill.</li> </ol>
@@ -283,8 +284,8 @@ agent MyAgent {
 <li>
 <p id="Using_a_Capacity_with_the_Extension_Methods" class="example passed"><strong>Using a Capacity with the Extension Methods</strong></p>
 <p>Invoking a capacity/skill with the getter method is not user-friendly. Since the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> describes the "extension method" mechanism, it is possible to use it for invoking the capacities.</p>
-<p>But, instead of using an <code>import</code> directive, the <code>uses</code> keyword is provided for importin the capacities into the agent. In the following example, the <code>Cap</code> capacity is imported.</p>
-<p>After a capacity is "imported", it is possible to directly call the functions of the capacity (according to the extension method syntax). In the following example, the action with the name <code>action</code> is invoked. This action is defined in the <code>Cap</code> capacity.</p>
+<p>But, instead of using an <code>import</code> directive, the <code>uses</code> keyword is provided for importing the capacities into the agent. In the following example, the <code>Cap</code> capacity is imported.</p>
+<p>After a capacity was "imported", it is possible to directly call the functions of the capacity (according to the extension method syntax). In the following example, the action with the name <code>action</code> is invoked. This action is defined in the <code>Cap</code> capacity.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Cap
@@ -353,7 +354,8 @@ import org.jnario.runner.CreateWith
  * commonly accepted competences of agents, such autonomy, reactivity, proactivity 
  * and social capacities. 
  * Figure below describes the open architecture of an Agent in SARL.
- * ![An Agent in SARL](./AgentBehaviors.png)
+ * 
+ * &lt;center&gt;&lt;img alt="An Agent in SARL" src="./AgentBehaviors.png" width="60%" /&gt;&lt;/center&gt;
  * 
  * The full set of Builtin Capacities will be presented in the corresponding
  * [Reference document](./BuiltinCapacityReferenceSpec.html). Among these
@@ -382,7 +384,7 @@ describe "Agent Reference"{
      */
     describe "Defining an Agent" {
 
-      /* The following code illustration the definition of an agent
+      /* The following code illustres the definition of an agent
        * named &lt;code&gt;MyAgent&lt;/code&gt;, and that is empty.
        * 
        * Basically, this agent does nothing, and does not react
@@ -406,7 +408,7 @@ describe "Agent Reference"{
       }
       
       /* The mental state of an agent is composed by all the data
-       * inthe knowledge of the agent.
+       * in the knowledge of the agent.
        * Most of the time, the mental state is implemented as a
        * collection of attributes in the agent.
        * 
@@ -532,7 +534,7 @@ describe "Agent Reference"{
      * The definition of the reactive behaviors is based on the event handling
      * mechanism of SARL. Events may be emitted in [spaces](./SpaceReferenceSpec.html),
      * and received by the agents belonging to these spaces.
-     * An agent may specify it is interesting for receiving an event by specifying
+     * An agent may indicate that it is interesting for receiving an event by specifying
      * an event handler using the following syntax: &lt;pre&gt;&lt;code&gt;
      * on &amp;lt;EventName&amp;gt; [&amp;lt;Guard&amp;gt;] {
      *     &amp;lt;Statements&amp;gt;
@@ -699,7 +701,7 @@ describe "Agent Reference"{
        * In the following example, the agent is reacting to the reception
        * of the &lt;code&gt;SomethingChanged&lt;/code&gt; event.
        * 
-       * As for all the event handler, it could be guarded by a predicate.
+       * As for all the event handlers, it could be guarded by a predicate.
        * 
        * @filter(.* = '''|'''|.parsesSuccessfully.*) 
        */
@@ -833,11 +835,11 @@ describe "Agent Reference"{
         "no fact to test"
       }
 
-      /* When a agent must use a capacity in one of its behaviors,
+      /* When an agent must use a capacity in one of its behaviors,
        * it must own an implementation of this capacity: a skill.
        * 
        * For assigning a skill to an agent, the instance of the skill
-       * must be created. Then it must be associated with the
+       * must be created. Then, it is associated with the
        * implemented capacity.
        * In the following example, the agent is creating the
        * &lt;code&gt;Ski&lt;/code&gt; skill. This instance is associated to
@@ -897,7 +899,7 @@ describe "Agent Reference"{
       }
 
       /* After a skill is registered into the agent,
-       * it may be invoked.
+       * it could be invoked.
        *
        * For invoking a function implemented by a skill,
        * the two following steps must be done: &lt;ol&gt;
@@ -992,11 +994,11 @@ describe "Agent Reference"{
        * to use it for invoking the capacities.
        * 
        * But, instead of using an &lt;code&gt;import&lt;/code&gt; directive,
-       * the &lt;code&gt;uses&lt;/code&gt; keyword is provided for importin the
+       * the &lt;code&gt;uses&lt;/code&gt; keyword is provided for importing the
        * capacities into the agent. In the following example,
        * the &lt;code&gt;Cap&lt;/code&gt; capacity is imported.
        * 
-       * After a capacity is "imported", it is possible to
+       * After a capacity was "imported", it is possible to
        * directly call the functions of the capacity
        * (according to the extension method syntax).
        * In the following example, the action
