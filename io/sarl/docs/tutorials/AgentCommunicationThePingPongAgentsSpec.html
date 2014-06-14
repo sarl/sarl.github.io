@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Agent Communication: the Ping Pong Agents</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script><script type="text/javascript" src="../../../../js/lang-jnario.js"></script><script type="text/javascript" src="../../../../js/jquery.js"></script><script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+<body onload="prettyPrint()">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+<li class="active"><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header passed">
+					<h1>Agent Communication: the Ping Pong Agents</h1>
+					  <ul class="nav nav-tabs pull-right">
+<li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>The elements that are explained in this tutorial are: </p>
+<ul>
+<li>Definition of an event;</li> <li>Definition of an agent;</li> <li>Emit an event occurrence in the default space;</li> <li>Receiving event occurrences;</li> <li>Pro-active behavior: waiting for partners.</li> </ul>
+<p>The principle of the application is the following. The <code>Ping</code> agent is sending a <code>Ping</code> message to all agents. The <code>Pong</code> agent is receiving the <code>Ping</code> message, and replies with a <code>Pong</code> message to the sender. The <code>Ping</code> agent is receiving a <code>Pong</code> message and replies to the sender with a new <code>Ping</code> message. These messages contains an integer number that indicates the number of the event.</p>
+<p>The source code related to this tutorial may be found in the <a href="http://www.github/sarl/sarl-demos">SARL demos</a>.</p>
+<h3 class="exampleGroup passed" id="Event_definition">Event definition</h3>
+<p>First, the <code>Ping</code> and <code>Pong</code> events must be defined.</p>
+<ul>
+<li>
+<p id="Ping_Event" class="example passed"><strong>Ping Event</strong></p>
+<p>The <code>Ping</code> is an event that contains the index of the event. This index indicates at which position the event is located in the sequence of sent <code>Ping</code> event.</p>
+<p>The <code>index</code> attribute is a value to make it unmodifiable after its initialization.</p>
+<p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
+<pre class="prettyprint lang-spec linenums">
+event Ping {
+  val index : int
+  new(i : int) {
+    this.index = i
+  }
+}</pre>
+</li>
+<li>
+<p id="Pong_Event" class="example passed"><strong>Pong Event</strong></p>
+<p>The <code>Pong</code> is an event that contains the index of the <code>Ping</code> event for which the <code>Pong</code> event is created.</p>
+<p>The <code>index</code> attribute is a value to make it unmodifiable after its initialization.</p>
+<p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
+<pre class="prettyprint lang-spec linenums">
+event Pong {
+  val index : int
+  new(i : int) {
+    this.index = i
+  }
+}</pre>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Ponging_agent">Ponging agent</h3>
+<p>The second step of this tutorial is the definition of the agent that is waiting for <code>Ping</code> events, and replying <code>Pong</code> events.</p>
+<ul>
+<li>
+<p id="First_definition" class="example passed"><strong>First definition</strong></p>
+<p>The initial defintion of the ponging agent is:</p>
+<pre class="prettyprint lang-spec linenums">
+agent PongAgent {
+}</pre>
+</li>
+<li>
+<p id="Handling_the_Ping_event" class="example passed"><strong>Handling the Ping event</strong></p>
+<p>The ponging agent needs to handle the <code>Ping</code> events. For that, a "behavior unit" must be defined in the agent. According to the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>on</code> keyword followed by the name of the event permits to define a handler of events. This handler will be invoked by the runtime environment each time the agent is receiving a <code>Ping</code> event.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PongAgent {
+  on Ping {
+  }
+}</pre>
+</li>
+<li>
+<p id="Replying_to_Ping_with_a_Pong" class="example passed"><strong>Replying to Ping with a Pong</strong></p>
+<p>Now, it is time to define how the ponging agent is replying with a <code>Pong</code> message.</p>
+<p>First, emitting an event in the default space must be done with a builtin capacity: <code>DefaultContextInteractions</code>. This capacity provides a collection of functions that enables the agent to interect with the default context, and its default space.</p>
+<p>For using the capacity, it is recommended to declare it with the <code>uses</code> keyword. This keyword permits to the agent to directly call the functions of the capacity as if they are defined as actions in the agent.</p>
+<p>The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event)</code> for emitting an event in the default space of the default context.</p>
+<p>The <code>Pong</code> event must be built with a index value as parameter. This parameter is the index stored in the <code>Ping</code> event. For accessing to the occurrence of the <code>Ping</code> event, you must use the special keyword <code>occurrence</code>. In the following example, the <code>Pong</code> event is built with the index parameter stored in the received <code>Ping</code> event.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PongAgent {
+  uses DefaultContextInteractions
+  on Ping {
+    emit( new Pong( occurrence.index ) )
+  }
+}</pre>
+</li>
+<li>
+<p id="Restricting_the_scope_of_the_Pong_event" class="example passed"><strong>Restricting the scope of the Pong event</strong></p>
+<p>In the previous code, the event is emitted to all the agents belonging to the default space, including the ponging agent.</p>
+<p>For restricting the receiver of the <code>Pong</code> event to the initial sender of the <code>Ping</code> event, you must define a scope for the <code>Pong</code> event. The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event, Scope&lt;Address&gt;)</code> for emitting an event with a specific scope.</p>
+<p>The SARL SDK contains the class <code>AddressScope</code>. It is an implementation of a <code>Scope</code>. It provides a factory function for creating a scope on addresses (an address is the identifier of an agent in the default space).</p>
+<p>In the following code, the scope permits to restrict to the initial sender of the <code>Ping</code> event.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PongAgent {
+  uses DefaultContextInteractions
+  on Ping {
+    emit(
+      new Pong( occurrence.index ),
+      AddressScope.getScope( occurrence.source )
+    )
+  }
+}</pre>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Pinging_Agent">Pinging Agent</h3>
+<p>The third step of this tutorial is the definition of the agent that is sending <code>Ping</code> events, and waiting for <code>Pong</code> events.</p>
+<ul>
+<li>
+<p id="First_definition" class="example passed"><strong>First definition</strong></p>
+<p>The initial defintion of the pinging agent is:</p>
+<pre class="prettyprint lang-spec linenums">
+agent PingAgent {
+}</pre>
+</li>
+<li>
+<p id="Handling_the_Pong_event" class="example passed"><strong>Handling the Pong event</strong></p>
+<p>The pinging agent needs to handle the <code>Pong</code> events. For that, a "behavior unit" must be defined in the agent.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PingAgent {
+  on Pong {
+  }
+}</pre>
+</li>
+<li>
+<p id="Re_sending_a_Ping_on_Pong_reception" class="example passed"><strong>Re-sending a Ping on Pong reception</strong></p>
+<p>When the pinging agent is receiving a <code>Pong</code> event, it re-sends a <code>Ping</code> event to the sender of the <code>Pong</code> event. This new <code>Ping</code> event has an index greater than the one of the <code>Pong</code> event.</p>
+<p>The reception of the <code>Ping</code> event is restricted to the sender of the <code>Pong</code> event.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PingAgent {
+  uses DefaultContextInteractions
+  on Pong {
+    emit(
+      new Ping( occurrence.index + 1 ),
+      AddressScope.getScope( occurrence.source )
+    )
+  }
+}</pre>
+</li>
+<li>
+<p id="Sending_the_first_Ping" class="example passed"><strong>Sending the first Ping</strong></p>
+<p>For starting the exchanges among the agents, it is mandatory to send a first occurence of the <code>Ping</code> event.</p>
+<p>This emission is done when the pinging agent is started, i.e. when the agent is receiving the <code>Initialize</code> event.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PingAgent {
+  uses DefaultContextInteractions
+  on Pong {
+    emit(
+      new Ping( occurrence.index + 1 ),
+      AddressScope.getScope( occurrence.source )
+    )
+  }
+  on Initialize {
+    emit( new Ping(0) )
+  }
+}</pre>
+</li>
+<li>
+<p id="Delaying_the_sending_of_the_first_Ping" class="example passed"><strong>Delaying the sending of the first Ping</strong></p>
+<p>The previous code has a major problem: if there is no ponging agent launched when the pinging agent is emitting the first <code>Ping</code> event, the application will reach a deadlock, even if the ponging agent is launched later.</p>
+<p>For solving this problem, the pinging agent must wait for sending the initial <code>Ping</code> event until the ponging agent is belonging to the default space.</p>
+<p>The concrete implementation is based on the <code>Schedules</code> capacity, which provides a collection of functions for creating and launching asynchronous tasks.</p>
+<p>In following code, a task is created with the name <code>waiting_for_partner</code>. This task is executed every second with the <code>every</code> function. The code between the brackets is the instruction block that will be periodically executed.</p>
+<p>In this periodically executed code, the agent is testing if it is the only one agent belonging to the default space. If not, the agent is emitting the initial <code>Ping</code> event, and stopping the periodic task.</p>
+<pre class="prettyprint lang-spec linenums">
+agent PingAgent {
+  uses DefaultContextInteractions, Schedules
+  on Pong {
+    emit(
+      new Ping( occurrence.index + 1 ),
+      AddressScope.getScope( occurrence.source )
+    )
+  }
+  on Initialize {
+    val task = task("waiting_for_partner")
+    task.every(1000) [
+      if (defaultSpace.participants.size &gt; 1) {
+        emit( new Ping(0) )
+        task.cancel
+      }
+    ]
+  }
+}</pre>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Launching_the_agents">Launching the agents</h3>
+<p>The fourth step of this tutorial is the definition of the launching process. In the rest of this section, we discuss the use of the <a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
+<p>Two methods may be used for launching the agents: </p>
+<ol>
+<li>Execute each agent in a single instance of Janus.<br>  On the command line, you must launch Janu with: <pre class="prettyprint">  java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PongAgent  java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PingAgent  </pre>  The file <code>app.jar</code> contains the compiled classes of the tutorial,  the Janus platform, and the SARL libraries.</li> <li>Define a specific agent that will launch the two other agents.  This approach is detailed below.</li> </ol>
+<ul><li>
+<p id="Defining_the_Boot_agent" class="example passed"><strong>Defining the Boot agent</strong></p>
+<p>The boot agent uses the <code>DefaultContextInteractions</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type.</p>
+<p>When the boot agent has launched the two expected agents, it is killing itself. This is done with the <code>killMe</code> function, which is provided by the <code>Lifecycle</code> capacity.</p>
+<pre class="prettyprint lang-spec linenums">
+agent BootAgent {
+  uses DefaultContextInteractions, Lifecycle
+  on Initialize {
+    spawn( PongAgent )
+    spawn( PingAgent )
+    killMe
+  }
+}</pre>
+</li></ul>
+</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>PingPong.spec</h3>
+						    	<p>
+</p>
+<pre class="prettyprint lang-spec linenums">
+/*
+ * Copyright 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.sarl.docs.tutorials
+
+import com.google.inject.Inject
+import io.sarl.docs.utils.SARLParser
+import io.sarl.docs.utils.SARLSpecCreator
+import org.jnario.runner.CreateWith
+
+/**
+ * This document describes how to create a simple
+ * agent-based application in which agents are
+ * exchanging basic messages.
+ * Before reading this document, it is recommended to read
+ * the [General Syntax Reference](./GeneralSyntaxReferenceSpec.html).
+ * 
+ * The elements that are explained in this tutorial are: &lt;ul&gt;
+ * &lt;li&gt;Definition of an event;&lt;/li&gt;
+ * &lt;li&gt;Definition of an agent;&lt;/li&gt;
+ * &lt;li&gt;Emit an event occurrence in the default space;&lt;/li&gt;
+ * &lt;li&gt;Receiving event occurrences;&lt;/li&gt;
+ * &lt;li&gt;Pro-active behavior: waiting for partners.&lt;/li&gt;
+ * &lt;/ul&gt;
+ *
+ * The principle of the application is the following.
+ * The `Ping` agent is sending a `Ping` message to
+ * all agents.
+ * The `Pong` agent is receiving the `Ping` message,
+ * and replies with a `Pong` message to the sender.
+ * The `Ping` agent is receiving a `Pong` message and
+ * replies to the sender with a new `Ping` message.
+ * These messages contains an integer number that
+ * indicates the number of the event.
+ *  
+ * The source code related to this tutorial may be found
+ * in the [SARL demos](http://www.github/sarl/sarl-demos).
+ */
+@CreateWith(SARLSpecCreator)
+describe "Agent Communication: the Ping Pong Agents"{
+
+    @Inject extension SARLParser
+
+    /* First, the `Ping` and `Pong` events must be defined.
+     */
+    context "Event definition" {
+
+      /* The `Ping` is an event that contains the
+       * index of the event. This index indicates
+       * at which position the event is located in
+       * the sequence of sent `Ping` event.
+       * 
+       * The `index` attribute is a value to make
+       * it unmodifiable after its initialization.
+       * 
+       * For setting the value of the `index` value,
+       * it is mandatory to define a constructor. 
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */      
+      fact "Ping Event" {
+        '''
+        event Ping {
+          val index : int
+          new(i : int) {
+            this.index = i
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong",
+          // TEXT
+          ""
+        )
+      }
+      
+      /* The `Pong` is an event that contains the
+       * index of the `Ping` event for which the
+       * `Pong` event is created.
+       * 
+       * The `index` attribute is a value to make
+       * it unmodifiable after its initialization.
+       * 
+       * For setting the value of the `index` value,
+       * it is mandatory to define a constructor. 
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */      
+      fact "Pong Event" {
+        '''
+        event Pong {
+          val index : int
+          new(i : int) {
+            this.index = i
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong",
+          // TEXT
+          ""
+        )
+      }
+
+    }
+    
+    /* The second step of this tutorial is the definition of the
+     * agent that is waiting for `Ping` events, and replying
+     * `Pong` events.
+     */
+    context "Ponging agent" {
+
+      /* The initial defintion of the ponging agent is:
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "First definition" {
+        '''
+        agent PongAgent {
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong",
+          // TEXT
+          ""
+        )
+      }
+
+      /* The ponging agent needs to handle the `Ping` events.
+       * For that, a "behavior unit" must be defined in the
+       * agent. According to the 
+       * [General Syntax Reference](../reference/GeneralSyntaxReferenceSpec.html),
+       * the `on` keyword followed by the name of the event 
+       * permits to define a handler of events.
+       * This handler will be invoked by the runtime environment
+       * each time the agent is receiving a `Ping` event.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Handling the Ping event" {
+        '''
+        agent PongAgent {
+          on Ping {
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+      /* Now, it is time to define how the ponging agent
+       * is replying with a `Pong` message.
+       * 
+       * First, emitting an event in the default space
+       * must be done with a builtin capacity:
+       * `DefaultContextInteractions`. This capacity
+       * provides a collection of functions that 
+       * enables the agent to interect with the 
+       * default context, and its default space.
+       * 
+       * For using the capacity, it is recommended to
+       * declare it with the `uses` keyword.
+       * This keyword permits to the agent to directly
+       * call the functions of the capacity as if
+       * they are defined as actions in the agent.
+       * 
+       * The `DefaultContextInteractions` capacity
+       * provides the function `emit(Event)` for
+       * emitting an event in the default space of the
+       * default context.
+       * 
+       * The `Pong` event must be built with
+       * a index value as parameter. This parameter
+       * is the index stored in the `Ping` event.
+       * For accessing to the occurrence of the
+       * `Ping` event, you must use the special
+       * keyword `occurrence`.
+       * In the following example, the `Pong`
+       * event is built with the index parameter
+       * stored in the received `Ping` event.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Replying to Ping with a Pong" {
+        '''
+        agent PongAgent {
+          uses DefaultContextInteractions
+          on Ping {
+            emit( new Pong( occurrence.index ) )
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+      /* In the previous code, the event is emitted
+       * to all the agents belonging to the default
+       * space, including the ponging agent.
+       * 
+       * For restricting the receiver of the
+       * `Pong` event to the initial sender of the
+       * `Ping` event, you must define a scope for
+       * the `Pong` event.
+       * The `DefaultContextInteractions` capacity
+       * provides the function `emit(Event, Scope&lt;Address&gt;)`
+       * for emitting an event with a specific scope.
+       * 
+       * The SARL SDK contains the class `AddressScope`.
+       * It is an implementation of a `Scope`.
+       * It provides a factory function for creating
+       * a scope on addresses (an address is the identifier
+       * of an agent in the default space).
+       * 
+       * In the following code, the scope permits to
+       * restrict to the initial sender of the `Ping` event. 
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Restricting the scope of the Pong event" {
+        '''
+        agent PongAgent {
+          uses DefaultContextInteractions
+          on Ping {
+            emit(
+              new Pong( occurrence.index ),
+              AddressScope.getScope( occurrence.source )
+            )
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          import io.sarl.util.AddressScope
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+    }
+
+    /* The third step of this tutorial is the definition of the
+     * agent that is sending `Ping` events, and waiting for
+     * `Pong` events.
+     */
+    context "Pinging Agent" {
+
+      /* The initial defintion of the pinging agent is:
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "First definition" {
+        '''
+        agent PingAgent {
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong",
+          // TEXT
+          ""
+        )
+      }
+
+      /* The pinging agent needs to handle the `Pong` events.
+       * For that, a "behavior unit" must be defined in the
+       * agent.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Handling the Pong event" {
+        '''
+        agent PingAgent {
+          on Pong {
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+      /* When the pinging agent is receiving a
+       * `Pong` event, it re-sends a `Ping` event
+       * to the sender of the `Pong` event.
+       * This new `Ping` event has an index greater
+       * than the one of the `Pong` event.
+       * 
+       * The reception of the `Ping` event is
+       * restricted to the sender of the
+       * `Pong` event.
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Re-sending a Ping on Pong reception" {
+        '''
+        agent PingAgent {
+          uses DefaultContextInteractions
+          on Pong {
+            emit(
+              new Ping( occurrence.index + 1 ),
+              AddressScope.getScope( occurrence.source )
+            )
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          import io.sarl.util.AddressScope
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+      /* For starting the exchanges among the agents,
+       * it is mandatory to send a first occurence
+       * of the `Ping` event.
+       * 
+       * This emission is done when the pinging agent
+       * is started, i.e. when the agent is
+       * receiving the `Initialize` event.
+       * 
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Sending the first Ping" {
+        '''
+        agent PingAgent {
+          uses DefaultContextInteractions
+          on Pong {
+            emit(
+              new Ping( occurrence.index + 1 ),
+              AddressScope.getScope( occurrence.source )
+            )
+          }
+          on Initialize {
+            emit( new Ping(0) )
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          import io.sarl.core.Initialize
+          import io.sarl.util.AddressScope
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+      /* The previous code has a major problem:
+       * if there is no ponging agent launched
+       * when the pinging agent is emitting
+       * the first `Ping` event, the application
+       * will reach a deadlock, even if
+       * the ponging agent is launched later.
+       * 
+       * For solving this problem, the pinging
+       * agent must wait for sending the initial
+       * `Ping` event until the ponging agent
+       * is belonging to the default space.
+       * 
+       * The concrete implementation is based on
+       * the `Schedules` capacity, which provides
+       * a collection of functions for creating
+       * and launching asynchronous tasks.
+       * 
+       * In following code, a task is created with
+       * the name `waiting_for_partner`.
+       * This task is executed every second with
+       * the `every` function. The code between
+       * the brackets is the instruction block
+       * that will be periodically executed.
+       * 
+       * In this periodically executed code,
+       * the agent is testing if it is the only
+       * one agent belonging to the default space.
+       * If not, the agent is emitting the initial
+       * `Ping` event, and stopping the periodic task.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Delaying the sending of the first Ping" {
+        '''
+        agent PingAgent {
+          uses DefaultContextInteractions, Schedules
+          on Pong {
+            emit(
+              new Ping( occurrence.index + 1 ),
+              AddressScope.getScope( occurrence.source )
+            )
+          }
+          on Initialize {
+            val task = task("waiting_for_partner")
+            task.every(1000) [
+              if (defaultSpace.participants.size &gt; 1) {
+                emit( new Ping(0) )
+                task.cancel
+              }
+            ]
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          import io.sarl.core.Initialize
+          import io.sarl.core.Schedules
+          import io.sarl.util.AddressScope
+          event Ping {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }
+          event Pong {
+            val index : int
+            new (i : int) {
+              this.index = i
+            }
+          }",
+          // TEXT
+          ""
+        )
+      }
+
+    }
+
+    /* The fourth step of this tutorial is the definition
+     * of the launching process.
+     * In the rest of this section, we discuss the use
+     * of the [Janus runtime environment](http://www.janusproject.io)
+     * for running the agents.
+     * 
+     * Two methods may be used for launching the agents: &lt;ol&gt;
+     * &lt;li&gt;Execute each agent in a single instance of Janus.&lt;br/&gt;
+     *  On the command line, you must launch Janu with: &lt;pre&gt;&lt;code&gt;
+     *   java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PongAgent
+     *  java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PingAgent
+     *  &lt;/code&gt;&lt;/pre&gt;
+     *  The file &lt;code&gt;app.jar&lt;/code&gt; contains the compiled classes of the tutorial,
+     *  the Janus platform, and the SARL libraries.&lt;/li&gt;
+     * &lt;li&gt;Define a specific agent that will launch the two other agents.
+     *     This approach is detailed below.&lt;/li&gt;
+     * &lt;/ol&gt;
+     */
+    context "Launching the agents" {
+      
+      /* The boot agent uses the `DefaultContextInteractions`
+       * capacity for launching agents in the default context.
+       * This capacity provides the function `spawn(Class&lt;? extends Agent&gt;)`
+       * for launching an agent of the given type.
+       * 
+       * When the boot agent has launched the two expected agents,
+       * it is killing itself. This is done with the `killMe`
+       * function, which is provided by the `Lifecycle` capacity.
+       *  
+       * @filter(.* = '''|'''|.parsesSuccessfully.*)
+       */
+      fact "Defining the Boot agent" {
+        '''
+        agent BootAgent {
+          uses DefaultContextInteractions, Lifecycle
+          on Initialize {
+            spawn( PongAgent )
+            spawn( PingAgent )
+            killMe
+          }
+        }
+        '''.parsesSuccessfully(
+          "package io.sarl.docs.tutorials.pingpong
+          import io.sarl.core.DefaultContextInteractions
+          import io.sarl.core.Initialize
+          import io.sarl.core.Lifecycle
+          agent PongAgent { }
+          agent PingAgent { }",
+          // TEXT
+          ""
+        )
+      }
+      
+    }
+
+}
+</pre>
+						    </div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer><p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+</div> <!-- /container -->
+
+</body>
+</html>
