@@ -50,24 +50,21 @@
 </div>
 <div class="container">
 <h1>Agent Definition Introduction</h1>
-<p>To create our first agent, right click on the project and follow <strong>New</strong> &gt; <strong>File</strong>. Name the file <strong>demosarl.sarl</strong>.</p>
+<p>To create our first agent, right click on the project and follow <strong>New &gt; File</strong>. Name the file <strong>demosarl.sarl</strong>.</p>
 <p>The SARL default editor will open.</p>
 <ul>
 <li>
 <p id="Basic_agent_definition" class="example passed"><strong>Basic agent definition</strong></p>
 <p>Agents are defined using the <code>agent</code> keyword.</p>
-<p>SARL elements are organized in packages. You can define the package using the <code>package</code> keyword.</p>
-<p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.agent.MyAgent</code>. The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
 <pre class="prettyprint lang-spec linenums">
-package io.sarl.docs.gettingstarted.^agent
-
 agent MyAgent {
 }</pre>
 </li>
 <li>
 <p id="Package_definition" class="example passed"><strong>Package definition</strong></p>
-<p><span class="label label-info">Important</span> The package keyword defines the package for all elements in the same SARL file (see the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> for details).</p>
-<p>Therefore FirstAgent and SecondAgent belong to the same package (i.e. <code>io.sarl.docs.gettingstarted.agent</code>).</p>
+<p>SARL elements are organized in packages. You can define the package using the <code>package</code> keyword.</p>
+<p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.agent.MyAgent</code>. The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
+<p><span class="label label-warning">Important</span> The package keyword defines the package for all elements in the same SARL file (see the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> for details). Therefore FirstAgent and SecondAgent belong to the same package (i.e. <code>io.sarl.docs.gettingstarted.agent</code>).</p>
 <pre class="prettyprint lang-spec linenums">
 package io.sarl.docs.gettingstarted.^agent
 agent MyAgent {}
@@ -81,22 +78,13 @@ agent SecondAgent {}</pre>
 <p id="Declare_an_Event" class="example passed"><strong>Declare an Event</strong></p>
 <p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code>.</p>
 <pre class="prettyprint lang-spec linenums">
-var model = 
-event MyEvent
-(
-  "package io.sarl.docs.gettingstarted.^agent",
-  // TEXT
-  ""
-)
-model.mustHavePackage("io.sarl.docs.gettingstarted.agent")
-model.mustNotHaveImport
-model.mustHaveTopElements(1)
-model.elements.get(0).mustBeEvent("MyEvent", null).mustHaveFeatures(0)</pre>
+event MyEvent</pre>
 </li>
 <li>
 <p id="Define_an_agent_Perceptions" class="example passed"><strong>Define an agent Perceptions</strong></p>
-<p>Now we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
-<p>Note that <code>println</code> is a shortcut for the Java function <code>System.out.println</code>.</p>
+<p>Now, we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
+<p>To define this event handler, we must use the <code>on</code> keyword, and provide the associated code block.</p>
+<p><span class="label label-info">Note</span> <code>println</code> is a shortcut for the Java function <code>System.out.println</code>.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on MyEvent {
@@ -109,12 +97,12 @@ agent MyAgent {
 <p>SARL defines two <strong>lifecycle</strong> events :</p>
 <ul>
   <li>
-<code>Initialize</code>: Notifies the creation of the agent and passes it initialization parameters.</li>
+<code>Initialize</code>: Notifies the creation of the agent, and passes the initialization parameters to the agents.</li>
   <li>
-<code>Destroy</code>: Notifies the Destruction of the agent.</li>
+<code>Destroy</code>: Notifies the destruction of the agent.</li>
 </ul>
 <p>This means that when agent has been spawned and its ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
-<p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any System resources properly.</p>
+<p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any system resource properly.</p>
 <pre class="prettyprint lang-spec linenums">
 import io.sarl.core.Initialize
 import io.sarl.core.Destroy
@@ -150,9 +138,37 @@ agent MyAgent {
 }</pre>
 </li>
 </ul>
+<h3 class="exampleGroup passed" id="Agent_Communication">Agent Communication</h3>
+<p>Agents need to send data and stimuli to other agents. This communication takes the form of event sending (see <a href="../reference/EventReferenceSpec.html">Event</a> and <a href="../reference/AgentReferenceSpec.html">Agent</a> References for details).</p>
+<ul>
+<li>
+<p id="Use_the_capacity_to_send_an_event_in_the_default_space" class="example passed"><strong>Use the capacity to send an event in the default space</strong></p>
+<p>Now, we will want our agent to send data to other agents. The data is embedded into events. The definition of an event is described above.</p>
+<p><span class="label label-note">Note</span> In this document, we limit our explanation to the sending of the events in the default space of the default context of the agent.</p>
+<p>For sending an event in the default space, the <code>DefaultContextInteractions</code> built-in capacity should be used.</p>
+<p>Below, we define an agent that is used this capacity.</p>
+<pre class="prettyprint lang-spec linenums">
+agent MyAgent {
+  uses DefaultContextInteractions
+}</pre>
+</li>
+<li>
+<p id="Send_an_event_in_the_default_space" class="example passed"><strong>Send an event in the default space</strong></p>
+<p>The <code>DefaultContextInteractions</code> built-in capacity provides functions for sending events in the default space.</p>
+<p>Below, we define an action in which an instance of <code>MyEvent</code> is created, and then sent into the default space with the function <code>emit(Event)</code>.</p>
+<pre class="prettyprint lang-spec linenums">
+agent MyAgent {
+  uses DefaultContextInteractions
+  def doSomething {
+    var e = new MyEvent
+    emit(e)
+  }
+}</pre>
+</li>
+</ul>
 <h3 class="exampleGroup pending" id="What_s_next">What's next?</h3>
-<p>In the next section, we will learn how to start a SARL agent.</p>
-<p><a href="RunSARLAgentSpec.html">Next</a>.</p>
+<p>In the next section, we will learn how to start a SARL agent on the command line.</p>
+<p><a href="RunSARLAgentCLISpec.html">Next</a>.</p>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

@@ -50,17 +50,17 @@
 </div>
 <div class="container">
 <h1>Agent Reference</h1>
-<p>This document describes the features related to the definition of an agent in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./SkillReferenceSpec.html">Skill Reference</a>, and the <a href="./BuiltinCapacityReferenceSpec.html">Builtin Capacity Reference</a>.</p>
-<p><em>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits</em>. An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, proactivity and social capacities. Figure below describes the open architecture of an Agent in SARL.</p>
+<p>This document describes the features related to the definition of an agent in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./SkillReferenceSpec.html">Skill Reference</a>, and the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
+<p><em>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits</em>. An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, proactivity and social capacities. Figure below describes the open architecture of an agent in SARL.</p>
 <center><img alt="An Agent in SARL" src="./AgentBehaviors.png" width="60%"></center>
-<p>The full set of Builtin Capacities will be presented in the corresponding <a href="./BuiltinCapacityReferenceSpec.html">Reference document</a>. Among these builtin capacities, is the <code>Behaviors</code> capacity that enables agents to incorporate a collection of behaviors that will determine its global conduct.</p>
-<p>An agent has also a default behavior directly described within its definition. *A Behavior maps a collection of perceptions represented by Events to a sequence of Actions. The various behaviors of an agent communicates using an event-driven approach. <em>An Event is the specification of some occurrence in a Space that may potentially trigger effects by a listener</em> (e.g. agent, behavior, etc.)</p>
+<p>The full set of Built-in Capacities will be presented in the corresponding <a href="./BuiltinCapacityReferenceSpec.html">Reference document</a>. Among these built-in capacities, is the <code>Behaviors</code> capacity that enables agents to incorporate a collection of behaviors that will determine its global conduct.</p>
+<p>An agent has also a default behavior directly described within its definition. <strong>A Behavior maps a collection of perceptions represented by Events to a sequence of Actions.</strong> The various behaviors of an agent communicate using an event-driven approach. <strong>An Event is the specification of some occurrence in a Space that may potentially trigger effects by a listener</strong> (e.g., agent, behavior, etc.)</p>
 <h3 class="exampleGroup passed" id="Defining_an_Agent">Defining an Agent</h3>
 <p>An agent is declared with the <code>agent</code> keyword. In the agent's body block, we can declare Mental States (in the form of attributes), Actions and Behaviors.</p>
 <ul>
 <li>
 <p id="Defining_an_empty_agent" class="example passed"><strong>Defining an empty agent</strong></p>
-<p>The following code illustres the definition of an agent named <code>MyAgent</code>, and that is empty.</p>
+<p>The following code illustrates the definition of an agent named <code>MyAgent</code>, and that is empty.</p>
 <p>Basically, this agent does nothing, and does not react on events.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -68,7 +68,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Agent_Attributes" class="example passed"><strong>Agent Attributes</strong></p>
-<p>The mental state of an agent is composed by all the data in the knowledge of the agent. Most of the time, the mental state is implemented as a collection of attributes in the agent.</p>
+<p>The mental state of an agent is composed by the data in the knowledge of the agent. Most of the time, the mental state is implemented as a collection of attributes in the agent.</p>
 <p>According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the attributes may be modifiable (when declared with the <code>var</code> keyword), or unmodifiable (when declared with the <code>val</code> keyword).</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -80,8 +80,8 @@ agent MyAgent {
 </li>
 <li>
 <p id="Agent_Actions" class="example passed"><strong>Agent Actions</strong></p>
-<p>It is allowed to define actions (methods) in the agent. The syntax described in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> is used.</p>
-<p>The example below illustrates the creation of type actions in the agent.</p>
+<p>It is allowed to define actions (methods) in the agent. The syntax described is described in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>The example below illustrates the creation of two actions in the agent.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   // Defining an action without parameter nor return type
@@ -97,8 +97,8 @@ agent MyAgent {
 <li>
 <p id="Extending_an_Agent" class="example passed"><strong>Extending an Agent</strong></p>
 <p>In some use cases, it is useful to specialize the definition of an agent. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
-<p>The extended event is specified just after the <code>extends</code> keyword.</p>
-<p><span class="label label-warning">Important</span> An agent can extend only one other agent type (same constrain as in the Java language).</p>
+<p>The extended agent is specified just after the <code>extends</code> keyword.</p>
+<p><span class="label label-danger">Important</span> An agent type can extend <strong>only one</strong> other agent type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, a first agent is defined with the name <code>MyAgent</code> and an attribute named <code>attr</code>. A second agent <code>MySubAgent</code> is defined as the extension of the first agent. It contains a function named <code>action</code>, which is displaying the inherited attribute.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -113,17 +113,38 @@ agent MySubAgent extends MyAgent {
 </ul>
 <h3 class="exampleGroup passed" id="Behaviors_of_an_Agent">Behaviors of an Agent</h3>
 <p>The behaviors of an agent correspond to the units that are executed by the agent for exhibiting its general behavior.</p>
-<p>The execution of the behaviors are related to the lifecycle of the agents. Every agent is following the steps: </p>
-<ol> <li>Initialization: the agent react on the <code>Initialize</code> event;</li> <li>Lifetime: the agent execute its behaviors. They may be: <ul>  <li>reactive: the agent react when it is receiving events, or</li>  <li>pro-active: the agent executes by itself one of its behaviors.</li>
+<p>The execution of the behaviors are related to the lifecycle of the agents. Every agent is following the steps:</p>
+<ul>
+  <li>Initialization: the agent react on the <code>Initialize</code> event;</li>
+  <li>Lifetime: the agent execute its behaviors. They may be:</li>
+  <li>
+  <ul>
+    <li>reactive: the agent react when it is receiving events, or</li>
+  </ul>
+</li>
+  <li>
+  <ul>
+    <li>pro-active: the agent executes by itself one of its behaviors.</li>
+  </ul>
+</li>
+  <li>Destruction: the agent react on the <code>Destroy</code> event.</li>
 </ul>
-</li> <li>Destruction: the agent react on the <code>Destroy</code> event.</li> </ol>
-<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents belonging to these spaces. An agent may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax: </p>
-<pre class="prettyprint"> on &lt;EventName&gt; [&lt;Guard&gt;] {  &lt;Statements&gt; } </pre> <code>&lt;EventName&gt;</code> is the name of event to wait for. <code>&lt;Guard&gt;</code> is the optional specification of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <em>and</em> if the guard is true.<p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
+<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents belonging to these spaces. An agent may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax:</p>
+<pre class="prettyprint">on &lt;EventName&gt; [&lt;Guard&gt;] {
+       &lt;Statements&gt;
+}
+</pre>
+<p><code>&lt;EventName&gt;</code> is the name of the events to wait for. <code>&lt;Guard&gt;</code> is the optional definition of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <strong>and</strong> if the guard is true.</p>
+<p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
 <ul>
 <li>
 <p id="Initialization_Handler" class="example passed"><strong>Initialization Handler</strong></p>
-<p>When an agent is ready to be executed by the runtime environment, it receives the <code>Initialize</code> event. This event is defined as: </p>
-<pre class="prettyprint"> event Initialize {  var parameters : Object[] } </pre> It contains the list of the parameters given to the spawning function (as specified in the <a href="./BuiltinCapacityReferenceSpec.html">builtin capacities</a>).
+<p>When an agent is ready to be executed by the runtime environment, it receives the <code>Initialize</code> event. This event is defined as:</p>
+<pre class="prettyprint">event Initialize {
+    var parameters : Object[]
+}
+</pre>
+<p>It contains the list of the parameters given to the spawning function (as specified in the <a href="./BuiltinCapacityReferenceSpec.html">built-in capacities</a>).</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on Initialize {
@@ -135,7 +156,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Guarded_Initialization_Handler" class="example passed"><strong>Guarded Initialization Handler</strong></p>
-<p>Because <code>Initialize</code> is an event, the handler in the agent could use a guard. This feature enables the developper to write different initialization blocks depending on the guards of the handlers.</p>
+<p>Because <code>Initialize</code> is an event, the handler in the agent could use a guard. This feature enables the developer to write different initialization blocks depending on the guards of the handlers.</p>
 <p>In the following example, the first event handler is executed when the <code>Initialize</code> event has no parameter. The second event handler is executed when the event has at least one parameter.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -150,8 +171,9 @@ agent MyAgent {
 </li>
 <li>
 <p id="Destruction_Handler" class="example passed"><strong>Destruction Handler</strong></p>
-<p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as: </p>
-<pre class="prettyprint"> event Destroy </pre>
+<p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
+<pre class="prettyprint">event Destroy
+</pre>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on Destroy {
@@ -176,7 +198,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Reactive_Behaviors" class="example passed"><strong>Reactive Behaviors</strong></p>
-<p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the behavior when something has appening in the agent or in its environment.</p>
+<p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the agent's global behavior when something has happening in the agent, or in its environment.</p>
 <p>In the following example, the agent is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
 <pre class="prettyprint lang-spec linenums">
@@ -203,7 +225,7 @@ agent MyAgent {
 <li>
 <p id="Pro_active_Behaviors" class="example passed"><strong>Pro-active Behaviors</strong></p>
 <p>A pro-active behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by an part of the code external to this behavior. In opposite, the initiator of the execution of a pro-active behavior is the agent itself.</p>
-<p>In SARL, a pro-active behavior is a behavior that is scheduled by the agent. The schedule mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> builtin capacity</a>. In the following example, the agent execute its pro-active behavior every second.</p>
+<p>In SARL, a pro-active behavior is a behavior that is scheduled by the agent. The scheduling mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its pro-active behavior every second.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Schedules
@@ -221,8 +243,16 @@ agent MyAgent {
 <li>
 <p id="Defining_a_Capacity_and_a_Skill" class="example passed"><strong>Defining a Capacity and a Skill</strong></p>
 <p>The definition of a capacity or a skill is out of the scope of this reference document. For details, please read the <a href="./CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="./SkillReferenceSpec.html">Skill Reference</a>.</p>
-<p>In the rest of this section, it is assumed that the following capacity and skill are defined: </p>
-<pre class="prettyprint"> capacity Cap {  def action } skill Ski implements Cap {  def action {  println("Action")  } } </pre>
+<p>In the rest of this section, it is assumed that the following capacity and skill are defined:</p>
+<pre class="prettyprint">capacity Cap {
+    def action
+}
+skill Ski implements Cap {
+    def action {
+        println("Action")
+    }
+}
+</pre>
 </li>
 <li>
 <p id="Giving_a_Skill_to_an_Agent" class="example passed"><strong>Giving a Skill to an Agent</strong></p>
@@ -238,16 +268,19 @@ agent MyAgent {
 }</pre>
 </li>
 <li>
-<p id="Giving_a_Builtin_Skill_to_an_Agent" class="example passed"><strong>Giving a Builtin Skill to an Agent</strong></p>
-<p>Because the builtin capacities are supported by the runtime environment, the corresponding skills are given to the agent. It means that there is no need for an agent to set a skill for a builtin capacity.</p>
-<p>However, in rare cases, it is possible to use the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code> for changing the implementation of a builtin capacity.</p>
+<p id="Giving_a_Built_in_Skill_to_an_Agent" class="example passed"><strong>Giving a Built-in Skill to an Agent</strong></p>
+<p>Because the built-in capacities are supported by the runtime environment, the corresponding skills are given to the agent. It means that there is no need for an agent to set a skill for a built-in capacity.</p>
+<p>However, in rare cases, it is possible to use the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code> for changing the implementation of a built-in capacity.</p>
 </li>
 <li>
 <p id="Using_a_Capacity_with_the_Getters" class="example passed"><strong>Using a Capacity with the Getters</strong></p>
 <p>After a skill is registered into the agent, it could be invoked.</p>
-<p>For invoking a function implemented by a skill, the two following steps must be done: </p>
-<ol> <li>Retreive the skill instance: the function <code>getSkill(Class&lt;? extends Capacity&gt;)</code> permits to retreive the skill associated to the given capacity;</li> <li>Invoke the capacity's action on the retreived skill.</li> </ol>
-<p><span class="label label-warning">Note</span> This method of invocation is not recommended by the SARL developpers. You should prefer the use of the extension methods (see below).</p>
+<p>For invoking a function implemented by a skill, the two following steps must be done:</p>
+<ul>
+  <li>Retrieve the skill instance: the function  <code>getSkill(Class&lt;? extends Capacity&gt;)</code>  permits to retrieve the skill associated to the given capacity;</li>
+  <li>Invoke the capacity's action on the retrieved skill.</li>
+</ul>
+<p><span class="label label-info">Note</span> This method of invocation is not recommended by the SARL developers. You should prefer the use of the extension methods (see below).</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on Initialize {
@@ -263,8 +296,8 @@ agent MyAgent {
 }</pre>
 </li>
 <li>
-<p id="Using_a_Builtin_Capacity_with_the_Getters" class="example passed"><strong>Using a Builtin Capacity with the Getters</strong></p>
-<p>The builtin capacities are accessible in the same way a the other capacities, with the getters.</p>
+<p id="Using_a_Built_in_Capacity_with_the_Getters" class="example passed"><strong>Using a Built-in Capacity with the Getters</strong></p>
+<p>The built-in capacities are accessible in the same way as the other capacities, with the getters.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on SomeEvent {
@@ -294,8 +327,8 @@ agent MyAgent {
 }</pre>
 </li>
 <li>
-<p id="Using_a_Builtin_Capacity_with_the_Extension_Methods" class="example passed"><strong>Using a Builtin Capacity with the Extension Methods</strong></p>
-<p>The builtin capacities are accessible in the same way a the other capacities, with the extension methods.</p>
+<p id="Using_a_Built_in_Capacity_with_the_Extension_Methods" class="example passed"><strong>Using a Built-in Capacity with the Extension Methods</strong></p>
+<p>The built-in capacities are accessible in the same way a the other capacities, with the extension methods.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Lifecycle

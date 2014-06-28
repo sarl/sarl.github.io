@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Run SARL Agent from the Command Line</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/publications">Publications &amp; Presentations</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+<div class="container">
+<h1>Run SARL Agent from the Command Line</h1>
+<p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a>.</p>
+<h3 class="exampleGroup pending" id="Boot_of_Janus">Boot of Janus</h3>
+<p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must execute this boot class in a Java Virtual Machine.</p>
+<p>The typical command line is:</p>
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot
+</pre>
+<p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last parameter is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
+<h3 class="exampleGroup pending" id="Specify_the_Agent_to_Launch">Specify the Agent to Launch</h3>
+<p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MonAgent
+</pre>
+<p><span class="label label-danger">Important</span> The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:</p>
+<ul>
+  <li>launch a separate Janus platform for each agent, or</li>
+  <li>launch an agent that is spawning the other agents.</li>
+</ul>
+<h3 class="exampleGroup passed" id="Command_Line_Parameters">Command Line Parameters</h3>
+<p>It is possible to give parameters to the launched agent. Indeed, all the parameters given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
+<ul>
+<li>
+<p id="Give_Parameters_to_the_Agent" class="example passed"><strong>Give Parameters to the Agent</strong></p>
+<p>The following example gives the values <code>FirstParam</code> and <code>SecondParam</code> to the launched agent:</p>
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MonAgent FirstParam SecondParam
+</pre>
+</li>
+<li>
+<p id="Retreive_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retreive the Command Line Parameters in the Agent</strong></p>
+<p>For retreiving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
+<pre class="prettyprint lang-spec linenums">
+agent MyAgent {
+  on Initialize {
+    println("Command line parameters: "
+      +occurrence.parameters)
+  }
+}</pre>
+</li>
+<li>
+<p id="Janus_Command_Line_Options" class="example passed"><strong>Janus Command Line Options</strong></p>
+<p>The Janus platform provides a collection of command line options. For obtaining the list of these options, you should type:</p>
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot --help
+</pre>
+</li>
+</ul>
+							<div>
+<hr>
+<p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>
+</div>
+</div>
+<div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="/images/SARL-logo.png" style="width:30%"><br>
+      <small><a href="/images/SARL-logo.png">png</a> · <a href="/images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="/news">SARL News</a></li>
+        <li><a href="/about">About SARL</a></li>
+        <li><a href="/about">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - IRTES - UTBM</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+</body>
+</html>

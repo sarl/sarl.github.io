@@ -53,36 +53,44 @@
 <h3 class="exampleGroup passed" id="General_FAQ">General FAQ</h3>
 <ul>
 <li>
-<p id="Could_I_use_SARL_to_make_Agent_Based_software" class="example passed"><strong>Could I use SARL to make Agent Based software?</strong></p>
-<p>Yes**. SARL may be used for agent based applications. Natively SARL provides features for agent execution and direct communication. The agents may be deployed on real computers.</p>
+<p id="Could_I_use_SARL_to_make_agent_based_software" class="example passed"><strong>Could I use SARL to make agent-based software?</strong></p>
+<p><strong>Yes</strong>. SARL may be used for agent based applications. Natively, SARL provides features for agent execution and direct communication. The agents may be deployed on real computers and over a computer network.</p>
 </li>
 <li>
-<p id="Could_I_use_SARL_to_make_Agent_Based_Simulation_software" class="example passed"><strong>Could I use SARL to make Agent Based Simulation software?</strong></p>
-<p>Yes**. SARL may be used for agent based simulations. Natively SARL provides features for agent execution and direct communication. An extension is provided for supporting the simulated environment (time, environment model...)</p>
+<p id="Could_I_use_SARL_to_make_agent_based_simulation_software" class="example passed"><strong>Could I use SARL to make agent-based simulation software?</strong></p>
+<p><strong>Yes</strong>. SARL may be used for agent based simulations. Natively, SARL provides features for agent execution and direct communication. An extension is provided for supporting the simulated environments (time management, environment model, etc.)</p>
 </li>
 <li>
-<p id="Could_I_use_SARL_to_make_Organizational_software" class="example passed"><strong>Could I use SARL to make Organizational software?</strong></p>
-<p>Yes**. The SARL developers are providing the definition of an organisational space based on the <a href="http://www.aspecs.org">CRIO metamodel</a> (Capacity-Role-Interaction-Organization). This metamodel defines a system as a set of organizations in which roles are defined and interacting together. Agents play roles in organization instances (or groups) and provides embedded capacity implementations required by the played roles.</p>
+<p id="Could_I_use_SARL_to_make_holonic_software" class="example passed"><strong>Could I use SARL to make holonic software?</strong></p>
+<p><strong>Yes</strong>. Holon is recursively composed of holons. In SARL, agents are holons. SARL provides a complete support for holons.</p>
+</li>
+<li>
+<p id="Could_I_use_SARL_to_make_organizational_software" class="example passed"><strong>Could I use SARL to make organizational software?</strong></p>
+<p><strong>Yes</strong>. The SARL developers are providing the definition of an organisational space based on the <a href="http://www.aspecs.org/CRIO">CRIO metamodel</a> (Capacity-Role-Interaction-Organization) for example. This metamodel defines a system as a set of organizations in which roles are defined and interacting together. Agents play roles in organization instances (or groups) and provides embedded capacity implementations required by the played roles.</p>
 <p>Other organizational may be used, if a dedicated space is defined for.</p>
 </li>
 <li>
-<p id="Could_I_use_Janus_to_make_Holonic_software" class="example passed"><strong>Could I use Janus to make Holonic software?</strong></p>
-<p>Yes**. SARL natively supports the holon concept. Holon is recursively composed of holons. In SARL, agents are holons. SARL provides a complete support for holons.</p>
+<p id="Is_SARL_an_object_oriented_programming_language" class="example passed"><strong>Is SARL an object-oriented programming language?</strong></p>
+<p><strong>Yes and No</strong>. SARL is an agent-oriented programming language. But, it is possible to use object-oriented concepts for writing the code of the expressions in the agents, the skills, etc. A part of the grammar of SARL is inherited from the <a href="https://wiki.eclipse.org/Xbase">Xbase partial programming language</a>. It provides statements and rules that are close to object-oriented languages.</p>
+</li>
+<li>
+<p id="May_I_use_my_Java_classes_in_SARL" class="example passed"><strong>May I use my Java classes in SARL?</strong></p>
+<p><strong>Yes</strong>. SARL and Java are 100% interoperable. There are no exceptional cases and you do not have to think in two worlds. You can invoke SARL code from Java and vice versa without any surprises or hassles.</p>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Installation_and_Execution">Installation and Execution</h3>
 <ul>
 <li>
 <p id="Does_my_operating_system_is_compatible_with_SARL" class="example passed"><strong>Does my operating system is compatible with SARL?</strong></p>
-<p>SARL is a collection of features for the Eclipse IDE. Every operating system which has a compatible Java virtual machine with Eclipse may be used to run it.</p>
+<p>SARL is based on a part of the Eclipse API. Every operating system which has a compatible Java Virtual Machine with Eclipse may be used to run SARL.</p>
 </li>
 <li>
 <p id="Does_my_operating_system_is_compatible_with_Janus" class="example passed"><strong>Does my operating system is compatible with Janus?</strong></p>
-<p>The Janus runtime platform is a Java application. Every operating system which has a compatible Java virtual machine with Janus may be used to run it.</p>
+<p>The <a href="http://www.janusproject.io">Janus runtime platform</a> is a Java application. Every operating system which has a compatible Java Virtual Machine (at least with the 1.7 standard) with Janus may be used to run it.</p>
 </li>
 <li>
 <p id="What_is_the_version_of_the_Java_virtual_machine_to_install" class="example passed"><strong>What is the version of the Java virtual machine to install?</strong></p>
-<p>SARL requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you must configure your JDK to produce 1.7 class files.</p>
+<p>SARL requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you must configure your JDK to produce 1.6 class files from 1.7 Java code.</p>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Contribute_to_SARL">Contribute to SARL</h3>
@@ -104,29 +112,24 @@
 <ul>
 <li>
 <p id="Can_I_use_the_same_syntax_as_in_Java_for_number_literals" class="example passed"><strong>Can I use the same syntax as in Java for number literals?</strong></p>
-<p>No**. When a decimal point is written in the literal, the decimal part and the fractional part must be specify also, evne if these parts are equal to zero.</p>
+<p><strong>No</strong>. When a decimal point is written in the literal, the fractional part and the mantissa part must be specify also, even if these parts are equal to zero.</p>
 <pre class="prettyprint lang-spec linenums">
 124.0 // Correct syntax
 124.  // Incorrect syntax
-        .parsesWithError(
-  "package io.sarl.docs.faq.syntax
-  agent A {
-    def action : double {",
-  // TEXT
-  "} }"
-        )</pre>
+0.123 // Correct syntax
+.123  // Incorrect syntax</pre>
 </li>
 <li>
 <p id="Why_can_I_put_a_string_in_the_package_name" class="example passed"><strong>Why can I put a string in the package name?</strong></p>
-<p>It is not allowed to put a string that is a reserved keyword of SARL in a package name.</p>
-<p>However, it is possible to use a keyword string into a package name if you prefix it by the <code>^</code> character:</p>
+<p>It is not allowed to put a SARL keyword, such as <code>agent</code>, in the name of a package.</p>
+<p>But, if you prefix with the <code>^</code> character the string that corresponds to a keyword, then it is possible to obtain a package name with one of its components equals to a SARL keyword:</p>
 <pre class="prettyprint lang-spec linenums">
 package io.sarl.docs.faq.syntax.^agent</pre>
 </li>
 <li>
 <p id="Is_the_val_keyword_defining_a_constant" class="example passed"><strong>Is the 'val' keyword defining a constant?</strong></p>
-<p>Yes and No**. Indeed, the <code>val</code> keyword defines a name that it could be initialized only once time. It is somilar to the <code>final</code> modifier of the Java language.</p>
-<p>Consider the example below: two values are defined, <code>a</code> and <code>b</code>. The <code>a</code> variable is a real constant because it has a raw type and it is initialized. The <code>b</code> variable is not a real constant because it is a reference to an object. The reference is constant, <em>but</em> the object is not. Consequently, it is still possible to call the setters of <code>b</code>.</p>
+<p><strong>Yes and No</strong>. Indeed, the <code>val</code> keyword defines a name that it could be initialized only once time. It is similar to the <code>final</code> modifier of the Java language.</p>
+<p>Consider the example below: two values are defined, <code>a</code> and <code>b</code>. The <code>a</code> variable is a real constant because it has a raw type and it is initialized. The <code>b</code> variable is not a real constant because it is a reference to an object. The reference is constant, <em>but</em> the referred object is not. Consequently, it is still possible to call the setters of <code>b</code>.</p>
 <pre class="prettyprint lang-spec linenums">
 val a : int = 4
 val b : Object = new Object</pre>
@@ -134,7 +137,7 @@ val b : Object = new Object</pre>
 <li>
 <p id="Why_cannot_use_the_syntax_a_0_for_arrays" class="example passed"><strong>Why cannot use the syntax 'a[0]' for arrays?</strong></p>
 <p>In SARL, the array type may be written with the classic array syntax, such as <code>int[]</code>, or the object-oriented syntax, such as <code>List&lt;Integer&gt;</code>.</p>
-<p>SARL is an object-oriented language. Consequently, it considers that the class array syntax is a list of integer numbers. Retreivin gthe values of the array must be done with <code>get(int)</code>.</p>
+<p>SARL considers that the arrays are lists of something. Consequently, retreiving the values of the array must be done with <code>get(int)</code>.</p>
 <pre class="prettyprint lang-spec linenums">
 var a : Integer[] = #[1, 2, 3]
 var b : List&lt;Integer&gt; = newArrayList(1, 2, 3)
@@ -143,10 +146,16 @@ a.get(0) == b.get(0)</pre>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Runtime">Runtime</h3>
-<ul><li>
+<ul>
+<li>
 <p id="Are_events_received_in_the_same_order_than_when_they_are_sent" class="example passed"><strong>Are events received in the same order than when they are sent?</strong></p>
-<p>No**. There is no warranty on the reception order of the events. The runtime environment is executing the event handlers in parallel. The real order of execution depends on how the runtime environment is launching the handlers' execution.</p>
-</li></ul>
+<p><strong>No</strong>. There is no warranty on the receiving order of the events. This is a particular implementation choice of the runtime environment. For example, the <a href="http://www.janusproject.io">Janus runtime environment</a> executes the event handlers in parallel. The real order of execution depends on how the Java executor is running the handlers on the threads.</p>
+</li>
+<li>
+<p id="Must_I_configure_the_Janus_kernels_to_be_connected_to_other_Janus_kernels" class="example passed"><strong>Must I configure the Janus kernels to be connected to other Janus kernels?</strong></p>
+<p><strong>No</strong>. Janus was designed to discover other kernels automatically. By default, the different instances of the Janus platform are connected together without any particular configuration. The sole constraint is that the kernels must be on the same local network.</p>
+</li>
+</ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

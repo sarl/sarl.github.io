@@ -57,7 +57,7 @@
 <ul>
 <li>
 <p id="Defining_an_empty_behavior" class="example passed"><strong>Defining an empty behavior</strong></p>
-<p>The following code illustres the definition of a behavior named <code>MyBehavior</code>, and that is empty.</p>
+<p>The following code illustrates the definition of a behavior named <code>MyBehavior</code>, and that is empty.</p>
 <p>Basically, this behavior does nothing, and does not react on events.</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
@@ -65,8 +65,8 @@ behavior MyBehavior {
 </li>
 <li>
 <p id="Behavior_Attributes" class="example passed"><strong>Behavior Attributes</strong></p>
-<p>The mental state of an agent is composed by all the data in the knowledge of the agent. A behavior may contain a part of this mental state. Most of the time, it is implemented as a collection of attributes.</p>
-<p>According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the attributes may be modifiable (when declared with the <code>var</code> keyword), or unmodifiable (when declared with the <code>val</code> keyword).</p>
+<p>The mental state of an agent is composed by the data in the knowledge of the agent. A behavior may contain a part of this mental state. Most of the time, it is implemented as a collection of attributes.</p>
+<p>According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the attributes may be modifiable (when declared with the <code>var</code> keyword), or unmodifiable (when declared with the <code>val</code> keyword).  s</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
   // Defining a modifiable element of the mental state
@@ -94,8 +94,8 @@ behavior MyBehavior {
 <li>
 <p id="Extending_a_Behavior" class="example passed"><strong>Extending a Behavior</strong></p>
 <p>In some use cases, it is useful to specialize the definition of a behavior. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
-<p>The extended event is specified just after the <code>extends</code> keyword.</p>
-<p><span class="label label-warning">Important</span> A behavior can extend only one other behavior type (same constrain as in the Java language).</p>
+<p>The extended behavior is specified just after the <code>extends</code> keyword.</p>
+<p><span class="label label-danger">Important</span> A behavior type can extend <strong>only one</strong> other behavior type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, a first behavior is defined with the name <code>MyBehavior</code> and an attribute named <code>attr</code>. A second behavior <code>MySubBehavior</code> is defined as the extension of the first behavior. It contains a function named <code>action</code>, which is displaying the inherited attribute.</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
@@ -109,8 +109,8 @@ behavior MySubBehavior extends MyBehavior {
 </li>
 <li>
 <p id="Instancing_and_Use_of_a_Behavior" class="example passed"><strong>Instancing and Use of a Behavior</strong></p>
-<p>A behavior is alway own by an agent. Consequently, it is mandatory to pass the agent as parameter of the behavior's constructor.</p>
-<p>In the following example, a behavior of type <code>MyBehavior</code> is instanced (with the agent as the owner/parameter). This new behavior is then register into the agentfor enabling the reception of the events in the behavior.</p>
+<p>A behavior is always own by an agent. Consequently, it is mandatory to pass the agent as parameter of the behavior's constructor.</p>
+<p>In the following example, a behavior of type <code>MyBehavior</code> is instanced (with the agent as the owner/parameter). This new behavior is then registered into the agent for enabling the reception of the events in the behavior.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Behaviors
@@ -127,14 +127,22 @@ agent MyAgent {
 </ul>
 <h3 class="exampleGroup passed" id="Behavior_Units_of_a_Behavior">Behavior Units of a Behavior</h3>
 <p>The behaviors of an agent correspond to the units that are executed by the agent for exhibiting its general behavior.</p>
-<p>The <code>Behavior</code> statement permits to specify a subset of the agent's behavior inside a single syntactic entity. Two types of behaviors are considered: </p>
-<ol> <li>reactive: the agent react when it is receiving events, and</li> <li>pro-active: the agent executes by itself one of its behaviors.</li> </ol>
-<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents, and their behaviors, belonging to these spaces. A behavior may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax: </p>
-<pre class="prettyprint"> on &lt;EventName&gt; [&lt;Guard&gt;] {  &lt;Statements&gt; } </pre> <code>&lt;EventName&gt;</code> is the name of event to wait for. <code>&lt;Guard&gt;</code> is the optional specification of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <em>and</em> if the guard is true.<p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
+<p>The <code>Behavior</code> statement permits to specify a subset of the agent's behavior inside a single syntactic entity. Two types of behaviors are considered:</p>
+<ul>
+  <li>reactive: the agent react when it is receiving events, and</li>
+  <li>pro-active: the agent executes by itself one of its behaviors.</li>
+</ul>
+<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents, and their behaviors, belonging to these spaces. A behavior may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax:</p>
+<pre class="prettyprint">on &lt;EventName&gt; [&lt;Guard&gt;] {
+    &lt;Statements&gt;
+}
+</pre>
+<p><code>&lt;EventName&gt;</code> is the name of event to wait for. <code>&lt;Guard&gt;</code> is the optional specification of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <em>and</em> if the guard is true.</p>
+<p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
 <ul>
 <li>
 <p id="Reactive_Behavior_Units" class="example passed"><strong>Reactive Behavior Units</strong></p>
-<p>The reactive behavior is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the behavior when something has appening in the behavioe, the agent or in its environment.</p>
+<p>The reactive behavior is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the behavior when something has happening in the behavior, the agent or in its environment.</p>
 <p>In the following example, the behavior is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
 <pre class="prettyprint lang-spec linenums">
@@ -161,7 +169,7 @@ behavior MyBehavior {
 <li>
 <p id="Pro_active_Behavior_Units" class="example passed"><strong>Pro-active Behavior Units</strong></p>
 <p>A pro-active behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by an part of the code external to this behavior. In opposite, the initiator of the execution of a pro-active behavior is the agent itself.</p>
-<p>In SARL, a pro-active behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> builtin capacity</a>. In the following example, the agent execute its pro-active behavior every second.</p>
+<p>In SARL, a pro-active behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its pro-active behavior every second.</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
   uses Schedules
@@ -180,8 +188,16 @@ behavior MyBehavior {
 <li>
 <p id="Defining_a_Capacity_and_a_Skill" class="example passed"><strong>Defining a Capacity and a Skill</strong></p>
 <p>The definition of a capacity or a skill is out of the scope of this reference document. For details, please read the <a href="./CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="./SkillReferenceSpec.html">Skill Reference</a>.</p>
-<p>In the rest of this section, it is assumed that the following capacity and skill are defined: </p>
-<pre class="prettyprint"> capacity Cap {  def action } skill Ski implements Cap {  def action {  println("Action")  } } </pre>
+<p>In the rest of this section, it is assumed that the following capacity and skill are defined:</p>
+<pre class="prettyprint">capacity Cap {
+    def action
+}
+skill Ski implements Cap {
+    def action {
+        println("Action")
+    }
+}
+</pre>
 </li>
 <li>
 <p id="Giving_a_Skill_to_the_Associated_Agent" class="example passed"><strong>Giving a Skill to the Associated Agent</strong></p>
@@ -190,9 +206,12 @@ behavior MyBehavior {
 </li>
 <li>
 <p id="Using_a_Capacity_with_the_Getters" class="example passed"><strong>Using a Capacity with the Getters</strong></p>
-<p>For invoking a function implemented by a skill, the two following steps must be done: </p>
-<ol> <li>Retreive the skill instance: the function <code>getSkill(Class&lt;? extends Capacity&gt;)</code> permits to retreive the skill associated to the given capacity;</li> <li>Invoke the capacity's action on the retreived skill.</li> </ol>
-<p><span class="label label-warning">Note</span> This method of invocation is not recommended by the SARL developpers. You should prefer the use of the extension methods (see below).</p>
+<p>For invoking a function implemented by a skill, the two following steps must be done:</p>
+<ul>
+  <li>Retrieve the skill instance: the function  <code>getSkill(Class&lt;? extends Capacity&gt;)</code>  permits to retrieve the skill associated to the  given capacity;</li>
+  <li>Invoke the capacity's action on the retrieved skill.</li>
+</ul>
+<p><span class="label label-info">Note</span> This method of invocation is not recommended by the SARL developers. You should prefer the use of the extension methods (see below).</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
   on SomeEvent {

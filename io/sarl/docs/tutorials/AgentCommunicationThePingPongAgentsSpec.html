@@ -51,17 +51,30 @@
 <div class="container">
 <h1>Agent Communication: the Ping Pong Agents</h1>
 <p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
-<p>The elements that are explained in this tutorial are: </p>
-<ul> <li>Definition of an event;</li> <li>Definition of an agent;</li> <li>Emit an event occurrence in the default space;</li> <li>Receiving event occurrences;</li> <li>Pro-active behavior: waiting for partners.</li> </ul>
-<p>The principle of the application is the following. The <code>Ping</code> agent is sending a <code>Ping</code> message to all agents. The <code>Pong</code> agent is receiving the <code>Ping</code> message, and replies with a <code>Pong</code> message to the sender. The <code>Ping</code> agent is receiving a <code>Pong</code> message and replies to the sender with a new <code>Ping</code> message. These messages contains an integer number that indicates the number of the event.</p>
+<p>The elements that are explained in this tutorial are:</p>
+<ul>
+  <li>the definition of an event;</li>
+  <li>the definition of an agent;</li>
+  <li>the sending of an event occurrence in the default space;</li>
+  <li>the receiving of event occurrences; and</li>
+  <li>the definition of a <em>pro-active</em> behavior: waiting for partners.</li>
+</ul>
 <p>The source code related to this tutorial may be found in the <a href="http://www.github/sarl/sarl-demos">SARL demos</a>.</p>
+<h3 class="exampleGroup pending" id="Principle_of_the_Application">Principle of the Application</h3>
+<p>The principle of the application is the following:</p>
+<ul>
+  <li>The <code>Ping</code> agent is sending a <code>Ping</code> message to all agents.</li>
+  <li>The <code>Pong</code> agent is receiving the <code>Ping</code> message, and replies  with a <code>Pong</code> message to the sender of the <code>Ping</code> message.</li>
+  <li>The <code>Ping</code> agent is receiving a <code>Pong</code> message and  replies to the sender of the <code>Pong</code> with a new <code>Ping</code> message.</li>
+</ul>
+<p>These messages contains an integer number that indicates the number of the event.</p>
 <h3 class="exampleGroup passed" id="Event_definition">Event definition</h3>
 <p>First, the <code>Ping</code> and <code>Pong</code> events must be defined.</p>
 <ul>
 <li>
 <p id="Ping_Event" class="example passed"><strong>Ping Event</strong></p>
 <p>The <code>Ping</code> is an event that contains the index of the event. This index indicates at which position the event is located in the sequence of sent <code>Ping</code> event.</p>
-<p>The <code>index</code> attribute is a value to make it unmodifiable after its initialization.</p>
+<p>The <code>index</code> attribute is a <em>value</em>, for making it unmodifiable after its initialization.</p>
 <p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
 <pre class="prettyprint lang-spec linenums">
 event Ping {
@@ -74,8 +87,7 @@ event Ping {
 <li>
 <p id="Pong_Event" class="example passed"><strong>Pong Event</strong></p>
 <p>The <code>Pong</code> is an event that contains the index of the <code>Ping</code> event for which the <code>Pong</code> event is created.</p>
-<p>The <code>index</code> attribute is a value to make it unmodifiable after its initialization.</p>
-<p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
+<p>The <code>index</code> attribute is also a <em>value</em>, and it must be set in a constructor.</p>
 <pre class="prettyprint lang-spec linenums">
 event Pong {
   val index : int
@@ -90,14 +102,14 @@ event Pong {
 <ul>
 <li>
 <p id="First_definition" class="example passed"><strong>First definition</strong></p>
-<p>The initial defintion of the ponging agent is:</p>
+<p>The initial definition of the ponging agent is:</p>
 <pre class="prettyprint lang-spec linenums">
 agent PongAgent {
 }</pre>
 </li>
 <li>
 <p id="Handling_the_Ping_event" class="example passed"><strong>Handling the Ping event</strong></p>
-<p>The ponging agent needs to handle the <code>Ping</code> events. For that, a "behavior unit" must be defined in the agent. According to the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>on</code> keyword followed by the name of the event permits to define a handler of events. This handler will be invoked by the runtime environment each time the agent is receiving a <code>Ping</code> event.</p>
+<p>The ponging agent needs to handle the <code>Ping</code> events. For that, a "behavior unit" must be defined in the agent. According to the <a href="../reference/AgentReferenceSpec.html">Agent Reference</a>, the <code>on</code> keyword followed by the name of the event permits to define a handler of events. This handler will be invoked by the runtime environment each time the agent is receiving a <code>Ping</code> event.</p>
 <pre class="prettyprint lang-spec linenums">
 agent PongAgent {
   on Ping {
@@ -123,7 +135,7 @@ agent PongAgent {
 <p id="Restricting_the_scope_of_the_Pong_event" class="example passed"><strong>Restricting the scope of the Pong event</strong></p>
 <p>In the previous code, the event is emitted to all the agents belonging to the default space, including the ponging agent.</p>
 <p>For restricting the receiver of the <code>Pong</code> event to the initial sender of the <code>Ping</code> event, you must define a scope for the <code>Pong</code> event. The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event, Scope&lt;Address&gt;)</code> for emitting an event with a specific scope.</p>
-<p>The SARL SDK contains the class <code>AddressScope</code>. It is an implementation of a <code>Scope</code>. It provides a factory function for creating a scope on addresses (an address is the identifier of an agent in the default space).</p>
+<p>The SARL SDK contains the class <code>AddressScope</code>. It is an implementation of a <code>Scope</code> on addresses (an address is the identifier of an agent in the default space).</p>
 <p>In the following code, the scope permits to restrict to the initial sender of the <code>Ping</code> event.</p>
 <pre class="prettyprint lang-spec linenums">
 agent PongAgent {
@@ -142,7 +154,7 @@ agent PongAgent {
 <ul>
 <li>
 <p id="First_definition" class="example passed"><strong>First definition</strong></p>
-<p>The initial defintion of the pinging agent is:</p>
+<p>The initial definition of the pinging agent is:</p>
 <pre class="prettyprint lang-spec linenums">
 agent PingAgent {
 }</pre>
@@ -157,7 +169,7 @@ agent PingAgent {
 }</pre>
 </li>
 <li>
-<p id="Re_sending_a_Ping_on_Pong_reception" class="example passed"><strong>Re-sending a Ping on Pong reception</strong></p>
+<p id="Re_sending_a_Ping_when_receiving_a_Pong" class="example passed"><strong>Re-sending a Ping when receiving a Pong</strong></p>
 <p>When the pinging agent is receiving a <code>Pong</code> event, it re-sends a <code>Ping</code> event to the sender of the <code>Pong</code> event. This new <code>Ping</code> event has an index greater than the one of the <code>Pong</code> event.</p>
 <p>The reception of the <code>Ping</code> event is restricted to the sender of the <code>Pong</code> event.</p>
 <pre class="prettyprint lang-spec linenums">
@@ -174,7 +186,7 @@ agent PingAgent {
 <li>
 <p id="Sending_the_first_Ping" class="example passed"><strong>Sending the first Ping</strong></p>
 <p>For starting the exchanges among the agents, it is mandatory to send a first occurence of the <code>Ping</code> event.</p>
-<p>This emission is done when the pinging agent is started, i.e. when the agent is receiving the <code>Initialize</code> event.</p>
+<p>This emit is done when the pinging agent is started, i.e. when the agent is receiving the <code>Initialize</code> event.</p>
 <pre class="prettyprint lang-spec linenums">
 agent PingAgent {
   uses DefaultContextInteractions
@@ -194,7 +206,7 @@ agent PingAgent {
 <p>The previous code has a major problem: if there is no ponging agent launched when the pinging agent is emitting the first <code>Ping</code> event, the application will reach a deadlock, even if the ponging agent is launched later.</p>
 <p>For solving this problem, the pinging agent must wait for sending the initial <code>Ping</code> event until the ponging agent is belonging to the default space.</p>
 <p>The concrete implementation is based on the <code>Schedules</code> capacity, which provides a collection of functions for creating and launching asynchronous tasks.</p>
-<p>In following code, a task is created with the name <code>waiting_for_partner</code>. This task is executed every second with the <code>every</code> function. The code between the brackets is the instruction block that will be periodically executed.</p>
+<p>In the following code, a task is created with the name <code>waiting_for_partner</code>. This task is executed every second with the <code>every</code> function (given by the <code>Schedules</code> capacity). The code between the brackets contains the statements that will be periodically executed.</p>
 <p>In this periodically executed code, the agent is testing if it is the only one agent belonging to the default space. If not, the agent is emitting the initial <code>Ping</code> event, and stopping the periodic task.</p>
 <pre class="prettyprint lang-spec linenums">
 agent PingAgent {
@@ -220,7 +232,14 @@ agent PingAgent {
 <h3 class="exampleGroup passed" id="Launching_the_agents">Launching the agents</h3>
 <p>The fourth step of this tutorial is the definition of the launching process. In the rest of this section, we discuss the use of the <a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
 <p>Two methods may be used for launching the agents: </p>
-<ol> <li>Execute each agent in a single instance of Janus.<br>  On the command line, you must launch Janu with: <pre class="prettyprint">  java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PongAgent  java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PingAgent  </pre>  The file <code>app.jar</code> contains the compiled classes of the tutorial,  the Janus platform, and the SARL libraries.</li> <li>Define a specific agent that will launch the two other agents.  This approach is detailed below.</li> </ol>
+<ol> <li>Execute each agent in a single instance of Janus.<br>  On the command line, you must launch Janus with:
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PingAgent
+</pre>
+<p>and:</p>
+<pre class="prettyprint">java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PongAgent
+</pre>
+<p>The file <code>app.jar</code> contains the compiled classes of the tutorial,  the Janus platform, and the SARL libraries.</p>
+</li> <li>Define a specific agent that will launch the two other agents.  This approach is detailed below.</li> </ol>
 <ul><li>
 <p id="Defining_the_Boot_agent" class="example passed"><strong>Defining the Boot agent</strong></p>
 <p>The boot agent uses the <code>DefaultContextInteractions</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type.</p>
