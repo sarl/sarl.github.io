@@ -5,7 +5,7 @@
 <link rel="shortcut icon" href="/images/favicon.ico">
 <link rel="icon" href="/images/favicon.ico">
 <meta charset="utf-8">
-<title>Run SARL Agent from the Command Line</title>
+<title>Run SARL Agent in the Eclipse IDE</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -51,31 +51,46 @@
   </div>
 </div>
 <div class="container">
-<h1>Run SARL Agent from the Command Line</h1>
+<h1>Run SARL Agent in the Eclipse IDE</h1>
 <p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a>.</p>
 <h3 class="exampleGroup pending" id="Boot_of_Janus">Boot of Janus</h3>
 <p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must execute this boot class in a Java Virtual Machine.</p>
-<p>The typical command line is:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot
-</pre>
-<p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last parameter is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
-<h3 class="exampleGroup pending" id="Specify_the_Agent_to_Launch">Specify the Agent to Launch</h3>
-<p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent
-</pre>
-<p><span class="label label-danger">Important</span> The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:</p>
-<ul>
-  <li>launch a separate Janus platform for each agent, or</li>
-  <li>launch an agent that is spawning the other agents.</li>
-</ul>
-<h3 class="exampleGroup passed" id="Command_Line_Parameters">Command Line Parameters</h3>
-<p>It is possible to give parameters to the launched agent. Indeed, all the parameters given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
+<h3 class="exampleGroup passed" id="Create_a_Launch_Configuration">Create a Launch Configuration</h3>
+<p>For launching the SARL agents on the Janus runtime environment inside the Eclipse IDE, you must define a <em>Run Configuration</em>.</p>
+<p>Because there is no run configuration dedicated to SARL yet, you must define a <em>Java Run Configuration</em>.</p>
 <ul>
 <li>
-<p id="Give_Parameters_to_the_Agent" class="example passed"><strong>Give Parameters to the Agent</strong></p>
+<p id="Create_a_Java_application_configuration" class="example passed"><strong>Create a Java application configuration</strong></p>
+<p>Open the run configuration dialog box by selecting <strong>Run &gt; Run Configurations</strong>, and create a new Java Application. You obtain a page similar to:</p>
+<center><img alt="Java Application" src="./EclipseRunConfiguration_0.png" width="60%"></center>
+<p>Change the <em>name</em> of the run configuration, and select the <em>project</em>, which is containing your agent.</p>
+</li>
+<li>
+<p id="Add_the_Janus_runtime_environment" class="example passed"><strong>Add the Janus runtime environment</strong></p>
+<p>For running your agent with the Janus runtime environment, you must add the Janus library in the classpath.</p>
+<p>First, <strong>you must download</strong> the <a href="http://www.janusproject.io/download/">Janus runtime environment <strong>WITH ALL THE DEPENDENCIES</strong></a>.</p>
+<p>For adding the downloaded file of Janus, you must <strong>add an external JAR</strong> in the <em>Classpath</em> tab. After adding the Janus JAR file, you obtain a dialog box similar to:</p>
+<center><img alt="Add Janus" src="./EclipseRunConfiguration_1.png" width="60%"></center>
+</li>
+<li>
+<p id="Specify_the_Janus_Boot_agent" class="example passed"><strong>Specify the Janus Boot agent</strong></p>
+<p>You can go back to the <em>Main</em> tab, and enter the <em>Main class</em>. The main class <strong>must always be</strong> <code>io.janusproject.Boot</code>.</p>
+<center><img alt="Janus Boot Class" src="./EclipseRunConfiguration_2.png" width="60%"></center>
+</li>
+<li>
+<p id="Specify_the_agent_to_execute" class="example passed"><strong>Specify the agent to execute</strong></p>
+<p>The last step is the specification of the agent to launch. Keep in mind that you can give to the Janus runtime environment only one start-up agent. The other agents will be spawn by the specified start-up agent.</p>
+<p>The start-up agent is given in the <em>Program arguments</em> field of the <em>Arguments</em> tab. You must enter the fully qualified name of the agent that must be launched.</p>
+<center><img alt="Agent to Launch" src="./EclipseRunConfiguration_3.png" width="60%"></center>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Get_the_program_arguments_in_the_agent">Get the program arguments in the agent</h3>
+<p>It is possible to give parameters to the launched agent. Indeed, all the parameters given as program arguments are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
+<ul>
+<li>
+<p id="Give_parameters_to_the_Agent" class="example passed"><strong>Give parameters to the Agent</strong></p>
 <p>The following example gives the values <code>FirstParam</code> and <code>SecondParam</code> to the launched agent:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent FirstParam SecondParam
-</pre>
+<center><img alt="Program Arguments" src="./EclipseRunConfiguration_4.png" width="60%"></center>
 </li>
 <li>
 <p id="Retreive_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retreive the Command Line Parameters in the Agent</strong></p>
@@ -87,12 +102,6 @@ agent MyAgent {
       +occurrence.parameters)
   }
 }</pre>
-</li>
-<li>
-<p id="Janus_Command_Line_Options" class="example passed"><strong>Janus Command Line Options</strong></p>
-<p>The Janus platform provides a collection of command line options. For obtaining the list of these options, you should type:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot --help
-</pre>
 </li>
 </ul>
 							<div>
