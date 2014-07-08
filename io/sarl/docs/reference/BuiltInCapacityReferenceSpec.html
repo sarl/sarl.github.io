@@ -182,9 +182,11 @@
     public boolean matches(T element);
 }
 </pre>
-<p>A default implementation of a scope using addresses is provided: <code>io.sarl.util.AddressScope</code>.</p>
-<p>You must also use the utilities functions for creating scopes. They are defined in the class <code>io.sarl.util.Scopes</code>. The following example is equivalent to the feature call of <code>emit</code> without the scoping parameter:</p>
+<p>It is recommended to use the SARL utilities functions for creating scopes. They are defined in the class <code>io.sarl.util.Scopes</code>. The following example is equivalent to the feature call of <code>emit</code> without the scoping parameter:</p>
 <pre class="prettyprint">emit(new Event, Scopes::allParticipants)
+</pre>
+<p>A default implementation of a scope using addresses is implemented in the Java class <code>io.sarl.util.AddressScope</code>. The utility class <code>Scopes</code> provides the <code>addresses</code> function for for creating an instance of <code>AddressScope</code>.</p>
+<pre class="prettyprint">emit(new Event, Scopes::addresses(a1, a2))
 </pre>
 <p>You are free to create new implementation of <code>Scope</code> in order to filter the receivers of an event according to your own criteria.</p>
 </li>

@@ -137,7 +137,7 @@ agent PongAgent {
 <p id="Restricting_the_scope_of_the_Pong_event" class="example passed"><strong>Restricting the scope of the Pong event</strong></p>
 <p>In the previous code, the event is emitted to all the agents belonging to the default space, including the ponging agent.</p>
 <p>For restricting the receiver of the <code>Pong</code> event to the initial sender of the <code>Ping</code> event, you must define a scope for the <code>Pong</code> event. The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event, Scope&lt;Address&gt;)</code> for emitting an event with a specific scope.</p>
-<p>The SARL SDK contains the class <code>AddressScope</code>. It is an implementation of a <code>Scope</code> on addresses (an address is the identifier of an agent in the default space).</p>
+<p>The SARL SDK contains the class <code>AddressScope</code>. It is an implementation of a <code>Scope</code> on addresses (an address is the identifier of an agent in the default space). The creation of an instanceof of <code>AddressScope</code> is done with the utility function <code>Scopes.addresses(Address*)</code>, which is getting a collection of addresses for building the maching predicate in the scope.</p>
 <p>In the following code, the scope permits to restrict to the initial sender of the <code>Ping</code> event.</p>
 <pre class="prettyprint lang-spec linenums">
 agent PongAgent {
@@ -145,7 +145,7 @@ agent PongAgent {
   on Ping {
     emit(
       new Pong( occurrence.index ),
-      AddressScope.getScope( occurrence.source )
+      Scopes.addresses( occurrence.source )
     )
   }
 }</pre>
@@ -180,7 +180,7 @@ agent PingAgent {
   on Pong {
     emit(
       new Ping( occurrence.index + 1 ),
-      AddressScope.getScope( occurrence.source )
+      Scopes.addresses( occurrence.source )
     )
   }
 }</pre>
@@ -195,7 +195,7 @@ agent PingAgent {
   on Pong {
     emit(
       new Ping( occurrence.index + 1 ),
-      AddressScope.getScope( occurrence.source )
+      Scopes.addresses( occurrence.source )
     )
   }
   on Initialize {
@@ -216,7 +216,7 @@ agent PingAgent {
   on Pong {
     emit(
       new Ping( occurrence.index + 1 ),
-      AddressScope.getScope( occurrence.source )
+      Scopes.addresses( occurrence.source )
     )
   }
   on Initialize {
