@@ -52,6 +52,9 @@
 </div>
 <div class="container">
 <h1>Agent Communication: the Ping Pong Agents</h1>
+<div class="bt-download">
+<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="../../../../images/download-icon.png"></a>
+</div>
 <p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p>The elements that are explained in this tutorial are:</p>
 <ul>
@@ -79,6 +82,7 @@
 <p>The <code>index</code> attribute is a <em>value</em>, for making it unmodifiable after its initialization.</p>
 <p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
 <pre class="prettyprint lang-spec linenums">
+package io.sarl.docs.tutorials.pingpong
 event Ping {
   val index : int
   new(i : int) {
@@ -231,34 +235,56 @@ agent PingAgent {
 }</pre>
 </li>
 </ul>
-<h3 class="exampleGroup passed" id="Launching_the_agents">Launching the agents</h3>
+<h3 class="exampleGroup passed" id="Compile_and_Launch_the_agents">Compile and Launch the agents</h3>
 <p>The fourth step of this tutorial is the definition of the launching process. In the rest of this section, we discuss the use of the <a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
 <p>The Janus platform is designed to launch a single agent at start-up. Then, this launched agent must spawn the other agents in the system.</p>
-<p><span class="label label-warning">Important</span> In this section, we explain how to launch the agents from the command line interface. For launching the agents from the Eclipse IDE, please read <a href="../gettingstarted/RunSARLAgentInEclipseIDESpec.html">"Run SARL Agent in the Eclipse IDE"</a>.</p>
+<p><span class="label label-warning">Important</span> In this section, we explain how to launch the agents from the command line interface. For launching the agents from the Eclipse IDE, please read <a href="../gettingstarted/RunSARLAgentInTheEclipseIDESpec.html">"Run SARL Agent in the Eclipse IDE"</a>.</p>
+<ul><li>
+<p id="Compile_the_code" class="example passed"><strong>Compile the code</strong></p>
+<p>You must have a file that contains the compiled files of the tutorial, the Janus platform, and all the needed libraries by SARL and Janus.</p>
+<p>You could directly download this file by clicking on the download icon at the top of this page; or by compiling the source code yourself.</p>
+<p>If you download the source code of the <a href="https://github.com/sarl/sarl-demos">SARL demos</a>, and compile them with <a href="http://maven.apache.org">Maven</a>, you will obtain a JAR file with all the mandatory elements inside. This file is located in the <code>target</code> folder, and it has a name similar to <code>sarl-demos-0.1.0-with-dependencies.jar</code>.</p>
+</li></ul>
+<div class="level">
+<h4 class="exampleGroup passed" id="Method_1_Execute_each_agent_in_their_own_instance_of_Janus">Method 1: Execute each agent in their own instance of Janus</h4>
+<p>The principle is to run each agent is an different instance of the Janus platform.</p>
 <ul>
 <li>
-<p id="Method_1_Execute_each_agent_in_their_own_instance_of_Janus" class="example passed"><strong>Method 1: Execute each agent in their own instance of Janus</strong></p>
-<p>The principle is to run each agent is an instance of the Janus platform.</p>
-<p>On the command line, you must launch Janus with:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PingAgent
+<p id="Execute_with_a_runnable_JAR" class="example passed"><strong>Execute with a runnable JAR</strong></p>
+<p>Here, there is two assumptions:</p>
+<ol> <li>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code>  is runnable, i.e. it can be directly launched by the Java  Virtual Machine.</li> <li>From this file, the JVM is launching the Janus bootstrap automatically, i.e.  it has a Main-Class set to <code>io.janusproject.Boot</code>.</li> </ol> On the command line, you must launch the Janus instances with:
+<pre class="prettyprint">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.PongAgent
 </pre>
 <p>and:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.PongAgent
+<pre class="prettyprint">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.PingAgent
 </pre>
-<p>The file <code>app.jar</code> contains the compiled classes of the tutorial,  the Janus platform, and the SARL libraries. The classname <code>io.janusproject.Boot</code>  corresponds to the bootstrap of the Janus platform. The first parameter after  this bootstrap is the qualified name of the agent to launch.</p>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third parameters are the qualified names of the agents to launch.</p>
 </li>
 <li>
-<p id="Method_2_Execute_all_the_agents_in_a_single_instance_of_Janus" class="example passed"><strong>Method 2: Execute all the agents in a single instance of Janus</strong></p>
-<p>The principle is to launch a single instance of Janus, and run all the agents inside.</p>
-<p>Because of the design of the Janus platform, we must define an agent that will launch the other agents. This agent is named <code>BootAgent</code>. It is defined below.</p>
-<p>On the command line, you must launch Janus with:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot io.sarl.docs.tutorials.pingpong.BootAgent
+<p id="Execute_without_a_runnable_JAR" class="example passed"><strong>Execute without a runnable JAR</strong></p>
+<p>In opposite to the previous section, we assume that the file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is not runnable. On the command line, you must launch Janus with:</p>
+<pre class="prettyprint">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.PongAgent
 </pre>
+<p>and:</p>
+<pre class="prettyprint">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.PingAgent
+</pre>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specify the Java class to launch: the Janus bootstrap. The first parameters after the bootstraps are the qualified name of the agents to launch.</p>
 </li>
+</ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup passed" id="Method_2_Execute_all_the_agents_in_a_single_instance_of_Janus">Method 2: Execute all the agents in a single instance of Janus</h4>
+<p>The principle is to launch a single instance of Janus, and run all the agents inside. Because of the design of the Janus platform, we must define an agent that will launch the other agents. This agent is named <code>BootAgent</code>. It is defined below.</p>
+<ul>
 <li>
 <p id="Defining_the_Boot_agent" class="example passed"><strong>Defining the Boot agent</strong></p>
-<p>The boot agent uses the <code>DefaultContextInteractions</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type.</p>
-<p>When the boot agent has launched the two expected agents, it is killing itself. This is done with the <code>killMe</code> function, which is provided by the <code>Lifecycle</code> capacity.</p>
+<p>The boot agent uses the <code>DefaultContextInteractions</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type. When the boot agent has launched the two expected agents, it is killing itself. This is done with the <code>killMe</code> function, which is provided by the <code>Lifecycle</code> capacity.</p>
 <pre class="prettyprint lang-spec linenums">
 agent BootAgent {
   uses DefaultContextInteractions, Lifecycle
@@ -269,7 +295,26 @@ agent BootAgent {
   }
 }</pre>
 </li>
+<li>
+<p id="Execute_with_a_runnable_JAR" class="example passed"><strong>Execute with a runnable JAR</strong></p>
+<p>Here, there is two assumptions:</p>
+<ol> <li>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code>  is runnable, i.e. it can be directly launched by the Java  Virtual Machine.</li> <li>From this file, the JVM is launching the Janus bootstrap automatically, i.e.  it has a Main-Class set to <code>io.janusproject.Boot</code>.</li> </ol> On the command line, you must launch the Janus instance with:
+<pre class="prettyprint">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.BootAgent
+</pre>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third parameter is the qualified name of the agent to launch.</p>
+</li>
+<li>
+<p id="Execute_without_a_runnable_JAR" class="example passed"><strong>Execute without a runnable JAR</strong></p>
+<p>In opposite to the previous section, we assume that the file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is not runnable. On the command line, you must launch Janus with:</p>
+<pre class="prettyprint">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.BootAgent
+</pre>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specify the Java class to launch: the Janus bootstrap. The first parameter after the bootstrap is the qualified name of the agent to launch.</p>
+</li>
 </ul>
+</div>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" href="/images/favicon.ico">
+<meta charset="utf-8">
+<title>General FAQ on SARL</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="/download">Download</a></li>
+        <li><a href="/news">News &amp; Events</a></li>
+        <li><a href="/publications">Publications &amp; Presentations</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+<!--/.nav-collapse -->
+  </div>
+</div>
+<div class="container">
+<h1>General FAQ on SARL</h1>
+<h3 class="exampleGroup passed" id="General_FAQ">General FAQ</h3>
+<ul>
+<li>
+<p id="What_is_SARL" class="example passed"><strong>What is SARL?</strong></p>
+<p>SARL is a general-purpose agent-oriented language.</p>
+<p>SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.</p>
+<p>Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features.</p>
+<p><strong>The language is platform- and architecture-independent.</strong></p>
+</li>
+<li>
+<p id="Could_I_use_SARL_to_make_agent_based_software" class="example passed"><strong>Could I use SARL to make agent-based software?</strong></p>
+<p><strong>Yes</strong>. SARL may be used for agent based applications. Natively, SARL provides features for agent execution and direct communication. The agents may be deployed on real computers and over a computer network.</p>
+</li>
+<li>
+<p id="Could_I_use_SARL_to_make_agent_based_simulation_software" class="example passed"><strong>Could I use SARL to make agent-based simulation software?</strong></p>
+<p><strong>Yes</strong>. SARL may be used for agent based simulations. Natively, SARL provides features for agent execution and direct communication. An extension is provided for supporting the simulated environments (time management, environment model, etc.)</p>
+</li>
+<li>
+<p id="Could_I_use_SARL_to_make_holonic_software" class="example passed"><strong>Could I use SARL to make holonic software?</strong></p>
+<p><strong>Yes</strong>. Holon is recursively composed of holons. In SARL, agents are holons. SARL provides a complete support for holons.</p>
+</li>
+<li>
+<p id="Could_I_use_SARL_to_make_organizational_software" class="example passed"><strong>Could I use SARL to make organizational software?</strong></p>
+<p><strong>Yes</strong>. The SARL developers are providing the definition of an organisational space based on the <a href="http://www.aspecs.org/CRIO">CRIO metamodel</a> (Capacity-Role-Interaction-Organization) for example. This metamodel defines a system as a set of organizations in which roles are defined and interacting together. Agents play roles in organization instances (or groups) and provides embedded capacity implementations required by the played roles.</p>
+<p>Other organizational may be used, if a dedicated space is defined for.</p>
+</li>
+<li>
+<p id="Is_SARL_an_object_oriented_programming_language" class="example passed"><strong>Is SARL an object-oriented programming language?</strong></p>
+<p><strong>Yes and No</strong>. SARL is an agent-oriented programming language. But, it is possible to use object-oriented concepts for writing the code of the expressions in the agents, the skills, etc. A part of the grammar of SARL is inherited from the <a href="https://wiki.eclipse.org/Xbase">Xbase partial programming language</a>. It provides statements and rules that are close to object-oriented languages.</p>
+</li>
+<li>
+<p id="May_I_use_my_Java_classes_in_SARL" class="example passed"><strong>May I use my Java classes in SARL?</strong></p>
+<p><strong>Yes</strong>. SARL and Java are 100% interoperable. There are no exceptional cases and you do not have to think in two worlds. You can invoke SARL code from Java and vice versa without any surprises or hassles.</p>
+</li>
+<li>
+<p id="What_is_the_difference_between_SARL_and_Janus" class="example passed"><strong>What is the difference between SARL and Janus?</strong></p>
+<p>SARL is a general-purpose agent-oriented language. Janus is an runtime environment for multiagent applications that fully supports the concepts of SARL.</p>
+<p>We can make a parallel with the Java universe: </p>
+<center> <table class="table-bordered" width="80%"> <thead> <tr>
+<th></th>
+<th>SARL Universe</th>
+<th>Java Universe</th>
+</tr> </thead> <tbody> <tr>
+<td>Language Specification</td>
+<th>SARL Specification</th>
+<th>Java Specification</th>
+</tr> <tr>
+<td>Standard Development Kit</td>
+<th>SARL SDK</th>
+<th>J(ava)DK</th>
+</tr> <tr>
+<td>Runtime environment</td>
+<th>Janus</th>
+<th>Hotspot, IcedTea, Dalvik, etc.</th>
+</tr> </tbody> </table> <center>
+</center>
+</center>
+</li>
+<li>
+<p id="Where_can_I_found_information_on_the_release_planning_of_SARL" class="example passed"><strong>Where can I found information on the release planning of SARL?</strong></p>
+<p>The release planning of SARL is detailed on the <a href="https://github.com/sarl/sarl/issues/milestones">Milestones' page</a> on on the Github website.</p>
+</li>
+<li>
+<p id="Where_can_I_ask_my_question" class="example passed"><strong>Where can I ask my question?</strong></p>
+<p>If you cannot find an answer to your question in the FAQ nor the reference documents nor the <a href="https://github.com/sarl/sarl/issues">existing issues</a>, you could ask to the SARL developers on <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Installation_and_Execution">Installation and Execution</h3>
+<ul>
+<li>
+<p id="Does_my_operating_system_is_compatible_with_SARL" class="example passed"><strong>Does my operating system is compatible with SARL?</strong></p>
+<p>SARL is based on a part of the Eclipse API. Every operating system which has a compatible Java Virtual Machine with Eclipse may be used to run SARL.</p>
+</li>
+<li>
+<p id="What_is_the_version_of_the_Java_virtual_machine_to_install" class="example passed"><strong>What is the version of the Java virtual machine to install?</strong></p>
+<p>SARL requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you must configure your JDK to produce 1.6 class files from 1.7 Java code.</p>
+</li>
+</ul>
+<h3 class="exampleGroup passed" id="Contribute_to_SARL">Contribute to SARL</h3>
+<ul>
+<li>
+<p id="Where_are_the_sources_of_SARL" class="example passed"><strong>Where are the sources of SARL?</strong></p>
+<p>The sources of SARL are available on <a href="https://github.com/sarl/sarl">Github</a>. Details for getting the source code may be found on the <a href="/download/">download page</a>.</p>
+</li>
+<li>
+<p id="How_can_I_obtain_the_current_issues" class="example passed"><strong>How can I obtain the current issues?</strong></p>
+<p>SARL Core Developers use <a href="https://github.com/sarl/sarl">Github</a> to manage bug tracking and project workflow. The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a>.</p>
+</li>
+<li>
+<p id="How_can_I_report_a_problem_or_a_bug_in_SARL_components" class="example passed"><strong>How can I report a problem or a bug in SARL components?</strong></p>
+<p>You must submit your issue on <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
+</li>
+</ul>
+							<div>
+<hr>
+<p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>
+</div>
+</div>
+<div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="/images/SARL-logo.png" style="width:30%"><br>
+      <small><a href="/images/SARL-logo.png">png</a> · <a href="/images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="/news">SARL News</a></li>
+        <li><a href="/about">About SARL</a></li>
+        <li><a href="/about">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2>
+<i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - IRTES - UTBM</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+</body>
+</html>
