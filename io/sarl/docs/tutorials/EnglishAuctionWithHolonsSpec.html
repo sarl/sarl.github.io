@@ -80,16 +80,16 @@
   <li>If there is no received bid, the auctioneer is closing  the auction and the winner is the bidder with the higher  bid.</li>
 </ul>
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
+<center>![Architecture of the Holonic Auction Application](./holonic_auction.png)</center>
 <h3 class="exampleGroup pending" id="Why_are_the_sub_agents_in_the_inner_context">Why are the sub-agents in the inner context?</h3>
 <p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger <a href="http://en.wikipedia.org/wiki/Holon_(philosophy)">holon</a>, <strong>and</strong> at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
 <p><span class="label label-info">Note</span> According to the SARL specifications, all the agents in a context belong to the default space of this context. This property is important for designing the communication links between two adjacent levels in the hierarchy of agents. The default space of the inner context becomes the natural place where the super-agent and its sub-agents are interacting.</p>
 <h3 class="exampleGroup passed" id="Definitions_of_the_events">Definitions of the events</h3>
-<p>In the application, two events are neede: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>
+<p>In the application, two events are needed: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>
 <ul>
 <li>
 <p id="Price_event" class="example passed"><strong>Price event</strong></p>
-<p>The <code>Price</code> event is the event sent by the auctioneer for notifying a bidder that the price has changed.</p>
-<p>This event contains the new price.</p>
+<p>The <code>Price</code> event is the event sent by the auctioneer for notifying a bidder that the price has changed. This event contains the new price.</p>
 <pre class="prettyprint lang-spec linenums">
 package io.sarl.docs.tutorials.holonicauction
 event Price {
@@ -101,8 +101,7 @@ event Price {
 </li>
 <li>
 <p id="Playing_event" class="example passed"><strong>Playing event</strong></p>
-<p>The <code>Bid</code> event is the event sent by a bidder to the auctioneer.</p>
-<p>This event contains the value of the bid.</p>
+<p>The <code>Bid</code> event is the event sent by a bidder to the auctioneer. This event contains the value of the bid.</p>
 <pre class="prettyprint lang-spec linenums">
 event Bid {
   val value : float
@@ -113,11 +112,11 @@ event Bid {
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Definition_of_the_bidder">Definition of the bidder</h3>
-<p>The bidder agent is reacting to new price notifications, and could offer a new bid if the new price is not exceeding the maximal price of the bidder.</p>
+<p>The bidder agent is reacting to new price notifications, and could offer a new bid if the new price is not exceeding its maximal price.</p>
 <ul>
 <li>
 <p id="Initial_definition" class="example passed"><strong>Initial definition</strong></p>
-<p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value of the price that the bidder will consider for bidding. The bidder is randomly selecting the maximum price between 100 and 1000.</p>
+<p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value of the price that the bidder will consider for bidding. The bidder selects the maximum price between 100 and 1000 randomly.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Bidder {
   val random = new Random()
@@ -130,9 +129,9 @@ agent Bidder {
 </li>
 <li>
 <p id="Bidding" class="example passed"><strong>Bidding</strong></p>
-<p>The definition of the bidder agent is extended by the bidding behavior. The bidding must occur when the auctioneer is notifying a new price, i.e. when the <code>Price</code> event is received. The bidder is computing its offer and the corresponding new price. If this last is not exceeding the maximal price, then the bidder is sending its bid in a <code>Bid</code> event.</p>
-<p><span class="label label-warning">Interaction</span> For sending data to its super-agent, a sub-agent must fire an event in the default space of the inner context of the super-agent.</p>
-<p><span class="label label-warning">Caution</span> The <code>Bid</code> event is sent in the default space. But there is no restriction on the event's receiver. It means that the other sub-agents <strong>and</strong> the super-agent will receive this event.</p>
+<p>The definition of the bidder agent is extended by the bidding behavior. The bidding must occur when the auctioneer is notifying a new price, i.e. when the <code>Price</code> event is received. The bidder computes the new price. If this last is not exceeding the maximal price, then the bidder is sending its bid in a <code>Bid</code> event.</p>
+<p><span class="label label-warning">Interaction Principle</span> For sending data to its super-agent, a sub-agent must fire an event in the default space of the inner context of the super-agent. The <code>emit</code> function is supporting this interaction.</p>
+<p><span class="label label-warning">Caution</span> The <code>Bid</code> event is sent in the default space. But there is no restriction on the event's recipient. It means that the super-agent <strong>and</strong> the other sub-agents will receive this event.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Bidder {
   val random = new Random()
@@ -157,8 +156,8 @@ agent Bidder {
 </li>
 <li>
 <p id="Restrict_the_bid_to_the_auctioneer" class="example passed"><strong>Restrict the bid to the auctioneer</strong></p>
-<p>For restricting the receiving of the <code>Bid</code> event to the auctioneer, it is mandatory to specify a scope for the event. For supporting the holonic communication from the sub-agent to the super-agent, the scope of the event corresponds to the address of the super-agent in the default space.</p>
-<p><span class="label label-info">Note</span> The ID of the super-agent is always the same as the ID of the default context in which the sub-agent is belonging to.</p>
+<p>For restricting the recipients of the <code>Bid</code> event to the auctioneer, it is mandatory to specify a scope for the event. For supporting the holonic communication from the sub-agent to the super-agent, the scope of the event corresponds to the address of the super-agent in the default space.</p>
+<p><span class="label label-info">Note</span> The ID of the super-agent, and the ID of the inner context of this super-agent are always the same.</p>
 <p>Below, we update the bidding behavior by creating a scope, and providing it to the <code>emit</code> function.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Bidder {
@@ -193,6 +192,7 @@ agent Bidder {
 <p>The initial definition of the auctioneer is defined below. The auctioneer is starting the auction with a price of 50. It is notifying the bidders with an <code>Price</code> event. Because the bidders are sub-agents, they are living in the inner context of the auctioneer. For sending the <code>Price</code> event to the bidders, the auctioneer must put it in the default space of its inner context. This particular type of emit is supported by the <code>wake</code> function, which is provided by the <code>Behaviors</code> capacity. This function does the same as: <code>
 innerContext.defaultSpace.emit(new Price(50))
 </code></p>
+<p><span class="label label-warning">Interaction Principle</span> For sending data to its sub-agents, a super-agent must fire an event in the default space of its inner context. The <code>wake</code> function is supporting this interaction.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -210,7 +210,7 @@ agent Auctioneer {
 </li>
 <li>
 <p id="Create_the_bidders" class="example passed"><strong>Create the bidders</strong></p>
-<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits to create an agent in a particular context. Below, we create the 3 bidders in the inner context of the auctioneer. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which rovides the <code>getInnerContext</code> function.</p>
+<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits to create an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the 3 bidders.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -223,7 +223,7 @@ agent Auctioneer {
   
   on Initialize {
     for(i : 1..3) {
-      spawnInContext(Bidder, innerContext)
+      spawnInContext(typeof(Bidder), innerContext)
     }
     
     wake(new Price(50))
@@ -353,19 +353,19 @@ agent Auctioneer {
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Stop_the_agents">Stop the agents</h3>
-<p>We previous code is working well at one exception. When the auction is closed, the system does not stop. Indeed, when the auction is closed, the auctioneer does not send any more the <code>Price</code> event. This cause all the agents waiting something that will never append.</p>
+<p>The previous code works well at one exception. When the auction is closed, the system does not stop. Indeed, the auctioneer does not send any more the <code>Price</code> event. This cause all the agents waiting something that will never append.</p>
 <p><strong>We need to stop the agents.</strong></p>
 <p><span class="label label-warning">Important</span> In the specification of SARL, an super-agent cannot be killed if there is some other agent belonging to its inner context. Consequently, for stopping the agents, we need to stop the sub-agents before the super-agent.</p>
 <ul>
 <li>
 <p id="StopAuction_event" class="example passed"><strong>StopAuction event</strong></p>
-<p>Because the determination of the end of the agent's life is made by the auctioneer, this last must notify its sub-agents that is it time to commit a suicide. We introduce the <code>StopAuction</code> event that is used for this particular notification task.</p>
+<p>Because the determination of the end of the agent's life is made by the auctioneer, this last must notify its sub-agents that it is time to commit a suicide. We introduce the <code>StopAuction</code> event that is used for this particular notification task.</p>
 <pre class="prettyprint lang-spec linenums">
 event StopAuction</pre>
 </li>
 <li>
 <p id="Kill_the_bidder" class="example passed"><strong>Kill the bidder</strong></p>
-<p>The code of the bidder must be updated for reacting on the receiving of the <code>StopAuction</code> event. When this event is received, the bidder agent is killing itself by calling the <code>killMe</code> function. This function is provided by the <code>Lifecycle</code> capacity.</p>
+<p>The code of the bidder must be updated for reacting on the receiving of the <code>StopAuction</code> event. When it is received, the bidder agent is killing itself by calling the <code>killMe</code> function. This function is provided by the <code>Lifecycle</code> capacity.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Bidder {
   val random = new Random()
