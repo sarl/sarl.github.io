@@ -262,8 +262,8 @@ agent Auctioneer {
 </li>
 <li>
 <p id="Stop_the_auction" class="example passed"><strong>Stop the auction</strong></p>
-<p>The auctioneer must wait some time before it is closing the auction due to lake of bid. To reproduce this behavior, we introduce a periodic task, which is executed every 10 seconds for checking if a bid was provided during the last 10 seconds.</p>
-<p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing its second parameter at a fixed delay, given by the first parameter. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message.</p>
+<p>The auctioneer must wait some time before it is closing the auction due to lake of bid. To reproduce this behavior, we introduce a periodic task, which is executed every 10 seconds for checking if a bid was provided during the last 10 seconds. This periodic task is started after the first 10 seconds.</p>
+<p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing its second parameter at a fixed delay, given by the first parameter. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the 10 first seconds, we use the <code>in</code> function provided by the capacity.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -281,17 +281,20 @@ agent Auctioneer {
     
     wake(new Price(50))
 
-    every(10000) [
-      if (!hasBid) {
-        isAuctionOpened = false
-        if (winner === null) {
-          println("No winner")
-        } else {
-          println("The winner is " + winner
-            + " with the bid of " + maxBid)
+    in(10000) [
+      val waitTask = task("wait-task")
+      waitTask.every(10000) [
+        if (!hasBid) {
+          isAuctionOpened = false
+          if (winner === null) {
+            println("No winner")
+          } else {
+            println("The winner is " + winner
+              + " with the bid of " + maxBid)
+          }
         }
-      }
-      hasBid = false
+        hasBid = false
+      ]
     ]
   }
   
@@ -325,19 +328,22 @@ agent Auctioneer {
     
     wake(new Price(50))
 
-    every(10000) [
-      synchronized(this) {
-        if (!hasBid) {
-          isAuctionOpened = false
-          if (winner === null) {
-            println("No winner")
-          } else {
-            println("The winner is " + winner
-              + " with the bid of " + maxBid)
+    in(10000) [
+      val waitTask = task("wait-task")
+      waitTask.every(10000) [
+        synchronized(this) {
+          if (!hasBid) {
+            isAuctionOpened = false
+            if (winner === null) {
+              println("No winner")
+            } else {
+              println("The winner is " + winner
+                + " with the bid of " + maxBid)
+            }
           }
+          hasBid = false
         }
-        hasBid = false
-      }
+      ]
     ]
   }
   
@@ -399,7 +405,7 @@ agent Bidder {
 </li>
 <li>
 <p id="Kill_the_auctioneer" class="example passed"><strong>Kill the auctioneer</strong></p>
-<p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits to notify the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity.</p>
+<p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits to notify the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -417,26 +423,30 @@ agent Auctioneer {
     
     wake(new Price(50))
 
-    every(10000) [
-      synchronized(this) {
-        if (!isAuctionOpened) {
-          if (!hasMemberAgent) {
-            killMe
-          }
-        } else {
-          if (!hasBid) {
-            isAuctionOpened = false
-            if (winner === null) {
-              println("No winner")
-            } else {
-              println("The winner is " + winner
-                + " with the bid of " + maxBid)
+    in(10000) [
+      val waitTask = task("wait-task")
+      waitTask.every(10000) [
+        synchronized(this) {
+          if (!isAuctionOpened) {
+            if (!hasMemberAgent) {
+              killMe
+              waitTask.cancel
             }
-            wake(new StopAuction)
+          } else {
+            if (!hasBid) {
+              isAuctionOpened = false
+              if (winner === null) {
+                println("No winner")
+              } else {
+                println("The winner is " + winner
+                  + " with the bid of " + maxBid)
+              }
+              wake(new StopAuction)
+            }
+            hasBid = false
           }
-          hasBid = false
         }
-      }
+      ]
     ]
   }
   
