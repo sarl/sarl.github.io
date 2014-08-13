@@ -52,7 +52,7 @@
 </div>
 <div class="container">
 <h1>Event Reference</h1>
-<p>This document describes how to define events in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>This document describes how to define events in SARL. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <ul class="page_outline" id="page_outline"><li><a href="#Event_vs_Message">Event vs. Message</a></li><li><a href="#Defining_an_Event">Defining an Event</a></li><li><a href="#Reserved_Events">Reserved Events</a></li></ul><p>An event is one of the core concepts in SARL. It is a data structure composed of attributes. Each attribute has a name, a type, and a value.</p>
 <p>Events are exchanged among the agents or the behavioral units of agents, inside a given <a href="./SpaceReferenceSpec.html">Space</a>.</p>
 <p>Each event has:</p>
@@ -63,7 +63,7 @@
 </ul>
 <h3 class="exampleGroup pending" id="Event_vs_Message">Event vs. Message</h3>
 <p>In computer-science literature, there are two major concepts for defining the data structures that are exchanged by entities: the event, and the message.</p>
-<p>It is mandatory to specify the type, the source and the potential embedded data for both of them. The difference is related to the specification of the receiver. In one hand, the event does not force the sender to specify the receiver identifier. In the other hand, the message needs to have at least on receiver identifier (even if it means "all" the possible identifiers).</p>
+<p>It is mandatory to specify the type, the source and the potential embedded data for both of them. The difference is related to the specification of the receiver. In one hand, the event does not force the sender to specify the receiver identifier. On the other hand, the message needs to have at least on receiver identifier (even if it means "all" the possible identifiers).</p>
 <p>Because the event permits to send data without being care of the sender, this concept is privileged by the designers of SARL.</p>
 <p>Consequently, for sending data to another entity, you must create an instance of an event, and emit this object in a <a href="./SpaceReferenceSpec.html">Space</a>. The sending API is detailed in the <a href="BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
 <p><span class="label label-info">Note</span> There is no message concept in SARL. All the communications are supported by the concept of <code>Event</code></p>
@@ -71,8 +71,8 @@
 <ul>
 <li>
 <p id="Define_an_empty_event" class="example passed"><strong>Define an empty event</strong></p>
-<p>An event can be defined with the <code>event</code> keyword. It must be followed by the name of the event without the qualified name of its package, which is inferred from the <code>package</code> keyword if present.</p>
-<p>When the event is empty, i.e. it does not contains any additional data than the source of the event, it is specified by an empty block, or by "nothing", after the event's declaration.</p>
+<p>An event can be defined with the <code>event</code> keyword. It must be followed by the name of the event without the qualified name of its package, which is inferred from the <code>package</code> keyword, if present.</p>
+<p>When the event is empty, i.e. it does not contain any additional data than the source of the event, it is specified by an empty block, or by "nothing", after the event's declaration.</p>
 <p>The example below contains the definition of the events <code>Event1</code> and <code>Event2</code>, which are both empty. The first event is defined with the "empty block" syntax. The second event is defined with the "nothing" syntax.</p>
 <pre class="prettyprint lang-spec linenums">
 event Event1 {  }
@@ -120,7 +120,7 @@ event MyEvent {
 <p>In some use cases, it is useful to specialize the definition of an event. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
 <p>The extended event is specified just after the <code>extends</code> keyword.</p>
 <p><span class="label label-danger">Important</span> An event type can extend <strong>only one</strong> other event type. This is close constraint as the class extension of classes in the Java language.</p>
-<p>In the following code, a first event is defined with the name <code>Event1</code> and an attribute named <code>string</code>. A second event <code>Event2</code> is defined as the extension of the first event. It contains a new attribute named <code>number</code>. It is now possible to create instances of these events. For <code>Event1</code>, only the attribute <code>string</code> is accessible. For <code>Event2</code>, the two attributes are accessible, because the type <code>Event2</code> inherits the fields of <code>Event1</code>.</p>
+<p>In the following code, a first event is defined with the name <code>Event1</code> and an attribute named <code>string</code>. A second event <code>Event2</code> is defined as the extension of the first event. It contains a new attribute named <code>number</code>. It is now possible to create instances of these events. For <code>Event1</code>, only the attribute <code>string</code> is accessible. For <code>Event2</code>, the two attributes are accessible. Indeed, the type <code>Event2</code> inherits the fields of <code>Event1</code>.</p>
 <ul>
 <li>
 <p id="Declaration" class="example passed"><strong>Declaration</strong></p>
@@ -150,7 +150,7 @@ e2.number = 345</pre>
 <p><span class="label label-danger">Important</span> You must not define an event with a fully qualified name equals to one of the reserved events.</p>
 <p>Two types of reserved events exist:</p>
 <ul>
-  <li>the events reserved in the SARL Core Specification for the <a href="./AgentReferenceSpec.html#Behaviors_of_an_Agent">agent's lifecycle</a>; and</li>
+  <li>the events reserved in the SARL Core Specification for the <a href="./AgentReferenceSpec.html#Behaviors_of_an_Agent">agent's life cycle</a>; and</li>
   <li>the events supported by the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacities</a>.</li>
 </ul>
 							<div>

@@ -52,11 +52,11 @@
 </div>
 <div class="container">
 <h1>Agent Reference</h1>
-<p>This document describes the features related to the definition of an agent in SARL. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./SkillReferenceSpec.html">Skill Reference</a>, and the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
+<p>This document describes the features related to the definition of an agent in SARL. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./SkillReferenceSpec.html">Skill Reference</a>, and the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
 <ul class="page_outline" id="page_outline"><li><a href="#Where_is_living_an_agent">Where is living an agent?</a></li><li><a href="#Open_Architecture_of_an_Agent">Open Architecture of an Agent</a></li><li><a href="#Defining_an_Agent">Defining an Agent</a></li><li><a href="#Behaviors_of_an_Agent">Behaviors of an Agent</a></li><li><a href="#Capacities_and_Skills">Capacities and Skills</a></li></ul><p><strong>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits</strong>.</p>
 <h3 class="exampleGroup passed" id="Where_is_living_an_agent">Where is living an agent?</h3>
-<p>Before detailing the architecture and the definition tools of an agent, it may be helpful to understand where is "living" an agent in the multiagent system.</p>
-<p>The following figure illustrates the position of an agent (at the center of the figure) in different context. The details are discussed below. </p>
+<p>Before detailing the architecture and the definition tools of an agent, it may be helpful to understand where is "living" an agent in the multi-agent system.</p>
+<p>The following figure illustrates the position of an agent (at the center of the figure) in different contexts. The details are discussed below. </p>
 <center><img src="./contexts.png"></center>
 <ul>
 <li>
@@ -64,13 +64,13 @@
 <p>When it is spawn, an agent is living inside the system in a place named "<em>Context</em>".</p>
 <p><strong>A Context defines the boundary of a sub-system, and gathers a collection of spaces</strong>. A Space is the support of the interaction between agents respecting the rules defined in the spaces' specification.</p>
 <p><span class="label label-danger">Important</span> In each context, there is at least one particular space called <em>Default Space</em> to which all agents in this context belong.</p>
-<p>This ensures the existence of a common shared space to all agents in the same context. Each agent can then create specific public or private spaces to achieve its personal goals (the blue space on the figure above).</p>
+<p>It ensures the existence of a common shared space to all agents in the same context. Each agent can then create specific public or private spaces to achieve its personal goals (the blue space on the figure above).</p>
 <p><span class="label label-danger">Important</span> Since their creation, agents are incorporated into a context called the <strong>Default Context</strong>. It is important to notice that the <em>Default Context</em> is not necessarily the same for every agent.</p>
 <p>An agent has an identifier for each space it is involved in. For the case of event-based interaction spaces, this identifier is called "address".</p>
 </li>
 <li>
 <p id="External_Contexts" class="example passed"><strong>External Contexts</strong></p>
-<p>During its lifetime, an agent may join and participate to other contexts than the default context. they are called the external contexts of the agent.</p>
+<p>During its lifetime, an agent may join and participate in other contexts that are not the default context. They are called the external contexts of the agent.</p>
 <p><span class="label label-info">Note</span> There is no restriction about the number of contexts in which an agent is belonging to, except that it is always in its default context.</p>
 <p>For joining or leaving a context, the agent must use the <code>ExternalContextAccess</code> built-in capacity. It is detailed in the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
 </li>
@@ -79,10 +79,10 @@
 <p>In 1967, Arthur Koestler coined the term <em>holon</em> as an attempt to conciliate holistic and reductionist visions of the world. A holon represents a part-whole construct that can be seen as a component of a higher level system or as whole composed of other self-similar holons as substructures.</p>
 <p>Holonic Systems grew from the need to find comprehensive construct that could help explain social phenomena. Since then, it came to be used in a wide range of domains, including Philosophy, Manufacturing Systems, and Multi-Agents Systems.</p>
 <p>Several works have studied this question and they have proposed a number of models inspired from their experience in different domains. In many cases, we find the idea of <em>agents composed of other agents</em>.</p>
-<p>More recently, the importance of holonic multiagent systems has been recognize by different methodologies such as <a href="http://www.aspecs.org">ASPECS</a> or O-MASE.</p>
-<p><span class="label label-info">Note</span> In SARL, we recognize that agents can be composed of other agents. Therefore, SARL agents are in fact holons that can compose each other to define hierarchical or recursive multiagent system, called holarchies.</p>
+<p>More recently, the importance of holonic multi-agent systems has been recognized by different methodologies such as <a href="http://www.aspecs.org">ASPECS</a> or O-MASE.</p>
+<p><span class="label label-info">Note</span> In SARL, we recognize that agents can be composed of other agents. Therefore, SARL agents are in fact holons that can compose each other to define hierarchical or recursive multi-agent system, called holarchies.</p>
 <p>In order to achieve this, SARL agents are self-similar structures that compose each other via their contexts. Each agent defines its own context, called <strong>Inner Context</strong>. Because this inner context may be joined by other agents, or agents may be spawn inside this inner context, it is possible to build a holarchy.</p>
-<p><span class="label label-danger">Important</span> An agent is always be a participant of the default space of its inner space.</p>
+<p><span class="label label-danger">Important</span> An agent is always a participant of the default space of its inner space.</p>
 <p><span class="label label-warning">Note</span> The unique identifier (usually a Unique Universal Identifier) of the inner context is equal to the unique identifier of its owning agent.</p>
 </li>
 <li>
@@ -97,7 +97,7 @@
 <ul>
 <li>
 <p id="Built_in_Capacities" class="example passed"><strong>Built-in Capacities</strong></p>
-<p>An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, pro-activity and social capacities.</p>
+<p>An agent has a set of built-in capacities considered essential to respect the commonly accepted competencies of agents, such autonomy, reactivity, pro-activity and social capacities.</p>
 <p>The full set of Built-in Capacities will be presented in the corresponding <a href="./BuiltinCapacityReferenceSpec.html">Reference document</a>. Among these built-in capacities, is the <code>Behaviors</code> capacity that enables agents to incorporate a collection of behaviors that will determine its global conduct.</p>
 </li>
 <li>
@@ -165,7 +165,7 @@ agent MySubAgent extends MyAgent {
 </ul>
 <h3 class="exampleGroup passed" id="Behaviors_of_an_Agent">Behaviors of an Agent</h3>
 <p>The behaviors of an agent correspond to the units that are executed by the agent for exhibiting its general behavior.</p>
-<p>The execution of the behaviors are related to the lifecycle of the agents. Every agent is following the steps:</p>
+<p>The execution of the behaviors are related to the life cycle of the agents. Every agent is following the steps:</p>
 <ul>
   <li>Initialization: the agent react on the <code>Initialize</code> event;</li>
   <li>Lifetime: the agent execute its behaviors. They may be:</li>
@@ -176,7 +176,7 @@ agent MySubAgent extends MyAgent {
 </li>
   <li>
   <ul>
-    <li>pro-active: the agent executes by itself one of its behaviors.</li>
+    <li>proactive: the agent executes by itself one of its behaviors.</li>
   </ul>
 </li>
   <li>Destruction: the agent react on the <code>Destroy</code> event.</li>
@@ -250,7 +250,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Reactive_Behaviors" class="example passed"><strong>Reactive Behaviors</strong></p>
-<p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the agent's global behavior when something has happening in the agent, or in its environment.</p>
+<p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the global agent behavior when something has happening in the agent, or in its environment.</p>
 <p>In the following example, the agent is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
 <pre class="prettyprint lang-spec linenums">
@@ -276,8 +276,8 @@ agent MyAgent {
 </li>
 <li>
 <p id="Pro_active_Behaviors" class="example passed"><strong>Pro-active Behaviors</strong></p>
-<p>A pro-active behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by an part of the code external to this behavior. In opposite, the initiator of the execution of a pro-active behavior is the agent itself.</p>
-<p>In SARL, a pro-active behavior is a behavior that is scheduled by the agent. The scheduling mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its pro-active behavior every second.</p>
+<p>A proactive behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by a part of the code external to this behavior. In opposite, the initiator of the execution of a proactive behavior is the agent itself.</p>
+<p>In SARL, a proactive behavior is a behavior that is scheduled by the agent. The scheduling mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Schedules
@@ -290,7 +290,7 @@ agent MyAgent {
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Capacities_and_Skills">Capacities and Skills</h3>
-<p>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits. An agent has a set of built-in capacities considered essential to respect the commonly accepted competences of agents, such autonomy, reactivity, proactivity and social capacities.</p>
+<p>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits. An agent has a set of built-in capacities considered essential to respect the commonly accepted competencies of agents, such autonomy, reactivity, pro-activity and social capacities.</p>
 <ul>
 <li>
 <p id="Defining_a_Capacity_and_a_Skill" class="example passed"><strong>Defining a Capacity and a Skill</strong></p>
@@ -309,7 +309,7 @@ skill Ski implements Cap {
 <li>
 <p id="Giving_a_Skill_to_an_Agent" class="example passed"><strong>Giving a Skill to an Agent</strong></p>
 <p>When an agent must use a capacity in one of its behaviors, it must own an implementation of this capacity: a skill.</p>
-<p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated to the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
+<p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated with the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
 <p>When the function <code>setSkill</code> is returning, the agent becomes able to use the skill.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
@@ -329,7 +329,7 @@ agent MyAgent {
 <p>After a skill is registered into the agent, it could be invoked.</p>
 <p>For invoking a function implemented by a skill, the two following steps must be done:</p>
 <ul>
-  <li>Retrieve the skill instance: the function  <code>getSkill(Class&lt;? extends Capacity&gt;)</code>  permits to retrieve the skill associated to the given capacity;</li>
+  <li>Retrieve the skill instance: the function  <code>getSkill(Class&lt;? extends Capacity&gt;)</code>  permits retrieving the skill associated to the given capacity;</li>
   <li>Invoke the capacity's action on the retrieved skill.</li>
 </ul>
 <p><span class="label label-info">Note</span> This method of invocation is not recommended by the SARL developers. You should prefer the use of the extension methods (see below).</p>
@@ -380,7 +380,7 @@ agent MyAgent {
 </li>
 <li>
 <p id="Using_a_Built_in_Capacity_with_the_Extension_Methods" class="example passed"><strong>Using a Built-in Capacity with the Extension Methods</strong></p>
-<p>The built-in capacities are accessible in the same way a the other capacities, with the extension methods.</p>
+<p>The built-in capacities are accessible in the same way as the other capacities, with the extension methods.</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   uses Lifecycle

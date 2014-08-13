@@ -68,7 +68,7 @@
 </li>
 <li>
 <p id="Add_the_Janus_runtime_environment" class="example passed"><strong>Add the Janus runtime environment</strong></p>
-<p>For running your agent with the Janus runtime environment, you must add the Janus library in the classpath.</p>
+<p>For running your agent with the Janus runtime environment, you must add the Janus library in the class path.</p>
 <p>First, <strong>you must download the <a href="http://maven.janusproject.io/last-janus-release.jar">Janus runtime environment</a></strong>.</p>
 <p>For adding the downloaded file of Janus, you must <strong>add an external JAR</strong> in the <em>Classpath</em> tab. After adding the Janus JAR file, you obtain a dialog box similar to:</p>
 <center><img alt="Add Janus" src="./EclipseRunConfiguration_1.png" width="60%"></center>
@@ -86,7 +86,7 @@
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Get_the_program_arguments_in_the_agent">Get the program arguments in the agent</h3>
-<p>It is possible to give parameters to the launched agent. Indeed, all the parameters given as program arguments are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
+<p>It is possible to give arguments to the launched agent. Indeed, all the arguments given as program arguments are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
 <ul>
 <li>
 <p id="Give_parameters_to_the_Agent" class="example passed"><strong>Give parameters to the Agent</strong></p>
@@ -94,8 +94,8 @@
 <center><img alt="Program Arguments" src="./EclipseRunConfiguration_4.png" width="60%"></center>
 </li>
 <li>
-<p id="Retreive_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retreive the Command Line Parameters in the Agent</strong></p>
-<p>For retreiving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
+<p id="Retrieve_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retrieve the Command Line Parameters in the Agent</strong></p>
+<p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on Initialize {

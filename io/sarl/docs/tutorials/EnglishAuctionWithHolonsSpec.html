@@ -52,7 +52,7 @@
 </div>
 <div class="container">
 <h1>English Auction with Holons</h1>
-<p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended to read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
+<p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
 <ul class="page_outline" id="page_outline"><li><a href="#Principle_of_the_English_Auction">Principle of the English Auction</a></li><li><a href="#Principle_of_the_Application">Principle of the Application</a></li><li><a href="#Why_are_the_sub_agents_in_the_inner_context">Why are the sub-agents in the inner context?</a></li><li><a href="#Definitions_of_the_events">Definitions of the events</a></li><li><a href="#Definition_of_the_bidder">Definition of the bidder</a></li><li><a href="#Definition_of_the_auctioneer">Definition of the auctioneer</a></li><li><a href="#Stop_the_agents">Stop the agents</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul>
 <div class="bt-download">
 <a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="../../../../images/download-icon.png"></a>
@@ -74,11 +74,11 @@
 <h3 class="exampleGroup pending" id="Principle_of_the_Application">Principle of the Application</h3>
 <p>The principle of the application is the following:</p>
 <ul>
-  <li>The application is set-up with 1 auctioneer agent and  3 bidders agents.</li>
+  <li>The application is set-up with one auctioneer agent and  three bidders agents.</li>
   <li>The auctioneer is announcing the starting price.</li>
   <li>The bidders are offering their bids back.</li>
   <li>When a bid is received, the auctioneer is announcing  the new price.</li>
-  <li>If there is no received bid, the auctioneer is closing  the auction and the winner is the bidder with the higher  bid.</li>
+  <li>If there is no received bid, the auctioneer is closing  the auction, and the winner is the bidder with the higher  bid.</li>
 </ul>
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
 <center><img src="./holonic_auction.png"></center>
@@ -211,7 +211,7 @@ agent Auctioneer {
 </li>
 <li>
 <p id="Create_the_bidders" class="example passed"><strong>Create the bidders</strong></p>
-<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits to create an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the 3 bidders.</p>
+<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits to create an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the three bidders.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -263,7 +263,7 @@ agent Auctioneer {
 <li>
 <p id="Stop_the_auction" class="example passed"><strong>Stop the auction</strong></p>
 <p>The auctioneer must wait some time before it is closing the auction due to lake of bid. To reproduce this behavior, we introduce a periodic task, which is executed every 10 seconds for checking if a bid was provided during the last 10 seconds. This periodic task is started after the first 10 seconds.</p>
-<p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing its second parameter at a fixed delay, given by the first parameter. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the 10 first seconds, we use the <code>in</code> function provided by the capacity.</p>
+<p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing at a fixed delay its second argument, given by the first argument. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the first ten seconds, we use the <code>in</code> function provided by the capacity.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -310,7 +310,7 @@ agent Auctioneer {
 <li>
 <p id="Synchronize_the_operations" class="example passed"><strong>Synchronize the operations</strong></p>
 <p>Because the periodic task and the event handlers may be executed in parallel, we are facing a classical problem in concurrent programming: how to ensure that two blocks of code are not executed at the same time for avoiding any conflicting access on the same data.</p>
-<p>It is recommended to "synchronize" the blocks of code. We use the <code>synchronize</code> operator (which has the same meaning as in the Java language). This operator ensures that two blocks of code, which are synchronized on the same Object (the parameter of the operator) cannot be executed in parallel by different threads.</p>
+<p>It is recommended to "synchronize" the blocks of code. We use the <code>synchronize</code> operator (which has the same meaning as in the Java language). This operator ensures that two blocks of code, which are synchronized on the same Object (the argument of the operator) cannot be executed in parallel by different threads.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -362,7 +362,7 @@ agent Auctioneer {
 <h3 class="exampleGroup passed" id="Stop_the_agents">Stop the agents</h3>
 <p>The previous code works well at one exception. When the auction is closed, the system does not stop. Indeed, the auctioneer does not send any more the <code>Price</code> event. This cause all the agents waiting something that will never append.</p>
 <p><strong>We need to stop the agents.</strong></p>
-<p><span class="label label-warning">Important</span> In the specification of SARL, an super-agent cannot be killed if there is some other agent belonging to its inner context. Consequently, for stopping the agents, we need to stop the sub-agents before the super-agent.</p>
+<p><span class="label label-warning">Important</span> In the specification of SARL, a super-agent cannot be killed if there is some other agent belonging to its inner context. Consequently, for stopping the agents, we need to stop the sub-agents before the super-agent.</p>
 <ul>
 <li>
 <p id="StopAuction_event" class="example passed"><strong>StopAuction event</strong></p>
@@ -405,7 +405,7 @@ agent Bidder {
 </li>
 <li>
 <p id="Kill_the_auctioneer" class="example passed"><strong>Kill the auctioneer</strong></p>
-<p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits to notify the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
+<p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits notifying the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
@@ -476,20 +476,20 @@ agent Auctioneer {
 <li>
 <p id="Execute_with_a_runnable_JAR" class="example passed"><strong>Execute with a runnable JAR</strong></p>
 <p>Here, there is two assumptions:</p>
-<ol> <li>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code>  is runnable, i.e. it can be directly launched by the Java  Virtual Machine.</li> <li>From this file, the JVM is launching the Janus bootstrap automatically, i.e.  it has a Main-Class set to <code>io.janusproject.Boot</code>.</li> </ol> On the command line, you must launch Janus with:
+<ol> <li>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code>  is execuable, i.e. it can be directly launched by the Java  Virtual Machine.</li> <li>From this file, the JVM is launching the Janus bootstrap automatically, i.e.  it has a Main-Class set to <code>io.janusproject.Boot</code>.</li> </ol> On the command line, you must launch Janus with:
 <pre class="prettyprint">java -jar sarl-demos-0.1.0-with-dependencies.jar
      io.sarl.docs.tutorials.holonicauction.Auctioneer
 </pre>
-<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third parameter is the qualified name of the agent to launch.</p>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third argument is the qualified name of the agent to launch.</p>
 </li>
 <li>
 <p id="Execute_without_a_runnable_JAR" class="example passed"><strong>Execute without a runnable JAR</strong></p>
-<p>In opposite to the previous section, we assume that the file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is not runnable. On the command line, you must launch Janus with:</p>
+<p>In opposite to the previous section, we assume that the file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is not executable. On the command line, you must launch Janus with:</p>
 <pre class="prettyprint">java -cp sarl-demos-0.1.0-with-dependencies.jar
      io.janusproject.Boot
      io.sarl.docs.tutorials.holonicauction.Auctioneer
 </pre>
-<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specify the Java class to launch: the Janus bootstrap. The first parameter after the bootstrap is the qualified name of the agent to launch.</p>
+<p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap. The first argument after the bootstrap is the qualified name of the agent to launch.</p>
 </li>
 </ul>
 							<div>

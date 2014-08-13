@@ -55,17 +55,17 @@
 <p>This document describes the general syntax of the SARL Language.</p>
 <ul class="page_outline" id="page_outline"><li><a href="#Java_Interoperability">Java Interoperability</a></li><li><a href="#Name_Syntax">Name Syntax</a></li><li><a href="#Script_Format">Script Format</a></li><li><a href="#Literals">Literals</a></li><li><a href="#Collection_Literals">Collection Literals</a></li><li><a href="#Array_Literals">Array Literals</a></li><li><a href="#Operators">Operators</a></li><li><a href="#Variable_and_Field_Declarations">Variable and Field Declarations</a></li><li><a href="#Function_Declarations">Function Declarations</a></li><li><a href="#Field_Access_and_Method_Invocation">Field Access and Method Invocation</a></li><li><a href="#Constructor_Call">Constructor Call</a></li><li><a href="#Extension_Methods">Extension Methods</a></li><li><a href="#Lambda_Expressions">Lambda Expressions</a></li><li><a href="#If_Expression">If Expression</a></li><li><a href="#Switch_Expression">Switch Expression</a></li><li><a href="#Loops">Loops</a></li><li><a href="#Exception_Support">Exception Support</a></li><li><a href="#Synchronized_Expression">Synchronized Expression</a></li></ul>
 <h3 class="exampleGroup pending" id="Java_Interoperability">Java Interoperability</h3>
-<p>SARL, like Java, is a statically typed language. In fact it completely supports Java's type system, including the primitive types like <em>int</em> or <em>boolean</em>, arrays and all the Java classes, interfaces, enumerations and annotations that reside on the class path.</p>
+<p>SARL, like Java, is a statically typed language. In fact, it completely supports Java's type system, including the primitive types like <em>int</em> or <em>boolean</em>, arrays and all the Java classes, interfaces, enumerations and annotations that reside on the class path.</p>
 <p>Java generic types are fully supported as well: you can define type parameters on methods and classes and pass type arguments to generic types just as you are used to from Java. The type system and its conformance and casting rules are implemented as defined in the <a href="http://docs.oracle.com/javase/specs/jls/se5.0/html/conversions.html">Java Language Specification</a>.</p>
-<p>One of the problems with Java is that you are forced to write type signatures over and over again. That is why so many people do not like static typing. But this is in fact not a problem of static typing but simply a problem with Java. Although SARL is statically typed just like Java, you rarely have to write types down because they can be computed from the context.</p>
-<p>In addition to Java's autoboxing to convert primitives to their corresponding wrapper types (e.g. <em>int</em> is automatically converted to <em>Integer</em> when needed), there are additional conversion rules in SARL: arrays are automatically converted to <code>List&lt;ComponentType&gt;</code> and vice versa.</p>
+<p>One of the problems with Java is that you are forced to write type signatures over and over again. That is why so many people do not like static typing. But this is in fact not a problem of static typing, but simply a problem with Java. Although SARL is statically typed just like Java, you rarely have to write types down because they can be computed from the context.</p>
+<p>In addition to Java's auto-boxing to convert primitives to their corresponding wrapper types (e.g. <em>int</em> is automatically converted to <em>Integer</em> when needed), there are additional conversion rules in SARL: arrays are automatically converted to <code>List&lt;ComponentType&gt;</code> and vice versa.</p>
 <p>Resembling and supporting every aspect of Java's type system ensures that there is no impedance mismatch between Java and SARL. <strong>This means that SARL and Java are 100% interoperable</strong>. There are no exceptional cases and you do not have to think in two worlds. You can invoke SARL code from Java and vice versa without any surprises or hassles.</p>
 <h3 class="exampleGroup pending" id="Name_Syntax">Name Syntax</h3>
 <p>In SARL, the names of the features (agents, variables, fields, etc.) cannot be one of the keywords of SARL or Java. For example, it is forbidden to type:</p>
 <pre class="prettyprint">import java.awt.event.ActionEvent
 </pre>
 <p>Indeed, the name fragment <code>event</code> corresponds to a keyword of SARL.</p>
-<p>For solving this problem (since some names comes from Java, and this language has not the same set of keywords than SARL), it is possible to prefix the name fragment with the character <code>^</code>:</p>
+<p>For solving this problem (since some names come from Java, and this language has not the same set of keywords than SARL), it is possible to prefix the name fragment with the character <code>^</code>:</p>
 <pre class="prettyprint">import java.awt.^event.ActionEvent
 </pre>
 <h3 class="exampleGroup passed" id="Script_Format">Script Format</h3>
@@ -81,7 +81,7 @@
 <p>The keyword <code>package</code> permits to define the name of the package associated to a SARL file. Consequently, all the features defined in the script are defined in this package, and their names are qualified with the name of the package.</p>
 <p>The package's name has also a consequence in the generation of the Java files behind the SARL script. Indeed, all the Java files are generated in a folder, which is matching the name of the package.</p>
 <p>In the following example, the qualified name of the agent is <code>io.sarl.docs.reference.gsr</code>.</p>
-<p><span class="label label-note">Note</span> If the <code>package</code> keyword is not used, the default package will be used. The default package has an empty name. It is recommended in the SARL Best Practices to specify a package's name.</p>
+<p><span class="label label-info">Note</span> If the <code>package</code> keyword is not used, the default package will be used. The default package has an empty name. It is recommended in the SARL Best Practices to specify a package's name.</p>
 <pre class="prettyprint lang-spec linenums">
 package io.sarl.docs.reference.gsr</pre>
 </li>
@@ -118,8 +118,8 @@ def example {
 </li>
 <li>
 <p id="Top_Level_Features" class="example passed"><strong>Top-Level Features</strong></p>
-<p>A large part of a SARL script contains the definitions of the top-level features. These features are core concepts of SARL, such as <code>agent</code>, <code>event</code>, or <code>capacity</code>.</p>
-<p>All these top-level features are documented in there own reference document.</p>
+<p>A large part of a SARL script contains the definitions of the top-level features. These features are the core concepts of SARL, such as <code>agent</code>, <code>event</code>, or <code>capacity</code>.</p>
+<p>All these top-level features are documented in their own reference document.</p>
 <pre class="prettyprint lang-spec linenums">
 event E {
 }
@@ -153,14 +153,14 @@ var e = "Hello
 </li>
 <li>
 <p id="Character_Literals" class="example passed"><strong>Character Literals</strong></p>
-<p>Character literals use the same notation as String literals. If a single character literal is used in a context where a primitive char or the wrapper type <code>Character</code> is expected, the compiler will treat the literal as such a value or instance.</p>
+<p>Character literals use the same notation as String literals. If a single character literal is used in a context where a primitive char or the wrapper type <code>Character</code> is expected, the compiler will treat the literal as a value or instance.</p>
 <pre class="prettyprint lang-spec linenums">
 var a : char = 'a'
 var b : char = "b"</pre>
 </li>
 <li>
 <p id="Number_Literals" class="example passed"><strong>Number Literals</strong></p>
-<p>SARL supports roughly the same number literals as Java. There is two exceptions: there is no notation for specifying octal numbers, and if you put the dot character in a number, you must specify the fractional and mantissa parts.</p>
+<p>SARL supports roughly the same number literals as Java. There are two exceptions: there is no notation for specifying octal numbers, and if you put the dot character in a number, you must specify the fractional and mantissa parts.</p>
 <pre class="prettyprint lang-spec linenums">
 var a = 42    // Decimal
 var b = 0xbeef  // Hexadecimal
@@ -224,14 +224,14 @@ var c = String.getDeclaredFields()</pre>
 <ul>
 <li>
 <p id="Collection_Creation" class="example passed"><strong>Collection Creation</strong></p>
-<p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported. They permits to create instances of the collections from the JDK.</p>
+<p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported. They permit to create instances of the collections from the JDK.</p>
 <pre class="prettyprint lang-spec linenums">
 var myList = newArrayList('Hello', 'world')
 var myMap = newLinkedHashMap('a' -&gt; 1, 'b' -&gt; 2)</pre>
 </li>
 <li>
 <p id="Immutable_Collections" class="example passed"><strong>Immutable Collections</strong></p>
-<p>In addition, SARL supports collection literals to create immutable collections and arrays, depending on the target type. There is three types of immutable collections: array, set, and hash table.</p>
+<p>In addition, SARL supports collection literals to create immutable collections and arrays, depending on the target type. There are three types of immutable collections: array, set, and hash table.</p>
 <pre class="prettyprint lang-spec linenums">
 // the variable a contains an immutable array.
 var a = #['Hello','World']
@@ -465,8 +465,8 @@ val NAME [: TYPE] [= INITIAL VALUE]
 <p id="Variable_vs_Value_Declaration" class="example passed"><strong>Variable vs. Value Declaration</strong></p>
 <p>A variable declaration starting with the keyword <code>val</code> denotes a value, which is essentially a final, unsettable variable.</p>
 <p>The variable needs to be declared with the keyword <code>var</code>, which stands for 'variable' if it should be allowed to reassign its value.</p>
-<p>Variables declared outside of a lambda expression using the <code>var</code> keyword are not accessible from within the lambda expressions. Those declared with the <code>val</code> keyword are accessible.</p>
-<p>Fields declared outside of a lambda expression using the <code>var</code> keyword or the <code>val</code> keyword are accessible from within the lambda expressions.</p>
+<p>Variables declared outside a lambda expression using the <code>var</code> keyword are not accessible from within the lambda expressions. Those declared with the <code>val</code> keyword are accessible.</p>
+<p>Fields declared outside a lambda expression using the <code>var</code> keyword or the <code>val</code> keyword are accessible from within the lambda expressions.</p>
 <pre class="prettyprint lang-spec linenums">
 val max = 100
 var i = 0
@@ -491,7 +491,7 @@ var b = "abc"</pre>
 <p>The function declaration follows the syntax:</p>
 <pre class="prettyprint"> def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
 </pre>
-<p><span class="label label-warning">Note</span> The parameters are implicitly declared with the keyword <code>val</code>.</p>
+<p><span class="label label-info">Note</span> The parameters are implicitly declared with the keyword <code>val</code>.</p>
 <ul>
 <li>
 <p id="Standard_Declarations" class="example passed"><strong>Standard Declarations</strong></p>
@@ -552,7 +552,7 @@ def calls {
 <p id="Default_Value_for_the_Formal_Parameters" class="example passed"><strong>Default Value for the Formal Parameters</strong></p>
 <p>SARL allows to specify a default value for a formal parameter.</p>
 <p>When a default value is specified, it means that the caller of the action can skip to pass a value for the corresponding argument. And, when the function is run, the default value is given to the skipped argument.</p>
-<p><span class="label label-warning">Important</span> In SARL, if a formal parameter has a default value, the following formal parameters do not need to have default value also. This is a major difference with the default values in the C++ language for instance.</p>
+<p><span class="label label-warning">Important</span> In SARL, if a formal parameter has a default value, the following formal parameters do not need to have default value as well. This is a major difference with the default values in the C++ language for instance.</p>
 <pre class="prettyprint lang-spec linenums">
 // Function with one parameter with a default value.
 def action1(v : int = 5) { }
@@ -596,7 +596,7 @@ def calls {
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Field_Access_and_Method_Invocation">Field Access and Method Invocation</h3>
-<p>A simple name can refer to a field, variable or parameter. In addition, it can point to a method with zero arguments, since empty parentheses are optional.</p>
+<p>A simple name can refer to a field, variable or parameter. In addition, it can point to a method with zero argument since empty parentheses are optional.</p>
 <ul>
 <li>
 <p id="Property_Access" class="example passed"><strong>Property Access</strong></p>
@@ -654,7 +654,7 @@ var b = Integer.TYPE</pre>
 </li>
 <li>
 <p id="Null_Safe_Feature_Call" class="example passed"><strong>Null-Safe Feature Call</strong></p>
-<p>Checking for null references can make code very unreadable. In many situations it is ok for an expression to return <code>null</code> if a receiver was <code>null</code>.</p>
+<p>Checking for null references can make code very unreadable. In many situations, it is correct for an expression to return <code>null</code> if a receiver was <code>null</code>.</p>
 <p>SARL supports the safe navigation operator <code>?</code>. to make such code better readable.</p>
 <pre class="prettyprint lang-spec linenums">
 // First expression
@@ -664,7 +664,7 @@ myRef?.length()</pre>
 </li>
 <li>
 <p id="Inherited_Method" class="example passed"><strong>Inherited Method</strong></p>
-<p>When it is possible to extend an existing type, the methods can be overridden. In this case, the <code>super</code> keyword permits to invoke the inherited implementation of the method from the overriding method.</p>
+<p>When it is possible to extend an existing type, the methods can be overridden. In this case, the <code>super</code> keyword permits invoking the inherited implementation of the method from the overriding method.</p>
 <pre class="prettyprint lang-spec linenums">
 def anAction {
   // Call the inherited implementation
@@ -673,7 +673,7 @@ def anAction {
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Constructor_Call">Constructor Call</h3>
-<p>Constructor calls corresponds to the calls of a constructor function for an object.</p>
+<p>Constructor calls correspond to the calls of a constructor function for an object.</p>
 <ul>
 <li>
 <p id="Instance_Creation" class="example passed"><strong>Instance Creation</strong></p>
@@ -686,7 +686,7 @@ var c = new ArrayList&lt;Integer&gt;</pre>
 <li>
 <p id="Inherited_Constructor" class="example passed"><strong>Inherited Constructor</strong></p>
 <p>In the implementation of a constructor, it is possible to call one of the inherited constructors. The syntax is similar to Java: the <code>super</code> keyword is used to represent the inherited constructor.</p>
-<p><span class="label label-warning">Important</span> It is recommended to type the two parenthesis when invoking the default constructor of the super type. Indeed, in some cases, typing <code>super</code> causes no side effect that is an error.</p>
+<p><span class="label label-warning">Important</span> It is recommended typing the two parentheses when invoking the default constructor of the super type. Indeed, in some cases, typing <code>super</code> causes no side-effect that is an error.</p>
 <pre class="prettyprint lang-spec linenums">
 new () {
   super() // Call the inherited default constructor
@@ -785,7 +785,7 @@ val runnable : Runnable = [ |
 </li>
 <li>
 <p id="Lambda_as_the_Last_Parameter_of_a_Method" class="example passed"><strong>Lambda as the Last Parameter of a Method</strong></p>
-<p>When a method call's last parameter is a lambda it can be passed right after the parameter list.</p>
+<p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
 <p>For instance if you want to sort some strings by their length, you could write the following two codes.</p>
 <pre class="prettyprint lang-spec linenums">
 var t : List&lt;String&gt;
@@ -839,14 +839,14 @@ val name = if (e1 != null) e1 + ' ' + e2 else e2</pre>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Switch_Expression">Switch Expression</h3>
-<p>The switch expression is very different from Java's switch statement. The use of switch is not limited to certain values but can be used for any object reference. The operator <code>==</code> or its Java-equivalent <code>Object.equals(Object)</code> are used to compare the value in the case with the one you are switching over.</p>
+<p>The switch expression is very different from Java's switch statement. The use of switch is not limited to certain values, but can be used for any object reference. The operator <code>==</code> or its Java-equivalent <code>Object.equals(Object)</code> are used to compare the value in the case with the one you are switching over.</p>
 <ul>
 <li>
 <p id="Cases" class="example passed"><strong>Cases</strong></p>
 <p>Consider the following example. the main expression <code>myString</code> is evaluated first and then compared to each case sequentially. If the case expression is of type boolean, the case matches if the expression evaluates to <code>true</code>. If it is not of type boolean it is compared to the value of the main expression using the operator <code>==</code>.</p>
 <p>If a case is a match, the case expression after the colon is evaluated and is the result of the whole switch expression. Note that there is no need for a <code>break</code> keyword, as in Java: the case following the matching case is never evaluated.</p>
 <p>The main expression (parameter of <code>switch</code>) can also be a computed value instead of a field or variable.</p>
-<p><span class="label label-danger">Important</span> A case must contains an expression. If you want to do nothing for a given case, put an empty block.</p>
+<p><span class="label label-warning">Important</span> A case must contains an expression. If you want to do nothing for a given case, put an empty block.</p>
 <pre class="prettyprint lang-spec linenums">
 def example1 : String {
   switch myString {
@@ -941,7 +941,7 @@ while (i&lt;123)</pre>
 </li>
 </ul>
 <h3 class="exampleGroup passed" id="Exception_Support">Exception Support</h3>
-<p>SARL supports exception throwning and catching. The mechanism is similar to the one of Java.</p>
+<p>SARL supports exception throwing and catching. The mechanism is similar to the one of Java.</p>
 <ul>
 <li>
 <p id="Throwing_Exceptions" class="example passed"><strong>Throwing Exceptions</strong></p>
@@ -951,7 +951,7 @@ throw new IllegalArgumentException("explanation")</pre>
 </li>
 <li>
 <p id="Try_Catch_Finally" class="example passed"><strong>Try, Catch, Finally</strong></p>
-<p>The try-catch-finally expression is used to handle exceptional situations. Checked exceptions are treated like runtime exceptions and only optionally validated. You can but do not have to catch them as they will be silently thrown.</p>
+<p>The try-catch-finally expression is used to handle exceptional situations. Checked exceptions are treated like runtime exceptions and only optionally validated. You can, but do not have to, catch them as they will be silently thrown.</p>
 <pre class="prettyprint lang-spec linenums">
 try {
   throw new RuntimeException()
@@ -968,7 +968,7 @@ finally {
 </li>
 <li>
 <p id="Try_Catch_as_an_Expression" class="example passed"><strong>Try-Catch as an Expression</strong></p>
-<p>For try-catch, it is again beneficial that it is an expression, because you can write code like the following and do not have to rely on non-final variables:</p>
+<p>For try-catch, the argument is an expression. Consequently, you can write code like the following and do not have to rely on non-final variables:</p>
 <pre class="prettyprint lang-spec linenums">
 def readFromFile : String { } 
 def example {

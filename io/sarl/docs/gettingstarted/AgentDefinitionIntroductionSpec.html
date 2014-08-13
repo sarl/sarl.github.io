@@ -103,7 +103,7 @@ agent MyAgent {
   <li>
 <code>Destroy</code>: Notifies the destruction of the agent.</li>
 </ul>
-<p>This means that when agent has been spawned and its ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
+<p>This means that when agent has been spawned and it is ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
 <p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any system resource properly.</p>
 <pre class="prettyprint lang-spec linenums">
 import io.sarl.core.Initialize
@@ -124,7 +124,7 @@ agent MyAgent {
 <p id="Accessing_the_event_s_occurrence" class="example passed"><strong>Accessing the event's occurrence</strong></p>
 <p>Inside a behavior declaration you may need to access the event instance the agent is reacting to.</p>
 <p>This instance is called an <code>occurrence</code>.</p>
-<p>In the case of an Initialize events you can access the parameters for the agent spawn using <code>occurrence.parameters</code></p>
+<p>In the case of an Initialize events you can access the arguments for the agent spawn using <code>occurrence.parameters</code></p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   
@@ -145,8 +145,8 @@ agent MyAgent {
 <ul>
 <li>
 <p id="Use_the_capacity_to_send_an_event_in_the_default_space" class="example passed"><strong>Use the capacity to send an event in the default space</strong></p>
-<p>Now, we will want our agent to send data to other agents. The data is embedded into events. The definition of an event is described above.</p>
-<p><span class="label label-note">Note</span> In this document, we limit our explanation to the sending of the events in the default space of the default context of the agent.</p>
+<p>Now, we will want our agent to send data to other agents. The data are embedded into events. The definition of an event is described above.</p>
+<p><span class="label label-info">Note</span> In this document, we limit our explanation to the sending of the events in the default space of the default context of the agent.</p>
 <p>For sending an event in the default space, the <code>DefaultContextInteractions</code> built-in capacity should be used.</p>
 <p>Below, we define an agent that is used this capacity.</p>
 <pre class="prettyprint lang-spec linenums">

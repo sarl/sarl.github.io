@@ -59,7 +59,7 @@
 <p>The typical command line is:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot
 </pre>
-<p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last parameter is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
+<p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last argument is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
 <h3 class="exampleGroup pending" id="Specify_the_Agent_to_Launch">Specify the Agent to Launch</h3>
 <p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent
@@ -70,7 +70,7 @@
   <li>launch an agent that is spawning the other agents.</li>
 </ul>
 <h3 class="exampleGroup passed" id="Command_Line_Parameters">Command Line Parameters</h3>
-<p>It is possible to give parameters to the launched agent. Indeed, all the parameters given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
+<p>It is possible to give arguments to the launched agent. Indeed, all the arguments given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
 <ul>
 <li>
 <p id="Give_Parameters_to_the_Agent" class="example passed"><strong>Give Parameters to the Agent</strong></p>
@@ -79,8 +79,8 @@
 </pre>
 </li>
 <li>
-<p id="Retreive_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retreive the Command Line Parameters in the Agent</strong></p>
-<p>For retreiving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
+<p id="Retrieve_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retrieve the Command Line Parameters in the Agent</strong></p>
+<p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
 <pre class="prettyprint lang-spec linenums">
 agent MyAgent {
   on Initialize {
