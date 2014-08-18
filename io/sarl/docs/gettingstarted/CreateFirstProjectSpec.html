@@ -52,11 +52,8 @@
 </div>
 <div class="container">
 <h1>Create First Project</h1>
-<p>For developing with SARL, you should create a project. This document describes two ways for created SARL projects in Eclipse:</p>
-<ul>
-  <li>a SARL standard project, and</li>
-  <li>a Maven project with the SARL nature.</li>
-</ul>
+<p>For developing with SARL, you should create a project. This document describes two ways for created SARL projects in Eclipse.</p>
+<ul class="page_outline" id="page_outline"><li><a href="#Create_a_SARL_Project">Create a SARL Project</a></li><li><a href="#Create_a_Maven_Project_with_SARL_Nature">Create a Maven Project with SARL Nature</a></li><li><a href="#What_s_next">What's next?</a></li></ul>
 <h3 class="exampleGroup pending" id="Create_a_SARL_Project">Create a SARL Project</h3>
 <p>For creating a project, you should open your Eclipse and click on <strong>File &gt; New &gt; Projects</strong>, and select "SARL Project" in the SARL category.</p>
 <center><img alt="Select the SARL Project Type" src="./new_sarl_project_screen_1.png" width="60%"></center>
@@ -193,16 +190,22 @@
    ...
    &lt;repositories&gt;
       ...
+      &lt;!-- The following repositories are needed until the
+           SARL and Janus are released on the Maven Central --&gt;
       &lt;repository&gt;
          &lt;id&gt;sarl-repository&lt;/id&gt;
          &lt;url&gt;http://maven.sarl.io/&lt;/url&gt;
+      &lt;/repository&gt;
+      &lt;repository&gt;
+         &lt;id&gt;janus-repository&lt;/id&gt;
+         &lt;url&gt;http://maven.janusproject.io/&lt;/url&gt;
       &lt;/repository&gt;
    &lt;/repositories&gt;
    ...
 &lt;/project&gt;
 </pre>
-<p>Replace the version number (<code>0.1.0</code>) of SARL with the one you want to use.</p>
-<p>Replace the version number (<code>2.0.1.0</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use.</p>
+<p>Replace the version number (<code>0.1.0</code>) of SARL with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.sarl.io/VERSION.txt">VERSION.txt</a> provides the lastest version numbers of the SARL artifacts, as well.</p>
+<p>Replace the version number (<code>2.0.1.0</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.janusproject.io/VERSION.txt">VERSION.txt</a> provides the lastest version numbers of the Janus artifacts, as well.</p>
 <h3 class="exampleGroup pending" id="What_s_next">What's next?</h3>
 <p>In the next section, we will learn how to create our first agent.</p>
 <p><a href="AgentDefinitionIntroductionSpec.html">Next</a>.</p>
