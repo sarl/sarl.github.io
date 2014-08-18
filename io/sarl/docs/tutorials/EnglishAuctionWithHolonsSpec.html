@@ -190,7 +190,7 @@ agent Bidder {
 <ul>
 <li>
 <p id="Initial_definition" class="example passed"><strong>Initial definition</strong></p>
-<p>The initial definition of the auctioneer is defined below. The auctioneer is starting the auction with a price of 50. It is notifying the bidders with an <code>Price</code> event. Because the bidders are sub-agents, they are living in the inner context of the auctioneer. For sending the <code>Price</code> event to the bidders, the auctioneer must put it in the default space of its inner context. This particular type of emit is supported by the <code>wake</code> function, which is provided by the <code>Behaviors</code> capacity. This function does the same as: <code>
+<p>The initial definition of the auctioneer is defined below. The auctioneer is starting the auction with a price of 50. It is notifying the bidders with a <code>Price</code> event. Because the bidders are sub-agents, they are living in the inner context of the auctioneer. For sending the <code>Price</code> event to the bidders, the auctioneer must put it in the default space of its inner context. This particular type of emit is supported by the <code>wake</code> function, which is provided by the <code>Behaviors</code> capacity. This function does the same as: <code>
 innerContext.defaultSpace.emit(new Price(50))
 </code></p>
 <p><span class="label label-warning">Interaction Principle</span> For sending data to its sub-agents, a super-agent must fire an event in the default space of its inner context. The <code>wake</code> function is supporting this interaction.</p>
@@ -211,7 +211,7 @@ agent Auctioneer {
 </li>
 <li>
 <p id="Create_the_bidders" class="example passed"><strong>Create the bidders</strong></p>
-<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits to create an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the three bidders.</p>
+<p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits creating an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the three bidders.</p>
 <pre class="prettyprint lang-spec linenums">
 agent Auctioneer {
           
