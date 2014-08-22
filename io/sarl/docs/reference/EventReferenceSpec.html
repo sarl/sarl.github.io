@@ -52,21 +52,23 @@
 </div>
 <div class="container">
 <h1>Event Reference</h1>
-<p>This document describes how to define events in SARL. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
-<ul class="page_outline" id="page_outline"><li><a href="#Event_vs_Message">Event vs. Message</a></li><li><a href="#Defining_an_Event">Defining an Event</a></li><li><a href="#Reserved_Events">Reserved Events</a></li></ul><p>An event is one of the core concepts in SARL. It is a data structure composed of attributes. Each attribute has a name, a type, and a value.</p>
-<p>Events are exchanged among the agents or the behavioral units of agents, inside a given <a href="./SpaceReferenceSpec.html">Space</a>.</p>
+<ul class="page_outline" id="page_outline"><li><a href="#Defining_an_Event">Defining an Event</a></li></ul><p>This document describes how to define events in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>An event is one of the core concepts in SARL. It is a data structure composed of attributes. Each attribute has a name, a type, and a value.</p>
+<p>Events are exchanged among the agents or the behavioral units of agents, inside a given <a href="SpaceReferenceSpec.html">Space</a>.</p>
 <p>Each event has:</p>
 <ul>
   <li>a type, i.e. its qualified name;</li>
   <li>a source, the identifier of the sender of the event; and</li>
   <li>a collection of name-value pairs, i.e. the attributes of the event.</li>
 </ul>
-<h3 class="exampleGroup pending" id="Event_vs_Message">Event vs. Message</h3>
+<ul><li>
+<p id="Event_vs_Message" class="example passed"><strong>Event vs. Message</strong></p>
 <p>In computer-science literature, there are two major concepts for defining the data structures that are exchanged by entities: the event, and the message.</p>
 <p>It is mandatory to specify the type, the source and the potential embedded data for both of them. The difference is related to the specification of the receiver. In one hand, the event does not force the sender to specify the receiver identifier. On the other hand, the message needs to have at least on receiver identifier (even if it means "all" the possible identifiers).</p>
 <p>Because the event permits to send data without being care of the sender, this concept is privileged by the designers of SARL.</p>
-<p>Consequently, for sending data to another entity, you must create an instance of an event, and emit this object in a <a href="./SpaceReferenceSpec.html">Space</a>. The sending API is detailed in the <a href="BuiltinCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
+<p>Consequently, for sending data to another entity, you must create an instance of an event, and emit this object in a <a href="SpaceReferenceSpec.html">Space</a>. The sending API is detailed in the <a href="BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
 <p><span class="label label-info">Note</span> There is no message concept in SARL. All the communications are supported by the concept of <code>Event</code></p>
+</li></ul>
 <h3 class="exampleGroup passed" id="Defining_an_Event">Defining an Event</h3>
 <ul>
 <li>
@@ -80,7 +82,7 @@ event Event2</pre>
 </li>
 <li>
 <p id="Define_an_event_with_attributes" class="example passed"><strong>Define an event with attributes</strong></p>
-<p>Events can carry information. This information is described by a set of attributes. Each attribute is declared according to the "Field Declaration" of the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
+<p>Events can carry information. This information is described by a set of attributes. Each attribute is declared according to the "Field Declaration" of the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p>The following code example is defining the event <code>MyEvent</code> with three attributes. Each declaration of the attributes illustrates one possible syntax for defining a field:</p>
 <ul>
   <li>declaration with explicit typing: <code>var number : Integer</code>
@@ -145,14 +147,16 @@ e2.number = 345</pre>
 </li>
 </ul>
 </div>
-<h3 class="exampleGroup pending" id="Reserved_Events">Reserved Events</h3>
+<ul><li>
+<p id="Reserved_Events" class="example passed"><strong>Reserved Events</strong></p>
 <p>Several events are defined and reserved by the SARL Core Specification. They are composing the minimal set of events that a runtime environment must support for running a SARL program.</p>
 <p><span class="label label-danger">Important</span> You must not define an event with a fully qualified name equals to one of the reserved events.</p>
 <p>Two types of reserved events exist:</p>
 <ul>
-  <li>the events reserved in the SARL Core Specification for the <a href="./AgentReferenceSpec.html#Behaviors_of_an_Agent">agent's life cycle</a>; and</li>
-  <li>the events supported by the <a href="./BuiltinCapacityReferenceSpec.html">Built-in Capacities</a>.</li>
+  <li>the events reserved in the SARL Core Specification for the <a href="AgentReferenceSpec.html#Behaviors_of_an_Agent">agent's life cycle</a>; and</li>
+  <li>the events supported by the <a href="BuiltInCapacityReferenceSpec.html">Built-in Capacities</a>.</li>
 </ul>
+</li></ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

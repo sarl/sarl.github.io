@@ -52,8 +52,8 @@
 </div>
 <div class="container">
 <h1>Behavior Reference</h1>
-<p>This document describes the features related to the definition of a behavior in SARL. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="./AgentReferenceSpec.html">Agent Reference</a>.</p>
-<ul class="page_outline" id="page_outline"><li><a href="#Defining_a_Behavior">Defining a Behavior</a></li><li><a href="#Behavior_Units_of_a_Behavior">Behavior Units of a Behavior</a></li><li><a href="#Capacities_and_Skills">Capacities and Skills</a></li></ul><p>A <code>Behavior</code> is the specification of a collection of behavior units. This <code>Behavior</code> may be used by an agent for building its global behavior.</p>
+<ul class="page_outline" id="page_outline"><li><a href="#Defining_a_Behavior">Defining a Behavior</a></li><li><a href="#Behavior_Units_of_a_Behavior">Behavior Units of a Behavior</a></li><li><a href="#Capacities_and_Skills">Capacities and Skills</a></li></ul><p>This document describes the features related to the definition of a behavior in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="AgentReferenceSpec.html">Agent Reference</a>.</p>
+<p>A <code>Behavior</code> is the specification of a collection of behavior units. This <code>Behavior</code> may be used by an agent for building its global behavior.</p>
 <h3 class="exampleGroup passed" id="Defining_a_Behavior">Defining a Behavior</h3>
 <p>A behavior is declared with the <code>behavior</code> keyword. In the behavior's body block, we can declare Mental States (in the form of attributes), Actions and Behaviors.</p>
 <ul>
@@ -134,7 +134,7 @@ agent MyAgent {
   <li>reactive: the agent react when it is receiving events, and</li>
   <li>pro-active: the agent executes by itself one of its behaviors.</li>
 </ul>
-<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="./SpaceReferenceSpec.html">spaces</a>, and received by the agents, and their behaviors, belonging to these spaces. A behavior may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax:</p>
+<p>The definition of the reactive behaviors is based on the event handling mechanism of SARL. Events may be emitted in <a href="SpaceReferenceSpec.html">spaces</a>, and received by the agents, and their behaviors, belonging to these spaces. A behavior may indicate that it is interesting for receiving an event by specifying an event handler using the following syntax:</p>
 <pre class="prettyprint">on &lt;EventName&gt; [&lt;Guard&gt;] {
     &lt;Statements&gt;
 }
@@ -171,7 +171,7 @@ behavior MyBehavior {
 <li>
 <p id="Pro_active_Behavior_Units" class="example passed"><strong>Pro-active Behavior Units</strong></p>
 <p>A proactive behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by a part of the code external to this behavior. In opposite, the initiator of the execution of a proactive behavior is the agent itself.</p>
-<p>In SARL, a proactive behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="./BuiltinCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
+<p>In SARL, a proactive behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="BuiltInCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
 <pre class="prettyprint lang-spec linenums">
 behavior MyBehavior {
   uses Schedules
@@ -189,7 +189,7 @@ behavior MyBehavior {
 <ul>
 <li>
 <p id="Defining_a_Capacity_and_a_Skill" class="example passed"><strong>Defining a Capacity and a Skill</strong></p>
-<p>The definition of a capacity or a skill is out of the scope of this reference document. For details, please read the <a href="./CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="./SkillReferenceSpec.html">Skill Reference</a>.</p>
+<p>The definition of a capacity or a skill is out of the scope of this reference document. For details, please read the <a href="CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="SkillReferenceSpec.html">Skill Reference</a>.</p>
 <p>In the rest of this section, it is assumed that the following capacity and skill are defined:</p>
 <pre class="prettyprint">capacity Cap {
     def action
@@ -226,7 +226,7 @@ behavior MyBehavior {
 </li>
 <li>
 <p id="Using_a_Capacity_with_the_Extension_Methods" class="example passed"><strong>Using a Capacity with the Extension Methods</strong></p>
-<p>Invoking a capacity/skill with the getter method is not user-friendly. Since the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> describes the "extension method" mechanism, it is possible to use it for invoking the capacities.</p>
+<p>Invoking a capacity/skill with the getter method is not user-friendly. Since the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> describes the "extension method" mechanism, it is possible to use it for invoking the capacities.</p>
 <p>But, instead of using an <code>import</code> directive, the <code>uses</code> keyword is provided for importing the capacities into the agent. In the following example, the <code>Cap</code> capacity is imported.</p>
 <p>After a capacity was "imported", it is possible to directly call the functions of the capacity (according to the extension method syntax). In the following example, the action with the name <code>action</code> is invoked. This action is defined in the <code>Cap</code> capacity.</p>
 <pre class="prettyprint lang-spec linenums">

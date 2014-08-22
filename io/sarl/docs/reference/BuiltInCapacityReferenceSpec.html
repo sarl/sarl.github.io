@@ -52,8 +52,8 @@
 </div>
 <div class="container">
 <h1>Built-in Capacity Reference</h1>
-<p>This document describes the built-in capacities in SARL. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="./CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="./SkillReferenceSpec.html">Skill Reference</a>.</p>
-<ul class="page_outline" id="page_outline"><li><a href="#ExternalContextAccess">ExternalContextAccess</a></li><li><a href="#InnerContextAccess">InnerContextAccess</a></li><li><a href="#DefaultContextInteractions">DefaultContextInteractions</a></li><li><a href="#Lifecycle">Lifecycle</a></li><li><a href="#Schedules">Schedules</a></li><li><a href="#Behaviors">Behaviors</a></li><li><a href="#Use_of_the_Built_in_Capacities">Use of the Built-in Capacities</a></li></ul><p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<p>This document describes the built-in capacities in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="SkillReferenceSpec.html">Skill Reference</a>.</p>
+<ul class="page_outline" id="page_outline"><li><a href="#ExternalContextAccess">ExternalContextAccess</a></li><li><a href="#InnerContextAccess">InnerContextAccess</a></li><li><a href="#DefaultContextInteractions">DefaultContextInteractions</a></li><li><a href="#Lifecycle">Lifecycle</a></li><li><a href="#Schedules">Schedules</a></li><li><a href="#Behaviors">Behaviors</a></li></ul><p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
 <p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
 <p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential to respect the commonly accepted competencies of agents. These capacities are considered the main building blocks on top of which other higher level capacities and skills can be constructed. They are defined in the SARL language, but the skills implementing them are provided by the runtime environment, e.g. the <a href="http://www.janus-project.io">Janus platform</a>. This runtime environment is responsible for creating them and injecting them in the agent before their execution begins. Therefore, when the agent receives the <code>Initialize</code> event they are already available.</p>
 <p>The following figure presents the different contexts associated to an agent <code>A</code>. Several built-in capacities permit accessing and manage these contexts. The agents are represented by stylized humans, the contexts by the blue boxes, and the spaces by the small color boxes in the contexts.</p>
@@ -164,7 +164,7 @@
 </li>
 <li>
 <p id="Sending_an_Event_in_the_Default_Space" class="example passed"><strong>Sending an Event in the Default Space</strong></p>
-<p>The core mechanism for information exchanges among agents is <a href="./EventReferenceSpec.html">event-based</a>. For sending an event in the default space of the default context, the following function is provided:</p>
+<p>The core mechanism for information exchanges among agents is <a href="EventReferenceSpec.html">event-based</a>. For sending an event in the default space of the default context, the following function is provided:</p>
 <pre class="prettyprint">def emit(e : Event)
 </pre>
 <p>This function emits the given event with no scope (i.e., all registered agent will receive the event) in the default space of the default context.</p>
@@ -246,7 +246,7 @@ def in(task : AgentTask,
        delay : long,
        procedure : (Agent) =&gt; void) : AgentTask
 </pre>
-<p>The first function submits the given procedure (a lambda expression as defined in the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be delayed during the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
+<p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be delayed during the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
 <p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
 </li>
 <li>
@@ -258,7 +258,7 @@ def every(period : AgentTask,
           delay : long,
           procedure : (Agent) =&gt; void) : AgentTask
 </pre>
-<p>The first function submits the given procedure (a lambda expression as defined in the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be launched periodically with a period of the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
+<p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be launched periodically with a period of the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
 <p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
 </li>
 <li>
@@ -307,12 +307,14 @@ def cancel(task : AgentTask,
 <p>The listener replied by this function is the one used by the agent (and its behaviors) for listening events related to all the contexts (default, external, and inner).</p>
 </li>
 </ul>
-<h3 class="exampleGroup pending" id="Use_of_the_Built_in_Capacities">Use of the Built-in Capacities</h3>
+<ul><li>
+<p id="Use_of_the_Built_in_Capacities" class="example passed"><strong>Use of the Built-in Capacities</strong></p>
 <p>Details on the use of the built-in capacities may be found in the references of the major behavior-based concepts of SARL:</p>
 <ul>
   <li><a href="AgentReferenceSpec.html">Agent</a></li>
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
+</li></ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

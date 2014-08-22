@@ -52,8 +52,7 @@
 </div>
 <div class="container">
 <h1>Agent Communication in Sub-Space with the Ping Pong Agents</h1>
-<p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages inside a sub-space. Before reading this document, it is recommended reading the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
-<ul class="page_outline" id="page_outline"><li><a href="#Principle_of_the_Application">Principle of the Application</a></li><li><a href="#Event_definition">Event definition</a></li><li><a href="#Pong_agent">Pong agent</a></li><li><a href="#Ping_Agent">Ping Agent</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul>
+<ul class="page_outline" id="page_outline"><li><a href="#Event_definition">Event definition</a></li><li><a href="#Pong_agent">Pong agent</a></li><li><a href="#Ping_Agent">Ping Agent</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul><p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages inside a sub-space. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <div class="bt-download">
 <a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="../../../../images/download-icon.png"></a>
 </div>
@@ -67,7 +66,8 @@
   <li>the definition of a <em>proactive</em> behavior: waiting for partners.</li>
 </ul>
 <p>The source code related to this tutorial may be found in the <a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/pingpongspace">SARL demos</a>.</p>
-<h3 class="exampleGroup pending" id="Principle_of_the_Application">Principle of the Application</h3>
+<ul><li>
+<p id="Principle_of_the_Application" class="example passed"><strong>Principle of the Application</strong></p>
 <p>The principle of the application is the following:</p>
 <ul>
   <li>The agents are joining a sub-space given at initialization.</li>
@@ -77,6 +77,7 @@
 </ul>
 <p>These messages contain an integer number that indicates the number of the event.</p>
 <center><img src="./pingpongspace.png"></center>
+</li></ul>
 <h3 class="exampleGroup passed" id="Event_definition">Event definition</h3>
 <p>First, the <code>Ping</code> and <code>Pong</code> events must be defined.</p>
 <ul>
