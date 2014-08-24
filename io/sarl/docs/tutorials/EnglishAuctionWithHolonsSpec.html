@@ -52,9 +52,9 @@
 </div>
 <div class="container">
 <h1>English Auction with Holons</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Principle_of_the_Application">Principle of the Application</a></li><li><a href="#Definitions_of_the_events">Definitions of the events</a></li><li><a href="#Definition_of_the_bidder">Definition of the bidder</a></li><li><a href="#Definition_of_the_auctioneer">Definition of the auctioneer</a></li><li><a href="#Stop_the_agents">Stop the agents</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul><p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
+<ul class="page_outline" id="page_outline"><li><a href="#Definitions_of_the_events">Definitions of the events</a></li><li><a href="#Definition_of_the_bidder">Definition of the bidder</a></li><li><a href="#Definition_of_the_auctioneer">Definition of the auctioneer</a></li><li><a href="#Stop_the_agents">Stop the agents</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul><p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
 <div class="bt-download">
-<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="../../../../images/download-icon.png"></a>
+<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"></a>
 </div>
 <p>According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial, the terms "agent" and "holon" are synonymous.</p>
 <p>The elements that are explained in this tutorial are:</p>
@@ -67,12 +67,14 @@
 </ul>
 <p><span class="label label-info">Note</span> The communication between the sub-agents is out of the scope of this tutorial. For interested readers, the <a href="../reference/AgentReferenceSpec.html">Agent Reference</a> may be read.</p>
 <p>The source code related to this tutorial may be found in the <a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/holonicauction">SARL demos</a>.</p>
-<ul><li>
+<ul>
+<li>
 <p id="Principle_of_the_English_Auction" class="example passed"><strong>Principle of the English Auction</strong></p>
 <p>This type of auction is arguably the most common form of auction in use today. Participants bid openly against one another, with each subsequent bid required to be higher than the previous bid. An auctioneer may announce prices, bidders may call out their bids themselves. The auction ends when no participant is willing to bid further, at which point the highest bidder pays their bid. Alternatively, if the seller has set a minimum sale price in advance (the 'reserve' price) and the final bid does not reach that price the item remains unsold. Sometimes the auctioneer sets a minimum amount by which the next bid must exceed the current highest bid. The most significant distinguishing factor of this auction type is that the current highest bid is always available to potential bidders.</p>
 <p>Source: <a href="http://en.wikipedia.org/wiki/Auction">Wikipedia</a></p>
-</li></ul>
-<h3 class="exampleGroup pending" id="Principle_of_the_Application">Principle of the Application</h3>
+</li>
+<li>
+<p id="Principle_of_the_Application" class="example passed"><strong>Principle of the Application</strong></p>
 <p>The principle of the application is the following:</p>
 <ul>
   <li>The application is set-up with one auctioneer agent and  three bidders agents.</li>
@@ -83,11 +85,15 @@
 </ul>
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
 <center><img src="./holonic_auction.png"></center>
-<ul><li>
+<pre class="prettyprint lang-spec linenums">
+"./holonic_auction.png".mustBePicture</pre>
+</li>
+<li>
 <p id="Why_are_the_sub_agents_in_the_inner_context" class="example passed"><strong>Why are the sub-agents in the inner context?</strong></p>
 <p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger <a href="http://en.wikipedia.org/wiki/Holon_(philosophy)">holon</a>, <strong>and</strong> at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
 <p><span class="label label-info">Note</span> According to the SARL specifications, all the agents in a context belong to the default space of this context. This property is important for designing the communication links between two adjacent levels in the hierarchy of agents. The default space of the inner context becomes the natural place where the super-agent and its sub-agents are interacting.</p>
-</li></ul>
+</li>
+</ul>
 <h3 class="exampleGroup passed" id="Definitions_of_the_events">Definitions of the events</h3>
 <p>In the application, two events are needed: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>
 <ul>
