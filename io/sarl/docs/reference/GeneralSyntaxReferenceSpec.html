@@ -296,135 +296,416 @@ var b = 56 as Integer</pre>
 <p>SARL supports a collection of operators. Most of them are infix operators, and several are postfix operators.</p>
 <ul>
 <li>
-<p id="Infix_Operators" class="example passed"><strong>Infix Operators</strong></p>
-<p>Below, it is the complete list of all available operators (from less prior to most prior), and their corresponding method signatures:</p>
-<pre class="prettyprint lang-spec linenums">
-// Add the value 3 to the list l.
-l += 3
-l.operator_add(3)
-// Remove the value 18 from the list l.
-l -= 18
-l.operator_remove(18)
-// true if b1 or b2 is true
-r = b1 || b2
-r = b1.operator_or(b2)
-// true if b1 and b2 are true
-r = b1 &amp;&amp; b2
-r = b1.operator_and(b2)
-// true if e1 is equal to e2, based on Object::equals(Object), null-value safe.
-r = e1 == e2
-r = e1.operator_equals(e2)
-// true if e1 is not equal to e2, based on Object::equals(Object), null-value safe.
-r = e1 != e2
-r = e1.operator_notEquals(e2)
-// true if e1 is same object as e2, equivalent as the operator == of Java.
-r = e1 === e2
-r = e1.operator_tripleEquals(e2)
-// true if e1 is not same object as e2, equivalent as the operator != of Java.
-r = e1 !== e2
-r = e1.operator_tripleNotEquals(e2)
-// true if e1 is lower than e2.
-r = e1 &lt; e2
-r = e1.operator_lessThan(e2)
-// true if e1 is greater than e2.
-r = e1 &gt; e2
-r = e1.operator_greaterThan(e2)
-// true if e1 is lower than or equal to e2.
-r = e1 &lt;= e2
-r = e1.operator_lessEqualsThan(e2)
-// true if e1 is greater than or equal to e2.
-r = e1 &gt;= e2
-r = e1.operator_greaterEqualsThan(e2)
-// Create a Pair with e1 and e2.
-r = e1 -&gt; e2
-r = e1.operator_mappedTo(e2)
-// Define a range of values from e1, inclusive, to e2, inclusive.
-r = e1 .. e2
-r = e1.operator_upTo(e2)
-// Define a range of values from e1, exclusive, to e2, inclusive.
-r = e1 &gt;.. e2
-r = e1.operator_greaterThanDoubleDot(e2)
-// Define a range of values from e1, inclusive, to e2, exclusive.
-r = e1 ..&lt; e2
-r = e1.operator_doubleDotLessThan(e2)
-// Bind the object e1 to the procedure p. p must be a 
-// procedure that takes e1 as parameter. The value of this operator is e1.
-r = e1 =&gt; p
-r = e1.operator_doubleArrow(p)
-// Shift left e1 by e2.
-r = e1 &lt;&lt; e2
-r = e1.operator_doubleLessThan(e2)
-// Shift right e1 by e2.
-r = e1 &gt;&gt; e2
-r = e1.operator_doubleGreaterThan(e2)
-// 
-//r = e1 &lt;&lt;&lt; e2
-//r = e1.operator_tripleLessThan(e2)
-// Unsigned shift right e1 by e2.
-r = e1 &gt;&gt;&gt; e2
-r = e1.operator_tripleGreaterThan(e2)
-//
-//r = e1 &lt;&gt; e2
-//r = e1.operator_diamond(e2)
-// e1 if e1 is not null, or e2 if e1 is null.
-r = o1 ?: o2
-r = e1.operator_elvis(e2)
-// negative value if e1 is strictly lower than e2,
-// zero if e1 is equal to e2,
-// positive value if e2 is strictly greater than e2.
-r = e1 &lt;=&gt; e2
-r = e1.operator_spaceship(e2)
-// addition of e1 and e2
-r = e1 + e2
-r = e1.operator_plus(e2)
-// substract e2 to e1
-r = e1 - e2
-r = e1.operator_minus(e2)
-// multiply e1 and e2
-r = e1 * e2
-r = e1.operator_multiply(e2)
-// divide e1 by e2
-r = e1 / e2
-r = e1.operator_divide(e2)
-// modulo of the division of e1 by e2
-r = e1 % e2
-r = e1.operator_modulo(e2)
-// e1 power e2
-r = e1 ** e2
-r = e1.operator_power(e2)
-// boolean negation
-r = !b1
-r = b1.operator_not()
-// unary minus sign
-r = -e1
-r = e1.operator_minus()</pre>
+<p id="Arithmetic_operators" class="example passed"><strong>Arithmetic operators</strong></p>
+<p>The arithmetic operators are listed below. The arithmetic operators take numbers as operands. They could be unary (one operand) or binary (two operands).</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a + b</td>
+<td>operator_plus</td>
+<td>Add a and b.</td>
+</tr>
+<tr>
+<td>a - b</td>
+<td>operator_minus (binary)</td>
+<td>Subtract b to a.</td>
+</tr>
+<tr>
+<td>a * b</td>
+<td>operator_multiply</td>
+<td> Multiply a by b.</td>
+</tr>
+<tr>
+<td>a / b</td>
+<td>operator_divide</td>
+<td>Divide a by b.</td>
+</tr>
+<tr>
+<td>a % b</td>
+<td>operator_modulo</td>
+<td>Modulo of the division of a by b.</td>
+</tr>
+<tr>
+<td>a ** b</td>
+<td>operator_power</td>
+<td>Compute the power b of a.</td>
+</tr>
+<tr>
+<td>- a</td>
+<td>operator_minus (unary</td>
+<td>Negate the value of a.</td>
+</tr>
+<tr>
+<td>a ++</td>
+<td>operator_plusPlus</td>
+<td>Increment a by 1, reply the value before the incrementation.</td>
+</tr>
+<tr>
+<td>a --</td>
+<td>operator_moinsMoins</td>
+<td>Decrement a by 1, reply the value before the decrementation.</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p id="Postfix_Operators" class="example passed"><strong>Postfix Operators</strong></p>
-<p>The two postfix operators <code>++</code> and <code>--</code> are supported.</p>
-<pre class="prettyprint lang-spec linenums">
-// Increment e1 by 1.
-e1++
-e1.operator_plusPlus()
-// Decrement e1 by 1.
-e1--
-e1.operator_minusMinus()</pre>
+<p id="Comparison_operators_on_primitive_types" class="example passed"><strong>Comparison operators on primitive types</strong></p>
+<p>The comparison operators primitive types are listed below.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a == b</td>
+<td>operator_equals</td>
+<td>Test if a and b are equal.</td>
+</tr>
+<tr>
+<td>a != b</td>
+<td>operator_notEquals</td>
+<td>Test if a and b are not equal.</td>
+</tr>
+<tr>
+<td>a === b</td>
+<td>operator_tripleEquals</td>
+<td>Test if a and b are equal.</td>
+</tr>
+<tr>
+<td>a !== b</td>
+<td>operator_tripleNotEquals</td>
+<td>Test if a and b are not equal.</td>
+</tr>
+<tr>
+<td>a &lt; b</td>
+<td>operator_lessThan</td>
+<td>Test if a is lower than b (a, b cannot be boolean).</td>
+</tr>
+<tr>
+<td>a &gt; b</td>
+<td>operator_greaterThan</td>
+<td>Test if a is greater than b (a, b cannot be boolean).</td>
+</tr>
+<tr>
+<td>a &lt;= b</td>
+<td>operator_lessEqualsThan</td>
+<td>Test if a is lower than or equal to b (a, b cannot be boolean).</td>
+</tr>
+<tr>
+<td>a &gt;= b</td>
+<td>operator_greaterEqualsThan</td>
+<td>Test if a is greater than or equal to b (a, b cannot be boolean).</td>
+</tr>
+<tr>
+<td>a &lt;=&gt; b</td>
+<td>operator_spaceship</td>
+<td>Replies a negative value if a  b, otherwise 0.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Comparison_operators_on_objects" class="example passed"><strong>Comparison operators on objects</strong></p>
+<p>The comparison operators on objects are listed below.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a == b</td>
+<td>operator_equals</td>
+<td>Determine if a and b are equal. If a is Comparable then it is equivalent to `a.compareTo(b) == 0` else `a.equals(b)`. This operator is null-safe.</td>
+</tr>
+<tr>
+<td>a != b</td>
+<td>operator_notEquals</td>
+<td>Determine if a and b are not equal. If a is Comparable then it is equivalent to `a.compareTo(b) != 0` else `!a.equals(b)` This operator is null-safe.</td>
+</tr>
+<tr>
+<td>a === b</td>
+<td>operator_tripleEquals</td>
+<td>Test if a and b are the same object reference. This operator is not null-safe.</td>
+</tr>
+<tr>
+<td>a !== b</td>
+<td>operator_tripleNotEquals</td>
+<td>Test if a and b are not the same object reference. This operator is not null-safe.</td>
+</tr>
+<tr>
+<td>a &lt; b</td>
+<td>operator_lessThan</td>
+<td>Test if a is lower than b (a must be Comparable).</td>
+</tr>
+<tr>
+<td>a &gt; b</td>
+<td>operator_greaterThan</td>
+<td>Test if a is greater than b (a must be Comparable).</td>
+</tr>
+<tr>
+<td>a &lt;= b</td>
+<td>operator_lessEqualsThan</td>
+<td>Test if a is lower than or equal to b (a must be Comparable).</td>
+</tr>
+<tr>
+<td>a &gt;= b</td>
+<td>operator_greaterEqualsThan</td>
+<td>Test if a is greater than or equal to b (a must be Comparable).</td>
+</tr>
+<tr>
+<td>a &lt;=&gt; b</td>
+<td>operator_spaceship</td>
+<td>Replies a negative value if a  b, otherwise 0 (a must be Comparable).</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Boolean_Operators" class="example passed"><strong>Boolean Operators</strong></p>
+<p>The boolean operators are listed below. Each operator takes one or two boolean values as operands, and replies a boolean value resulting of the operational semantic of the operator.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a || b</td>
+<td>operator_or</td>
+<td>If a then true else b.</td>
+</tr>
+<tr>
+<td>a &amp;&amp; b</td>
+<td>operator_and</td>
+<td>If a then b else false.</td>
+</tr>
+<tr>
+<td>! a</td>
+<td>operator_not</td>
+<td>If a then false else true.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Bitwise_Operators" class="example passed"><strong>Bitwise Operators</strong></p>
+<p>The bit operators are listed below. The bit operators apply operations on the bits that are representing a numeric value.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a &lt;&lt; b</td>
+<td>operator_doubleLessThan</td>
+<td>Shift the signed bit representation of a to the left by b units.</td>
+</tr>
+<tr>
+<td>a &gt;&gt; b</td>
+<td>operator_doubleGreaterThan</td>
+<td>Shift the signed bit representation of a to the left by b units.</td>
+</tr>
+<tr>
+<td>a &lt;&lt;&lt; b</td>
+<td>operator_tripleLessThan</td>
+<td>Not supported.</td>
+</tr>
+<tr>
+<td>a &gt;&gt;&gt; b</td>
+<td>operator_tripleGreaterThan</td>
+<td>Shift the unsigned bit representation of a to the left by b units.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="String_Operators" class="example passed"><strong>String Operators</strong></p>
+<p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a + b</td>
+<td>operator_plus</td>
+<td>Concatenate the string representations of a and b.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Collection_Operators" class="example passed"><strong>Collection Operators</strong></p>
+<p>The collection operators are listed below. These operators are dedicated to the collections (lists, sets, maps...) Most of the time, the first operand is the collection on which the operator must be applied.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c += e</td>
+<td>operator_add</td>
+<td>Equivalent to: `c.add(e)`</td>
+</tr>
+<tr>
+<td>c -= e</td>
+<td>operator_remove</td>
+<td>Equivalent to: `c.remove(e)`</td>
+</tr>
+<tr>
+<td>a -&gt; b</td>
+<td>operator_mappedTo</td>
+<td>Create an instance of `Pair<a>` where `A` and `B` are the types of a and b respectively.</a>
+</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p id="Assignments" class="example passed"><strong>Assignments</strong></p>
-<p>Local variables and fields can be assigned using the <code>=</code> operator.</p>
-<p>Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>) can be used as a shorthand for the assignment of a binary expression. They work automatically when the corresponding infix operator is declared.</p>
-<pre class="prettyprint lang-spec linenums">
-a = 345
-a += 45  // equivalent to a = a + 45
-a -= 24  // equivalent to a = a - 24
-a *= 7  // equivalent to a = a * 7
-a /= 5  // equivalent to a = a / 5
-a %= 9  // equivalent to a = a % 9</pre>
+<p>The assignment operators are listed below. Local variables and fields can be assigned using the <code>=</code> operator. Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>) can be used as a shorthand for the assignment of a binary expression. They work automatically when the corresponding infix operator is declared.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a = b</td>
+<td>Set the variable a with the value of b.</td>
+</tr>
+<tr>
+<td>a += b</td>
+<td>Equivalent to: `a = a + b`</td>
+</tr>
+<tr>
+<td>a -= b</td>
+<td>Equivalent to: `a = a - b`</td>
+</tr>
+<tr>
+<td>a *= b</td>
+<td>Equivalent to: `a = a * b`</td>
+</tr>
+<tr>
+<td>a /= b</td>
+<td>Equivalent to: `a = a / b`</td>
+</tr>
+<tr>
+<td>a %= b</td>
+<td> Equivalent to: `a = a % b`</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Range_operators" class="example passed"><strong>Range operators</strong></p>
+<p>This section presents a collection of operators that permit to define ranges of values.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a .. b</td>
+<td>operator_upTo</td>
+<td>Create a list of integer values from a (inclusive) to b (inclusive). The type of this expression is IntegerRange.</td>
+</tr>
+<tr>
+<td>a &gt;.. b</td>
+<td>operator_greaterThanDoubleDot</td>
+<td>Create a list of integer values from a (exclusive) to b (inclusive). The type of this expression is ExclusiveRange. <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">See bug report</a>.</td>
+</tr>
+<tr>
+<td>a ..&lt; b</td>
+<td>operator_doubleDotLessThan</td>
+<td>Create a list of integer values from a (inclusive) to b (exclusive). The type of this expression is ExclusiveRange. <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">See bug report</a>.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p id="Other_operators" class="example passed"><strong>Other operators</strong></p>
+<p>This section presents a collection of operators that are not related to the categories in the previous sections.</p>
+<p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
+<table>
+<thead>
+<tr>
+<td>Operator</td>
+<td>Function Name</td>
+<td>Operator Semantic</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a ?: b</td>
+<td>operator_elvis</td>
+<td>If a is not null then a else b.</td>
+</tr>
+<tr>
+<td>a =&gt; b</td>
+<td>operator_doubleArrow</td>
+<td>Used as a 'with'- or 'let'-operation. It allows to bind an object to a local scope in order to do something on it. b must be a lambda expression.</td>
+</tr>
+<tr>
+<td>a &lt;&gt; b</td>
+<td>operator_diamond</td>
+<td>Not yet supported.</td>
+</tr>
+</tbody>
+</table>
+<p>For illustrating an usage of the <code>=&gt;</code> operator, consider the class <code>Person</code> with two attributes inside: <code>firstName</code> and <code>lastName</code>. The creation of an instance of <code>Person</code> could be done with: </p>
+<pre class="prettyprint">new Person =&gt; [  firstName = 'Han'  lastName = 'Solo' ]</pre> In this example, the instance of Person is created and passed to the lambda expression. In this expression, it is accessible with the <code>it</code> reserved variable, which does not need to be typed out since it is the default object in lambda expression. The lambda expression replies the value of <code>it</code>.
 </li>
 <li>
 <p id="Operator_Overloading" class="example passed"><strong>Operator Overloading</strong></p>
-<p>In SARL, it is easy to overload an existing operator or to define the algorithm of one. You should define the operator mapping function. Below the addition between two <code>Pair</code> is defined. The function that is defining the operator must have a name with the <code>operator_</code> prefix, and one parameter for each operand associated to the operator.</p>
+<p>In SARL, it is easy to overload an existing operator or to re-define the algorithm of one.</p>
+<p>You should define the operator mapping function (see the previous sections for a comprehensive list of them).</p>
+<p>Below, the addition operator <code>+</code> between two <code>Pair</code> is defined. The function that is defining the operator must have a name with the <code>operator_</code> prefix, and one parameter for each operand associated to the operator. In the example, the addition of two pairs (a,b) and (c,d) gives the pair (a,d).</p>
 <pre class="prettyprint lang-spec linenums">
 def operator_plus(
       a : Pair&lt;Integer,Integer&gt;,
@@ -436,9 +717,11 @@ def example {
   var y = new Pair(4,5)
   var z1 = operator_plus(x, y) // Call the overloaded operator
   var z2 = x + y // Call the overloaded operator
-  // z.key == 1
-  // z.value == 5
+  // z1.key == 1
+  // z1.value == 5
   println(z1.toString)
+  // z2.key == 1
+  // z2.value == 5
   println(z2.toString)
 }</pre>
 </li>
@@ -1018,7 +1301,7 @@ println(name)</pre>
 </li>
 <li>
 <p id="Legal_Notice" class="example passed"><strong>Legal Notice</strong></p>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-08-26</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-04</p>
 <p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
 </li>
 </ul>
