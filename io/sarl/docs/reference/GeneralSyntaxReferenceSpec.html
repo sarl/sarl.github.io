@@ -412,7 +412,7 @@ var b = 56 as Integer</pre>
 <tr>
 <td>a &lt;=&gt; b</td>
 <td>operator_spaceship</td>
-<td>Replies a negative value if a  b, otherwise 0.</td>
+<td>Replies a negative value if a &lt; b, a positive value if a &gt; b, otherwise 0.</td>
 </tr>
 </tbody>
 </table>
@@ -473,7 +473,7 @@ var b = 56 as Integer</pre>
 <tr>
 <td>a &lt;=&gt; b</td>
 <td>operator_spaceship</td>
-<td>Replies a negative value if a  b, otherwise 0 (a must be Comparable).</td>
+<td>Replies a negative value if a &lt; b, a positive value if a &gt; b, otherwise 0 (a must be Comparable).</td>
 </tr>
 </tbody>
 </table>
@@ -582,17 +582,19 @@ var b = 56 as Integer</pre>
 <tr>
 <td>c += e</td>
 <td>operator_add</td>
-<td>Equivalent to: `c.add(e)`</td>
+<td>Equivalent to: <code>c.add(e)</code>
+</td>
 </tr>
 <tr>
 <td>c -= e</td>
 <td>operator_remove</td>
-<td>Equivalent to: `c.remove(e)`</td>
+<td>Equivalent to: <code>c.remove(e)<code></code></code>
+</td>
 </tr>
 <tr>
 <td>a -&gt; b</td>
 <td>operator_mappedTo</td>
-<td>Create an instance of `Pair<a>` where `A` and `B` are the types of a and b respectively.</a>
+<td>Create an instance of <code>Pair&lt;A,B&gt;</code> where <code>A<code> and <code>B<code> are the types of a and b respectively.</code></code></code></code>
 </td>
 </tr>
 </tbody>
@@ -616,23 +618,28 @@ var b = 56 as Integer</pre>
 </tr>
 <tr>
 <td>a += b</td>
-<td>Equivalent to: `a = a + b`</td>
+<td>Equivalent to: <code>a = a + b</code>
+</td>
 </tr>
 <tr>
 <td>a -= b</td>
-<td>Equivalent to: `a = a - b`</td>
+<td>Equivalent to: <code>a = a - b</code>
+</td>
 </tr>
 <tr>
 <td>a *= b</td>
-<td>Equivalent to: `a = a * b`</td>
+<td>Equivalent to: <code>a = a * b</code>
+</td>
 </tr>
 <tr>
 <td>a /= b</td>
-<td>Equivalent to: `a = a / b`</td>
+<td>Equivalent to: <code>a = a / b</code>
+</td>
 </tr>
 <tr>
 <td>a %= b</td>
-<td> Equivalent to: `a = a % b`</td>
+<td> Equivalent to: <code>a = a % b</code>
+</td>
 </tr>
 </tbody>
 </table>
