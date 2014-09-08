@@ -53,21 +53,22 @@
 </div>
 <div class="container">
 <h1>Create First Project</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Create_a_SARL_Project">Create a SARL Project</a></li><li><a href="#Create_a_Project_with_the_Maven_and_SARL_Natures">Create a Project with the Maven and SARL Natures</a></li></ul><p>For developing with SARL, you should create a project. This document describes two ways for created SARL projects in Eclipse.</p>
-<h3 class="exampleGroup passed" id="Create_a_SARL_Project">Create a SARL Project</h3>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Create_a_SARL_Project">1. Create a SARL Project</a></li>
+<li><a href="#Create_a_Project_with_the_Maven_and_SARL_Natures">2. Create a Project with the Maven and SARL Natures</a></li>
+<li><a href="#What_s_next">3. What's next?</a></li>
+</ul>
+<p>For developing with SARL, you should create a project. This document describes two ways for created SARL projects in Eclipse.</p>
+<h3 id="Create_a_SARL_Project">1. Create a SARL Project</h3>
 <p>For creating a project, you should open your Eclipse and click on <strong>File &gt; New &gt; Projects</strong>, and select <em>SARL Project</em> in the SARL category.</p>
 <center><img alt="Select the SARL Project Type" src="new_sarl_project_screen_1.png" width="60%"></center>
 <p>After clicking on <strong>Next</strong>, the wizard is displaying the first page for creating a SARL project.</p>
-<ul>
-<li>
-<p id="Step1_Entering_the_project_information" class="example passed"><strong>Step1: Entering the project information</strong></p>
+<h4 id="Step1_Entering_the_project_information">1.1. Step1: Entering the project information</h4>
 <p>You must enter the name of your project. You could change the standard Java environment configuration as well.</p>
 <center><img alt="Enter the Project Information" src="new_sarl_project_screen_2.png" width="60%"></center>
 <p>Then you could click on <strong>Next</strong> for continuing the edition of the project's properties, or simply click on the <strong>Finish</strong> button for creating the project with the default properties.</p>
 <p>The rest of this section is devoted to the edition of the additional properties for the SARL project.</p>
-</li>
-<li>
-<p id="Step_2_Configuration_of_the_source_folders" class="example passed"><strong>Step 2: Configuration of the source folders</strong></p>
+<h4 id="Step_2_Configuration_of_the_source_folders">1.2. Step 2: Configuration of the source folders</h4>
 <p>The second page of the wizard contains the building settings. Two tabs are really interesting: the <em>Source</em> and the <em>Libraries</em>.</p>
 <p>The <em>Source</em> tab defines the folders in your project that must contains source code files. By default, a SARL project is composed of three source folders:</p>
 <ul>
@@ -80,9 +81,7 @@
 </ul>
 <p><span class="label label-info">Note</span> The names of these folders are following the conventions of a Maven-based project (described below). In this way, you will be able to turn the Maven nature on your SARL project on/off.</p>
 <center><img alt="Source Code Folders" src="new_sarl_project_screen_3.png" width="60%"></center>
-</li>
-<li>
-<p id="Step_3_Checking_if_the_SARL_libraries_were_found" class="example passed"><strong>Step 3: Checking if the SARL libraries were found</strong></p>
+<h4 id="Step_3_Checking_if_the_SARL_libraries_were_found">1.3. Step 3: Checking if the SARL libraries were found</h4>
 <p>The <em>Libraries</em> tab contains the binary libraries that are required for compiling the SARL code. In this tab, you must find at least the following libraries:</p>
 <ul>
   <li>
@@ -93,21 +92,17 @@
 <code>io.sarl.util</code> that provides the SDK utility classes.</li>
 </ul>
 <center><img alt="Source Code Folders" src="new_sarl_project_screen_4.png" width="60%"></center>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Create_a_Project_with_the_Maven_and_SARL_Natures">Create a Project with the Maven and SARL Natures</h3>
+<h3 id="Create_a_Project_with_the_Maven_and_SARL_Natures">2. Create a Project with the Maven and SARL Natures</h3>
 <p>For creating a project with both the Maven and SARL natures, you should open your Eclipse and click on <strong>File &gt; New &gt; Others &gt; Maven &gt; Maven Project</strong>.</p>
 <p>Follow the steps of the project creation wizard, and finally click on the <strong>Finish</strong> button.</p>
-<ul>
-<li>
-<p id="Edit_the_Maven_configuration" class="example passed"><strong>Edit the Maven configuration</strong></p>
+<h4 id="Edit_the_Maven_configuration">2.1. Edit the Maven configuration</h4>
 <p>Open the file <code>pom.xml</code>, and edit it for obtaining a content similar to the configuration below.</p>
-<p>Replace the version number <code>0.1.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.sarl.io/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the SARL artifacts, as well.</p>
+<p>Replace the version number <code>%sarlversion%</code> of SARL with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="%sarlmavenrepository%/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the SARL artifacts, as well.</p>
 <pre class="prettyprint">&lt;project&gt;
    ...
    &lt;properties&gt;
       ...
-      &lt;sarl.version&gt;0.1.0-SNAPSHOT&lt;/sarl.version&gt;
+      &lt;sarl.version&gt;%sarlversion%&lt;/sarl.version&gt;
    &lt;/properties&gt;
    ...
    &lt;build&gt;
@@ -164,9 +159,9 @@
                &lt;/execution&gt;
             &lt;/executions&gt;
             &lt;configuration&gt;
-               &lt;compilerSourceLevel&gt;1.7&lt;/compilerSourceLevel&gt;
-               &lt;compilerTargetLevel&gt;1.7&lt;/compilerTargetLevel&gt;
-               &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+               &lt;compilerSourceLevel&gt;%compilerlevel%&lt;/compilerSourceLevel&gt;
+               &lt;compilerTargetLevel&gt;%compilerlevel%&lt;/compilerTargetLevel&gt;
+               &lt;encoding&gt;%encoding%&lt;/encoding&gt;
                &lt;languages&gt;
                   &lt;language&gt;
                      &lt;setup&gt;io.sarl.lang.SARLStandaloneSetup&lt;/setup&gt;
@@ -210,25 +205,23 @@
            SARL is released on the Maven Central --&gt;
       &lt;repository&gt;
          &lt;id&gt;sarl-repository&lt;/id&gt;
-         &lt;url&gt;http://maven.sarl.io&lt;/url&gt;
+         &lt;url&gt;%sarlmavenrepository%&lt;/url&gt;
       &lt;/repository&gt;
    &lt;/repositories&gt;
    ...
 &lt;/project&gt;
 </pre>
-</li>
-<li>
-<p id="Configuration_a_runtime_environment_optional" class="example passed"><strong>Configuration a runtime environment [optional]</strong></p>
-<p>For executing your SARL program, you must select a <a href="http://www.sarl.io/runtime/index.html">runtime environment</a>.</p>
+<h4 id="Configuration_a_runtime_environment_optional">2.2. Configuration a runtime environment [optional]</h4>
+<p>For executing your SARL program, you must select a <a href="%website%/runtime/index.html">runtime environment</a>.</p>
 <p>The runtime environment that is recommended by the developers of SARL is <a href="http://www.janusproject.io">Janus</a>.</p>
 <p>If you want to embed the runtime environment inside the Jar files of your SARL application, it is recommended to put it in the Maven dependencies.</p>
 <p><span class="label label-info">Note</span> You could remove the dependencies to the SARL artifacts in the previous Maven configuration. Indeed, the Janus platform depends already on. You will obtain the SARL artifacts by transitivity.</p>
-<p>Replace the version number (<code>2.0.1.0-SNAPSHOT</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.janusproject.io/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the Janus artifacts, as well.</p>
+<p>Replace the version number (<code>%janusversion%</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="%janusmavenrepository%/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the Janus artifacts, as well.</p>
 <pre class="prettyprint">&lt;project&gt;
    ...
    &lt;properties&gt;
       ...
-      &lt;janus.version&gt;2.0.1.0-SNAPSHOT&lt;/janus.version&gt;
+      &lt;janus.version&gt;%janusversion%&lt;/janus.version&gt;
    &lt;/properties&gt;
    ...
    &lt;dependencies&gt;
@@ -247,19 +240,15 @@
            Janus is released on the Maven Central --&gt;
       &lt;repository&gt;
          &lt;id&gt;janus-repository&lt;/id&gt;
-         &lt;url&gt;http://maven.janusproject.io&lt;/url&gt;
+         &lt;url&gt;%janusmavenrepository%&lt;/url&gt;
       &lt;/repository&gt;
    &lt;/repositories&gt;
    ...
 &lt;/project&gt;
 </pre>
-</li>
-</ul>
-<ul><li>
-<p id="What_s_next" class="example passed"><strong>What's next?</strong></p>
+<h3 id="What_s_next">3. What's next?</h3>
 <p>In the next section, we will learn how to create our first agent.</p>
 <p><a href="AgentDefinitionIntroductionSpec.html">Next&gt;</a></p>
-</li></ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

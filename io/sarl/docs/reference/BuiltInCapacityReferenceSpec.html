@@ -54,31 +54,35 @@
 <div class="container">
 <h1>Built-in Capacity Reference</h1>
 <p>This document describes the built-in capacities in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <a href="CapacityReferenceSpec.html">Capacity Reference</a>, and the <a href="SkillReferenceSpec.html">Skill Reference</a>.</p>
-<ul class="page_outline" id="page_outline"><li><a href="#ExternalContextAccess">ExternalContextAccess</a></li><li><a href="#InnerContextAccess">InnerContextAccess</a></li><li><a href="#DefaultContextInteractions">DefaultContextInteractions</a></li><li><a href="#Lifecycle">Lifecycle</a></li><li><a href="#Schedules">Schedules</a></li><li><a href="#Behaviors">Behaviors</a></li></ul><p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#ExternalContextAccess">1. ExternalContextAccess</a></li>
+<li><a href="#InnerContextAccess">2. InnerContextAccess</a></li>
+<li><a href="#DefaultContextInteractions">3. DefaultContextInteractions</a></li>
+<li><a href="#Lifecycle">4. Lifecycle</a></li>
+<li><a href="#Schedules">5. Schedules</a></li>
+<li><a href="#Behaviors">6. Behaviors</a></li>
+<li><a href="#Use_of_the_Built_in_Capacities">7. Use of the Built-in Capacities</a></li>
+<li><a href="#Legal_Notice">8. Legal Notice</a></li>
+</ul>
+<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
 <p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
 <p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential to respect the commonly accepted competencies of agents. These capacities are considered the main building blocks on top of which other higher level capacities and skills can be constructed. They are defined in the SARL language, but the skills implementing them are provided by the runtime environment, e.g. the <a href="http://www.janus-project.io">Janus platform</a>. This runtime environment is responsible for creating them and injecting them in the agent before their execution begins. Therefore, when the agent receives the <code>Initialize</code> event they are already available.</p>
 <p>The following figure presents the different contexts associated to an agent <code>A</code>. Several built-in capacities permit accessing and manage these contexts. The agents are represented by stylized humans, the contexts by the blue boxes, and the spaces by the small color boxes in the contexts.</p>
 <center><img src="./contexts.png"></center>
-<h3 class="exampleGroup passed" id="ExternalContextAccess">ExternalContextAccess</h3>
+<h3 id="ExternalContextAccess">1. ExternalContextAccess</h3>
 <p>The built-in capacity <code>ExternalContextAccess</code> provides access to the <a href="SpaceReferenceSpec.html">context</a> that the agent is a part of, and actions required to join new <a href="SpaceReferenceSpec.html">contexts</a>, and leave them.</p>
 <p>The context supported by this built-in capacity is the "external context," illustrated by the top-right context in the figure above.</p>
-<ul>
-<li>
-<p id="Retrieving_a_Context" class="example passed"><strong>Retrieving a Context</strong></p>
+<h4 id="Retrieving_a_Context">1.1. Retrieving a Context</h4>
 <p>For retrieving the context with a particular ID, this built-in capacity provides the following function:</p>
 <pre class="prettyprint">def getContext(contextID : UUID) : AgentContext
 </pre>
 <p>The agent must have joined (see below) the context before calling this action. Or, the agent may use its <code>parentContextID</code> for accessing the context in which it is located (the default context).</p>
-</li>
-<li>
-<p id="Retrieving_the_Contexts_of_an_Agent" class="example passed"><strong>Retrieving the Contexts of an Agent</strong></p>
+<h4 id="Retrieving_the_Contexts_of_an_Agent">1.2. Retrieving the Contexts of an Agent</h4>
 <p>The following function enables an agent to retrieve all the contexts in which it is involved:</p>
 <pre class="prettyprint">def getAllContexts : SynchronizedCollection&lt;AgentContext&gt;
 </pre>
 <p>The default context is included in the replied collection.</p>
-</li>
-<li>
-<p id="Joining_an_Existing_Context" class="example passed"><strong>Joining an Existing Context</strong></p>
+<h4 id="Joining_an_Existing_Context">1.3. Joining an Existing Context</h4>
 <p>Agents must be able to join a new parent context. The following function gives this capability to them:</p>
 <pre class="prettyprint">def join(contextID : UUID, expectedDefaultSpaceID : UUID)
 </pre>
@@ -92,9 +96,7 @@
   <li>
 <code>MemberJoined</code> in the parent context's default space.</li>
 </ul>
-</li>
-<li>
-<p id="Leaving_a_Context" class="example passed"><strong>Leaving a Context</strong></p>
+<h4 id="Leaving_a_Context">1.4. Leaving a Context</h4>
 <p>When an agent wants to leave a context, it must invoke:</p>
 <pre class="prettyprint">def leave(contextID : UUID)
 </pre>
@@ -105,19 +107,13 @@
   <li>
 <code>MemberLeft</code> in the parent context's default space.</li>
 </ul>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="InnerContextAccess">InnerContextAccess</h3>
+<h3 id="InnerContextAccess">2. InnerContextAccess</h3>
 <p>The built-in capacity <code>InnerContextAccess</code> provides access to the inner context of the agent. This is a key feature for creating holonic agent implementation. The context supported by this built-in capacity is the "inner context," illustrated by the bottom context in the figure above.</p>
-<ul>
-<li>
-<p id="Retrieving_the_Inner_Context" class="example passed"><strong>Retrieving the Inner Context</strong></p>
+<h4 id="Retrieving_the_Inner_Context">2.1. Retrieving the Inner Context</h4>
 <p>For retrieving the inner context of an agent, this built-in capacity provides the following function:</p>
 <pre class="prettyprint">def getInnerContext : AgentContext
 </pre>
-</li>
-<li>
-<p id="Members_of_an_Agent" class="example passed"><strong>Members of an Agent</strong></p>
+<h4 id="Members_of_an_Agent">2.2. Members of an Agent</h4>
 <p>For retrieving information on the member agents of the current agent, several functions are provided by this built-in capacity. A member agent is an agent that is not the calling agent, and is a member of at least one space of the inner context.</p>
 <p>The first function replies if the calling agent has other agents as members of its inner context:</p>
 <pre class="prettyprint">def hasMemberAgent : boolean
@@ -128,17 +124,13 @@
 <p>The third function replies all the member agents in the inner context:</p>
 <pre class="prettyprint">def getMemberAgents : SynchronizedSet&lt;UUID&gt;
 </pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="DefaultContextInteractions">DefaultContextInteractions</h3>
+<h3 id="DefaultContextInteractions">3. DefaultContextInteractions</h3>
 <p>The <code>DefaultContextInteractions</code> capacity is actually provided for convenience. It assumes that the action will be performed on the agent <strong>default context</strong> or its <strong>default space</strong>. These context and space are illustrated by the top-left context in the figure above.</p>
 <p>For instance, the <code>emit</code> action is a shortcut for:</p>
 <pre class="prettyprint">defaultContext.defaultSpace.emit(...)
 </pre>
 <p>Therefore, it is actually created on top of the other built-in capacities.</p>
-<ul>
-<li>
-<p id="Retrieving_the_Default_Context_and_Space" class="example passed"><strong>Retrieving the Default Context and Space</strong></p>
+<h4 id="Retrieving_the_Default_Context_and_Space">3.1. Retrieving the Default Context and Space</h4>
 <p>For retrieving the default context of an agent, this built-in capacity provides the following function:</p>
 <pre class="prettyprint">def getDefaultContext : AgentContext
 </pre>
@@ -148,9 +140,7 @@
 <p>For obtaining the address of the agent in the default space, the following function is provided:</p>
 <pre class="prettyprint">def getDefaultAddress : Address
 </pre>
-</li>
-<li>
-<p id="Spawning_an_Agent" class="example passed"><strong>Spawning an Agent</strong></p>
+<h4 id="Spawning_an_Agent">3.2. Spawning an Agent</h4>
 <p>Many time, it is useful for agent to create a new agent into the default context. The following function is provided for this task:</p>
 <pre class="prettyprint">def spawn(agentType : Class&lt;? extends Agent&gt;, params : Object[]) : UUID
 </pre>
@@ -162,9 +152,7 @@
   <li>
 <code>Initialize</code> in spawned agent.</li>
 </ul>
-</li>
-<li>
-<p id="Sending_an_Event_in_the_Default_Space" class="example passed"><strong>Sending an Event in the Default Space</strong></p>
+<h4 id="Sending_an_Event_in_the_Default_Space">3.3. Sending an Event in the Default Space</h4>
 <p>The core mechanism for information exchanges among agents is <a href="EventReferenceSpec.html">event-based</a>. For sending an event in the default space of the default context, the following function is provided:</p>
 <pre class="prettyprint">def emit(e : Event)
 </pre>
@@ -172,9 +160,7 @@
 <p>It is equivalent to:</p>
 <pre class="prettyprint">defaultContext.defaultSpace.emit(e)
 </pre>
-</li>
-<li>
-<p id="Sending_an_Event_to_Specific_Agents_in_the_Default_Space" class="example passed"><strong>Sending an Event to Specific Agents in the Default Space</strong></p>
+<h4 id="Sending_an_Event_to_Specific_Agents_in_the_Default_Space">3.4. Sending an Event to Specific Agents in the Default Space</h4>
 <p>The previous sending function assumes that there is no restriction on the set of the receivers of the event. It is possible to specify a <code>Scope</code> for applying a restriction.</p>
 <pre class="prettyprint">def emit(e : Event, scope : Scope&lt;Address&gt;)
 </pre>
@@ -190,13 +176,9 @@
 <pre class="prettyprint">emit(new Event, Scopes::addresses(a1, a2))
 </pre>
 <p>You are free to create new implementation of <code>Scope</code> in order to filter the receivers of an event according to your own criteria.</p>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Lifecycle">Lifecycle</h3>
+<h3 id="Lifecycle">4. Lifecycle</h3>
 <p>The built-in capacity <code>Lifecycle</code> provides actions for spawning new agents on different external contexts and the inner context, as well as the <code>killMe</code> action to stop the execution of an agent.</p>
-<ul>
-<li>
-<p id="Stopping_the_Agent_Execution" class="example passed"><strong>Stopping the Agent Execution</strong></p>
+<h4 id="Stopping_the_Agent_Execution">4.1. Stopping the Agent Execution</h4>
 <p>Because of the autonomy property of an agent, it can be stopped only by committing a suicide. It means that it is impossible to stop an agent from another agent: the agent to stop must be able to accept or reject this query.</p>
 <p>The <code>Lifecycle</code> capacity provides the following function for committing a suicide:</p>
 <pre class="prettyprint">def killMe
@@ -210,9 +192,7 @@
   <li>
 <code>Destroy</code> inside the killed agent agent.</li>
 </ul>
-</li>
-<li>
-<p id="Spawning_an_Agent" class="example passed"><strong>Spawning an Agent</strong></p>
+<h4 id="Spawning_an_Agent">4.2. Spawning an Agent</h4>
 <p>Many time, it is useful for an agent to create a new agent into a given context. The following function is provided for this task:</p>
 <pre class="prettyprint">def spawnInContext(agentType : Class&lt;? extends Agent&gt;,
                    context : AgentContext,
@@ -226,20 +206,14 @@
   <li>
 <code>Initialize</code> in spawned agent.</li>
 </ul>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Schedules">Schedules</h3>
+<h3 id="Schedules">5. Schedules</h3>
 <p>The built-in capacity <code>Schedules</code> enables the agent to schedule tasks for future or periodic execution.</p>
-<ul>
-<li>
-<p id="Creating_Named_Tasks" class="example passed"><strong>Creating Named Tasks</strong></p>
+<h4 id="Creating_Named_Tasks">5.1. Creating Named Tasks</h4>
 <p>A named task may be created with:</p>
 <pre class="prettyprint">def task(name : String) : AgentTask
 </pre>
 <p>The replied task may be used for future execution, or controlling the execution.</p>
-</li>
-<li>
-<p id="Launching_a_Delayed_Task" class="example passed"><strong>Launching a Delayed Task</strong></p>
+<h4 id="Launching_a_Delayed_Task">5.2. Launching a Delayed Task</h4>
 <p>For running a task in a given delay, the following functions are provided:</p>
 <pre class="prettyprint">def in(delay : long,
        procedure : (Agent) =&gt; void) : AgentTask
@@ -249,9 +223,7 @@ def in(task : AgentTask,
 </pre>
 <p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be delayed during the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
 <p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
-</li>
-<li>
-<p id="Launching_a_Periodic_Task" class="example passed"><strong>Launching a Periodic Task</strong></p>
+<h4 id="Launching_a_Periodic_Task">5.3. Launching a Periodic Task</h4>
 <p>For running a periodic task, the following functions are provided:</p>
 <pre class="prettyprint">def every(period : long,
           procedure : (Agent) =&gt; void) : AgentTask
@@ -261,9 +233,7 @@ def every(period : AgentTask,
 </pre>
 <p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be launched periodically with a period of the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
 <p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
-</li>
-<li>
-<p id="Cancelling_a_Task" class="example passed"><strong>Cancelling a Task</strong></p>
+<h4 id="Cancelling_a_Task">5.4. Cancelling a Task</h4>
 <p>It may be useful to cancel a running task, e.g. a periodic task. The <code>Schedules</code> capacity provides two functions for stopping the execution of an agent task:</p>
 <pre class="prettyprint">def cancel(task : AgentTask) : boolean
 def cancel(task : AgentTask,
@@ -271,58 +241,40 @@ def cancel(task : AgentTask,
 </pre>
 <p>These functions will reply <code>false</code> if the task has already completed, has already been cancelled, or could not be cancelled for some other reason (a failure means replying false). If successful, and this task has not started when <code>cancel</code> is called, this task should never run. If the task has already started, then the <code>mayInterruptIfRunning</code> parameter determines whether the thread executing this task should be interrupted in an attempt to stop the task.</p>
 <p>The first function interrupts ongoing tasks. So, it is equivalent to passing <code>true</code> as the value for the parameter <tt>mayInterruptIfRunning</tt> to the function <code>cancel(AgentTask, boolean)</code>.</p>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Behaviors">Behaviors</h3>
+<h3 id="Behaviors">6. Behaviors</h3>
 <p>The built-in capacity <code>Behaviors</code> provides the tools to the agents for dynamically registering and unregistering sub-behaviors.</p>
 <p>This capacity is closely related to the <code>InnerContextAccess</code> for enabling a high-level abstraction for holonic multi-agent system development.</p>
 <p>The definition of a behavior is not detailed in this reference document. Please read the <a href="BehaviorReferenceSpec.html">Behavior Reference</a> for details.</p>
-<ul>
-<li>
-<p id="Registering_a_Behavior" class="example passed"><strong>Registering a Behavior</strong></p>
+<h4 id="Registering_a_Behavior">6.1. Registering a Behavior</h4>
 <p>Assuming that a behavior was already defined, it is possible for an agent to register this behavior:</p>
 <pre class="prettyprint">def registerBehavior(attitude : Behavior) : Behavior
 </pre>
 <p>This function takes the behavior to be registered, and replies the same behavior. When a behavior is registered, it is receiving the events in the default space of the inner context of the agent, or received by the agent itself.</p>
-</li>
-<li>
-<p id="Unregistering_a_Behavior" class="example passed"><strong>Unregistering a Behavior</strong></p>
+<h4 id="Unregistering_a_Behavior">6.2. Unregistering a Behavior</h4>
 <p>Assuming that a behavior was already registered, it is possible for an agent to unregister it:</p>
 <pre class="prettyprint">def unregisterBehavior(attitude : Behavior) : Behavior
 </pre>
 <p>This function takes the behavior to be unregistered, and replies the same behavior. When a behavior is unregistering, it is no more receiving the events in the default space of the inner context of the agent, and the ones received by the agent itself.</p>
-</li>
-<li>
-<p id="Executing_a_Behavior" class="example passed"><strong>Executing a Behavior</strong></p>
+<h4 id="Executing_a_Behavior">6.3. Executing a Behavior</h4>
 <p>A behavior is executed through its event handlers. Consequently, for running a behavior, it is mandatory to wake it with an event. This particular feature is supported by:</p>
 <pre class="prettyprint">def wake(evt : Event)
 </pre>
 <p>This function emits the given event into the inner context of the agent (in the default space).</p>
 <p><span class="label label-warning">Important</span> It is not possible to execute a particular behavior explicitly. All the behaviors that are waiting for a given event will be executed by this function.</p>
-</li>
-<li>
-<p id="Creating_an_Event_Listener" class="example passed"><strong>Creating an Event Listener</strong></p>
+<h4 id="Creating_an_Event_Listener">6.4. Creating an Event Listener</h4>
 <p>Sometimes, it is useful or mandatory for an agent to listen on the events in a given space. The following function permits retrieving the event listener of the agent:</p>
 <pre class="prettyprint">def asEventListener : EventListener
 </pre>
 <p>The listener replied by this function is the one used by the agent (and its behaviors) for listening events related to all the contexts (default, external, and inner).</p>
-</li>
-</ul>
-<ul>
-<li>
-<p id="Use_of_the_Built_in_Capacities" class="example passed"><strong>Use of the Built-in Capacities</strong></p>
+<h3 id="Use_of_the_Built_in_Capacities">7. Use of the Built-in Capacities</h3>
 <p>Details on the use of the built-in capacities may be found in the references of the major behavior-based concepts of SARL:</p>
 <ul>
   <li><a href="AgentReferenceSpec.html">Agent</a></li>
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
-</li>
-<li>
-<p id="Legal_Notice" class="example passed"><strong>Legal Notice</strong></p>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-05</p>
-<p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
-</li>
-</ul>
+<h3 id="Legal_Notice">8. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: %sarlspecversion%<br> Status: %sarlspecreleasestatus%<br> Release: %sarlspecreleasedate%</p>
+<p>Copyright © %copyrightdate% %copyrighters%. All rights reserved.</p>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

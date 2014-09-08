@@ -53,17 +53,20 @@
 </div>
 <div class="container">
 <h1>Skill Reference</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Defining_a_Skill">Defining a Skill</a></li></ul><p>This document describes how to define skills in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="CapacityReferenceSpec.html">Capacity Reference</a>.</p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Defining_a_Skill">1. Defining a Skill</a></li>
+<li><a href="#Built_in_Skills">2. Built-in Skills</a></li>
+<li><a href="#Use_of_the_Skills">3. Use of the Skills</a></li>
+<li><a href="#Legal_Notice">4. Legal Notice</a></li>
+</ul>
+<p>This document describes how to define skills in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="CapacityReferenceSpec.html">Capacity Reference</a>.</p>
 <p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
 <p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
-<h3 class="exampleGroup passed" id="Defining_a_Skill">Defining a Skill</h3>
-<ul>
-<li>
-<p id="Basic_Definition" class="example passed"><strong>Basic Definition</strong></p>
+<h3 id="Defining_a_Skill">1. Defining a Skill</h3>
+<h4 id="Basic_Definition">1.1. Basic Definition</h4>
 <p>The definition of a skill is done with the <code>skill</code> keyword. A skill must always implement a capacity. This relationship is specified with the <code>implements</code> keyword.</p>
 <p>Below, a skill is defined for outputting the messages on the standard console (defined in the <a href="CapacityReferenceSpec.html">Capacity Reference</a>). Note that all the actions defined in the implemented capacity must have a definition (with a body) in the skill.</p>
-<pre class="prettyprint lang-spec linenums">
-skill ConsoleLogging implements Logging {
+<pre class="prettyprint lang-spec linenums">skill ConsoleLogging implements Logging {
   def info(text : String) {
     System.out.println(text)
   }
@@ -71,13 +74,10 @@ skill ConsoleLogging implements Logging {
     System.err.println(text)
   }
 }</pre>
-</li>
-<li>
-<p id="Field_Definition" class="example passed"><strong>Field Definition</strong></p>
+<h4 id="Field_Definition">1.2. Field Definition</h4>
 <p>In several cases, it is useful or mandatory to base the capacity's implementation on attributes (fields).</p>
 <p>The following example defines a skill that uses the standard Java logging system. For avoiding to create an instance of the Java logger each time the capacity's actions are invoked, an instance of the Java logger is created and stored into a field of the skill.</p>
-<pre class="prettyprint lang-spec linenums">
-skill StandardJavaLogging implements Logging {
+<pre class="prettyprint lang-spec linenums">skill StandardJavaLogging implements Logging {
   // A field is defined in the skill
   val logger = Logger.anonymousLogger
   def info(text : String) {
@@ -87,12 +87,9 @@ skill StandardJavaLogging implements Logging {
     logger.fine(text)
   }
 }</pre>
-</li>
-<li>
-<p id="Action_Definition" class="example passed"><strong>Action Definition</strong></p>
+<h4 id="Action_Definition">1.3. Action Definition</h4>
 <p>As for fields, it is possible to declare additional methods in the skill.</p>
-<pre class="prettyprint lang-spec linenums">
-skill MyLogging implements Logging {
+<pre class="prettyprint lang-spec linenums">skill MyLogging implements Logging {
   def info(text : String) {
     output(text)
   }
@@ -105,9 +102,7 @@ skill MyLogging implements Logging {
     System.err.println(t)
   }
 }</pre>
-</li>
-<li>
-<p id="Constructor_Definition" class="example passed"><strong>Constructor Definition</strong></p>
+<h4 id="Constructor_Definition">1.4. Constructor Definition</h4>
 <p>By default, it is not needed to specify a constructor for the skills. However, the definition of a constructor is mandatory if a value must be initialized.</p>
 <p>The constructors defined in the abstract <code>Skill</code> class are:</p>
 <ul>
@@ -116,8 +111,7 @@ skill MyLogging implements Logging {
   <li>The constructor with owner: <code>def Skill(owner : Agent)</code>
 </li>
 </ul>
-<pre class="prettyprint lang-spec linenums">
-skill StandardJavaLogging implements Logging {
+<pre class="prettyprint lang-spec linenums">skill StandardJavaLogging implements Logging {
   // A field is defined in the skill
   val logger : Logger
   // The constructor is mandatory
@@ -134,13 +128,10 @@ skill StandardJavaLogging implements Logging {
     logger.fine(text)
   }
 }</pre>
-</li>
-<li>
-<p id="Multiple_Capacity_Implementation" class="example passed"><strong>Multiple Capacity Implementation</strong></p>
+<h4 id="Multiple_Capacity_Implementation">1.5. Multiple Capacity Implementation</h4>
 <p>In some use cases, it is useful to define a skill by implementing more than one capacity. Below, the <code>MyLogging</code> skill is defined as an implementation of the capacities <code>Logging</code> and <code>LogReader</code>. All the methods defined in the implemented interfaces must have an implementation in the skill.</p>
 <p>If two implemented capacities has the same action signature, it must be implemented only once time in the skill.</p>
-<pre class="prettyprint lang-spec linenums">
-capacity LogReader {
+<pre class="prettyprint lang-spec linenums">capacity LogReader {
   def open(filename : String) : int
   def info(t : String)
   def close(fid : int)
@@ -160,40 +151,27 @@ skill MyLogging implements Logging, LogReader {
   def close(fid : int) {
   }
 }</pre>
-</li>
-<li>
-<p id="Extending_a_Skill" class="example passed"><strong>Extending a Skill</strong></p>
+<h4 id="Extending_a_Skill">1.6. Extending a Skill</h4>
 <p>In some use cases, it is useful to specialize the definition of a skill. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
 <p>The extended skill is specified just after the <code>extends</code> keyword.</p>
 <p><span class="label label-danger">Important</span> A skill type can extend <strong>only one</strong> other skill type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, the <code>StandardJavaLogging</code> skill (defined previously) is extended for changing the output of the info.</p>
-<pre class="prettyprint lang-spec linenums">
-skill ExtendedLogging extends StandardJavaLogging {
+<pre class="prettyprint lang-spec linenums">skill ExtendedLogging extends StandardJavaLogging {
   def info(text : String) {
     super.info("INFO: "+text)
   }
 }</pre>
-</li>
-</ul>
-<ul>
-<li>
-<p id="Built_in_Skills" class="example passed"><strong>Built-in Skills</strong></p>
+<h3 id="Built_in_Skills">2. Built-in Skills</h3>
 <p>Several capacities are defined and reserved by the SARL Core Specification. The corresponding skills are provided by the runtime environment (such as the <a href="http://www.janusproject.io">Janus platform</a>). The built-in skills are described in the <a href="BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
-</li>
-<li>
-<p id="Use_of_the_Skills" class="example passed"><strong>Use of the Skills</strong></p>
+<h3 id="Use_of_the_Skills">3. Use of the Skills</h3>
 <p>Details on the use of the skills may be found in the references of the major behavior-based concepts of SARL:</p>
 <ul>
   <li><a href="AgentReferenceSpec.html">Agent</a></li>
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
-</li>
-<li>
-<p id="Legal_Notice" class="example passed"><strong>Legal Notice</strong></p>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-05</p>
-<p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
-</li>
-</ul>
+<h3 id="Legal_Notice">4. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: %sarlspecversion%<br> Status: %sarlspecreleasestatus%<br> Release: %sarlspecreleasedate%</p>
+<p>Copyright © %copyrightdate% %copyrighters%. All rights reserved.</p>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

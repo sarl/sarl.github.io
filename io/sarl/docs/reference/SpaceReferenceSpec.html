@@ -53,7 +53,12 @@
 </div>
 <div class="container">
 <h1>Space Reference</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Types_of_Spaces">Types of Spaces</a></li><li><a href="#Defining_a_Space">Defining a Space</a></li></ul><p>This document describes the features related to the definition of a space in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="AgentReferenceSpec.html">Agent Reference</a>.</p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Types_of_Spaces">1. Types of Spaces</a></li>
+<li><a href="#Defining_a_Space">2. Defining a Space</a></li>
+<li><a href="#Legal_Notice">3. Legal Notice</a></li>
+</ul>
+<p>This document describes the features related to the definition of a space in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="AgentReferenceSpec.html">Agent Reference</a>.</p>
 <p>One of the key elements that characterize and differentiate the main multi-agent approaches is how interactions between agents are described. Some researchers focus on agent-to-agent interactions and corresponding protocols. Within organizational approaches, some consider the organization as a static partition of agents where agents interact in groups through the roles they play. Others focus on dynamic organizations and normative aspects.</p>
 <p>Another essential aspect of the interaction is the interaction Agent-Environment, especially in agent-based simulations. Each of these trends of multi-agent systems has led to numerous fruitful and innovative contributions. To remain generic, SARL therefore not imposes a single way of describing the interaction among agents, but rather attempt to provide means to implement each of these approaches.</p>
 <p>It is in this perspective that the concepts of <code>Space</code> and <code>SpaceSpecification</code> were defined.</p>
@@ -61,11 +66,9 @@
 <p><strong>A Space Specification defines the rules (including action and perception) for interacting within a given set of spaces respecting this specification.</strong></p>
 <p>SARL natively defines a particular type of <code>Space</code> called <em>Event Space</em> to provide a support to event-driven interactions. Within an event space, agents communicate using events, the <a href="BuiltInCapacityReferenceSpec.html">built-in capacity <code>DefaultContextInteractions</code></a> provides the agent with the means to emit and receive events, respectively using the <code>emit</code> actions and the <code>on</code> keyword in behavior definition. A <strong>Default Space</strong> is precisely an event space.</p>
 <p>Within an event space, the notion of <code>Scope</code> enables to precisely control/filter the potential recipients of an event. <strong>A Scope is a predicate used to filter the potentially called listeners for a given event.</strong> The most basic scope is represented by a collection of addresses.</p>
-<h3 class="exampleGroup passed" id="Types_of_Spaces">Types of Spaces</h3>
+<h3 id="Types_of_Spaces">1. Types of Spaces</h3>
 <p>SARL provides a collection of Java interfaces that are representing different types of spaces.</p>
-<ul>
-<li>
-<p id="Space" class="example passed"><strong>Space</strong></p>
+<h4 id="Space">1.1. Space</h4>
 <p>SARL provides a Java interface that is representing all the spaces:</p>
 <pre class="prettyprint"> public interface Space {
         public SpaceID getID();
@@ -73,9 +76,7 @@
  }
 </pre>
 <p>The <code>getID</code> function replies the identifier of the space. The <code>getParticipants</code> function replies the identifiers of the agents belonging to the space.</p>
-</li>
-<li>
-<p id="Event_Space" class="example passed"><strong>Event Space</strong></p>
+<h4 id="Event_Space">1.2. Event Space</h4>
 <p>Spaces that are based on event propagation mechanism are defined as:</p>
 <pre class="prettyprint"> public interface EventSpace extends Space {
         public Address getAddress(UUID id);
@@ -84,9 +85,7 @@
  }
 </pre>
 <p>The <code>getAddress</code> function replies the address in the space of the agent that has the given identifier. The <code>emit</code> functions permits put an event in the space.</p>
-</li>
-<li>
-<p id="Open_Event_Space" class="example passed"><strong>Open Event Space</strong></p>
+<h4 id="Open_Event_Space">1.3. Open Event Space</h4>
 <p>Event spaces that are allowing the agents to be register and unregister are "open event spaces":</p>
 <pre class="prettyprint"> public interface OpenEventSpace extends EventSpace {
         public Address register(EventListener entity);
@@ -94,9 +93,7 @@
  }
 </pre>
 <p>The functions <code>register</code> and <code>unregister</code> permits an agent to be involved or not.</p>
-</li>
-<li>
-<p id="Restricted_Access_Event_Space" class="example passed"><strong>Restricted Access Event Space</strong></p>
+<h4 id="Restricted_Access_Event_Space">1.4. Restricted Access Event Space</h4>
 <p>When an event space needs to control the registration access, it should be a "restricted access event space":</p>
 <pre class="prettyprint"> public interface RestrictedAccessEventSpace extends EventSpace {
         public Address register(EventListener entity, Principal requester);
@@ -105,9 +102,7 @@
  }
 </pre>
 <p>The functions given by this type of space permits implementing a space with restricted access, based on the standard Java API.</p>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Defining_a_Space">Defining a Space</h3>
+<h3 id="Defining_a_Space">2. Defining a Space</h3>
 <p>The definition of a new space must be done with the Java language.</p>
 <p>For defining a space, three steps must be followed:</p>
 <ul>
@@ -115,18 +110,14 @@
   <li>Implementation of the space on a specific runtime environment;</li>
   <li>Definition of the space specification.</li>
 </ul>
-<ul>
-<li>
-<p id="Defining_a_Space" class="example passed"><strong>Defining a Space</strong></p>
+<h4 id="Defining_a_Space">2.1. Defining a Space</h4>
 <p>The first step for the definition of a new type of space is the specification of the Java interface that is describing the functions provided by the space.</p>
 <p>The new space type must extend one of the predefined types. In the following example, the new space is related to the physic environment in which the agents may evolve. This space permits to move an object.</p>
 <pre class="prettyprint"> public interface PhysicSpace extends Space {
         public void moveObject(UUID identifier, float x, float y, float z);
  }
 </pre>
-</li>
-<li>
-<p id="Defining_a_Space_Implementation" class="example passed"><strong>Defining a Space Implementation</strong></p>
+<h4 id="Defining_a_Space_Implementation">2.2. Defining a Space Implementation</h4>
 <p>The definition of the space implementation depends upon the runtime environment. Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
 <pre class="prettyprint"> public class PhysicSpaceImpl extends AbstractSpace implements PhysicSpace {
         private Map&lt;UUID,PhysicObject&gt; entities = new TreeMap&lt;&gt;();
@@ -141,9 +132,7 @@
         }
  }
 </pre>
-</li>
-<li>
-<p id="Defining_a_SpaceSpecification" class="example passed"><strong>Defining a SpaceSpecification</strong></p>
+<h4 id="Defining_a_SpaceSpecification">2.3. Defining a SpaceSpecification</h4>
 <p>For creating instances of spaces, it is necessary to define a space specification.</p>
 <pre class="prettyprint">public class PhysicSpaceSpecification implements SpaceSpecification&lt;PhysicSpace&gt; {
     public PhysicSpace create(SpaceID id, Object... params) {
@@ -151,13 +140,9 @@
        }
 }
 </pre>
-</li>
-</ul>
-<ul><li>
-<p id="Legal_Notice" class="example passed"><strong>Legal Notice</strong></p>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-05</p>
-<p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
-</li></ul>
+<h3 id="Legal_Notice">3. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: %sarlspecversion%<br> Status: %sarlspecreleasestatus%<br> Release: %sarlspecreleasedate%</p>
+<p>Copyright © %copyrightdate% %copyrighters%. All rights reserved.</p>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

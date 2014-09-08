@@ -53,9 +53,19 @@
 </div>
 <div class="container">
 <h1>English Auction with Holons</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Definitions_of_the_events">Definitions of the events</a></li><li><a href="#Definition_of_the_bidder">Definition of the bidder</a></li><li><a href="#Definition_of_the_auctioneer">Definition of the auctioneer</a></li><li><a href="#Stop_the_agents">Stop the agents</a></li><li><a href="#Compile_and_Launch_the_agents">Compile and Launch the agents</a></li></ul><p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Principle_of_the_English_Auction">1. Principle of the English Auction</a></li>
+<li><a href="#Principle_of_the_Application">2. Principle of the Application</a></li>
+<li><a href="#Why_are_the_sub_agents_in_the_inner_context">3. Why are the sub-agents in the inner context?</a></li>
+<li><a href="#Definitions_of_the_events">4. Definitions of the events</a></li>
+<li><a href="#Definition_of_the_bidder">5. Definition of the bidder</a></li>
+<li><a href="#Definition_of_the_auctioneer">6. Definition of the auctioneer</a></li>
+<li><a href="#Stop_the_agents">7. Stop the agents</a></li>
+<li><a href="#Compile_and_Launch_the_agents">8. Compile and Launch the agents</a></li>
+</ul>
+<p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
 <div class="bt-download">
-<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"></a>
+<a href="%sarlmavenrepository%/last-demos-release.jar"><img alt="Download the Binary JAR file" src="%website%/images/download-icon.png"></a>
 </div>
 <p>According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial, the terms "agent" and "holon" are synonymous.</p>
 <p>The elements that are explained in this tutorial are:</p>
@@ -68,14 +78,10 @@
 </ul>
 <p><span class="label label-info">Note</span> The communication between the sub-agents is out of the scope of this tutorial. For interested readers, the <a href="../reference/AgentReferenceSpec.html">Agent Reference</a> may be read.</p>
 <p>The source code related to this tutorial may be found in the <a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/holonicauction">SARL demos</a>.</p>
-<ul>
-<li>
-<p id="Principle_of_the_English_Auction" class="example passed"><strong>Principle of the English Auction</strong></p>
+<h3 id="Principle_of_the_English_Auction">1. Principle of the English Auction</h3>
 <p>This type of auction is arguably the most common form of auction in use today. Participants bid openly against one another, with each subsequent bid required to be higher than the previous bid. An auctioneer may announce prices, bidders may call out their bids themselves. The auction ends when no participant is willing to bid further, at which point the highest bidder pays their bid. Alternatively, if the seller has set a minimum sale price in advance (the 'reserve' price) and the final bid does not reach that price the item remains unsold. Sometimes the auctioneer sets a minimum amount by which the next bid must exceed the current highest bid. The most significant distinguishing factor of this auction type is that the current highest bid is always available to potential bidders.</p>
 <p>Source: <a href="http://en.wikipedia.org/wiki/Auction">Wikipedia</a></p>
-</li>
-<li>
-<p id="Principle_of_the_Application" class="example passed"><strong>Principle of the Application</strong></p>
+<h3 id="Principle_of_the_Application">2. Principle of the Application</h3>
 <p>The principle of the application is the following:</p>
 <ul>
   <li>The application is set-up with one auctioneer agent and  three bidders agents.</li>
@@ -86,48 +92,33 @@
 </ul>
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
 <center><img src="./holonic_auction.png"></center>
-</li>
-<li>
-<p id="Why_are_the_sub_agents_in_the_inner_context" class="example passed"><strong>Why are the sub-agents in the inner context?</strong></p>
+<h3 id="Why_are_the_sub_agents_in_the_inner_context">3. Why are the sub-agents in the inner context?</h3>
 <p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger <a href="http://en.wikipedia.org/wiki/Holon_(philosophy)">holon</a>, <strong>and</strong> at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
 <p><span class="label label-info">Note</span> According to the SARL specifications, all the agents in a context belong to the default space of this context. This property is important for designing the communication links between two adjacent levels in the hierarchy of agents. The default space of the inner context becomes the natural place where the super-agent and its sub-agents are interacting.</p>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Definitions_of_the_events">Definitions of the events</h3>
+<h3 id="Definitions_of_the_events">4. Definitions of the events</h3>
 <p>In the application, two events are needed: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>
-<ul>
-<li>
-<p id="Price_event" class="example passed"><strong>Price event</strong></p>
+<h4 id="Price_event">4.1. Price event</h4>
 <p>The <code>Price</code> event is the event sent by the auctioneer for notifying a bidder that the price has changed. This event contains the new price.</p>
-<pre class="prettyprint lang-spec linenums">
-package io.sarl.docs.tutorials.holonicauction
+<pre class="prettyprint lang-spec linenums">package io.sarl.docs.tutorials.holonicauction
 event Price {
   val price : float
   new(price : float) {
     this.price = price
   }
 }</pre>
-</li>
-<li>
-<p id="Playing_event" class="example passed"><strong>Playing event</strong></p>
+<h4 id="Playing_event">4.2. Playing event</h4>
 <p>The <code>Bid</code> event is the event sent by a bidder to the auctioneer. This event contains the value of the bid.</p>
-<pre class="prettyprint lang-spec linenums">
-event Bid {
+<pre class="prettyprint lang-spec linenums">event Bid {
   val value : float
   new(value : float) {
     this.value = value
   }
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Definition_of_the_bidder">Definition of the bidder</h3>
+<h3 id="Definition_of_the_bidder">5. Definition of the bidder</h3>
 <p>The bidder agent is reacting to new price notifications, and could offer a new bid if the new price is not exceeding its maximal price.</p>
-<ul>
-<li>
-<p id="Initial_definition" class="example passed"><strong>Initial definition</strong></p>
+<h4 id="Initial_definition">5.1. Initial definition</h4>
 <p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value of the price that the bidder will consider for bidding. The bidder selects the maximum price between 100 and 1000 randomly.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Bidder {
+<pre class="prettyprint lang-spec linenums">agent Bidder {
   val random = new Random()
   var maxPrice : float
   
@@ -135,14 +126,11 @@ agent Bidder {
     maxPrice = random.nextFloat() * 900f + 100f
   }
 }</pre>
-</li>
-<li>
-<p id="Bidding" class="example passed"><strong>Bidding</strong></p>
+<h4 id="Bidding">5.2. Bidding</h4>
 <p>The definition of the bidder agent is extended by the bidding behavior. The bidding must occur when the auctioneer is notifying a new price, i.e. when the <code>Price</code> event is received. The bidder computes the new price. If this last is not exceeding the maximal price, then the bidder is sending its bid in a <code>Bid</code> event.</p>
 <p><span class="label label-warning">Interaction Principle</span> For sending data to its super-agent, a sub-agent must fire an event in the default space of the inner context of the super-agent. The <code>emit</code> function is supporting this interaction.</p>
 <p><span class="label label-warning">Caution</span> The <code>Bid</code> event is sent in the default space. But there is no restriction on the event's recipient. It means that the super-agent <strong>and</strong> the other sub-agents will receive this event.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Bidder {
+<pre class="prettyprint lang-spec linenums">agent Bidder {
   val random = new Random()
   var maxPrice : float
   
@@ -162,14 +150,11 @@ agent Bidder {
     }
   }
 }</pre>
-</li>
-<li>
-<p id="Restrict_the_bid_to_the_auctioneer" class="example passed"><strong>Restrict the bid to the auctioneer</strong></p>
+<h4 id="Restrict_the_bid_to_the_auctioneer">5.3. Restrict the bid to the auctioneer</h4>
 <p>For restricting the recipients of the <code>Bid</code> event to the auctioneer, it is mandatory to specify a scope for the event. For supporting the holonic communication from the sub-agent to the super-agent, the scope of the event corresponds to the address of the super-agent in the default space.</p>
 <p><span class="label label-info">Note</span> The ID of the super-agent, and the ID of the inner context of this super-agent are always the same.</p>
 <p>Below, we update the bidding behavior by creating a scope, and providing it to the <code>emit</code> function.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Bidder {
+<pre class="prettyprint lang-spec linenums">agent Bidder {
   val random = new Random()
   var maxPrice : float
   
@@ -191,19 +176,14 @@ agent Bidder {
     }
   }
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Definition_of_the_auctioneer">Definition of the auctioneer</h3>
+<h3 id="Definition_of_the_auctioneer">6. Definition of the auctioneer</h3>
 <p>The third step of this tutorial is the definition of the auctioneer that is initiating the auction, waiting for bids, and selecting the winner.</p>
-<ul>
-<li>
-<p id="Initial_definition" class="example passed"><strong>Initial definition</strong></p>
+<h4 id="Initial_definition">6.1. Initial definition</h4>
 <p>The initial definition of the auctioneer is defined below. The auctioneer is starting the auction with a price of 50. It is notifying the bidders with a <code>Price</code> event. Because the bidders are sub-agents, they are living in the inner context of the auctioneer. For sending the <code>Price</code> event to the bidders, the auctioneer must put it in the default space of its inner context. This particular type of emit is supported by the <code>wake</code> function, which is provided by the <code>Behaviors</code> capacity. This function does the same as: <code>
 innerContext.defaultSpace.emit(new Price(50))
 </code></p>
-<p><span class="label label-warning">Interaction Principle</span> For sending data to its sub-agents, a super-agent must fire an event in the default space of its inner context. The <code>wake</code> function is supporting this interaction.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<p><importantnote labe="Interaction Principle"> For sending data to its sub-agents, a super-agent must fire an event in the default space of its inner context. The <code>wake</code> function is supporting this interaction. </importantnote></p>
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors
   
@@ -216,12 +196,9 @@ agent Auctioneer {
     wake(new Price(50))
   }
 }</pre>
-</li>
-<li>
-<p id="Create_the_bidders" class="example passed"><strong>Create the bidders</strong></p>
+<h4 id="Create_the_bidders">6.2. Create the bidders</h4>
 <p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits creating an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the three bidders.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess
   
@@ -238,12 +215,9 @@ agent Auctioneer {
     wake(new Price(50))
   }
 }</pre>
-</li>
-<li>
-<p id="Receive_the_bids" class="example passed"><strong>Receive the bids</strong></p>
+<h4 id="Receive_the_bids">6.3. Receive the bids</h4>
 <p>The auctioneer is waiting for bids. This behavior is coded inside the behavior unit dedicated to the <code>Bid</code> event. We add a guard on the <code>isAuctionOpened</code> attribute to execute the behavior only if the auction is still opened. We will see later when the auction is closed. If the value of the received bid is greater than the current price, the source of the <code>Bid</code> event becomes the new potential winner.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess
   
@@ -267,13 +241,10 @@ agent Auctioneer {
     }
   }
 }</pre>
-</li>
-<li>
-<p id="Stop_the_auction" class="example passed"><strong>Stop the auction</strong></p>
+<h4 id="Stop_the_auction">6.4. Stop the auction</h4>
 <p>The auctioneer must wait some time before it is closing the auction due to lake of bid. To reproduce this behavior, we introduce a periodic task, which is executed every 10 seconds for checking if a bid was provided during the last 10 seconds. This periodic task is started after the first 10 seconds.</p>
 <p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing at a fixed delay its second argument, given by the first argument. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the first ten seconds, we use the <code>in</code> function provided by the capacity.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules
   
@@ -314,13 +285,10 @@ agent Auctioneer {
     }
   }
 }</pre>
-</li>
-<li>
-<p id="Synchronize_the_operations" class="example passed"><strong>Synchronize the operations</strong></p>
+<h4 id="Synchronize_the_operations">6.5. Synchronize the operations</h4>
 <p>Because the periodic task and the event handlers may be executed in parallel, we are facing a classical problem in concurrent programming: how to ensure that two blocks of code are not executed at the same time for avoiding any conflicting access on the same data.</p>
 <p>It is recommended to "synchronize" the blocks of code. We use the <code>synchronize</code> operator (which has the same meaning as in the Java language). This operator ensures that two blocks of code, which are synchronized on the same Object (the argument of the operator) cannot be executed in parallel by different threads.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules
   
@@ -365,24 +333,16 @@ agent Auctioneer {
     }
   }
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Stop_the_agents">Stop the agents</h3>
+<h3 id="Stop_the_agents">7. Stop the agents</h3>
 <p>The previous code works well at one exception. When the auction is closed, the system does not stop. Indeed, the auctioneer does not send any more the <code>Price</code> event. This cause all the agents waiting something that will never append.</p>
 <p><strong>We need to stop the agents.</strong></p>
 <p><span class="label label-warning">Important</span> In the specification of SARL, a super-agent cannot be killed if there is some other agent belonging to its inner context. Consequently, for stopping the agents, we need to stop the sub-agents before the super-agent.</p>
-<ul>
-<li>
-<p id="StopAuction_event" class="example passed"><strong>StopAuction event</strong></p>
+<h4 id="StopAuction_event">7.1. StopAuction event</h4>
 <p>Because the determination of the end of the agent's life is made by the auctioneer, this last must notify its sub-agents that it is time to commit a suicide. We introduce the <code>StopAuction</code> event that is used for this particular notification task.</p>
-<pre class="prettyprint lang-spec linenums">
-event StopAuction</pre>
-</li>
-<li>
-<p id="Kill_the_bidder" class="example passed"><strong>Kill the bidder</strong></p>
+<pre class="prettyprint lang-spec linenums">event StopAuction</pre>
+<h4 id="Kill_the_bidder">7.2. Kill the bidder</h4>
 <p>The code of the bidder must be updated for reacting on the receiving of the <code>StopAuction</code> event. When it is received, the bidder agent is killing itself by calling the <code>killMe</code> function. This function is provided by the <code>Lifecycle</code> capacity.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Bidder {
+<pre class="prettyprint lang-spec linenums">agent Bidder {
   val random = new Random()
   var maxPrice : float
   
@@ -410,12 +370,9 @@ agent Bidder {
     killMe
   }
 }</pre>
-</li>
-<li>
-<p id="Kill_the_auctioneer" class="example passed"><strong>Kill the auctioneer</strong></p>
+<h4 id="Kill_the_auctioneer">7.3. Kill the auctioneer</h4>
 <p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits notifying the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
-<pre class="prettyprint lang-spec linenums">
-agent Auctioneer {
+<pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules
   
@@ -468,38 +425,28 @@ agent Auctioneer {
     }
   }
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Compile_and_Launch_the_agents">Compile and Launch the agents</h3>
+<h3 id="Compile_and_Launch_the_agents">8. Compile and Launch the agents</h3>
 <p>The last step of this tutorial is the definition of the launching process. In the rest of this section, we discuss the use of the <a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
 <p>The Janus platform is designed to launch a single agent at start-up. Then, this launched agent must spawn the other agents in the system. This is typically the case in the auction application.</p>
 <p><span class="label label-warning">Important</span> In this section, we explain how to launch the agents from the command line interface. For launching the agents from the Eclipse IDE, please read <a href="../gettingstarted/RunSARLAgentInTheEclipseIDESpec.html">"Run SARL Agent in the Eclipse IDE"</a>.</p>
-<ul>
-<li>
-<p id="Compile_the_code" class="example passed"><strong>Compile the code</strong></p>
+<h4 id="Compile_the_code">8.1. Compile the code</h4>
 <p>You must have a file that contains the compiled files of the tutorial, the Janus platform, and all the needed libraries by SARL and Janus.</p>
 <p>You could directly download this file by clicking on the download icon at the top of this page; or by compiling the source code yourself.</p>
 <p>If you download the source code of the <a href="https://github.com/sarl/sarl-demos/">SARL demos</a>, and compile them with <a href="http://maven.apache.org">Maven</a>, you will obtain a JAR file with all the mandatory elements inside. This file is located in the <code>target</code> folder, and it has a name similar to <code>sarl-demos-0.1.0-with-dependencies.jar</code>.</p>
-</li>
-<li>
-<p id="Execute_with_a_runnable_JAR" class="example passed"><strong>Execute with a runnable JAR</strong></p>
+<h4 id="Execute_with_a_runnable_JAR">8.2. Execute with a runnable JAR</h4>
 <p>Here, there is two assumptions:</p>
 <ol> <li>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code>  is execuable, i.e. it can be directly launched by the Java  Virtual Machine.</li> <li>From this file, the JVM is launching the Janus bootstrap automatically, i.e.  it has a Main-Class set to <code>io.janusproject.Boot</code>.</li> </ol> On the command line, you must launch Janus with:
 <pre class="prettyprint">java -jar sarl-demos-0.1.0-with-dependencies.jar
      io.sarl.docs.tutorials.holonicauction.Auctioneer
 </pre>
 <p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third argument is the qualified name of the agent to launch.</p>
-</li>
-<li>
-<p id="Execute_without_a_runnable_JAR" class="example passed"><strong>Execute without a runnable JAR</strong></p>
+<h4 id="Execute_without_a_runnable_JAR">8.3. Execute without a runnable JAR</h4>
 <p>In opposite to the previous section, we assume that the file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is not executable. On the command line, you must launch Janus with:</p>
 <pre class="prettyprint">java -cp sarl-demos-0.1.0-with-dependencies.jar
      io.janusproject.Boot
      io.sarl.docs.tutorials.holonicauction.Auctioneer
 </pre>
 <p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap. The first argument after the bootstrap is the qualified name of the agent to launch.</p>
-</li>
-</ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

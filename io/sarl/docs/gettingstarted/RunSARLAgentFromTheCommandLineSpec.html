@@ -53,60 +53,49 @@
 </div>
 <div class="container">
 <h1>Run SARL Agent from the Command Line</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Command_Line_Parameters">Command Line Parameters</a></li></ul><p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a>.</p>
-<ul>
-<li>
-<p id="Boot_of_Janus" class="example passed"><strong>Boot of Janus</strong></p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Boot_of_Janus">1. Boot of Janus</a></li>
+<li><a href="#Specify_the_Agent_to_Launch">2. Specify the Agent to Launch</a></li>
+<li><a href="#Command_Line_Parameters">3. Command Line Parameters</a></li>
+<li><a href="#What_s_next">4. What's next?</a></li>
+</ul>
+<p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a>.</p>
+<h3 id="Boot_of_Janus">1. Boot of Janus</h3>
 <p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must execute this boot class in a Java Virtual Machine.</p>
 <p>The typical command line is:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot
 </pre>
 <p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last argument is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
-</li>
-<li>
-<p id="Specify_the_Agent_to_Launch" class="example passed"><strong>Specify the Agent to Launch</strong></p>
+<h3 id="Specify_the_Agent_to_Launch">2. Specify the Agent to Launch</h3>
 <p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent
 </pre>
-<p><span class="label label-danger">Important</span> The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:</p>
+<p><veryimportant>The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:</veryimportant></p>
 <ul>
   <li>launch a separate Janus platform for each agent, or</li>
-  <li>launch an agent that is spawning the other agents.</li>
+  <li>launch an agent that is spawning the other agents. </li>
 </ul>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Command_Line_Parameters">Command Line Parameters</h3>
+<h3 id="Command_Line_Parameters">3. Command Line Parameters</h3>
 <p>It is possible to give arguments to the launched agent. Indeed, all the arguments given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
-<ul>
-<li>
-<p id="Give_Parameters_to_the_Agent" class="example passed"><strong>Give Parameters to the Agent</strong></p>
+<h4 id="Give_Parameters_to_the_Agent">3.1. Give Parameters to the Agent</h4>
 <p>The following example gives the values <code>FirstParam</code> and <code>SecondParam</code> to the launched agent:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent FirstParam SecondParam
 </pre>
-</li>
-<li>
-<p id="Retrieve_the_Command_Line_Parameters_in_the_Agent" class="example passed"><strong>Retrieve the Command Line Parameters in the Agent</strong></p>
+<h4 id="Retrieve_the_Command_Line_Parameters_in_the_Agent">3.2. Retrieve the Command Line Parameters in the Agent</h4>
 <p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
-<pre class="prettyprint lang-spec linenums">
-agent MyAgent {
+<pre class="prettyprint lang-spec linenums">agent MyAgent {
   on Initialize {
     println("Command line parameters: "
       +occurrence.parameters)
   }
 }</pre>
-</li>
-<li>
-<p id="Janus_Command_Line_Options" class="example passed"><strong>Janus Command Line Options</strong></p>
+<h4 id="Janus_Command_Line_Options">3.3. Janus Command Line Options</h4>
 <p>The Janus platform provides a collection of command line options. For obtaining the list of these options, you should type:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot --help
 </pre>
-</li>
-</ul>
-<ul><li>
-<p id="What_s_next" class="example passed"><strong>What's next?</strong></p>
+<h3 id="What_s_next">4. What's next?</h3>
 <p>Now, you are ready for developing agents with the SARL language. Please read the rest of the documentation for obtaining more details.</p>
 <p><a href="../SARLDocumentationSuite.html">Next&gt;</a></p>
-</li></ul>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>

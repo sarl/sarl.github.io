@@ -53,18 +53,38 @@
 </div>
 <div class="container">
 <h1>General Syntax Reference</h1>
-<ul class="page_outline" id="page_outline"><li><a href="#Script_Format">Script Format</a></li><li><a href="#Literals">Literals</a></li><li><a href="#Collection_Literals">Collection Literals</a></li><li><a href="#Array_Literals">Array Literals</a></li><li><a href="#Operators">Operators</a></li><li><a href="#Variable_and_Field_Declarations">Variable and Field Declarations</a></li><li><a href="#Function_Declarations">Function Declarations</a></li><li><a href="#Field_Access_and_Method_Invocation">Field Access and Method Invocation</a></li><li><a href="#Constructor_Call">Constructor Call</a></li><li><a href="#Extension_Methods">Extension Methods</a></li><li><a href="#Lambda_Expressions">Lambda Expressions</a></li><li><a href="#If_Expression">If Expression</a></li><li><a href="#Switch_Expression">Switch Expression</a></li><li><a href="#Loops">Loops</a></li><li><a href="#Exception_Support">Exception Support</a></li><li><a href="#Synchronized_Expression">Synchronized Expression</a></li></ul><p>This document describes the general syntax of the SARL Language.</p>
-<ul>
-<li>
-<p id="Java_Interoperability" class="example passed"><strong>Java Interoperability</strong></p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Java_Interoperability">1. Java Interoperability</a></li>
+<li><a href="#Name_Syntax">2. Name Syntax</a></li>
+<li><a href="#Script_Format">3. Script Format</a></li>
+<li><a href="#Literals">4. Literals</a></li>
+<li><a href="#Collection_Literals">5. Collection Literals</a></li>
+<li><a href="#Array_Literals">6. Array Literals</a></li>
+<li><a href="#Type_Cast">7. Type Cast</a></li>
+<li><a href="#Operators">8. Operators</a></li>
+<li><a href="#Blocks">9. Blocks</a></li>
+<li><a href="#Variable_and_Field_Declarations">10. Variable and Field Declarations</a></li>
+<li><a href="#Function_Declarations">11. Function Declarations</a></li>
+<li><a href="#Field_Access_and_Method_Invocation">12. Field Access and Method Invocation</a></li>
+<li><a href="#Constructor_Call">13. Constructor Call</a></li>
+<li><a href="#Extension_Methods">14. Extension Methods</a></li>
+<li><a href="#Lambda_Expressions">15. Lambda Expressions</a></li>
+<li><a href="#If_Expression">16. If Expression</a></li>
+<li><a href="#Switch_Expression">17. Switch Expression</a></li>
+<li><a href="#Loops">18. Loops</a></li>
+<li><a href="#Exception_Support">19. Exception Support</a></li>
+<li><a href="#Synchronized_Expression">20. Synchronized Expression</a></li>
+<li><a href="#References">21. References</a></li>
+<li><a href="#Legal_Notice">22. Legal Notice</a></li>
+</ul>
+<p>This document describes the general syntax of the SARL Language.</p>
+<h3 id="Java_Interoperability">1. Java Interoperability</h3>
 <p>SARL, like Java, is a statically typed language. In fact, it completely supports Java's type system, including the primitive types like <em>int</em> or <em>boolean</em>, arrays and all the Java classes, interfaces, enumerations and annotations that reside on the class path.</p>
 <p>Java generic types are fully supported as well: you can define type parameters on methods and classes and pass type arguments to generic types just as you are used to from Java. The type system and its conformance and casting rules are implemented as defined in the <a href="http://docs.oracle.com/javase/specs/jls/se5.0/html/conversions.html">Java Language Specification</a>.</p>
 <p>One of the problems with Java is that you are forced to write type signatures over and over again. That is why so many people do not like static typing. But this is in fact not a problem of static typing, but simply a problem with Java. Although SARL is statically typed just like Java, you rarely have to write types down because they can be computed from the context.</p>
 <p>In addition to Java's auto-boxing to convert primitives to their corresponding wrapper types (e.g. <em>int</em> is automatically converted to <em>Integer</em> when needed), there are additional conversion rules in SARL: arrays are automatically converted to <code>List&lt;ComponentType&gt;</code> and vice versa.</p>
 <p>Resembling and supporting every aspect of Java's type system ensures that there is no impedance mismatch between Java and SARL. <strong>This means that SARL and Java are 100% interoperable</strong>. There are no exceptional cases and you do not have to think in two worlds. You can invoke SARL code from Java and vice versa without any surprises or hassles.</p>
-</li>
-<li>
-<p id="Name_Syntax" class="example passed"><strong>Name Syntax</strong></p>
+<h3 id="Name_Syntax">2. Name Syntax</h3>
 <p>In SARL, the names of the features (agents, variables, fields, etc.) cannot be one of the keywords of SARL or Java. For example, it is forbidden to type:</p>
 <pre class="prettyprint">import io.sarl.event.ActionEvent
 </pre>
@@ -72,37 +92,27 @@
 <p>For solving this problem (since some names come from Java, and this language has not the same set of keywords than SARL), it is possible to prefix the name fragment with the character <code>^</code>:</p>
 <pre class="prettyprint">import io.sarl.^event.ActionEvent
 </pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Script_Format">Script Format</h3>
+<h3 id="Script_Format">3. Script Format</h3>
 <p>A script is a file in which you must type the SARL code. Each script must follow the format:</p>
 <pre class="prettyprint">&lt;package declaration&gt;
 &lt;imports&gt;
 &lt;top-level features&gt;
 </pre>
-<ul>
-<li>
-<p id="Package_Declaration" class="example passed"><strong>Package Declaration</strong></p>
+<h4 id="Package_Declaration">3.1. Package Declaration</h4>
 <p>For structuring your software, it is convenient to put the scripts in different packages (as Java does for the classes).</p>
 <p>The keyword <code>package</code> permits to define the name of the package associated to a SARL file. Consequently, all the features defined in the script are defined in this package, and their names are qualified with the name of the package.</p>
 <p>The package's name has also a consequence in the generation of the Java files behind the SARL script. Indeed, all the Java files are generated in a folder, which is matching the name of the package.</p>
 <p>In the following example, the qualified name of the agent is <code>io.sarl.docs.reference.gsr</code>.</p>
 <p><span class="label label-info">Note</span> If the <code>package</code> keyword is not used, the default package will be used. The default package has an empty name. It is recommended in the SARL Best Practices to specify a package's name.</p>
-<pre class="prettyprint lang-spec linenums">
-package io.sarl.docs.reference.gsr</pre>
-</li>
-<li>
-<p id="Import_Directive" class="example passed"><strong>Import Directive</strong></p>
+<pre class="prettyprint lang-spec linenums">package io.sarl.docs.reference.gsr</pre>
+<h4 id="Import_Directive">3.2. Import Directive</h4>
 <p>The <em>imports</em> part of a SARL script is dedicated to the declaration of the imported classes. Each time you want to use a feature defined in another package than the one of your SARL script, you should include it with the <code>import</code> directive.</p>
 <p><span class="label label-info">Note</span> This directive works in a similar way as in the Java language.</p>
 <p>The <code>import</code> keyword is followed by the qualified name of the feature to import. In the following code, it is illustrated by the first directive.</p>
 <p>Optionally, you could import all the features defined inside a package. This could be done by replacing the name of the feature by the wildcard character <code>*</code>. The second import directive is an example of the inclusion of all the classes defined in <code>java.net</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-import java.util.List
+<pre class="prettyprint lang-spec linenums">import java.util.List
 import java.net.*</pre>
-</li>
-<li>
-<p id="Static_Import_Directive" class="example passed"><strong>Static Import Directive</strong></p>
+<h4 id="Static_Import_Directive">3.3. Static Import Directive</h4>
 <p>Sometimes, it is mandatory to import a class for accessing its statically defined functions, i.e. a function that can be called without any associated object's instance.</p>
 <p>In this case, the name of the static function is qualified by the fully qualified name of the class. For example, the function <code>max()</code> is invoked with this syntax, in the example below.</p>
 <p>However, if there is plenty of invocations to static methods in your source code, the static-import mechanism permits to make the code more readable by removing the fully qualified name of the classes, in which the called functions are defined.</p>
@@ -110,8 +120,7 @@ import java.net.*</pre>
 <pre class="prettyprint">import static java.util.Arrays.
 </pre>
 <p>Then, it is possible to invoke one of them by typing its name, as the call to <code>toString(int[])</code> below.</p>
-<pre class="prettyprint lang-spec linenums">
-def example {
+<pre class="prettyprint lang-spec linenums">def example {
   var col : Collection&lt;Integer&gt;
   var tab : int[]
 
@@ -121,13 +130,10 @@ def example {
   // Short hand for calling a static method, when statically imported
   println( toString(tab) )
 }</pre>
-</li>
-<li>
-<p id="Top_Level_Features" class="example passed"><strong>Top-Level Features</strong></p>
+<h4 id="Top_Level_Features">3.4. Top-Level Features</h4>
 <p>A large part of a SARL script contains the definitions of the top-level features. These features are the core concepts of SARL, such as <code>agent</code>, <code>event</code>, or <code>capacity</code>.</p>
 <p>All these top-level features are documented in their own reference document.</p>
-<pre class="prettyprint lang-spec linenums">
-event E {
+<pre class="prettyprint lang-spec linenums">event E {
 }
 
 capacity C {
@@ -141,149 +147,97 @@ behavior B {
 
 agent A {
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Literals">Literals</h3>
+<h3 id="Literals">4. Literals</h3>
 <p>A literal denotes a fixed, unchangeable value. Literals for strings, numbers, booleans, null and Java types are supported as well as literals for unmodifiable collection types like lists, sets and maps or literals for arrays.</p>
-<ul>
-<li>
-<p id="String_Literals" class="example passed"><strong>String Literals</strong></p>
+<h4 id="String_Literals">4.1. String Literals</h4>
 <p>A string literal is of type <code>String</code>. String literals are enclosed in a pair of single quotes or double quotes. Special characters can be quoted with a backslash or defined using unicode notation. Contrary to Java, strings can span multiple lines.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = 'Hello World!'
+<pre class="prettyprint lang-spec linenums">var a = 'Hello World!'
 var b = "Hello World!"
 var c = 'Hello "World!"'
 var d = "Hello \"World!\""
 var e = "Hello 
       World!"</pre>
-</li>
-<li>
-<p id="Character_Literals" class="example passed"><strong>Character Literals</strong></p>
+<h4 id="Character_Literals">4.2. Character Literals</h4>
 <p>Character literals use the same notation as String literals. If a single character literal is used in a context where a primitive char or the wrapper type <code>Character</code> is expected, the compiler will treat the literal as a value or instance.</p>
-<pre class="prettyprint lang-spec linenums">
-var a : char = 'a'
+<pre class="prettyprint lang-spec linenums">var a : char = 'a'
 var b : char = "b"</pre>
-</li>
-<li>
-<p id="Number_Literals" class="example passed"><strong>Number Literals</strong></p>
+<h4 id="Number_Literals">4.3. Number Literals</h4>
 <p>SARL supports roughly the same number literals as Java. There are two exceptions: there is no notation for specifying octal numbers, and if you put the dot character in a number, you must specify the fractional and mantissa parts.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = 42    // Decimal
+<pre class="prettyprint lang-spec linenums">var a = 42    // Decimal
 var b = 0xbeef  // Hexadecimal
 var c = 077    // Decimal 77, NOT octal
 var d = 0.1    // The leading zero must be specified
 var e = 1.0    // The trailing zero must be specified</pre>
-</li>
-<li>
-<p id="Large_Numbers" class="example passed"><strong>Large Numbers</strong></p>
+<h4 id="Large_Numbers">4.4. Large Numbers</h4>
 <p>As in Java 7, you can separate digits using <code>_</code> for better readability of large numbers.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = 123_456_78l</pre>
-</li>
-<li>
-<p id="Integer_suffixes" class="example passed"><strong>Integer suffixes</strong></p>
+<pre class="prettyprint lang-spec linenums">var a = 123_456_78l</pre>
+<h4 id="Integer_suffixes">4.5. Integer suffixes</h4>
 <p>Post-fixing an integer literal may change its type: no suffix is for <code>int</code>, suffix <code>L</code> is for <code>long</code>, and suffix <code>BI</code> is for <code>BigInteger</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-var anInteger = 1234
+<pre class="prettyprint lang-spec linenums">var anInteger = 1234
 var aLong = 1234l
 var aBigInteger = 1234bi</pre>
-</li>
-<li>
-<p id="Floating_point_value_suffixes" class="example passed"><strong>Floating-point-value suffixes</strong></p>
+<h4 id="Floating_point_value_suffixes">4.6. Floating-point-value suffixes</h4>
 <p>Post-fixing a floating-point literal may change its type: no suffix is for <code>double</code>, suffix <code>D</code> is for <code>double</code>, suffix <code>F</code> is for <code>float</code>, and suffix <code>BD</code> is for <code>BigDecimal</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-var aDouble = 1234.0
+<pre class="prettyprint lang-spec linenums">var aDouble = 1234.0
 var anotherDouble = 5678d
 var aFloat = 1234.0f
 var anotherFloat = 5678f
 var aBigDecimal = 1234bd</pre>
-</li>
-<li>
-<p id="Boolean_Literals" class="example passed"><strong>Boolean Literals</strong></p>
+<h4 id="Boolean_Literals">4.7. Boolean Literals</h4>
 <p>There are two boolean literals, <code>true</code> and <code>false</code> which correspond to their Java counterpart of type <code>boolean</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = true
+<pre class="prettyprint lang-spec linenums">var a = true
 var b = false</pre>
-</li>
-<li>
-<p id="Null_Literals" class="example passed"><strong>Null Literals</strong></p>
+<h4 id="Null_Literals">4.8. Null Literals</h4>
 <p>The null pointer literal <code>null</code> has exactly the same semantics as in Java.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = null</pre>
-</li>
-<li>
-<p id="Type_Literals" class="example passed"><strong>Type Literals</strong></p>
+<pre class="prettyprint lang-spec linenums">var a = null</pre>
+<h4 id="Type_Literals">4.9. Type Literals</h4>
 <p>The syntax for type literals is generally the plain name of the type. Nested types use the delimiter <code>.</code>.</p>
 <p>To disambiguate the expression, type literals may also be specified using the keyword <code>typeof</code>.</p>
 <p>Consequently it is possible to access the members of a type reflectively by using its plain name.</p>
-<pre class="prettyprint lang-spec linenums">
-// the variable a contains the Java type String.class
+<pre class="prettyprint lang-spec linenums">// the variable a contains the Java type String.class
 var a = String
 // the variable b contains the Java type Integer.class
 var b = typeof(Integer)
 // the variable c contains the list of the fields 
 // that are declared in the Java type String.class
 var c = String.getDeclaredFields()</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Collection_Literals">Collection Literals</h3>
-<ul>
-<li>
-<p id="Collection_Creation" class="example passed"><strong>Collection Creation</strong></p>
+<h3 id="Collection_Literals">5. Collection Literals</h3>
+<h4 id="Collection_Creation">5.1. Collection Creation</h4>
 <p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported. They permit to create instances of the collections from the JDK.</p>
-<pre class="prettyprint lang-spec linenums">
-var myList = newArrayList('Hello', 'world')
+<pre class="prettyprint lang-spec linenums">var myList = newArrayList('Hello', 'world')
 var myMap = newLinkedHashMap('a' -&gt; 1, 'b' -&gt; 2)</pre>
-</li>
-<li>
-<p id="Immutable_Collections" class="example passed"><strong>Immutable Collections</strong></p>
+<h4 id="Immutable_Collections">5.2. Immutable Collections</h4>
 <p>In addition, SARL supports collection literals to create immutable collections and arrays, depending on the target type. There are three types of immutable collections: array, set, and hash table.</p>
-<pre class="prettyprint lang-spec linenums">
-// the variable a contains an immutable array.
+<pre class="prettyprint lang-spec linenums">// the variable a contains an immutable array.
 var a = #['Hello','World']
 // the variable b contains an immutable set.
 var b = #{'Hello','World'}
 // the variable c contains an immutable hash table.
 var c = #{'a' -&gt; 1 ,'b' -&gt;2}</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Array_Literals">Array Literals</h3>
+<h3 id="Array_Literals">6. Array Literals</h3>
 <p>Java arrays can be created either using a literal as described in the previous section, or if it should be a new array with a fixed size.</p>
-<ul>
-<li>
-<p id="Array_Creation" class="example passed"><strong>Array Creation</strong></p>
+<h4 id="Array_Creation">6.1. Array Creation</h4>
 <p>The methods from <code>ArrayLiterals</code> are automatically included. This utility class provides a collection of methods, such as <code>ArrayLiterals.newArrayOfSize(int)</code> for creating array literals.</p>
-<pre class="prettyprint lang-spec linenums">
-// variable a contains a array of size 400 which contains Objects.
+<pre class="prettyprint lang-spec linenums">// variable a contains a array of size 400 which contains Objects.
 var a : String[] = newArrayOfSize(400)
 // variable b contains a array of size 200 which contains int values.
 var b : int[] = newIntArrayOfSize(200)</pre>
-</li>
-<li>
-<p id="Array_Getter_and_Setter" class="example passed"><strong>Array Getter and Setter</strong></p>
+<h4 id="Array_Getter_and_Setter">6.2. Array Getter and Setter</h4>
 <p>Retrieving and setting values of arrays is done through the extension methods <code>get(int)</code> and <code>set(int, T)</code>. As for Java, the index of the elements in the array starts with <code>0</code>.</p>
 <p>The method <code>length</code> is available for retrieving the size of the array.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = #['Hello', 'world', '!']
+<pre class="prettyprint lang-spec linenums">var a = #['Hello', 'world', '!']
 // variable b contains the second element of the array a: 'world'.
 var b = a.get(1)
 // variable c contains the size of the array a: 3.
 var c = a.length</pre>
-</li>
-<li>
-<p id="Array_to_List" class="example passed"><strong>Array to List</strong></p>
+<h4 id="Array_to_List">6.3. Array to List</h4>
 <p>Arrays are automatically converted to lists when needed. It is similar to the boxing and unboxing features provided by Java, between the primitives and their respective object types.</p>
-<pre class="prettyprint lang-spec linenums">
-val myArray : int[] = #[1,2,3]
+<pre class="prettyprint lang-spec linenums">val myArray : int[] = #[1,2,3]
 val myList : List&lt;Integer&gt; = myArray</pre>
-</li>
-</ul>
-<ul><li>
-<p id="Type_Cast" class="example passed"><strong>Type Cast</strong></p>
+<h3 id="Type_Cast">7. Type Cast</h3>
 <p>The cast of an expression to a specific type must be done with the <code>as</code> keyword. This keywords must be typed after the expression, but before the casting type.</p>
 <p>The conformance rules for type casts are defined in the <a href="http://docs.oracle.com/javase/specs/jls/se5.0/html/conversions.html#5.5">Java Language Specification</a>.</p>
-<pre class="prettyprint lang-spec linenums">
-// the variable something is of type Number.
+<pre class="prettyprint lang-spec linenums">// the variable something is of type Number.
 var something : Number = new Integer(123)
 // the variable a contains the value of the variable something
 // but casted to Integer
@@ -291,12 +245,9 @@ var a = something as Integer
 
 //Do the convertion from a number literal to an Integer object
 var b = 56 as Integer</pre>
-</li></ul>
-<h3 class="exampleGroup passed" id="Operators">Operators</h3>
+<h3 id="Operators">8. Operators</h3>
 <p>SARL supports a collection of operators. Most of them are infix operators, and several are postfix operators.</p>
-<ul>
-<li>
-<p id="Arithmetic_operators" class="example passed"><strong>Arithmetic operators</strong></p>
+<h4 id="Arithmetic_operators">8.1. Arithmetic operators</h4>
 <p>The arithmetic operators are listed below. The arithmetic operators take numbers as operands. They could be unary (one operand) or binary (two operands).</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -355,9 +306,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Comparison_operators_on_primitive_types" class="example passed"><strong>Comparison operators on primitive types</strong></p>
+<h4 id="Comparison_operators_on_primitive_types">8.2. Comparison operators on primitive types</h4>
 <p>The comparison operators primitive types are listed below.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -419,9 +368,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Comparison_operators_on_objects" class="example passed"><strong>Comparison operators on objects</strong></p>
+<h4 id="Comparison_operators_on_objects">8.3. Comparison operators on objects</h4>
 <p>The comparison operators on objects are listed below.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -487,9 +434,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Boolean_Operators" class="example passed"><strong>Boolean Operators</strong></p>
+<h4 id="Boolean_Operators">8.4. Boolean Operators</h4>
 <p>The boolean operators are listed below. Each operator takes one or two boolean values as operands, and replies a boolean value resulting of the operational semantic of the operator.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -518,9 +463,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Bitwise_Operators" class="example passed"><strong>Bitwise Operators</strong></p>
+<h4 id="Bitwise_Operators">8.5. Bitwise Operators</h4>
 <p>The bit operators are listed below. The bit operators apply operations on the bits that are representing a numeric value.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -557,9 +500,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="String_Operators" class="example passed"><strong>String Operators</strong></p>
+<h4 id="String_Operators">8.6. String Operators</h4>
 <p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -578,9 +519,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Collection_Operators" class="example passed"><strong>Collection Operators</strong></p>
+<h4 id="Collection_Operators">8.7. Collection Operators</h4>
 <p>The collection operators are listed below. These operators are dedicated to the collections (lists, sets, maps...) Most of the time, the first operand is the collection on which the operator must be applied.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -612,9 +551,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Assignments" class="example passed"><strong>Assignments</strong></p>
+<h4 id="Assignments">8.8. Assignments</h4>
 <p>The assignment operators are listed below. Local variables and fields can be assigned using the <code>=</code> operator. Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>) can be used as a shorthand for the assignment of a binary expression. They work automatically when the corresponding infix operator is declared.</p>
 <table>
 <thead>
@@ -656,9 +593,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Range_operators" class="example passed"><strong>Range operators</strong></p>
+<h4 id="Range_operators">8.9. Range operators</h4>
 <p>This section presents a collection of operators that permit to define ranges of values.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -702,9 +637,7 @@ var b = 56 as Integer</pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p id="Other_operators" class="example passed"><strong>Other operators</strong></p>
+<h4 id="Other_operators">8.10. Other operators</h4>
 <p>This section presents a collection of operators that are not related to the categories in the previous sections.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
 <table>
@@ -736,15 +669,11 @@ var b = 56 as Integer</pre>
 </tbody>
 </table>
 <p>For illustrating an usage of the <code>=&gt;</code> operator, consider the class <code>Person</code> with two attributes inside: <code>firstName</code> and <code>lastName</code>. The creation of an instance of <code>Person</code> could be done with: </p>
-<pre class="prettyprint">new Person =&gt; [  firstName = 'Han'  lastName = 'Solo' ]</pre> In this example, the instance of Person is created and passed to the lambda expression. In this expression, it is accessible with the <code>it</code> reserved variable, which does not need to be typed out since it is the default object in lambda expression. The lambda expression replies the value of <code>it</code>.
-</li>
-<li>
-<p id="Operator_Overloading" class="example passed"><strong>Operator Overloading</strong></p>
+<pre class="prettyprint">new Person =&gt; [  firstName = 'Han'  lastName = 'Solo' ]</pre> In this example, the instance of Person is created and passed to the lambda expression. In this expression, it is accessible with the <code>it</code> reserved variable, which does not need to be typed out since it is the default object in lambda expression. The lambda expression replies the value of <code>it</code>.<h4 id="Operator_Overloading">8.11. Operator Overloading</h4>
 <p>In SARL, it is easy to overload an existing operator or to re-define the algorithm of one.</p>
 <p>You should define the operator mapping function (see the previous sections for a comprehensive list of them).</p>
 <p>Below, the addition operator <code>+</code> between two <code>Pair</code> is defined. The function that is defining the operator must have a name with the <code>operator_</code> prefix, and one parameter for each operand associated to the operator. In the example, the addition of two pairs (a,b) and (c,d) gives the pair (a,d).</p>
-<pre class="prettyprint lang-spec linenums">
-def operator_plus(
+<pre class="prettyprint lang-spec linenums">def operator_plus(
       a : Pair&lt;Integer,Integer&gt;,
       b : Pair&lt;Integer,Integer&gt;) : Pair&lt;Integer,Integer&gt; {
   return new Pair(a.key, b.value)
@@ -761,14 +690,10 @@ def example {
   // z2.value == 5
   println(z2.toString)
 }</pre>
-</li>
-</ul>
-<ul><li>
-<p id="Blocks" class="example passed"><strong>Blocks</strong></p>
+<h3 id="Blocks">9. Blocks</h3>
 <p>The block expression allows to have imperative code sequences. It consists of a sequence of expressions. The value of the last expression in the block is the value of the complete block. The type of a block is also the type of the last expression. Empty blocks return <code>null</code> and have the type <code>Object</code>.</p>
 <p>A block expression is surrounded by curly braces. The expressions in a block can be terminated by an optional semicolon.</p>
-<pre class="prettyprint lang-spec linenums">
-// The block of the following function as a value of the same type as x,
+<pre class="prettyprint lang-spec linenums">// The block of the following function as a value of the same type as x,
 // which is after inferring String.
 def block : String {
   var x = greeting;
@@ -778,52 +703,40 @@ def block : String {
     x
   }
 }</pre>
-</li></ul>
-<h3 class="exampleGroup passed" id="Variable_and_Field_Declarations">Variable and Field Declarations</h3>
+<h3 id="Variable_and_Field_Declarations">10. Variable and Field Declarations</h3>
 <p>Variables and Fields can be declared in SARL. For declaring a variable or a field, you must specify if it is a value or a variable (see below for details), its name, and optionally its type and its initial value.</p>
 <p>The variable/value declaration follows the syntax:</p>
 <pre class="prettyprint">var NAME [: TYPE] [= INITIAL VALUE]
 val NAME [: TYPE] [= INITIAL VALUE]
 </pre>
 <p>Shadowing variables from outer scopes is not allowed, the only exception is the implicit variable <code>it</code>.</p>
-<ul>
-<li>
-<p id="Variable_vs_Value_Declaration" class="example passed"><strong>Variable vs. Value Declaration</strong></p>
+<h4 id="Variable_vs_Value_Declaration">10.1. Variable vs. Value Declaration</h4>
 <p>A variable declaration starting with the keyword <code>val</code> denotes a value, which is essentially a final, unsettable variable.</p>
 <p>The variable needs to be declared with the keyword <code>var</code>, which stands for 'variable' if it should be allowed to reassign its value.</p>
 <p>Variables declared outside a lambda expression using the <code>var</code> keyword are not accessible from within the lambda expressions. Those declared with the <code>val</code> keyword are accessible.</p>
 <p>Fields declared outside a lambda expression using the <code>var</code> keyword or the <code>val</code> keyword are accessible from within the lambda expressions.</p>
-<pre class="prettyprint lang-spec linenums">
-val max = 100
+<pre class="prettyprint lang-spec linenums">val max = 100
 var i = 0
 while (i &lt; max) {
   println("Hi there!")
   i = i + 1
 }</pre>
-</li>
-<li>
-<p id="Typing" class="example passed"><strong>Typing</strong></p>
+<h4 id="Typing">10.2. Typing</h4>
 <p>The type of the variable itself can either be explicitly declared or it can be inferred from the initializer expression.</p>
-<pre class="prettyprint lang-spec linenums">
-// Explicit type
+<pre class="prettyprint lang-spec linenums">// Explicit type
 var a : String = "abc"
 // Inferred type
 var b = "abc"</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Function_Declarations">Function Declarations</h3>
+<h3 id="Function_Declarations">11. Function Declarations</h3>
 <p>A function, or method, or action, is a named block of code that could be invoked.</p>
 <p>A function declaration starts with the keyword <code>def</code>. This declaration can only occur in top-level features (<code>agent</code>, <code>skill</code>, etc.)</p>
 <p>The function declaration follows the syntax:</p>
 <pre class="prettyprint"> def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
 </pre>
 <p><span class="label label-info">Note</span> The parameters are implicitly declared with the keyword <code>val</code>.</p>
-<ul>
-<li>
-<p id="Standard_Declarations" class="example passed"><strong>Standard Declarations</strong></p>
+<h4 id="Standard_Declarations">11.1. Standard Declarations</h4>
 <p>The following code gives examples of function declarations:</p>
-<pre class="prettyprint lang-spec linenums">
-// No parameter.
+<pre class="prettyprint lang-spec linenums">// No parameter.
 // Return type: void
 def action1 {
 }
@@ -851,14 +764,11 @@ def action5(a : int) : double {
 // Return type: String
 def action6(a : int, b : String) : String {
 }</pre>
-</li>
-<li>
-<p id="Variadic_Function" class="example passed"><strong>Variadic Function</strong></p>
+<h4 id="Variadic_Function">11.2. Variadic Function</h4>
 <p>A variadic function is a function of indefinite arity: one which accepts a variable number of arguments.</p>
 <p>SARL enables to define the last parameter of a function as variadic with the operator <code>*</code>. This operator has an informal meaning similar to the cardinality in UML: zero to many.</p>
 <p>In other languages, such as Java and C++, the variadic operator is <code>...</code></p>
-<pre class="prettyprint lang-spec linenums">
-// Function with indefinite number of integers as parameters
+<pre class="prettyprint lang-spec linenums">// Function with indefinite number of integers as parameters
 def action1(v : int*) { }
 // Function which takes a boolean, a double and an indefinite 
 // number of integers as parameters
@@ -873,14 +783,11 @@ def calls {
   action2(true, 3.0, 1)
   action2(true, 3.0, 1, 5)
 }</pre>
-</li>
-<li>
-<p id="Default_Value_for_the_Formal_Parameters" class="example passed"><strong>Default Value for the Formal Parameters</strong></p>
+<h4 id="Default_Value_for_the_Formal_Parameters">11.3. Default Value for the Formal Parameters</h4>
 <p>SARL allows to specify a default value for a formal parameter.</p>
 <p>When a default value is specified, it means that the caller of the action can skip to pass a value for the corresponding argument. And, when the function is run, the default value is given to the skipped argument.</p>
 <p><span class="label label-warning">Important</span> In SARL, if a formal parameter has a default value, the following formal parameters do not need to have default value as well. This is a major difference with the default values in the C++ language for instance.</p>
-<pre class="prettyprint lang-spec linenums">
-// Function with one parameter with a default value.
+<pre class="prettyprint lang-spec linenums">// Function with one parameter with a default value.
 def action1(v : int = 5) { }
 // Function which takes a boolean, a double and an integer as parameters.
 // The first and third parameters have default values. 
@@ -901,12 +808,9 @@ def calls {
   // a == true, b == 9.0, c == 7
   action2(9.0)
 }</pre>
-</li>
-<li>
-<p id="Mixing_Variadic_Parameter_and_Default_Values" class="example passed"><strong>Mixing Variadic Parameter and Default Values</strong></p>
+<h4 id="Mixing_Variadic_Parameter_and_Default_Values">11.4. Mixing Variadic Parameter and Default Values</h4>
 <p>It is possible to mix the variadic parameter and the default values, except that the variadic parameter cannot have a default value.</p>
-<pre class="prettyprint lang-spec linenums">
-def action(v : int = 5, a : float*) { }
+<pre class="prettyprint lang-spec linenums">def action(v : int = 5, a : float*) { }
 
 // Calls
 def calls {
@@ -919,16 +823,11 @@ def calls {
   // v == 5, a == #[3.5, 6.45]
   action(3.5f, 6.45f)
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Field_Access_and_Method_Invocation">Field Access and Method Invocation</h3>
+<h3 id="Field_Access_and_Method_Invocation">12. Field Access and Method Invocation</h3>
 <p>A simple name can refer to a field, variable or parameter. In addition, it can point to a method with zero argument since empty parentheses are optional.</p>
-<ul>
-<li>
-<p id="Property_Access" class="example passed"><strong>Property Access</strong></p>
+<h4 id="Property_Access">12.1. Property Access</h4>
 <p>If there is no field with the given name and also no method with the name and zero parameters accessible, a simple name binds to a corresponding Java-Bean getter method if available:</p>
-<pre class="prettyprint lang-spec linenums">
-agent A {
+<pre class="prettyprint lang-spec linenums">agent A {
   var prop1 : Object
   var prop2 : Object
   def getProperty2 : Object {
@@ -955,13 +854,10 @@ agent A {
     this.property2 = new Object
   }
 }</pre>
-</li>
-<li>
-<p id="Implicit_Variables_this_and_it" class="example passed"><strong>Implicit Variables this and it</strong></p>
+<h4 id="Implicit_Variables_this_and_it">12.2. Implicit Variables this and it</h4>
 <p>Like in Java the current object is bound to the keyword <code>this</code>. This allows for either qualified field access or method invocations.</p>
 <p>You can use the variable name <code>it</code> to get the same behavior for any variable or parameter. Moreover, the variable <code>it</code> is that it is allowed to be shadowed. This is especially useful when used together with lambda expressions.</p>
-<pre class="prettyprint lang-spec linenums">
-agent A {
+<pre class="prettyprint lang-spec linenums">agent A {
   var a = 35
   def example : int {
     this.a = 123
@@ -970,59 +866,40 @@ agent A {
     return length // translates to 'it.length()'
   }
 }</pre>
-</li>
-<li>
-<p id="Static_Access" class="example passed"><strong>Static Access</strong></p>
+<h4 id="Static_Access">12.3. Static Access</h4>
 <p>For accessing a static field or method you can use the recommended Java syntax or the more explicit double colon <code>::</code>. That means, the following expressions are pairwise equivalent:</p>
-<pre class="prettyprint lang-spec linenums">
-var a = Integer::TYPE
+<pre class="prettyprint lang-spec linenums">var a = Integer::TYPE
 var b = Integer.TYPE</pre>
-</li>
-<li>
-<p id="Null_Safe_Feature_Call" class="example passed"><strong>Null-Safe Feature Call</strong></p>
+<h4 id="Null_Safe_Feature_Call">12.4. Null-Safe Feature Call</h4>
 <p>Checking for null references can make code very unreadable. In many situations, it is correct for an expression to return <code>null</code> if a receiver was <code>null</code>.</p>
 <p>SARL supports the safe navigation operator <code>?</code>. to make such code better readable.</p>
-<pre class="prettyprint lang-spec linenums">
-// First expression
+<pre class="prettyprint lang-spec linenums">// First expression
 if (myRef != null) myRef.length()
 // Second expression, equivalent to the first expression
 myRef?.length()</pre>
-</li>
-<li>
-<p id="Inherited_Method" class="example passed"><strong>Inherited Method</strong></p>
+<h4 id="Inherited_Method">12.5. Inherited Method</h4>
 <p>When it is possible to extend an existing type, the methods can be overridden. In this case, the <code>super</code> keyword permits invoking the inherited implementation of the method from the overriding method.</p>
-<pre class="prettyprint lang-spec linenums">
-def anAction {
+<pre class="prettyprint lang-spec linenums">def anAction {
   // Call the inherited implementation
   super.anAction
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Constructor_Call">Constructor Call</h3>
+<h3 id="Constructor_Call">13. Constructor Call</h3>
 <p>Constructor calls correspond to the calls of a constructor function for an object.</p>
-<ul>
-<li>
-<p id="Instance_Creation" class="example passed"><strong>Instance Creation</strong></p>
+<h4 id="Instance_Creation">13.1. Instance Creation</h4>
 <p>Constructor calls have the same syntax as in Java. The only difference is that empty parentheses are optional. If type arguments are omitted, they will be inferred from the current context similar to Java's diamond operator on generic method and constructor call.</p>
-<pre class="prettyprint lang-spec linenums">
-var a = new Integer(345)
+<pre class="prettyprint lang-spec linenums">var a = new Integer(345)
 var b = new ArrayList&lt;Integer&gt;()
 var c = new ArrayList&lt;Integer&gt;</pre>
-</li>
-<li>
-<p id="Inherited_Constructor" class="example passed"><strong>Inherited Constructor</strong></p>
+<h4 id="Inherited_Constructor">13.2. Inherited Constructor</h4>
 <p>In the implementation of a constructor, it is possible to call one of the inherited constructors. The syntax is similar to Java: the <code>super</code> keyword is used to represent the inherited constructor.</p>
 <p><span class="label label-warning">Important</span> It is recommended typing the two parentheses when invoking the default constructor of the super type. Indeed, in some cases, typing <code>super</code> causes no side-effect that is an error.</p>
-<pre class="prettyprint lang-spec linenums">
-new () {
+<pre class="prettyprint lang-spec linenums">new () {
   super() // Call the inherited default constructor
 }
 new (param : Address) {
   super(param) // Call the inherited constructor with a parameter
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Extension_Methods">Extension Methods</h3>
+<h3 id="Extension_Methods">14. Extension Methods</h3>
 <p>Extension methods allow adding new methods to existing types without modifying them. This is really helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
 <pre class="prettyprint">def removeVowels (String s) {
     s.replaceAll("[aeiouAEIOU]", "")
@@ -1034,24 +911,18 @@ new (param : Address) {
 <p>or as an extension method of String:</p>
 <pre class="prettyprint">"Hello".removeVowels
 </pre>
-<ul>
-<li>
-<p id="Import_Static_Extension_Methods" class="example passed"><strong>Import Static Extension Methods</strong></p>
+<h4 id="Import_Static_Extension_Methods">14.1. Import Static Extension Methods</h4>
 <p>You can import static methods as extensions, directly call the imported static methods on our list objects:</p>
-<pre class="prettyprint lang-spec linenums">
-import static extension java.util.Collections.*
+<pre class="prettyprint lang-spec linenums">import static extension java.util.Collections.*
 agent A {
   def example {
     val colors : String[] = #["red", "blue", "green"]
     colors.sort // sort is implemented by Collections#sort(List&lt;T&gt;)
   }
 }</pre>
-</li>
-<li>
-<p id="Local_extension_methods" class="example passed"><strong>Local extension methods.</strong></p>
+<h4 id="Local_extension_methods">14.2. Local extension methods.</h4>
 <p>All visible non-static methods of the current class and its super types are automatically available as extensions.</p>
-<pre class="prettyprint lang-spec linenums">
-// Define an extension method for List
+<pre class="prettyprint lang-spec linenums">// Define an extension method for List
 def hasOneElement(list : List&lt;?&gt;) : boolean {
   list.size == 1
 }
@@ -1059,59 +930,42 @@ def hasOneElement(list : List&lt;?&gt;) : boolean {
 def example : boolean {
   newArrayList("red").hasOneElement
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Lambda_Expressions">Lambda Expressions</h3>
+<h3 id="Lambda_Expressions">15. Lambda Expressions</h3>
 <p>A lambda expression is basically a piece of code, which is wrapped in an object to pass it around. As a Java developer it is best to think of a lambda expression as an anonymous class with a single method.</p>
-<ul>
-<li>
-<p id="Basic_Definition" class="example passed"><strong>Basic Definition</strong></p>
+<h4 id="Basic_Definition">15.1. Basic Definition</h4>
 <p>That is the code above can be written in SARL for creating a lambda exception. A lambda expression is surrounded by square brackets (inspired from Smalltalk). Lambda expression like a method declares parameters.</p>
-<pre class="prettyprint lang-spec linenums">
-val textField = new JTextField
+<pre class="prettyprint lang-spec linenums">val textField = new JTextField
 // Define a lambda expression that take an ActionEvent as parameter
 // It is the definition of a function of type: (ActionEvent) =&gt; void
 textField.addActionListener([ e : ActionEvent |
     textField.text = "Something happened!" + e.toString
   ])</pre>
-</li>
-<li>
-<p id="Inferred_Parameter_Type" class="example passed"><strong>Inferred Parameter Type</strong></p>
+<h4 id="Inferred_Parameter_Type">15.2. Inferred Parameter Type</h4>
 <p>The lambda above has one parameter called e which is of type <code>ActionEvent</code>.</p>
 <p>You do not have to specify the type explicitly because it can be inferred from the context.</p>
-<pre class="prettyprint lang-spec linenums">
-val textField = new JTextField
+<pre class="prettyprint lang-spec linenums">val textField = new JTextField
 // Define a lambda expression that take an ActionEvent as parameter
 // It is the definition of a function of type: (ActionEvent) =&gt; void
 textField.addActionListener([ e |
     textField.text = "Something happened!" + e.toString
   ])</pre>
-</li>
-<li>
-<p id="Implicit_Parameters_it" class="example passed"><strong>Implicit Parameters: it</strong></p>
+<h4 id="Implicit_Parameters_it">15.3. Implicit Parameters: it</h4>
 <p>As lambdas with one parameter are a common case, there is a special short hand notation for these parameters, which is to leave the declaration including the vertical bar out. The name of the single parameter becomes <code>it</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-val textField = new JTextField
+<pre class="prettyprint lang-spec linenums">val textField = new JTextField
 // Define a lambda expression that take an ActionEvent as parameter
 // It is the definition of a function of type: (ActionEvent) =&gt; void
 textField.addActionListener([
     textField.text = "Something happened!" + it.toString
   ])</pre>
-</li>
-<li>
-<p id="Empty_List_of_Parameters" class="example passed"><strong>Empty List of Parameters</strong></p>
+<h4 id="Empty_List_of_Parameters">15.4. Empty List of Parameters</h4>
 <p>A lambda expression with zero arguments is written like this (note the bar after the opening bracket):</p>
-<pre class="prettyprint lang-spec linenums">
-val runnable : Runnable = [ |
+<pre class="prettyprint lang-spec linenums">val runnable : Runnable = [ |
     println("Hello I'm executed!")
   ]</pre>
-</li>
-<li>
-<p id="Lambda_as_the_Last_Parameter_of_a_Method" class="example passed"><strong>Lambda as the Last Parameter of a Method</strong></p>
+<h4 id="Lambda_as_the_Last_Parameter_of_a_Method">15.5. Lambda as the Last Parameter of a Method</h4>
 <p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
 <p>For instance if you want to sort some strings by their length, you could write the following two codes.</p>
-<pre class="prettyprint lang-spec linenums">
-var t : List&lt;String&gt;
+<pre class="prettyprint lang-spec linenums">var t : List&lt;String&gt;
 def example1 {
   // Lambda expression is written outside the parenthesis
   Collections.sort(t) [ a, b |
@@ -1125,53 +979,34 @@ def example2 {
         ]
   )
 }</pre>
-</li>
-<li>
-<p id="Typing" class="example passed"><strong>Typing</strong></p>
+<h4 id="Typing">15.6. Typing</h4>
 <p>The type of a lambda will be one of the inner types found in <code>Functions</code> or <code>Procedures</code>. It is a procedure if the return type is <code>void</code>, otherwise it is a function.</p>
 <p>The syntax for specifying the type of a lambda is: <code>(parameter types) =&gt; return type</code></p>
-<pre class="prettyprint lang-spec linenums">
-// Define a function f, which takes one parameter of 
+<pre class="prettyprint lang-spec linenums">// Define a function f, which takes one parameter of 
 // typeString, and returning a value of type String. 
 var f1 : (String) =&gt; String
 
 // Same type of function.
 var f2 : Function1&lt;? super String,? extends String&gt;</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="If_Expression">If Expression</h3>
+<h3 id="If_Expression">16. If Expression</h3>
 <p>An if-expression is used to choose between two different values based on a predicate.</p>
-<ul>
-<li>
-<p id="Classic_Syntax" class="example passed"><strong>Classic Syntax</strong></p>
+<h4 id="Classic_Syntax">16.1. Classic Syntax</h4>
 <p>Results in either the value e1 or e2 depending on whether the predicate p evaluates to <code>true</code> or <code>false</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-if (e1 !== null) e1 else e2</pre>
-</li>
-<li>
-<p id="Optional_Else_Part" class="example passed"><strong>Optional Else Part</strong></p>
+<pre class="prettyprint lang-spec linenums">if (e1 !== null) e1 else e2</pre>
+<h4 id="Optional_Else_Part">16.2. Optional Else Part</h4>
 <p>The else part is optional, which is a shorthand for an else branch that returns the default value of the current type.</p>
-<pre class="prettyprint lang-spec linenums">
-if (e1 !== null) e1 /* else null */</pre>
-</li>
-<li>
-<p id="Inlined_If_Expression" class="example passed"><strong>Inlined If Expression</strong></p>
+<pre class="prettyprint lang-spec linenums">if (e1 !== null) e1 /* else null */</pre>
+<h4 id="Inlined_If_Expression">16.3. Inlined If Expression</h4>
 <p>While the if expression has the syntax of Java's if statement it behaves more like Java's ternary operator (<code>predicate ? thenPart : elsePart</code>), because it is an expression and returns a value. Consequently, you can use if expressions deeply nested within expressions:</p>
-<pre class="prettyprint lang-spec linenums">
-val name = if (e1 != null) e1 + ' ' + e2 else e2</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Switch_Expression">Switch Expression</h3>
+<pre class="prettyprint lang-spec linenums">val name = if (e1 != null) e1 + ' ' + e2 else e2</pre>
+<h3 id="Switch_Expression">17. Switch Expression</h3>
 <p>The switch expression is very different from Java's switch statement. The use of switch is not limited to certain values, but can be used for any object reference. The operator <code>==</code> or its Java-equivalent <code>Object.equals(Object)</code> are used to compare the value in the case with the one you are switching over.</p>
-<ul>
-<li>
-<p id="Cases" class="example passed"><strong>Cases</strong></p>
+<h4 id="Cases">17.1. Cases</h4>
 <p>Consider the following example. the main expression <code>myString</code> is evaluated first and then compared to each case sequentially. If the case expression is of type boolean, the case matches if the expression evaluates to <code>true</code>. If it is not of type boolean it is compared to the value of the main expression using the operator <code>==</code>.</p>
 <p>If a case is a match, the case expression after the colon is evaluated and is the result of the whole switch expression. Note that there is no need for a <code>break</code> keyword, as in Java: the case following the matching case is never evaluated.</p>
 <p>The main expression (parameter of <code>switch</code>) can also be a computed value instead of a field or variable.</p>
 <p><span class="label label-warning">Important</span> A case must contains an expression. If you want to do nothing for a given case, put an empty block.</p>
-<pre class="prettyprint lang-spec linenums">
-def example1 : String {
+<pre class="prettyprint lang-spec linenums">def example1 : String {
   switch myString {
   case myString.length &gt; 5 : "a long string."
   case 'some' : "It's some string."
@@ -1193,37 +1028,26 @@ def example3 {
   default : { }
   }
 }</pre>
-</li>
-<li>
-<p id="Type_Guards" class="example passed"><strong>Type Guards</strong></p>
+<h4 id="Type_Guards">17.2. Type Guards</h4>
 <p>In addition to the case guard, you can specify a type guard. The case only matches if the switch value conforms to a given type. A case with both a type guard and a predicate only matches if both conditions match. If the switch value is a field, parameter or variable, it is automatically casted to the given type within the predicate and the case body.</p>
-<pre class="prettyprint lang-spec linenums">
-switch myString {
+<pre class="prettyprint lang-spec linenums">switch myString {
 String case myString.length==5 : "It's string of length 5."
 String : "a string."
 }</pre>
-</li>
-<li>
-<p id="Fall_Through" class="example passed"><strong>Fall Through</strong></p>
+<h4 id="Fall_Through">17.3. Fall Through</h4>
 <p>You can have multiple type guards and cases separated with a comma, to have all of them share the same then part.</p>
-<pre class="prettyprint lang-spec linenums">
-switch myString {
+<pre class="prettyprint lang-spec linenums">switch myString {
 case myString.length==5,
 case 'some' : println("a string.")
 default: println("Default")
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Loops">Loops</h3>
+<h3 id="Loops">18. Loops</h3>
 <p>SARL provides four types of loop statements.</p>
-<ul>
-<li>
-<p id="For_Loop" class="example passed"><strong>For Loop</strong></p>
+<h4 id="For_Loop">18.1. For Loop</h4>
 <p>The for loop is used to execute a certain expression for each element of an array or an instance of <code>Iterable</code>.</p>
 <p>The for's variable is local and final, hence cannot be updated.</p>
 <p>The type of a for loop is <code>void</code>. The type of the local variable can be inferred from the iterable or array that is processed.</p>
-<pre class="prettyprint lang-spec linenums">
-var tab : String[]
+<pre class="prettyprint lang-spec linenums">var tab : String[]
 // The type of the local variable is inferred
 for (v : tab) {
   println(v)
@@ -1232,51 +1056,34 @@ for (v : tab) {
 for (v as String : tab) {
   println(v)
 }</pre>
-</li>
-<li>
-<p id="Traditional_Java_For_Loop" class="example passed"><strong>Traditional Java For Loop</strong></p>
+<h4 id="Traditional_Java_For_Loop">18.2. Traditional Java For Loop</h4>
 <p>The traditional for loop is very similar to the one known from Java, or even C. When executed, it first executes the init-expression, where local variables can be declared. Next the predicate is executed and if it evaluates to <code>true</code>, the body-expression is executed. On any subsequent iterations the update-expression is executed instead of the init-expression. This happens until the predicate returns <code>false</code>. The type of a for loop is <code>void</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-for (var i = 0; i&lt;123; i++) {
+<pre class="prettyprint lang-spec linenums">for (var i = 0; i&lt;123; i++) {
   println(i)
 }</pre>
-</li>
-<li>
-<p id="While_Loop" class="example passed"><strong>While Loop</strong></p>
+<h4 id="While_Loop">18.3. While Loop</h4>
 <p>A while loop is used to execute a certain expression unless the predicate is evaluated to <code>false</code>. The type of a while loop is <code>void</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-var i = 0
+<pre class="prettyprint lang-spec linenums">var i = 0
 while (i&lt;123) {
   println(i)
   i++
 }</pre>
-</li>
-<li>
-<p id="Do_While_Loop" class="example passed"><strong>Do-While Loop</strong></p>
+<h4 id="Do_While_Loop">18.4. Do-While Loop</h4>
 <p>A while loop is used to execute a certain expression unless the predicate is evaluated to <code>false</code>. The difference to the while loop is that the execution starts by executing the block once before evaluating the predicate for the first time. The type of a while loop is <code>void</code>.</p>
-<pre class="prettyprint lang-spec linenums">
-var i = 0
+<pre class="prettyprint lang-spec linenums">var i = 0
 do {
   println(i)
   i++
 }
 while (i&lt;123)</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Exception_Support">Exception Support</h3>
+<h3 id="Exception_Support">19. Exception Support</h3>
 <p>SARL supports exception throwing and catching. The mechanism is similar to the one of Java.</p>
-<ul>
-<li>
-<p id="Throwing_Exceptions" class="example passed"><strong>Throwing Exceptions</strong></p>
+<h4 id="Throwing_Exceptions">19.1. Throwing Exceptions</h4>
 <p>Throwing objects of type <code>Throwable</code> up the call stack has the same semantics and syntax as in Java see <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.18">Java Language Specification</a>).</p>
-<pre class="prettyprint lang-spec linenums">
-throw new IllegalArgumentException("explanation")</pre>
-</li>
-<li>
-<p id="Try_Catch_Finally" class="example passed"><strong>Try, Catch, Finally</strong></p>
+<pre class="prettyprint lang-spec linenums">throw new IllegalArgumentException("explanation")</pre>
+<h4 id="Try_Catch_Finally">19.2. Try, Catch, Finally</h4>
 <p>The try-catch-finally expression is used to handle exceptional situations. Checked exceptions are treated like runtime exceptions and only optionally validated. You can, but do not have to, catch them as they will be silently thrown.</p>
-<pre class="prettyprint lang-spec linenums">
-try {
+<pre class="prettyprint lang-spec linenums">try {
   throw new RuntimeException()
 }
 catch(e : Exception) {
@@ -1288,12 +1095,9 @@ finally {
   // or before exiting the function (if an exception was thrown
   // but not catched).
 }</pre>
-</li>
-<li>
-<p id="Try_Catch_as_an_Expression" class="example passed"><strong>Try-Catch as an Expression</strong></p>
+<h4 id="Try_Catch_as_an_Expression">19.3. Try-Catch as an Expression</h4>
 <p>For try-catch, the argument is an expression. Consequently, you can write code like the following and do not have to rely on non-final variables:</p>
-<pre class="prettyprint lang-spec linenums">
-def readFromFile : String { } 
+<pre class="prettyprint lang-spec linenums">def readFromFile : String { } 
 def example {
   val name =  try {
           readFromFile
@@ -1302,46 +1106,30 @@ def example {
         }
   println(name)
 }</pre>
-</li>
-</ul>
-<h3 class="exampleGroup passed" id="Synchronized_Expression">Synchronized Expression</h3>
+<h3 id="Synchronized_Expression">20. Synchronized Expression</h3>
 <p>The synchonized expression does the same as it does in Java (see <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.19">Java Language Specification</a>). The only difference is that in SARL it is an expression and can therefore be used at more places.</p>
-<ul>
-<li>
-<p id="Classic_Syntax" class="example passed"><strong>Classic Syntax</strong></p>
+<h4 id="Classic_Syntax">20.1. Classic Syntax</h4>
 <p>The synchronization statement can be used as in Java:</p>
-<pre class="prettyprint lang-spec linenums">
-var lock = new Object
+<pre class="prettyprint lang-spec linenums">var lock = new Object
 synchronized(lock) {
   println("Hello")
 }</pre>
-</li>
-<li>
-<p id="Expression_Syntax" class="example passed"><strong>Expression Syntax</strong></p>
+<h4 id="Expression_Syntax">20.2. Expression Syntax</h4>
 <p>Because the synchronization keyword is related to an expression, it is possible to write synchronized code inside another expression.</p>
-<pre class="prettyprint lang-spec linenums">
-var lock = new Object
+<pre class="prettyprint lang-spec linenums">var lock = new Object
 val name = synchronized(lock) { 
     "Hello" 
   }
 println(name)</pre>
-</li>
-</ul>
-<ul>
-<li>
-<p id="References" class="example passed"><strong>References</strong></p>
+<h3 id="References">21. References</h3>
 <p>This documentation is based on documentations from the Xtext and Xtend projects. Thank you to the contributors to these documents.</p>
 <ul>
   <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
   <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
 </ul>
-</li>
-<li>
-<p id="Legal_Notice" class="example passed"><strong>Legal Notice</strong></p>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-05</p>
-<p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
-</li>
-</ul>
+<h3 id="Legal_Notice">22. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: %sarlspecversion%<br> Status: %sarlspecreleasestatus%<br> Release: %sarlspecreleasedate%</p>
+<p>Copyright © %copyrightdate% %copyrighters%. All rights reserved.</p>
 							<div>
 <hr>
 <p><small>SARL Documentation is generated by <a href="http://www.jnario.org" target="_blank">Jnario</a></small></p>
