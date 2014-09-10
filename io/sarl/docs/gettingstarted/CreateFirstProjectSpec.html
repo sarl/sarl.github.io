@@ -53,6 +53,7 @@
 </div>
 <div class="container">
 <h1>Create First Project</h1>
+<p></p>
 <ul class="page_outline" id="page_outline">
 <li><a href="#Create_a_SARL_Project">1. Create a SARL Project</a></li>
 <li><a href="#Create_a_Project_with_the_Maven_and_SARL_Natures">2. Create a Project with the Maven and SARL Natures</a></li>
@@ -97,12 +98,12 @@
 <p>Follow the steps of the project creation wizard, and finally click on the <strong>Finish</strong> button.</p>
 <h4 id="Edit_the_Maven_configuration">2.1. Edit the Maven configuration</h4>
 <p>Open the file <code>pom.xml</code>, and edit it for obtaining a content similar to the configuration below.</p>
-<p>Replace the version number <code>%sarlversion%</code> of SARL with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="%sarlmavenrepository%/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the SARL artifacts, as well.</p>
+<p>Replace the version number <code>0.1.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.sarl.io/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the SARL artifacts, as well.</p>
 <pre class="prettyprint">&lt;project&gt;
    ...
    &lt;properties&gt;
       ...
-      &lt;sarl.version&gt;%sarlversion%&lt;/sarl.version&gt;
+      &lt;sarl.version&gt;0.1.0-SNAPSHOT&lt;/sarl.version&gt;
    &lt;/properties&gt;
    ...
    &lt;build&gt;
@@ -159,9 +160,9 @@
                &lt;/execution&gt;
             &lt;/executions&gt;
             &lt;configuration&gt;
-               &lt;compilerSourceLevel&gt;%compilerlevel%&lt;/compilerSourceLevel&gt;
-               &lt;compilerTargetLevel&gt;%compilerlevel%&lt;/compilerTargetLevel&gt;
-               &lt;encoding&gt;%encoding%&lt;/encoding&gt;
+               &lt;compilerSourceLevel&gt;1.7&lt;/compilerSourceLevel&gt;
+               &lt;compilerTargetLevel&gt;1.7&lt;/compilerTargetLevel&gt;
+               &lt;encoding&gt;UTF-8&lt;/encoding&gt;
                &lt;languages&gt;
                   &lt;language&gt;
                      &lt;setup&gt;io.sarl.lang.SARLStandaloneSetup&lt;/setup&gt;
@@ -205,23 +206,23 @@
            SARL is released on the Maven Central --&gt;
       &lt;repository&gt;
          &lt;id&gt;sarl-repository&lt;/id&gt;
-         &lt;url&gt;%sarlmavenrepository%&lt;/url&gt;
+         &lt;url&gt;http://maven.sarl.io&lt;/url&gt;
       &lt;/repository&gt;
    &lt;/repositories&gt;
    ...
 &lt;/project&gt;
 </pre>
 <h4 id="Configuration_a_runtime_environment_optional">2.2. Configuration a runtime environment [optional]</h4>
-<p>For executing your SARL program, you must select a <a href="%website%/runtime/index.html">runtime environment</a>.</p>
+<p>For executing your SARL program, you must select a <a href="http://www.sarl.io/runtime/index.html">runtime environment</a>.</p>
 <p>The runtime environment that is recommended by the developers of SARL is <a href="http://www.janusproject.io">Janus</a>.</p>
 <p>If you want to embed the runtime environment inside the Jar files of your SARL application, it is recommended to put it in the Maven dependencies.</p>
 <p><span class="label label-info">Note</span> You could remove the dependencies to the SARL artifacts in the previous Maven configuration. Indeed, the Janus platform depends already on. You will obtain the SARL artifacts by transitivity.</p>
-<p>Replace the version number (<code>%janusversion%</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="%janusmavenrepository%/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the Janus artifacts, as well.</p>
+<p>Replace the version number (<code>2.0.1.0-SNAPSHOT</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use. You could search on the <a href="http://search.maven.org">Maven Central Repository</a> for the last available version. The file <a href="http://maven.janusproject.io/VERSION.txt">VERSION.txt</a> provides the latest version numbers of the Janus artifacts, as well.</p>
 <pre class="prettyprint">&lt;project&gt;
    ...
    &lt;properties&gt;
       ...
-      &lt;janus.version&gt;%janusversion%&lt;/janus.version&gt;
+      &lt;janus.version&gt;2.0.1.0-SNAPSHOT&lt;/janus.version&gt;
    &lt;/properties&gt;
    ...
    &lt;dependencies&gt;
@@ -240,7 +241,7 @@
            Janus is released on the Maven Central --&gt;
       &lt;repository&gt;
          &lt;id&gt;janus-repository&lt;/id&gt;
-         &lt;url&gt;%janusmavenrepository%&lt;/url&gt;
+         &lt;url&gt;http://maven.janusproject.io&lt;/url&gt;
       &lt;/repository&gt;
    &lt;/repositories&gt;
    ...
