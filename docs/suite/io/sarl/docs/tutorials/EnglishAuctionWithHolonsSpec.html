@@ -96,9 +96,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li>If there is no received bid, the auctioneer is closing  the auction, and the winner is the bidder with the higher  bid.</li>
 </ul>
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
-<center><img src="./holonic_auction.png"></center>
+<p><img src="./holonic_auction.png" alt="Holonic Auction"></p>
 <h3 id="Why_are_the_sub_agents_in_the_inner_context">3. Why are the sub-agents in the inner context?</h3>
-<p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger <a href="http://en.wikipedia.org/wiki/Holon_(philosophy)">holon</a>, <strong>and</strong> at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
+<p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger [holon](http://en.wikipedia.org/wiki/Holon<em>(philosophy)), </em><em>and</em>_ at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
 <p><span class="label label-info">Note</span> According to the SARL specifications, all the agents in a context belong to the default space of this context. This property is important for designing the communication links between two adjacent levels in the hierarchy of agents. The default space of the inner context becomes the natural place where the super-agent and its sub-agents are interacting.</p>
 <h3 id="Definitions_of_the_events">4. Definitions of the events</h3>
 <p>In the application, two events are needed: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>

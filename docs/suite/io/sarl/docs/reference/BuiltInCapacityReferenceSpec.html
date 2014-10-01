@@ -74,7 +74,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
 <p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential to respect the commonly accepted competencies of agents. These capacities are considered the main building blocks on top of which other higher level capacities and skills can be constructed. They are defined in the SARL language, but the skills implementing them are provided by the runtime environment, e.g. the <a href="http://www.janus-project.io">Janus platform</a>. This runtime environment is responsible for creating them and injecting them in the agent before their execution begins. Therefore, when the agent receives the <code>Initialize</code> event they are already available.</p>
 <p>The following figure presents the different contexts associated to an agent <code>A</code>. Several built-in capacities permit accessing and manage these contexts. The agents are represented by stylized humans, the contexts by the blue boxes, and the spaces by the small color boxes in the contexts.</p>
-<center><img src="./contexts.png"></center>
+<p><img src="./contexts.png" alt="Contexts"></p>
 <h3 id="ExternalContextAccess">1. ExternalContextAccess</h3>
 <p>The built-in capacity <code>ExternalContextAccess</code> provides access to the <a href="SpaceReferenceSpec.html">context</a> that the agent is a part of, and actions required to join new <a href="SpaceReferenceSpec.html">contexts</a>, and leave them.</p>
 <p>The context supported by this built-in capacity is the "external context," illustrated by the top-right context in the figure above.</p>
@@ -212,6 +212,21 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li>
 <code>Initialize</code> in spawned agent.</li>
 </ul>
+<h4 id="Spawning_an_Agent_with_a_specific_identifier">4.3. Spawning an Agent with a specific identifier</h4>
+<p>Some time, it is useful to create an agent with a specific identifier. The following function permits to spawn an agent with a given identifier in a specific context:</p>
+<pre class="prettyprint">def spawnInContextWithID(agentType : Class&lt;? extends Agent&gt;,
+                         agentId : UUID,
+                         context : AgentContext,
+                         params : Object[]) : UUID
+</pre>
+<p>This action creates an instance of the given agent type, with the given identifier, and launches the agent into the given context. The parameters are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
+<p>This action fires two events:</p>
+<ul>
+  <li>
+<code>AgentSpawned</code> in the default space of the context. The source of the event is the calling agent.</li>
+  <li>
+<code>Initialize</code> in spawned agent.</li>
+</ul>
 <h3 id="Schedules">5. Schedules</h3>
 <p>The built-in capacity <code>Schedules</code> enables the agent to schedule tasks for future or periodic execution.</p>
 <h4 id="Creating_Named_Tasks">5.1. Creating Named Tasks</h4>
@@ -279,7 +294,7 @@ def cancel(task : AgentTask,
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">8. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-09-26</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-10-01</p>
 <p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
