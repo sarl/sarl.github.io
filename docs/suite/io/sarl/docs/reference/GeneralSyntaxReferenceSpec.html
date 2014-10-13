@@ -123,9 +123,8 @@ import java.net.*</pre>
 <p>Sometimes, it is mandatory to import a class for accessing its statically defined functions, i.e. a function that can be called without any associated object's instance.</p>
 <p>In this case, the name of the static function is qualified by the fully qualified name of the class. For example, the function <code>max()</code> is invoked with this syntax, in the example below.</p>
 <p>However, if there is plenty of invocations to static methods in your source code, the static-import mechanism permits to make the code more readable by removing the fully qualified name of the classes, in which the called functions are defined.</p>
-<p>A static import is specify with the <code>static</code> keyword just after the <code>import</code> keyword. The following identifier must be a fully qualified name of one or more functions (with the wildcard character). In the example below, all the functions defined in <code>java.util.Arrays</code> are imported.</p>
-<pre class="prettyprint">import static java.util.Arrays.
-</pre>
+<p>A static import is specify with the <code>static</code> keyword just after the <code>import</code> keyword. The following identifier must be a fully qualified name of one or more functions (with the wildcard character). In the example below, all the functions defined in <code>java.util.Arrays</code> are imported. </p>
+<pre class="prettyprint">import static java.util.Arrays.*</pre>
 <p>Then, it is possible to invoke one of them by typing its name, as the call to <code>toString(int[])</code> below.</p>
 <pre class="prettyprint lang-spec linenums">def example {
   var col : Collection&lt;Integer&gt;
@@ -257,7 +256,7 @@ var b = 56 as Integer</pre>
 <h4 id="Arithmetic_operators">8.1. Arithmetic operators</h4>
 <p>The arithmetic operators are listed below. The arithmetic operators take numbers as operands. They could be unary (one operand) or binary (two operands).</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -316,7 +315,7 @@ var b = 56 as Integer</pre>
 <h4 id="Comparison_operators_on_primitive_types">8.2. Comparison operators on primitive types</h4>
 <p>The comparison operators primitive types are listed below.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -378,7 +377,7 @@ var b = 56 as Integer</pre>
 <h4 id="Comparison_operators_on_objects">8.3. Comparison operators on objects</h4>
 <p>The comparison operators on objects are listed below.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -444,7 +443,7 @@ var b = 56 as Integer</pre>
 <h4 id="Boolean_Operators">8.4. Boolean Operators</h4>
 <p>The boolean operators are listed below. Each operator takes one or two boolean values as operands, and replies a boolean value resulting of the operational semantic of the operator.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -473,7 +472,7 @@ var b = 56 as Integer</pre>
 <h4 id="Bitwise_Operators">8.5. Bitwise Operators</h4>
 <p>The bit operators are listed below. The bit operators apply operations on the bits that are representing a numeric value.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -510,7 +509,7 @@ var b = 56 as Integer</pre>
 <h4 id="String_Operators">8.6. String Operators</h4>
 <p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -529,7 +528,7 @@ var b = 56 as Integer</pre>
 <h4 id="Collection_Operators">8.7. Collection Operators</h4>
 <p>The collection operators are listed below. These operators are dedicated to the collections (lists, sets, maps...) Most of the time, the first operand is the collection on which the operator must be applied.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -560,11 +559,10 @@ var b = 56 as Integer</pre>
 </table>
 <h4 id="Assignments">8.8. Assignments</h4>
 <p>The assignment operators are listed below. Local variables and fields can be assigned using the <code>=</code> operator. Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>) can be used as a shorthand for the assignment of a binary expression. They work automatically when the corresponding infix operator is declared.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
-<td>Function Name</td>
 <td>Operator Semantic</td>
 </tr>
 </thead>
@@ -603,7 +601,7 @@ var b = 56 as Integer</pre>
 <h4 id="Range_operators">8.9. Range operators</h4>
 <p>This section presents a collection of operators that permit to define ranges of values.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -647,7 +645,7 @@ var b = 56 as Integer</pre>
 <h4 id="Other_operators">8.10. Other operators</h4>
 <p>This section presents a collection of operators that are not related to the categories in the previous sections.</p>
 <p>Each operator has an associated function name. This function contains the concrete implementation of the operational semantic of the operator. This function could be redefined as it is explained in the <a href="#Operator_Overloading">operator overloading section</a>.</p>
-<table>
+<table class="table-bordered">
 <thead>
 <tr>
 <td>Operator</td>
@@ -1135,7 +1133,7 @@ println(name)</pre>
   <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
 </ul>
 <h3 id="Legal_Notice">22. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-10-05</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.1<br> Status: Draft Release<br> Release: 2014-10-13</p>
 <p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
