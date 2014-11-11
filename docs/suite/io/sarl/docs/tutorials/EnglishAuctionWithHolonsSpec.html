@@ -125,7 +125,7 @@ event Price {
 <h4 id="Initial_definition">5.1. Initial definition</h4>
 <p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value of the price that the bidder will consider for bidding. The bidder selects the maximum price between 100 and 1000 randomly.</p>
 <pre class="prettyprint lang-spec linenums">agent Bidder {
-  val random = new Random()
+  val random = new Random
   var maxPrice : float
   
   on Initialize {
@@ -137,8 +137,9 @@ event Price {
 <p><span class="label label-warning">Interaction Principle</span> For sending data to its super-agent, a sub-agent must fire an event in the default space of the inner context of the super-agent. The <code>emit</code> function is supporting this interaction.</p>
 <p><span class="label label-warning">Caution</span> The <code>Bid</code> event is sent in the default space. But there is no restriction on the event's recipient. It means that the super-agent <strong>and</strong> the other sub-agents will receive this event.</p>
 <pre class="prettyprint lang-spec linenums">agent Bidder {
-  val random = new Random()
+  val random = new Random
   var maxPrice : float
+  var myLastBid : float
   
   on Initialize {
     maxPrice = random.nextFloat() * 900f + 100f
@@ -147,11 +148,22 @@ event Price {
   uses DefaultContextInteractions
 
   on Price {
-    var priceIncrease = random.nextFloat() * 50f
-    if (priceIncrease &gt; 0) {
-      var newPrice = occurrence.price + priceIncrease
-      if (newPrice &lt;= maxPrice) {
-        emit(new Bid(newPrice))
+    if(occurrence.price == myLastBid) {
+      println("I do not bet, I am the winner with :" + myLastBid)
+    } else {
+      if(occurrence.price &lt; maxPrice) {
+        var priceIncrease = random.nextFloat() * 50f
+        if (priceIncrease &gt; 0) {
+          var newPrice = occurrence.price + priceIncrease
+          if (newPrice &lt;= maxPrice) {
+            emit(new Bid(newPrice))
+            myLastBid = newPrice
+          } else {
+            println(" I give up, this is beyond my resources : " + myLastBid)
+          }
+        }
+      } else {
+        println("I dropped to " + myLastBid)
       }
     }
   }
@@ -161,8 +173,9 @@ event Price {
 <p><span class="label label-info">Note</span> The ID of the super-agent, and the ID of the inner context of this super-agent are always the same.</p>
 <p>Below, we update the bidding behavior by creating a scope, and providing it to the <code>emit</code> function.</p>
 <pre class="prettyprint lang-spec linenums">agent Bidder {
-  val random = new Random()
+  val random = new Random
   var maxPrice : float
+  var myLastBid : float
   
   on Initialize {
     maxPrice = random.nextFloat() * 900f + 100f
@@ -171,13 +184,24 @@ event Price {
   uses DefaultContextInteractions
 
   on Price {
-    var priceIncrease = random.nextFloat() * 50f
-    if (priceIncrease &gt; 0) {
-      var newPrice = occurrence.price + priceIncrease
-      if (newPrice &lt;= maxPrice) {
-        var superScope = Scopes.addresses(
-          defaultSpace.getAddress(defaultContext.ID))
-        emit(new Bid(newPrice), superScope)
+    if(occurrence.price == myLastBid) {
+      println("I do not bet, I am the winner with :" + myLastBid)
+    } else {
+      if(occurrence.price &lt; maxPrice) {
+        var priceIncrease = random.nextFloat() * 50f
+        if (priceIncrease &gt; 0) {
+          var newPrice = occurrence.price + priceIncrease
+          if (newPrice &lt;= maxPrice) {
+            var superScope = Scopes.addresses(
+              defaultSpace.getAddress(defaultContext.ID))
+            emit(new Bid(newPrice), superScope)
+            myLastBid = newPrice
+          } else {
+            println(" I give up, this is beyond my resources : " + myLastBid)
+          }
+        }
+      } else {
+        println("I dropped to " + myLastBid)
       }
     }
   }
