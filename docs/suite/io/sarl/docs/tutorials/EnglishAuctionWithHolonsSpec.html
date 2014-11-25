@@ -145,7 +145,7 @@ event Price {
     maxPrice = random.nextFloat() * 900f + 100f
   }
   
-  uses DefaultContextInteractions
+  uses DefaultContextInteractions, Logging
 
   on Price {
     if(occurrence.price == myLastBid) {
@@ -181,7 +181,7 @@ event Price {
     maxPrice = random.nextFloat() * 900f + 100f
   }
 
-  uses DefaultContextInteractions
+  uses DefaultContextInteractions, Logging
 
   on Price {
     if(occurrence.price == myLastBid) {
@@ -276,7 +276,7 @@ innerContext.defaultSpace.emit(new Price(50))
 <p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing at a fixed delay its second argument, given by the first argument. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the first ten seconds, we use the <code>in</code> function provided by the capacity.</p>
 <pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
-  uses Behaviors, Lifecycle, InnerContextAccess, Schedules
+  uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
   var maxBid = 0f
   var winner : Address
@@ -320,7 +320,7 @@ innerContext.defaultSpace.emit(new Price(50))
 <p>It is recommended to "synchronize" the blocks of code. We use the <code>synchronize</code> operator (which has the same meaning as in the Java language). This operator ensures that two blocks of code, which are synchronized on the same Object (the argument of the operator) cannot be executed in parallel by different threads.</p>
 <pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
-  uses Behaviors, Lifecycle, InnerContextAccess, Schedules
+  uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
   var maxBid = 0f
   var winner : Address
@@ -404,7 +404,7 @@ innerContext.defaultSpace.emit(new Price(50))
 <p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits notifying the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
 <pre class="prettyprint lang-spec linenums">agent Auctioneer {
           
-  uses Behaviors, Lifecycle, InnerContextAccess, Schedules
+  uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
   var maxBid = 0f
   var winner : Address
@@ -424,8 +424,8 @@ innerContext.defaultSpace.emit(new Price(50))
         synchronized(this) {
           if (!isAuctionOpened) {
             if (!hasMemberAgent) {
-              killMe
               waitTask.cancel
+              killMe
             }
           } else {
             if (!hasBid) {

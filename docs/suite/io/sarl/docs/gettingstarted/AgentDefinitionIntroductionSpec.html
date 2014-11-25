@@ -88,8 +88,9 @@ agent SecondAgent {}</pre>
 <h4 id="Define_an_agent_Perceptions">3.2. Define an agent Perceptions</h4>
 <p>Now, we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
 <p>To define this event handler, we must use the <code>on</code> keyword, and provide the associated code block.</p>
-<p><span class="label label-info">Note</span> <code>println</code> is a shortcut for the Java function <code>System.out.println</code>.</p>
+<p><span class="label label-info">Note</span> The <code>println</code> function is provided by the <code>Logging</code> capacity. It permits printing a message on the log output.</p>
 <pre class="prettyprint lang-spec linenums">agent MyAgent {
+  uses Logging
   on MyEvent {
     println("Received MyEvent")
   }
@@ -104,10 +105,12 @@ agent SecondAgent {}</pre>
 </ul>
 <p>This means that when agent has been spawned and it is ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
 <p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any system resource properly.</p>
-<pre class="prettyprint lang-spec linenums">import io.sarl.core.Initialize
+<pre class="prettyprint lang-spec linenums">import io.sarl.core.Logging
+import io.sarl.core.Initialize
 import io.sarl.core.Destroy
 
 agent MyAgent {
+  uses Logging
   
   on Initialize {
     println("MyAgent spawned")
@@ -122,6 +125,7 @@ agent MyAgent {
 <p>This instance is called an <code>occurrence</code>.</p>
 <p>In the case of an Initialize events you can access the arguments for the agent spawn using <code>occurrence.parameters</code></p>
 <pre class="prettyprint lang-spec linenums">agent MyAgent {
+  uses Logging
   
   on Initialize {
     println("MyAgent spawned")

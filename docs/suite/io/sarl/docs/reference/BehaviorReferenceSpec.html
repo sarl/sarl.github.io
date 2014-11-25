@@ -88,6 +88,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>It is allowed to define actions (methods) in the behavior. The syntax described in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> is used.</p>
 <p>The example below illustrates the creation of type actions.</p>
 <pre class="prettyprint lang-spec linenums">behavior MyBehavior {
+  uses Logging
   // Defining an action without parameter nor return type
   def myAction1 {
     println("Hello world")
@@ -106,6 +107,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   var attr : String
 }
 behavior MySubBehavior extends MyBehavior {
+  uses Logging
   def action {
     println(attr)
   }
@@ -143,6 +145,7 @@ behavior MySubBehavior extends MyBehavior {
 <p>In the following example, the behavior is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
 <pre class="prettyprint lang-spec linenums">behavior MyBehavior {
+  uses Logging
   on SomethingChanged {
     println("Reactive behavior")
   }
@@ -151,6 +154,7 @@ behavior MySubBehavior extends MyBehavior {
 <p>When an event is received and the guard of the corresponding handler is true, the event handler is said to be triggered.</p>
 <p>When multiple event handlers are triggered at the same time, they are all executed in parallel. In the following example, the two handlers for the <code>SomethingChanged</code> event are executed in parallel.</p>
 <pre class="prettyprint lang-spec linenums">behavior MyBehavior {
+  uses Logging
   on SomethingChanged {
     println("First reactive behavior")
   }
@@ -162,7 +166,7 @@ behavior MySubBehavior extends MyBehavior {
 <p>A proactive behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by a part of the code external to this behavior. In opposite, the initiator of the execution of a proactive behavior is the agent itself.</p>
 <p>In SARL, a proactive behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="BuiltInCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
 <pre class="prettyprint lang-spec linenums">behavior MyBehavior {
-  uses Schedules
+  uses Schedules, Logging
   on Initialize {
     every(1000) [
       println("Run a pro-active behavior")
@@ -179,6 +183,7 @@ behavior MySubBehavior extends MyBehavior {
     def action
 }
 skill Ski implements Cap {
+    uses Logging
     def action {
         println("Action")
     }
@@ -214,7 +219,7 @@ skill Ski implements Cap {
   }
 }</pre>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.2<br> Status: Draft Release<br> Release: 2014-11-12</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.2<br> Status: Draft Release<br> Release: 2014-11-25</p>
 <p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stéphane GALLAND. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>

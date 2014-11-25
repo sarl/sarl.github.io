@@ -118,6 +118,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h3 id="Retrieve_the_Command_Line_Parameters_in_the_Agent">3. Retrieve the Command Line Parameters in the Agent</h3>
 <p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
 <pre class="prettyprint lang-spec linenums">agent MyAgent {
+  uses Logging
   on Initialize {
     println("Command line parameters: "
       +occurrence.parameters)
