@@ -155,6 +155,35 @@ def isDebugLogEnabled : boolean
   <li>
 <code>MemberLeft</code> in the parent context's default space.</li>
 </ul>
+<h4 id="Testing_if_an_element_is_related_to_an_external_context">2.5. Testing if an element is related to an external context</h4>
+<p>The <code>ExternalContextAccess</code> provides a collection of utility functions that test if their parameters are related to the any external context.</p>
+<table class="table-bordered">
+<thead><tr>
+<th>Function</th>
+<th>Explanation</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>isInSpace(Event, Space)</code></td>
+<td>tests if the given event was emitted in
+the given space.</td>
+</tr>
+<tr>
+<td><code>isInSpace(Event, SpaceID)</code></td>
+<td>tests if the given event was emitted in
+the space with the given identifier.</td>
+</tr>
+<tr>
+<td><code>isInSpace(Event, UUID)</code></td>
+<td>tests if the given event was emitted in
+the space with the given identifier.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example illustrates the use of the <code>isInSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the space <code>myspace</code> (declared as attribute in the container).</p>
+<pre class="prettyprint lang-spec linenums">on AnEvent [ isInSpace(occurrence, myspace) ] {
+  // Do something with the event when it was emitted in the space myspace
+}</pre>
 <h3 id="InnerContextAccess">3. InnerContextAccess</h3>
 <p>The built-in capacity <code>InnerContextAccess</code> provides access to the inner context of the agent. This is a key feature for creating holonic agent implementation. The context supported by this built-in capacity is the "inner context," illustrated by the bottom context in the figure above.</p>
 <h4 id="Retrieving_the_Inner_Context">3.1. Retrieving the Inner Context</h4>
@@ -172,6 +201,41 @@ def isDebugLogEnabled : boolean
 <p>The third function replies all the member agents in the inner context:</p>
 <pre class="prettyprint">def getMemberAgents : SynchronizedSet&lt;UUID&gt;
 </pre>
+<h4 id="Testing_if_an_element_is_related_to_the_inner_context">3.3. Testing if an element is related to the inner context</h4>
+<p>The <code>InnerContextAccess</code> provides a collection of utility functions that test if their parameters are related to the inner context.</p>
+<table class="table-bordered">
+<thead><tr>
+<th>Function</th>
+<th>Explanation</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>isInnerDefaultSpace(Space)</code></td>
+<td>tests if the given space is the
+default space of the inner context.</td>
+</tr>
+<tr>
+<td><code>isInnerDefaultSpace(SpaceID)</code></td>
+<td>tests if the default space of
+the inner context has the given identifier.</td>
+</tr>
+<tr>
+<td><code>isInnerDefaultSpace(UUID)</code></td>
+<td>tests if the default space of
+the inner context has the given identifier.</td>
+</tr>
+<tr>
+<td><code>isInInnerDefaultSpace(Event)</code></td>
+<td>tests if the given event was emitted in
+the default space of the inner context.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example illustrates the use of the <code>isInInnerDefaultSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the default space of the inner context.</p>
+<p><span class="label label-info">Note</span> According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>event.inInnerDefaultSpace</code> is equivalent to <code>isInInnerDefaultSpace(event)</code>.</p>
+<pre class="prettyprint lang-spec linenums">on AnEvent [ occurrence.inInnerDefaultSpace ] {
+  // Do something with the event when it was emitted in the inner default space
+}</pre>
 <h3 id="DefaultContextInteractions">4. DefaultContextInteractions</h3>
 <p>The <code>DefaultContextInteractions</code> capacity is actually provided for convenience. It assumes that the action will be performed on the agent <strong>default context</strong> or its <strong>default space</strong>. These context and space are illustrated by the top-left context in the figure above.</p>
 <p>For instance, the <code>emit</code> action is a shortcut for:</p>
@@ -224,6 +288,46 @@ def isDebugLogEnabled : boolean
 <pre class="prettyprint">emit(new Event, Scopes::addresses(a1, a2))
 </pre>
 <p>You are free to create new implementation of <code>Scope</code> in order to filter the receivers of an event according to your own criteria.</p>
+<h4 id="Testing_if_an_element_is_related_to_the_default_context">4.5. Testing if an element is related to the default context</h4>
+<p>The <code>DefaultContextInteractions</code> provides a collection of utility functions that test if their parameters are related to the default context or the default space.</p>
+<table class="table-bordered">
+<thead><tr>
+<th>Function</th>
+<th>Explanation</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>isDefaultContext(AgentContext)</code></td>
+<td>tests if the given context is the default
+context.</td>
+</tr>
+<tr>
+<td><code>isDefaultContext(UUID)</code></td>
+<td>tests if the default context has the given
+identifier.</td>
+</tr>
+<tr>
+<td><code>isDefaultSpace(Space)</code></td>
+<td>tests if the given space is the default
+space of the default context.</td>
+</tr>
+<tr>
+<td><code>isDefaultSpace(UUID)</code></td>
+<td>tests if the default space of the
+default context has the given identifier.</td>
+</tr>
+<tr>
+<td><code>isInDefaultSpace(Event)</code></td>
+<td>tests if the given event was emitted
+in the default space of the default context.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example illustrates the use of the <code>isInDefaultSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the default space.</p>
+<p><span class="label label-info">Note</span> According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>event.inDefaultSpace</code> is equivalent to <code>isInDefaultSpace(event)</code>.</p>
+<pre class="prettyprint lang-spec linenums">on AnEvent [ occurrence.inDefaultSpace ] {
+  // Do something with the event when it was emitted in the default space
+}</pre>
 <h3 id="Lifecycle">5. Lifecycle</h3>
 <p>The built-in capacity <code>Lifecycle</code> provides actions for spawning new agents on different external contexts and the inner context, as well as the <code>killMe</code> action to stop the execution of an agent.</p>
 <h4 id="Stopping_the_Agent_Execution">5.1. Stopping the Agent Execution</h4>
@@ -430,7 +534,7 @@ def cancel(task : AgentTask,
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">9. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.2<br> Status: Draft Release<br> Release: 2014-12-11</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.2<br> Status: Draft Release<br> Release: 2015-02-17</p>
 <p>Copyright © 2014 Sebastian RODRIGUEZ, Nicolas GAUD, Stephane GALLAND. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>

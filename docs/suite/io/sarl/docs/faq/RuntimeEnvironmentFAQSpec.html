@@ -67,15 +67,17 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Runtime_Behavior_of_Janus">4. Runtime Behavior of Janus</a></li>
 </ul>
 <h3 id="General_Questions_about_Janus">1. General Questions about Janus</h3>
-<h4 id="What_is_Janus">1.1. What is Janus?</h4>
+<h4 id="What_is_the_SRE">1.1. What is the SRE?</h4>
+<p>SRE stands for "SARL Runtime Environment". The SRE is an implementation of an agent platform, which is able to run a SARL program. The official standard SRE supported by the SARL developers is the <a href="http://www.janusproject.io">Janus platform</a>.</p>
+<h4 id="What_is_Janus">1.2. What is Janus?</h4>
 <p>Janus is an open-source multi-agent platform fully implemented in Java 1.7. Janus enables developers to quickly create web, enterprise and desktop agent-based applications.</p>
 <p>It provides a comprehensive set of features to develop, run, display and monitor agent-based applications.</p>
 <p>Janus-based applications can be distributed across a network. Janus could be used as an agent-oriented platform, an organizational platform, and/or a holonic platform. It also natively manages the concept of recursive agents and holons.</p>
 <p><strong>Janus is a platform not a language.</strong></p>
 <p>Official website: <a href="http://www.janusproject.io">www.janusproject.io</a></p>
-<h4 id="Where_can_I_ask_my_question">1.2. Where can I ask my question?</h4>
+<h4 id="Where_can_I_ask_my_question">1.3. Where can I ask my question?</h4>
 <p>If you cannot find an answer to your question in the FAQ, nor the reference documents, nor the <a href="https://github.com/sarl/sarl/issues">existing SARL issues</a>, nor the <a href="https://github.com/janus-project/janusproject/issues">existing Janus issues</a>, you could ask the SARL developers on <a href="https://github.com/janus-project/janusproject/issues/new">this page</a>.</p>
-<h4 id="Where_can_I_found_information_on_the_release_planning_of_Janus">1.3. Where can I found information on the release planning of Janus?</h4>
+<h4 id="Where_can_I_found_information_on_the_release_planning_of_Janus">1.4. Where can I found information on the release planning of Janus?</h4>
 <p>The release planning of Janus is detailed on the <a href="https://github.com/janus-project/janusproject/milestones">milestones' page</a> on the Github web site.</p>
 <p>The release planning of the Janus multi-agent platform is following the <a href="https://github.com/sarl/sarl/milestones">planning of SARL</a>.</p>
 <h3 id="Installation_and_Execution">2. Installation and Execution</h3>
@@ -89,6 +91,15 @@ Considering the variety of existing approaches and meta-models in the field of a
 <a href="../gettingstarted/RunSARLAgentFromTheCommandLineSpec.html">From the command line</a>.</li> <li>
 <a href="../gettingstarted/RunSARLAgentInTheEclipseIDESpec.html">Inside the Eclipse IDE</a>.</li> <li>
 <a href="../gettingstarted/RunSARLAgentFromAJavaProgramSpec.html">From a Java program</a>.</li> </ul>
+<h4 id="Error_The_SRE_is_not_standalone_It_does_not_contain_the_Java_dependencies">2.4. Error: "The SRE is not standalone. It does not contain the Java dependencies."</h4>
+<p>This error occurs when there is no SARL Runtime Environment (SRE) installed on your Eclipse environment, OR when the installed SRE is not compatible with the installed version of the SARL tools, which are embedded in Eclipse.</p>
+<p>For solving this problem, you must download the latest <a href="http://www.janusproject.io">Janus platform</a>, and install it in your Eclipse (Menu <code>Window&gt; Preferences&gt; SARL&gt; Installed SREs</code>).</p>
+<p><caution>If the latest stable version of Janus is not working, you should download the latest development version.</caution></p>
+<h4 id="Error_Agent_class_not_found">2.5. Error: "Agent class not found."</h4>
+<p>When the Janus platform cannot find the class file for the start-up agent, it displays the error message <code>"Agent class not found"</code>.</p>
+<p>For resolving this problem, you should child if: </p>
+<ul> <li>the class with the given name exists in the application's class path.</li> <li>the class name is given as the first command-line argument to your application.</li> <li>the class with the given name is a subtype of <code>Agent</code>.</li> </ul>
+<p>For getting the arguments given to Janus, you could launch Janus with the command line option: <code>--cli</code>. This option stops Janus after displaying the command line arguments (including the <code>--cli</code> option).</p>
 <h3 id="Contribute_to_Janus">3. Contribute to Janus</h3>
 <h4 id="Where_are_the_sources_of_Janus">3.1. Where are the sources of Janus?</h4>
 <p>The sources of Janus are available on <a href="https://github.com/janus-project/janusproject">Github</a>. Details for getting the source code may be found on the <a href="http://www.janusproject.io">official web site of Janus</a>.</p>
