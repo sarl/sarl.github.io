@@ -119,6 +119,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>SARL is based on a part of the Eclipse API. Every operating system which has a compatible Java Virtual Machine with Eclipse may be used to run SARL.</p>
 <h4 id="What_is_the_version_of_the_Java_virtual_machine_to_install">2.2. What is the version of the Java virtual machine to install?</h4>
 <p>SARL requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you should configure your JDK to produce 1.6 class files from 1.7 Java code.</p>
+<h4 id="Why_is_the_SARL_product_not_launching_and_display_an_error_dialog_box">2.3. Why is the SARL product not launching and display an error dialog box?</h4>
+<p>Most of the time, the problem is due to an incompatibility of between the configuration of your operating system or Java virtual machine, and the requirements of the SARL Eclipse product.</p>
+<p>If a problem occured, find the ".log" file in which Eclipse is writting the complete error trace. Usually, it is in your home directory or in the folder of the SARL Eclipse executable file.</p>
+<h4 id="Why_cannot_SARL_Eclipse_be_launched_on_the_Windows_10_operating_system">2.4. Why cannot SARL Eclipse be launched on the Windows 10 operating system?</h4>
+<p>This is due to a problem in your configuration. Most of the time, the log file (see the previous question) contains an error with the label "Cannot load 64-bit SWT libraries on 32-bit JVM".</p>
+<p>It means that you're trying to run the 64-bit version of the SARL Eclipse with a Java virtual machine (JVM) that is 32-bit. You should install a fully 64-bit JVM, or use the 32-bit version of the SARL Eclipse product.</p>
+<p>If another error occurs, you should go on the SARL forum and report this problem.</p>
 <h3 id="Contribute_to_SARL">3. Contribute to SARL</h3>
 <h4 id="Where_are_the_sources_of_SARL">3.1. Where are the sources of SARL?</h4>
 <p>The sources of SARL are available on <a href="https://github.com/sarl/sarl">Github</a>. Details for getting the source code may be found on the <a href="http://www.sarl.io/download/">download page</a>.</p>
