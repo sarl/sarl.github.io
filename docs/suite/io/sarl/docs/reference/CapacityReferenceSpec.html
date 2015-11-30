@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Capacity Reference</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -76,7 +81,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>A capacity is the specification of a collection of actions. Consequently, only action's signatures can be defined inside a capacity: no attribute nor field is allowed, and no body for the actions.</p>
 <p>The definition of a capacity is done with the <code>capacity</code> keyword. Below, a capacity that permits logging messages is defined. This capacity enables to log information and debugging messages.</p>
 <p><span class="label label-info">Note</span> Defining a capacity without action inside is a symptom of a design problem.</p>
-<pre class="prettyprint lang-spec linenums">capacity Logging {
+<pre class="prettyprint lang-sarl linenums">capacity Logging {
   // Log an information message
   def info(text : String)
   // Log a debugging message
@@ -87,13 +92,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The extended capacity is specified just after the <code>extends</code> keyword.</p>
 <p><span class="label label-danger">Important</span> A capacity type can extend <strong>zero-to-many</strong> other capacity types. This is close to the constraint on the implementation of interfaces in the Java language.</p>
 <p>In the following code, the <code>Logging</code> capacity (defined previously) is extended for enabling the output of error messages.</p>
-<pre class="prettyprint lang-spec linenums">capacity ErrorLogging extends Logging {
+<pre class="prettyprint lang-sarl linenums">capacity ErrorLogging extends Logging {
   // Log a error message
   def error(text : String)
 }</pre>
 <h4 id="Extending_Multiple_Capacities">1.3. Extending Multiple Capacities</h4>
 <p>In some use cases, it is useful to define a capacity by extending more than one capacity. Below, the <code>Cap3</code> capacity is defined as an extension of the capacities <code>Cap1</code> and <code>Cap2</code>.</p>
-<pre class="prettyprint lang-spec linenums">capacity Cap1 {
+<pre class="prettyprint lang-sarl linenums">capacity Cap1 {
   def action1
 }
 capacity Cap2 {
@@ -102,6 +107,26 @@ capacity Cap2 {
 capacity Cap3 extends Cap1, Cap2 {
   def action3
 }</pre>
+<h4 id="Modifiers">1.4. Modifiers</h4>
+<p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the capacity. The modifiers are usually written before the keyword for defining the capacity.</p>
+<p>The complete description of the modifiers' semantic is available in <a href="./BasicObjectOrientedProgrammingSupportModifiersSpec.html">this section</a>.</p>
+<h5 id="Capacity_Modifiers">1.4.1. Capacity Modifiers</h5>
+<p>A capacity may be declared with one or more modifiers, which affect its runtime behavior: </p>
+<ul> <li>Access modifiers: <ul>  <li>
+<code>public</code>: the capacity is accessible from any other type;</li>  <li>
+<code>package</code>: the capacity is accessible from only the types in the same package.</li>  </ul>
+</li> </ul>
+<pre class="prettyprint lang-sarl linenums">public capacity Example1 {
+}
+package capacity Example2 {
+}</pre>
+<h5 id="Method_Modifiers">1.4.2. Method Modifiers</h5>
+<p>The modifiers for the methods in a capacity are: </p>
+<ul> <li>Access modifiers: <ul>  <li>
+<code>public</code>: the method is accessible within any type.</li>  </ul>
+</li> </ul>
+<pre class="prettyprint lang-sarl linenums">// Public access function
+public def example1 { }</pre>
 <h3 id="Built_in_Capacities">2. Built-in Capacities</h3>
 <p>Several capacities are defined and reserved by the SARL Core Specification. They are composing the minimal set of capacities that a runtime environment must support for running a SARL program.</p>
 <p><span class="label label-danger">Important</span> You must not define a capacity with a fully qualified name equals to one of the reserved capacities.</p>
@@ -119,8 +144,8 @@ capacity Cap3 extends Cap1, Cap2 {
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 1.0<br> Status: Draft Release<br> Release: 2015-10-26</p>
-<p>Copyright © 2015 Sebastian RODRIGUEZ, Nicolas GAUD, Stephane GALLAND. All rights reserved.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.3<br> Status: Stable Release<br> Release: 2015-11-30</p>
+<p>Copyright © 2015 the original authors or authors. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
@@ -177,11 +202,5 @@ capacity Cap3 extends Cap1, Cap2 {
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

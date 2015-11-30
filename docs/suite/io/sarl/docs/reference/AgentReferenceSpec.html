@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Agent Reference</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -112,12 +117,12 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h4 id="Defining_an_empty_agent">3.1. Defining an empty agent</h4>
 <p>The following code illustrates the definition of an agent named <code>MyAgent</code>, and that is empty.</p>
 <p>Basically, this agent does nothing, and does not react on events.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
 }</pre>
 <h4 id="Agent_Attributes">3.2. Agent Attributes</h4>
 <p>The mental state of an agent is composed by the data in the knowledge of the agent. Most of the time, the mental state is implemented as a collection of attributes in the agent.</p>
 <p>According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the attributes may be modifiable (when declared with the <code>var</code> keyword), or unmodifiable (when declared with the <code>val</code> keyword).</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   // Defining a modifiable element of the mental state
   var mentalStateElement1 : String
   // Defining an unmodifiable element of the mental state
@@ -126,7 +131,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h4 id="Agent_Actions">3.3. Agent Actions</h4>
 <p>It is allowed to define actions (methods) in the agent. The syntax described is described in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p>The example below illustrates the creation of two actions in the agent.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   // Defining an action without parameter nor return type
   def myAction1 {
@@ -142,7 +147,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The extended agent is specified just after the <code>extends</code> keyword.</p>
 <p><span class="label label-danger">Important</span> An agent type can extend <strong>only one</strong> other agent type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, a first agent is defined with the name <code>MyAgent</code> and an attribute named <code>attr</code>. A second agent <code>MySubAgent</code> is defined as the extension of the first agent. It contains a function named <code>action</code>, which is displaying the inherited attribute.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   var attr : String
 }
 agent MySubAgent extends MyAgent {
@@ -151,6 +156,76 @@ agent MySubAgent extends MyAgent {
     println(attr)
   }
 }</pre>
+<h4 id="Modifiers">3.5. Modifiers</h4>
+<p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the agent. The modifiers are usually written before the keyword for defining the agent.</p>
+<p>The complete description of the modifiers' semantic is available in <a href="./BasicObjectOrientedProgrammingSupportModifiersSpec.html">this section</a>.</p>
+<h5 id="Agent_Modifiers">3.5.1. Agent Modifiers</h5>
+<p>An agent may be declared with one or more modifiers, which affect its runtime behavior: </p>
+<ul> <li>Access modifiers: <ul>  <li>
+<code>public</code>: the agent is accessible from any other type;</li>  <li>
+<code>package</code>: the agent is accessible from only the types in the same package.</li>  </ul>
+</li> <li>
+<code>abstract</code>: the agent is abstract and cannot be instanced.</li> <li>
+<code>final</code>: avoid to be derived.</li> <li>
+<code>strictfp</code>: avoid the methods of the agent to use intermediate floating number formats.</li> </ul>
+<pre class="prettyprint lang-sarl linenums">public agent Example1 {
+}
+package agent Example2 {
+}
+abstract agent Example3 {
+}
+final agent Example4 {
+}
+strictfp agent Example5 {
+}</pre>
+<h5 id="Field_Modifiers">3.5.2. Field Modifiers</h5>
+<p>The modifiers for the fields in an agent are: </p>
+<ul> <li>Access modifiers: <ul>  <li>
+<code>protected</code>: the field is accessible within the same package, and derived agents;</li>  <li>
+<code>package</code>: the field is accessible only within the same package of its agent;</li>  <li>
+<code>private</code>: the field is accessible only within its agent.</li>  </ul>
+</li> <li>
+<code>transient</code>: the field is never serialized.</li> <li>
+<code>volatile</code>: the field is modified by different threads. It is never cached thread-locally, and synchronized.</li> </ul>
+<pre class="prettyprint lang-sarl linenums">protected var example1 : Object;
+package var example2 : Object;
+private var example3 : Object;
+transient var example5 : Object;
+volatile var example6 : Object;</pre>
+<h5 id="Method_Modifiers">3.5.3. Method Modifiers</h5>
+<p>The modifiers for the methods in an agent are: </p>
+<ul> <li>Access modifiers: <ul>  <li>
+<code>protected</code>: the method is accessible within the same package, and derived classes;</li>  <li>
+<code>package</code>: the method is accessible only within the same package as its class;</li>  <li>
+<code>private</code>: the method is accessible only within its class.</li>  </ul>
+</li> <li>
+<code>abstract</code>: the method has no implementation in the class.</li> <li>
+<code>dispatch</code>: the method provides an implementation for the dispatch method mechanism.</li> <li>
+<code>final</code>: the method cannot be overridden in derived classes.</li> <li>
+<code>static</code>: the method is a class method, not an instance method.</li> <li>
+<code>strictfp</code>: avoid the method to use intermediate floating number formats.</li> <li>
+<code>synchronized</code>: the method is synchronized on the class instance.</li> </ul>
+<pre class="prettyprint lang-sarl linenums">// Protected access function
+protected def example1 { }
+// Package access function
+package def example2 { }
+// Private access function
+private def example3 { }
+// Abstract function
+abstract def example4
+// Not-overridable function
+final def example5 { }
+// Static function
+static def example6 { }
+// Function with strict floating point management
+strictfp def example7 { }
+// Synchronized function
+synchronized def example8 { }
+// Dispatch functions
+dispatch def example9(p : Integer) { }
+dispatch def example9(p : Float) { }</pre>
+<h5 id="Restriction_on_the_Nested_Type_Modifiers">3.5.4. Restriction on the Nested Type Modifiers</h5>
+<p>All the <a href="./BasicObjectOrientedProgrammingSupportSpec.html">modifiers for the nested types</a> are allowed <strong>except</strong> <code>public</code>.</p>
 <h3 id="Behaviors_of_an_Agent">4. Behaviors of an Agent</h3>
 <p>The behaviors of an agent correspond to the units that are executed by the agent for exhibiting its general behavior.</p>
 <p>The execution of the behaviors are related to the life cycle of the agents. Every agent is following the steps:</p>
@@ -183,7 +258,7 @@ agent MySubAgent extends MyAgent {
 }
 </pre>
 <p>It contains the list of the parameters given to the spawning function (as specified in the <a href="BuiltInCapacityReferenceSpec.html">built-in capacities</a>).</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on Initialize {
     println(
@@ -194,7 +269,7 @@ agent MySubAgent extends MyAgent {
 <h4 id="Guarded_Initialization_Handler">4.2. Guarded Initialization Handler</h4>
 <p>Because <code>Initialize</code> is an event, the handler in the agent could use a guard. This feature enables the developer to write different initialization blocks depending on the guards of the handlers.</p>
 <p>In the following example, the first event handler is executed when the <code>Initialize</code> event has no parameter. The second event handler is executed when the event has at least one parameter.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on Initialize [ occurrence.parameters.empty ] {
     println("Initialization without parameters")
@@ -208,7 +283,7 @@ agent MySubAgent extends MyAgent {
 <p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
 <pre class="prettyprint">event Destroy
 </pre>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on Destroy {
     println("Destroying the agent")
@@ -217,7 +292,7 @@ agent MySubAgent extends MyAgent {
 <h4 id="Guarded_Destruction_Handler">4.4. Guarded Destruction Handler</h4>
 <p>As for <code>Initialize</code>, the handlers of the <code>Destroy</code> event could be guarded.</p>
 <p>In the following example, the first event handler is executed when the <code>Destroy</code> is received and there is resource stored in the corresponding field. The second event handler is executed when there is no resource.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   var resource : Object
   on Destroy [ resource !== null ] {
@@ -231,7 +306,7 @@ agent MySubAgent extends MyAgent {
 <p>The reactive behavior of an agent is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the global agent behavior when something has happening in the agent, or in its environment.</p>
 <p>In the following example, the agent is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on SomethingChanged {
     println("Reactive behavior")
@@ -240,7 +315,7 @@ agent MySubAgent extends MyAgent {
 <h4 id="Parallel_Execution_of_the_Reactive_Behaviors">4.6. Parallel Execution of the Reactive Behaviors</h4>
 <p>When an event is received and the guard of the corresponding handler is true, the event handler is said to be triggered.</p>
 <p>When multiple event handlers are triggered at the same time, they are all executed in parallel. In the following example, the two handlers for the <code>SomethingChanged</code> event are executed in parallel.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on SomethingChanged {
     println("First reactive behavior")
@@ -252,7 +327,7 @@ agent MySubAgent extends MyAgent {
 <h4 id="Pro_active_Behaviors">4.7. Pro-active Behaviors</h4>
 <p>A proactive behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by a part of the code external to this behavior. In opposite, the initiator of the execution of a proactive behavior is the agent itself.</p>
 <p>In SARL, a proactive behavior is a behavior that is scheduled by the agent. The scheduling mechanism is provided by the <a href="BuiltInCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Schedules, Logging
   on Initialize {
     every(1000) [
@@ -279,7 +354,7 @@ skill Ski implements Cap {
 <p>When an agent must use a capacity in one of its behaviors, it must own an implementation of this capacity: a skill.</p>
 <p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated with the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
 <p>When the function <code>setSkill</code> is returning, the agent becomes able to use the skill.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   on Initialize {
     var theSkill = new Ski
     setSkill( Cap, theSkill )
@@ -296,7 +371,7 @@ skill Ski implements Cap {
   <li>Invoke the capacity's action on the retrieved skill.</li>
 </ul>
 <p><span class="label label-info">Note</span> This method of invocation is not recommended by the SARL developers. You should prefer the use of the extension methods (see below).</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   on Initialize {
     var s = new Ski
     setSkill( Cap, s )
@@ -310,7 +385,7 @@ skill Ski implements Cap {
 }</pre>
 <h4 id="Using_a_Built_in_Capacity_with_the_Getters">5.5. Using a Built-in Capacity with the Getters</h4>
 <p>The built-in capacities are accessible in the same way as the other capacities, with the getters.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   on SomeEvent {
     // Retreive the capacity implementation
     var s = getSkill(Lifecycle)
@@ -322,7 +397,7 @@ skill Ski implements Cap {
 <p>Invoking a capacity/skill with the getter method is not user-friendly. Since the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> describes the "extension method" mechanism, it is possible to use it for invoking the capacities.</p>
 <p>But, instead of using an <code>import</code> directive, the <code>uses</code> keyword is provided for importing the capacities into the agent. In the following example, the <code>Cap</code> capacity is imported.</p>
 <p>After a capacity was "imported", it is possible to directly call the functions of the capacity (according to the extension method syntax). In the following example, the action with the name <code>action</code> is invoked. This action is defined in the <code>Cap</code> capacity.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Cap
   on Initialize {
     var s = new Ski
@@ -335,7 +410,7 @@ skill Ski implements Cap {
 }</pre>
 <h4 id="Using_a_Built_in_Capacity_with_the_Extension_Methods">5.7. Using a Built-in Capacity with the Extension Methods</h4>
 <p>The built-in capacities are accessible in the same way as the other capacities, with the extension methods.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Lifecycle
   on SomeEvent {
     // Run the action of the skill
@@ -343,8 +418,8 @@ skill Ski implements Cap {
   }
 }</pre>
 <h3 id="Legal_Notice">6. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 1.0<br> Status: Draft Release<br> Release: 2015-10-26</p>
-<p>Copyright © 2015 Sebastian RODRIGUEZ, Nicolas GAUD, Stephane GALLAND. All rights reserved.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.3<br> Status: Stable Release<br> Release: 2015-11-30</p>
+<p>Copyright © 2015 the original authors or authors. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
@@ -401,11 +476,5 @@ skill Ski implements Cap {
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

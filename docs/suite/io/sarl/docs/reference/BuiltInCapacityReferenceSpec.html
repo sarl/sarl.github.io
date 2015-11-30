@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Built-in Capacity Reference</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -181,7 +186,7 @@ the space with the given identifier.</td>
 </tbody>
 </table>
 <p>The following example illustrates the use of the <code>isInSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the space <code>myspace</code> (declared as attribute in the container).</p>
-<pre class="prettyprint lang-spec linenums">on AnEvent [ isInSpace(occurrence, myspace) ] {
+<pre class="prettyprint lang-sarl linenums">on AnEvent [ isInSpace(occurrence, myspace) ] {
   // Do something with the event when it was emitted in the space myspace
 }</pre>
 <h3 id="InnerContextAccess">3. InnerContextAccess</h3>
@@ -233,7 +238,7 @@ the default space of the inner context.</td>
 </table>
 <p>The following example illustrates the use of the <code>isInInnerDefaultSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the default space of the inner context.</p>
 <p><span class="label label-info">Note</span> According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>event.inInnerDefaultSpace</code> is equivalent to <code>isInInnerDefaultSpace(event)</code>.</p>
-<pre class="prettyprint lang-spec linenums">on AnEvent [ occurrence.inInnerDefaultSpace ] {
+<pre class="prettyprint lang-sarl linenums">on AnEvent [ occurrence.inInnerDefaultSpace ] {
   // Do something with the event when it was emitted in the inner default space
 }</pre>
 <h3 id="DefaultContextInteractions">4. DefaultContextInteractions</h3>
@@ -277,8 +282,8 @@ the default space of the inner context.</td>
 <pre class="prettyprint">def emit(e : Event, scope : Scope&lt;Address&gt;)
 </pre>
 <p>A scope is a predicates that is evaluated against the addresses of the receivers. It is defined as (in Java):</p>
-<pre class="prettyprint">public interface Scope&lt;T&gt; extends Serializable {
-    public boolean matches(T element);
+<pre class="prettyprint">interface Scope&lt;T&gt; extends Serializable {
+    def matches(element : T) : boolean
 }
 </pre>
 <p>It is recommended using the SARL utility functions for creating scopes. They are defined in the class <code>io.sarl.util.Scopes</code>. The following example is equivalent to the feature call of <code>emit</code> without the scoping parameter:</p>
@@ -325,7 +330,7 @@ in the default space of the default context.</td>
 </table>
 <p>The following example illustrates the use of the <code>isInDefaultSpace</code> function in the guard of an behavior unit. In this example, the behavior unit is run only if the event of type <code>AnEvent</code> was emitted in the default space.</p>
 <p><span class="label label-info">Note</span> According to the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, the <code>event.inDefaultSpace</code> is equivalent to <code>isInDefaultSpace(event)</code>.</p>
-<pre class="prettyprint lang-spec linenums">on AnEvent [ occurrence.inDefaultSpace ] {
+<pre class="prettyprint lang-sarl linenums">on AnEvent [ occurrence.inDefaultSpace ] {
   // Do something with the event when it was emitted in the default space
 }</pre>
 <h3 id="Lifecycle">5. Lifecycle</h3>
@@ -534,8 +539,8 @@ def cancel(task : AgentTask,
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">9. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 1.0<br> Status: Draft Release<br> Release: 2015-10-26</p>
-<p>Copyright © 2015 Sebastian RODRIGUEZ, Nicolas GAUD, Stephane GALLAND. All rights reserved.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.3<br> Status: Stable Release<br> Release: 2015-11-30</p>
+<p>Copyright © 2015 the original authors or authors. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
@@ -592,11 +597,5 @@ def cancel(task : AgentTask,
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>General FAQ on SARL</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -72,7 +77,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features.</p>
 <p><strong>The language is platform- and architecture-independent.</strong></p>
 <h4 id="Could_I_use_SARL_to_make_agent_based_software">1.2. Could I use SARL to make agent-based software?</h4>
-<p><strong>Yes</strong>. SARL may be used for agent based applications. Natively, SARL provides features for agent execution and direct communication. The agents may be deployed on real computers and over a computer network.</p>
+<p><strong>Yes</strong>. </p>
+<p>SARL may be used for agent based applications. Natively, SARL provides features for agent execution and direct communication. The agents may be deployed on real computers and over a computer network.</p>
 <h4 id="Could_I_use_SARL_to_make_agent_based_simulation_software">1.3. Could I use SARL to make agent-based simulation software?</h4>
 <p><strong>Yes</strong>. SARL may be used for agent based simulations. Natively, SARL provides features for agent execution and direct communication. An extension is provided for supporting the simulated environments (time management, environment model, etc.)</p>
 <h4 id="Could_I_use_SARL_to_make_holonic_software">1.4. Could I use SARL to make holonic software?</h4>
@@ -81,7 +87,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><strong>Yes</strong>. The SARL developers are providing the definition of an organizational space based on the <a href="http://www.aspecs.org/CRIO">CRIO meta-model</a> (Capacity-Role-Interaction-Organization) for example. This meta-model defines a system as a set of organizations in which roles are defined and interacting together. Agents play roles in organization instances (or groups) and provides embedded capacity implementations required by the played roles.</p>
 <p>Other organizational may be used, if a dedicated space is defined for.</p>
 <h4 id="Is_SARL_an_object_oriented_programming_language">1.6. Is SARL an object-oriented programming language?</h4>
-<p><strong>Yes and No</strong>. SARL is an agent-oriented programming language. But, it is possible to use object-oriented concepts for writing the code of the expressions in the agents, the skills, etc. A part of the grammar of SARL is inherited from the <a href="https://wiki.eclipse.org/Xbase">Xbase partial programming language</a>, provided by the <a href="http://www.eclipse.org/Xtext">Xtext framework</a>. It provides statements and rules that are close to object-oriented languages.</p>
+<p><strong>Yes and No</strong>. SARL is an agent-oriented programming language. But, it is possible to use object-oriented concepts for writing the code of the expressions in the agents, the skills, etc. A part of the grammar of SARL is inherited from the <a href="https://wiki.eclipse.org/Xbase">Xbase partial programming language</a>, provided by the <a href="http://www.eclipse.org/Xtext">Xtext framework</a>. It provides statements and rules that correspond to object-oriented languages.</p>
 <h4 id="May_I_use_my_Java_classes_in_SARL">1.7. May I use my Java classes in SARL?</h4>
 <p><strong>Yes</strong>. SARL and Java are 100% interoperable. There are no exceptional cases and you do not have to think in two worlds. You can invoke SARL code from Java and vice versa without any surprises or hassles.</p>
 <h4 id="What_is_the_SRE">1.8. What is the SRE?</h4>
@@ -118,7 +124,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h4 id="Does_my_operating_system_is_compatible_with_SARL">2.1. Does my operating system is compatible with SARL?</h4>
 <p>SARL is based on a part of the Eclipse API. Every operating system which has a compatible Java Virtual Machine with Eclipse may be used to run SARL.</p>
 <h4 id="What_is_the_version_of_the_Java_virtual_machine_to_install">2.2. What is the version of the Java virtual machine to install?</h4>
-<p>SARL requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you should configure your JDK to produce 1.6 class files from 1.7 Java code.</p>
+<p>SARL requires the JRE and the JDK 1.8 or higher to run and compile. Note that if you plan to create Android applications, you should configure your JDK to produce 1.6 class files from 1.8 Java code.</p>
 <h4 id="Why_is_the_SARL_product_not_launching_and_display_an_error_dialog_box">2.3. Why is the SARL product not launching and display an error dialog box?</h4>
 <p>Most of the time, the problem is due to an incompatibility of between the configuration of your operating system or Java virtual machine, and the requirements of the SARL Eclipse product.</p>
 <p>If a problem occured, find the ".log" file in which Eclipse is writting the complete error trace. Usually, it is in your home directory or in the folder of the SARL Eclipse executable file.</p>
@@ -188,11 +194,5 @@ Considering the variety of existing approaches and meta-models in the field of a
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

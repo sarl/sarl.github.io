@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>English Auction with Holons</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -59,6 +64,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <div class="container">
       <div class="tab-pane active" id="spec">
+<p></p>
 <ul class="page_outline" id="page_outline">
 <li><a href="#Principle_of_the_English_Auction">1. Principle of the English Auction</a></li>
 <li><a href="#Principle_of_the_Application">2. Principle of the Application</a></li>
@@ -70,11 +76,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Compile_and_Launch_the_agents">8. Compile and Launch the agents</a></li>
 </ul>
 <p>This document describes the basics of the creation and design of holons in SARL. This tutorial is applied on a simple English auction application. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>. The architecture presented in this tutorial may be used for designing a system in which a decision must be taken after arbitration among components.</p>
-<div class="bt-download">
-<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"></a>
-</div>
-<p>According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial, the terms "agent" and "holon" are synonymous.</p>
-<p>The elements that are explained in this tutorial are:</p>
+<p></p>
+<div class="bt-download"> <a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"></a> </div> According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial, the terms "agent" and "holon" are synonymous.<p>The elements that are explained in this tutorial are:</p>
 <ul>
   <li>the definition of an event;</li>
   <li>the definition of a super-agent;</li>
@@ -99,13 +102,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><strong>By a design choice, the bidders are sub-agents of the auctioneer agent.</strong></p>
 <p><img src="./holonic_auction.png" alt="Holonic Auction"></p>
 <h3 id="Why_are_the_sub_agents_in_the_inner_context">3. Why are the sub-agents in the inner context?</h3>
-<p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger [holon](http://en.wikipedia.org/wiki/Holon<em>(philosophy)), </em><em>and</em>_ at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
+<p>According to the <a href="../reference/BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>, a sub-agent is living in the <strong>inner context</strong> of a super-agent. Each agent defines its own context, called the inner context, where other agents can live. Therefore, every agent can be seen as a part of a larger <a href="http://en.wikipedia.org/wiki/Holon_(philosophy)">holon</a>, <em>and</em> at the same time be composed by other agents that exist in its <em>inner context</em>.</p>
 <p><span class="label label-info">Note</span> According to the SARL specifications, all the agents in a context belong to the default space of this context. This property is important for designing the communication links between two adjacent levels in the hierarchy of agents. The default space of the inner context becomes the natural place where the super-agent and its sub-agents are interacting.</p>
 <h3 id="Definitions_of_the_events">4. Definitions of the events</h3>
 <p>In the application, two events are needed: the event from the auctioneer for notifying the bidders of the new price; and the event that is sent by a bidder to the auctioneer with a bid inside.</p>
 <h4 id="Price_event">4.1. Price event</h4>
 <p>The <code>Price</code> event is the event sent by the auctioneer for notifying a bidder that the price has changed. This event contains the new price.</p>
-<pre class="prettyprint lang-spec linenums">package io.sarl.docs.tutorials.holonicauction
+<pre class="prettyprint lang-sarl linenums">package io.sarl.docs.tutorials.holonicauction
 event Price {
   val price : float
   new(price : float) {
@@ -114,7 +117,7 @@ event Price {
 }</pre>
 <h4 id="Playing_event">4.2. Playing event</h4>
 <p>The <code>Bid</code> event is the event sent by a bidder to the auctioneer. This event contains the value of the bid.</p>
-<pre class="prettyprint lang-spec linenums">event Bid {
+<pre class="prettyprint lang-sarl linenums">event Bid {
   val value : float
   new(value : float) {
     this.value = value
@@ -124,7 +127,7 @@ event Price {
 <p>The bidder agent is reacting to new price notifications, and could offer a new bid if the new price is not exceeding its maximal price.</p>
 <h4 id="Initial_definition">5.1. Initial definition</h4>
 <p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value of the price that the bidder will consider for bidding. The bidder selects the maximum price between 100 and 1000 randomly.</p>
-<pre class="prettyprint lang-spec linenums">agent Bidder {
+<pre class="prettyprint lang-sarl linenums">agent Bidder {
   val random = new Random
   var maxPrice : float
   
@@ -136,7 +139,7 @@ event Price {
 <p>The definition of the bidder agent is extended by the bidding behavior. The bidding must occur when the auctioneer is notifying a new price, i.e. when the <code>Price</code> event is received. The bidder computes the new price. If this last is not exceeding the maximal price, then the bidder is sending its bid in a <code>Bid</code> event.</p>
 <p><span class="label label-warning">Interaction Principle</span> For sending data to its super-agent, a sub-agent must fire an event in the default space of the inner context of the super-agent. The <code>emit</code> function is supporting this interaction.</p>
 <p><span class="label label-warning">Caution</span> The <code>Bid</code> event is sent in the default space. But there is no restriction on the event's recipient. It means that the super-agent <strong>and</strong> the other sub-agents will receive this event.</p>
-<pre class="prettyprint lang-spec linenums">agent Bidder {
+<pre class="prettyprint lang-sarl linenums">agent Bidder {
   val random = new Random
   var maxPrice : float
   var myLastBid : float
@@ -172,7 +175,7 @@ event Price {
 <p>For restricting the recipients of the <code>Bid</code> event to the auctioneer, it is mandatory to specify a scope for the event. For supporting the holonic communication from the sub-agent to the super-agent, the scope of the event corresponds to the address of the super-agent in the default space.</p>
 <p><span class="label label-info">Note</span> The ID of the super-agent, and the ID of the inner context of this super-agent are always the same.</p>
 <p>Below, we update the bidding behavior by creating a scope, and providing it to the <code>emit</code> function.</p>
-<pre class="prettyprint lang-spec linenums">agent Bidder {
+<pre class="prettyprint lang-sarl linenums">agent Bidder {
   val random = new Random
   var maxPrice : float
   var myLastBid : float
@@ -213,7 +216,7 @@ event Price {
 innerContext.defaultSpace.emit(new Price(50))
 </code></p>
 <p><importantnote labe="Interaction Principle"> For sending data to its sub-agents, a super-agent must fire an event in the default space of its inner context. The <code>wake</code> function is supporting this interaction. </importantnote></p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors
   
@@ -228,7 +231,7 @@ innerContext.defaultSpace.emit(new Price(50))
 }</pre>
 <h4 id="Create_the_bidders">6.2. Create the bidders</h4>
 <p>The creation of the sub-agents in the auctioneer needs to spawn agents in the inner context. The <code>Lifecycle</code> capacity gives the <code>spawnInContext</code> function. This function permits creating an agent in a particular context. For obtaining the inner context, we need to use the <code>InnerContextAccess</code> capacity, which provides the <code>getInnerContext</code> function. Below, we create the three bidders.</p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess
   
@@ -247,7 +250,7 @@ innerContext.defaultSpace.emit(new Price(50))
 }</pre>
 <h4 id="Receive_the_bids">6.3. Receive the bids</h4>
 <p>The auctioneer is waiting for bids. This behavior is coded inside the behavior unit dedicated to the <code>Bid</code> event. We add a guard on the <code>isAuctionOpened</code> attribute to execute the behavior only if the auction is still opened. We will see later when the auction is closed. If the value of the received bid is greater than the current price, the source of the <code>Bid</code> event becomes the new potential winner.</p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess
   
@@ -274,7 +277,7 @@ innerContext.defaultSpace.emit(new Price(50))
 <h4 id="Stop_the_auction">6.4. Stop the auction</h4>
 <p>The auctioneer must wait some time before it is closing the auction due to lake of bid. To reproduce this behavior, we introduce a periodic task, which is executed every 10 seconds for checking if a bid was provided during the last 10 seconds. This periodic task is started after the first 10 seconds.</p>
 <p>Coding the periodic task in SARL is done with the <code>Schedules</code> capacity. It provides the <code>every</code> function that is executing at a fixed delay its second argument, given by the first argument. In the task's code, we test if a bid was received. If not, the auctioneer closes the auction, and outputs the appropriate message. To delay the task executor about the first ten seconds, we use the <code>in</code> function provided by the capacity.</p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
@@ -318,7 +321,7 @@ innerContext.defaultSpace.emit(new Price(50))
 <h4 id="Synchronize_the_operations">6.5. Synchronize the operations</h4>
 <p>Because the periodic task and the event handlers may be executed in parallel, we are facing a classical problem in concurrent programming: how to ensure that two blocks of code are not executed at the same time for avoiding any conflicting access on the same data.</p>
 <p>It is recommended to "synchronize" the blocks of code. We use the <code>synchronize</code> operator (which has the same meaning as in the Java language). This operator ensures that two blocks of code, which are synchronized on the same Object (the argument of the operator) cannot be executed in parallel by different threads.</p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
@@ -369,10 +372,10 @@ innerContext.defaultSpace.emit(new Price(50))
 <p><span class="label label-warning">Important</span> In the specification of SARL, a super-agent cannot be killed if there is some other agent belonging to its inner context. Consequently, for stopping the agents, we need to stop the sub-agents before the super-agent.</p>
 <h4 id="StopAuction_event">7.1. StopAuction event</h4>
 <p>Because the determination of the end of the agent's life is made by the auctioneer, this last must notify its sub-agents that it is time to commit a suicide. We introduce the <code>StopAuction</code> event that is used for this particular notification task.</p>
-<pre class="prettyprint lang-spec linenums">event StopAuction</pre>
+<pre class="prettyprint lang-sarl linenums">event StopAuction</pre>
 <h4 id="Kill_the_bidder">7.2. Kill the bidder</h4>
 <p>The code of the bidder must be updated for reacting on the receiving of the <code>StopAuction</code> event. When it is received, the bidder agent is killing itself by calling the <code>killMe</code> function. This function is provided by the <code>Lifecycle</code> capacity.</p>
-<pre class="prettyprint lang-spec linenums">agent Bidder {
+<pre class="prettyprint lang-sarl linenums">agent Bidder {
   val random = new Random()
   var maxPrice : float
   
@@ -402,7 +405,7 @@ innerContext.defaultSpace.emit(new Price(50))
 }</pre>
 <h4 id="Kill_the_auctioneer">7.3. Kill the auctioneer</h4>
 <p>The code of the auctioneer must be updated for firing the <code>StopAuction</code> event, and for killing itself when there is no more sub-agent. Firstly, the periodic task is updated with a <code>wake</code> call that permits notifying the sub-agents of the end of the auction. Secondly, in this periodic task, if the auction is closed, then the auctioneer is killing itself if the <code>hasMemberAgent</code> function replies false. This function is provided by the <code>InnerContextAccess</code> capacity. The periodic task must also be stopped. The <code>cancel</code> function is invoked on the periodic task to stop its execution.</p>
-<pre class="prettyprint lang-spec linenums">agent Auctioneer {
+<pre class="prettyprint lang-sarl linenums">agent Auctioneer {
           
   uses Behaviors, Lifecycle, InnerContextAccess, Schedules, Logging
   
@@ -532,11 +535,5 @@ innerContext.defaultSpace.emit(new Price(50))
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

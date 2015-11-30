@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Agent Definition Introduction</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -71,25 +76,25 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The SARL default editor will open.</p>
 <h3 id="Basic_agent_definition">1. Basic agent definition</h3>
 <p>Agents are defined using the <code>agent</code> keyword.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
 }</pre>
 <h3 id="Package_definition">2. Package definition</h3>
 <p>SARL elements are organized in packages. You can define the package using the <code>package</code> keyword.</p>
 <p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.agent.MyAgent</code>. The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
 <p><span class="label label-warning">Important</span> The package keyword defines the package for all elements in the same SARL file (see the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a> for details). Therefore FirstAgent and SecondAgent belong to the same package (i.e. <code>io.sarl.docs.gettingstarted.agent</code>).</p>
-<pre class="prettyprint lang-spec linenums">package io.sarl.docs.gettingstarted.^agent
+<pre class="prettyprint lang-sarl linenums">package io.sarl.docs.gettingstarted.^agent
 agent MyAgent {}
 agent SecondAgent {}</pre>
 <h3 id="Agent_Perceptions">3. Agent Perceptions</h3>
 <p>Agents need to perceive their environment in order to react to external stimuli. Perceptions take the form of events (see <a href="../reference/EventReferenceSpec.html">Event</a> and <a href="../reference/AgentReferenceSpec.html">Agent</a> References for details).</p>
 <h4 id="Declare_an_Event">3.1. Declare an Event</h4>
 <p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code>.</p>
-<pre class="prettyprint lang-spec linenums">event MyEvent</pre>
+<pre class="prettyprint lang-sarl linenums">event MyEvent</pre>
 <h4 id="Define_an_agent_Perceptions">3.2. Define an agent Perceptions</h4>
 <p>Now, we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
 <p>To define this event handler, we must use the <code>on</code> keyword, and provide the associated code block.</p>
 <p><span class="label label-info">Note</span> The <code>println</code> function is provided by the <code>Logging</code> capacity. It permits printing a message on the log output.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on MyEvent {
     println("Received MyEvent")
@@ -105,7 +110,7 @@ agent SecondAgent {}</pre>
 </ul>
 <p>This means that when agent has been spawned and it is ready to begin its execution, it will receive an <code>Initialize</code> event. You can react to this event just like with any other event defined in SARL.</p>
 <p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive a <code>Destroy</code> Event. The purpose of this event is to release any system resource properly.</p>
-<pre class="prettyprint lang-spec linenums">import io.sarl.core.Logging
+<pre class="prettyprint lang-sarl linenums">import io.sarl.core.Logging
 import io.sarl.core.Initialize
 import io.sarl.core.Destroy
 
@@ -124,7 +129,7 @@ agent MyAgent {
 <p>Inside a behavior declaration you may need to access the event instance the agent is reacting to.</p>
 <p>This instance is called an <code>occurrence</code>.</p>
 <p>In the case of an Initialize events you can access the arguments for the agent spawn using <code>occurrence.parameters</code></p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   
   on Initialize {
@@ -144,13 +149,13 @@ agent MyAgent {
 <p><span class="label label-info">Note</span> In this document, we limit our explanation to the sending of the events in the default space of the default context of the agent.</p>
 <p>For sending an event in the default space, the <code>DefaultContextInteractions</code> built-in capacity should be used.</p>
 <p>Below, we define an agent that is using this capacity.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses DefaultContextInteractions
 }</pre>
 <h4 id="Send_an_event_in_the_default_space">4.2. Send an event in the default space</h4>
 <p>The <code>DefaultContextInteractions</code> built-in capacity provides functions for sending events in the default space.</p>
 <p>Below, we define an action in which an instance of <code>MyEvent</code> is created, and then sent into the default space with the function <code>emit(Event)</code>.</p>
-<pre class="prettyprint lang-spec linenums">agent MyAgent {
+<pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses DefaultContextInteractions
   def doSomething {
     var e = new MyEvent
@@ -215,11 +220,5 @@ agent MyAgent {
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

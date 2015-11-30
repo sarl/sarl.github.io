@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Runtime Environment FAQ</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -71,20 +76,21 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>SRE stands for "SARL Runtime Environment". The SRE is an implementation of an agent platform, which is able to run a SARL program. The official standard SRE supported by the SARL developers is the <a href="http://www.janusproject.io">Janus platform</a>.</p>
 <h4 id="What_is_Janus">1.2. What is Janus?</h4>
 <p>Janus is an open-source multi-agent platform fully implemented in Java 1.7. Janus enables developers to quickly create web, enterprise and desktop agent-based applications.</p>
+<p><strong>Janus is an agent execution platform not an agent-oriented language.</strong></p>
 <p>It provides a comprehensive set of features to develop, run, display and monitor agent-based applications.</p>
 <p>Janus-based applications can be distributed across a network. Janus could be used as an agent-oriented platform, an organizational platform, and/or a holonic platform. It also natively manages the concept of recursive agents and holons.</p>
-<p><strong>Janus is a platform not a language.</strong></p>
 <p>Official website: <a href="http://www.janusproject.io">www.janusproject.io</a></p>
 <h4 id="Where_can_I_ask_my_question">1.3. Where can I ask my question?</h4>
 <p>If you cannot find an answer to your question in the FAQ, nor the reference documents, nor the <a href="https://github.com/sarl/sarl/issues">existing SARL issues</a>, nor the <a href="https://github.com/janus-project/janusproject/issues">existing Janus issues</a>, you could ask the SARL developers on <a href="https://github.com/janus-project/janusproject/issues/new">this page</a>.</p>
 <h4 id="Where_can_I_found_information_on_the_release_planning_of_Janus">1.4. Where can I found information on the release planning of Janus?</h4>
 <p>The release planning of Janus is detailed on the <a href="https://github.com/janus-project/janusproject/milestones">milestones' page</a> on the Github web site.</p>
+<p>The versions of the latest stable and development releases are displayed on <a href="http://maven.janusproject.io/VERSION.txt">this page</a>.</p>
 <p>The release planning of the Janus multi-agent platform is following the <a href="https://github.com/sarl/sarl/milestones">planning of SARL</a>.</p>
 <h3 id="Installation_and_Execution">2. Installation and Execution</h3>
-<h4 id="Does_my_operating_system_is_compatible_with_Janus">2.1. Does my operating system is compatible with Janus?</h4>
-<p>The <a href="http://www.janusproject.io">Janus runtime platform</a> is a Java application. Every operating system which has a compatible Java Virtual Machine (at least with the 1.7 standard) with Janus may be used to run it.</p>
+<h4 id="Is_my_operating_system_compatible_with_Janus">2.1. Is my operating system compatible with Janus?</h4>
+<p>The <a href="http://www.janusproject.io">Janus runtime platform</a> is a Java application. Every operating system which has a Java Virtual Machine with at least with the 1.8 standard may be used to run Janus.</p>
 <h4 id="What_is_the_version_of_the_Java_virtual_machine_to_install">2.2. What is the version of the Java virtual machine to install?</h4>
-<p>Janus requires the JRE and the JDK 1.7 or higher to run and compile. Note that if you plan to create Android applications, you must configure your JDK to produce 1.6 class files from 1.7 Java code.</p>
+<p>Janus requires the JRE and the JDK 1.8 or higher to run and compile. Note that if you plan to create Android applications, you may configure your JDK to produce 1.6 class files from 1.8 Java code, depending of the current supported standard on Android platforms.</p>
 <h4 id="How_to_launch_an_agent_in_Janus">2.3. How to launch an agent in Janus?</h4>
 <p>Three methods are available for launching one or more agents in the Janus platform:</p>
 <ul> <li>
@@ -95,11 +101,18 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>This error occurs when there is no SARL Runtime Environment (SRE) installed on your Eclipse environment, OR when the installed SRE is not compatible with the installed version of the SARL tools, which are embedded in Eclipse.</p>
 <p>For solving this problem, you must download the latest <a href="http://www.janusproject.io">Janus platform</a>, and install it in your Eclipse (Menu <code>Window&gt; Preferences&gt; SARL&gt; Installed SREs</code>).</p>
 <p><caution>If the latest stable version of Janus is not working, you should download the latest development version.</caution></p>
-<h4 id="Error_Agent_class_not_found">2.5. Error: "Agent class not found."</h4>
+<h4 id="Error_Incompatible_SRE_with_SARL_1_1_1_1_Version_must_be_lower_than_0_0_0">2.5. Error: "Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0."</h4>
+<p>This error occurs when the SARL Runtime Environment (SRE) has a version lower than the version of the SARL tools, which are embedded in the Eclipse IDE. This difference of version may cause problems during the execution of your agents, since the capacities' definitions may not be the same.</p>
+<p>For solving this problem, you must download the version of the SARL Runtime Environment (SRE) that is implementing the version of the SARL specification that you're using on Eclipse IDE. For the Janus platform, the versions of the latest stable and development releases are displayed on <a href="http://maven.janusproject.io/VERSION.txt">this page</a>. For determining if the Janus platform implements the correct version of the SARL specification, please read the explanation on <a href="http://www.janusproject.io/#versionnumber">how Janus version numbers are built</a>.</p>
+<h4 id="Error_Agent_class_not_found">2.6. Error: "Agent class not found."</h4>
 <p>When the Janus platform cannot find the class file for the start-up agent, it displays the error message <code>"Agent class not found"</code>.</p>
-<p>For resolving this problem, you should child if: </p>
+<p>For resolving this problem, you should check if: </p>
 <ul> <li>the class with the given name exists in the application's class path.</li> <li>the class name is given as the first command-line argument to your application.</li> <li>the class with the given name is a subtype of <code>Agent</code>.</li> </ul>
-<p>For getting the arguments given to Janus, you could launch Janus with the command line option: <code>--cli</code>. This option stops Janus after displaying the command line arguments (including the <code>--cli</code> option).</p>
+<p>For showing the arguments given to Janus, you could launch Janus with the command line option: <code>--cli</code>. This option stops Janus after displaying the command line arguments (including the <code>--cli</code> option).</p>
+<h4 id="Error_Invalid_byte_2_of_4_byte_UTF_8_sequence">2.7. Error: "Invalid byte 2 of 4-byte UTF-8 sequence."</h4>
+<p>When installing Janus as an SRE in the Eclipse interface, the plugin loads the Jar file of the SRE with the default API. The Jar archiver uses the default file encoding of the operating system. On Linux and MacOS 10, it is almost UTF-8. On Windows, it is Latin1. And on MacOS (before 10), it is Mac-Roman.</p>
+<p>Unfortunately, the Janus Jar file is generated on a Linux operating system (UTF-8). When the Java virtual machine tries to uncompress and use the content of the Jar, it complains about an invalid charset format.</p>
+<p>For solving this issue, you could launch your Eclipse with the command line option <code>-Dfile.encoding=UTF-8</code>, which is forcing the Eclipse product to consider the file as encoded with the UTF-8 charset.</p>
 <h3 id="Contribute_to_Janus">3. Contribute to Janus</h3>
 <h4 id="Where_are_the_sources_of_Janus">3.1. Where are the sources of Janus?</h4>
 <p>The sources of Janus are available on <a href="https://github.com/janus-project/janusproject">Github</a>. Details for getting the source code may be found on the <a href="http://www.janusproject.io">official web site of Janus</a>.</p>
@@ -167,11 +180,5 @@ Considering the variety of existing approaches and meta-models in the field of a
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

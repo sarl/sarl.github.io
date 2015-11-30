@@ -1,0 +1,1 @@
+/usr/lib/jvm/java-8-oracle/jre/../bin/javadoc -J-Dhttp.proxySet=true -J-Dhttp.proxyHost=proxy.utbm.fr -J-Dhttp.proxyPort=3128 "-J-Dhttp.nonProxyHosts=\"*.utbm.fr\"" @options @argfile

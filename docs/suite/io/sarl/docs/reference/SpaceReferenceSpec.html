@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Space Reference</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -77,35 +82,34 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>SARL provides a collection of Java interfaces that are representing different types of spaces.</p>
 <h4 id="Space">1.1. Space</h4>
 <p>SARL provides a Java interface that is representing all the spaces:</p>
-<pre class="prettyprint"> public interface Space {
-        public SpaceID getID();
-        public SynchronizedSet&lt;UUID&gt; getParticipants();
+<pre class="prettyprint"> interface Space {
+        def getID : SpaceID
+        def getParticipants : SynchronizedSet&lt;UUID&gt;
  }
 </pre>
 <p>The <code>getID</code> function replies the identifier of the space. The <code>getParticipants</code> function replies the identifiers of the agents belonging to the space.</p>
 <h4 id="Event_Space">1.2. Event Space</h4>
 <p>Spaces that are based on event propagation mechanism are defined as:</p>
-<pre class="prettyprint"> public interface EventSpace extends Space {
-        public Address getAddress(UUID id);
-        public void emit(Event event, Scope&lt;Address&gt; scope);
-        public void emit(Event event);
+<pre class="prettyprint"> interface EventSpace extends Space {
+        def getAddress(id : UUID) : Address
+        def emit(event : Event, scope : Scope&lt;Address&gt; = null)
  }
 </pre>
 <p>The <code>getAddress</code> function replies the address in the space of the agent that has the given identifier. The <code>emit</code> functions permits fire of an event in the space.</p>
 <h4 id="Open_Event_Space">1.3. Open Event Space</h4>
 <p>Event spaces that are allowing the agents to be register and unregister are "open event spaces":</p>
-<pre class="prettyprint"> public interface OpenEventSpace extends EventSpace {
-        public Address register(EventListener entity);
-        public Address unregister(EventListener entity);
+<pre class="prettyprint"> interface OpenEventSpace extends EventSpace {
+        def register(entity : EventListener) : Address
+        def unregister(entity : EventListener) : Address
  }
 </pre>
 <p>The functions <code>register</code> and <code>unregister</code> permits an agent to be involved or not.</p>
 <h4 id="Restricted_Access_Event_Space">1.4. Restricted Access Event Space</h4>
 <p>When an event space needs to control the registration access, it should be a "restricted access event space":</p>
-<pre class="prettyprint"> public interface RestrictedAccessEventSpace extends EventSpace {
-        public Address register(EventListener entity, Principal requester);
-        public &lt;P extends EventListener &amp; Principal&gt; Address register(P entity);
-        public Address unregister(EventListener entity);
+<pre class="prettyprint"> interface RestrictedAccessEventSpace extends EventSpace {
+        def register(entity : EventListener, requester : Principal) : Address
+        def register(entity : P) : Address with P extends EventListener &amp; Principal
+        def unregister(entity : EventListener) : Address
  }
 </pre>
 <p>The functions given by this type of space permits implementing a space with restricted access, based on the standard Java API.</p>
@@ -122,9 +126,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The first step for the definition of a new type of space is the specification of the Java interface that is describing the functions provided by the space.</p>
 <p>The new space type must extend one of the predefined types. In the following example, the new space is related to the physic environment in which the agents may evolve.</p>
 <pre class="prettyprint"> interface PhysicSpace extends Space {
-        def moveObject(UUID identifier, float x, float y, float z)
-        def bindBody(EventListener agent)
-        def unbindBody(EventListener agent)
+        def moveObject(identifier : UUID, x : float, y : float, z : float)
+        def bindBody(agent : EventListener)
+        def unbindBody(agent : EventListener)
  }
 </pre>
 <p>This space permits to move an object (including the physical representation of the agent, its body). Additionally, the space gives to the agent the ability to be binded to its body, and to release the control of its body. The <code>EventListener</code> type is the event listening mechanism associated to the agent. It may be obtained with the <code>Behaviors</code> built-in capacity (see the corresponding <a href="./BuiltInCapacityReferenceBehaviorsSpec.html">built-in capacity reference</a> for details).</p>
@@ -133,24 +137,24 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><caution>This section of the space reference document may evolved in future releases of SARL. Please activate the "deprecated feature use" warning in your Java compilation configuration for ensuring that you will be notified about any major changes on this part of the API.</caution></p>
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
 <pre class="prettyprint"> class PhysicSpaceImpl extends AbstractSpace implements PhysicSpace {
-        val Map&lt;UUID,PhysicObject&gt; entities = newTreeMap
-        new(UUID id) {
+        val entities = &lt;UUID, PhysicObject&gt;newTreeMap
+        new(id : UUID) {
            super(id)
         }
-        def moveObject(UUID identifier, float x, float y, float z) {
+        def moveObject(identifier : UUID, x : float, y : float, z : float) {
            synchronized (this.entities) {
-          PhysicObject o = this.entities.get(identifier)
+          var o = this.entities.get(identifier)
              if (o !== null) {
               o.move(x, y, z)
              }
          }
         }
-       def bindBody(EventListener listener) {
+       def bindBody(listener : EventListener) {
          synchronized (this.entities) {
           entities.put(listener.ID, new PhysicObject)
          }
        }
-       def unbindBody(EventListener listener) {
+       def unbindBody(listener : EventListener) {
          synchronized (this.entities) {
           entities.remove(listener.ID)
          }
@@ -164,26 +168,26 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><caution>This section of the space reference document may evolved in future releases of SARL. Please activate the "deprecated feature use" warning in your Java compilation configuration for ensuring that you will be notified about any major changes on this part of the API.</caution></p>
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
 <pre class="prettyprint"> class NetworkPhysicSpaceImpl extends AbstractEventSpace implements PhysicSpace {
-       val Map&lt;UUID,PhysicObject&gt; entities;
-       public new(SpaceID id, DistributedDataStructureService factory) {
+       val entities : Map&lt;UUID,PhysicObject&gt;
+       public new(id : SpaceID, factory : DistributedDataStructureService) {
          super(id, factory)
          this.entities = factory.getMap(id.toString + "-physicObjects")
        }
-       def bindBody(EventListener entity) {
+       def bindBody(entity : EventListener) {
          this.entities.put(entity.ID, new PhysicObject)
-         Address a = new Address(ID, entity.ID)
+         var a = new Address(ID, entity.ID)
          synchronized (this.participants) {
           return this.participants.registerParticipant(a, entity)
          }
        }
-       def unbindBody(EventListener entity) {
+       def unbindBody(entity : EventListener) {
          synchronized (this.participants) {
           return this.participants.unregisterParticipant(entity)
          }
          this.entities.remove(entity.ID)
        }
-        def moveObject(UUID identifier, float x, float y, float z) {
-           PhysicObject o = this.entities.remove(identifier)
+        def moveObject(identifier : UUID, x : float, y : float, z : float) {
+           var o = this.entities.remove(identifier)
            if (o !== null) {
              o.move(x, y, z)
           this.entities.put(identifier, o)
@@ -195,7 +199,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h4 id="Defining_a_SpaceSpecification">2.4. Defining a SpaceSpecification</h4>
 <p>For creating instances of spaces, it is necessary to define a space specification. This specification may create the space instance according to rules, or provide information and rules to the spaces.</p>
 <pre class="prettyprint">class PhysicSpaceSpecification implements SpaceSpecification&lt;PhysicSpace&gt; {
-    def PhysicSpace create(SpaceID id, Object... params) {
+    def create(id : SpaceID, params : Object*) : PhysicSpace {
            return new PhysicSpaceImpl(id)
        }
 }
@@ -203,17 +207,17 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The example above is the specification related to the first implementation of the PhysicSpace.</p>
 <pre class="prettyprint">class NetworkPhysicSpaceSpecification implements SpaceSpecification&lt;PhysicSpace&gt; {
        @Inject
-       var DistributedDataStructureService factory;
+       var factory : DistributedDataStructureService
 
-    def PhysicSpace create(SpaceID id, Object... params) {
+    def create(id : SpaceID, params : Object*) : PhysicSpace {
            return new NetworkPhysicSpaceImpl(id, factory)
        }
 }
 </pre>
 <p>The example above is the specification that permits to create a physic space with networking. It retrieves by injection the factory of distributed data structures provided by the Janus platform.</p>
 <h3 id="Legal_Notice">3. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 1.0<br> Status: Draft Release<br> Release: 2015-10-26</p>
-<p>Copyright © 2015 Sebastian RODRIGUEZ, Nicolas GAUD, Stephane GALLAND. All rights reserved.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.3<br> Status: Stable Release<br> Release: 2015-11-30</p>
+<p>Copyright © 2015 the original authors or authors. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
@@ -270,11 +274,5 @@ Considering the variety of existing approaches and meta-models in the field of a
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>

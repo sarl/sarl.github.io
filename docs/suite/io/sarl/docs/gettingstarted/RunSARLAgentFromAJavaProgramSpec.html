@@ -14,11 +14,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <title>Run SARL Agent from a Java Program</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+	<link rel="stylesheet" href="../../../../../../css/prettify.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../../../../../../css/custom.css" rel="stylesheet">
+	<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+	<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="../../../../../../js/lang-sarl.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +31,7 @@ Considering the variety of existing approaches and meta-models in the field of a
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     
 
@@ -62,53 +67,46 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p></p>
 <ul class="page_outline" id="page_outline">
 <li><a href="#Boot_of_Janus">1. Boot of Janus</a></li>
-<li><a href="#Launching_more_agents_programmatically_in_Janus">2. Launching more agents programmatically in Janus</a></li>
+<li><a href="#Launching_more_agents_programmatically_with_Janus">2. Launching more agents programmatically with Janus</a></li>
 <li><a href="#What_s_next">3. What's next?</a></li>
 </ul>
 <p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a> from a Java program.</p>
 <h3 id="Boot_of_Janus">1. Boot of Janus</h3>
 <p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must use this boot class.</p>
 <p>The <code>Boot</code> class provides the <code>startJanus</code> function, which permits to launch Janus programmatically.</p>
-<p>Let consider you want to launch your agent, defined in the <code>MyAgent</code> class. The following Java code gives you an example of how to launch this agent in Janus.</p>
-<pre class="prettyprint">import io.sarl.lang.core.Agent;
-import io.janusproject.Boot;
-import myprogram.MyAgent;
-public class MyProgram {
-    public static void main(String[] args) {
-        Class&lt;? extends Agent&gt; agentType = MyAgent.class;
-        Boot.startJanus(
-            null,
-            agentType,
-            args);
-    }
-}
-</pre>
+<p>Let consider you want to launch your agent, defined in the <code>MyAgent</code> class. The following SARL code gives you an example of how to launch this agent in Janus.</p>
 <p>The first parameter of the <code>startJanus</code> function is the injection module to use. When passing <code>null</code>, the Janus platform is using the default injection module. This is the recommended value to pass.</p>
 <p>The second parameter of the <code>startJanus</code> function is the Java type of the agent to launch.</p>
 <p>The third parameter of the <code>startJanus</code> function is the list of parameters to pass with the <code>Initialize</code> event to the launched agent.</p>
 <p><importantnode>The Janus platform enables to launch a single agent at start-up. If you want to launch more agents, please read the next section.</importantnode></p>
-<h3 id="Launching_more_agents_programmatically_in_Janus">2. Launching more agents programmatically in Janus</h3>
+<pre class="prettyprint lang-sarl linenums">import io.janusproject.Boot
+import myprogram.MyAgent
+class MyProgram {
+   static def main(args : String[]) : void {
+    Boot::startJanus(
+      null,
+      typeof(MyAgent),
+      args)
+  }
+}</pre>
+<h3 id="Launching_more_agents_programmatically_with_Janus">2. Launching more agents programmatically with Janus</h3>
 <p>In the case you want to launch more than one agent programmatically, you could use the <code>Kernel</code> instance provided by Janus. This instance is replied by the <code>startJanus</code> function of the <code>Boot</code> class.</p>
 <p>The <code>Kernel</code> type provides the <code>spawn</code> function, which permits launching an agent programmatically.</p>
-<p>The previous example could be updated for launching two agents of the same type:</p>
-<pre class="prettyprint">import io.sarl.lang.core.Agent;
-import io.janusproject.Boot;
-import io.janusproject.kernel.Kernel;
-import myprogram.MyAgent;
-public class MyProgram {
-    public static void main(String[] args) {
-        Class&lt;? extends Agent&gt; agentType = MyAgent.class;
-        Kernel janusKernel = Boot.startJanus(
-            null,
-            agentType,
-            args);
-        janusKernel.spawn(agentType, args);
-    }
-}
-</pre>
+<p>The previous example could be updated for launching two agents of the same type. The resulting code is shown below.</p>
 <p>The first parameter of the <code>spawn</code> function is the Java type of the agent to launch.</p>
 <p>The second parameter of the <code>spawn</code> function is the list of parameters to pass with the <code>Initialize</code> event to the launched agent.</p>
 <p>Note that the first agent is launched by the <code>startJanus</code> function, and the second agent is launched by the <code>spawn</code> function.</p>
+<pre class="prettyprint lang-sarl linenums">import io.janusproject.Boot
+import myprogram.MyAgent
+class MyProgram {
+  static def main(args : String[]) : void {
+    var janusKernel = Boot::startJanus(
+      null,
+      typeof(MyAgent),
+      args)
+    janusKernel.spawn(typeof(MyAgent), args)
+  }
+}</pre>
 <h3 id="What_s_next">3. What's next?</h3>
 <p>Now, you are ready for developing agents with the SARL language. Please read the rest of the documentation for obtaining more details.</p>
 <p><a href="../SARLDocumentationSuite.html">Next&gt;</a></p>
@@ -167,11 +165,5 @@ public class MyProgram {
 </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </body>
 </html>
