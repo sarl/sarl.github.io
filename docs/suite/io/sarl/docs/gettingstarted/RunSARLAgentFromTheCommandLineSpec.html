@@ -58,51 +58,78 @@ Considering the variety of existing approaches and meta-models in the field of a
       <div class="tab-pane active" id="spec">
 <p></p>
 <ul class="page_outline" id="page_outline">
-<li><a href="#Boot_of_Janus">1. Boot of Janus</a></li>
-<li><a href="#Specify_the_Agent_to_Launch">2. Specify the Agent to Launch</a></li>
-<li><a href="#Command_Line_Parameters">3. Command Line Parameters</a></li>
+<li><a href="#Use_the_janus_command_line_tool">1. Use the janus command-line tool</a></li>
+<li><a href="#Use_the_standard_java_method">2. Use the standard java method</a></li>
+<li><a href="#Use_Maven_ExecutionPlugin">3. Use Maven ExecutionPlugin</a></li>
 <li><a href="#What_s_next">4. What's next?</a></li>
+<li><a href="#Legal_Notice">5. Legal Notice</a></li>
 </ul>
 <p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a> from the command line.</p>
-<h3 id="Boot_of_Janus">1. Boot of Janus</h3>
+<p>Three methods could be used for launching an agent with Janus: </p>
+<ul> <li>
+<a href="#Use_the_janus_command-line_tool">Using the provided janus command-line tool</a>;</li> <li>
+<a href="#Use_the_standard_java_method">Using the standard java method</a>;</li> <li>
+<a href="#Use_maven_execution_plugin">Using Maven execution plugin</a>.</li> <li> </ul>
+<h3 id="Use_the_janus_command_line_tool">1. Use the janus command-line tool</h3>
+<p>The SARL project provides a command-line tool for launching agents on the Janus runtime environment.</p>
+<h4 id="Download_the_janus_command_line_tool">1.1. Download the janus command-line tool</h4>
+<p>You could download this command line tool, named "janus" on the <a href="http://www.sarl.io/download.html">downloading page of SARL</a>.</p>
+<h4 id="Launching_the_agent">1.2. Launching the agent</h4>
+<p>For launching an agent, you must launch the command-line tool with the fully-qualified name of the agent as parameter (<code>myapp.MyAgent</code> in the following example).</p>
+<pre class="prettyprint">janus myapp.MyAgent
+</pre>
+<p>The janus command-line tool provides options that will enable you to tune the launching configuration:</p>
+<pre class="prettyprint">janus --help
+</pre>
+<h3 id="Use_the_standard_java_method">2. Use the standard java method</h3>
+<h4 id="Boot_of_Janus">2.1. Boot of Janus</h4>
 <p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must execute this boot class in a Java Virtual Machine.</p>
 <p>The typical command line is:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot
 </pre>
 <p>The option <code>-cp</code> specifies the Jar file that contains the compiled classes. The given <code>app.jar</code> file is a Jar file that is containing the Janus platform, the SARL libraries, and the application classes. The last argument is the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
-<h3 id="Specify_the_Agent_to_Launch">2. Specify the Agent to Launch</h3>
+<h4 id="Specify_the_Agent_to_Launch">2.2. Specify the Agent to Launch</h4>
 <p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent
 </pre>
-<p><veryimportant>The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:</veryimportant></p>
-<ul>
-  <li>launch a separate Janus platform for each agent, or</li>
-  <li>launch an agent that is spawning the other agents. </li>
-</ul>
-<h3 id="Command_Line_Parameters">3. Command Line Parameters</h3>
-<p>It is possible to give arguments to the launched agent. Indeed, all the arguments given on the command line are put in the <code>parameters</code> attribute of the <code>Initialize</code> event. This event is fired when the launched agent is started.</p>
-<h4 id="Give_Parameters_to_the_Agent">3.1. Give Parameters to the Agent</h4>
-<p>The following example gives the values <code>FirstParam</code> and <code>SecondParam</code> to the launched agent:</p>
-<pre class="prettyprint">java -cp app.jar io.janusproject.Boot myapp.MyAgent FirstParam SecondParam
+<p><veryimportant>The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:<ul> <li>launch a separate Janus platform instance for each agent, or</li> <li>launch an agent that is spawning the other agents.</li> </ul></veryimportant></p>
+<h4 id="What_is_app_jar">2.3. What is app.jar?</h4>
+<p>In the previous section, we assume that all the application binary files are contained into the <code>app.jar</code> file.</p>
+<p>You may replace the <code>app.jar</code> in the previous command lines by the classpath that is containing all the jar files required for running your application, including the Janus jar file(s):</p>
+<pre class="prettyprint"> java -cp /path/to/myapplication.jar:/path/to/io.janusproject.kernel-&lt;version&gt;-with-dependencies.jar io.janusproject.Boot myapp.MyAgent
 </pre>
-<h4 id="Retrieve_the_Command_Line_Parameters_in_the_Agent">3.2. Retrieve the Command Line Parameters in the Agent</h4>
-<p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated by the following example:</p>
-<pre class="prettyprint lang-sarl linenums">agent MyAgent {
-  uses Logging
-  on Initialize {
-    println("Command line parameters: "
-      +occurrence.parameters)
-  }
-}</pre>
-<h4 id="Janus_Command_Line_Options">3.3. Janus Command Line Options</h4>
+<p>The <code>io.janusproject.kernel-&lt;version&gt;-with-dependencies.jar</code> file may be dowloaded from the <a href="http://www.janusproject.io/">Janus website</a></p>
+<p>You may also create the <code>app.jar</code> file with Maven by using the assembly plugin for creating a jar file with all the dependencies inside.</p>
+<h4 id="Janus_Command_Line_Options">2.4. Janus Command Line Options</h4>
 <p>The Janus platform provides a collection of command line options. For obtaining the list of these options, you should type:</p>
 <pre class="prettyprint">java -cp app.jar io.janusproject.Boot --help
+</pre>
+<h3 id="Use_Maven_ExecutionPlugin">3. Use Maven ExecutionPlugin</h3>
+<h4 id="Boot_of_Janus">3.1. Boot of Janus</h4>
+<p>Maven provides a plugin for launching an application after automatically building the application's classpath. This plugin may be used for launching an agent.</p>
+<p>Based on the fact that the Janus platform provides a <code>Boot</code> class for launching itself, you may use the Maven execution plugin for classing this booting class.</p>
+<p>The typical command line is:</p>
+<pre class="prettyprint">mvn exec:java -Dexec.mainClass="io.janusproject.Boot"
+</pre>
+<p>The option <code>-Dexec.mainClass</code> specifies the fully qualified name of the booting class of Janus: <code>io.janusproject.Boot</code></p>
+<h4 id="Specify_the_Agent_to_Launch">3.2. Specify the Agent to Launch</h4>
+<p>The example given in the previous section causes an error. Indeed, it is mandatory to specify the fully qualified name of the agent to launch:</p>
+<pre class="prettyprint">mvn exec:java -Dexec.mainClass="io.janusproject.Boot" -Dexec.args=myapp.MyAgent
+</pre>
+<p><veryimportant>The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:<ul> <li>launch a separate Janus platform instance for each agent, or</li> <li>launch an agent that is spawning the other agents.</li> </ul></veryimportant></p>
+<h4 id="Janus_Command_Line_Options">3.3. Janus Command Line Options</h4>
+<p>The Janus platform provides a collection of command line options. For obtaining the list of these options, you should type:</p>
+<pre class="prettyprint"> mvn exec:java -Dexec.mainClass="io.janusproject.Boot" -Dexec.args=--help
 </pre>
 <h3 id="What_s_next">4. What's next?</h3>
 <p>In the next section, we will learn how to launch your SARL project from a Java program.</p>
 <p><a href="RunSARLAgentFromAJavaProgramSpec.html">Next&gt;</a></p>
+<h3 id="Legal_Notice">5. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-15</p>
+<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
-<hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
+<hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
     </div> <!-- /default layout container -->
 
     <div class="container">

@@ -60,8 +60,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <ul class="page_outline" id="page_outline">
 <li><a href="#General_Questions_about_Janus">1. General Questions about Janus</a></li>
 <li><a href="#Installation_and_Execution">2. Installation and Execution</a></li>
-<li><a href="#Contribute_to_Janus">3. Contribute to Janus</a></li>
-<li><a href="#Runtime_Behavior_of_Janus">4. Runtime Behavior of Janus</a></li>
+<li><a href="#Runtime_Behavior_of_Janus">3. Runtime Behavior of Janus</a></li>
+<li><a href="#Contribute_to_Janus">4. Contribute to Janus</a></li>
+<li><a href="#Legal_Notice">5. Legal Notice</a></li>
 </ul>
 <h3 id="General_Questions_about_Janus">1. General Questions about Janus</h3>
 <h4 id="What_is_the_SRE">1.1. What is the SRE?</h4>
@@ -105,20 +106,24 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>When installing Janus as an SRE in the Eclipse interface, the plugin loads the Jar file of the SRE with the default API. The Jar archiver uses the default file encoding of the operating system. On Linux and MacOS 10, it is almost UTF-8. On Windows, it is Latin1. And on MacOS (before 10), it is Mac-Roman.</p>
 <p>Unfortunately, the Janus Jar file is generated on a Linux operating system (UTF-8). When the Java virtual machine tries to uncompress and use the content of the Jar, it complains about an invalid charset format.</p>
 <p>For solving this issue, you could launch your Eclipse with the command line option <code>-Dfile.encoding=UTF-8</code>, which is forcing the Eclipse product to consider the file as encoded with the UTF-8 charset.</p>
-<h3 id="Contribute_to_Janus">3. Contribute to Janus</h3>
-<h4 id="Where_are_the_sources_of_Janus">3.1. Where are the sources of Janus?</h4>
-<p>The sources of Janus are available on <a href="https://github.com/janus-project/janusproject">Github</a>. Details for getting the source code may be found on the <a href="http://www.janusproject.io">official web site of Janus</a>.</p>
-<h4 id="How_can_I_obtain_the_current_issues">3.2. How can I obtain the current issues?</h4>
-<p>Janus Core Developers use <a href="https://github.com/janus-project/janusproject">Github</a> to manage bug tracking and project workflow. The issues are listed on <a href="https://github.com/janus-project/janusproject/issues">Github</a>.</p>
-<h4 id="How_can_I_report_a_problem_or_a_bug_in_Janus_components">3.3. How can I report a problem or a bug in Janus components?</h4>
-<p>You must submit your issue on <a href="https://github.com/janus-project/janusproject/issues/new">this page</a>.</p>
-<h3 id="Runtime_Behavior_of_Janus">4. Runtime Behavior of Janus</h3>
-<h4 id="Are_events_received_in_the_same_order_than_when_they_are_sent">4.1. Are events received in the same order than when they are sent?</h4>
+<h3 id="Runtime_Behavior_of_Janus">3. Runtime Behavior of Janus</h3>
+<h4 id="Are_events_received_in_the_same_order_than_when_they_are_sent">3.1. Are events received in the same order than when they are sent?</h4>
 <p><strong>No</strong>. There is no warranty on the receiving order of the events. This is a particular implementation choice of the runtime environment. For example, the <a href="http://www.janusproject.io">Janus runtime environment</a> executes the event handlers in parallel. The real order of execution depends on how the Java executor is running the handlers on the threads.</p>
-<h4 id="Must_I_configure_the_Janus_kernels_to_be_connected_to_other_Janus_kernels">4.2. Must I configure the Janus kernels to be connected to other Janus kernels?</h4>
+<h4 id="Must_I_configure_the_Janus_kernels_to_be_connected_to_other_Janus_kernels">3.2. Must I configure the Janus kernels to be connected to other Janus kernels?</h4>
 <p><strong>No</strong>. Janus was designed to discover other kernels automatically. By default, the different instances of the Janus platform are connected together without any particular configuration. The sole constraint is that the kernels must be on the same local network.</p>
+<h3 id="Contribute_to_Janus">4. Contribute to Janus</h3>
+<h4 id="Where_are_the_sources_for_SARL">4.1. Where are the sources for SARL?</h4>
+<p>The sources for Janus are available inside the SARL project repository on <a href="https://github.com/sarl/sarl/sre/io.janusproject/">Github</a>.</p>
+<h4 id="How_can_I_find_the_current_issues">4.2. How can I find the current issues?</h4>
+<p>Janus Developers use <a href="https://github.com/sarl/sarl">Github</a> to manage bug tracking and project workflow. The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a>.</p>
+<h4 id="How_can_I_report_a_problem_or_a_bug_in_Janus_components">4.3. How can I report a problem or a bug in Janus components?</h4>
+<p>You should submit your issue on <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
+<h3 id="Legal_Notice">5. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-15</p>
+<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
-<hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
+<hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
     </div> <!-- /default layout container -->
 
     <div class="container">

@@ -63,6 +63,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Pong_agent">3. Pong agent</a></li>
 <li><a href="#Ping_Agent">4. Ping Agent</a></li>
 <li><a href="#Compile_and_Launch_the_agents">5. Compile and Launch the agents</a></li>
+<li><a href="#Legal_Notice">6. Legal Notice</a></li>
 </ul>
 <p>This document describes how to create a simple agent-based application in which agents are exchanging basic messages inside a sub-space. Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p></p>
@@ -122,13 +123,13 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 }</pre>
 <h4 id="Handling_the_Ping_event">3.3. Handling the Ping event</h4>
@@ -137,13 +138,13 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 
   on Ping {
@@ -159,19 +160,19 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 
   on Ping {
     var evt = new Pong( occurrence.index )
-    evt.source = space.getAddress(getID)
-    space.emit( evt )
+    evt.source = ^space.getAddress(getID)
+    ^space.emit( evt )
   }
 }</pre>
 <h4 id="Restricting_the_scope_of_the_Pong_event">3.5. Restricting the scope of the Pong event</h4>
@@ -182,19 +183,19 @@ event Ping {
 <pre class="prettyprint lang-sarl linenums">agent PongAgent {
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 
   on Ping {
     var evt = new Pong( occurrence.index )
-    evt.source = space.getAddress(getID)
-    space.emit(
+    evt.source = ^space.getAddress(getID)
+    ^space.emit(
       evt,
       Scopes.addresses( occurrence.source ))
   }
@@ -207,13 +208,13 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 }</pre>
 <h4 id="Handling_the_Pong_event">4.2. Handling the Pong event</h4>
@@ -222,13 +223,13 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 
   on Pong {
@@ -241,19 +242,19 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
   }
 
   on Pong {
     var evt = new Ping( occurrence.index + 1 )
-    evt.source = space.getAddress(getID)
-    space.emit(
+    evt.source = ^space.getAddress(getID)
+    ^space.emit(
       evt,
       Scopes.addresses( occurrence.source )
     )
@@ -266,22 +267,22 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
     var evt = new Ping(0)
-    evt.source = space.getAddress(getID)
-    space.emit( evt )
+    evt.source = ^space.getAddress(getID)
+    ^space.emit( evt )
   }
 
   on Pong {
     var evt = new Ping( occurrence.index + 1 )
-    evt.source = space.getAddress(getID)
-    space.emit(
+    evt.source = ^space.getAddress(getID)
+    ^space.emit(
       evt,
       Scopes.addresses( occurrence.source )
     )
@@ -297,19 +298,19 @@ event Ping {
   
   uses DefaultContextInteractions, Behaviors, Schedules
 
-  var space : OpenEventSpace
+  var ^space : OpenEventSpace
   
   on Initialize {
-    space = defaultContext.getOrCreateSpaceWithSpec(
+    ^space = defaultContext.getOrCreateSpaceWithSpec(
       typeof(OpenEventSpaceSpecification),
       occurrence.parameters.get(0) as UUID)
-    space.register(asEventListener())
+    ^space.register(asEventListener())
     val task = task("waiting_for_partner")
     task.every(1000) [
       if (defaultSpace.participants.size &gt; 1) {
         var evt = new Ping(0)
-        evt.source = space.getAddress(getID)
-        space.emit( evt )
+        evt.source = ^space.getAddress(getID)
+        ^space.emit( evt )
         task.cancel
       }
     ]
@@ -317,8 +318,8 @@ event Ping {
 
   on Pong {
     var evt = new Ping( occurrence.index + 1 )
-    evt.source = space.getAddress(getID)
-    space.emit(
+    evt.source = ^space.getAddress(getID)
+    ^space.emit(
       evt,
       Scopes.addresses( occurrence.source )
     )
@@ -383,8 +384,12 @@ event Ping {
      io.sarl.docs.tutorials.pingpongspace.BootAgent
 </pre>
 <p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap. The first argument after the bootstrap is the qualified name of the agent to launch.</p>
+<h3 id="Legal_Notice">6. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-15</p>
+<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
-<hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
+<hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
     </div> <!-- /default layout container -->
 
     <div class="container">

@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../../../../images/favicon.ico">
 
-    <title>Run SARL Agent from a Java Program</title>
+    <title>Event Creation with a Builder</title>
 
     <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../../../css/custom.css">
@@ -58,51 +58,49 @@ Considering the variety of existing approaches and meta-models in the field of a
       <div class="tab-pane active" id="spec">
 <p></p>
 <ul class="page_outline" id="page_outline">
-<li><a href="#Boot_of_Janus">1. Boot of Janus</a></li>
-<li><a href="#Launching_more_agents_programmatically_with_Janus">2. Launching more agents programmatically with Janus</a></li>
-<li><a href="#What_s_next">3. What's next?</a></li>
+<li><a href="#Definition_of_the_event">1. Definition of the event</a></li>
+<li><a href="#Definition_of_the_event_builder">2. Definition of the event builder</a></li>
+<li><a href="#Use_of_the_event_builder">3. Use of the event builder</a></li>
 <li><a href="#Legal_Notice">4. Legal Notice</a></li>
 </ul>
-<p>For running an agent, you must launch this agent on the runtime environment. This document explains how to launch an agent on the <a href="http://www.janusproject.io">Janus platform</a> from a Java program.</p>
-<h3 id="Boot_of_Janus">1. Boot of Janus</h3>
-<p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must use this boot class.</p>
-<p>The <code>Boot</code> class provides the <code>startJanus</code> function, which permits to launch Janus programmatically.</p>
-<p>Let consider you want to launch your agent, defined in the <code>MyAgent</code> class. The following SARL code gives you an example of how to launch this agent in Janus.</p>
-<p>The first parameter of the <code>startJanus</code> function is the injection module to use. When passing <code>null</code>, the Janus platform is using the default injection module. This is the recommended value to pass.</p>
-<p>The second parameter of the <code>startJanus</code> function is the Java type of the agent to launch.</p>
-<p>The third parameter of the <code>startJanus</code> function is the list of parameters to pass with the <code>Initialize</code> event to the launched agent.</p>
-<p><importantnode>The Janus platform enables to launch a single agent at start-up. If you want to launch more agents, please read the next section.</importantnode></p>
-<pre class="prettyprint lang-sarl linenums">import io.janusproject.Boot
-import myprogram.MyAgent
-class MyProgram {
-   static def main(args : String[]) : void {
-    Boot::startJanus(
-      null,
-      typeof(MyAgent),
-      args)
+<p>This document describes the basics of the creation of events with a builder. In some cases, each event must have a unique identifier. But because static fields are not allowed in the event definitions, it is impossible to store the next available event ID in a static field. The best way for creating events with unique identifiers is to apply the <a href="https://en.wikipedia.org/wiki/Software_design_pattern">builder design pattern</a>.</p>
+<p>The elements that are explained in this document are:</p>
+<ul>
+  <li>the definition of an event;</li>
+  <li>the definition of an event builder;</li>
+  <li>the use of the event builder.</li>
+</ul>
+<h3 id="Definition_of_the_event">1. Definition of the event</h3>
+<p>The purpose of this document is to create an event, which has a unique identifier. This identifier is an integer number that should be incremented each time an event instance is created.</p>
+<p>The definition of the event should define the event with a read-only identifier (<code>val</code>). Because the identifier is a value, it must be initialize in the constructor of the event. Consequently, a constructor is defined with the identifier value as parameter.</p>
+<pre class="prettyprint lang-sarl linenums">package io.sarl.docs.bestpractices.eventbuilder
+event MyEvent {
+  val id : long
+  new(id : long) {
+    this.id = id
   }
 }</pre>
-<h3 id="Launching_more_agents_programmatically_with_Janus">2. Launching more agents programmatically with Janus</h3>
-<p>In the case you want to launch more than one agent programmatically, you could use the <code>Kernel</code> instance provided by Janus. This instance is replied by the <code>startJanus</code> function of the <code>Boot</code> class.</p>
-<p>The <code>Kernel</code> type provides the <code>spawn</code> function, which permits launching an agent programmatically.</p>
-<p>The previous example could be updated for launching two agents of the same type. The resulting code is shown below.</p>
-<p>The first parameter of the <code>spawn</code> function is the Java type of the agent to launch.</p>
-<p>The second parameter of the <code>spawn</code> function is the list of parameters to pass with the <code>Initialize</code> event to the launched agent.</p>
-<p>Note that the first agent is launched by the <code>startJanus</code> function, and the second agent is launched by the <code>spawn</code> function.</p>
-<pre class="prettyprint lang-sarl linenums">import io.janusproject.Boot
-import myprogram.MyAgent
-class MyProgram {
-  static def main(args : String[]) : void {
-    var janusKernel = Boot::startJanus(
-      null,
-      typeof(MyAgent),
-      args)
-    janusKernel.spawn(typeof(MyAgent), args)
+<h3 id="Definition_of_the_event_builder">2. Definition of the event builder</h3>
+<p>For creating the event instances, we apply the <a href="https://en.wikipedia.org/wiki/Software_design_pattern">builder design pattern</a></p>
+<p>A builder is a class that is able to create an instance of the event when it is invoked. The next available unique identifier for the events is stored into a field of the builder (<code>id</code>).</p>
+<p>The function <code>newInstance</code> is defined for creating an instance of the event. This function gets the next available global identifier to give it to the event instance, and it increments the next available global identifier for the next call to <code>newInstance</code>. Finally, the <code>newInstance</code> function create the event instance with the appropriate identifier.</p>
+<pre class="prettyprint lang-sarl linenums">"https://en.wikipedia.org/wiki/Software_design_pattern" should beURL "!file"
+
+class MyEventBuilder {
+  private var id : long = 0
+  def newInstance : MyEvent {
+    val eventId = id
+    id++
+    return new MyEvent(eventId)
   }
 }</pre>
-<h3 id="What_s_next">3. What's next?</h3>
-<p>Now, you are ready for developing agents with the SARL language. Please read the rest of the documentation for obtaining more details.</p>
-<p><a href="../SARLDocumentationSuite.html">Next&gt;</a></p>
+<h3 id="Use_of_the_event_builder">3. Use of the event builder</h3>
+<p>For using the event builder, you have simply to create an instance of the <code>MyEventBuilder</code> class, and use it as follow (two events are created in the example):</p>
+<pre class="prettyprint lang-sarl linenums">"https://en.wikipedia.org/wiki/Software_design_pattern" should beURL "!file"
+
+val builder = new MyEventBuilder
+var event1 = builder.newInstance
+var event2 = builder.newInstance</pre>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
 <p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-15</p>
 <p>Copyright © 2014-2016 the original authors or authors.</p>

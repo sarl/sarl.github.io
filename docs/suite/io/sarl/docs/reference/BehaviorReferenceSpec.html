@@ -63,7 +63,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Capacities_and_Skills">3. Capacities and Skills</a></li>
 <li><a href="#Legal_Notice">4. Legal Notice</a></li>
 </ul>
-<p>This document describes the features related to the definition of a behavior in SARL. Before reading this document, it is recommended reading the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="AgentReferenceSpec.html">Agent Reference</a>.</p>
+<p>This document describes the features related to the definition of a behavior in SARL. Before reading this document, we recommend that you read the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="AgentReferenceSpec.html">Agent Reference</a>.</p>
 <p>A <code>Behavior</code> is the specification of a collection of behavior units. This <code>Behavior</code> may be used by an agent for building its global behavior.</p>
 <h3 id="Defining_a_Behavior">1. Defining a Behavior</h3>
 <p>A behavior is declared with the <code>behavior</code> keyword. In the behavior's body block, we can declare Mental States (in the form of attributes), Actions and Behaviors.</p>
@@ -133,8 +133,7 @@ behavior MySubBehavior extends MyBehavior {
 <code>package</code>: the behavior is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the behavior is abstract and cannot be instanced.</li> <li>
-<code>final</code>: avoid to be derived.</li> <li>
-<code>strictfp</code>: avoid the methods of the behavior to use intermediate floating number formats.</li> </ul>
+<code>final</code>: avoid to be derived.</li> </ul>
 <pre class="prettyprint lang-sarl linenums">public behavior Example1 {
 }
 package behavior Example2 {
@@ -142,8 +141,6 @@ package behavior Example2 {
 abstract behavior Example3 {
 }
 final behavior Example4 {
-}
-strictfp behavior Example5 {
 }</pre>
 <h5 id="Field_Modifiers">1.6.2. Field Modifiers</h5>
 <p>The modifiers for the fields in a behavior are: </p>
@@ -151,14 +148,10 @@ strictfp behavior Example5 {
 <code>protected</code>: the field is accessible within the same package, and derived agents;</li>  <li>
 <code>package</code>: the field is accessible only within the same package of its agent;</li>  <li>
 <code>private</code>: the field is accessible only within its agent.</li>  </ul>
-</li> <li>
-<code>transient</code>: the field is never serialized.</li> <li>
-<code>volatile</code>: the field is modified by different threads. It is never cached thread-locally, and synchronized.</li> </ul>
+</li> </ul>
 <pre class="prettyprint lang-sarl linenums">protected var example1 : Object;
 package var example2 : Object;
-private var example3 : Object;
-transient var example4 : Object;
-volatile var example5 : Object;</pre>
+private var example3 : Object;</pre>
 <h5 id="Method_Modifiers">1.6.3. Method Modifiers</h5>
 <p>The modifiers for the methods in a behavior are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
@@ -168,9 +161,7 @@ volatile var example5 : Object;</pre>
 </li> <li>
 <code>abstract</code>: the method has no implementation in the class.</li> <li>
 <code>dispatch</code>: the method provides an implementation for the dispatch method mechanism.</li> <li>
-<code>final</code>: the method cannot be overridden in derived classes.</li> <li>
-<code>strictfp</code>: avoid the method to use intermediate floating number formats.</li> <li>
-<code>synchronized</code>: the method is synchronized on the class instance.</li> </ul>
+<code>final</code>: the method cannot be overridden in derived classes.</li> </ul>
 <pre class="prettyprint lang-sarl linenums">// Protected access function
 protected def example1 { }
 // Package access function
@@ -181,13 +172,9 @@ private def example3 { }
 abstract def example4
 // Not-overridable function
 final def example5 { }
-// Function with strict floating point management
-strictfp def example6 { }
-// Synchronized function
-synchronized def example7 { }
 // Dispatch functions
-dispatch def example8(p : Integer) { }
-dispatch def example8(p : Float) { }</pre>
+dispatch def example7(p : Integer) { }
+dispatch def example7(p : Float) { }</pre>
 <h5 id="Restriction_on_the_Nested_Type_Modifiers">1.6.4. Restriction on the Nested Type Modifiers</h5>
 <p>All the <a href="./BasicObjectOrientedProgrammingSupportSpec.html">modifiers for the nested types</a> are allowed <strong>except</strong> <code>public</code>.</p>
 <h3 id="Behavior_Units_of_a_Behavior">2. Behavior Units of a Behavior</h3>
@@ -283,11 +270,11 @@ skill Ski implements Cap {
   }
 }</pre>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.3<br> Status: Stable Release<br> Release: 2015-11-30</p>
-<p>Copyright © 2015 the original authors or authors. All rights reserved.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-15</p>
+<p>Copyright © 2014-2016 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
-<hr/><p><small>SARL Documentation is generated by <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
+<hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
     </div> <!-- /default layout container -->
 
     <div class="container">
