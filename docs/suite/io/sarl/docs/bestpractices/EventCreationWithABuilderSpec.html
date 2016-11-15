@@ -84,9 +84,7 @@ event MyEvent {
 <p>For creating the event instances, we apply the <a href="https://en.wikipedia.org/wiki/Software_design_pattern">builder design pattern</a></p>
 <p>A builder is a class that is able to create an instance of the event when it is invoked. The next available unique identifier for the events is stored into a field of the builder (<code>id</code>).</p>
 <p>The function <code>newInstance</code> is defined for creating an instance of the event. This function gets the next available global identifier to give it to the event instance, and it increments the next available global identifier for the next call to <code>newInstance</code>. Finally, the <code>newInstance</code> function create the event instance with the appropriate identifier.</p>
-<pre class="prettyprint lang-sarl linenums">"https://en.wikipedia.org/wiki/Software_design_pattern" should beURL "!file"
-
-class MyEventBuilder {
+<pre class="prettyprint lang-sarl linenums">class MyEventBuilder {
   private var id : long = 0
   def newInstance : MyEvent {
     val eventId = id
@@ -96,9 +94,7 @@ class MyEventBuilder {
 }</pre>
 <h3 id="Use_of_the_event_builder">3. Use of the event builder</h3>
 <p>For using the event builder, you have simply to create an instance of the <code>MyEventBuilder</code> class, and use it as follow (two events are created in the example):</p>
-<pre class="prettyprint lang-sarl linenums">"https://en.wikipedia.org/wiki/Software_design_pattern" should beURL "!file"
-
-val builder = new MyEventBuilder
+<pre class="prettyprint lang-sarl linenums">val builder = new MyEventBuilder
 var event1 = builder.newInstance
 var event2 = builder.newInstance</pre>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
