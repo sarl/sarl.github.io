@@ -250,19 +250,7 @@ the default space of the inner context.</td>
 <p>For obtaining the address of the agent in the default space, the following function is provided:</p>
 <pre class="prettyprint">def getDefaultAddress : Address
 </pre>
-<h4 id="Spawning_an_Agent">4.2. Spawning an Agent</h4>
-<p>Many time, it is useful for agent to create a new agent into the default context. The following function is provided for this task:</p>
-<pre class="prettyprint">def spawn(agentType : Class&lt;? extends Agent&gt;, params : Object[]) : UUID
-</pre>
-<p>This action creates an instance of the given agent type, and launches the agent into the default context. The parameters are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
-<p>This action fires two events:</p>
-<ul>
-  <li>
-<code>AgentSpawned</code> in the default space of the default context. The source of the event is this spawner.</li>
-  <li>
-<code>Initialize</code> in spawned agent.</li>
-</ul>
-<h4 id="Sending_an_Event_in_the_Default_Space">4.3. Sending an Event in the Default Space</h4>
+<h4 id="Sending_an_Event_in_the_Default_Space">4.2. Sending an Event in the Default Space</h4>
 <p>The core mechanism for information exchanges among agents is <a href="EventReferenceSpec.html">event-based</a>. For sending an event in the default space of the default context, the following function is provided:</p>
 <pre class="prettyprint">def emit(e : Event)
 </pre>
@@ -270,7 +258,7 @@ the default space of the inner context.</td>
 <p>It is equivalent to:</p>
 <pre class="prettyprint">defaultContext.defaultSpace.emit(e)
 </pre>
-<h4 id="Sending_an_Event_to_Specific_Agents_in_the_Default_Space">4.4. Sending an Event to Specific Agents in the Default Space</h4>
+<h4 id="Sending_an_Event_to_Specific_Agents_in_the_Default_Space">4.3. Sending an Event to Specific Agents in the Default Space</h4>
 <p>The previous sending function assumes that there is no restriction on the set of the receivers of the event. It is possible to specify a <code>Scope</code> for applying a restriction.</p>
 <pre class="prettyprint">def emit(e : Event, scope : Scope&lt;Address&gt;)
 </pre>
@@ -285,8 +273,9 @@ the default space of the inner context.</td>
 <p>A default implementation of a scope using addresses is implemented in the Java class <code>io.sarl.util.AddressScope</code>. The utility class <code>Scopes</code> provides the <code>addresses</code> function for creating an instance of <code>AddressScope</code>.</p>
 <pre class="prettyprint">emit(new Event, Scopes::addresses(a1, a2))
 </pre>
+<p>The complete list of the functions that are provided by the <code>Scopes</code> class is accessible on the <a href="http://www.sarl.io/docs/api/index.html?io/sarl/util/Scopes.html">Scopes API documentation</a>.</p>
 <p>You are free to create new implementation of <code>Scope</code> in order to filter the receivers of an event according to your own criteria.</p>
-<h4 id="Testing_if_an_element_is_related_to_the_default_context">4.5. Testing if an element is related to the default context</h4>
+<h4 id="Testing_if_an_element_is_related_to_the_default_context">4.4. Testing if an element is related to the default context</h4>
 <p>The <code>DefaultContextInteractions</code> provides a collection of utility functions that test if their parameters are related to the default context or the default space.</p>
 <table class="table-bordered">
 <thead><tr>
@@ -342,13 +331,32 @@ in the default space of the default context.</td>
   <li>
 <code>Destroy</code> inside the killed agent agent.</li>
 </ul>
-<h4 id="Spawning_an_Agent">5.2. Spawning an Agent</h4>
-<p>Many time, it is useful for an agent to create a new agent into a given context. The following function is provided for this task:</p>
+<h4 id="Spawning_in_the_default_context">5.2. Spawning in the default context</h4>
+<p>Many time, it is useful for agent to create a new agent into the default context. The following functions are provided for this task:</p>
+<pre class="prettyprint">def spawn(agentType : Class&lt;? extends Agent&gt;, parameters : Object*) : UUID
+
+def spawn(nbAgents: int, agentType : Class&lt;? extends Agent&gt;, parameters : Object*) : Collection&lt;UUID&gt;
+</pre>
+<p>This action creates one to {@code nbAgents} instance(s) of the given agent type, and launches the agent(s) into the default context. The first <code>spawn</code> function above is spawning a single agent and replies the identifier of the spawned agent. The second <code>spawn</code> function is spawning the given number of agents and replies the identifiers of the spawned agents. The {@code parameters} are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
+<p>This action fires two events:</p>
+<ul>
+  <li>
+<code>AgentSpawned</code> in the default space of the default context. The source of the event is this spawner.</li>
+  <li>
+<code>Initialize</code> in spawned agent.</li>
+</ul>
+<h4 id="Spawning_in_a_specific_context">5.3. Spawning in a specific context</h4>
+<p>When one or more agents should be spawned into a specific agent context, the two following functions could be used for launching the agents:</p>
 <pre class="prettyprint">def spawnInContext(agentType : Class&lt;? extends Agent&gt;,
                    context : AgentContext,
-                   params : Object[]) : UUID
+                   parameters : Object*) : UUID
+
+def spawnInContext(nbAgents : int,
+                   agentType : Class&lt;? extends Agent&gt;,
+                   context : AgentContext,
+                   parameters : Object*) : UUID
 </pre>
-<p>This action creates an instance of the given agent type, and launches the agent into the given context. The parameters are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
+<p>This action creates one to {@code nbAgents} instance(s) of the given agent type, and launches the agent(s) into the given {@code context}. The first <code>spawn</code> function is spawning a single agent and replies the identifier of the spawned agent. The second <code>spawn</code> function is spawning the given number of agents and replies the identifiers of the spawned agents. The {@code parameters} are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
 <p>This action fires two events:</p>
 <ul>
   <li>
@@ -356,12 +364,12 @@ in the default space of the default context.</td>
   <li>
 <code>Initialize</code> in spawned agent.</li>
 </ul>
-<h4 id="Spawning_an_Agent_with_a_specific_identifier">5.3. Spawning an Agent with a specific identifier</h4>
+<h4 id="Spawning_with_a_specific_agent_identifier">5.4. Spawning with a specific agent identifier</h4>
 <p>Some time, it is useful to create an agent with a specific identifier. The following function permits to spawn an agent with a given identifier in a specific context:</p>
 <pre class="prettyprint">def spawnInContextWithID(agentType : Class&lt;? extends Agent&gt;,
                          agentId : UUID,
                          context : AgentContext,
-                         params : Object[]) : UUID
+                         parameters : Object[]) : UUID
 </pre>
 <p>This action creates an instance of the given agent type, with the given identifier, and launches the agent into the given context. The parameters are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
 <p>This action fires two events:</p>
@@ -378,7 +386,15 @@ in the default space of the default context.</td>
 <pre class="prettyprint">def task(name : String) : AgentTask
 </pre>
 <p>The replied task may be used for future execution, or controlling the execution.</p>
-<h4 id="Launching_a_Delayed_Task">6.2. Launching a Delayed Task</h4>
+<h4 id="Launching_a_Task_for_a_single_run">6.2. Launching a Task for a single run</h4>
+<p>For running a task once time, the following functions are provided:</p>
+<pre class="prettyprint">def execute(procedure : (Agent) =&gt; void) : AgentTask
+def execute(task : AgentTask,
+            procedure : (Agent) =&gt; void) : AgentTask
+</pre>
+<p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be executed once time as soon as possible. This function replies the agent task for controlling its execution.</p>
+<p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
+<h4 id="Launching_a_Delayed_Task">6.3. Launching a Delayed Task</h4>
 <p>For running a task in a given delay, the following functions are provided:</p>
 <pre class="prettyprint">def in(delay : long,
        procedure : (Agent) =&gt; void) : AgentTask
@@ -388,8 +404,8 @@ def in(task : AgentTask,
 </pre>
 <p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be delayed during the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
 <p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
-<h4 id="Launching_a_Periodic_Task">6.3. Launching a Periodic Task</h4>
-<p>For running a periodic task, the following functions are provided:</p>
+<h4 id="Launching_a_Periodic_Task_at_a_Fixed_Rate">6.4. Launching a Periodic Task at a Fixed Rate</h4>
+<p>For running a periodic task with a fixed starting rate, the following functions are provided:</p>
 <pre class="prettyprint">def every(period : long,
           procedure : (Agent) =&gt; void) : AgentTask
 def every(period : AgentTask,
@@ -492,7 +508,94 @@ def every(period : AgentTask,
 </tr>
 </tbody>
 </table>
-<h4 id="Cancelling_a_Task">6.4. Cancelling a Task</h4>
+<h4 id="Launching_a_Periodic_Task_with_a_Fixed_Delay_between_the_Runs">6.5. Launching a Periodic Task with a Fixed Delay between the Runs</h4>
+<p>For running a periodic task with a fixed duration between the runs, the following functions are provided:</p>
+<pre class="prettyprint">def atFixedDelay(period : long,
+          procedure : (Agent) =&gt; void) : AgentTask
+def atFixedDelay(period : AgentTask,
+          delay : long,
+          procedure : (Agent) =&gt; void) : AgentTask
+</pre>
+<p>The first function submits the given procedure (a lambda expression as defined in the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>) to an executor provided by the runtime platform. The execution of the procedure will be launched periodically with a duration between the runs of the given number of milliseconds. This function replies the agent task for controlling its execution.</p>
+<p>The second function behaves in a similar way as the first, except that it accepts an agent task as parameter. This task will attach to the given procedure. The replied task is the same as the task given as parameter.</p>
+<p>The <code>atFixedDelay</code> function has not the same issue ass the <code>every</code> function regarding the possibility to have several runs in parallel. The <code>atFixedDelay</code> ensures that only one run of the procedure will be executed at a giveen time.</p>
+<p>For example, the following code may be illustrated by the table below.</p>
+<pre class="prettyprint">atFixedDelay(500) [ sleep(2000) ]
+</pre>
+<table class="table-bordered">
+<thead>
+<tr>
+<th>t=</th>
+<th>0</th>
+<th>500</th>
+<th>1000</th>
+<th>1500</th>
+<th>2000</th>
+<th>2500</th>
+<th>3000</th>
+<th>3500</th>
+<th>4000</th>
+<th>4500</th>
+<t5>5000<th>5500</th>
+<th>6000</th>
+<th>6500</th></t5>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<tr>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Cancelling_a_Task">6.6. Cancelling a Task</h4>
 <p>It may be useful to cancel a running task, e.g. a periodic task. The <code>Schedules</code> capacity provides two functions for stopping the execution of an agent task:</p>
 <pre class="prettyprint">def cancel(task : AgentTask) : boolean
 def cancel(task : AgentTask,
@@ -500,6 +603,29 @@ def cancel(task : AgentTask,
 </pre>
 <p>These functions will reply <code>false</code> if the task has already completed, has already been cancelled, or could not be cancelled for some other reason (a failure means replying false). If successful, and this task has not started when <code>cancel</code> is called, this task should never run. If the task has already started, then the <code>mayInterruptIfRunning</code> parameter determines whether the thread executing this task should be interrupted in an attempt to stop the task.</p>
 <p>The first function interrupts ongoing tasks. So, it is equivalent to passing <code>true</code> as the value for the parameter <tt>mayInterruptIfRunning</tt> to the function <code>cancel(AgentTask, boolean)</code>.</p>
+<h4 id="Conditional_Execution_of_a_Task">6.7. Conditional Execution of a Task</h4>
+<p>Sometimes, it may be useful to execute a task if a condition is true or false. The <code>AgentTask</code> type, which is representing an instance of agent task provides functions for assosiating a condition, named the guard, to the task:</p>
+<pre class="prettyprint">def getGuard : (Agent) =&gt; boolean
+def setGuard(condition : (Agent) =&gt; boolean)
+</pre>
+<p>The first function replies the guard associated to the task, or <code>null</code> if there is no associated guard. The second function enables you to change the associated guard.</p>
+<p>Additionaly, the <code>AgentTask</code> type provides utility functions for easier guard association:</p>
+<pre class="prettyprint">def ifTrue(condition : (Agent) =&gt; boolean) : AgentTask
+def unless(condition : (Agent) =&gt; boolean) : AgentTask
+</pre>
+<p>The <code>ifTrue</code> function is equivalent to <code>setGuard</code>, except that it is replying the current agent task. The <code>unless</code> function sets the guard of the task to the negation of the given condition. It replies the current task.</p>
+<p><caution>The <code>ifTrue</code> and <code>unless</code> functions should not be used on the result of the scheduling functions. Indeed, if you call these two function on the value replied by <code>execute</code> for example, the execution platform could have launched the task before the guard is set. Consider the following code</caution></p>
+<pre class="prettyprint">execute [ doSomething ].unless [ myVar &gt; 5 ]
+</pre>
+<p>The call to <code>execute</code> is done before the call to <code>unless</code>. It means that the execution platform could have already checked if a guard is assosiated and <code>true</code>, before the <code>unless</code> function sets the guard. </p>
+<p>The best practice for setting the task guards is to create a task, set the guard, and execute the task:</p>
+<pre class="prettyprint">// Create the task instance
+var myTask = task(null)
+// Set the guard
+myTask.unless [ myVar &gt; 5 ]
+// Execute the task
+myTask.execute [ doSomething ]
+</pre>
 <h3 id="Behaviors">7. Behaviors</h3>
 <p>The built-in capacity <code>Behaviors</code> provides the tools to the agents for dynamically registering and unregistering sub-behaviors.</p>
 <p>This capacity is closely related to the <code>InnerContextAccess</code> for enabling a high-level abstraction for holonic multi-agent system development.</p>
@@ -509,22 +635,50 @@ def cancel(task : AgentTask,
 <pre class="prettyprint">def registerBehavior(attitude : Behavior) : Behavior
 </pre>
 <p>This function takes the behavior to be registered, and replies the same behavior. When a behavior is registered, it is receiving the events in the default space of the inner context of the agent, or received by the agent itself.</p>
+<p>An example of call to the registration function is:</p>
+<pre class="prettyprint">var beh = new MyBehavior
+registerBehavior(beh)
+</pre>
+<p>According to the SARL syntax reference, the example could be also written as:</p>
+<pre class="prettyprint">var beh = new MyBehavior
+beh.registerBehavior
+</pre>
 <h4 id="Unregistering_a_Behavior">7.2. Unregistering a Behavior</h4>
 <p>Assuming that a behavior was already registered, it is possible for an agent to unregister it:</p>
 <pre class="prettyprint">def unregisterBehavior(attitude : Behavior) : Behavior
 </pre>
 <p>This function takes the behavior to be unregistered, and replies the same behavior. When a behavior is unregistering, it is no more receiving the events in the default space of the inner context of the agent, and the ones received by the agent itself.</p>
-<h4 id="Executing_a_Behavior">7.3. Executing a Behavior</h4>
+<h4 id="Registering_a_Behavior_with_an_event_filter">7.3. Registering a Behavior with an event filter</h4>
+<p>Assuming that a behavior was already defined, it is possible for an agent to register this behavior that may received only the events matching a specific filtering function. For registering such a behavior with its filter, the following function could be used:</p>
+<pre class="prettyprint">def registerBehavior(attitude : Behavior, filter : (Event) -&gt; boolean) : Behavior
+</pre>
+<p>This function takes the behavior to be registered, and replies the same behavior. When a behavior is registered, it is receiving the events that are matching the given filter in the default space of the inner context of the agent, or received by the agent itself. The filtering function is invoked for each event that should be given to the behavior. If the filtering function replies {@code true}, the event is really dispatching into the behavior. If the function replies {@code false}, the event is discarded to the behavior.</p>
+<p>An example of call to the registration function is:</p>
+<pre class="prettyprint">var beh = new MyBehavior
+registerBehavior(beh, [event | event instanceof MyEvent])
+</pre>
+<p>According to the SARL syntax reference, the example could be also written as:</p>
+<pre class="prettyprint">var beh = new MyBehavior
+beh.registerBehavior [event | event instanceof MyEvent]
+</pre>
+<h4 id="Executing_a_Behavior">7.4. Executing a Behavior</h4>
 <p>A behavior is executed through its event handlers. Consequently, for running a behavior, it is mandatory to wake it with an event. This particular feature is supported by:</p>
-<pre class="prettyprint">def wake(evt : Event)
+<pre class="prettyprint">def wake(evt : Event, scope : Scope&lt;Address&gt; = null)
 </pre>
 <p>This function emits the given event into the inner context of the agent (in the default space).</p>
-<p><span class="label label-warning">Important</span> It is not possible to execute a particular behavior explicitly. All the behaviors that are waiting for a given event will be executed by this function.</p>
-<h4 id="Creating_an_Event_Listener">7.4. Creating an Event Listener</h4>
+<p>If a scope is provided, it is used for filtering the agents that will receive the event. The filterable agents are the current agent itself, and all the sub-agents (sub-holons) that were created inside the current agent.</p>
+<p><span class="label label-warning">Important</span> Because a behavior has no associated address, it cannot be filtered by the scope. All the agent's behaviors that are waiting for a given event will be executed.</p>
+<h4 id="Creating_an_Event_Listener">7.5. Creating an Event Listener</h4>
 <p>Sometimes, it is useful or mandatory for an agent to listen on the events in a given space. The following function permits retrieving the event listener of the agent:</p>
 <pre class="prettyprint">def asEventListener : EventListener
 </pre>
 <p>The listener replied by this function is the one used by the agent (and its behaviors) for listening events related to all the contexts (default, external, and inner).</p>
+<h4 id="Accessing_to_the_collection_of_the_registered_behaviors">7.6. Accessing to the collection of the registered behaviors</h4>
+<p>Two functions are provided for accessing to the collection of the registered behaviors:</p>
+<pre class="prettyprint">def hasRegisteredBehavior : boolean
+def getRegisteredBehaviors : Collection&lt;Behavior&gt;
+</pre>
+<p>The <code>hasRegisteredBehavior</code> replies a boolean value, which is indicating if a behavior is registered. The <code>getRegisteredBehaviors</code> replies an unmodifiable collection of the registered behaviors.</p>
 <h3 id="Time">8. Time</h3>
 <p>The built-in capacity <code>Time</code> provides tools for obtaining the current time from the run-time platform.</p>
 <p>Time definition is application-dependent and platform-dependent. In other words, the time values replied by this capacity depends on the run-time environment: it may be the operating system time, or a simulator time.</p>
@@ -540,8 +694,8 @@ def cancel(task : AgentTask,
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">10. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

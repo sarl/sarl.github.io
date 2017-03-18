@@ -63,13 +63,14 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Use_of_the_Skills">3. Use of the Skills</a></li>
 <li><a href="#Legal_Notice">4. Legal Notice</a></li>
 </ul>
-<p>This document describes how to define skills in SARL. Before reading this document, we recommend that you read the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="CapacityReferenceSpec.html">Capacity Reference</a>.</p>
-<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
-<p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the constraints of this specification.</p>
+<p>This document describes how to define Skills in SARL. Before reading this document, we recommend that you read the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>, and the <a href="CapacityReferenceSpec.html">Capacity Reference</a>.</p>
+<p>An <em>Action</em> is code (a public method or function) that transforms a part of the designed system or its environment. This transformation guarantees resulting properties if the system before the transformation satisfies a set of constraints. An Action is defined in terms of pre- and post-conditions.</p>
+<p>A <em>Capacity</em> is the specification of a collection of Actions. This specification makes no assumptions about the implementation of each Action. It is used to specify what an Agent can do, what behavior is required for its execution.</p>
+<p>A <em>Skill</em> is a collections of Actions implementing a Capacity as described in this specification.</p>
 <h3 id="Defining_a_Skill">1. Defining a Skill</h3>
 <h4 id="Basic_Definition">1.1. Basic Definition</h4>
-<p>The definition of a skill is done with the <code>skill</code> keyword. A skill must always implement a capacity. This relationship is specified with the <code>implements</code> keyword.</p>
-<p>Below, a skill is defined for outputting the messages on the standard console (defined in the <a href="CapacityReferenceSpec.html">Capacity Reference</a>). Note that all the actions defined in the implemented capacity must have a definition (with a body) in the skill.</p>
+<p>A Skill implements a Capacity and is defined with the <code>skill</code> keyword. This relationship is specified with the <code>implements</code> keyword.</p>
+<p>Below, a Skill is defined to output messages on the standard console (defined in the <a href="CapacityReferenceSpec.html">Capacity Reference</a>). Note that all the Actions defined in the Capacity must have a definition (with a body containing code) in the Skill.</p>
 <pre class="prettyprint lang-sarl linenums">skill ConsoleLogging implements Logging {
   def info(text : String) {
     System.out.println(text)
@@ -79,10 +80,10 @@ Considering the variety of existing approaches and meta-models in the field of a
   }
 }</pre>
 <h4 id="Field_Definition">1.2. Field Definition</h4>
-<p>In several cases, it is useful or mandatory to base the capacity's implementation on attributes (fields).</p>
-<p>The following example defines a skill that uses the standard Java logging system. For avoiding to create an instance of the Java logger each time the capacity's actions are invoked, an instance of the Java logger is created and stored into a field of the skill.</p>
+<p>Often it is useful or necessary to base a Skill (a Capacity's implementation) on attributes (properties or fields).</p>
+<p>The following example defines a Skill that uses the standard Java logging library. To avoid creating an instance of the Java logger each time the Capacity's Actions are invoked, an instance of the Java logger is created and stored in a field of the Skill.</p>
 <pre class="prettyprint lang-sarl linenums">skill StandardJavaLogging implements Logging {
-  // A field is defined in the skill
+  // A field is defined in the Skill
   val logger = Logger.anonymousLogger
   def info(text : String) {
     logger.info(text)
@@ -92,7 +93,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   }
 }</pre>
 <h4 id="Action_Definition">1.3. Action Definition</h4>
-<p>As for fields, it is possible to declare additional methods in the skill.</p>
+<p>It is possible to declare methods in the Skill in addition to those specified by the Capacity.</p>
 <pre class="prettyprint lang-sarl linenums">skill MyLogging implements Logging {
   def info(text : String) {
     output(text)
@@ -107,16 +108,16 @@ Considering the variety of existing approaches and meta-models in the field of a
   }
 }</pre>
 <h4 id="Constructor_Definition">1.4. Constructor Definition</h4>
-<p>By default, it is not needed to specify a constructor for the skills. However, the definition of a constructor is mandatory if a value must be initialized.</p>
-<p>The constructors defined in the abstract <code>Skill</code> class are:</p>
+<p>It is not necessary to specify a constructor for Skills unless a value will be initialized.</p>
+<p>Two constructors are defined in the abstract <code>Skill</code> class:</p>
 <ul>
-  <li>The default constructor: <code>def Skill()</code>
+  <li>A default constructor: <code>def Skill()</code>
 </li>
-  <li>The constructor with owner: <code>def Skill(owner : Agent)</code>
+  <li>A constructor with owner: <code>def Skill(owner : Agent)</code>
 </li>
 </ul>
 <pre class="prettyprint lang-sarl linenums">skill StandardJavaLogging implements Logging {
-  // A field is defined in the skill
+  // A field is defined in the Skill
   val logger : Logger
   // The constructor is mandatory
   // for defining the field "logger"
@@ -133,8 +134,8 @@ Considering the variety of existing approaches and meta-models in the field of a
   }
 }</pre>
 <h4 id="Multiple_Capacity_Implementation">1.5. Multiple Capacity Implementation</h4>
-<p>In some use cases, it is useful to define a skill by implementing more than one capacity. Below, the <code>MyLogging</code> skill is defined as an implementation of the capacities <code>Logging</code> and <code>LogReader</code>. All the methods defined in the implemented interfaces must have an implementation in the skill.</p>
-<p>If two implemented capacities has the same action signature, it must be implemented only once time in the skill.</p>
+<p>In some situations it is useful to combine more than one Capacity in a Skill. Below, the <code>MyLogging</code> Skill is defined as an implementation of the Capacities <code>Logging</code> and <code>LogReader</code>. All the Actions defined in a Capacity must have an implementation in the related Skill.</p>
+<p>If two implemented Capacities include the same Action signature, it must be implemented only once in the Skill.</p>
 <pre class="prettyprint lang-sarl linenums">capacity LogReader {
   def open(filename : String) : int
   def info(t : String)
@@ -142,7 +143,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 }
 skill MyLogging implements Logging, LogReader {
   // Shared implementation for the methods
-  // defind in the two capacities.
+  // defind in the two Capacities.
   def info(text : String) {
     System.out.println(text)
   }
@@ -156,26 +157,26 @@ skill MyLogging implements Logging, LogReader {
   }
 }</pre>
 <h4 id="Extending_a_Skill">1.6. Extending a Skill</h4>
-<p>In some use cases, it is useful to specialize the definition of a skill. This mechanism is supported by the inheritance feature of SARL, which has the same semantic as the inheritance mechanism as the Java object-oriented language.</p>
-<p>The extended skill is specified just after the <code>extends</code> keyword.</p>
-<p><span class="label label-danger">Important</span> A skill type can extend <strong>only one</strong> other skill type. This is close to the constraint on the extension of classes in the Java language.</p>
-<p>In the following code, the <code>StandardJavaLogging</code> skill (defined previously) is extended for changing the output of the info.</p>
+<p>In some situations it is useful to specialize the definition of a Skill. This mechanism is supported by the <strong>inheritance</strong> feature of SARL, which has the same semantics as the inheritance mechanism of the Java object-oriented language.</p>
+<p>The extended Skill is specified just after the <code>extends</code> keyword.</p>
+<p><span class="label label-danger">Important</span> A Skill type can extend <strong>only one</strong> other Skill type. This is similar to the constraint on the extension of classes in the Java language.</p>
+<p>In the following code, the <code>StandardJavaLogging</code> Skill (defined above) is extended to override the info output.</p>
 <pre class="prettyprint lang-sarl linenums">skill ExtendedLogging extends StandardJavaLogging {
   def info(text : String) {
     super.info("INFO: "+text)
   }
 }</pre>
 <h4 id="Modifiers">1.7. Modifiers</h4>
-<p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the skill. The modifiers are usually written before the keyword for defining the skill.</p>
+<p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the Skill. The modifiers are usually written before the keyword for defining the Skill.</p>
 <p>The complete description of the modifiers' semantic is available in <a href="./BasicObjectOrientedProgrammingSupportModifiersSpec.html">this section</a>.</p>
-<h5 id="Behavior_Modifiers">1.7.1. Behavior Modifiers</h5>
-<p>A skill may be declared with one or more modifiers, which affect its runtime behavior: </p>
+<h5 id="Skill_Modifiers">1.7.1. Skill Modifiers</h5>
+<p>A Skill may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the behavior is accessible from any other type;</li>  <li>
-<code>package</code>: the behavior is accessible from only the types in the same package.</li>  </ul>
+<code>public</code>: the behavior is accessible from any other type (default);</li>  <li>
+<code>package</code>: the behavior is accessible only from types in the same package.</li>  </ul>
 </li> <li>
-<code>abstract</code>: the behavior is abstract and cannot be instanced.</li> <li>
-<code>final</code>: avoid to be derived.</li> </ul>
+<code>abstract</code>: this Skill is abstract and cannot be instantiated; an extension Skill must implement this behavior.</li> <li>
+<code>final</code>: an extending Skill may not override this behavior.</li> </ul>
 <pre class="prettyprint lang-sarl linenums">public skill Example1 implements CapacityExample {
 }
 package skill Example2 implements CapacityExample {
@@ -185,21 +186,21 @@ abstract skill Example3 implements CapacityExample {
 final skill Example4 implements CapacityExample {
 }</pre>
 <h5 id="Field_Modifiers">1.7.2. Field Modifiers</h5>
-<p>The modifiers for the fields in a skill are: </p>
+<p>The modifiers for the fields in a Skill are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
 <code>public</code>: the field is accessible from everywhere;</li>  <li>
-<code>protected</code>: the field is accessible within the same package, and derived agents;</li>  <li>
-<code>package</code>: the field is accessible only within the same package of its agent;</li>  <li>
-<code>private</code>: the field is accessible only within its agent.</li>  </ul>
+<code>protected</code>: the field is accessible within the same package, and in derived Agents;</li>  <li>
+<code>package</code>: the field is accessible only within the same package as its Agent;</li>  <li>
+<code>private</code>: the field is accessible only within its Agent (default).</li>  </ul>
 </li> </ul>
 <pre class="prettyprint lang-sarl linenums">public var example1 : Object;
 protected var example2 : Object;
 package var example3 : Object;
 private var example4 : Object;</pre>
 <h5 id="Method_Modifiers">1.7.3. Method Modifiers</h5>
-<p>The modifiers for the methods in a skill are: </p>
+<p>The modifiers for the methods in a Skill are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the method;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the method (public);</li>  <li>
 <code>protected</code>: the method is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the method is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the method is accessible only within its class.</li>  </ul>
@@ -223,16 +224,16 @@ final def example6 { }
 dispatch def example7(p : Integer) { }
 dispatch def example7(p : Float) { }</pre>
 <h3 id="Built_in_Skills">2. Built-in Skills</h3>
-<p>Several capacities are defined and reserved by the SARL Core Specification. The corresponding skills are provided by the runtime environment (such as the <a href="http://www.janusproject.io">Janus platform</a>). The built-in skills are described in the <a href="BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
+<p>Several Capacities are defined and reserved by the SARL Core Specification. The corresponding Skills are provided by the runtime environment (such as the <a href="http://www.janusproject.io">Janus platform</a>). The built-in Skills are described in the <a href="BuiltInCapacityReferenceSpec.html">Built-in Capacity Reference</a>.</p>
 <h3 id="Use_of_the_Skills">3. Use of the Skills</h3>
-<p>Details on the use of the skills may be found in the references of the major behavior-based concepts of SARL:</p>
+<p>Details on the use of Skills may be found in the following:</p>
 <ul>
   <li><a href="AgentReferenceSpec.html">Agent</a></li>
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

@@ -72,20 +72,20 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Update_of_the_Jar_Manifest_for_making_the_archive_as_a_SRE">12. Update of the Jar Manifest for making the archive as a SRE</a></li>
 <li><a href="#Legal_Notice">13. Legal Notice</a></li>
 </ul>
-<p>This document describes how to create a SARL Run-time Environment (SRE) with the <a href="https://github.com/gallandarakhne.org/tinymas">tinyMAS platform</a>.</p>
+<p>This document describes how to create a SARL Run-time Environment (SRE) with the <a href="https://github.com/gallandarakhneorg/tinymas">tinyMAS platform</a>.</p>
 <p>SRE executes or interprets compiled SARL code on an "hardware platform." The figure below illustrates the compilation process of a SARL program in which the run-time environment is involved.</p>
 <p><img src="http://www.sarl.io/images/compilation-process.png" alt="SARL Generation Process"></p>
 <p>The Tiny Multiagent Platform (tinyMAS) is a very small software platform, which permits to implement and run agent-based systems. This platform was written by Stéphane GALLAND and Nicolas GAUD for the multiagent courses of the Computer Science Department of the <a href="http://www.utbm.fr">Belfort-Montbéliard University of Technology</a>.</p>
 <p>The purpose of this document is to describe the basics steps for making a SRE without changing the source code of neither the platform nor the SARL compiler. The tinyMAS SRE does not support all the elements of the SARL metamodel. Indeed the support for external contexts and inner contexts is not implemented.</p>
 <p>Before reading this document, it is recommended reading the <a href="../reference/GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p></p>
-<div class="bt-download"> <a href="https://github.com/gallandarakhne.org/tinymas"><img alt="Download the Source Code" src="http://www.sarl.io/images/download-icon.png"></a> </div> The elements that are explained in this tutorial are:
+<div class="bt-download"> <a href="https://github.com/gallandarakhneorg/tinymas"><img alt="Download the Source Code" src="http://www.sarl.io/images/download-icon.png"></a> </div> The elements that are explained in this tutorial are:
 <ul>
   <li>the definition of the concepts from the SARL metamodel linked to the tinyMAS concepts;</li>
   <li>the definition of the definition of the boot process;</li>
   <li>the update of the manifest in order to make tinyMAS recognized as a SRE.</li>
 </ul>
-<p>The source code related to this tutorial may be found in the <a href="https://github.com/gallandarakhne.org/tinymas">tinyMAS Git repository</a>.</p>
+<p>The source code related to this tutorial may be found in the <a href="https://github.com/gallandarakhneorg/tinymas">tinyMAS Git repository</a>.</p>
 <h3 id="SARL_and_tinyMAS_metamodels">1. SARL and tinyMAS metamodels</h3>
 <p>The SARL language and the tinyMAS platform have been defined based on a collection of concepts that are formally described in their respective metamodels. This section gives a short overview of the two metamodels, and their possible links.</p>
 <p>Defining the links between the SARL metamodel and the metamodel of the SRE is the first mandatory point for transforming the targeted platform to SRE.</p>
@@ -470,14 +470,16 @@ def stop {
 }</pre>
 <h4 id="Initialize_and_Destroy_events">5.5. Initialize and Destroy events</h4>
 <p>According to the SARL specification, two events must be fired for supporting the agents' life-cycle. The first event corresponds to the initialization of the agent, the <code>Initialize</code> event. And, the second event corresponds to the destruction of the agent, the <code>Destroy</code> event.</p>
-<p>The tinyMAS implementation of the SRE must fire these two events according to the tinyMAS agent life-cycle. In this platform, the starting of the agents is supported by the <code>start</code> function. And the destruction of the agents is supported by the <code>stop</code> function.</p>
+<p>The tinyMAS implementation of the SRE must fire these two events according to the tinyMAS agent life-cycle. In this platform, the starting of the agents is supported by the <code>start</code> function. And the destruction of the agents is supported by the <code>stop</code> function.k</p>
 <p>For firing the <code>Initialize</code> event, we need to create an instance of this event into the <code>start</code> function. But, from the SARL API documentation, the <code>Initialize</code> event must take the initialization parameters to pass to the agent at its start-up. For supporting these initialization parameters, we define the <code>parameters</code> field that is initialized in the agent type constructor. Then, the <code>start</code> function is updated for setting the parameters of the <code>Initialize</code> event; and for firing the event with a call to the <code>receiveEvent</code> function.</p>
 <p>By symmetry, the <code>Destroy</code> event is initialize and fired in the <code>stop</code> function of the agent type.</p>
-<pre class="prettyprint lang-sarl linenums">var parameters : Object[]
+<pre class="prettyprint lang-sarl linenums">var spawnerID : UUID
+var parameters : Object[]
 
-new (defaultSpace : TMDefaultSpace, sarlAgent : io.sarl.lang.core.Agent, parameters : Object[]) {
+new (defaultSpace : TMDefaultSpace, sarlAgent : io.sarl.lang.core.Agent, spawnerID : UUID, parameters : Object[]) {
   this.defaultSpace = new WeakReference(defaultSpace)
   this.sarlAgent = sarlAgent
+  this.spawnerID = spawnerID
   this.parameters = parameters
 }
 
@@ -485,11 +487,9 @@ def start {
   super.start
   this.evaluatorRegistry.register(getSarlAgent())
   
-  var initializeEvent = new Initialize
-  if (this.parameters !== null) {
-    initializeEvent.parameters = this.parameters
-    this.parameters = null
-  }
+  var initializeEvent = new Initialize(this.spawnerID, this.parameters)
+  this.spawnerID = null
+  this.parameters = null
   receiveEvent(initializeEvent)
 }
 
@@ -510,6 +510,8 @@ def stop {
   <li>
 <code>agentType</code> : the type of SARL agent to create.</li>
   <li>
+<code>spawerID</code> : the identifier of the agent's spanwer, or <code>null</code> if the platform has spawned the agent.</li>
+  <li>
 <code>parentID</code> : the identifier of the agent's parent, usually the identifier of the default context in the timeMAS SRE.</li>
   <li>
 <code>agentID</code> : the identifier to give to the created agent, or <code>null</code> if the identifier must be randomly selected.</li>
@@ -523,19 +525,28 @@ def stop {
   <li>second parameter of type <code>UUID</code>: the identifier of the parent context of the created agent.</li>
   <li>third parameter of type <code>UUID</code>: the identifier of the created agent.</li>
 </ul>
-<pre class="prettyprint lang-sarl linenums">static def createAgent(
+<p>The <code>createAgent</code> function should ensure the given agent type could be executed on the current instance of the tinyMAS platform. For that, we introduce two tests:</p>
+<ul>
+  <li>check if the given agent type is a sub-type of the <code>Agent</code> type provided in the SARL API; and</li>
+  <li>use the <code>SarlSpecificationChecker</code> provided in the SARL API for verifying that the given agent type was generated with a SARL specification version that is compatible with the version supported by tinyMAS. We use the default implementation of the checker: <code>StandardSarlSpecificationChecker</code>.</li>
+</ul>
+<pre class="prettyprint lang-sarl linenums">static val SPECIFICATION_CHECKER : SarlSpecificationChecker = new StandardSarlSpecificationChecker
+
+static def createAgent(
     defaultSpace : TMDefaultSpace, 
     agentType : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+    spawnerID : UUID,
     parentID : UUID,
     agentID : UUID,
     params : Object*)
     : TMSarlAgent {
-  if (typeof(io.sarl.lang.core.Agent).isAssignableFrom(agentType)) {
+  if (typeof(io.sarl.lang.core.Agent).isAssignableFrom(agentType)
+    &amp;&amp; SPECIFICATION_CHECKER.isValidSarlElement(agentType)) {
     var theAgentID = if (agentID === null) UUID::randomUUID else agentID
     var theAgentType = agentType as Class&lt;? extends io.sarl.lang.core.Agent&gt;
     var cons = theAgentType.getConstructor(typeof(BuiltinCapacitiesProvider), typeof(UUID), typeof(UUID))
     var sarlAgent = cons.newInstance(null, parentID, theAgentID)
-    var tmAgent = new TMSarlAgent(defaultSpace, sarlAgent, params)
+    var tmAgent = new TMSarlAgent(defaultSpace, sarlAgent, spawnerID, params)
     return tmAgent
   }
   return null
@@ -557,10 +568,11 @@ def stop {
     kernel : Kernel,
     defaultSpace : TMDefaultSpace, 
     agentType : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+    spawnerID : UUID,
     parentID : UUID,
     agentID : UUID,
     params : Object*) : UUID {
-  var ^agent = createAgent(defaultSpace, agentType, parentID, agentID, params)
+  var ^agent = createAgent(defaultSpace, agentType, spawnerID, parentID, agentID, params)
   if (^agent !== null) {
     spawn(kernel, ^agent)
     return ^agent.ID
@@ -631,17 +643,17 @@ def stop {
 <p>The <code>Lifecycle</code> capacity is one of the must used capacity. It provides the support of the SARL agent life-cycle.</p>
 <p>@filter(.* = '''|'''|.parseSuccessfully.*)</p>
 <h5 id="Spawning_agents_in_the_default_space">7.2.1. Spawning agents in the default space</h5>
-<p>Consider the agent execution mechanism in the tinyMAS platform: inside an infinite loop, each agent is run. This algorithmical principle may be described by the following algorithm:</p>
-<p><code>
-while (true) {
-   for(a : whitePages.allAgents) {
-      a.live
-   }
-   refreshKernelState
-}
-</code> The tinyMAS platform is designed for updating the kernel state after all the agent have been ran. Consequently, the tinyMAS platform does not support the creation of agents during the execution of another agent. If an agent spawns another agent, the real initialization of the spawned agent must be delayed until the <code>refreshKernelState</code> is invoked.</p>
-<p>This particular design of the tinyMAS platform is at the opposite of the standard spawning principle in SARL: in SARL the agents are spawn when the spawning function is called.</p>
-<p>For solving this issue, we need to implement a buffer of spawned agents, that will be filled by the SARL spawning functions, and consumed by the <code>refreshKernelState</code> function.</p>
+<p>Consider the agent execution mechanism in the tinyMAS platform: inside an infinite loop, each agent is run. This algorithmic principle may be described by the following algorithm:</p>
+<pre class="prettyprint">       while (true) {
+          for(a : whitePages.allAgents) {
+             a.live
+          }
+          refreshKernelState
+       }
+</pre>
+<p>The tinyMAS platform is designed for updating the kernel state after all the agent have been ran. Consequently, the tinyMAS platform does not support the creation of agents during the execution of another agent. If an agent spawns another agent, the real initialization of the spawned agent must be delayed until the <code>refreshKernelState</code> is invoked.</p>
+<p>This particular design of the tinyMAS platform is at the opposite of the standard spawning principle in SARL: the agents are spawned when the spawning function is called.</p>
+<p>For fixing this issue, we need to implement a buffer of spawned agents, that will be filled by the SARL spawning functions, and consumed by the <code>refreshKernelState</code> function.</p>
 <p>The simplest place where to put this code in the <code>TMDefaultSpace</code> type. Indeed, we could assume that the agent spawning always occurs in the default space. We update the <code>TMDefaultSpace</code> class as described in the following code.</p>
 <p>We define the <code>agentToLaunch</code> field as the spawn agent buffer.</p>
 <p>The <code>spawn</code> function creates the agent instance, based on the <code>Spawner</code> utility class, and adds the created agent into the buffer.</p>
@@ -650,12 +662,14 @@ while (true) {
 
 def spawn(
     anAgent : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+    spawnerID : UUID,
     agentID : UUID,
     params : Object*)
     : UUID {
   val ^agent = Spawner::createAgent(
       this,
       anAgent,
+      spawnerID,
       TINYMAS_DEFAULT_SPACE_ID,
       agentID,
       params)
@@ -674,15 +688,55 @@ def consumeAgentToLaunch : Iterable&lt;TMSarlAgent&gt; {
 <p>One important point regarding the expected behavior of the SARL <code>killMe</code> is that is must never return from the point of view of its caller. For simulating this behavior, we could use the exception mechanism by throwing a specific internal exception that is not a real error but represents the "no-return code" case. This specific exception is named <code>NoReturnCodeException</code>, and is defined in the next section.</p>
 <pre class="prettyprint lang-sarl linenums">class LifecycleSkill extends Skill implements Lifecycle {
 
+  def spawn(
+      agentClass : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+      params : Object*)
+      : UUID {
+    return defaultSpace.spawn(agentClass, null, params)
+  }
+
+  def spawn(
+      nbAgents : int,
+      agentClass : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+      params : Object*)
+      : Collection&lt;UUID&gt; {
+    var list = newArrayList
+    for (i : 1..nbAgents) {
+      var id = defaultSpace.spawn(agentClass, null, params)
+      if (id !== null) {
+        list += id
+      }
+    }
+    return list
+  }
+
   def spawnInContext(
       agentClass : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
       context : AgentContext,
       params : Object*)
       : UUID {
     if (context.ID == defaultSpace.agentContext.ID) {
-      return defaultSpace.spawn(agentClass, null, params)
+      return defaultSpace.spawn(agentClass, owner.ID, null, params)
     }
     return null
+  }
+
+  def spawnInContext(
+      nbAgents : int,
+      agentClass : Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+      context : AgentContext,
+      params : Object*)
+      : Collection&lt;UUID&gt; {
+    var list = newArrayList
+    if (context.ID == defaultSpace.agentContext.ID) {
+      for (i : 1..nbAgents) {
+        var id = defaultSpace.spawn(agentClass, null, params)
+        if (id !== null) {
+          list += id
+        }
+      }
+    }
+    return list
   }
 
   def spawnInContextWithID(
@@ -692,7 +746,7 @@ def consumeAgentToLaunch : Iterable&lt;TMSarlAgent&gt; {
       params : Object*)
       : UUID {
     if (context.ID == defaultSpace.agentContext.ID) {
-      return defaultSpace.spawn(agentClass, agentID, params)
+      return defaultSpace.spawn(agentClass, owner.ID, agentID, params)
     }
     return null
   }
@@ -729,7 +783,7 @@ def consumeAgentToLaunch : Iterable&lt;TMSarlAgent&gt; {
   }
 }</pre>
 <h4 id="Definition_of_the_DefaultContextInteractions_skill">7.3. Definition of the DefaultContextInteractions skill</h4>
-<p>The <code>DefaultContextInteractions</code> capacity enables the agent to have interaction in the default space, and to spawn agents in the default context.</p>
+<p>The <code>DefaultContextInteractions</code> capacity enables the agent to have interaction in the default space.</p>
 <h5 id="First_definition_of_the_skill">7.3.1. First definition of the skill</h5>
 <p>The first and incomplete definition of the <code>DefaultContextInteractions</code> capacity for the tinyMAS platform is provided below.</p>
 <p>The functions that replies the default context and the default space are defined for replying the context and space that are referenced in the agent. The <code>owner</code> is a syntactic simplification of a call to <code>getOwner</code>, which replies the agent owning the skill.</p>
@@ -797,7 +851,7 @@ def willReceive(receiver : UUID, ^event : Event) {
 <h5 id="Spawning_agents_in_the_default_context">7.3.3. Spawning agents in the default context</h5>
 <p>Spawning an agent in the default context could be done by calling the <code>spawn</code> function of the <code>DefaultContextInteractions</code> capacity. This function delegates its behavior to the <code>spawn</code> function that is already defined in the tinyMAS-SARL default space class.</p>
 <pre class="prettyprint lang-sarl linenums">def spawn(agentType : Class&lt;? extends io.sarl.lang.core.Agent&gt;, params : Object*) : UUID {
-  (defaultSpace as TMDefaultSpace).spawn(agentType, null, params)
+  (defaultSpace as TMDefaultSpace).spawn(agentType, owner.ID, null, params)
 }</pre>
 <h4 id="Definition_of_the_Behaviors_skill">7.4. Definition of the Behaviors skill</h4>
 <p>The <code>Behaviors</code> capacity enables the agent to have sub-behaviors that could be dynamically added and removed.</p>
@@ -833,12 +887,34 @@ def registerBehavior(attitude : Behavior) : Behavior {
 <h5 id="Waking_the_behaviors_with_an_event">7.4.4. Waking the behaviors with an event</h5>
 <p>The SARL specification indicates that it is possible for an agent to fire an event inside its internal context. In other words, the event will be received by the agent, and its internal behaviors, and not by the other agents.</p>
 <p>The <code>wake</code> function is provided for supporting this feature. Its implementation retrieves the SARL event listener of the agent by calling the <code>asEventListener</code> function. And, it invokes the receiving function of the listener with the event as argument.</p>
-<pre class="prettyprint lang-sarl linenums">def wake(^event : Event) {
-  asEventListener.receiveEvent(^event)
+<p>If a scope is provided, it must be used for filtering the receivers which have an address. In the context of the tinyMAS platform, only the agent fits this requirement. Consequently, the scope is matched against the agent's address in its internal context (not the agent's address in the default space of its default context). The <code>getInnerAddress</code> function computes the agent's address in the agent internal context.</p>
+<pre class="prettyprint lang-sarl linenums">def wake(^event : Event, scope : Scope&lt;Address&gt; = null) {
+  if (scope === null || scope.matches(innerAddress)) {
+    asEventListener.receiveEvent(^event)
+  }
+}
+
+private def getInnerAddress : Address {
+  var id = (owner as TMSarlAgent).ID
+  return new Address(
+      new SpaceID(id, UUID.randomUUID, typeof(EventSpaceSpecification)),
+      id)
 }</pre>
-<h5 id="Updating_the_tinyMAS_agent_life_cycle_for_un_registering_the_behaviors">7.4.5. Updating the tinyMAS agent life-cycle for [un]registering the behaviors</h5>
+<h5 id="Accessing_to_the_collection_of_the_registered_behaviors">7.4.5. Accessing to the collection of the registered behaviors</h5>
+<p>Two functions must be implemented for accessing to the internal list of the behaviors: </p>
+<ul> <li>
+<code>hasRegisteredBehavior</code> indicates if a behavior is registered; and</li> <li>
+<code>getRegisteredBehaviors</code> replies an unmodifiable collection of the registered behaviors.</li> </ul>
+<pre class="prettyprint lang-sarl linenums">def hasRegisteredBehavior : boolean {
+  !this.behaviors.isEmpty
+}
+
+def getRegisteredBehaviors : Collection&lt;Behavior&gt; {
+  new ArrayList(this.behaviors)
+}</pre>
+<h5 id="Updating_the_tinyMAS_agent_life_cycle_for_un_registering_the_behaviors">7.4.6. Updating the tinyMAS agent life-cycle for [un]registering the behaviors</h5>
 <p>There is an key difference between the SARL run-time principle, which is fully distributed (everything is registered, run, unregistered in parallel), and the tinyMAS run-time principle, which is fully sequential (everything is controlled in a big virtual loop). Consequently, it is mandatory to map the fully-distributed point-of-view from the SARL specification to the sequential point-of-view from tinyMAS.</p>
-<h6 id="Defining_buffers_of_behaviors">7.4.5.1. Defining buffers of behaviors</h6>
+<h6 id="Defining_buffers_of_behaviors">7.4.6.1. Defining buffers of behaviors</h6>
 <p>In order to map the SARL behavior support to tinyMAS platform, the <code>BehaviorsSkill</code> type must store the registered and unregistered behaviors separately. Indeed, the registered behaviors must become SARL event listeners in the agent context. And, the unregistered behaviors must be SARL event listener anymore.</p>
 <p>In order to separate these two subsets of behaviors, we define the two fields <code>registrationWaiters</code> and <code>unregistrationWaiters</code>, which represent the behaviors that are waiting for event listening registration, and event listener unregistration, respectively.</p>
 <p>We define the <code>getRegistrationWaiters</code> and <code>getUnregistrationWaiters</code> functions for replying and consuming these subsets. These functions will be invoked later, from the tinyMAS agent living function.</p>
@@ -857,7 +933,7 @@ def getUnregistrationWaiters : Iterable&lt;Object&gt; {
   this.registrationWaiters = new ArrayList
   return collection
 }</pre>
-<h6 id="Updating_the_buffers_of_behaviors">7.4.5.2. Updating the buffers of behaviors</h6>
+<h6 id="Updating_the_buffers_of_behaviors">7.4.6.2. Updating the buffers of behaviors</h6>
 <p>The <code>registerBehavior</code> and <code>unregisterBehavior</code> functions that are already defined in the <code>BehaviorsSkill</code> type must be redefined in order to include the updating of the behavior's buffers.</p>
 <p>In the <code>registerBehavior</code> function, the registering attitude (behavior) is added into the set of behaviors that are waiting for SARL event listening registration.</p>
 <p>The registering attitude is also remove from the set of behaviors that are waiting for SARL event listening unregistration. It avoids to have registration and unregistration at the same time for the same attitude.</p>
@@ -879,7 +955,7 @@ def unregisterBehavior(attitude : Behavior) : Behavior {
   }
   return attitude
 }</pre>
-<h6 id="Updating_the_tinyMAS_agent_living_function">7.4.5.3. Updating the tinyMAS agent living function</h6>
+<h6 id="Updating_the_tinyMAS_agent_living_function">7.4.6.3. Updating the tinyMAS agent living function</h6>
 <p>In order to map the (un)registered the SARL behaviors at the correct instant during the tinyMAS agent life-cycle, we must define the agent living function (<code>live</code>) in the <code>TMSarlAgent</code> type.</p>
 <p>We assume that the <code>behaviorsSkill</code> field is defined and set (Section <a href="#Creating_built-in_capacity_instances_in_the_agent">Creating built-in capacity instances in the agent</a> explains how to proceed). This field contains a reference to the <code>BehaviorsSkill</code> skill owned by the agent.</p>
 <p>We assume that the <code>evaluatorRegistry</code> field is defined, and contains a reference to the <code>BehaviorGuardEvaluatorRegistry</code> instance that is used for managing the agent event bus (see the previous sections for its definition).</p>
@@ -901,13 +977,19 @@ def unregisterBehavior(attitude : Behavior) : Behavior {
   }
 
 }</pre>
-<h6 id="Proper_un_installation_of_the_skill">7.4.5.4. Proper un-installation of the skill</h6>
+<h6 id="Proper_un_installation_of_the_skill">7.4.6.4. Proper un-installation of the skill</h6>
 <p>Because a skill could be dynamically removed from an agent, we must unregister each agent's behavior when the skill is uninstalled.</p>
 <p>In the <code>BehaviorsSkill</code> type, we define the <code>uninstall</code> function, which is automatically invoked when the skill is removed from the agent.</p>
 <p>The code of the <code>uninstall</code> function goes through all the behaviors, and invokes the <code>unregister</code> function of the agent's event bus with each of them as argument.</p>
-<pre class="prettyprint lang-sarl linenums">protected def uninstall {
-  for (beh : this.behaviors) {
-    (owner as TMSarlAgent).evaluatorRegistry.unregister(beh)
+<pre class="prettyprint lang-sarl linenums">protected def uninstall(stage : UninstallationStage) {
+  switch (stage) {
+  case PRE_DESTROY_EVENT: {
+    }
+  case POST_DESTROY_EVENT: {
+      for (beh : this.behaviors) {
+        (owner as TMSarlAgent).evaluatorRegistry.unregister(beh)
+      }
+    }
   }
 }</pre>
 <h4 id="Definition_of_the_Schedules_skill">7.5. Definition of the Schedules skill</h4>
@@ -982,8 +1064,17 @@ private def scheduleTask(at : long, task : AgentTask) {
   }
   list += task
 }</pre>
-<h5 id="Scheduling_a_periodic_agent_task">7.5.4. Scheduling a periodic agent task</h5>
+<h5 id="Executed_an_agent_task_once">7.5.4. Executed an agent task once</h5>
+<p>It is possible to execute a task only one time by calling the <code>execute</code> function. In the tinyMAs implementation, the <code>execute</code> function schedule the task for the next simulation step.</p>
+<pre class="prettyprint lang-sarl linenums">def execute(task : AgentTask = null, procedure : (io.sarl.lang.core.Agent) =&gt; void) : AgentTask {
+  return in(
+    task,
+    (owner as TMSarlAgent).getSimulationStepDuration(TimeUnit::MILLISECONDS) as long,
+    procedure)
+}</pre>
+<h5 id="Scheduling_a_periodic_agent_task">7.5.5. Scheduling a periodic agent task</h5>
 <p>It is possible to schedule periodic tasks by calling the <code>every</code> function. The definition of this function is similar to the definition of the <code>in</code> function, except that the <code>period</code> field of the <code>Task</code> is set with the period duration, which is given as parameter.</p>
+<p>The <code>atFixedDelay</code> function delegates to the <code>every</code> function because the task running algorithm implies that these two types of execution approach will be the same on tinyMAS.</p>
 <pre class="prettyprint lang-sarl linenums">def every(task : AgentTask = null, period : long, procedure : (io.sarl.lang.core.Agent) =&gt; void) : AgentTask {
   var theTask = task
   if (theTask === null) {
@@ -997,8 +1088,12 @@ private def scheduleTask(at : long, task : AgentTask) {
   }
   scheduleTask(time, theTask)
   return theTask
+}
+
+def atFixedDelay(task : AgentTask = null, delay : long, procedure : (io.sarl.lang.core.Agent) =&gt; void) : AgentTask {
+  return task.every(delay, procedure)
 }</pre>
-<h5 id="Canceling_an_agent_task">7.5.5. Canceling an agent task</h5>
+<h5 id="Canceling_an_agent_task">7.5.6. Canceling an agent task</h5>
 <p>The <code>Schedules</code> capacity provides the feature for canceling a task by calling the <code>cancel</code> function. This function delegates to the <code>cancel</code> function of the <code>Task</code> type.</p>
 <pre class="prettyprint lang-sarl linenums">def cancel(task : AgentTask, mayInterruptIfRunning : boolean = true) : boolean {
   if (task instanceof Task) {
@@ -1007,7 +1102,7 @@ private def scheduleTask(at : long, task : AgentTask) {
   }
   return false
 }</pre>
-<h5 id="Running_the_scheduled_tasks">7.5.6. Running the scheduled tasks</h5>
+<h5 id="Running_the_scheduled_tasks">7.5.7. Running the scheduled tasks</h5>
 <p>Executing the registered tasks must be supported by a specific function, named <code>runTasks</code>.</p>
 <p>This function determines the current time (<code>currentTime</code>) in the tinyMAS platform. Then, it retrieves the <code>list</code> of the tasks to start at the current time.</p>
 <p>&lt;p&lt;For each task in the <code>list</code>, the function tests if the task was cancelled or not. If the task was not cancelled, the function retrieves the task's guard (the condition of execution) and evaluates it.</p>
@@ -1039,7 +1134,7 @@ private def scheduleTask(at : long, task : AgentTask) {
     }
   }
 }</pre>
-<h5 id="Updating_the_tinyMAS_agent_living_function">7.5.7. Updating the tinyMAS agent living function</h5>
+<h5 id="Updating_the_tinyMAS_agent_living_function">7.5.8. Updating the tinyMAS agent living function</h5>
 <p>Now the <code>runTasks</code> function is defined in the <code>SchedulesSkill</code> class, we could update the tinyMAS agent life-cycle in order to invoke this function.</p>
 <p>The agent tasks must be run at each step of the tinyMAS agent life. Consequently, we must redefine the <code>live</code> function in the <code>TMSarlAgent</code> class for invoking <code>runTasks</code>.</p>
 <p>In order to call the <code>runTasks</code> function, we must assume that the <code>schedulesSkill</code> field is defined as a reference to the instance of <code>SchedulesSkill</code> built-in capacity. How this field is set will be described in a further section.</p>
@@ -1122,11 +1217,9 @@ private def scheduleTask(at : long, task : AgentTask) {
     method.invoke(sarlAgent, typeof(Schedules), this.scheduleSkill)
     method.invoke(sarlAgent, typeof(Time), this.timeSkill)
 
-    var initializeEvent = new Initialize
-    if (this.parameters !== null) {
-      initializeEvent.parameters = this.parameters
-      this.parameters = null
-    }
+    var initializeEvent = new Initialize(this.spawnerID, this.parameters)
+    this.spawnerID = null
+    this.parameters = null
     receiveEvent(initializeEvent)
   }
 
@@ -1295,6 +1388,7 @@ defaultSpace.agentContext = context
         kernel,
         defaultSpace,
         agentType as Class&lt;? extends io.sarl.lang.core.Agent&gt;,
+        null,
         TMDefaultSpace.TINYMAS_DEFAULT_SPACE_ID,
         null,
         params)
@@ -1527,8 +1621,8 @@ Main-Class: org.arakhne.tinymas.sarl.Boot
 &lt;/build&gt;
 </pre>
 <h3 id="Legal_Notice">13. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

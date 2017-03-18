@@ -101,7 +101,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><span class="label label-danger">Important</span> A behavior type can extend <strong>only one</strong> other behavior type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, a first behavior is defined with the name <code>MyBehavior</code> and an attribute named <code>attr</code>. A second behavior <code>MySubBehavior</code> is defined as the extension of the first behavior. It contains a function named <code>action</code>, which is displaying the inherited attribute.</p>
 <pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
-  var attr : String
+  protected var attr : String
 }
 behavior MySubBehavior extends MyBehavior {
   uses Logging
@@ -129,7 +129,7 @@ behavior MySubBehavior extends MyBehavior {
 <h5 id="Behavior_Modifiers">1.6.1. Behavior Modifiers</h5>
 <p>A behavior may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the behavior is accessible from any other type;</li>  <li>
+<code>public</code>: the behavior is accessible from any other type (default);</li>  <li>
 <code>package</code>: the behavior is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the behavior is abstract and cannot be instanced.</li> <li>
@@ -147,7 +147,7 @@ final behavior Example4 {
 <ul> <li>Access modifiers: <ul>  <li>
 <code>protected</code>: the field is accessible within the same package, and derived agents;</li>  <li>
 <code>package</code>: the field is accessible only within the same package of its agent;</li>  <li>
-<code>private</code>: the field is accessible only within its agent.</li>  </ul>
+<code>private</code>: the field is accessible only within its agent (default).</li>  </ul>
 </li> </ul>
 <pre class="prettyprint lang-sarl linenums">protected var example1 : Object;
 package var example2 : Object;
@@ -155,14 +155,17 @@ private var example3 : Object;</pre>
 <h5 id="Method_Modifiers">1.6.3. Method Modifiers</h5>
 <p>The modifiers for the methods in a behavior are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>protected</code>: the method is accessible within the same package, and derived classes;</li>  <li>
+<code>public</code>: the method is accessible from everywhere;</li>  <li>
+<code>protected</code>: the method is accessible within the same package, and derived classes (default);</li>  <li>
 <code>package</code>: the method is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the method is accessible only within its class.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the method has no implementation in the class.</li> <li>
 <code>dispatch</code>: the method provides an implementation for the dispatch method mechanism.</li> <li>
 <code>final</code>: the method cannot be overridden in derived classes.</li> </ul>
-<pre class="prettyprint lang-sarl linenums">// Protected access function
+<pre class="prettyprint lang-sarl linenums">// Public access function
+public def example0 { }
+// Protected access function
 protected def example1 { }
 // Package access function
 package def example2 { }
@@ -191,7 +194,55 @@ dispatch def example7(p : Float) { }</pre>
 </pre>
 <p><code>&lt;EventName&gt;</code> is the name of event to wait for. <code>&lt;Guard&gt;</code> is the optional specification of a predicate that may be true for executing the <code>&lt;Statements&gt;</code>. The statements are executed only if an event with the given name is received, <em>and</em> if the guard is true.</p>
 <p>In the guard and the statements, it is possible to use the instance of the received event: the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit variable as the keywords <code>this</code> and <code>it</code>.</p>
-<h4 id="Reactive_Behavior_Units">2.1. Reactive Behavior Units</h4>
+<h4 id="Initialization_Handler">2.1. Initialization Handler</h4>
+<p>When a behavior is ready to be executed by the runtime environment, usually when it is registered in its owning agent, it receives the <code>Initialize</code> event. This event is defined as:</p>
+<pre class="prettyprint">event Initialize {
+    var parameters : Object[]
+}
+</pre>
+<p>It contains the list of the parameters given that are never set for behaviors.</p>
+<pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
+  uses Logging
+  on Initialize {
+    println("I'm initializing my behavior")
+  }
+}</pre>
+<h4 id="Guarded_Initialization_Handler">2.2. Guarded Initialization Handler</h4>
+<p>Because <code>Initialize</code> is an event, the handler in the behavior could use a guard. This feature enables the developer to write different initialization blocks depending on the guards of the handlers.</p>
+<p>In the following example, the first event handler is executed when the <code>Initialize</code> event has no parameter. The second event handler is executed when the event has at least one parameter.</p>
+<pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
+  uses Logging
+  on Initialize [ occurrence.parameters.empty ] {
+    println("First initialization")
+  }
+  on Initialize [ ! occurrence.parameters.empty ] {
+    println("First initialization")
+  }
+}</pre>
+<h4 id="Destruction_Handler">2.3. Destruction Handler</h4>
+<p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
+<pre class="prettyprint">event Destroy
+</pre>
+<pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
+  uses Logging
+  on Destroy {
+    println("Destroying the behavior")
+  }
+}</pre>
+<h4 id="Guarded_Destruction_Handler">2.4. Guarded Destruction Handler</h4>
+<p>As for <code>Initialize</code>, the handlers of the <code>Destroy</code> event could be guarded.</p>
+<p>In the following example, the first event handler is executed when the <code>Destroy</code> is received and there is resource stored in the corresponding field. The second event handler is executed when there is no resource.</p>
+<pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
+  uses Logging
+  var resource : Object
+  on Destroy [ resource !== null ] {
+    println("Destroying the behavior when there is a resource")
+  }
+  on Destroy [ resource === null ] {
+    println("Destroying the behavior when there is no resource")
+  }
+}</pre>
+<h4 id="Reactive_Behavior_Units">2.5. Reactive Behavior Units</h4>
 <p>The reactive behavior is specified with a collection of event handlers. The principle of a reactive behavior is to execute a part of the behavior when something has happening in the behavior, the agent or in its environment.</p>
 <p>In the following example, the behavior is reacting to the reception of the <code>SomethingChanged</code> event.</p>
 <p>As for all the event handlers, it could be guarded by a predicate.</p>
@@ -201,7 +252,7 @@ dispatch def example7(p : Float) { }</pre>
     println("Reactive behavior")
   }
 }</pre>
-<h4 id="Parallel_Execution_of_the_Reactive_Behavior_Units">2.2. Parallel Execution of the Reactive Behavior Units</h4>
+<h4 id="Parallel_Execution_of_the_Reactive_Behavior_Units">2.6. Parallel Execution of the Reactive Behavior Units</h4>
 <p>When an event is received and the guard of the corresponding handler is true, the event handler is said to be triggered.</p>
 <p>When multiple event handlers are triggered at the same time, they are all executed in parallel. In the following example, the two handlers for the <code>SomethingChanged</code> event are executed in parallel.</p>
 <pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
@@ -213,7 +264,7 @@ dispatch def example7(p : Float) { }</pre>
     println("Second reactive behavior")
   }
 }</pre>
-<h4 id="Pro_active_Behavior_Units">2.3. Pro-active Behavior Units</h4>
+<h4 id="Pro_active_Behavior_Units">2.7. Pro-active Behavior Units</h4>
 <p>A proactive behavior is a part of the global behavior of an agent that the agent is deciding to execute by itself. The execution of a reactive behavior is initiated by a part of the code external to this behavior. In opposite, the initiator of the execution of a proactive behavior is the agent itself.</p>
 <p>In SARL, a proactive behavior is a behavior that is scheduled by the agent or one of its behaviors. The schedule mechanism is provided by the <a href="BuiltInCapacityReferenceSpec.html"><code>Schedules</code> built-in capacity</a>. In the following example, the agent execute its proactive behavior every second.</p>
 <pre class="prettyprint lang-sarl linenums">behavior MyBehavior {
@@ -270,8 +321,8 @@ skill Ski implements Cap {
   }
 }</pre>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

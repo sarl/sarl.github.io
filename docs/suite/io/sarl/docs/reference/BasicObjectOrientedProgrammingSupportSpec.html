@@ -62,9 +62,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Interface">2. Interface</a></li>
 <li><a href="#Enumeration">3. Enumeration</a></li>
 <li><a href="#Annotation_Type">4. Annotation Type</a></li>
-<li><a href="#Modifiers">5. Modifiers</a></li>
-<li><a href="#References">6. References</a></li>
-<li><a href="#Legal_Notice">7. Legal Notice</a></li>
+<li><a href="#Anonymous_Class">5. Anonymous Class</a></li>
+<li><a href="#Modifiers">6. Modifiers</a></li>
+<li><a href="#References">7. References</a></li>
+<li><a href="#Legal_Notice">8. Legal Notice</a></li>
 </ul>
 <p>SARL enables to declare objects with an object-oriented programming approach. This document describes the basic support of object-oriented programming provided by SARL. Before reading this document, we recommend that you read the <a href="./GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
 <p>The support of the object-oriented programming (OOP) statements in SARL is less complete than a real object-oriented language such as Java. The basics of OOP are enabled in the SARL scripts. If you need more complex or more complete support of the OOP, you should use a dedicated language, such as Java, <a href="https://eclipse.org/xtend/">Xtend</a>, or <a href="http://www.scala-lang.org/">Scala</a>.</p>
@@ -147,7 +148,7 @@ class Vector&lt;T extends Number&gt; {
 <h5 id="Top_Class_Modifiers">1.5.1. Top Class Modifiers</h5>
 <p>A top class may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the class is accessible from any other type;</li>  <li>
+<code>public</code>: the class is accessible from any other type (default);</li>  <li>
 <code>package</code>: the class is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the class is abstract and cannot be instanced.</li> <li>
@@ -166,7 +167,7 @@ strictfp class TopClass5 {
 <h5 id="Nested_Class_Modifiers">1.5.2. Nested Class Modifiers</h5>
 <p>A nested class may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the class;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the class (default);</li>  <li>
 <code>protected</code>: the class is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the class is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the class is accessible only within its class.</li>  </ul>
@@ -200,7 +201,7 @@ strictfp class TopClass5 {
 <code>public</code>: there are no restrictions on accessing the field;</li>  <li>
 <code>protected</code>: the field is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the field is accessible only within the same package as its class;</li>  <li>
-<code>private</code>: the field is accessible only within its class.</li>  </ul>
+<code>private</code>: the field is accessible only within its class (default).</li>  </ul>
 </li> <li>
 <code>static</code>: the field is a class field, not an instance field.</li> <li>
 <code>transient</code>: the field is never serialized.</li> <li>
@@ -215,7 +216,7 @@ volatile var g : Object;</pre>
 <h5 id="Method_Modifiers">1.5.4. Method Modifiers</h5>
 <p>The modifiers for the methods in a class are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the method;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the method (default);</li>  <li>
 <code>protected</code>: the method is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the method is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the method is accessible only within its class.</li>  </ul>
@@ -243,7 +244,7 @@ dispatch def fct11(p : Float) { }</pre>
 <h5 id="Constructor_Modifiers">1.5.5. Constructor Modifiers</h5>
 <p>The modifiers for the constructors of a class are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the constructor;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the constructor (default);</li>  <li>
 <code>protected</code>: the constructor is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the constructor is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the constructor is accessible only within its class.</li>  </ul>
@@ -266,6 +267,25 @@ private new(p : boolean) { }</pre>
   override getFullName {
     return title + " " + super.fullName
   } 
+}</pre>
+<h4 id="Accessing_Local_Variables_of_the_Enclosing_Scope">1.7. Accessing Local Variables of the Enclosing Scope</h4>
+<p>Local classes (or nested classes, i.e. classes defined inside an other type) have the <code>static</code> modifier. It means that a nested class cannot have access to the fields and methods of the instance of the enclosing type. Only accesses to static members are allowed.</p>
+<pre class="prettyprint lang-sarl linenums">class EnclosingClass {
+  static var field1 : int
+  static def fct1 {
+  }
+
+  static class NestedClass {
+    def fct2 : int {
+      // Explicit type specification for the field access
+      EnclosingClass::field1
+    }
+
+    def fct3 {
+      // Implicit type specification for the function's call
+      fct1
+    }
+  }
 }</pre>
 <h3 id="Interface">2. Interface</h3>
 <p>An interface is a description of the actions that an object can do. For example when you flip a light switch, the light goes on, you don't care how, just that it does. In object-oriented programming, an interface is a description of all functions that an object must have in order to be an "X".</p>
@@ -313,7 +333,7 @@ interface Vector&lt;T extends Number&gt; {
 <h5 id="Top_Interface_Modifiers">2.5.1. Top Interface Modifiers</h5>
 <p>A top interface may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the class is accessible from any other type;</li>  <li>
+<code>public</code>: the class is accessible from any other type (default);</li>  <li>
 <code>package</code>: the class is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the interface is abstract (not needed since all the interfaces are abstract).</li> <li>
@@ -329,7 +349,7 @@ strictfp interface TopInterface4 {
 <h5 id="Nested_Interface_Modifiers">2.5.2. Nested Interface Modifiers</h5>
 <p>A nested interface may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the interface;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the interface (public);</li>  <li>
 <code>protected</code>: the interface is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the interface is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the interface is accessible only within its class.</li>  </ul>
@@ -358,16 +378,16 @@ strictfp interface TopInterface4 {
 <h5 id="Field_Modifiers">2.5.3. Field Modifiers</h5>
 <p>The modifiers for the fields in an interface are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the field;</li>  </ul>
+<code>public</code>: there are no restrictions on accessing the field (default);</li>  </ul>
 </li> <li>
-<code>static</code>: the field is a class field, not an instance field.</li> </ul>
+<code>static</code>: the field is a class field, not an instance field (default).</li> </ul>
 <p><caution>Only fields defined with <code>val</code> can be put in an interface.</caution></p>
 <pre class="prettyprint lang-sarl linenums">public val a : Object;
 static val e : Object;</pre>
 <h5 id="Method_Modifiers">2.5.4. Method Modifiers</h5>
 <p>The modifiers for the methods in an interface are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the method;</li>  </ul>
+<code>public</code>: there are no restrictions on accessing the method (default);</li>  </ul>
 </li> <li>
 <code>abstract</code>: the method is abstract (not needed since all the interface methods are abstract).</li> </ul>
 <pre class="prettyprint lang-sarl linenums">public def fct1
@@ -387,7 +407,7 @@ abstract def fct5</pre>
 <h5 id="Top_Enumeration_Modifiers">3.2.1. Top Enumeration Modifiers</h5>
 <p>A top enumeration may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the class is accessible from any other type;</li>  <li>
+<code>public</code>: the class is accessible from any other type (default);</li>  <li>
 <code>package</code>: the class is accessible from only the types in the same package.</li>  </ul>
 </li> </ul>
 <pre class="prettyprint lang-sarl linenums">public enum TopEnumeration1 {
@@ -399,7 +419,7 @@ package enum TopEnumeration2 {
 <h5 id="Nested_Enumeration_Modifiers">3.2.2. Nested Enumeration Modifiers</h5>
 <p>A nested interface may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the enumeration;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the enumeration (default);</li>  <li>
 <code>protected</code>: the enumeration is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the enumeration is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the enumeration is accessible only within its class.</li>  </ul>
@@ -444,7 +464,7 @@ package enum TopEnumeration2 {
 <h5 id="Top_Annotation_Type_Modifiers">4.2.1. Top Annotation Type Modifiers</h5>
 <p>A top annotation type may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the annotation type is accessible from any other type;</li>  <li>
+<code>public</code>: the annotation type is accessible from any other type (default);</li>  <li>
 <code>package</code>: the annotation type is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the annotation type is abstract and cannot be instanced.</li> </ul>
@@ -457,7 +477,7 @@ abstract annotation TopAnnotationType3 {
 <h5 id="Nested_Annotation_Type_Modifiers">4.2.2. Nested Annotation Type Modifiers</h5>
 <p>A nested annotation type may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: there are no restrictions on accessing the annotation type;</li>  <li>
+<code>public</code>: there are no restrictions on accessing the annotation type (default);</li>  <li>
 <code>protected</code>: the annotation type is accessible within the same package, and derived classes;</li>  <li>
 <code>package</code>: the annotation type is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the annotation type is accessible only within its class.</li>  </ul>
@@ -488,9 +508,71 @@ abstract annotation TopAnnotationType3 {
 <code>static</code>: the value is a class value, not an instance value.</li> </ul>
 <pre class="prettyprint lang-sarl linenums">public val val1 : int
 static val val2 : int</pre>
-<h3 id="Modifiers">5. Modifiers</h3>
+<h3 id="Anonymous_Class">5. Anonymous Class</h3>
+<p>Anonymous classes enable you to make your code more concise. They enable you to declare and instantiate a class at the same time. They are like local classes except that they do not have a name. Use them if you need to use a local class only once.</p>
+<h4 id="Declaring_Anonymous_Classes">5.1. Declaring Anonymous Classes</h4>
+<p>While local classes are class declarations, anonymous classes are expressions, which means that you define the class in another expression.</p>
+<p>The following example, <code>HelloWorldAnonymousClasses</code>, uses anonymous classes in the initialization statements of the local variables <code>frenchGreeting</code> and <code>spanishGreeting</code>:</p>
+<pre class="prettyprint lang-sarl linenums">interface HelloWorld {
+    def greetSomeone(someone : String)
+}
+
+class HelloWorldAnonymousClasses {
+    def sayHello {
+        var frenchGreeting = new HelloWorld {
+            var name = "tout le monde"
+            def greetSomeone(someone : String) {
+                name = someone
+                println("Salut " + name)
+            }
+        }
+        
+        var spanishGreeting = new HelloWorld {
+            var name = "mundo"
+            def greetSomeone(someone : String) {
+                name = someone
+                println("Hola, " + name)
+            }
+        }
+
+        frenchGreeting.greetSomeone("Marc")
+        spanishGreeting.greetSomeone("Marco")
+    }
+}</pre>
+<h4 id="Syntax_of_Anonymous_Classes">5.2. Syntax of Anonymous Classes</h4>
+<p>As mentioned previously, an anonymous class is an expression. The syntax of an anonymous class expression is like the invocation of a constructor, except that there is a class definition contained in a block of code.</p>
+<p>Consider the instantiation of the frenchGreeting object ion the code below.</p>
+<p>The anonymous class expression consists of the following:</p>
+<ul> <li>The <code>new</code> operator</li> <li>The name of an interface to implement or a class to extend. In this example, the anonymous class is implementing the interface <code>HelloWorld</code>.</li> <li>Parentheses that contain the arguments to a constructor, just like a normal class instance creation expression. When you implement an interface, there is no constructor, so you do not need to put parameters, as in this example.</li> <li>A body, which is a class declaration body. More specifically, in the body, method declarations are allowed but statements are not.</li> </ul>
+<p>Because an anonymous class definition is an expression, it must be part of a statement. In this example, the anonymous class expression is part of the statement that instantiates the frenchGreeting object.</p>
+<pre class="prettyprint lang-sarl linenums">var frenchGreeting = new HelloWorld {
+    var name = "tout le monde"
+    def greetSomeone(someone : String) {
+        name = someone
+        println("Salut " + name)
+    }
+}</pre>
+<h4 id="Accessing_Local_Variables_of_the_Enclosing_Scope_and_Declaring_and_Accessing_Members_of_the_Anonymous_Class">5.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</h4>
+<p>Anonymous classes can capture variables; they have the same access to local variables of the enclosing scope:</p>
+<ul> <li>An anonymous class has access to the members of its enclosing class.</li> <li>An anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final.</li> <li>A declaration of a type (such as a variable) in an anonymous class shadows any other declarations in the enclosing scope that have the same name.</li> </ul>
+<p>Anonymous classes have restrictions with respect to their members:</p>
+<ul> <li>You cannot declare static initializers or member interfaces in an anonymous class.</li> <li>An anonymous class can have static members provided that they are constant variables.</li> </ul>
+<p></p>
+<li>Note that you can declare the following in anonymous classes: fields, extra methods (even if they do not implement any methods of the supertype), instance initializers, local classes. However, you cannot declare constructors in an anonymous class.<pre class="prettyprint lang-sarl linenums">class HelloWorldAnonymousClasses {
+  var name : String
+  def sayHello {
+    var frenchGreeting = new HelloWorld {
+      def greetSomeone(someone : String) {
+        name = someone
+        println("Salut " + name)
+        
+      }
+    }
+  }
+}</pre>
+<h3 id="Modifiers">6. Modifiers</h3>
 <p>In this section, the semantic of the different modifiers is explained.</p>
-<h4 id="abstract_Modifier">5.1. Abstract Modifier</h4>
+<h4 id="abstract_Modifier">6.1. Abstract Modifier</h4>
 <p>An abstract type is a type that is declared <code>abstract</code> (it may or may not include abstract methods). Abstract types cannot be instantiated, but they can be derived.</p>
 <p>An abstract method is a method that is declared without an implementation (without braces, and followed by a semicolon), like this:</p>
 <pre class="prettyprint">  abstract def moveTo(deltaX : double, deltaY : double)
@@ -503,7 +585,7 @@ static val val2 : int</pre>
   }
 </pre>
 <p>When an abstract type is derived, the subtype usually provides implementations for all of the abstract methods in its parent type. However, if it does not, then the subtype must also be declared abstract.</p>
-<h4 id="Access_Modifiers_public_protected_package_private">5.2. Access Modifiers: public, protected, package, private</h4>
+<h4 id="Access_Modifiers_public_protected_package_private">6.2. Access Modifiers: public, protected, package, private</h4>
 <p>Access level modifiers determine whether other types can use a particular field or invoke a particular method. There are two levels of access control:</p>
 <ul>
   <li>At the top level in a SARL script.</li>
@@ -554,7 +636,7 @@ static val val2 : int</pre>
 </tbody>
 </table>
 <p>The first column indicates whether the type itself has access to the member defined by the access level. As you can see, a type always has access to its own members. The second column indicates whether types in the same package as the type (regardless of their parentage) have access to the member. The third column indicates whether subtypes of the type declared outside this package have access to the member. The fourth column indicates whether all types have access to the member.</p>
-<h4 id="dispatch_Modifier">5.3. Dispatch Modifier</h4>
+<h4 id="dispatch_Modifier">6.3. Dispatch Modifier</h4>
 <p>Generally, method resolution and binding is done statically at compile time. Method calls are bound based on the static types of arguments.</p>
 <p>Sometimes this is not what you want. Especially in the context of extension methods you would like to have polymorphic behavior.</p>
 <p>The <code>dispatch</code> modifier permits defining a dispatch method. For a set of visible dispatch methods in the current type hierarchy with the same name and the same number of arguments, the compiler infers a synthetic dispatcher method. This dispatcher uses the common super type of all declared arguments. The method name of the actual dispatch cases is prepended with an underscore and the visibility of these methods is reducedBy adding the extension keyword to a field, a local variable or a parameter declaration, its instance methods become extension methods. to protected if they have been defined as public methods. Client code always binds to the synthesized dispatcher method.</p>
@@ -570,7 +652,7 @@ def clientCode {
   System.out.println(printType(4.5)) // Print "it's a number"
   System.out.println(printType(4))   // Print "it's an int"
 }</pre>
-<h4 id="extension_Modifier">5.4. Extension Modifier</h4>
+<h4 id="extension_Modifier">6.4. Extension Modifier</h4>
 <p>This modifier enables to mark a field, a formal parameter, or a local variable as an <a href="./GeneralSyntaxReferenceSpec.html#ExtensionMethods">extension provider</a>.</p>
 <p>Extension methods allow adding new methods to existing types without modifying them. This is really helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
 <pre class="prettyprint">def removeVowels (String s) {
@@ -607,7 +689,7 @@ def clientCode {
     value.contains // calls o.contains(value)
   }
 }</pre>
-<h4 id="final_Modifier">5.5. Final Modifier</h4>
+<h4 id="final_Modifier">6.5. Final Modifier</h4>
 <p>The <code>final</code> keyword is used in several different contexts to define an entity which may only be assigned once.</p>
 <p>Once a final variable has been assigned, it always contains the same value. If a final variable holds a reference to an object, then the state of the object may be changed by operations on the object, but the variable will always refer to the same object.</p>
 <p><caution>The SARL compiler complains if you write the <code>final</code> modifer in conjonction with the <code>var</code> or <code>val</code> modifiers. Indeed, the <code>val</code> modifier defines a final variable; and the <code>var</code> modifier defines a no-final variable.</caution></p>
@@ -628,10 +710,10 @@ def clientCode {
 final class B {
   // This class cannot be derived
 }</pre>
-<h4 id="native_Modifier">5.6. Native Modifier</h4>
+<h4 id="native_Modifier">6.6. Native Modifier</h4>
 <p>The <code>native</code> keyword is applied to a method to indicate that the method is implemented in native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
 <p><span class="label label-info">Note</span> This modifier is provided for enabling agents to access to low-level resources that are not supported by the Java API. You should not use this modifier if you can use a higher-level API in place of.</p>
-<h4 id="static_Modifier">5.7. Static Modifier</h4>
+<h4 id="static_Modifier">6.7. Static Modifier</h4>
 <p>The <code>static</code> keyword is used for creating fields and methods that belong to the type, rather than to an instance of the type.</p>
 <p>Sometimes, you want to have variables that are common to all instances. This is accomplished with the <code>static</code> modifier. Fields that have the static modifier in their declaration are called static fields (or class variables in object-oriented programming). They are associated with the type, rather than with any instance. Every instance of the type shares a static field, which is in one fixed location in memory. Any instance can change the value of a static variable, but static variables can also be manipulated without creating an instance of the type.</p>
 <p><span class="label label-info">Note</span> Constants are usually defined as final static fields</p>
@@ -651,7 +733,7 @@ final class B {
   static def aMethod {
   }
 }</pre>
-<h4 id="strictfp_Modifier">5.8. Strictfp Modifier</h4>
+<h4 id="strictfp_Modifier">6.8. Strictfp Modifier</h4>
 <p>The <code>strictfp</code> modifier is a keyword that restricts floating-point calculations to ensure portability. The <code>strictfp</code> command was originally introduced into Java with the Java virtual machine (JVM) version 1.2 and is available for use on all currently updated Java VMs.</p>
 <p>The IEEE standard IEEE 754 specifies a standard method for both floating-point calculations and storage of floating-point values in either single (32-bit, used in float) or double (64-bit, used in double) precision, and, for intermediate calculations, also extended precision formats.</p>
 <p>Since JVM 1.2, intermediate computations are not limited to the standard 32 bit and 64 bit precisions. On platforms that can handle other representations e.g. 80-bit double extended on x86 or x86-64 platforms, those representations can be used, helping to prevent round-off errors and overflows, thereby increasing precision.</p>
@@ -671,7 +753,7 @@ final class B {
 </tr> </tbody>
 </table>
 <p>The <code>strictfp</code> modifier accomplishes this by truncating all intermediate values to IEEE single precision and double precision, as occurred in earlier versions of the JVM.</p>
-<h4 id="synchronized_Modifier">5.9. Synchronized Modifier</h4>
+<h4 id="synchronized_Modifier">6.9. Synchronized Modifier</h4>
 <p>The SARL programming language provides two basic synchronization idioms: synchronized methods and synchronized statements. The synchronized statements are described in the <a href="./GeneralSyntaxReferenceSpec.html#SynchronizedExpression">general reference</a>. This section is about synchronized methods.</p>
 <p>To make a method synchronized, simply add the <code>synchronized</code> modifier to its declaration (see example below).</p>
 <p>Synchronized methods enable a simple strategy for preventing thread interference and memory consistency errors: if an object is visible to more than one thread, all reads or writes to that object's variables are done through synchronized methods. (An important exception: final fields, which cannot be modified after the object is constructed, can be safely read through non-synchronized methods, once the object is constructed) This strategy is effective, but can present problems with liveness.</p>
@@ -690,27 +772,28 @@ final class B {
     return c
   }
 }</pre>
-<h4 id="transient_Modifier">5.10. Transient Modifier</h4>
+<h4 id="transient_Modifier">6.10. Transient Modifier</h4>
 <p>Java and SARL provide a mechanism, called object serialization where an object can be represented as a sequence of bytes that includes the object's data as well as information about the object's type and the types of data stored in the object.</p>
 <p>The <code>transient</code> modifier is a keyword used as a field modifier. When a field is declared transient, it would not be serialized even if the type to which it belongs is serialized.</p>
-<h4 id="volatile_Modifier">5.11. Volatile Modifier</h4>
+<h4 id="volatile_Modifier">6.11. Volatile Modifier</h4>
 <p>While the <code>volatile</code> modifier itself comes from the C programming language, it has a completely different meaning in <code>Java</code>, and then in SARL. This may not help in growing an understanding of it, googling for volatile could lead to different results. Let's take a quick side step and see what volatile means in C first.</p>
 <p>In the C language the compiler ordinarily assumes that variables cannot change value by themselves. While this makes sense as default behavior, sometimes a variable may represent a location that can be changed (like a hardware register). Using a volatile variable instructs the compiler not to apply these optimizations.</p>
 <p>Back to Java and SARL. The meaning of volatile in C would be useless in Java. The JVM uses native libraries to interact with the OS and hardware. Further more, it is simply impossible to point Java variables to specific addresses, so variables actually won't change value by themselves.</p>
 <p>However, the value of variables on the JVM can be changed by different threads. By default the compiler assumes that variables won't change in other threads. Hence it can apply optimizations such as reordering memory operations and caching the variable in a CPU register. Using a volatile variable instructs the compiler not to apply these optimizations. This guarantees that a reading thread always reads the variable from memory (or from a shared cache), never from a local cache.</p>
 <p><span class="label label-info">Note</span> From now, it is better to use <a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html">atomic references</a> in place of volatile variables.</p>
-<h3 id="References">6. References</h3>
+<h3 id="References">7. References</h3>
 <p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials. Thank you to the contributors to these documents.</p>
 <ul>
   <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
   <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
   <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
 </ul>
-<h3 id="Legal_Notice">7. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<h3 id="Legal_Notice">8. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
-							</div>
+							</li>
+</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
     </div> <!-- /default layout container -->
 

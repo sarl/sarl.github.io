@@ -100,45 +100,41 @@ var secondSolution : List<integer> = new ArrayList()
  }
 </pre>
 <p>The on-the-fly definition and instantiation of an instance of this interface, a.k.a. anonymous class definition in the Java community, could be written is SARL with the following closure:</p>
-<p>@filter(.* = '''|'''|.parseSuccessfully.</p>
-<pre class="prettyprint lang-sarl linenums">'''
-  var instance : MyInterface
-  instance = [ parameter | /* The code of myfunction() */ ]
-'''.parseSuccessfully(
-    "package io.sarl.docs.faq.syntax
-    import java.util.List
-             interface MyInterface {
-               def myfunction(parameter : Object) : void
-             }
-    agent A {
-      def action : void {",
-    // TEXT
-    "} }"
-)</pre>
+<pre class="prettyprint lang-sarl linenums">var instance : MyInterface
+instance = [ parameter | /* The code of myfunction() */ ]</pre>
 <h4 id="Java_syntax_for_anonymous_classes_is_forbidden">1.7. Java syntax for anonymous classes is forbidden</h4>
 <p>In SARL, the creation of anonymous classes (interface implementation, etc.) must be done with a closure (see previous question).</p>
 <p>The Java-based syntax for defining an anonymous class's instance if totally forbidden in the SARL language. It means that the following code generates a syntax error:</p>
-<p>@filter(.* = '''|'''|.parseWithError.</p>
-<pre class="prettyprint lang-sarl linenums">'''
-  var instance = new MyInterface() {
-      def myfunction(parameter : Object) {
-        /* The code of myfunction() */
-      }
-  }
-'''.parseWithError(
-    "package io.sarl.docs.faq.syntax
-    import java.util.List
-             interface MyInterface {
-               def myfunction(parameter : Object)
-             }
-    agent A {
-      def action : boolean {",
-    // TEXT
-    "} }"
-)</pre>
+<pre class="prettyprint lang-sarl linenums">var instance = new MyInterface() {
+    def myfunction(parameter : Object) {
+      /* The code of myfunction() */
+    }
+}</pre>
+<h4 id="Ambiguous_call_to_capacity_function">1.8. Ambiguous call to capacity function</h4>
+<p>When the calling a capacity function, the SARL compiler complains with an "ambiguous call" error. In the code below, the function <code>myfunction</code> is defined in the capacities <code>CA</code> and <code>C2</code>. The call to <code>myfunction</code> in the agent definition is the place where the error occurs.</p>
+<p>This error is standard because the functions of the capacities <code>C1</code> and <code>C2</code> are implicitly accessible in the scope of the agent definition (see <code>uses</code> keyword definition). The SARL compiler is then unable to determine that is the function to call.</p>
+<p>For solving this issue, the developer must explicitly call the correct version of <code>myfunction</code> by getting the capacity. The following code is the correct call to the function if the function in the capacity <code>C1</code> should be called:</p>
+<pre class="prettyprint">getSkill(C1).myfunction
+</pre>
+<pre class="prettyprint lang-sarl linenums">capacity C1 {
+    def myfunction
+    def myfunction2
+}
+capacity C2 {
+    def myfunction
+    def myfunction3
+}
+agent MyAgent {
+    uses C1, C2
+    on Initialize {
+        myfunction
+        myfunction2
+        myfunction3
+    }
+}</pre>
 <h3 id="Legal_Notice">2. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

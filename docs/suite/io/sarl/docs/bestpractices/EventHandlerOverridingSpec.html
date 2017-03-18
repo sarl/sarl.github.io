@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../../../images/favicon.ico">
+
+    <title>Event Handler Overriding</title>
+
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../../index.html">Home</a></li>
+        <li><a href="../../../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <div class="tab-pane active" id="spec">
+<p></p>
+<ul class="page_outline" id="page_outline">
+<li><a href="#Operational_semantic_of_the_event_handlers">1. Operational semantic of the event handlers</a></li>
+<li><a href="#Defining_the_super_behavior_in_a_function">2. Defining the super behavior in a function</a></li>
+<li><a href="#Overriding_the_super_function">3. Overriding the super function</a></li>
+<li><a href="#Legal_Notice">4. Legal Notice</a></li>
+</ul>
+<p>This document describes the basics of the overriding of the event handlers. The key feature that is considered in this document is the overriding of the behavior associated to an event handler. Let an event occurrence of <code>MyEvent</code>. In the definition of the abstract agent named <code>AbstractAgent</code>, the message "hello world" is printed out when an occurrence of <code>MyEvent</code> is received. Let consider that you want to avoid this message printing in a sub-type of <code>AbstractAgent</code>, but do something other.</p>
+<p>In the SARL language, it is impossible to override the event handlers, i.e. the <code>on</code> statements. So, <strong>how to override the behavior of an inherited <code>on</code> statement?</strong></p>
+<p>In this document, the operational semantic of the event handlers is reminded. Then, the best practice for overriding the event handler behavior is explained.</p>
+<h3 id="Operational_semantic_of_the_event_handlers">1. Operational semantic of the event handlers</h3>
+<p>The operational semantics of the event handler is the following: when an event is received by an agent (or a behavior), all the event handlers matching the event type and with a valid guard on the event occurrence are run in parallel.</p>
+<p>The event handlers from the current agent type, and from all the super agent types are considered. Let the example below. When the agent <code>MyAgent</code> receives an occurrence of <code>MyEvent</code>, the two event handlers are runs. It means that the CODE1 is run and the message "hello world" is printed out. These two event handlers are run in parallel.</p>
+<pre class="prettyprint lang-sarl linenums">event MyEvent
+
+agent MySuperAgent {
+  uses Logging
+  on MyEvent {
+    info("hello world")
+  }
+}
+
+agent MyAgent extends MySuperAgent {
+  on MyEvent {
+    // CODE1
+  }
+}</pre>
+<h3 id="Defining_the_super_behavior_in_a_function">2. Defining the super behavior in a function</h3>
+<p>For overriding the behavior associated to an event handler, it is mandatory to use the function overriding mechanism that is provided by the SARL language.</p>
+<p>A function must be defined in the super type for each event handler that could be overridden. In the following example, the function is named <code>myEventBehavior</code>. The code of this function is the code of the event handler from the previous section. The event handler invokes the defined function.</p>
+<pre class="prettyprint lang-sarl linenums">event MyEvent
+
+agent MySuperAgent {
+  uses Logging
+  on MyEvent {
+    myEventBehavior
+  }
+  def myEventBehavior {
+    info("hello world")
+  }
+}</pre>
+<h3 id="Overriding_the_super_function">3. Overriding the super function</h3>
+<p>For overriding the behavior, the function <code>myEventBehavior</code> could be overridden in the sub-type. With the example below, the message "hello world" is no more printed out because of the function overriding.</p>
+<pre class="prettyprint lang-sarl linenums">agent MyAgent extends MySuperAgent {
+  def myEventBehavior {
+    // CODE1
+  }
+}</pre>
+<h3 id="Legal_Notice">4. Legal Notice</h3>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
+<p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+							</div>
+<hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - IRTES - UTBM</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../../../js/jquery.min.js"></script>
+    <script src="../../../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../../../js/run_prettify.js"></script>
+	<script src="../../../../../../js/lang-jnario.js"></script>
+	<script src="../../../../../../js/lang-sarl.js"></script>
+  </body>
+</html>

@@ -64,7 +64,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#Legal_Notice">4. Legal Notice</a></li>
 </ul>
 <p>This document describes how to define Capacities in SARL. Before reading this document, we recommend that you read the <a href="GeneralSyntaxReferenceSpec.html">General Syntax Reference</a>.</p>
-<p>An <em>Action</em> is code that transforms a part of the designed system or its environment. This transformation guarantees resulting properties if the system before the transformation satisfies a set of constraints. An Action is defined in terms of pre- and post-conditions.</p>
+<p>An <em>Action</em> is code (a public method or function) that transforms a part of the designed system or its environment. This transformation guarantees resulting properties if the system before the transformation satisfies a set of constraints. An Action is defined in terms of pre- and post-conditions.</p>
 <p>A <em>Capacity</em> is the specification of a collection of Actions. This specification makes no assumptions about the implementation of each Action. It is used to specify what an Agent can do, what behavior is required for its execution.</p>
 <p>A <em>Skill</em> is a collections of Actions implementing a Capacity as described in this specification.</p>
 <p>An Agent can dynamically evolve by acquiring (learning) new Capacities, and it can also dynamically change the Skill associated with a given Capacity. Acquiring a new Capacity enables an Agent to get access to new behaviors. This provides Agents with a self-adaptation mechanism that allows them to dynamically change their architecture according to their current needs and goals.</p>
@@ -105,7 +105,7 @@ capacity Cap3 extends Cap1, Cap2 {
 <h5 id="Capacity_Modifiers">1.4.1. Capacity Modifiers</h5>
 <p>A Capacity may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the Capacity is accessible from any other type;</li>  <li>
+<code>public</code>: the Capacity is accessible from any other type (default);</li>  <li>
 <code>package</code>: the Capacity is accessible only from types  in the same package.</li>  </ul>
 </li> </ul>
 <pre class="prettyprint lang-sarl linenums">public capacity Example1 {
@@ -136,8 +136,8 @@ public def example1 { }</pre>
   <li><a href="BehaviorReferenceSpec.html">Behavior</a></li>
 </ul>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

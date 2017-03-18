@@ -140,7 +140,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><span class="label label-danger">Important</span> An agent type can extend <strong>only one</strong> other agent type. This is close to the constraint on the extension of classes in the Java language.</p>
 <p>In the following code, a first agent is defined with the name <code>MyAgent</code> and an attribute named <code>attr</code>. A second agent <code>MySubAgent</code> is defined as the extension of the first agent. It contains a function named <code>action</code>, which is displaying the inherited attribute.</p>
 <pre class="prettyprint lang-sarl linenums">agent MyAgent {
-  var attr : String
+  protected var attr : String
 }
 agent MySubAgent extends MyAgent {
   uses Logging
@@ -154,7 +154,7 @@ agent MySubAgent extends MyAgent {
 <h5 id="Agent_Modifiers">3.5.1. Agent Modifiers</h5>
 <p>An agent may be declared with one or more modifiers, which affect its runtime behavior: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>public</code>: the agent is accessible from any other type;</li>  <li>
+<code>public</code>: the agent is accessible from any other type (default);</li>  <li>
 <code>package</code>: the agent is accessible from only the types in the same package.</li>  </ul>
 </li> <li>
 <code>abstract</code>: the agent is abstract and cannot be instanced.</li> <li>
@@ -172,7 +172,7 @@ final agent Example4 {
 <ul> <li>Access modifiers: <ul>  <li>
 <code>protected</code>: the field is accessible within the same package, and derived agents;</li>  <li>
 <code>package</code>: the field is accessible only within the same package of its agent;</li>  <li>
-<code>private</code>: the field is accessible only within its agent.</li>  </ul>
+<code>private</code>: the field is accessible only within its agent (default).</li>  </ul>
 </li> </ul>
 <pre class="prettyprint lang-sarl linenums">protected var example1 : Object;
 package var example2 : Object;
@@ -180,7 +180,7 @@ private var example3 : Object;</pre>
 <h5 id="Method_Modifiers">3.5.3. Method Modifiers</h5>
 <p>The modifiers for the methods in an agent are: </p>
 <ul> <li>Access modifiers: <ul>  <li>
-<code>protected</code>: the method is accessible within the same package, and derived classes;</li>  <li>
+<code>protected</code>: the method is accessible within the same package, and derived classes (default);</li>  <li>
 <code>package</code>: the method is accessible only within the same package as its class;</li>  <li>
 <code>private</code>: the method is accessible only within its class.</li>  </ul>
 </li> <li>
@@ -237,12 +237,14 @@ dispatch def example8(p : Float) { }</pre>
 <p>When an agent is ready to be executed by the runtime environment, it receives the <code>Initialize</code> event. This event is defined as:</p>
 <pre class="prettyprint">event Initialize {
     var parameters : Object[]
+    var spawner : UUID
 }
 </pre>
 <p>It contains the list of the parameters given to the spawning function (as specified in the <a href="BuiltInCapacityReferenceSpec.html">built-in capacities</a>).</p>
 <pre class="prettyprint lang-sarl linenums">agent MyAgent {
   uses Logging
   on Initialize {
+    println("My spawner is " + occurrence.spawner)
     println(
       "My initialization parameters are: "
       + occurrence.parameters )
@@ -334,17 +336,17 @@ skill Ski implements Cap {
 </pre>
 <h4 id="Giving_a_Skill_to_an_Agent">5.2. Giving a Skill to an Agent</h4>
 <p>When an agent must use a capacity in one of its behaviors, it must own an implementation of this capacity: a skill.</p>
-<p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated with the corresponding capacity <code>Cap</code> with the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code>.</p>
+<p>For assigning a skill to an agent, the instance of the skill must be created. Then, it is associated with the implemented capacity. In the following example, the agent is creating the <code>Ski</code> skill. This instance is associated with the corresponding capacity <code>Cap</code> with the function <code>setSkill(Skill, Class&lt;? extends Capacity&gt;*)</code>.</p>
 <p>When the function <code>setSkill</code> is returning, the agent becomes able to use the skill.</p>
 <pre class="prettyprint lang-sarl linenums">agent MyAgent {
   on Initialize {
     var theSkill = new Ski
-    setSkill( Cap, theSkill )
+    setSkill( theSkill, Cap )
   }
 }</pre>
 <h4 id="Giving_a_Built_in_Skill_to_an_Agent">5.3. Giving a Built-in Skill to an Agent</h4>
 <p>Because the built-in capacities are supported by the runtime environment, the corresponding skills are given to the agent. It means that there is no need for an agent to set a skill for a built-in capacity.</p>
-<p>However, in rare cases, it is possible to use the function <code>setSkill(Class&lt;? extends Capacity&gt;, Skill)</code> for changing the implementation of a built-in capacity.</p>
+<p>However, in rare cases, it is possible to use the function <code>setSkill(Skill, Class&lt;? extends Capacity&gt;*)</code> for changing the implementation of a built-in capacity.</p>
 <h4 id="Using_a_Capacity_with_the_Getters">5.4. Using a Capacity with the Getters</h4>
 <p>After a skill is registered into the agent, it could be invoked.</p>
 <p>For invoking a function implemented by a skill, the two following steps must be done:</p>
@@ -356,7 +358,7 @@ skill Ski implements Cap {
 <pre class="prettyprint lang-sarl linenums">agent MyAgent {
   on Initialize {
     var s = new Ski
-    setSkill( Cap, s )
+    setSkill( s, Cap )
   }
   on SomeEvent {
     // Retreive the capacity implementation
@@ -383,7 +385,7 @@ skill Ski implements Cap {
   uses Cap
   on Initialize {
     var s = new Ski
-    setSkill( Cap, s )
+    setSkill( s, Cap )
   }
   on SomeEvent {
     // Run the action of the skill
@@ -400,8 +402,8 @@ skill Ski implements Cap {
   }
 }</pre>
 <h3 id="Legal_Notice">6. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

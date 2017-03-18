@@ -77,24 +77,22 @@ import myprogram.MyAgent
 class MyProgram {
    static def main(args : String[]) : void {
     Boot::startJanus(
-      null,
       typeof(MyAgent),
       args)
   }
 }</pre>
 <h3 id="Launching_more_agents_programmatically_with_Janus">2. Launching more agents programmatically with Janus</h3>
 <p>In the case you want to launch more than one agent programmatically, you could use the <code>Kernel</code> instance provided by Janus. This instance is replied by the <code>startJanus</code> function of the <code>Boot</code> class.</p>
-<p>The <code>Kernel</code> type provides the <code>spawn</code> function, which permits launching an agent programmatically.</p>
+<p>The <code>Kernel</code> type provides the <code>spawn</code> functions, which permit launching an agent programmatically.</p>
 <p>The previous example could be updated for launching two agents of the same type. The resulting code is shown below.</p>
 <p>The first parameter of the <code>spawn</code> function is the Java type of the agent to launch.</p>
 <p>The second parameter of the <code>spawn</code> function is the list of parameters to pass with the <code>Initialize</code> event to the launched agent.</p>
-<p>Note that the first agent is launched by the <code>startJanus</code> function, and the second agent is launched by the <code>spawn</code> function.</p>
+<p><important>that the first agent is launched by the <code>startJanus</code> function, and the second agent is launched by the <code>spawn</code> function.</important></p>
 <pre class="prettyprint lang-sarl linenums">import io.janusproject.Boot
 import myprogram.MyAgent
 class MyProgram {
   static def main(args : String[]) : void {
     var janusKernel = Boot::startJanus(
-      null,
       typeof(MyAgent),
       args)
     janusKernel.spawn(typeof(MyAgent), args)
@@ -104,8 +102,8 @@ class MyProgram {
 <p>Now, you are ready for developing agents with the SARL language. Please read the rest of the documentation for obtaining more details.</p>
 <p><a href="../SARLDocumentationSuite.html">Next&gt;</a></p>
 <h3 id="Legal_Notice">4. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>

@@ -244,9 +244,9 @@ event Ping {
 <h4 id="Method_2_Execute_all_the_agents_in_a_single_instance_of_Janus">5.3. Method 2: Execute all the agents in a single instance of Janus</h4>
 <p>The principle is to launch a single instance of Janus, and run all the agents inside. Because of the design of the Janus platform, we must define an agent that will launch the other agents. This agent is named <code>BootAgent</code>. It is defined below.</p>
 <h5 id="Defining_the_Boot_agent">5.3.1. Defining the Boot agent</h5>
-<p>The boot agent uses the <code>DefaultContextInteractions</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type. When the boot agent has launched the two expected agents, it is killing itself. This is done with the <code>killMe</code> function, which is provided by the <code>Lifecycle</code> capacity.</p>
+<p>The boot agent uses the <code>Lifecycle</code> capacity for launching agents in the default context. This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code> for launching an agent of the given type. When the boot agent has launched the two expected agents, it is killing itself. This is done with the <code>killMe</code> function, which is provided by the <code>Lifecycle</code> capacity too.</p>
 <pre class="prettyprint lang-sarl linenums">agent BootAgent {
-  uses DefaultContextInteractions, Lifecycle
+  uses Lifecycle
   on Initialize {
     spawn( PongAgent )
     spawn( PingAgent )
@@ -268,8 +268,8 @@ event Ping {
 </pre>
 <p>The file <code>sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The string <code>io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap. The first argument after the bootstrap is the qualified name of the agent to launch.</p>
 <h3 id="Legal_Notice">6. Legal Notice</h3>
-<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Draft Release<br> Release: 2016-11-21</p>
-<p>Copyright © 2014-2016 the original authors or authors.</p>
+<p>Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")<br> Version: 0.5<br> Status: Stable Release<br> Release: 2017-03-18</p>
+<p>Copyright © 2014-2017 the original authors or authors.</p>
 <p>Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License. You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 							</div>
 <hr/><p><small>The SARL Documentation is generated with <a href='http://www.jnario.org' target='_blank'>Jnario</a></small></p>
