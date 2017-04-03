@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.5.4</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1>Changes in 0.5.4</h1>
+
+<p>Release date: 2017-04-03.</p>
+
+<h2>[lang]</h2>
+
+<ul>
+<li>Add the missed static modifier to the synthetic methods that are related to the default parameter values. (<a href="http://github.com/sarl/sarl/commit/5890853a00b3d779da63435073b954982deb17a8">details</a>)</li>
+<li>Generate the inline constant expressions with the Java format in order to avoid casting problem. (<a href="http://github.com/sarl/sarl/commit/0ecafbacbd455c14360cb3d2cdf795fc4c3054a8">details</a>)</li>
+</ul>
+
+<h2>[eclipse]</h2>
+
+<ul>
+<li>SARL Explorer:
+
+<ul>
+<li>Use the SARL icons for elements in the default package. (<a href="http://github.com/sarl/sarl/commit/c7738970210b7b2e6cef1d4ba792167777326658">details</a>)</li>
+<li>Do not show hidden folders in explorer. (<a href="http://github.com/sarl/sarl/commit/63f60e354ddf2f25276295ccc5f5aa7f35739a69">details</a>)</li>
+<li>Change the default config of the SARL explorer. (<a href="http://github.com/sarl/sarl/commit/99788c4d40312ef53e81356577e5cba0286e9dd9">details</a>)</li>
+<li>Display empty leaf packages in the explorer. (<a href="http://github.com/sarl/sarl/commit/2c911703bd5f700716397fe1c3927dcc2379bcc7">details</a>)</li>
+</ul></li>
+<li>Avoid the exceptions related to bad references when creating a new SARL element. (<a href="http://github.com/sarl/sarl/commit/0f0212f41a71e38b162ca6a9eadd6dd4b44809dd">details</a>)</li>
+<li>Add SARL menu (<a href="http://github.com/sarl/sarl/commit/bddb0f6a491fe848918d0c57dc1b848888878490">details</a>)</li>
+</ul>
+
+<h2>[contribs]</h2>
+
+<ul>
+<li>Add the SARL Exprience Index computer. (<a href="http://github.com/sarl/sarl/commit/8684948508baf98f8dc91c3be9a9fe3332223adc">commit 1</a>, <a href="http://github.com/sarl/sarl/commit/7ee7c790c4443ad28149f2269cb2defc43625ad8">commit 2</a>, <a href="http://github.com/sarl/sarl/commit/ea44e7cb1117c3e5309709f88a41b717f1b95fb0">commit 3</a>, <a href="http://github.com/sarl/sarl/commit/c3bb89f4c238e4f96425c9785482543b42270dc8">commit 4</a>)</li>
+</ul>
+
+<h2>[mwe2]</h2>
+
+<ul>
+<li>Add newTypeRef() in the public API for the code builders. (<a href="http://github.com/sarl/sarl/commit/c9cdfb945475f107281c0461a51ef0f528f12a3a">details</a>)</li>
+<li>Fixing invalid generation path. (<a href="http://github.com/sarl/sarl/commit/5b33968f9f2dcf2f34f1c23d43173c46af5e92e0">details</a>)</li>
+</ul>
+
+<h2>[all]</h2>
+
+<ul>
+<li>Remove &#39;.sarlbin&#39; files from the generated archives. (<a href="http://github.com/sarl/sarl/commit/0bd0c2cb0cb68e61f508283dd9b28fa26542719a">details</a>)</li>
+</ul>
+
+<h1>Previous changes</h1>
+
+<ul>
+<li><a href="./changes_0.5.3.html">Changes in the version 0.5.3</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../news/index.html">SARL News</a></li>
+        <li><a href="../about/index.html">About SARL</a></li>
+        <li><a href="../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - IRTES - UTBM</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-jnario.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+  </body>
+</html>
