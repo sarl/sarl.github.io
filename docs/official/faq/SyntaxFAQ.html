@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>FAQ on the SARL language Syntax</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="faq-on-the-sarl-language-syntax">FAQ on the SARL language Syntax</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-general-syntax">1. General Syntax</a></li>
+<ul>
+  <li><a href="#1-1-can-i-use-the-same-syntax-as-in-java-for-number-literals">1.1. Can I use the same syntax as in Java for number literals?</a></li>
+  <li><a href="#1-2-why-can-i-not-put-a-string-in-the-package-name">1.2. Why can I not put a string in the package name?</a></li>
+  <li><a href="#1-3-is-the-val-keyword-defining-a-constant">1.3. Is the 'val' keyword defining a constant?</a></li>
+  <li><a href="#1-4-why-cannot-use-the-syntax-a-0-for-arrays">1.4. Why cannot use the syntax 'a[0]' for arrays?</a></li>
+  <li><a href="#1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the '<>' notation for generic parameters?</a></li>
+  <li><a href="#1-6-how-can-i-create-instances-of-anonymous-classes">1.6. How can I create instances of anonymous classes?</a></li>
+  <li><a href="#1-7-java-syntax-for-anonymous-classes-is-allowed">1.7. Java syntax for anonymous classes is allowed</a></li>
+  <li><a href="#1-8-ambiguous-call-to-capacity-function">1.8. Ambiguous call to capacity function</a></li>
+</ul>
+
+<p><li><a href="#2-legal-notice">2. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<h2 id="1-general-syntax">1. General Syntax</h2>
+
+<h3 id="1-1-can-i-use-the-same-syntax-as-in-java-for-number-literals">1.1. Can I use the same syntax as in Java for number literals?</h3>
+
+<p><strong>No</strong>.</p>
+
+<p>When a decimal point is written in the literal,
+the fractional part and the mantissa part must
+be specify also, even if these parts are equal
+to zero.  Consequently:</p>
+
+<ul>
+<li><code class="prettyprint">123.0</code> is correct;</li>
+<li><code class="prettyprint">0.123</code> is incorrect;</li>
+<li><code class="prettyprint">123.</code> is correct;</li>
+<li><code class="prettyprint">.123</code> is incorrect.</li>
+</ul>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div>
+<h3 id="1-2-why-can-i-not-put-a-string-in-the-package-name">1.2. Why can I not put a string in the package name?</h3>
+
+<p>It is not allowed to put a SARL keyword, such as
+<code class="prettyprint">agent</code>, in the name of a package.</p>
+
+<p>But, if you prefix with the <code class="prettyprint">^</code> character the string
+that corresponds to a keyword, then it is possible
+to obtain a package name with one of its components
+equals to a SARL keyword:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div>
+<h3 id="1-3-is-the-val-keyword-defining-a-constant">1.3. Is the &#39;val&#39; keyword defining a constant?</h3>
+
+<p><strong>Yes and No</strong>.</p>
+
+<p>Indeed, the <code class="prettyprint">val</code> keyword defines a name that it could be initialized only once time.
+It is similar to the <code class="prettyprint">final</code> modifier of the Java language.</p>
+
+<p>Consider the example below: two values are defined, <code class="prettyprint">a</code> and <code class="prettyprint">b</code>.
+The <code class="prettyprint">a</code> variable is a real constant because it has a raw type and it is initialized.
+The <code class="prettyprint">b</code> variable is not a real constant because it is a reference to an object.
+The reference is constant, <em>but</em> the referred object is not. Consequently, it is still
+possible to call the setters of <code class="prettyprint">b</code>. </p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="kd">val</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+</code></pre></div>
+<h3 id="1-4-why-cannot-use-the-syntax-a-0-for-arrays">1.4. Why cannot use the syntax &#39;a[0]&#39; for arrays?</h3>
+
+<p>In SARL, the array type may be written with the classic array syntax, such as
+<code class="prettyprint">int[]</code>, or the object-oriented syntax, such as <code class="prettyprint">List&lt;Integer&gt;</code>.</p>
+
+<p>SARL considers that the each array is a list of something.
+Consequently, retrieving the values of the array must be done with <code class="prettyprint">get(int)</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
+    <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+
+    <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+</code></pre></div>
+<h3 id="1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the &#39;&lt;&gt;&#39; notation for generic parameters?</h3>
+
+<p>In SARL, the empty generic parameter list, written <code class="prettyprint">&lt;&gt;</code> is
+not supported: a generic type expression must be written between them.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
+</code></pre></div>
+<p>For solving this problem, two choices: i) add a type expression between
+&lt; and &gt;; ii) remove the generic parameter list.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">firstSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="n">secondSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span>
+</code></pre></div>
+<h3 id="1-6-how-can-i-create-instances-of-anonymous-classes">1.6. How can I create instances of anonymous classes?</h3>
+
+<p>In SARL, the creation of anonymous classes (interface implementation...)
+must be done with a closure.</p>
+
+<p>Consider the definition of the following interface:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
+         <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span>
+    <span class="o">}</span>
+</code></pre></div>
+<p>The on-the-fly definition and instantiation of an instance of this interface,
+a.k.a. anonymous class definition in the Java community, could be written is SARL
+with the following closure:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">instance</span> <span class="o">:</span> <span class="n">MyInterface</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="o">[</span> <span class="n">parameter</span> <span class="o">|</span> <span class="cm">/* The code of myfunction() */</span> <span class="o">]</span>
+</code></pre></div>
+<h3 id="1-7-java-syntax-for-anonymous-classes-is-allowed">1.7. Java syntax for anonymous classes is allowed</h3>
+
+<p>In SARL, it is recommended tp create anonymous classes (interface implementation...)
+must be done with a closure (see previous question).</p>
+
+<p>The Java-based syntax for defining an anonymous class&#39;s instance is allowed, but not recommended
+in the SARL language. It means that the following code is valid:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyInterface</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+            <span class="cm">/* The code of myfunction() */</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="1-8-ambiguous-call-to-capacity-function">1.8. Ambiguous call to capacity function</h3>
+
+<p>When the calling a capacity function, the SARL compiler complains with an &quot;ambiguous call&quot; error.
+In the code below, the function <code class="prettyprint">myfunction</code> is defined in the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code>.
+The call to <code class="prettyprint">myfunction</code> in the agent definition is the place where the error occurs.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">C1</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">myfunction</span>
+        <span class="kd">def</span> <span class="n">myfunction2</span>
+    <span class="o">}</span>
+    <span class="kd">capacity</span> <span class="nc">C2</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">myfunction</span>
+        <span class="kd">def</span> <span class="n">myfunction3</span>
+    <span class="o">}</span>
+    <span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">C1</span><span class="o">,</span> <span class="n">C2</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">myfunction</span>
+            <span class="n">myfunction2</span>
+            <span class="n">myfunction3</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<p>This error is standard because the functions of the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code> are implicitly accessible
+in the scope of the agent definition, see <code class="prettyprint">uses</code> keyword definition. The SARL compiler is then unable
+to determine that is the function to call.</p>
+
+<p>For solving this issue, the developer must explicitly call the correct version of <code class="prettyprint">myfunction</code> by
+getting the capacity. The following code is the correct call to the function if the function in the
+capacity <code class="prettyprint">C1</code> should be called:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">getSkill</span><span class="o">(</span><span class="n">C1</span><span class="o">).</span><span class="n">myfunction</span>
+</code></pre></div>
+<h2 id="2-legal-notice">2. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-jnario.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+  </body>
+</html>

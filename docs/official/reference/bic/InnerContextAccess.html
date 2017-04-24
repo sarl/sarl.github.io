@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>InnerContextAccess Capacity</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="innercontextaccess-capacity">InnerContextAccess Capacity</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-retrieving-the-inner-context">1. Retrieving the Inner Context</a></li>
+<li><a href="#2-members-of-an-agent">2. Members of an Agent</a></li>
+<li><a href="#3-testing-if-an-element-is-related-to-the-inner-context">3. Testing if an element is related to the inner context</a></li>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li>
+
+</ul>
+
+<p>The built-in capacity <code class="prettyprint">InnerContextAccess</code> provides access to the inner context of the agent.
+This is a key feature for creating holonic agent implementation.
+The context supported by this built-in capacity is the &quot;inner context,&quot; illustrated by the
+bottom context in the figure above.</p>
+
+<h2 id="1-retrieving-the-inner-context">1. Retrieving the Inner Context</h2>
+
+<p>For retrieving the inner context of an agent, this built-in capacity provides the following function:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getInnerContext</span> <span class="o">:</span> <span class="n">AgentContext</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">InnerContextAccess</span>
+        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">getInnerContext</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="2-members-of-an-agent">2. Members of an Agent</h2>
+
+<p>For retrieving information on the member agents of the current agent, several functions are
+provided by this built-in capacity.
+A member agent is an agent that is not the calling agent, and is a member of at least
+one space of the inner context.</p>
+
+<p>The first function replies if the calling agent has other agents as members of its inner context:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">hasMemberAgent</span> <span class="o">:</span> <span class="kt">boolean</span>
+</code></pre></div>
+<p>The second function replies the number of agents that are members of the inner context of the calling agent:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getMemberAgentCount</span> <span class="o">:</span> <span class="kt">int</span>
+</code></pre></div>
+<p>The third function replies all the member agents in the inner context:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getMemberAgents</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">InnerContextAccess</span>
+        <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">boolean</span>
+        <span class="kd">var</span> <span class="n">n</span> <span class="o">:</span> <span class="kt">int</span>
+        <span class="kd">var</span> <span class="n">m</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">hasMemberAgent</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">getMemberAgentCount</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">getMemberAgents</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="3-testing-if-an-element-is-related-to-the-inner-context">3. Testing if an element is related to the inner context</h2>
+
+<p>The <code class="prettyprint">InnerContextAccess</code> provides a collection of utility functions that test if their parameters
+are related to the inner context.</p>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">isInnerDefaultSpace(Space)</code></td>
+<td>tests if the given space is the default space of the inner context.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">isInnerDefaultSpace(SpaceID)</code></td>
+<td>tests if the default space of the inner context has the given identifier.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">isInnerDefaultSpace(UUID)</code></td>
+<td>tests if the default space of the inner context has the given identifier.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">isInInnerDefaultSpace(Event)</code></td>
+<td>tests if the given event was emitted in the default space of the inner context.</td>
+</tr>
+</tbody></table>
+
+<p>The following example illustrates the use of the <code class="prettyprint">isInInnerDefaultSpace</code> function in the guard
+of an behavior unit. In this example, the behavior unit is run only if the event
+of type <code class="prettyprint">AnEvent</code> was emitted in the default space of the inner context.</p>
+
+<p><note>According to the <a href="../GeneralSyntax.html">General Syntax Reference</a>,
+the <code class="prettyprint">event.isInnerDefaultSpace</code> is equivalent to <code class="prettyprint">isInnerDefaultSpace(event)</code>.</note></p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">inInnerDefaultSpace</span> <span class="o">]</span> <span class="o">{</span>
+        <span class="c1">// Do something with the event when it was emitted in the inner default space</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-jnario.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+  </body>
+</html>

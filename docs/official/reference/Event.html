@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Event Reference</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="event-reference">Event Reference</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-event-vs-message">1. Event vs. Message</a></li>
+<li><a href="#2-defining-an-event">2. Defining an Event</a></li>
+<ul>
+  <li><a href="#2-1-define-an-empty-event">2.1. Define an empty event</a></li>
+  <li><a href="#2-2-define-an-event-with-attributes">2.2. Define an event with attributes</a></li>
+  <li><a href="#2-3-define-an-event-with-value-attributes">2.3. Define an event with value attributes</a></li>
+  <li><a href="#2-4-extending-events">2.4. Extending Events</a></li>
+  <li><a href="#2-5-modifiers">2.5. Modifiers</a></li>
+</ul>
+
+<p><li><a href="#3-reserved-events">3. Reserved Events</a></li>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<p>This document describes how to define events in SARL. Before reading this document, we recommend that you read
+the <a href="./GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p>An event is one of the core concepts in SARL. It is a data structure composed of attributes where
+each attribute has a name, a type, and a value.</p>
+
+<p>Events are exchanged among the agents or the behavioral units of agents,
+inside a given <a href="./Space.html">Space</a>.</p>
+
+<p>Each event has:</p>
+
+<ul>
+<li>a type, i.e. its qualified name;</li>
+<li>a source, the identifier of the sender of the event; and</li>
+<li>a collection of name-value pairs, i.e. the attributes of the event.</li>
+</ul>
+
+<h2 id="1-event-vs-message">1. Event vs. Message</h2>
+
+<p>In computer-science literature, there are two main approaches 
+for communicating between entities: (1) an event and (2) a message.</p>
+
+<p>An event and a message are similar in that they each have a name 
+or type), a source, and optional data (arguments or parameters).
+The difference is in whether there is a receiver:
+an event does not specify a receiver,
+while a message needs to have at least
+one receiver (even if it is a group such as &quot;all&quot;<br>
+possible receivers).</p>
+
+<p>Because the event approach is more general, it is preferred 
+by the designers of SARL.</p>
+
+<p>So, to send data to another entity in SARL,
+you create an instance of an event and emit
+the event in a <a href="./Space.html">Space</a>.
+The sending API is detailed in the <a href="./BIC.html">Built-in Capacity
+Reference</a>.</p>
+
+<p><note>There is no message concept in SARL. All communication is done by using an <code class="prettyprint">Event</code>.</note></p>
+
+<h2 id="2-defining-an-event">2. Defining an Event</h2>
+
+<h3 id="2-1-define-an-empty-event">2.1. Define an empty event</h3>
+
+<p>An event is defined with the <code class="prettyprint">event</code> keyword followed by the name of the event (without the qualified name of its package,
+which is inferred from the <code class="prettyprint">package</code> keyword, if present).</p>
+
+<p>When an event does not contain any additional data (so is &quot;empty&quot;), nothing further is required (though an empty
+block is allowed).</p>
+
+<p>The example below contains the definition of <code class="prettyprint">Event1</code> and <code class="prettyprint">Event2</code>, which are both empty.
+The first event is defined with the &quot;empty block&quot; syntax.
+The second event is defined with the &quot;nothing&quot; syntax.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>  <span class="o">}</span>
+    <span class="kd">event</span> <span class="nc">Event2</span>
+</code></pre></div>
+<h3 id="2-2-define-an-event-with-attributes">2.2. Define an event with attributes</h3>
+
+<p>An Event may can carry additional information beyond its name (or type).
+This information is described by a set of attributes (or typed 
+key/value pairs). Each attribute is declared according to the 
+&quot;Field Declaration&quot; of the <a href="./GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p>The following code example defines the event <code class="prettyprint">MyEvent</code> with three attributes.
+Each declaration of the attributes illustrates one possible syntax for defining a field:</p>
+
+<ul>
+<li>declaration with explicit typing: <code class="prettyprint">var number : Integer</code></li>
+<li>declaration with type inference: <code class="prettyprint">var string = &quot;abc&quot;</code></li>
+<li>declaration with free inferred element: <code class="prettyprint">var something</code></li>
+</ul>
+
+<p>According to the type inference mechanism used by SARL, the attribute <code class="prettyprint">something</code> will have the type <code class="prettyprint">Object</code>.</p>
+
+<p><note> Because of the use of the <code class="prettyprint">var</code> keyword, the values of these attributes can be modified.</note></p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
+        <span class="kd">var</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+        <span class="kd">var</span> <span class="n">something</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="2-3-define-an-event-with-value-attributes">2.3. Define an event with value attributes</h3>
+
+<p>Events in SARL will carry data that is unmodifiable 
+when an attribute is defined using the <code class="prettyprint">val</code> keyword.</p>
+
+<p><importantnote> The <code class="prettyprint">val</code> keyword has the same semantics as the <code class="prettyprint">final</code> modifier in
+the Java language. It means that an element defined with <code class="prettyprint">val</code> can be initialized only once. It
+also means that the element is read-only.
+But if the element is a reference to an object, then the referenced object
+is not read-only (only the initial reference is).</importantnote></p>
+
+<p>Because the <code class="prettyprint">val</code> keyword defines a single-initialization
+variable, there should be a way to specify the initial value.
+The initial value can be specified at the end of the <code class="prettyprint">val</code>
+directive or by specifying a constructor.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
+        <span class="kd">val</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
+
+        <span class="k">new</span><span class="o">(</span><span class="n">nb</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">nb</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="2-4-extending-events">2.4. Extending Events</h3>
+
+<p>In some use cases, it is useful to specialize the definition
+of an event. This mechanism is supported by the inheritance
+feature of SARL, which has the same semantic as the inheritance
+mechanism as the Java object-oriented language.</p>
+
+<p>The extended event is specified just after the <code class="prettyprint">extends</code> keyword.</p>
+
+<p><veryimportantnote> An event type can extend <strong>only one</strong> other event type.  This is similar to the
+model for class extensions in the Java language.</veryimportantnote></p>
+
+<h4 id="declaration">Declaration</h4>
+
+<p>In the following code, the first event is defined with the name <code class="prettyprint">Event1</code> and an attribute named <code class="prettyprint">string</code>.
+A second event <code class="prettyprint">Event2</code>, is defined as an extension of the first event. It contains a new attribute named
+<code class="prettyprint">number</code>.
+It is now possible to create instances of these events. For <code class="prettyprint">Event1</code>, only the attribute <code class="prettyprint">string</code>
+is available. For <code class="prettyprint">Event2</code>, two attributes are available (<code class="prettyprint">Event2</code> inherits one field from
+<code class="prettyprint">Event2</code> and defines one field).</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">string</span> <span class="o">:</span> <span class="n">String</span>
+    <span class="o">}</span>
+    <span class="kd">event</span> <span class="nc">Event2</span> <span class="k">extends</span> <span class="n">Event1</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="kt">int</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h4 id="use">Use</h4>
+
+<p>The following code illustrates the use of event instances.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Create an instance of Event1 and set its attribute.</span>
+    <span class="kd">var</span> <span class="n">e1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event1</span>
+    <span class="n">e1</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+    <span class="c1">// Create an instance of Event2 and set its attributes.</span>
+    <span class="kd">var</span> <span class="n">e2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event2</span>
+    <span class="n">e2</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+    <span class="n">e2</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">345</span>
+</code></pre></div>
+<h3 id="2-5-modifiers">2.5. Modifiers</h3>
+
+<p>Modifiers are used to modify declarations of types and type members.
+This section introduces the modifiers for the event.
+The modifiers are usually written before the keyword for defining the event.</p>
+
+<p>The complete description of the modifiers&#39; semantic is available in
+<a href="./OOP.html">this section</a>.</p>
+
+<h4 id="event-modifiers">Event Modifiers</h4>
+
+<p>An event may be declared with one or more modifiers, which affect its behavior:</p>
+
+<ul>
+<li>Access modifiers:
+
+<ul>
+<li><code class="prettyprint">public</code>: the behavior is accessible from any other type (default);</li>
+<li><code class="prettyprint">package</code>: the behavior is accessible from only the types in the same package.</li>
+</ul></li>
+<li><code class="prettyprint">final</code>: cannot be extended.</li>
+</ul>
+
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">event</span> <span class="nc">Example1</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">event</span> <span class="nc">Example2</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">final</span> <span class="kd">event</span> <span class="nc">Example3</span> <span class="o">{</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h4 id="field-modifiers">Field Modifiers</h4>
+
+<p>The modifiers for the fields in an event are:</p>
+
+<ul>
+<li>Access modifiers:
+
+<ul>
+<li><code class="prettyprint">public</code>: the field is accessible from everywhere.</li>
+</ul></li>
+</ul>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
+</code></pre></div>
+<h2 id="3-reserved-events">3. Reserved Events</h2>
+
+<p>Several events are defined and reserved by the SARL Core Specification.
+They describe the minimal set of events that a runtime environment must support to run a SARL program.</p>
+
+<p><veryimportantnote> You must not define an event with a fully qualified name equals to one of the reserved
+events.</veryimportantnote></p>
+
+<p>Two types of reserved events exist:</p>
+
+<ul>
+<li>the events reserved in the SARL Core Specification for the <a href="./Agent.html">agent&#39;s life cycle</a>; and</li>
+<li>the events supported by the <a href="./BIC.html">Built-in Capacities</a>.</li>
+</ul>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-jnario.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+  </body>
+</html>

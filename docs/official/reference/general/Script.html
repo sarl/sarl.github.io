@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Script Format</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="script-format">Script Format</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-package-declaration">1. Package Declaration</a></li>
+<li><a href="#2-import-directive">2. Import Directive</a></li>
+<li><a href="#3-static-import-directive">3. Static Import Directive</a></li>
+<li><a href="#4-top-level-features">4. Top-Level Features</a></li>
+<li><a href="#5-acknowledgements">5. Acknowledgements</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
+
+</ul>
+
+<p>A script is a text file containing SARL code. Each script must follow the format:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;package declaration&gt;
+&lt;imports&gt;
+&lt;top-level features&gt;
+</code></pre></div>
+<h2 id="1-package-declaration">1. Package Declaration</h2>
+
+<p>To structure your software, it is common to put scripts in different packages (as Java does for the classes).</p>
+
+<p>The keyword <code class="prettyprint">package</code> permits you to define the name of the package associated with a
+SARL file. Consequently, all the features defined in the script are contained in this package,
+and their names are qualified with the name of the package.</p>
+
+<p>The package&#39;s name also affects the generation of the Java files implementing the SARL script. Indeed,
+all the Java files are generated in a folder with the name of the package.</p>
+
+<p>In the following example, the qualified name of an agent defined in the file is <code class="prettyprint">io.sarl.docs.reference.gsr</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
+</code></pre></div>
+<p><note> If the <code class="prettyprint">package</code> keyword is not used, the default package will be used. The default
+package has an empty name. It is recommended in the SARL Best Practices to specify a package&#39;s
+name.</note> </p>
+
+<h2 id="2-import-directive">2. Import Directive</h2>
+
+<p>The <em>imports</em> section of a SARL script is dedicated to declaring imported classes.
+Each time you want to use a feature defined in another package, (a different file)
+you include it with the <code class="prettyprint">import</code> directive.</p>
+
+<p><note>This directive works in a similar way as in the Java language.</note></p>
+
+<p>The <code class="prettyprint">import</code> keyword is followed by the qualified name of the feature to import.
+In the following code, the first directive imports <code class="prettyprint">java.util.List</code>.</p>
+
+<p>Optionally, you can import all the features defined by a package.
+This can be done by replacing the name of the feature by the
+wildcard character <code class="prettyprint">*</code>. The second import directive is an example of the inclusion of
+all the classes defined in <code class="prettyprint">java.net</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">java.util.List</span>
+    <span class="kn">import</span> <span class="nn">java.net.*</span>
+</code></pre></div>
+<h2 id="3-static-import-directive">3. Static Import Directive</h2>
+
+<p>Sometimes, it is necessary to import a class to access its statically defined functions,
+i.e., a function that can be called without any associated object&#39;s instance.</p>
+
+<p>To do this, you may invoke the static function with the fully qualified name of the
+class. For example, the function <code class="prettyprint">max</code> is invoked with this syntax in the example below.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">java.util.Collections</span>
+    <span class="c1">//...</span>
+
+            <span class="kd">var</span> <span class="n">col</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+            <span class="nl">Collections:</span><span class="o">:</span><span class="n">max</span><span class="o">(</span><span class="n">col</span><span class="o">)</span>
+</code></pre></div>
+<p>As an alternative, the static-import mechanism permits you to reference the function directly.
+A static import is specified with the <code class="prettyprint">static</code> keyword just after the <code class="prettyprint">import</code> keyword.
+The following identifier must be a fully qualified name of one or more functions (with the
+wildcard character).</p>
+
+<p>In the example below, all the functions defined in <code class="prettyprint">java.util.Collections</code> are imported.
+Following this import, it is possible to invoke a static function with its unqualified
+name, as the call to <code class="prettyprint">max</code> below.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">Collections</span><span class="o">.*</span>
+    <span class="c1">//...</span>
+
+            <span class="kd">var</span> <span class="n">col</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+            <span class="n">max</span><span class="o">(</span><span class="n">col</span><span class="o">)</span>
+</code></pre></div>
+<h2 id="4-top-level-features">4. Top-Level Features</h2>
+
+<p>Most of a SARL script consists of the definitions of top-level features. These features are the
+core concepts of SARL, such as <code class="prettyprint">agent</code>, <code class="prettyprint">event</code>, or <code class="prettyprint">capacity</code>.
+All these top-level features are documented in their own reference documents.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
+    <span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">event</span> <span class="nc">MyEvent</span>
+
+    <span class="kd">capacity</span> <span class="nc">MyCapacity</span> <span class="o">{</span>
+    <span class="o">}</span>
+</code></pre></div>
+<p>Additionally, it is possible to write object-oriented statements with
+the SARL syntax for <code class="prettyprint">class</code>, <code class="prettyprint">interface</code>, <code class="prettyprint">enum</code>, and <code class="prettyprint">annotation</code>.
+The inclusion of these object-oriented statements will help you to write your
+application with a single language: SARL. The object-oriented programmation support
+is described in the <a href="../OOP.html">reference documentation</a>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
+
+    <span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">enum</span> <span class="nc">MyEnum</span> <span class="o">{</span>
+        <span class="n">CONSTANT</span>
+    <span class="o">}</span>
+
+    <span class="kd">annotation</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
+
+<p>This documentation is inspired by the documentations from the
+<a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
+<a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-jnario.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Logging Capacity</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="logging-capacity">Logging Capacity</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-print-an-error-or-a-warning-message">1. Print an error or a warning message</a></li>
+<li><a href="#2-print-an-information-message">2. Print an information message</a></li>
+<li><a href="#3-print-a-debugging-message">3. Print a debugging message</a></li>
+<li><a href="#4-retrieve-and-change-the-logging-level">4. Retrieve and change the logging level</a></li>
+<li><a href="#5-testing-the-logging-level">5. Testing the logging level</a></li>
+<li><a href="#6-change-the-name-of-the-logger">6. Change the name of the logger</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+
+</ul>
+
+<p>The built-in capacity <code class="prettyprint">Logging</code> provides tools for printing messages in the log associated to the agent.</p>
+
+<h2 id="1-print-an-error-or-a-warning-message">1. Print an error or a warning message</h2>
+
+<p>For printing an error or a warning message, the two following functions
+are provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+    <span class="kd">def</span> <span class="nf">warning</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+</code></pre></div>
+<p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
+The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.
+The <code class="prettyprint">exception</code> parameter may be given for printing an exception that is the cause of the logging action.</p>
+
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+            <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
+            <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+            <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="2-print-an-information-message">2. Print an information message</h2>
+
+<p>For printing an information message, the following function is provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+</code></pre></div>
+<p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
+The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">info</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="3-print-a-debugging-message">3. Print a debugging message</h2>
+
+<p>For printing a debugging message, the following function is provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+</code></pre></div>
+<p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
+The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">debug</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="4-retrieve-and-change-the-logging-level">4. Retrieve and change the logging level</h2>
+
+<p>The printable messages are associated to a level of logging (error, warning, info, debug).
+If a message is given to the logging system, and the current output level is lower
+than the message&#39;s level, then the message is not output.</p>
+
+<p>For retrieving the current logging level, the following function is provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getLogLevel</span> <span class="o">:</span> <span class="kt">int</span>
+</code></pre></div>
+<p>The replied value is 0 when no message is printed, 1 if only error messages are printed, 2 for error and warning messages, etc.</p>
+
+<p>For changing the current logging level, the following function is provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">setLogLevel</span><span class="o">(</span><span class="n">level</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">l</span> <span class="o">=</span> <span class="n">getLogLevel</span>
+            <span class="n">setLogLevel</span><span class="o">(</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="5-testing-the-logging-level">5. Testing the logging level</h2>
+
+<p>The following functions permits testing if a specific logging level is enabled:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">isErrorLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isWarningLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isInfoLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isDebugLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
+               <span class="n">isErrorLogEnabled</span>
+            <span class="o">||</span> <span class="n">isWarningLogEnabled</span>
+            <span class="o">||</span> <span class="n">isInfoLogEnabled</span>
+            <span class="o">||</span> <span class="n">isDebugLogEnabled</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="6-change-the-name-of-the-logger">6. Change the name of the logger</h2>
+
+<p>By default, the logging message contains the identifier of the agent associated to the <code class="prettyprint">Logging</code> capacity.</p>
+
+<p>Sometimes, it is helpful to change the printed name of the agent.
+The following function gives the opportunity to change this name.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">setLoggingName</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">setLoggingName</span><span class="o">(</span><span class="s">&quot;the name of the agent&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-jnario.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+  </body>
+</html>

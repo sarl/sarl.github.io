@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Capacity Reference</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="capacity-reference">Capacity Reference</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-defining-a-capacity">1. Defining a Capacity</a></li>
+<ul>
+  <li><a href="#1-1-capacity-definition">1.1. Capacity Definition</a></li>
+  <li><a href="#1-2-extending-a-capacity">1.2. Extending a Capacity</a></li>
+  <li><a href="#1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</a></li>
+  <li><a href="#1-4-modifiers">1.4. Modifiers</a></li>
+</ul>
+
+<p><li><a href="#2-built-in-capacities">2. Built-in Capacities</a></li>
+<li><a href="#3-use-of-the-capacities">3. Use of the Capacities</a></li>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<p>This document describes how to define Capacities in SARL. Before reading this document, we recommend that you read
+the <a href="./GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p>An <em>Action</em> is code (a public method or function) that transforms a part of the designed system or its environment.
+This transformation guarantees resulting properties if the system before the transformation satisfies
+a set of constraints. An Action is defined in terms of pre- and post-conditions.</p>
+
+<p>A <em>Capacity</em> is the specification of a collection of Actions. This specification makes no assumptions about the
+implementation of each Action. It is used to specify what an Agent can do, what behavior is required for its execution.</p>
+
+<p>A <em>Skill</em> is a collections of Actions implementing a Capacity as described in this specification.</p>
+
+<p>An Agent can dynamically evolve by acquiring (learning) new Capacities, and it can also dynamically change the Skill
+associated with a given Capacity. Acquiring a new Capacity enables an Agent to get access to new behaviors.
+This provides Agents with a self-adaptation mechanism that allows them to dynamically change their architecture
+according to their current needs and goals.</p>
+
+<h2 id="1-defining-a-capacity">1. Defining a Capacity</h2>
+
+<h3 id="1-1-capacity-definition">1.1. Capacity Definition</h3>
+
+<p>A Capacity is the specification of a collection of Actions. Consequently, only Action signatures can be defined inside
+a Capacity: no attribute or field is allowed, and no body (code) for the Action may be present.</p>
+
+<p>The definition of a Capacity is done with the <code class="prettyprint">capacity</code> keyword. Below, a Capacity that permits logging messages
+is defined. This Capacity enables an Agent to log information and debugging messages.</p>
+
+<p><note>Defining a Capacity without Actions is a symptom of a design problem.</note></p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">Logging</span> <span class="o">{</span>
+        <span class="c1">// Log an information message</span>
+        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+        <span class="c1">// Log a debugging message</span>
+        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="1-2-extending-a-capacity">1.2. Extending a Capacity</h3>
+
+<p>In some situations, it is useful to specialize the definition of a Capacity. Capacity specialization is supported
+by the inheritance feature of SARL, which has the same semantics as the inheritance mechanism of the Java
+object-oriented language.</p>
+
+<p>The extended Capacity is specified just after the <code class="prettyprint">extends</code> keyword.</p>
+
+<p><veryimportantnote> A Capacity type can extend <strong>zero-to-many</strong> other Capacity types.
+This is similar to the implementation of interfaces in the Java language.</veryimportantnote></p>
+
+<p>In the following code, the <code class="prettyprint">Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">ErrorLogging</span> <span class="k">extends</span> <span class="n">Logging</span> <span class="o">{</span>
+        <span class="c1">// Log a error message</span>
+        <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</h3>
+
+<p>In some situations, it is useful to define a Capacity by extending more than one Capacity.
+Below, the <code class="prettyprint">Cap3</code> Capacity is defined as an extension of the Capacities <code class="prettyprint">Cap1</code> and <code class="prettyprint">Cap2</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">Cap1</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">action1</span>
+    <span class="o">}</span>
+    <span class="kd">capacity</span> <span class="nc">Cap2</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">action2</span>
+    <span class="o">}</span>
+    <span class="kd">capacity</span> <span class="nc">Cap3</span> <span class="k">extends</span> <span class="n">Cap1</span><span class="o">,</span> <span class="n">Cap2</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">action3</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h3 id="1-4-modifiers">1.4. Modifiers</h3>
+
+<p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for Capacity.
+The modifiers are usually written before the keyword defining the Capacity.</p>
+
+<p>The complete description of the modifier semantics is available in
+<a href="./OOP.html">this section</a>.</p>
+
+<h4 id="capacity-modifiers">Capacity Modifiers</h4>
+
+<p>A Capacity may be declared with one or more modifiers, which affect its runtime behavior:</p>
+
+<ul>
+<li>Access modifiers:
+
+<ul>
+<li><code class="prettyprint">public</code>: the Capacity is accessible from any other type (default);</li>
+<li><code class="prettyprint">package</code>: the Capacity is accessible only from types in the same package.</li>
+</ul></li>
+</ul>
+
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">capacity</span> <span class="nc">Example1</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">capacity</span> <span class="nc">Example2</span> <span class="o">{</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h4 id="method-modifiers">Method Modifiers</h4>
+
+<p>The modifiers for the Actions (methods) in a Capacity are:</p>
+
+<ul>
+<li>Access modifiers:
+
+<ul>
+<li><code class="prettyprint">public</code>: the Action is accessible from any type.</li>
+</ul></li>
+</ul>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Public access function</span>
+    <span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span>
+</code></pre></div>
+<h2 id="2-built-in-capacities">2. Built-in Capacities</h2>
+
+<p>Several Capacities are defined and reserved by the SARL Core Specification.
+They compose the minimal set of Capacities that a runtime environment must support to run a SARL program.</p>
+
+<p><veryimportantnote> You must not define a Capacity with a fully qualified name equals to one
+of the reserved Capacities.</veryimportantnote></p>
+
+<p>The built-in Capacities are defined in the <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
+
+<h2 id="3-use-of-the-capacities">3. Use of the Capacities</h2>
+
+<p>The use of a Capacity is related to the associated <a href="./Skill.html">Skills</a>.
+A Capacity cannot be called by itself since it does not provide an implementation: this is the role of the Skill.</p>
+
+<p>When a function <code class="prettyprint">fct</code> of the Capacity <code class="prettyprint">C</code> is called, it means that the Agent silently does:</p>
+
+<ul>
+<li>Find the Skill <code class="prettyprint">S</code> associated to <code class="prettyprint">C</code>; and</li>
+<li>Call <code class="prettyprint">fct</code> on the object <code class="prettyprint">S</code>.</li>
+</ul>
+
+<p>Details on the use of the Capacities may be found in the following:</p>
+
+<ul>
+<li><a href="./Agent.html">Agent</a></li>
+<li><a href="./Behavior.html">Behavior</a></li>
+</ul>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-jnario.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+  </body>
+</html>

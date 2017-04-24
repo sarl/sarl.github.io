@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Loop Expressions</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="loop-expressions">Loop Expressions</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-for-each-loop">1. For-Each Loop</a></li>
+<li><a href="#2-traditional-java-for-loop">2. Traditional Java For Loop</a></li>
+<li><a href="#3-while-loop">3. While Loop</a></li>
+<li><a href="#4-do-while-loop">4. Do-While Loop</a></li>
+<li><a href="#5-breaking-a-loop">5. Breaking a loop</a></li>
+<li><a href="#6-acknowledgements">6. Acknowledgements</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+
+</ul>
+
+<p>SARL provides four types of loop statements.</p>
+
+<h2 id="1-for-each-loop">1. For-Each Loop</h2>
+
+<p>The for loop is used to execute a certain expression for each element of an array or an instance of <code class="prettyprint">Iterable</code>.</p>
+
+<p>The for&#39;s variable is local and final, hence cannot be updated.</p>
+
+<p>The type of a for loop is <code class="prettyprint">void</code>. The type of the local variable can be inferred from the
+iterable or array that is processed, e.g. in the following example <code class="prettyprint">v</code> is of type <code class="prettyprint">String</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">tab</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div>
+<p>You could specify the expected type for the local variable with the <code class="prettyprint">as</code> following the local variable:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="k">as</span> <span class="n">String</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="2-traditional-java-for-loop">2. Traditional Java For Loop</h2>
+
+<p>The traditional for loop is very similar to the one known from Java, or even C.
+When executed, it first executes the init-expression, where local variables can be
+declared. Next the predicate is executed and if it evaluates to <code class="prettyprint">true</code>, the
+body-expression is executed. On any subsequent iterations the update-expression
+is executed instead of the init-expression. This happens until the predicate
+returns <code class="prettyprint">false</code>. The type of a for loop is <code class="prettyprint">void</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="3-while-loop">3. While Loop</h2>
+
+<p>A while loop is used to execute a certain expression unless the predicate is evaluated to
+<code class="prettyprint">false</code>. The type of a while loop is <code class="prettyprint">void</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+        <span class="n">i</span><span class="o">++</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="4-do-while-loop">4. Do-While Loop</h2>
+
+<p>A while loop is used to execute a certain expression unless the predicate is evaluated 
+to <code class="prettyprint">false</code>. The difference to the while loop is that the execution starts by 
+executing the block once before evaluating the predicate for the first time. 
+The type of a while loop is <code class="prettyprint">void</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">do</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+        <span class="n">i</span><span class="o">++</span>
+    <span class="o">}</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span>
+</code></pre></div>
+<h2 id="5-breaking-a-loop">5. Breaking a loop</h2>
+
+<p>The <code class="prettyprint">break</code> keyword is provides for breaking the enclosing loop.
+When this keyword is run, the control flow exists for the nearest
+enclosing loop, and run the statement that is jsut following the loop
+expression in the sequence of instructions.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">break</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
+
+<p>This documentation is inspired by the documentations from the
+<a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
+<a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-jnario.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+  </body>
+</html>

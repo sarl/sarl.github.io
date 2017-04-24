@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>FAQ related to the Runtime Environment</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="faq-related-to-the-runtime-environment">FAQ related to the Runtime Environment</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-general-questions-about-janus">1. General Questions about Janus</a></li>
+<ul>
+  <li><a href="#1-1-what-is-the-sre">1.1. What is the SRE?</a></li>
+  <li><a href="#1-2-what-is-janus">1.2. What is Janus?</a></li>
+  <li><a href="#1-3-where-can-i-ask-my-question">1.3. Where can I ask my question?</a></li>
+  <li><a href="#1-4-where-can-i-found-information-on-the-release-planning-of-janus">1.4. Where can I found information on the release planning of Janus?</a></li>
+</ul>
+
+<p><li><a href="#2-installation-and-execution">2. Installation and Execution</a></li>
+<ul>
+  <li><a href="#2-1-is-my-operating-system-compatible-with-janus">2.1. Is my operating system compatible with Janus?</a></li>
+  <li><a href="#2-2-what-is-the-version-of-the-java-virtual-machine-to-install">2.2. What is the version of the Java virtual machine to install?</a></li>
+  <li><a href="#2-3-how-to-launch-an-agent-in-janus">2.3. How to launch an agent in Janus?</a></li>
+  <li><a href="#2-4-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.4. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</a></li>
+  <li><a href="#2-5-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.5. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</a></li>
+  <li><a href="#2-6-error-agent-class-not-found">2.6. Error: &quot;Agent class not found.&quot;</a></li>
+  <li><a href="#2-7-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.7. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</a></li>
+</ul>
+<li><a href="#3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</a></li>
+<ul>
+  <li><a href="#3-1-are-events-received-in-the-same-order-than-when-they-are-sent">3.1. Are events received in the same order than when they are sent?</a></li>
+  <li><a href="#3-2-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.2. Must I configure the Janus kernels to be connected to other Janus kernels?</a></li>
+</ul>
+<li><a href="#4-contribute-to-janus">4. Contribute to Janus</a></li>
+<ul>
+  <li><a href="#4-1-where-are-the-sources-for-janus">4.1. Where are the sources for Janus?</a></li>
+  <li><a href="#4-2-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</a></li>
+  <li><a href="#4-3-how-can-i-report-a-problem-or-a-bug-in-janus-components">4.3. How can I report a problem or a bug in Janus components?</a></li>
+</ul>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<h2 id="1-general-questions-about-janus">1. General Questions about Janus</h2>
+
+<h3 id="1-1-what-is-the-sre">1.1. What is the SRE?</h3>
+
+<p>SRE stands for &quot;SARL Runtime Environment&quot;. The SRE is an implementation of an agent platform, which is able to
+run a SARL program. The official standard SRE supported by the SARL developers is the
+<a href="http://www.janusproject.io">Janus platform</a>.</p>
+
+<h3 id="1-2-what-is-janus">1.2. What is Janus?</h3>
+
+<p>Janus is an open-source multi-agent platform fully implemented 
+in Java 1.8. Janus enables developers to quickly create 
+web, enterprise and desktop agent-based applications.</p>
+
+<p><strong>Janus is an agent execution platform not an agent-oriented language.</strong></p>
+
+<p>It provides a comprehensive set of features to develop, run, display and monitor agent-based applications.</p>
+
+<p>Janus-based applications can be distributed across a network. 
+Janus could be used as an agent-oriented platform, an 
+organizational platform, and/or a holonic platform. It 
+also natively manages the concept of recursive agents and 
+holons.</p>
+
+<p>Official website: <a href="http://www.janusproject.io">www.janusproject.io</a></p>
+
+<h3 id="1-3-where-can-i-ask-my-question">1.3. Where can I ask my question?</h3>
+
+<p>If you cannot find an answer to your question in the FAQ, nor the reference documents, nor
+the <a href="https://github.com/sarl/sarl/issues">existing SARL issues</a>,
+you may ask the SARL developers on 
+<a href="https://groups.google.com/forum/#!forum/sarl">the SARL forum</a>.</p>
+
+<h3 id="1-4-where-can-i-found-information-on-the-release-planning-of-janus">1.4. Where can I found information on the release planning of Janus?</h3>
+
+<p>Janus is now part of the SARL project.
+The release planning of SARL is detailed on the <a href="https://github.com/sarl/sarl/milestones">milestones page</a>
+on Github.</p>
+
+<h2 id="2-installation-and-execution">2. Installation and Execution</h2>
+
+<h3 id="2-1-is-my-operating-system-compatible-with-janus">2.1. Is my operating system compatible with Janus?</h3>
+
+<p>The <a href="http://www.janusproject.io">Janus runtime platform</a>
+is a Java application. Every operating system which has 
+a Java Virtual Machine with at least with the 1.8
+standard may be used to run Janus. </p>
+
+<h3 id="2-2-what-is-the-version-of-the-java-virtual-machine-to-install">2.2. What is the version of the Java virtual machine to install?</h3>
+
+<p>Janus requires the JRE and the JDK 1.8 or higher to run and compile.
+Note that if you plan to create Android applications, you may 
+configure your JDK to produce 1.6 class files from 1.8 Java code,
+depending of the current supported standard on Android platforms.</p>
+
+<h3 id="2-3-how-to-launch-an-agent-in-janus">2.3. How to launch an agent in Janus?</h3>
+
+<p>Three methods are available for launching one or more agents in the Janus platform:</p>
+
+<ul>
+<li><a href="../gettingstarted/RunSARLAgentCLI.html">From the command line</a>.</li>
+<li><a href="../gettingstarted/RunSARLAgentEclipse.html">Inside the Eclipse IDE</a>.</li>
+<li><a href="../gettingstarted/RunSARLAgentJava.html">From a Java program</a>.</li>
+</ul>
+
+<h3 id="2-4-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.4. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</h3>
+
+<p>This error occurs when there is no SARL Runtime Environment (SRE) installed on your
+Eclipse environment, OR when the installed SRE is not compatible with the installed
+version of the SARL tools, which are embedded in Eclipse.</p>
+
+<p>For solving this problem, you must download the latest
+<a href="http://www.janusproject.io">Janus platform</a>, and install it in your Eclipse
+(Menu <code>Window&gt; Preferences&gt; SARL&gt; Installed SREs</code>).</p>
+
+<p><caution>If the latest stable version of Janus is not working, you should
+download the latest development version.</caution></p>
+
+<h3 id="2-5-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.5. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</h3>
+
+<p>This error occurs when the SARL Runtime Environment (SRE) has a version lower than
+the version of the SARL tools, which are embedded in the Eclipse IDE.
+This difference of version may cause problems during the execution of your agents, since
+the capacities&#39; definitions may not be the same.</p>
+
+<p>For solving this problem, you must download the version of the SARL Runtime Environment (SRE)
+that is implementing the version of the SARL specification that you&#39;re using on Eclipse IDE.
+For the Janus platform, the versions of the latest stable and development releases are displayed on
+<a href="http://maven.janusproject.io/VERSION.txt">this page</a>.
+For determining if the Janus platform implements the correct version of the SARL specification,
+please read the explanation  on <a href="http://www.janusproject.io/#versionnumber">how Janus version numbers are built</a>.</p>
+
+<h3 id="2-6-error-agent-class-not-found">2.6. Error: &quot;Agent class not found.&quot;</h3>
+
+<p>When the Janus platform cannot find the class file for the start-up agent, it
+displays the error message <code class="prettyprint">&quot;Agent class not found&quot;</code>.</p>
+
+<p>For resolving this problem, you should check if:</p>
+
+<ul>
+<li>the class with the given name exists in the application&#39;s class path.</li>
+<li>the class name is given as the first command-line argument to your application.</li>
+<li>the class with the given name is a subtype of <code class="prettyprint">Agent</code>.</li>
+</ul>
+
+<p>For showing the arguments given to Janus, you could launch Janus with the command line option:
+<code class="prettyprint">--cli</code>. This option stops Janus after displaying the command line arguments,
+including the <code class="prettyprint">--cli</code> option.</p>
+
+<h3 id="2-7-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.7. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</h3>
+
+<p>When installing Janus as an SRE in the Eclipse interface, the plugin loads the Jar file of the
+SRE with the default API.
+The Jar archiver uses the default file encoding of the operating system.
+On Linux and MacOS 10, it is almost UTF-8. On Windows, it is Latin1. And on MacOS (before 10),
+it is Mac-Roman.</p>
+
+<p>Unfortunately, the Janus Jar file is generated on a Linux operating system (UTF-8).
+When the Java virtual machine tries to uncompress and use the content of the Jar, it
+complains about an invalid charset format.</p>
+
+<p>For solving this issue, you could launch your Eclipse with the command line option
+<code class="prettyprint">-Dfile.encoding=UTF-8</code>, which is forcing the Eclipse product to consider the
+file as encoded with the UTF-8 charset.</p>
+
+<h2 id="3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</h2>
+
+<h3 id="3-1-are-events-received-in-the-same-order-than-when-they-are-sent">3.1. Are events received in the same order than when they are sent?</h3>
+
+<p><strong>No</strong>.</p>
+
+<p>There is no warranty on the receiving order of the events.
+This is a particular implementation choice of the runtime
+environment. For example, the
+<a href="http://www.janusproject.io">Janus runtime environment</a> executes
+the event handlers in parallel. The real order of execution depends on
+how the Java executor is running the handlers on the threads.</p>
+
+<h3 id="3-2-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.2. Must I configure the Janus kernels to be connected to other Janus kernels?</h3>
+
+<p><strong>No</strong>.</p>
+
+<p>Janus was designed to discover other kernels automatically.
+By default, the different instances of the Janus platform
+are connected together without any particular configuration.
+The sole constraint is that the kernels must be on the
+same local network.</p>
+
+<h2 id="4-contribute-to-janus">4. Contribute to Janus</h2>
+
+<h3 id="4-1-where-are-the-sources-for-janus">4.1. Where are the sources for Janus?</h3>
+
+<p>The sources for Janus are available inside the SARL project repository on
+<a href="https://github.com/sarl/sarl/tree/master/sre/io.janusproject/">Github</a>.</p>
+
+<h3 id="4-2-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</h3>
+
+<p>Janus Developers use <a href="https://github.com/sarl/sarl">Github</a>
+to manage bug tracking and project workflow. 
+The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a>. </p>
+
+<h3 id="4-3-how-can-i-report-a-problem-or-a-bug-in-janus-components">4.3. How can I report a problem or a bug in Janus components?</h3>
+
+<p>You should submit your issue on 
+<a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
+
+<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-04-21</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../../../news/index.html">SARL News</a></li>
+        <li><a href="../../../about/index.html">About SARL</a></li>
+        <li><a href="../../../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../../../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-jnario.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+  </body>
+</html>
