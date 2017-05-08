@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.5.6</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+      <h1 id="changes-in-0-5-6">Changes in 0.5.6</h1>
+
+<p>Release date: 2017-05-07.</p>
+
+<h2 id="lang">[lang]</h2>
+
+<ul>
+<li>Do not include object fields in the generated equals and hashCode functions. (<a href="http://github.com/sarl/sarl/commit/5923629621314412b10d640068b7c4fb511b6a28">details</a>)</li>
+<li>Use InheritedHelper in SARLLabelProvider. (<a href="http://github.com/sarl/sarl/commit/98f656783ee9b6241b25acca7151ed4595aa32e3">details</a>)</li>
+<li>Automatic creation of temp directory in batch compiler. (<a href="http://github.com/sarl/sarl/commit/b55a7992492f6078f013b1d24acedb068d50a6a9">details</a>)</li>
+<li>Mark generated elements with <a href="http://github.com/SarlElementType">SarlElementType</a>. (<a href="http://github.com/sarl/sarl/commit/75efec9660f7fbaa6d9d44e2e605e0c601ed0b8b">details</a>)</li>
+<li>Enable capacity calls in annonymous classes. (<a href="http://github.com/sarl/sarl/commit/e6103743b06799e3cca6b0cf0d1564907b549ea2">details</a>)</li>
+<li>Internal errors in JVM inferrer must be output at DEBUG level. (<a href="http://github.com/sarl/sarl/commit/d486178d51da64a39c360d9a5d9ad54efbec021f">details</a>)</li>
+<li>Add static default visibility computation from EClass. (<a href="http://github.com/sarl/sarl/commit/4bc7c3efd4002cafa1fb549d7d520f2eedfda658">details</a>)</li>
+<li>Update the default visibilities of the SARL elements. (<a href="http://github.com/sarl/sarl/commit/c96662db341cafeaa3fdb5c6bf90abc9cb5f2a2c">details</a>)</li>
+</ul>
+
+<h2 id="ui">[ui]</h2>
+
+<ul>
+<li>Protect keywords in generated functions. (<a href="http://github.com/sarl/sarl/commit/84ef43d3eb94f9b0243935eaf07c3754f39cabba">details</a>)</li>
+<li>Add renaming strategy for package names. (<a href="http://github.com/sarl/sarl/commit/dc796a77832f37b0da270b5ded450ccdc3f23683">details</a>)</li>
+<li>Override Xtend code builder for SARL types. (<a href="http://github.com/sarl/sarl/commit/cb4aa774f2ed3062e5af1532117725f2faa15786">details</a>)</li>
+<li>Unimplemented method quick fix uses the SARL syntax. (<a href="http://github.com/sarl/sarl/commit/e3573f2bfbc6a8e9b9dc37bbf0bba889156f13d5">details</a>)</li>
+<li>Rewrite the quick fix for mised functions. (<a href="http://github.com/sarl/sarl/commit/d881035c4096f9fe7ec417eb80e8bd51b4e14971">details</a>)</li>
+</ul>
+
+<h2 id="eclipse">[eclipse]</h2>
+
+<ul>
+<li>Add &quot;Run as Java application&quot; shortcut. (<a href="http://github.com/sarl/sarl/commit/cb943937aeb30dd97cb4bf3457054f6eff65319a">details</a>)</li>
+</ul>
+
+<h2 id="docs">[docs]</h2>
+
+<ul>
+<li>Documentation updates:
+
+<ul>
+<li>Rewrite the documentation in Markdown. (<a href="http://github.com/sarl/sarl/commit/8353937ca46c37ddc69da734511a0b75a5270837">details</a>)</li>
+<li>Remove the Jnario documentation. (<a href="http://github.com/sarl/sarl/commit/2e3e2d9960bb1274597c7c69788383a7c94d2ce9">details</a>)</li>
+<li>Add FAQ entry related to the Ctrl+Space on MacOS. (<a href="http://github.com/sarl/sarl/commit/d2f93068c04cab40b0654ff16135ea0783acea62">details</a>)</li>
+<li>Add doc on the syntax highlighning styles. (<a href="http://github.com/sarl/sarl/commit/0ad063f25987588f216bee9d09ee61bfdd9a843c">details</a>)</li>
+<li>Add documentation on sarlc and janus. (<a href="http://github.com/sarl/sarl/commit/ea7fe86972b4478d824d385fe28ffa6de81fb6f6">details</a>)</li>
+<li>Add Pygments reference in README. (<a href="http://github.com/sarl/sarl/commit/eeb032db3ec4abf77c572df0fc7b41c7526a844a">details</a>)</li>
+</ul></li>
+<li>Documentation generator:
+
+<ul>
+<li>Add [:Dynamic:] macro in documentation. (<a href="http://github.com/sarl/sarl/commit/a6c3a0e1975c480be8b4571c6c91f0f07a33265b">details</a>)</li>
+<li>Minor bug fixes in the documentation generator. (<a href="http://github.com/sarl/sarl/commit/293598886ef943e5dc7279ff20dff734cbb0d9ff">details</a>)</li>
+<li>Do not test remote links. (<a href="http://github.com/sarl/sarl/commit/a1e8360f6d7340ae9c4e9b7564866a66361884aa">details</a>)</li>
+<li>Disable extensional use of the markdown generator. (<a href="http://github.com/sarl/sarl/commit/40fb633f93b8f6db730d383615bd89681d056695">details</a>)</li>
+<li>Disabled outside website generation. (<a href="http://github.com/sarl/sarl/commit/d170779d4731fed5f28f3b9661b1c1e8beadc591">details</a>)</li>
+<li>SARL compiler singleton in documentation generator. (<a href="http://github.com/sarl/sarl/commit/79f5dd7f6b838512f020eab5207d872538b423e8">details</a>)</li>
+</ul></li>
+</ul>
+
+<h2 id="maven">[maven]</h2>
+
+<ul>
+<li>Add documentation generator based on Markdown. (<a href="http://github.com/sarl/sarl/commit/cae823d94d616922b6a842268ad0bdca3c3d162b">details</a>)</li>
+<li>Fixing URL generation for Windows OS in the documentation generator. (<a href="http://github.com/sarl/sarl/commit/a72b58c89bda6904af0fcc375966335f90ed912a">details</a>)</li>
+</ul>
+
+<h2 id="sre">[sre]</h2>
+
+<ul>
+<li>Default name of the SRE is janus. (<a href="http://github.com/sarl/sarl/commit/2e014d9d37c1d3b9f0be34c437daadf1988d9a1c">details</a>)</li>
+<li>Transform &#39;janus&#39; module tests from Tycho to Maven testing modules. (<a href="http://github.com/sarl/sarl/commit/4a54eed6f09784483ee36725f6ee64b18bcc6f4e">details</a>)</li>
+<li>Exclude Xbase lib dependency from Arakhne libs. (<a href="http://github.com/sarl/sarl/commit/2bfe1c3c3d11a491825a5404197808c4cbc19004">details</a>)</li>
+<li>Fixing warnings in source code. (<a href="http://github.com/sarl/sarl/commit/6831dc1f3419d766ba68d6e234706b4d47768038">details</a>)</li>
+</ul>
+
+<h2 id="contribs">[contribs]</h2>
+
+<ul>
+<li>Transform &#39;example&#39; module tests from Tycho to Maven testing modules. (<a href="http://github.com/sarl/sarl/commit/8e9b07dd6c66787507a22a049f9100a43a2932b1">details</a>)</li>
+</ul>
+
+<h2 id="mwe2">[mwe2]</h2>
+
+<ul>
+<li>Add function for protected keywords in SARLGrammarKeywordAccess. (<a href="http://github.com/sarl/sarl/commit/280a82f63e52d439790a7847117bb70bffc1c412">details</a>)</li>
+</ul>
+
+<h2 id="tests">[tests]</h2>
+
+<ul>
+<li>Fixing failing tests on generated functions. (<a href="http://github.com/sarl/sarl/commit/6fa5225b25d7c54363ae736aab0f6f33ab075490">details</a>)</li>
+<li>Transform &#39;lang&#39; module tests from Tycho to Maven testing modules. (<a href="http://github.com/sarl/sarl/commit/a5408a8b6dba561b4dfa98adb794f8a59c1746cd">details</a>)</li>
+<li>Split the testing API into two modules for not ui and ui. (<a href="http://github.com/sarl/sarl/commit/bfc40d7bb9ba2ba9ebe7bb9c32445c942f54bc5a">details</a>)</li>
+<li>Transform &#39;core&#39; module tests from Tycho to Maven testing modules. (<a href="http://github.com/sarl/sarl/commit/d24782326250f8dc053f0ef7f1ea641c49d04b9d">details</a>)</li>
+</ul>
+
+<h2 id="ci">[ci]</h2>
+
+<ul>
+<li>Use travis CI for deployment. (<a href="http://github.com/sarl/sarl/commit/0a36ac213da3187f7ef26deb3aa5788463b01cc1">details</a>)</li>
+<li>Update the appveyor configuration. (<a href="http://github.com/sarl/sarl/commit/fd46cdd9f587beb94e210fa8946e026ffa7aabe1">details</a>)</li>
+</ul>
+
+<h1 id="previous-changes">Previous changes</h1>
+
+<ul>
+<li><a href="./changes_0.5.5.html">Changes in the version 0.5.5</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul>
+        <li><a href="../news/index.html">SARL News</a></li>
+        <li><a href="../about/index.html">About SARL</a></li>
+        <li><a href="../about/index.html">License</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul>
+        <li><a href="../community/forums.html">User Forums</a></li>
+        <li><a href="https://www.facebook.com/sarllanguage">On Facebook</a></li>
+        <li><a href="http://github.com/sarl/sarl">View on Github</a></li>
+        <li><a href="http://github.com/sarl/sarl/issues">Report an Issue</a></li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul>
+        <li><a href="http://www.janusproject.io">Janus Project</a></li>
+        <li><a href="http://www.gitia.org">GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr">MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-jnario.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+  </body>
+</html>
