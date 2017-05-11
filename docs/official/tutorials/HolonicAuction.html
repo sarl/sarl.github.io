@@ -85,13 +85,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#5-4-definition-of-the-auctioneer">5.4. Definition of the auctioneer</a></li>
   <li><a href="#5-5-stop-the-agents">5.5. Stop the agents</a></li>
 </ul>
-<li><a href="#6-compile-and-launch-the-agents">6. Compile and Launch the agents</a></li>
-<ul>
-  <li><a href="#6-1-compile-the-code">6.1. Compile the code</a></li>
-  <li><a href="#6-2-execute-with-a-runnable-jar">6.2. Execute with a runnable JAR</a></li>
-  <li><a href="#6-3-execute-without-a-runnable-jar">6.3. Execute without a runnable JAR</a></li>
-</ul>
-<li><a href="#7-legal-notice">7. Legal Notice</a></li></p>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -102,7 +96,7 @@ The architecture presented in this tutorial may be used for designing a system i
 taken after arbitration among components. </p>
 
 <div class="bt-download">
-<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"/></a>
+<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-holonicauction"><img alt="See the code" src="http://www.sarl.io/images/download-icon.png"/></a>
 </div>
 
 <p>According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial,
@@ -122,7 +116,7 @@ the terms &quot;agent&quot; and &quot;holon&quot; are synonymous. </p>
 readers, the <a href="../reference/Agent.html">Agent Reference</a> may be read.</note></p>
 
 <p>The source code related to this tutorial may be found in the
-<a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/holonicauction">SARL demos</a>.</p>
+<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-holonicauction">Github of the SARL demos</a>.</p>
 
 <h2 id="1-principle-of-the-english-auction">1. Principle of the English Auction</h2>
 
@@ -641,62 +635,7 @@ to stop its execution.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="6-compile-and-launch-the-agents">6. Compile and Launch the agents</h2>
-
-<p>The last step of this tutorial is the definition of the launching process.
-In the rest of this section, we discuss the use of the
-<a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
-
-<p>The Janus platform is designed to launch a single agent at start-up.
-Then, this launched agent must spawn the other agents in the system.
-This is typically the case in the auction application.</p>
-
-<p><importantnote>In this section, we explain how to launch the agents from the command line interface.
-For launching the agents from the Eclipse IDE, please read
-<a href="../gettingstarted/RunSARLAgentEclipse.html">Run SARL Agent in the Eclipse IDE</a>.</importantnote></p>
-
-<h3 id="6-1-compile-the-code">6.1. Compile the code</h3>
-
-<p>You must have a file that contains the compiled files of the tutorial, the Janus platform,
-and all the needed libraries by SARL and Janus.</p>
-
-<p>You could directly download this file by clicking on
-the download icon at the top of this page; or by compiling the source code yourself.</p>
-
-<p>If you download the source code of the <a href="https://github.com/sarl/sarl-demos/">SARL demos</a>, and
-compile them with <a href="http://maven.apache.org">Maven</a>, you will obtain a JAR file with all
-the mandatory elements inside. This file is located in the <code class="prettyprint">target</code> folder,
-and it has a name similar to <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>.</p>
-
-<h3 id="6-2-execute-with-a-runnable-jar">6.2. Execute with a runnable JAR</h3>
-
-<p>Here, there is two assumptions:</p>
-
-<ol>
-<li>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is execuable, i.e. it can be directly launched by the Java Virtual Machine.</li>
-<li>From this file, the JVM is launching the Janus bootstrap automatically, i.e. it has a Main-Class set to <code class="prettyprint">io.janusproject.Boot</code>.</li>
-</ol>
-
-<p>On the command line, you must launch Janus with:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">java -jar sarl-demos-0.1.0-with-dependencies.jar
-     io.sarl.docs.tutorials.holonicauction.Auctioneer
-</code></pre></div>
-<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
-The third argument is the qualified name of the agent to launch.</p>
-
-<h3 id="6-3-execute-without-a-runnable-jar">6.3. Execute without a runnable JAR</h3>
-
-<p>In opposite to the previous section, we assume that the file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>
-is not executable. On the command line, you must launch Janus with:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">java -cp sarl-demos-0.1.0-with-dependencies.jar
-     io.janusproject.Boot
-     io.sarl.docs.tutorials.holonicauction.Auctioneer
-</code></pre></div>
-<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
-The string <code class="prettyprint">io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap.
-The first argument after the bootstrap is the qualified name of the agent to launch.</p>
-
-<h2 id="7-legal-notice">7. Legal Notice</h2>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
