@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Built-in Capacity Reference</title>
+    <title>SARL Command-line Compiler</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -64,69 +64,114 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="built-in-capacity-reference">Built-in Capacity Reference</h1>
+      <h1 id="sarl-command-line-compiler">SARL Command-line Compiler</h1>
 
 <ul class="page_outline" id="page_outline">
 
-<li><a href="#1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</a></li>
-<li><a href="#2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</a></li>
+<li><a href="#1-usage">1. Usage</a></li>
+<li><a href="#2-command-line-options">2. Command-Line Options</a></li>
 <li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
 </ul>
 
-<p>This document describes the built-in capacities in SARL.
-Before reading this document, we recommend that you read
-the <a href="./GeneralSyntax.html">General Syntax Reference</a>, the <a href="./Capacity.html">Capacity Reference</a>,
-and the <a href="./Skill.html">Skill Reference</a>.</p>
+<p>A command-line compiler is a tool that could be invoked from the command-line shell in order to compiler a language source file.
+<code class="prettyprint">sarlc</code> is the command-line compiler for the SARL language.</p>
 
-<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about
-its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<h2 id="1-usage">1. Usage</h2>
 
-<p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the 
- * constraints of this specification.</p>
+<p>The <code class="prettyprint">sarlc</code> tool takes arguments:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sarlc --dir &lt;output folder&gt; [OPTIONS] &lt;source folder&gt;...
+</code></pre></div>
+<p>The <code class="prettyprint">output folder</code> is the name of the folder in which the generated Java files should be created by the SARL compiler.
+The <code class="prettyprint">sarlc</code> tool takes at least one <code class="prettyprint">source folder</code> from which the SARL files are read.</p>
 
-<p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential 
-to respect the commonly accepted competencies of agents.
-These capacities are considered the main building blocks on top of which other 
-higher level capacities and skills can be constructed.
-They are defined in the SARL language, but the skills implementing them are provided 
-by the runtime environment, e.g. the <a href="http://www.janusproject.io">Janus platform</a>.
-This runtime environment is responsible for creating them and injecting them in 
-the agent before their execution begins.
-Therefore, when the agent receives the <code class="prettyprint">Initialize</code> event they are
-already available.</p>
+<p>You could change the behavior of the <code class="prettyprint">sarlc</code> compiler with the command-line options.
+For obtaining a list of the options, type:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sarlc -help
+</code></pre></div>
+<h2 id="2-command-line-options">2. Command-Line Options</h2>
 
-<p>The following figure presents the different contexts associated to an agent <code class="prettyprint">A</code>.
-Several built-in capacities permit accessing and manage these contexts.
-The agents are represented by stylized humans, the contexts by the blue boxes,
-and the spaces by the small color boxes in the contexts.</p>
+<p>The complete list of the options is:</p>
 
-<p><img src="./contexts.png" alt="Contexts"></p>
-
-<h2 id="1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</h2>
-
-<p>Each built-in capacity is detailed inside a dedicated section:</p>
-
-<ul>
-<li><a href="./bic/Behaviors.html">Behaviors</a></li>
-<li><a href="./bic/DefaultContextInteractions.html">DefaultContxtInteractions</a></li>
-<li><a href="./bic/ExternalContextAccess.html">ExternalContextAccess</a></li>
-<li><a href="./bic/InnerContextAccess.html">InnerContextAccess</a></li>
-<li><a href="./bic/Lifecycle.html">Lifecycle</a></li>
-<li><a href="./bic/Logging.html">Logging</a></li>
-<li><a href="./bic/Schedules.html">Schedules</a></li>
-<li><a href="./bic/Time.html">Time</a></li>
-</ul>
-
-<h2 id="2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</h2>
-
-<p>Details on the use of the built-in capacities may be found in the references of the major
-behavior-based concepts of SARL:</p>
-
-<ul>
-<li><a href="./Agent.html">Agent</a></li>
-<li><a href="./Behavior.html">Behavior</a></li>
-</ul>
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">-bp</code>, <code class="prettyprint">--bootclasspath</code></td>
+<td>Specify where to find SARL compiler class files. &lt;arg&gt; is the boot classpath.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-cp</code>, <code class="prettyprint">--classpath</code></td>
+<td>Specify where to find user class files. &lt;arg&gt; is the classpath.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-X</code>, <code class="prettyprint">--debug</code></td>
+<td>Turn on the debugging logging.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-d</code>, <code class="prettyprint">--dir</code></td>
+<td>Specify where to place generated SARL files. &lt;arg&gt; is the output directory.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-e</code>, <code class="prettyprint">--encoding</code></td>
+<td>Specify character encoding used by source files. &lt;arg&gt; is the encoding name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-help</code></td>
+<td>Display the SARL compiler help.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-inlines</code></td>
+<td>Generate inline annotations for the SARL code. &lt;arg&gt; is &quot;true&quot; or &quot;false&quot;.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-jc</code>, <code class="prettyprint">--javac</code></td>
+<td>Run the Java compiler (ECL/JDT) after SARL on the all the Java source files. &lt;arg&gt; is &quot;true&quot; or &quot;false&quot;.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-jsv</code>, <code class="prettyprint">--javaSourceVersion</code></td>
+<td>Create Java Source compatible to this version. &lt;arg&gt; is &quot;true&quot; or &quot;false&quot;.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-nowarn</code></td>
+<td>Disable warning messages.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-q</code>, <code class="prettyprint">--quiet</code></td>
+<td>Compiler is not verbose. Only errors are displayed.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-td</code>, <code class="prettyprint">--tempdir</code></td>
+<td>Temp directory to hold generated stubs and classes. &lt;arg&gt; is the temp directory.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-v</code>, <code class="prettyprint">--verbose</code></td>
+<td>Compiler will be more verbose. Verbosity is increased at each occurrence of this option.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-version</code></td>
+<td>Display the version of the SARL compiler and the Java virtual machine.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-w</code>, <code class="prettyprint">--warn</code></td>
+<td>Change the level of a warning. &lt;arg&gt; is &lt;warningid&gt;=&lt;severity&gt;. Severity should be ign[ore], none, info[rmation], warn[ing], or err[or].</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-werror</code></td>
+<td>Terminate compilation if warnings occur.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-writestorages</code></td>
+<td>Write the storage files for faster access to SARL binary resources. &lt;arg&gt; is &quot;true&quot; or &quot;false&quot;.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-writetraces</code></td>
+<td>Write the trace files for SARL code for debugging and source exploration. &lt;arg&gt; is &quot;true&quot; or &quot;false&quot;.</td>
+</tr>
+</tbody></table>
 
 <h2 id="3-legal-notice">3. Legal Notice</h2>
 

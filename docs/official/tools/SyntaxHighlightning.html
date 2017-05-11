@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Built-in Capacity Reference</title>
+    <title>SARL Syntax highlighting with other tools</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -64,71 +64,124 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="built-in-capacity-reference">Built-in Capacity Reference</h1>
+      <h1 id="sarl-syntax-highlighting-with-other-tools">SARL Syntax highlighting with other tools</h1>
 
 <ul class="page_outline" id="page_outline">
 
-<li><a href="#1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</a></li>
-<li><a href="#2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</a></li>
-<li><a href="#3-legal-notice">3. Legal Notice</a></li>
-
+<li><a href="#1-gnu-source-highlight">1. GNU source-highlight</a></li>
+<li><a href="#2-google-code-prettify">2. Google Code Prettify</a></li>
+<li><a href="#3-gtk-source-view">3. Gtk Source View</a></li>
+<li><a href="#4-latex">4. LaTeX</a></li>
+<ul>
+  <li><a href="#4-1-standard-latex-style">4.1. Standard LaTeX Style</a></li>
+  <li><a href="#4-2-latex-beamer">4.2. LaTeX Beamer</a></li>
 </ul>
 
-<p>This document describes the built-in capacities in SARL.
-Before reading this document, we recommend that you read
-the <a href="./GeneralSyntax.html">General Syntax Reference</a>, the <a href="./Capacity.html">Capacity Reference</a>,
-and the <a href="./Skill.html">Skill Reference</a>.</p>
+<p><li><a href="#5-pygments">5. Pygments</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
 
-<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about
-its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<p></ul></p>
 
-<p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the 
- * constraints of this specification.</p>
+<p>Syntax highlighting is a feature of text editors that are used for programming, scripting, or markup languages, such as SARL.
+The feature displays text, especially source code, in different colors and fonts according to the category of terms.
+This feature facilitates writing in a structured language such as a programming language or a markup language as both structures
+and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.</p>
 
-<p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential 
-to respect the commonly accepted competencies of agents.
-These capacities are considered the main building blocks on top of which other 
-higher level capacities and skills can be constructed.
-They are defined in the SARL language, but the skills implementing them are provided 
-by the runtime environment, e.g. the <a href="http://www.janusproject.io">Janus platform</a>.
-This runtime environment is responsible for creating them and injecting them in 
-the agent before their execution begins.
-Therefore, when the agent receives the <code class="prettyprint">Initialize</code> event they are
-already available.</p>
+<p>Several style specifications are provided for syntax highlighting in other tools than the SARL product.</p>
 
-<p>The following figure presents the different contexts associated to an agent <code class="prettyprint">A</code>.
-Several built-in capacities permit accessing and manage these contexts.
-The agents are represented by stylized humans, the contexts by the blue boxes,
-and the spaces by the small color boxes in the contexts.</p>
+<h2 id="1-gnu-source-highlight">1. GNU source-highlight</h2>
 
-<p><img src="./contexts.png" alt="Contexts"></p>
+<p><a href="https://www.gnu.org/software/src-highlite/">GNU source-highlight</a> is the GNU source code highlightner.</p>
 
-<h2 id="1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</h2>
+<p>The SARL style is available on <a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/source-highlight/sarl.lang">GitHub</a></p>
 
-<p>Each built-in capacity is detailed inside a dedicated section:</p>
+<p>For installing the SARL style, you should:</p>
 
 <ul>
-<li><a href="./bic/Behaviors.html">Behaviors</a></li>
-<li><a href="./bic/DefaultContextInteractions.html">DefaultContxtInteractions</a></li>
-<li><a href="./bic/ExternalContextAccess.html">ExternalContextAccess</a></li>
-<li><a href="./bic/InnerContextAccess.html">InnerContextAccess</a></li>
-<li><a href="./bic/Lifecycle.html">Lifecycle</a></li>
-<li><a href="./bic/Logging.html">Logging</a></li>
-<li><a href="./bic/Schedules.html">Schedules</a></li>
-<li><a href="./bic/Time.html">Time</a></li>
+<li>download all the style file;</li>
+<li>copy the file into the GNU source-lighlight folder.</li>
 </ul>
 
-<h2 id="2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</h2>
+<h2 id="2-google-code-prettify">2. Google Code Prettify</h2>
 
-<p>Details on the use of the built-in capacities may be found in the references of the major
-behavior-based concepts of SARL:</p>
+<p><a href="https://github.com/google/code-prettify">Google Code Prettify</a> is a Javascript library that enables syntax highlightning for several
+different languages on Internet pages.</p>
+
+<p>The SARL style is available on <a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/gtk/sarl.lang">GitHub</a></p>
+
+<p>For using the SARL style, you should:</p>
 
 <ul>
-<li><a href="./Agent.html">Agent</a></li>
-<li><a href="./Behavior.html">Behavior</a></li>
+<li>copy the SARL style into the same folder as the Google Code Prettify script; and</li>
+<li>Use the CSS classes <code class="prettyprint">prettyprint lang-sarl</code> each time you want to render a SARL code into your HTML pages.</li>
 </ul>
 
-<h2 id="3-legal-notice">3. Legal Notice</h2>
+<h2 id="3-gtk-source-view">3. Gtk Source View</h2>
+
+<p><a href="https://wiki.gnome.org/Projects/GtkSourceView">Gtk Source View</a> is the core library that is used by the Gnome tools, including Gedit,
+for doing syntax highlightning.</p>
+
+<p>The SARL style is available on <a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/prettify/lang-sarl.js">GitHub</a></p>
+
+<p>For using the SARL style, you should:</p>
+
+<ul>
+<li>copy the SARL style into the folder <code class="prettyprint">$HOME/.local/share/gtksourceview-3.0/language-specs/</code>.</li>
+</ul>
+
+<h2 id="4-latex">4. LaTeX</h2>
+
+<p>LaTeX is a powerfull wordprocessor that is able to create documents such as books, presentations...</p>
+
+<h3 id="4-1-standard-latex-style">4.1. Standard LaTeX Style</h3>
+
+<p>LaTeX may uses different extensions (packages) for rnedering algorithms and source code.
+The SARL styles for LaTeX are based on the LaTeX <a href="https://www.ctan.org/pkg/listings">listings package</a>.</p>
+
+<p>Two versions of the SARL style for LaTeX are available:</p>
+
+<ul>
+<li><a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/latex/sarl-listing.sty">Monochrom</a> (no coloring), and</li>
+<li><a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/latex/sarl-colorized-listing.sty">Colorized</a>.</li>
+</ul>
+
+<p>For using the SARL styles, you should:</p>
+
+<ul>
+<li>download the SARL style;</li>
+<li>copy the file into <code class="prettyprint">$HOME/texmf/</code>.</li>
+</ul>
+
+<h3 id="4-2-latex-beamer">4.2. LaTeX Beamer</h3>
+
+<p>The <a href="https://www.ctan.org/tex-archive/macros/latex/contrib/beamer">LaTeX Beamer</a> can be used for pro­duc­ing slides.
+The SARL style for LaTeX Beamer is based on the LaTeX <a href="https://www.ctan.org/pkg/listings">listings package</a> and one the predefined color templates from Beamer.</p>
+
+<p>The SARL style is available on <a href="https://raw.githubusercontent.com/sarl/sarl/master/formatting-styles/latex/sarl-beamer-listing.sty">GitHub</a></p>
+
+<p>For using the SARL style, you should:</p>
+
+<ul>
+<li>download the SARL style;</li>
+<li>copy the file into <code class="prettyprint">$HOME/texmf/</code>.</li>
+</ul>
+
+<h2 id="5-pygments">5. Pygments</h2>
+
+<p><a href="http://pygments.org">Pygments</a> is a Python generic syntax highlighter suitable for use in code hosting, forums, wikis or other applications that need to prettify source code.</p>
+
+<p>The SARL style is available on <a href="https://github.com/sarl/sarl/tree/master/formatting-styles/pygments/">GitHub</a></p>
+
+<p>For installing the SARL style, you should:</p>
+
+<ul>
+<li>download all the files from the previous URL;</li>
+<li>open a command-line shell;</li>
+<li>go into the folder where your have downloaded the <code class="prettyprint">setup.py</code> script;</li>
+<li>call: <code class="prettyprint">python setup.py install</code></li>
+</ul>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>

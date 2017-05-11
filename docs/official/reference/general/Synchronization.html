@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -73,19 +73,19 @@ The only difference is that in SARL it is an expression and can therefore be use
 <h2 id="1-standard-syntax">1. Standard Syntax</h2>
 
 <p>The synchronization statement can be used as in Java:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-    <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+<span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-expression-syntax">2. Expression Syntax</h2>
 
 <p>Because the <code class="prettyprint">synchronized</code> keyword is an expression, it is possible to write synchronized code inside another expression.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-    <span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span> 
-            <span class="s">&quot;Hello&quot;</span> 
-    <span class="o">}</span>
-    <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+<span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="s">&quot;Hello&quot;</span> 
+<span class="o">}</span>
+<span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="3-acknowledgements">3. Acknowledgements</h2>
 
@@ -99,7 +99,7 @@ The only difference is that in SARL it is an expression and can therefore be use
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

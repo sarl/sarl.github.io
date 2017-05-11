@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -114,12 +114,12 @@ surprises or hassles.   </p>
 <p>In SARL, the names of the features (agents, variables, fields, etc.)
 cannot be one of the keywords of SARL or Java.
 For example, since <code class="prettyprint">event</code> is a keyword in SARL, the following is illegal:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">io.sarl.event.ActionEvent</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.event.ActionEvent</span>
 </code></pre></div>
 <p>To solve this problem (since some names come from Java, and
 this language has different keywords than SARL), it
 is possible to prefix the name fragment with the character <code class="prettyprint">^</code>:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">io.sarl.</span><span class="o">^</span><span class="n">event</span><span class="o">.</span><span class="n">ActionEvent</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.</span><span class="o">^</span><span class="n">event</span><span class="o">.</span><span class="n">ActionEvent</span>
 </code></pre></div>
 <h2 id="3-statement-syntax">3. Statement Syntax</h2>
 
@@ -133,8 +133,8 @@ put multiple statements on a line. To continue a statement on the next
 line, you end the line with the <code class="prettyprint">\</code> character.</p>
 
 <p>For instance, the two following lines are equivalent:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">myVariable</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span>
-</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">myVariable</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">myVariable</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span>
+</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">myVariable</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
 </code></pre></div>
 <h2 id="4-details-on-the-sarl-language-elements">4. Details on the SARL language elements</h2>
 
@@ -190,7 +190,7 @@ line, you end the line with the <code class="prettyprint">\</code> character.</p
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

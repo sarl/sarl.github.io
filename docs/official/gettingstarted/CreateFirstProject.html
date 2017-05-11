@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -146,41 +146,41 @@ be able to turn the Maven nature on your SARL project on/off.</note></p>
 
 <p>Replace the version number <code class="prettyprint">0.6.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the
 <a href="http://central.sonatype.org/">Maven Central Repository</a> for the last available version.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> &lt;project&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;project&gt;</span>
     ...
-    &lt;properties&gt;
+    <span class="nt">&lt;properties&gt;</span>
        ...
-       &lt;sarl.version&gt;0.6.0-SNAPSHOT&lt;/sarl.version&gt;
-    &lt;/properties&gt;
+       <span class="nt">&lt;sarl.version&gt;</span>0.6.0-SNAPSHOT<span class="nt">&lt;/sarl.version&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
     ...
-    &lt;build&gt;
-       &lt;plugins&gt;
+    <span class="nt">&lt;build&gt;</span>
+       <span class="nt">&lt;plugins&gt;</span>
           ...
-          &lt;plugin&gt;
-             &lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
-             &lt;artifactId&gt;sarl-maven-plugin&lt;/artifactId&gt;
-             &lt;version&gt;${sarl.version}&lt;/version&gt;
-             &lt;extensions&gt;true&lt;/extensions&gt;
-             &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-             &lt;/configuration&gt;
-          &lt;/plugin&gt;
-       &lt;/plugins&gt;
-    &lt;/build&gt;
+          <span class="nt">&lt;plugin&gt;</span>
+             <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
+             <span class="nt">&lt;artifactId&gt;</span>sarl-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+             <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+             <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
+             <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;source&gt;</span>1.8<span class="nt">&lt;/source&gt;</span>
+                <span class="nt">&lt;target&gt;</span>1.8<span class="nt">&lt;/target&gt;</span>
+                <span class="nt">&lt;encoding&gt;</span>UTF-8<span class="nt">&lt;/encoding&gt;</span>
+             <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/plugin&gt;</span>
+       <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
     ...
-    &lt;dependencies&gt;
+    <span class="nt">&lt;dependencies&gt;</span>
       ...
-       &lt;dependency&gt;
-          &lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
-          &lt;artifactId&gt;io.sarl.maven.sdk&lt;/artifactId&gt;
-          &lt;version&gt;${sarl.version}&lt;/version&gt;
-       &lt;/dependency&gt;
+       <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>io.sarl.maven.sdk<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+       <span class="nt">&lt;/dependency&gt;</span>
        ...
-    &lt;/dependencies&gt;
+    <span class="nt">&lt;/dependencies&gt;</span>
     ...
- &lt;/project&gt;
+ <span class="nt">&lt;/project&gt;</span>
 </code></pre></div>
 <p>The Maven configuration is based on the use of <code class="prettyprint">sarl-maven-plugin</code>. This plugin is in charge of compiling the SARL and
 the Java files.</p>
@@ -201,41 +201,41 @@ to the runtime environment.</p>
 
 <p>Replace the version number (<code class="prettyprint">0.6.0-SNAPSHOT</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use.
 You could search on the <a href="http://central.sonatype.org/">Maven Central Repository</a> for the last available version.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> &lt;project&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;project&gt;</span>
    ...
-    &lt;properties&gt;
+    <span class="nt">&lt;properties&gt;</span>
        ...
-       &lt;janus.version&gt;0.6.0-SNAPSHOT&lt;/janus.version&gt;
-    &lt;/properties&gt;
+       <span class="nt">&lt;janus.version&gt;</span>0.6.0-SNAPSHOT<span class="nt">&lt;/janus.version&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
     ...
-    &lt;build&gt;
-       &lt;plugins&gt;
+    <span class="nt">&lt;build&gt;</span>
+       <span class="nt">&lt;plugins&gt;</span>
           ...
-          &lt;plugin&gt;
-             &lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
-             &lt;artifactId&gt;sarl-maven-plugin&lt;/artifactId&gt;
-             &lt;version&gt;${sarl.version}&lt;/version&gt;
-             &lt;extensions&gt;true&lt;/extensions&gt;
-             &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-             &lt;/configuration&gt;
-          &lt;/plugin&gt;
-       &lt;/plugins&gt;
-    &lt;/build&gt;
+          <span class="nt">&lt;plugin&gt;</span>
+             <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
+             <span class="nt">&lt;artifactId&gt;</span>sarl-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+             <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+             <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
+             <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;source&gt;</span>1.8<span class="nt">&lt;/source&gt;</span>
+                <span class="nt">&lt;target&gt;</span>1.8<span class="nt">&lt;/target&gt;</span>
+                <span class="nt">&lt;encoding&gt;</span>UTF-8<span class="nt">&lt;/encoding&gt;</span>
+             <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/plugin&gt;</span>
+       <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
     ...
-    &lt;dependencies&gt;
+    <span class="nt">&lt;dependencies&gt;</span>
        ...
-       &lt;dependency&gt;
-          &lt;groupId&gt;io.janusproject&lt;/groupId&gt;
-          &lt;artifactId&gt;io.janusproject.kernel&lt;/artifactId&gt;
-          &lt;version&gt;${janus.version}&lt;/version&gt;
-       &lt;/dependency&gt;
+       <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>io.janusproject<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>io.janusproject.kernel<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>${janus.version}<span class="nt">&lt;/version&gt;</span>
+       <span class="nt">&lt;/dependency&gt;</span>
        ...
-    &lt;/dependencies&gt;
+    <span class="nt">&lt;/dependencies&gt;</span>
     ...
- &lt;/project&gt;
+ <span class="nt">&lt;/project&gt;</span>
 </code></pre></div>
 <p><important>If you want to have the dependencies to both <code class="prettyprint">io.sarl.maven.sdk</code> and <code class="prettyprint">io.janusproject.kernel</code> in your
 POM file, you must be sure that the imported version of the Google Guava library is the one provided by the Janus
@@ -254,7 +254,7 @@ section of your pom file.</important></p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

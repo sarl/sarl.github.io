@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -138,10 +138,10 @@ The most basic scope is represented by a collection of addresses.</p>
 <h3 id="1-1-space">1.1. Space</h3>
 
 <p>SARL provides a Java interface that is representing all the spaces:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">Space</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-        <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Space</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+    <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The <code class="prettyprint">getSpaceID</code> function replies the identifier of the space.
 The <code class="prettyprint">getParticipants</code> function replies the identifiers
@@ -150,11 +150,11 @@ of the agents belonging to the space.</p>
 <h3 id="1-2-event-space">1.2. Event Space</h3>
 
 <p>Spaces that are based on event propagation mechanism are defined as:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">EventSpace</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">,</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
-        <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">)</span>
-        <span class="kd">def</span> <span class="nf">getAddress</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">EventSpace</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">,</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
+    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">getAddress</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The <code class="prettyprint">getAddress</code> function replies the address in the space of the agent that has the given identifier.
 The <code class="prettyprint">emit</code> functions permits fire of an event in the space.</p>
@@ -162,21 +162,21 @@ The <code class="prettyprint">emit</code> functions permits fire of an event in 
 <h3 id="1-3-open-event-space">1.3. Open Event Space</h3>
 
 <p>Event spaces that are allowing the agents to be register and unregister are &quot;open event spaces&quot;:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">OpenEventSpace</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">unregister</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-        <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">OpenEventSpace</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">unregister</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+    <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The functions <code class="prettyprint">register</code> and <code class="prettyprint">unregister</code> permit an agent to be involved or not.</p>
 
 <h3 id="1-4-restricted-access-event-space">1.4. Restricted Access Event Space</h3>
 
 <p>When an event space needs to control the registration access, it should be a &quot;restricted access event space&quot;:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">RestrictedAccessEventSpace</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">unregister</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-        <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-        <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">EventListener</span><span class="o">,</span> <span class="n">Principal</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">RestrictedAccessEventSpace</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">unregister</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+    <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+    <span class="kd">def</span> <span class="nf">register</span><span class="o">(</span><span class="n">EventListener</span><span class="o">,</span> <span class="n">Principal</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The functions given by this type of space permits implementing a space with restricted access, based on the standard Java API.</p>
 
@@ -201,11 +201,11 @@ the functions provided by the space.</p>
 
 <p>The new space type must extend one of the predefined types. In the following example, the new space is related to
 the physic environment in which the agents may evolve.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">PhysicSpace</span> <span class="k">extends</span> <span class="n">Space</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
-        <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
-        <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">PhysicSpace</span> <span class="k">extends</span> <span class="n">Space</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>This space permits to move an object (including the physical representation of the agent, its body).
 Additionally, the space gives to the agent the ability to be binded to its body, and to release the control of its body.
@@ -222,27 +222,27 @@ the &quot;deprecated feature use&quot; warning in your Java compilation configur
 that you will be notified about any major changes on this part of the API.</caution></p>
 
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">PhysicSpaceImpl</span> <span class="k">extends</span> <span class="n">AbstractEventSpace</span> <span class="k">implements</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">UUID</span><span class="o">,</span> <span class="n">PhysicObject</span><span class="o">&gt;</span><span class="n">newHashMap</span>
-        <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kd">var</span> <span class="n">o</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">o</span><span class="o">.</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(</span><span class="n">listener</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">listener</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">PhysicObject</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(</span><span class="n">listener</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">listener</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">PhysicSpaceImpl</span> <span class="k">extends</span> <span class="n">AbstractEventSpace</span> <span class="k">implements</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">UUID</span><span class="o">,</span> <span class="n">PhysicObject</span><span class="o">&gt;</span><span class="n">newHashMap</span>
+    <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">o</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">o</span><span class="o">.</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(</span><span class="n">listener</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">listener</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">PhysicObject</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(</span><span class="n">listener</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">listener</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The physic space contains a collection of objects, namely <code class="prettyprint">entities</code>.
 Each object is identified by an <code class="prettyprint">UUID</code>. It is assumed that the <code class="prettyprint">PhysicObject</code> class provides a method for moving it:
@@ -266,37 +266,37 @@ network.</p>
 about any major changes on this part of the API.</caution></p>
 
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">NetworkPhysicSpaceImpl</span> <span class="k">extends</span> <span class="n">AbstractEventSpace</span> <span class="k">implements</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">entities</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">,</span><span class="n">PhysicObject</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">NetworkPhysicSpaceImpl</span> <span class="k">extends</span> <span class="n">AbstractEventSpace</span> <span class="k">implements</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">entities</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">,</span><span class="n">PhysicObject</span><span class="o">&gt;</span>
 
-        <span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">)</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">entities</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">getMap</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="n">toString</span> <span class="o">+</span> <span class="s">&quot;-physicObjects&quot;</span><span class="o">)</span>
-        <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">)</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">entities</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">getMap</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="n">toString</span> <span class="o">+</span> <span class="s">&quot;-physicObjects&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
 
-        <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(</span><span class="n">entity</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">PhysicObject</span><span class="o">)</span>
-            <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Address</span><span class="o">(</span><span class="n">ID</span><span class="o">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
-            <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">.</span><span class="n">registerParticipant</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">entity</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(</span><span class="n">entity</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
-            <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">.</span><span class="n">unregisterParticipant</span><span class="o">(</span><span class="n">entity</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">o</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">o</span><span class="o">.</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span>
-                <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">identifier</span><span class="o">,</span> <span class="n">o</span><span class="o">)</span>
-            <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(</span><span class="n">entity</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">PhysicObject</span><span class="o">)</span>
+        <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Address</span><span class="o">(</span><span class="n">ID</span><span class="o">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">.</span><span class="n">registerParticipant</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">entity</span><span class="o">)</span>
         <span class="o">}</span>
     <span class="o">}</span>
+
+    <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(</span><span class="n">entity</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">.</span><span class="n">unregisterParticipant</span><span class="o">(</span><span class="n">entity</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">o</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">remove</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">o</span><span class="o">.</span><span class="n">move</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">identifier</span><span class="o">,</span> <span class="n">o</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p><important>The collection of the physic objects is a distributed map over the computer network. It means that each node
 of the platform has a direct access to the objects&#39; instances. If whose to say that is implementation may face some problems,
@@ -306,20 +306,20 @@ such as the serialization of the physic objects, and the scalability of the dist
 
 <p>For creating instances of spaces, it is necessary to define a space specification.
 This specification may create the space instance according to rules, or provide information and rules to the spaces.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">PhysicSpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">PhysicSpace</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nf">PhysicSpaceImpl</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">PhysicSpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">PhysicSpace</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">PhysicSpaceImpl</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The example above is the specification related to the first implementation of the <code class="prettyprint">PhysicSpace</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">NetworkPhysicSpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">PhysicSpace</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="nd">@Inject</span>
-        <span class="kd">var</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span>
-        <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nf">NetworkPhysicSpaceImpl</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">NetworkPhysicSpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">PhysicSpace</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Inject</span>
+    <span class="kd">var</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span>
+    <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">NetworkPhysicSpaceImpl</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The example above is the specification that permits to create a physic space with networking. It retrieves
 by injection the factory of distributed data structures provided by the Janus platform.</p>
@@ -330,7 +330,7 @@ by injection the factory of distributed data structures provided by the Janus pl
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

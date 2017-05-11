@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -92,6 +92,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-3-why-does-sarl-display-an-error-on-startup">2.3. Why does SARL display an error on startup?</a></li>
   <li><a href="#2-4-why-does-sarl-eclipse-fail-on-windows-10">2.4. Why does SARL Eclipse fail on Windows 10?</a></li>
   <li><a href="#2-5-why-does-the-sarl-product-launch-but-not-contain-any-features-related-to-sarl">2.5. Why does the SARL product launch but not contain any features related to SARL?</a></li>
+  <li><a href="#2-6-why-does-the-content-assistant-not-propose-any-suggestion-on-macos">2.6. Why does the content assistant not propose any suggestion on MacOS?</a></li>
 </ul>
 <li><a href="#3-contribute-to-sarl">3. Contribute to SARL</a></li>
 <ul>
@@ -302,6 +303,22 @@ Two ways are available for solving this issue:</p>
 <li>force the SARL product to use the JDK 1.8 by editing the <code class="prettyprint">eclipse-sarl.ini</code> file. Add the following parameter on a new line: <code class="prettyprint">-vm path</code>, where <code class="prettyprint">path</code> is the path to the binary file <code class="prettyprint">javaw[.exe]</code> or <code class="prettyprint">java[.exe]</code> of the JDK 1.8.</li>
 </ol>
 
+<h3 id="2-6-why-does-the-content-assistant-not-propose-any-suggestion-on-macos">2.6. Why does the content assistant not propose any suggestion on MacOS?</h3>
+
+<p>By default in the SARL product, the shortcut key for invoking the content assistant is <code class="prettyprint">Ctrl+Space</code> or <code class="prettyprint">Apple+Space</code>.
+But, the Spotlight tool on MacOS is also using the same shortcut key.</p>
+
+<p>For enabling the SARL product content assist, we recommend to change its shortcut in the SARL product. Go to:</p>
+
+<ul>
+<li>Window &gt; Preferences</li>
+<li>General &gt; Keys</li>
+<li>Content Assist</li>
+<li>Change the shortcut key</li>
+</ul>
+
+<p><img src="./ctrlspaceprefs.png" alt="Content assist shortcut change"></p>
+
 <h2 id="3-contribute-to-sarl">3. Contribute to SARL</h2>
 
 <h3 id="3-1-where-are-the-sources-for-sarl">3.1. Where are the sources for SARL?</h3>
@@ -327,7 +344,7 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

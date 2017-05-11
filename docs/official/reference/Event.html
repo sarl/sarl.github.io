@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -137,8 +137,8 @@ block is allowed).</p>
 <p>The example below contains the definition of <code class="prettyprint">Event1</code> and <code class="prettyprint">Event2</code>, which are both empty.
 The first event is defined with the &quot;empty block&quot; syntax.
 The second event is defined with the &quot;nothing&quot; syntax.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>  <span class="o">}</span>
-    <span class="kd">event</span> <span class="nc">Event2</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>  <span class="o">}</span>
+<span class="kd">event</span> <span class="nc">Event2</span>
 </code></pre></div>
 <h3 id="2-2-define-an-event-with-attributes">2.2. Define an event with attributes</h3>
 
@@ -159,11 +159,11 @@ Each declaration of the attributes illustrates one possible syntax for defining 
 <p>According to the type inference mechanism used by SARL, the attribute <code class="prettyprint">something</code> will have the type <code class="prettyprint">Object</code>.</p>
 
 <p><note> Because of the use of the <code class="prettyprint">var</code> keyword, the values of these attributes can be modified.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
-        <span class="kd">var</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-        <span class="kd">var</span> <span class="n">something</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
+    <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
+    <span class="kd">var</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+    <span class="kd">var</span> <span class="n">something</span> <span class="o">:</span> <span class="n">Object</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="2-3-define-an-event-with-value-attributes">2.3. Define an event with value attributes</h3>
 
@@ -180,14 +180,14 @@ is not read-only (only the initial reference is).</importantnote></p>
 variable, there should be a way to specify the initial value.
 The initial value can be specified at the end of the <code class="prettyprint">val</code>
 directive or by specifying a constructor.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
-        <span class="kd">val</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
+    <span class="kd">val</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
 
-        <span class="k">new</span><span class="o">(</span><span class="n">nb</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">number</span> <span class="o">=</span> <span class="n">nb</span>
-        <span class="o">}</span>
+    <span class="k">new</span><span class="o">(</span><span class="n">nb</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">nb</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="2-4-extending-events">2.4. Extending Events</h3>
 
@@ -209,23 +209,23 @@ A second event <code class="prettyprint">Event2</code>, is defined as an extensi
 It is now possible to create instances of these events. For <code class="prettyprint">Event1</code>, only the attribute <code class="prettyprint">string</code>
 is available. For <code class="prettyprint">Event2</code>, two attributes are available (<code class="prettyprint">Event2</code> inherits one field from
 <code class="prettyprint">Event2</code> and defines one field).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">string</span> <span class="o">:</span> <span class="n">String</span>
-    <span class="o">}</span>
-    <span class="kd">event</span> <span class="nc">Event2</span> <span class="k">extends</span> <span class="n">Event1</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>
+    <span class="kd">var</span> <span class="n">string</span> <span class="o">:</span> <span class="n">String</span>
+<span class="o">}</span>
+<span class="kd">event</span> <span class="nc">Event2</span> <span class="k">extends</span> <span class="n">Event1</span> <span class="o">{</span>
+    <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="kt">int</span>
+<span class="o">}</span>
 </code></pre></div>
 <h4 id="use">Use</h4>
 
 <p>The following code illustrates the use of event instances.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Create an instance of Event1 and set its attribute.</span>
-    <span class="kd">var</span> <span class="n">e1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event1</span>
-    <span class="n">e1</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-    <span class="c1">// Create an instance of Event2 and set its attributes.</span>
-    <span class="kd">var</span> <span class="n">e2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event2</span>
-    <span class="n">e2</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-    <span class="n">e2</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">345</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Create an instance of Event1 and set its attribute.</span>
+<span class="kd">var</span> <span class="n">e1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event1</span>
+<span class="n">e1</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+<span class="c1">// Create an instance of Event2 and set its attributes.</span>
+<span class="kd">var</span> <span class="n">e2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event2</span>
+<span class="n">e2</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+<span class="n">e2</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">345</span>
 </code></pre></div>
 <h3 id="2-5-modifiers">2.5. Modifiers</h3>
 
@@ -251,12 +251,12 @@ The modifiers are usually written before the keyword for defining the event.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">event</span> <span class="nc">Example1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">event</span> <span class="nc">Example2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">final</span> <span class="kd">event</span> <span class="nc">Example3</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">event</span> <span class="nc">Example1</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kn">package</span> <span class="kd">event</span> <span class="nc">Example2</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kd">final</span> <span class="kd">event</span> <span class="nc">Example3</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h4 id="field-modifiers">Field Modifiers</h4>
 
@@ -271,7 +271,7 @@ The modifiers are usually written before the keyword for defining the event.</p>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
 </code></pre></div>
 <h2 id="3-reserved-events">3. Reserved Events</h2>
 
@@ -294,7 +294,7 @@ events.</veryimportantnote></p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

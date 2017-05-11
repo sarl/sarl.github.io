@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Built-in Capacity Reference</title>
+    <title>Janus Command-line Launcher</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -64,69 +64,115 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="built-in-capacity-reference">Built-in Capacity Reference</h1>
+      <h1 id="janus-command-line-launcher">Janus Command-line Launcher</h1>
 
 <ul class="page_outline" id="page_outline">
 
-<li><a href="#1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</a></li>
-<li><a href="#2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</a></li>
+<li><a href="#1-usage">1. Usage</a></li>
+<li><a href="#2-command-line-options">2. Command-Line Options</a></li>
 <li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
 </ul>
 
-<p>This document describes the built-in capacities in SARL.
-Before reading this document, we recommend that you read
-the <a href="./GeneralSyntax.html">General Syntax Reference</a>, the <a href="./Capacity.html">Capacity Reference</a>,
-and the <a href="./Skill.html">Skill Reference</a>.</p>
+<p><a href="http://www.janusproject.io">Janus</a> is the default SARL Run-time Environment (SRE).
+Its role is to provide all the libraries and plugins that are needed for running SARL agents.</p>
 
-<p>A <em>Capacity</em> is the specification of a collection of actions. This specification makes no assumptions about
-its implementation. It could be used to specify what an agent can do, what a behavior requires for its execution.</p>
+<p>For launching the Janus platform from a command-line shell, you could use the <code class="prettyprint">janus</code> tool.</p>
 
-<p>A <em>Skill</em> is a possible implementation of a capacity fulfilling all the 
- * constraints of this specification.</p>
+<h2 id="1-usage">1. Usage</h2>
 
-<p>In SARL, every agent has a set of <em>built-in capacities</em> considered essential 
-to respect the commonly accepted competencies of agents.
-These capacities are considered the main building blocks on top of which other 
-higher level capacities and skills can be constructed.
-They are defined in the SARL language, but the skills implementing them are provided 
-by the runtime environment, e.g. the <a href="http://www.janusproject.io">Janus platform</a>.
-This runtime environment is responsible for creating them and injecting them in 
-the agent before their execution begins.
-Therefore, when the agent receives the <code class="prettyprint">Initialize</code> event they are
-already available.</p>
+<p>The <code class="prettyprint">janus</code> tool takes arguments:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">janus [OPTIONS] &lt;agent_fully_qualified_name&gt;
+</code></pre></div>
+<p>The <code class="prettyprint">agent_fully_qualified_name</code> is the name of the agent to launch. This name is equal to the
+fully qualified name of the agent&#39;s type.</p>
 
-<p>The following figure presents the different contexts associated to an agent <code class="prettyprint">A</code>.
-Several built-in capacities permit accessing and manage these contexts.
-The agents are represented by stylized humans, the contexts by the blue boxes,
-and the spaces by the small color boxes in the contexts.</p>
+<p><note>Janus enables to launch only one agent from the command-line shell. If you want to launch
+more than one agent, you should launch a first agent, which will create the other agents.</note></p>
 
-<p><img src="./contexts.png" alt="Contexts"></p>
+<p>You could change the behavior of the <code class="prettyprint">janus</code> tool with the command-line options.
+For obtaining a list of the options, type:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">janus -help
+</code></pre></div>
+<h2 id="2-command-line-options">2. Command-Line Options</h2>
 
-<h2 id="1-details-on-the-built-in-capacities">1. Details on the Built-In Capacities</h2>
+<p>The complete list of the options is:</p>
 
-<p>Each built-in capacity is detailed inside a dedicated section:</p>
-
-<ul>
-<li><a href="./bic/Behaviors.html">Behaviors</a></li>
-<li><a href="./bic/DefaultContextInteractions.html">DefaultContxtInteractions</a></li>
-<li><a href="./bic/ExternalContextAccess.html">ExternalContextAccess</a></li>
-<li><a href="./bic/InnerContextAccess.html">InnerContextAccess</a></li>
-<li><a href="./bic/Lifecycle.html">Lifecycle</a></li>
-<li><a href="./bic/Logging.html">Logging</a></li>
-<li><a href="./bic/Schedules.html">Schedules</a></li>
-<li><a href="./bic/Time.html">Time</a></li>
-</ul>
-
-<h2 id="2-use-of-the-built-in-capacities">2. Use of the Built-in Capacities</h2>
-
-<p>Details on the use of the built-in capacities may be found in the references of the major
-behavior-based concepts of SARL:</p>
-
-<ul>
-<li><a href="./Agent.html">Agent</a></li>
-<li><a href="./Behavior.html">Behavior</a></li>
-</ul>
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">-B</code>, <code class="prettyprint">--bootid</code></td>
+<td>The Janus context UUID is computed from the classname of the boot agent. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to true and false.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-cp</code>, <code class="prettyprint">--classpath</code></td>
+<td>Add entries to the Java classpath</td>
+</tr>
+<tr>
+<td><code class="prettyprint">--cli</code></td>
+<td>Show the command line arguments received by Janus.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-D</code>, <code class="prettyprint">--define &lt;property=value&gt;</code></td>
+<td>Define a system property.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-e</code>, <code class="prettyprint">--embedded</code></td>
+<td>Janus is run inside another application.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-f</code>, <code class="prettyprint">--file</code></td>
+<td>Load system properties from a file.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-h</code>, <code class="prettyprint">--help</code></td>
+<td>Display this help.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-l</code>, <code class="prettyprint">--log</code></td>
+<td>Set the logging level. Default level is &#39;info&#39;. The available logging levels are: none (0), error (1), warning (2), info (3), fine (4), finer (5), finest (6), all (7).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">--nologo</code></td>
+<td>Hide the Janus logo.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-o</code>, <code class="prettyprint">--offline</code></td>
+<td>Run the platform offline: it cannot communicate with other platform instances. It is equivalent as setting the property &#39;janus.network.offline&#39; to true.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-q</code>, <code class="prettyprint">--quiet</code></td>
+<td>Decrease the logging level.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-R</code>, <code class="prettyprint">--randomid</code></td>
+<td>The Janus context UUID is computed randomly. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to false and true.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-showclasspath</code></td>
+<td>Show the classpath used by the application.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-s</code>, <code class="prettyprint">--showdefaults</code></td>
+<td>Show the default values of the system properties.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-v</code>, <code class="prettyprint">--verbose</code></td>
+<td>Increase the logging level.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-version</code></td>
+<td>Display the version of Janus.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">-W</code>, <code class="prettyprint">--worldid</code></td>
+<td>The Janus context UUID is the default hard-coded one. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to false, both.</td>
+</tr>
+</tbody></table>
 
 <h2 id="3-legal-notice">3. Legal Notice</h2>
 

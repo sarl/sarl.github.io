@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -88,28 +88,24 @@ variable (see below for details), its name, and optionally its type and its init
 <h2 id="1-variable-vs-value-declaration">1. Variable vs. Value Declaration</h2>
 
 <p>A variable declaration starting with the keyword <code class="prettyprint">val</code> denotes a value, which is essentially a final, unsettable variable.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
-</code></pre></div>
+
 <p>The variable needs to be declared with the keyword <code class="prettyprint">var</code>, which stands for &#39;variable&#39;, if its value can change.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
-</code></pre></div>
+
 <p>Variables declared outside a lambda expression using the <code class="prettyprint">var</code> or <code class="prettyprint">val</code> keyword are accessible from within the
 lambda expressions.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
-</code></pre></div>
+
 <p>Fields declared outside a lambda expression using the <code class="prettyprint">var</code> keyword or the <code class="prettyprint">val</code> keyword are
 accessible from within the lambda expressions.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
-</code></pre></div>
+
 <h2 id="2-typing">2. Typing</h2>
 
 <p>The type of the variable itself can either be explicitly declared or it can be inferred from the initializer expression.</p>
 
 <p>In the following example, the type of the variable is explicitly given:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
 </code></pre></div>
 <p>In the following example, the type of the variable is inferred to <code class="prettyprint">String</code>:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
 </code></pre></div>
 <h2 id="3-implicit-variables-this-and-it">3. Implicit Variables: this and it</h2>
 
@@ -134,7 +130,7 @@ with the same name on the <code class="prettyprint">it</code> object, then in th
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

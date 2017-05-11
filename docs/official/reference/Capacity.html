@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -110,12 +110,12 @@ a Capacity: no attribute or field is allowed, and no body (code) for the Action 
 is defined. This Capacity enables an Agent to log information and debugging messages.</p>
 
 <p><note>Defining a Capacity without Actions is a symptom of a design problem.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">Logging</span> <span class="o">{</span>
-        <span class="c1">// Log an information message</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-        <span class="c1">// Log a debugging message</span>
-        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Logging</span> <span class="o">{</span>
+    <span class="c1">// Log an information message</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+    <span class="c1">// Log a debugging message</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-2-extending-a-capacity">1.2. Extending a Capacity</h3>
 
@@ -129,24 +129,24 @@ object-oriented language.</p>
 This is similar to the implementation of interfaces in the Java language.</veryimportantnote></p>
 
 <p>In the following code, the <code class="prettyprint">Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">ErrorLogging</span> <span class="k">extends</span> <span class="n">Logging</span> <span class="o">{</span>
-        <span class="c1">// Log a error message</span>
-        <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">ErrorLogging</span> <span class="k">extends</span> <span class="n">Logging</span> <span class="o">{</span>
+    <span class="c1">// Log a error message</span>
+    <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</h3>
 
 <p>In some situations, it is useful to define a Capacity by extending more than one Capacity.
 Below, the <code class="prettyprint">Cap3</code> Capacity is defined as an extension of the Capacities <code class="prettyprint">Cap1</code> and <code class="prettyprint">Cap2</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">Cap1</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">action1</span>
-    <span class="o">}</span>
-    <span class="kd">capacity</span> <span class="nc">Cap2</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">action2</span>
-    <span class="o">}</span>
-    <span class="kd">capacity</span> <span class="nc">Cap3</span> <span class="k">extends</span> <span class="n">Cap1</span><span class="o">,</span> <span class="n">Cap2</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">action3</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Cap1</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action1</span>
+<span class="o">}</span>
+<span class="kd">capacity</span> <span class="nc">Cap2</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action2</span>
+<span class="o">}</span>
+<span class="kd">capacity</span> <span class="nc">Cap3</span> <span class="k">extends</span> <span class="n">Cap1</span><span class="o">,</span> <span class="n">Cap2</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action3</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-4-modifiers">1.4. Modifiers</h3>
 
@@ -170,10 +170,10 @@ The modifiers are usually written before the keyword defining the Capacity.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">capacity</span> <span class="nc">Example1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">capacity</span> <span class="nc">Example2</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">capacity</span> <span class="nc">Example1</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kn">package</span> <span class="kd">capacity</span> <span class="nc">Example2</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h4 id="method-modifiers">Method Modifiers</h4>
 
@@ -188,8 +188,8 @@ The modifiers are usually written before the keyword defining the Capacity.</p>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Public access function</span>
-    <span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Public access function</span>
+<span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span>
 </code></pre></div>
 <h2 id="2-built-in-capacities">2. Built-in Capacities</h2>
 
@@ -226,7 +226,7 @@ A Capacity cannot be called by itself since it does not provide an implementatio
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

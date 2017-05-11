@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/custom.css">
     <link rel="stylesheet" href="../../css/pygments.css">
+    <link rel="stylesheet" href="../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -75,8 +75,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-3-changing-the-visibility-of-the-sarl-code">1.3. Changing the visibility of the SARL code</a></li>
   <li><a href="#1-4-evaluating-a-sarl-expression">1.4. Evaluating a SARL expression</a></li>
   <li><a href="#1-5-capture-sarl-code-into-the-documentation">1.5. Capture SARL code into the documentation</a></li>
-  <li><a href="#1-6-generate-code-from-java-type">1.6. Generate code from Java type</a></li>
-  <li><a href="#1-7-generating-an-outline">1.7. Generating an Outline</a></li>
+  <li><a href="#1-6-dynamic-generation-of-the-markdown-text">1.6. Dynamic generation of the Markdown text</a></li>
+  <li><a href="#1-7-generate-code-from-java-type">1.7. Generate code from Java type</a></li>
+  <li><a href="#1-8-generating-an-outline">1.8. Generating an Outline</a></li>
 </ul>
 
 <p><li><a href="#2-syntax-extensions">2. Syntax Extensions</a></li>
@@ -178,7 +179,16 @@ equals to the <code class="prettyprint">id</code>.</p>
 </code></pre></div>
 <p>This protection is implicit in the parameters and the content of the other macros that are described on this page.</p>
 
-<h3 id="1-6-generate-code-from-java-type">1.6. Generate code from Java type</h3>
+<h3 id="1-6-dynamic-generation-of-the-markdown-text">1.6. Dynamic generation of the Markdown text</h3>
+
+<p>Sometimes, it is useful to create the Markdown text via a script in order to introduce dynamic building of the documentation.
+The following macro provides you the ability to run a SARL script for generating the documentation.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[:Dynamic:](expression)
+</code></pre></div>
+<p>The <code class="prettyprint">Dynamic</code> macro is supposed to replies a value that could be interpreted as a string of characters.
+The given string of characters will replace the <code class="prettyprint">Dynamic</code> macro into the generated Markdown text.</p>
+
+<h3 id="1-7-generate-code-from-java-type">1.7. Generate code from Java type</h3>
 
 <p>You could generate a piece of code from a Java type with the following macro:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">[:ShowType:](typename)
@@ -186,7 +196,7 @@ equals to the <code class="prettyprint">id</code>.</p>
 <p>This macro extracts the type definition with the reflection mechanism for the given <code class="prettyprint">typename</code>.
 The output of this macro is a formatted SARL code that corresponds to the extracted information.</p>
 
-<h3 id="1-7-generating-an-outline">1.7. Generating an Outline</h3>
+<h3 id="1-8-generating-an-outline">1.8. Generating an Outline</h3>
 
 <p>By default, Markdown does not include a specific tag for generating the outline.
 If you put the <code class="prettyprint">Outline</code> macro, it will be replaced by a generated outline.</p>
@@ -270,7 +280,7 @@ The other resources, such as images should be in the <code class="prettyprint">s
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

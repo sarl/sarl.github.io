@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -83,16 +83,16 @@ bottom context in the figure above.</p>
 <h2 id="1-retrieving-the-inner-context">1. Retrieving the Inner Context</h2>
 
 <p>For retrieving the inner context of an agent, this built-in capacity provides the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getInnerContext</span> <span class="o">:</span> <span class="n">AgentContext</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getInnerContext</span> <span class="o">:</span> <span class="n">AgentContext</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">InnerContextAccess</span>
-        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">c</span> <span class="o">=</span> <span class="n">getInnerContext</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">InnerContextAccess</span>
+    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">getInnerContext</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-members-of-an-agent">2. Members of an Agent</h2>
 
@@ -102,26 +102,26 @@ A member agent is an agent that is not the calling agent, and is a member of at 
 one space of the inner context.</p>
 
 <p>The first function replies if the calling agent has other agents as members of its inner context:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">hasMemberAgent</span> <span class="o">:</span> <span class="kt">boolean</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">hasMemberAgent</span> <span class="o">:</span> <span class="kt">boolean</span>
 </code></pre></div>
 <p>The second function replies the number of agents that are members of the inner context of the calling agent:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getMemberAgentCount</span> <span class="o">:</span> <span class="kt">int</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getMemberAgentCount</span> <span class="o">:</span> <span class="kt">int</span>
 </code></pre></div>
 <p>The third function replies all the member agents in the inner context:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getMemberAgents</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getMemberAgents</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">InnerContextAccess</span>
-        <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">boolean</span>
-        <span class="kd">var</span> <span class="n">n</span> <span class="o">:</span> <span class="kt">int</span>
-        <span class="kd">var</span> <span class="n">m</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">hasMemberAgent</span>
-            <span class="n">n</span> <span class="o">=</span> <span class="n">getMemberAgentCount</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="n">getMemberAgents</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">InnerContextAccess</span>
+    <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">var</span> <span class="n">n</span> <span class="o">:</span> <span class="kt">int</span>
+    <span class="kd">var</span> <span class="n">m</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">hasMemberAgent</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">getMemberAgentCount</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">getMemberAgents</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-testing-if-an-element-is-related-to-the-inner-context">3. Testing if an element is related to the inner context</h2>
 
@@ -158,9 +158,9 @@ of type <code class="prettyprint">AnEvent</code> was emitted in the default spac
 
 <p><note>According to the <a href="../GeneralSyntax.html">General Syntax Reference</a>,
 the <code class="prettyprint">event.isInnerDefaultSpace</code> is equivalent to <code class="prettyprint">isInnerDefaultSpace(event)</code>.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">inInnerDefaultSpace</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="c1">// Do something with the event when it was emitted in the inner default space</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">inInnerDefaultSpace</span> <span class="o">]</span> <span class="o">{</span>
+    <span class="c1">// Do something with the event when it was emitted in the inner default space</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-legal-notice">4. Legal Notice</h2>
 
@@ -168,7 +168,7 @@ the <code class="prettyprint">event.isInnerDefaultSpace</code> is equivalent to 
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

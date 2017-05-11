@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -96,15 +96,15 @@ pass with the <code class="prettyprint">Initialize</code> event to the launched 
 
 <p><importantnode>The Janus platform enables to launch a single agent at start-up.
 If you want to launch more agents, please read the next section.</importantnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">io.janusproject.Boot</span>
-    <span class="kn">import</span> <span class="nn">myprogram.MyAgent</span>
-    <span class="kd">class</span> <span class="nc">MyProgram</span> <span class="o">{</span>
-        <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
-            <span class="nl">Boot:</span><span class="o">:</span><span class="n">startJanus</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span>
-                <span class="n">args</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.janusproject.Boot</span>
+<span class="kn">import</span> <span class="nn">myprogram.MyAgent</span>
+<span class="kd">class</span> <span class="nc">MyProgram</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
+        <span class="nl">Boot:</span><span class="o">:</span><span class="n">startJanus</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span>
+            <span class="n">args</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-launching-more-agents-programmatically-with-janus">2. Launching more agents programmatically with Janus</h2>
 
@@ -126,15 +126,15 @@ pass with the [:initevent] event to the launched agent.</p>
 
 <p><important>that the first agent is launched by the <code class="prettyprint">startJanus</code> function, and the 
 second agent is launched by the <code class="prettyprint">spawn</code> function.</important></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">import</span> <span class="nn">io.janusproject.Boot</span>
-    <span class="kd">class</span> <span class="nc">MyProgram</span> <span class="o">{</span>
-        <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">janusKernel</span> <span class="o">=</span> <span class="nl">Boot:</span><span class="o">:</span><span class="n">startJanus</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span>
-                <span class="n">args</span><span class="o">)</span>
-            <span class="n">janusKernel</span><span class="o">.</span><span class="n">spawn</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span> <span class="n">args</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.janusproject.Boot</span>
+<span class="kd">class</span> <span class="nc">MyProgram</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">janusKernel</span> <span class="o">=</span> <span class="nl">Boot:</span><span class="o">:</span><span class="n">startJanus</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span>
+            <span class="n">args</span><span class="o">)</span>
+        <span class="n">janusKernel</span><span class="o">.</span><span class="n">spawn</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">),</span> <span class="n">args</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-whats-next">3. What&#39;s next?</h2>
 
@@ -149,7 +149,7 @@ Please read the rest of the documentation for obtaining more details.</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

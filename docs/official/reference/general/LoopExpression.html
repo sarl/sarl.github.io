@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -88,15 +88,15 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>The type of a for loop is <code class="prettyprint">void</code>. The type of the local variable can be inferred from the
 iterable or array that is processed, e.g. in the following example <code class="prettyprint">v</code> is of type <code class="prettyprint">String</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">tab</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">tab</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>You could specify the expected type for the local variable with the <code class="prettyprint">as</code> following the local variable:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="k">as</span> <span class="n">String</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="k">as</span> <span class="n">String</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-traditional-java-for-loop">2. Traditional Java For Loop</h2>
 
@@ -106,19 +106,19 @@ declared. Next the predicate is executed and if it evaluates to <code class="pre
 body-expression is executed. On any subsequent iterations the update-expression
 is executed instead of the init-expression. This happens until the predicate
 returns <code class="prettyprint">false</code>. The type of a for loop is <code class="prettyprint">void</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-while-loop">3. While Loop</h2>
 
 <p>A while loop is used to execute a certain expression unless the predicate is evaluated to
 <code class="prettyprint">false</code>. The type of a while loop is <code class="prettyprint">void</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
-        <span class="n">i</span><span class="o">++</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+    <span class="n">i</span><span class="o">++</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-do-while-loop">4. Do-While Loop</h2>
 
@@ -126,12 +126,12 @@ returns <code class="prettyprint">false</code>. The type of a for loop is <code 
 to <code class="prettyprint">false</code>. The difference to the while loop is that the execution starts by 
 executing the block once before evaluating the predicate for the first time. 
 The type of a while loop is <code class="prettyprint">void</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">do</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
-        <span class="n">i</span><span class="o">++</span>
-    <span class="o">}</span>
-    <span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">do</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+    <span class="n">i</span><span class="o">++</span>
+<span class="o">}</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">123</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="5-breaking-a-loop">5. Breaking a loop</h2>
 
@@ -139,11 +139,11 @@ The type of a while loop is <code class="prettyprint">void</code>.</p>
 When this keyword is run, the control flow exists for the nearest
 enclosing loop, and run the statement that is jsut following the loop
 expression in the sequence of instructions.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">break</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">break</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
@@ -157,7 +157,7 @@ expression in the sequence of instructions.</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

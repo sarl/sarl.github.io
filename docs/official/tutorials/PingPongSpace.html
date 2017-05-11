@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -151,20 +151,19 @@ at which position the event is located in the sequence of sent <code class="pret
 <p>The <code class="prettyprint">index</code> attribute is a <em>value</em>, for making it unmodifiable after its initialization.</p>
 
 <p>For setting the value of the <code class="prettyprint">index</code> value, it is mandatory to define a constructor. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">
-</code></pre></div>
+
 <h3 id="2-2-pong-event">2.2. Pong Event</h3>
 
 <p>The <code class="prettyprint">Pong</code> is an event that contains the index of the <code class="prettyprint">Ping</code> event for which the
 <code class="prettyprint">Pong</code> event is created.</p>
 
 <p>The <code class="prettyprint">index</code> attribute is also a <em>value</em>, and it must be set in a constructor. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Pong</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">index</span> <span class="o">:</span> <span class="kt">int</span>
-        <span class="k">new</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Pong</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">index</span> <span class="o">:</span> <span class="kt">int</span>
+    <span class="k">new</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-pong-agent">3. Pong agent</h2>
 
@@ -174,8 +173,8 @@ for <code class="prettyprint">Ping</code> events, and replying <code class="pret
 <h3 id="3-1-first-definition">3.1. First definition</h3>
 
 <p>The initial definition of the pong agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-2-join-the-sub-space">3.2. Join the sub-space</h3>
 
@@ -190,19 +189,19 @@ for creating a new space.</p>
 receiving the events. The spaces of type <code class="prettyprint">OpenEventSpaceSpecification</code> provides
 the <code class="prettyprint">register</code> function. It takes the event listener of the agent (provided by
 the <code class="prettyprint">Behaviors</code> capacity).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-3-handling-the-ping-event">3.3. Handling the Ping event</h3>
 
@@ -211,21 +210,21 @@ agent. According to the  <a href="../reference/Agent.html">Agent Reference</a>,
 the <code class="prettyprint">on</code> keyword followed by the name of the event permits to define a handler of events.
 This handler will be invoked by the runtime environment each time the agent is
 receiving a <code class="prettyprint">Ping</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-4-replying-to-ping-with-a-pong">3.4. Replying to Ping with a Pong</h3>
 
@@ -250,24 +249,24 @@ stored in the received <code class="prettyprint">Ping</code> event. Because an e
 and the space is not able to set this source for you, you must set the source of the
 event by yourself. The source of the event is the address of the pong agent in
 the sub-space. This address is replied by the <code class="prettyprint">getAddress</code> function.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-5-restricting-the-scope-of-the-pong-event">3.5. Restricting the scope of the Pong event</h3>
 
@@ -285,25 +284,25 @@ of an instance of <code class="prettyprint">AddressScope</code> is done with the
 which is getting a collection of addresses for building the matching predicate in the scope.</p>
 
 <p>In the following code, the scope permits to restrict to the initial sender of the <code class="prettyprint">Ping</code> event. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span>
-                <span class="n">evt</span><span class="o">,</span>
-                <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">))</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span>
+            <span class="n">evt</span><span class="o">,</span>
+            <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">))</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-ping-agent">4. Ping Agent</h2>
 
@@ -313,39 +312,39 @@ events, and waiting for <code class="prettyprint">Pong</code> events.</p>
 <h3 id="4-1-first-definition">4.1. First definition</h3>
 
 <p>The initial definition of the ping agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-2-handling-the-pong-event">4.2. Handling the Pong event</h3>
 
 <p>The ping agent needs to handle the <code class="prettyprint">Pong</code> events. For that, a &quot;behavior unit&quot; must be
 defined in the agent.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-3-re-sending-a-ping-when-receiving-a-pong">4.3. Re-sending a Ping when receiving a Pong</h3>
 
@@ -356,24 +355,24 @@ This new <code class="prettyprint">Ping</code> event has an index greater than t
 
 <p>The receiving of the <code class="prettyprint">Ping</code> event is restricted to the sender of the
 <code class="prettyprint">Pong</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-4-sending-the-first-ping">4.4. Sending the first Ping</h3>
 
@@ -382,27 +381,27 @@ of the <code class="prettyprint">Ping</code> event.</p>
 
 <p>This emit is done when the ping agent is started, i.e. when the agent is
 receiving the <code class="prettyprint">Initialize</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-5-delaying-the-sending-of-the-first-ping">4.5. Delaying the sending of the first Ping</h3>
 
@@ -424,33 +423,33 @@ that will be periodically executed.</p>
 <p>In this periodically executed code, the agent is testing if it is the only
 one agent belonging to the default space. If not, the agent is sending the initial
 <code class="prettyprint">Ping</code> event, and stopping the periodic task.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Schedules</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Schedules</span>
 
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
-                <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
-                <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
-            <span class="kd">val</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;waiting_for_partner&quot;</span><span class="o">)</span>
-            <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-                    <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-                    <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
-                    <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
-                <span class="o">}</span>
-            <span class="o">]</span>
-        <span class="o">}</span>
-        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-            <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
-            <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-        <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="o">^</span><span class="kd">space</span> <span class="err">= </span><span class="nc">defaultContext</span><span class="o">.</span><span class="n">getOrCreateSpaceWithSpec</span><span class="o">(</span>
+            <span class="k">typeof</span><span class="o">(</span><span class="n">OpenEventSpaceSpecification</span><span class="o">),</span>
+            <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
+        <span class="kd">val</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;waiting_for_partner&quot;</span><span class="o">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+                <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+                <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
+            <span class="o">}</span>
+        <span class="o">]</span>
     <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
+        <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-compile-and-launch-the-agents">5. Compile and Launch the agents</h2>
 
@@ -534,14 +533,14 @@ This capacity provides the function <code class="prettyprint">spawn(Class&lt;? e
 agent of the given type. When the boot agent has launched the two expected agents,
 it is killing itself. This is done with the <code class="prettyprint">killMe</code> function, which is provided
 by the <code class="prettyprint">Lifecycle</code> capacity too.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Lifecycle</span>
-        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-            <span class="n">spawn</span><span class="o">(</span> <span class="n">PongAgent</span> <span class="o">)</span>
-            <span class="n">spawn</span><span class="o">(</span> <span class="n">PingAgent</span> <span class="o">)</span>
-            <span class="n">killMe</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">spawn</span><span class="o">(</span> <span class="n">PongAgent</span> <span class="o">)</span>
+        <span class="n">spawn</span><span class="o">(</span> <span class="n">PingAgent</span> <span class="o">)</span>
+        <span class="n">killMe</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h4 id="execute-with-a-runnable-jar">Execute with a runnable JAR</h4>
 
@@ -577,7 +576,7 @@ The first argument after the bootstrap is the qualified name of the agent to lau
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

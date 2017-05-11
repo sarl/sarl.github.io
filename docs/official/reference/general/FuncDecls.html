@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -98,39 +98,39 @@ in top-level features, such as <code class="prettyprint">agent</code>.</p>
 <p><note>The parameters are implicitly declared with the keyword <code class="prettyprint">val</code> so are read-only.</note></p>
 
 <p>The following code gives examples of function declarations:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// No parameter.</span>
-    <span class="c1">// Return type: void</span>
-    <span class="kd">def</span> <span class="n">action1</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// No parameter.</span>
+<span class="c1">// Return type: void</span>
+<span class="kd">def</span> <span class="n">action1</span> <span class="o">{</span>
+<span class="o">}</span>
 
-    <span class="c1">// No parameter.</span>
-    <span class="c1">// Return type: int</span>
-    <span class="kd">def</span> <span class="n">action2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="o">}</span>
+<span class="c1">// No parameter.</span>
+<span class="c1">// Return type: int</span>
+<span class="kd">def</span> <span class="n">action2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="mi">0</span>
+<span class="o">}</span>
 
-    <span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-    <span class="c1">// Return type: void</span>
-    <span class="kd">def</span> <span class="nf">action3</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
+<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
+<span class="c1">// Return type: void</span>
+<span class="kd">def</span> <span class="nf">action3</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span>
 
-    <span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-    <span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
-    <span class="c1">// Return type: void</span>
-    <span class="kd">def</span> <span class="nf">action4</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
+<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
+<span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
+<span class="c1">// Return type: void</span>
+<span class="kd">def</span> <span class="nf">action4</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span>
 
-    <span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-    <span class="c1">// Return type: double</span>
-    <span class="kd">def</span> <span class="nf">action5</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="o">}</span>
+<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
+<span class="c1">// Return type: double</span>
+<span class="kd">def</span> <span class="nf">action5</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="mi">0</span>
+<span class="o">}</span>
 
-    <span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-    <span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
-    <span class="c1">// Return type: String</span>
-    <span class="kd">def</span> <span class="nf">action6</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-    <span class="o">}</span>
+<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
+<span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
+<span class="c1">// Return type: String</span>
+<span class="kd">def</span> <span class="nf">action6</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-declare-exceptions-in-the-function-prototype">2. Declare exceptions in the function prototype</h2>
 
@@ -154,8 +154,8 @@ This declaration must be put between the list of formal parameters and the funct
 parameters and no return type.
 This function indicates to its caller that it could throw an exception of
 type <code class="prettyprint">IllegalStateException</code>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">myaction</span> <span class="k">throws</span> <span class="n">IllegalStateException</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">myaction</span> <span class="k">throws</span> <span class="n">IllegalStateException</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-generic-function">3. Generic Function</h2>
 
@@ -188,10 +188,10 @@ keyword, between the function&#39;s return type and the function&#39;s body.</p>
 
 <p>In the following example, the function specifies a type <code class="prettyprint">T</code>, which is used both
 as type for the element parameter and the generic type of the Collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="k">with</span> <span class="n">T</span> <span class="o">{</span>
-        <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
-        <span class="k">return</span> <span class="n">element</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="k">with</span> <span class="n">T</span> <span class="o">{</span>
+    <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
+    <span class="k">return</span> <span class="n">element</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-2-definition-with-brackets">3.2. Definition with brackets</h3>
 
@@ -200,10 +200,10 @@ appears before the function&#39;s name.</p>
 
 <p>In the following example, the function specifies a type <code class="prettyprint">T</code>, which is used both
 as type for the element parameter and the generic type of the Collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
-        <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
-        <span class="k">return</span> <span class="n">element</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
+    <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
+    <span class="k">return</span> <span class="n">element</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-3-bounded-type-parameters">3.3. Bounded Type Parameters</h3>
 
@@ -214,10 +214,10 @@ to accept instances of Number or its subclasses. This is what bounded type param
 <p>To declare a bounded type parameter, list the type parameter&#39;s name, followed by the
 <code class="prettyprint">extends</code> keyword, followed by a class name. This keyword indicates that <code class="prettyprint">T</code>
 must be a subtype of the following type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">print</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="k">with</span> <span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Type = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">getClass</span><span class="o">)</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Value = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">print</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="k">with</span> <span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Type = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">getClass</span><span class="o">)</span>
+    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Value = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-variadic-function">4. Variadic Function</h2>
 
@@ -233,29 +233,29 @@ the parameter type. </p>
 <p>In other languages, such as Java and C++, the variadic operator is <code class="prettyprint">...</code>.</p>
 
 <p>In the following example, two variadic functions are defined:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Function with indefinite number of integers as parameters</span>
-    <span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Function with indefinite number of integers as parameters</span>
+<span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
     <span class="o">}</span>
-    <span class="c1">// Function which takes a boolean, a double and an indefinite </span>
-    <span class="c1">// number of integers as parameters</span>
-    <span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="n">info</span><span class="o">(</span><span class="n">b</span><span class="o">)</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-        <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Function which takes a boolean, a double and an indefinite </span>
+<span class="c1">// number of integers as parameters</span>
+<span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
+    <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+    <span class="n">info</span><span class="o">(</span><span class="n">b</span><span class="o">)</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>Examples of calls to the two previous variadic functions are:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">action1</span><span class="o">()</span>
-    <span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-    <span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
-    <span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">)</span>
-    <span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
-    <span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">action1</span><span class="o">()</span>
+<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">)</span>
+<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</h2>
 
@@ -269,42 +269,42 @@ skipped argument.</p>
 <p><importantnote> In SARL, if a formal parameter has a default value, the following formal
 parameters do not need to have default values as well. This is a major
 difference with the default values in other languages, such as C++.</importantnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Function with one parameter with a default value.</span>
-    <span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="s">&quot;v == &quot;</span> <span class="o">+</span> <span class="n">v</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="c1">// Function which takes a boolean, a double and an integer as parameters.</span>
-    <span class="c1">// The first and third parameters have default values. </span>
-    <span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">=</span><span class="kc">true</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">=</span><span class="mi">7</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="s">&quot;a == &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">)</span>
-        <span class="n">info</span><span class="o">(</span><span class="s">&quot;b == &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="o">)</span>
-        <span class="n">info</span><span class="o">(</span><span class="s">&quot;c == &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">)</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Function with one parameter with a default value.</span>
+<span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">info</span><span class="o">(</span><span class="s">&quot;v == &quot;</span> <span class="o">+</span> <span class="n">v</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="c1">// Function which takes a boolean, a double and an integer as parameters.</span>
+<span class="c1">// The first and third parameters have default values. </span>
+<span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">=</span><span class="kc">true</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">=</span><span class="mi">7</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">info</span><span class="o">(</span><span class="s">&quot;a == &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">)</span>
+    <span class="n">info</span><span class="o">(</span><span class="s">&quot;b == &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="o">)</span>
+    <span class="n">info</span><span class="o">(</span><span class="s">&quot;c == &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>Examples of calls to the two previous functions are:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// v == 1</span>
-    <span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// v == 1</span>
+<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
 
-    <span class="c1">// v == 5</span>
-    <span class="n">action1</span><span class="o">()</span>
+<span class="c1">// v == 5</span>
+<span class="n">action1</span><span class="o">()</span>
 
-    <span class="c1">// a == true, b == 3.0, c == 1</span>
-    <span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+<span class="c1">// a == true, b == 3.0, c == 1</span>
+<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
 
-    <span class="c1">// a == false, b == 4.0, c == 7</span>
-    <span class="n">action2</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="mf">4.0</span><span class="o">)</span>
+<span class="c1">// a == false, b == 4.0, c == 7</span>
+<span class="n">action2</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="mf">4.0</span><span class="o">)</span>
 
-    <span class="c1">// a == true, b == 7.0, c == 56</span>
-    <span class="n">action2</span><span class="o">(</span><span class="mf">7.0</span><span class="o">,</span> <span class="mi">56</span><span class="o">)</span>
+<span class="c1">// a == true, b == 7.0, c == 56</span>
+<span class="n">action2</span><span class="o">(</span><span class="mf">7.0</span><span class="o">,</span> <span class="mi">56</span><span class="o">)</span>
 
-    <span class="c1">// a == true, b == 9.0, c == 7</span>
-    <span class="n">action2</span><span class="o">(</span><span class="mf">9.0</span><span class="o">)</span>
+<span class="c1">// a == true, b == 9.0, c == 7</span>
+<span class="n">action2</span><span class="o">(</span><span class="mf">9.0</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</h2>
 
 <p>It is possible to mix the variadic parameter and the default values,
 except that the variadic parameter cannot have a default value. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">action</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">,</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">float</span><span class="o">*)</span> <span class="o">{</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">action</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">,</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">float</span><span class="o">*)</span> <span class="o">{</span> <span class="o">}</span>
 </code></pre></div>
 <h2 id="7-acknowledgements">7. Acknowledgements</h2>
 
@@ -318,7 +318,7 @@ except that the variadic parameter cannot have a default value. </p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>

@@ -16,8 +16,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
     <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -76,38 +76,38 @@ top-right context in the figure above.</p>
 <h2 id="1-retrieving-a-context">1. Retrieving a Context</h2>
 
 <p>For retrieving the context with a particular ID, this built-in capacity provides the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">getContext</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentContext</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">getContext</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentContext</span>
 </code></pre></div>
 <p>The agent must have joined (see below) the context before calling this action. Or, the agent
 may use its <code class="prettyprint">getParentID</code> for accessing the context in which it is located (the default context).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-        <span class="kd">var</span> <span class="n">id</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">id</span> <span class="o">=</span> <span class="n">getParentID</span>
-            <span class="n">c</span> <span class="o">=</span> <span class="n">getContext</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
+    <span class="kd">var</span> <span class="n">id</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="n">getParentID</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">getContext</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-retrieving-the-contexts-of-an-agent">2. Retrieving the Contexts of an Agent</h2>
 
 <p>The following function enables an agent to retrieve all the contexts in which it is involved:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getAllContexts</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getAllContexts</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>The default context is included in the replied collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">c</span> <span class="o">=</span> <span class="n">getAllContexts</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
+    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">getAllContexts</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-joining-an-existing-context">3. Joining an Existing Context</h2>
 
 <p>Agents must be able to join a new parent context. The following function gives this capability to them:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">join</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">expectedDefaultSpaceID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">join</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">expectedDefaultSpaceID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
 </code></pre></div>
 <p>This action registers the agent in the default space of the context.</p>
 
@@ -128,21 +128,21 @@ as <code class="prettyprint">expectedDefaultSpaceID</code>.</importantnote></p>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-            <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
-            <span class="kd">var</span> <span class="n">ids</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-            <span class="n">ids</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-            <span class="n">join</span><span class="o">(</span><span class="n">idc</span><span class="o">,</span> <span class="n">ids</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
+        <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
+        <span class="kd">var</span> <span class="n">ids</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
+        <span class="n">join</span><span class="o">(</span><span class="n">idc</span><span class="o">,</span> <span class="n">ids</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-leaving-a-context">4. Leaving a Context</h2>
 
 <p>When an agent wants to leave a context, it must invoke:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">leave</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">leave</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
 </code></pre></div>
 <p>This action fires two events:</p>
 
@@ -152,14 +152,14 @@ as <code class="prettyprint">expectedDefaultSpaceID</code>.</importantnote></p>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-        <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-            <span class="n">leave</span><span class="o">(</span><span class="n">idc</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
+    <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
+        <span class="n">leave</span><span class="o">(</span><span class="n">idc</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-testing-if-an-element-is-related-to-an-external-context">5. Testing if an element is related to an external context</h2>
 
@@ -190,9 +190,9 @@ parameters are related to the any external context.</p>
 of an behavior unit. In this example, the behavior unit is run only if the event
 of type <code class="prettyprint">AnEvent</code> was emitted in the space <code class="prettyprint">myspace</code> (declared as attribute in
 the container).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="n">isInSpace</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">,</span> <span class="n">myspace</span><span class="o">)</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="c1">// Do something with the event when it was emitted in the space myspace</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="n">isInSpace</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">,</span> <span class="n">myspace</span><span class="o">)</span> <span class="o">]</span> <span class="o">{</span>
+    <span class="c1">// Do something with the event when it was emitted in the space myspace</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="6-legal-notice">6. Legal Notice</h2>
 
@@ -200,7 +200,7 @@ the container).</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-04-21</li>
+<li>Release: 2017-05-11</li>
 </ul>
 
 <blockquote>
