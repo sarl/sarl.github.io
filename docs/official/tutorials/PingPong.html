@@ -90,7 +90,12 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#4-4-sending-the-first-ping">4.4. Sending the first Ping</a></li>
   <li><a href="#4-5-delaying-the-sending-of-the-first-ping">4.5. Delaying the sending of the first Ping</a></li>
 </ul>
-<li><a href="#5-launch-the-agents">5. Launch the agents</a></li>
+<li><a href="#5-compile-and-launch-the-agents">5. Compile and Launch the agents</a></li>
+<ul>
+  <li><a href="#5-1-compile-the-code">5.1. Compile the code</a></li>
+  <li><a href="#5-2-method-1-execute-each-agent-in-their-own-instance-of-janus">5.2. Method 1: Execute each agent in their own instance of Janus</a></li>
+  <li><a href="#5-3-method-2-execute-all-the-agents-in-a-single-instance-of-janus">5.3. Method 2: Execute all the agents in a single instance of Janus</a></li>
+</ul>
 <li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
 
 <p></ul></p>
@@ -101,7 +106,7 @@ Before reading this document, it is recommended reading
 the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
 
 <div class="bt-download">
-<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-pingpong"><img alt="See the code" src="http://www.sarl.io/images/download-icon.png"/></a>
+<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"/></a>
 </div>
 
 <p>The elements that are explained in this tutorial are:</p>
@@ -115,7 +120,7 @@ the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
 </ul>
 
 <p>The source code related to this tutorial may be found
-in the <a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-pingpong">GitHub of the SARL demos</a>.</p>
+in the <a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/pingpong">SARL demos</a>.</p>
 
 <h2 id="1-principle-of-the-application">1. Principle of the Application</h2>
 
@@ -150,12 +155,12 @@ at which position the event is located in the sequence of sent <code class="pret
 <code class="prettyprint">Pong</code> event is created.</p>
 
 <p>The <code class="prettyprint">index</code> attribute is also a <em>value</em>, and it must be set in a constructor. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Pong</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">index</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="k">new</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Pong</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">index</span> <span class="o">:</span> <span class="kt">int</span>
+        <span class="k">new</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-pong-agent">3. Pong agent</h2>
 
@@ -166,8 +171,8 @@ agent that is waiting for <code class="prettyprint">Ping</code> events, and repl
 <h3 id="3-1-first-definition">3.1. First definition</h3>
 
 <p>The initial definition of the pong agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="3-2-handling-the-ping-event">3.2. Handling the Ping event</h3>
 
@@ -179,10 +184,10 @@ the <code class="prettyprint">on</code> keyword followed by the name of the even
 permits to define a handler of events.
 This handler will be invoked by the runtime environment
 each time the agent is receiving a <code class="prettyprint">Ping</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-3-replying-to-ping-with-a-pong">3.3. Replying to Ping with a Pong</h3>
 
@@ -204,12 +209,12 @@ is the index stored in the <code class="prettyprint">Ping</code> event. For acce
 <code class="prettyprint">Ping</code> event, you must use the special keyword <code class="prettyprint">occurrence</code>.
 In the following example, the <code class="prettyprint">Pong</code> event is built with the index argument
 stored in the received <code class="prettyprint">Ping</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span> <span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span> <span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-4-restricting-the-scope-of-the-pong-event">3.4. Restricting the scope of the Pong event</h3>
 
@@ -227,13 +232,13 @@ of an instance of <code class="prettyprint">AddressScope</code> is done with the
 which is getting a collection of addresses for building the matching predicate in the scope.</p>
 
 <p>If you have to scope to a single address or a single identifier, you should prefer the lambda expression notation, as illustrated in the followig code. In this code, the scope permits to restrict to the initial sender of the <code class="prettyprint">Ping</code> event. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">))</span>
+                <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-ping-agent">4. Ping Agent</h2>
 
@@ -243,17 +248,17 @@ which is getting a collection of addresses for building the matching predicate i
 <h3 id="4-1-first-definition">4.1. First definition</h3>
 
 <p>The initial definition of the ping agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="4-2-handling-the-pong-event">4.2. Handling the Pong event</h3>
 
 <p>The ping agent needs to handle the <code class="prettyprint">Pong</code> events. For that, a &quot;behavior unit&quot; must be defined in the
 agent.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-3-re-sending-a-ping-when-receiving-a-pong">4.3. Re-sending a Ping when receiving a Pong</h3>
 
@@ -263,13 +268,13 @@ This new <code class="prettyprint">Ping</code> event has an index greater than t
 
 <p>The receiving of the <code class="prettyprint">Ping</code> event is restricted to the sender of the
 <code class="prettyprint">Pong</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
+                <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-4-sending-the-first-ping">4.4. Sending the first Ping</h3>
 
@@ -278,16 +283,16 @@ of the <code class="prettyprint">Ping</code> event.</p>
 
 <p>This emit is done when the ping agent is started, i.e. when the agent is
 receiving the <code class="prettyprint">Initialize</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
+                <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+        <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-5-delaying-the-sending-of-the-first-ping">4.5. Delaying the sending of the first Ping</h3>
 
@@ -309,35 +314,100 @@ that will be periodically executed.</p>
 <p>In this periodically executed code, the agent is testing if it is the only
 one agent belonging to the default space. If not, the agent is sending the initial
 <code class="prettyprint">Ping</code> event, and stopping the periodic task.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Schedules</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Schedules</span>
+        <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
+                <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
+        <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="kd">val</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;waiting_for_partner&quot;</span><span class="o">)</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
+                    <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
+                <span class="o">}</span>
+            <span class="o">]</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;waiting_for_partner&quot;</span><span class="o">)</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
-                <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
-            <span class="o">}</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
-<h2 id="5-launch-the-agents">5. Launch the agents</h2>
+<h2 id="5-compile-and-launch-the-agents">5. Compile and Launch the agents</h2>
 
 <p>The fourth step of this tutorial is the definition of the launching process.
 In the rest of this section, we discuss the use of the
-<a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.
-The Janus platform is designed to launch a single agent at start-up.
+<a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
+
+<p>The Janus platform is designed to launch a single agent at start-up.
 Then, this launched agent must spawn the other agents in the system.</p>
+
+<p><importantnote> In this section, we explain how to launch the agents from the command line interface.
+For launching the agents from the Eclipse IDE, please read
+<a href="../gettingstarted/RunSARLAgentEclipse.html">Run SARL Agent in the Eclipse IDE</a>.
+</importantnote></p>
+
+<h3 id="5-1-compile-the-code">5.1. Compile the code</h3>
+
+<p>You must have a file that contains the compiled files of the tutorial, the Janus platform,
+and all the needed libraries by SARL and Janus.</p>
+
+<p>You could directly download this file by clicking on the download icon at the top of this page; or by compiling
+the source code yourself.</p>
+
+<p>If you download the source code of the <a href="https://github.com/sarl/sarl-demos">SARL demos</a>, and
+compile them with <a href="http://maven.apache.org">Maven</a>, you will obtain a JAR file with all the
+mandatory elements inside. This file is located in the <code class="prettyprint">target</code> folder,
+and it has a name similar to <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>.</p>
+
+<h3 id="5-2-method-1-execute-each-agent-in-their-own-instance-of-janus">5.2. Method 1: Execute each agent in their own instance of Janus</h3>
+
+<p>The principle is to run each agent is a different instance of the Janus platform.</p>
+
+<h4 id="execute-with-a-runnable-jar">Execute with a runnable JAR</h4>
+
+<p>Here, there is two assumptions:</p>
+
+<ol>
+<li>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is executable, i.e. it can be directly launched by the Java Virtual Machine.</li>
+<li>From this file, the JVM is launching the Janus bootstrap automatically, i.e. it has a Main-Class set to <code class="prettyprint">io.janusproject.Boot</code>.</li>
+</ol>
+
+<p>On the command line, you must launch the Janus instances with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.PongAgent
+</code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.PingAgent
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
+The third arguments are the qualified names of the agents to launch.</p>
+
+<h4 id="execute-without-a-runnable-jar">Execute without a runnable JAR</h4>
+
+<p>In opposite to the previous section, we assume that the file
+<code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is not executable.
+On the command line, you must launch Janus with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.PongAgent
+</code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.PingAgent
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
+The string <code class="prettyprint">io.janusproject.Boot</code> specify the Java class to launch: the Janus bootstrap.
+The first arguments after the bootstraps are the qualified name of the agents to launch.</p>
+
+<h3 id="5-3-method-2-execute-all-the-agents-in-a-single-instance-of-janus">5.3. Method 2: Execute all the agents in a single instance of Janus</h3>
 
 <p>The principle is to launch a single instance of Janus, and run all the agents inside.
 Because of the design of the Janus platform, we must define an
 agent that will launch the other agents. This agent is named
 <code class="prettyprint">BootAgent</code>. It is defined below.</p>
+
+<h4 id="defining-the-boot-agent">Defining the Boot agent</h4>
 
 <p>The boot agent uses the <code class="prettyprint">Lifecycle</code> capacity for launching agents in the default context.
 This capacity provides the function <code class="prettyprint">spawn(Class&lt;? extends Agent&gt;)</code>
@@ -345,22 +415,51 @@ for launching an agent of the given type.
 When the boot agent has launched the two expected agents,
 it is killing itself. This is done with the <code class="prettyprint">killMe</code>
 function, which is provided by the <code class="prettyprint">Lifecycle</code> capacity too.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">spawn</span><span class="o">(</span><span class="n">PongAgent</span><span class="o">)</span>
-        <span class="n">spawn</span><span class="o">(</span><span class="n">PingAgent</span><span class="o">)</span>
-        <span class="n">killMe</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Lifecycle</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">spawn</span><span class="o">(</span><span class="n">PongAgent</span><span class="o">)</span>
+            <span class="n">spawn</span><span class="o">(</span><span class="n">PingAgent</span><span class="o">)</span>
+            <span class="n">killMe</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
+<h4 id="execute-with-a-runnable-jar">Execute with a runnable JAR</h4>
+
+<p>Here, there are two assumptions:</p>
+
+<ol>
+<li>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is runnable, i.e. it can be directly launched by the Java Virtual Machine.</li>
+<li>From this file, the JVM is launching the Janus bootstrap automatically, i.e. it has a Main-Class set to <code class="prettyprint">io.janusproject.Boot</code>.</li>
+</ol>
+
+<p>On the command line, you must launch the Janus instance with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.pingpong.BootAgent
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above. The third argument
+is the qualified name of the agent to launch.</p>
+
+<h4 id="execute-without-a-runnable-jar">Execute without a runnable JAR</h4>
+
+<p>In opposite to the previous section, we assume that the file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>
+is not executable.
+On the command line, you must launch Janus with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.pingpong.BootAgent
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
+The string <code class="prettyprint">io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap.
+The first argument after the bootstrap is the qualified name of the agent to launch.</p>
+
 <h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -373,7 +472,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

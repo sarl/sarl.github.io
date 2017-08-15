@@ -85,7 +85,13 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#5-4-definition-of-the-auctioneer">5.4. Definition of the auctioneer</a></li>
   <li><a href="#5-5-stop-the-agents">5.5. Stop the agents</a></li>
 </ul>
-<li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
+<li><a href="#6-compile-and-launch-the-agents">6. Compile and Launch the agents</a></li>
+<ul>
+  <li><a href="#6-1-compile-the-code">6.1. Compile the code</a></li>
+  <li><a href="#6-2-execute-with-a-runnable-jar">6.2. Execute with a runnable JAR</a></li>
+  <li><a href="#6-3-execute-without-a-runnable-jar">6.3. Execute without a runnable JAR</a></li>
+</ul>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -96,7 +102,7 @@ The architecture presented in this tutorial may be used for designing a system i
 taken after arbitration among components. </p>
 
 <div class="bt-download">
-<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-holonicauction"><img alt="See the code" src="http://www.sarl.io/images/download-icon.png"/></a>
+<a href="http://maven.sarl.io/last-demos-release.jar"><img alt="Download the Binary JAR file" src="http://www.sarl.io/images/download-icon.png"/></a>
 </div>
 
 <p>According to the vocabulary used in the SARL project, all the agents are holons. In the rest of this tutorial,
@@ -116,7 +122,7 @@ the terms &quot;agent&quot; and &quot;holon&quot; are synonymous. </p>
 readers, the <a href="../reference/Agent.html">Agent Reference</a> may be read.</note></p>
 
 <p>The source code related to this tutorial may be found in the
-<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-demos-holonicauction">Github of the SARL demos</a>.</p>
+<a href="https://github.com/sarl/sarl-demos/tree/master/src/main/sarl/io/sarl/docs/tutorials/holonicauction">SARL demos</a>.</p>
 
 <h2 id="1-principle-of-the-english-auction">1. Principle of the English Auction</h2>
 
@@ -178,24 +184,24 @@ bid inside.</p>
 
 <p>The <code class="prettyprint">Price</code> event is the event sent by the auctioneer for notifying a bidder that
 the price has changed. This event contains the new price.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">tutorials</span><span class="o">.</span><span class="n">holonicauction</span>
-<span class="kd">event</span> <span class="nc">Price</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">price</span> <span class="o">:</span> <span class="kt">float</span>
-    <span class="k">new</span><span class="o">(</span><span class="n">price</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">tutorials</span><span class="o">.</span><span class="n">holonicauction</span>
+    <span class="kd">event</span> <span class="nc">Price</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">price</span> <span class="o">:</span> <span class="kt">float</span>
+        <span class="k">new</span><span class="o">(</span><span class="n">price</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="4-2-playing-event">4.2. Playing event</h3>
 
 <p>The <code class="prettyprint">Bid</code> event is the event sent by a bidder to the auctioneer.
 This event contains the value of the bid.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Bid</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">value</span> <span class="o">:</span> <span class="kt">float</span>
-    <span class="k">new</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">Bid</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">value</span> <span class="o">:</span> <span class="kt">float</span>
+        <span class="k">new</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-definition-of-the-bidder">5. Definition of the bidder</h2>
 
@@ -208,14 +214,14 @@ new price is not  exceeding its maximal price.</p>
 a random number generator (from the Java library). The <code class="prettyprint">maxPrice</code> attribute is the maximum value
 of the price that the bidder will consider for bidding.
 The bidder selects the maximum price between 100 and 1000 randomly.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
-    <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
+        <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="5-2-bidding">5.2. Bidding</h3>
 
@@ -234,38 +240,38 @@ of the super-agent. The <code class="prettyprint">emit</code> function is suppor
 <p><cautionnote>The <code class="prettyprint">Bid</code> event is sent in the default space. But there is no
 restriction on the event&#39;s recipient. It means that the super-agent <strong>and</strong> the
 other sub-agents will receive this event.</cautionnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
-    <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
-    <span class="kd">var</span> <span class="n">myLastBid</span> <span class="o">:</span> <span class="kt">float</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
+        <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
+        <span class="kd">var</span> <span class="n">myLastBid</span> <span class="o">:</span> <span class="kt">float</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
-    <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
+        <span class="o">}</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">myLastBid</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">println</span><span class="o">(</span><span class="s">&quot;I do not bet, I am the winner with :&quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">))</span>
-                        <span class="n">myLastBid</span> <span class="o">=</span> <span class="n">newPrice</span>
-                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                        <span class="n">println</span><span class="o">(</span><span class="s">&quot; I give up, this is beyond my resources : &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">myLastBid</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">println</span><span class="o">(</span><span class="s">&quot;I do not bet, I am the winner with :&quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
             <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;I dropped to &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">))</span>
+                            <span class="n">myLastBid</span> <span class="o">=</span> <span class="n">newPrice</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="n">println</span><span class="o">(</span><span class="s">&quot; I give up, this is beyond my resources : &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;I dropped to &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="5-3-restrict-the-bid-to-the-auctioneer">5.3. Restrict the bid to the auctioneer</h3>
 
@@ -278,40 +284,40 @@ of the event corresponds to the address of the super-agent in the default space.
 always the same.</note></p>
 
 <p>Below, we update the bidding behavior by creating a scope, and providing it to the <code class="prettyprint">emit</code> function.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
-    <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
-    <span class="kd">var</span> <span class="n">myLastBid</span> <span class="o">:</span> <span class="kt">float</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span>
+        <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
+        <span class="kd">var</span> <span class="n">myLastBid</span> <span class="o">:</span> <span class="kt">float</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
-    <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
+        <span class="o">}</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">myLastBid</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">println</span><span class="o">(</span><span class="s">&quot;I do not bet, I am the winner with :&quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="kd">var</span> <span class="n">superScope</span> <span class="o">=</span> <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span>
-                            <span class="n">defaultSpace</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">defaultContext</span><span class="o">.</span><span class="n">ID</span><span class="o">))</span>
-                        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">),</span> <span class="n">superScope</span><span class="o">)</span>
-                        <span class="n">myLastBid</span> <span class="o">=</span> <span class="n">newPrice</span>
-                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                        <span class="n">println</span><span class="o">(</span><span class="s">&quot; I give up, this is beyond my resources : &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">myLastBid</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">println</span><span class="o">(</span><span class="s">&quot;I do not bet, I am the winner with :&quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
             <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;I dropped to &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                <span class="k">if</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="kd">var</span> <span class="n">superScope</span> <span class="o">=</span> <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span>
+                                <span class="n">defaultSpace</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">defaultContext</span><span class="o">.</span><span class="n">ID</span><span class="o">))</span>
+                            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">),</span> <span class="n">superScope</span><span class="o">)</span>
+                            <span class="n">myLastBid</span> <span class="o">=</span> <span class="n">newPrice</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="n">println</span><span class="o">(</span><span class="s">&quot; I give up, this is beyond my resources : &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;I dropped to &quot;</span> <span class="o">+</span> <span class="n">myLastBid</span><span class="o">)</span>
+                <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="5-4-definition-of-the-auctioneer">5.4. Definition of the auctioneer</h3>
 
@@ -334,19 +340,19 @@ the <code class="prettyprint">Behaviors</code> capacity. This function does the 
 For sending data to its sub-agents, a super-agent must fire an event in the default space
 of its inner context. The <code class="prettyprint">wake</code> function is supporting this interaction.
 </importantnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="create-the-bidders">Create the bidders</h4>
 
@@ -355,23 +361,23 @@ The <code class="prettyprint">Lifecycle</code> capacity gives the <code class="p
 This function permits creating an agent in a particular context.
 For obtaining the inner context, we need to use the <code class="prettyprint">InnerContextAccess</code> capacity,
 which provides the [:getinner:s] function. Below, we create the three bidders. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">spawnInContext</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">Bidder</span><span class="o">),</span> <span class="n">getInnerContext</span><span class="o">)</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">spawnInContext</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">Bidder</span><span class="o">),</span> <span class="n">getInnerContext</span><span class="o">)</span>
+            <span class="o">}</span>
+
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
         <span class="o">}</span>
-
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="receive-the-bids">Receive the bids</h4>
 
@@ -380,30 +386,30 @@ unit dedicated to the <code class="prettyprint">Bid</code> event. We add a guard
 to execute the behavior only if the auction is still opened. We will see later when
 the auction is closed. If the value of the received bid is greater than the current
 price, the source of the <code class="prettyprint">Bid</code> event becomes the new potential winner. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+            <span class="o">}</span>
+
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
         <span class="o">}</span>
 
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
-    <span class="o">}</span>
-
-    <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
-            <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
+        <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="stop-the-auction">Stop the auction</h4>
 
@@ -418,46 +424,46 @@ given by the first argument.
 In the task&#39;s code, we test if a bid was received. If not, the auctioneer closes the auction,
 and outputs the appropriate message. To delay the task executor about the first ten seconds,
 we use the <code class="prettyprint">in</code> function provided by the capacity.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
-        <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+            <span class="o">}</span>
 
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
-        <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-            <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
-            <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
-                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                        <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
-                            <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
+            <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
+                <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                    <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
+                                <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
+                        <span class="o">}</span>
                     <span class="o">}</span>
-                <span class="o">}</span>
-                <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
+                    <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
+                <span class="o">]</span>
             <span class="o">]</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
+        <span class="o">}</span>
 
-    <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
-        <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
-            <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
+        <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
+            <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="synchronize-the-operations">Synchronize the operations</h4>
 
@@ -471,50 +477,50 @@ on the same data.</p>
 that two blocks of code, which are synchronized on the
 same Object (the argument of the operator) cannot be
 executed in parallel by different threads.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+            <span class="o">}</span>
+
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
+            <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
+                <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                    <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
+                            <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
+                            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                                <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
+                                    <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                        <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
+                    <span class="o">}</span>
+                <span class="o">]</span>
+            <span class="o">]</span>
         <span class="o">}</span>
 
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
-        <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-            <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
-            <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-                <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
-                        <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
-                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                            <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
-                                <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
-                        <span class="o">}</span>
-                    <span class="o">}</span>
-                    <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
+            <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
                 <span class="o">}</span>
-            <span class="o">]</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-
-    <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
-            <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
-                <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="5-5-stop-the-agents">5.5. Stop the agents</h3>
 
@@ -534,7 +540,7 @@ sub-agents before the super-agent.</importantnote></p>
 <p>Because the determination of the end of the agent&#39;s life is made by the auctioneer,
 this last must notify its sub-agents that it is time to commit a suicide.
 We introduce the <code class="prettyprint">StopAuction</code> event that is used for this particular notification task.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">StopAuction</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">StopAuction</span>
 </code></pre></div>
 <h4 id="kill-the-bidder">Kill the bidder</h4>
 
@@ -542,34 +548,34 @@ We introduce the <code class="prettyprint">StopAuction</code> event that is used
 event.
 When it is received, the bidder agent is killing itself by calling the <code class="prettyprint">killMe</code> function.
 This function is provided by the <code class="prettyprint">Lifecycle</code> capacity.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">()</span>
-    <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Bidder</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">()</span>
+        <span class="kd">var</span> <span class="n">maxPrice</span> <span class="o">:</span> <span class="kt">float</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
-    <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">maxPrice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">900</span><span class="n">f</span> <span class="o">+</span> <span class="mi">100</span><span class="n">f</span>
+        <span class="o">}</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
 
-    <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kd">var</span> <span class="n">superScope</span> <span class="o">=</span> <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span>
-                    <span class="n">defaultSpace</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">defaultContext</span><span class="o">.</span><span class="n">ID</span><span class="o">))</span>
-                <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">),</span> <span class="n">superScope</span><span class="o">)</span>
+        <span class="k">on</span> <span class="n">Price</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">priceIncrease</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextFloat</span><span class="o">()</span> <span class="o">*</span> <span class="mi">50</span><span class="n">f</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">priceIncrease</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">var</span> <span class="n">newPrice</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">price</span> <span class="o">+</span> <span class="n">priceIncrease</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">newPrice</span> <span class="o">&lt;=</span> <span class="n">maxPrice</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kd">var</span> <span class="n">superScope</span> <span class="o">=</span> <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span>
+                        <span class="n">defaultSpace</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">defaultContext</span><span class="o">.</span><span class="n">ID</span><span class="o">))</span>
+                    <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Bid</span><span class="o">(</span><span class="n">newPrice</span><span class="o">),</span> <span class="n">superScope</span><span class="o">)</span>
+                <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
-    <span class="o">}</span>
 
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
+        <span class="k">uses</span> <span class="n">Lifecycle</span>
 
-    <span class="k">on</span> <span class="n">StopAuction</span> <span class="o">{</span>
-        <span class="n">killMe</span>
+        <span class="k">on</span> <span class="n">StopAuction</span> <span class="o">{</span>
+            <span class="n">killMe</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="kill-the-auctioneer">Kill the auctioneer</h4>
 
@@ -582,66 +588,121 @@ Secondly, in this periodic task, if the auction is closed, then the auctioneer i
 This function is provided by the <code class="prettyprint">InnerContextAccess</code> capacity.
 The periodic task must also be stopped. The <code class="prettyprint">cancel</code> function is invoked on the periodic task
 to stop its execution.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">Auctioneer</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
+        <span class="k">uses</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">InnerContextAccess</span><span class="o">,</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
-    <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
-    <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
-    <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">var</span> <span class="n">maxBid</span> <span class="o">=</span> <span class="mi">0</span><span class="n">f</span>
+        <span class="kd">var</span> <span class="n">winner</span> <span class="o">:</span> <span class="n">Address</span>
+        <span class="kd">var</span> <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span> 
+        <span class="kd">var</span> <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">true</span>
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">spawnInContext</span><span class="o">(</span><span class="n">Bidder</span><span class="o">,</span> <span class="n">innerContext</span><span class="o">)</span>
+            <span class="o">}</span>
+
+            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
+            <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
+                <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
+                    <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(!</span><span class="n">isAuctionOpened</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="k">if</span> <span class="o">(!</span><span class="n">hasMemberAgent</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="n">waitTask</span><span class="o">.</span><span class="n">cancel</span>
+                                <span class="n">killMe</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
+                                <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
+                                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
+                                        <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
+                                <span class="o">}</span>
+                                <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">StopAuction</span><span class="o">)</span>
+                            <span class="o">}</span>
+                            <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">]</span>
+            <span class="o">]</span>
         <span class="o">}</span>
 
-        <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">Price</span><span class="o">(</span><span class="mi">50</span><span class="o">))</span>
-        <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-            <span class="kd">val</span> <span class="n">waitTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;wait-task&quot;</span><span class="o">)</span>
-            <span class="n">waitTask</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span>
-                <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="k">if</span> <span class="o">(!</span><span class="n">isAuctionOpened</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="k">if</span> <span class="o">(!</span><span class="n">hasMemberAgent</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="n">waitTask</span><span class="o">.</span><span class="n">cancel</span>
-                            <span class="n">killMe</span>
-                        <span class="o">}</span>
-                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                        <span class="k">if</span> <span class="o">(!</span><span class="n">hasBid</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="n">isAuctionOpened</span> <span class="o">=</span> <span class="kc">false</span>
-                            <span class="k">if</span> <span class="o">(</span><span class="n">winner</span> <span class="o">===</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                                <span class="n">println</span><span class="o">(</span><span class="s">&quot;No winner&quot;</span><span class="o">)</span>
-                            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                                <span class="n">println</span><span class="o">(</span><span class="s">&quot;The winner is &quot;</span> <span class="o">+</span> <span class="n">winner</span>
-                                    <span class="o">+</span> <span class="s">&quot; with the bid of &quot;</span> <span class="o">+</span> <span class="n">maxBid</span><span class="o">)</span>
-                            <span class="o">}</span>
-                            <span class="n">wake</span><span class="o">(</span><span class="k">new</span> <span class="n">StopAuction</span><span class="o">)</span>
-                        <span class="o">}</span>
-                        <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">false</span>
-                    <span class="o">}</span>
+        <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
+            <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
                 <span class="o">}</span>
-            <span class="o">]</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-
-    <span class="k">on</span> <span class="n">Bid</span> <span class="o">[</span> <span class="n">isAuctionOpened</span> <span class="o">]</span> <span class="o">{</span>
-        <span class="kd">synchronized</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">hasBid</span> <span class="o">=</span> <span class="kc">true</span>
-            <span class="k">if</span> <span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">maxBid</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">maxBid</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">value</span>
-                <span class="n">winner</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
-<h2 id="6-legal-notice">6. Legal Notice</h2>
+<h2 id="6-compile-and-launch-the-agents">6. Compile and Launch the agents</h2>
+
+<p>The last step of this tutorial is the definition of the launching process.
+In the rest of this section, we discuss the use of the
+<a href="http://www.janusproject.io">Janus runtime environment</a> for running the agents.</p>
+
+<p>The Janus platform is designed to launch a single agent at start-up.
+Then, this launched agent must spawn the other agents in the system.
+This is typically the case in the auction application.</p>
+
+<p><importantnote>In this section, we explain how to launch the agents from the command line interface.
+For launching the agents from the Eclipse IDE, please read
+<a href="../gettingstarted/RunSARLAgentEclipse.html">Run SARL Agent in the Eclipse IDE</a>.</importantnote></p>
+
+<h3 id="6-1-compile-the-code">6.1. Compile the code</h3>
+
+<p>You must have a file that contains the compiled files of the tutorial, the Janus platform,
+and all the needed libraries by SARL and Janus.</p>
+
+<p>You could directly download this file by clicking on
+the download icon at the top of this page; or by compiling the source code yourself.</p>
+
+<p>If you download the source code of the <a href="https://github.com/sarl/sarl-demos/">SARL demos</a>, and
+compile them with <a href="http://maven.apache.org">Maven</a>, you will obtain a JAR file with all
+the mandatory elements inside. This file is located in the <code class="prettyprint">target</code> folder,
+and it has a name similar to <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>.</p>
+
+<h3 id="6-2-execute-with-a-runnable-jar">6.2. Execute with a runnable JAR</h3>
+
+<p>Here, there is two assumptions:</p>
+
+<ol>
+<li>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is execuable, i.e. it can be directly launched by the Java Virtual Machine.</li>
+<li>From this file, the JVM is launching the Janus bootstrap automatically, i.e. it has a Main-Class set to <code class="prettyprint">io.janusproject.Boot</code>.</li>
+</ol>
+
+<p>On the command line, you must launch Janus with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -jar sarl-demos-0.1.0-with-dependencies.jar
+     io.sarl.docs.tutorials.holonicauction.Auctioneer
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
+The third argument is the qualified name of the agent to launch.</p>
+
+<h3 id="6-3-execute-without-a-runnable-jar">6.3. Execute without a runnable JAR</h3>
+
+<p>In opposite to the previous section, we assume that the file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code>
+is not executable. On the command line, you must launch Janus with:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">java -cp sarl-demos-0.1.0-with-dependencies.jar
+     io.janusproject.Boot
+     io.sarl.docs.tutorials.holonicauction.Auctioneer
+</code></pre></div>
+<p>The file <code class="prettyprint">sarl-demos-0.1.0-with-dependencies.jar</code> is explained above.
+The string <code class="prettyprint">io.janusproject.Boot</code> specifies the Java class to launch: the Janus bootstrap.
+The first argument after the bootstrap is the qualified name of the agent to launch.</p>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -654,7 +715,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

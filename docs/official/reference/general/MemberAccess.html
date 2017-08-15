@@ -112,16 +112,16 @@ characters <code class="prettyprint">get</code>, <code class="prettyprint">is</c
 As usual, these properties have a private scope, and the getter and setter functions must
 be defined to enable public scope access.
 In the example, only the getter and setter functions for <code class="prettyprint">prop2</code> are defined.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">prop1</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kd">var</span> <span class="n">prop2</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kd">def</span> <span class="n">getProperty2</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">prop2</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">prop1</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="kd">var</span> <span class="n">prop2</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="kd">def</span> <span class="n">getProperty2</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">prop2</span>
+        <span class="o">}</span>
+        <span class="kd">def</span> <span class="nf">setProperty2</span><span class="o">(</span><span class="n">o</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">prop2</span> <span class="o">=</span> <span class="n">o</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">def</span> <span class="nf">setProperty2</span><span class="o">(</span><span class="n">o</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">prop2</span> <span class="o">=</span> <span class="n">o</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-2-read-accesses">1.2. Read Accesses</h3>
 
@@ -210,28 +210,28 @@ Note that for this latest case, the &quot;variable assignment&quot; syntax is us
 
 <p>To access a static field or method you can use the recommended Java syntax or the more explicit double colon <code class="prettyprint">::</code>.
 That means, the following expressions are pairwise equivalent:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">TYPE</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="n">TYPE</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">TYPE</span>
+    <span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="n">TYPE</span>
 </code></pre></div>
 <h2 id="3-null-safe-feature-call">3. Null-Safe Feature Call</h2>
 
 <p>Checking for null references can make code very unreadable. 
 The variable <code class="prettyprint">myRef</code> is assumed to be declared.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">myRef</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">myRef</span><span class="o">.</span><span class="n">length</span><span class="o">()</span> <span class="k">else</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">if</span> <span class="o">(</span><span class="n">myRef</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">myRef</span><span class="o">.</span><span class="n">length</span><span class="o">()</span> <span class="k">else</span> <span class="mi">0</span>
 </code></pre></div>
 <p>In many situations, it is correct for an expression to return a default value (<code class="prettyprint">null</code>, <code class="prettyprint">0</code>...) if a receiver was <code class="prettyprint">null</code>.
 SARL includes the safe navigation operator <code class="prettyprint">?.</code>. to do the null-check test and make such code better readable.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">myRef</span><span class="o">?.</span><span class="n">length</span><span class="o">()</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">myRef</span><span class="o">?.</span><span class="n">length</span><span class="o">()</span>
 </code></pre></div>
 <h2 id="4-call-to-an-inherited-method">4. Call to an Inherited Method</h2>
 
 <p>When it is possible to extend an existing type, the methods can be overridden.
 In this case, the <code class="prettyprint">super</code> keyword invoks the inherited implementation of the method
 from the overriding method.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">anAction</span> <span class="o">{</span>
-    <span class="c1">// Call the inherited implementation</span>
-    <span class="k">super</span><span class="o">.</span><span class="n">anAction</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">anAction</span> <span class="o">{</span>
+        <span class="c1">// Call the inherited implementation</span>
+        <span class="k">super</span><span class="o">.</span><span class="n">anAction</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h2 id="5-call-to-a-constructor">5. Call to a Constructor</h2>
 
@@ -242,9 +242,9 @@ from the overriding method.</p>
 <p>Constructor calls have the same syntax as in Java. The only difference is that empty parentheses are optional.
 If type arguments are omitted, they will be inferred from the current context similar to Java&#39;s
 diamond operator on generic method and constructor call.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">345</span><span class="o">)</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span>
-<span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">345</span><span class="o">)</span>
+    <span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span>
+    <span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
 </code></pre></div>
 <h3 id="5-2-inherited-constructor">5.2. Inherited Constructor</h3>
 
@@ -254,12 +254,12 @@ The syntax is similar to Java: the (:super:] keyword is used to represent the in
 <p><importantnote>We recommend that you include the parentheses when invoking the default constructor
 of the super type because, in some cases, typing <code class="prettyprint">super</code> alone (without the parenthesis pair)
 has no effect, and that is an error.</importantnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">new</span> <span class="o">{</span>
-    <span class="k">super</span><span class="o">()</span> <span class="c1">// Call the inherited default constructor</span>
-<span class="o">}</span>
-<span class="k">new</span> <span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">Address</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">super</span><span class="o">(</span><span class="n">param</span><span class="o">)</span> <span class="c1">// Call the inherited constructor with a parameter</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">new</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">()</span> <span class="c1">// Call the inherited default constructor</span>
+    <span class="o">}</span>
+    <span class="k">new</span> <span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">Address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">(</span><span class="n">param</span><span class="o">)</span> <span class="c1">// Call the inherited constructor with a parameter</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
@@ -271,9 +271,9 @@ has no effect, and that is an error.</importantnote></p>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -286,7 +286,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

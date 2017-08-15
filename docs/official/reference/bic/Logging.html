@@ -84,55 +84,55 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>For printing an error or a warning message, the two following functions
 are provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
-<span class="kd">def</span> <span class="nf">warning</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+    <span class="kd">def</span> <span class="nf">warning</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
 </code></pre></div>
 <p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
 The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.
 The <code class="prettyprint">exception</code> parameter may be given for printing an exception that is the cause of the logging action.</p>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
-        <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
-        <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
-        <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+            <span class="n">error</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
+            <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+            <span class="n">warning</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-print-an-information-message">2. Print an information message</h2>
 
 <p>For printing an information message, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
 </code></pre></div>
 <p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
 The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">info</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-print-a-debugging-message">3. Print a debugging message</h2>
 
 <p>For printing a debugging message, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span>
 </code></pre></div>
 <p>The <code class="prettyprint">message</code> parameter is converted to a string for obtaining the message to output.
 The message is built from the parsing of the message in which parameter constants aree replaced by the <code class="prettyprint">arguments</code>.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">debug</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">debug</span><span class="o">(</span><span class="s">&quot;mymessage&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-retrieve-and-change-the-logging-level">4. Retrieve and change the logging level</h2>
 
@@ -141,40 +141,40 @@ If a message is given to the logging system, and the current output level is low
 than the message&#39;s level, then the message is not output.</p>
 
 <p>For retrieving the current logging level, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getLogLevel</span> <span class="o">:</span> <span class="kt">int</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getLogLevel</span> <span class="o">:</span> <span class="kt">int</span>
 </code></pre></div>
 <p>The replied value is 0 when no message is printed, 1 if only error messages are printed, 2 for error and warning messages, etc.</p>
 
 <p>For changing the current logging level, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">setLogLevel</span><span class="o">(</span><span class="n">level</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">setLogLevel</span><span class="o">(</span><span class="n">level</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">l</span> <span class="o">=</span> <span class="n">getLogLevel</span>
-        <span class="n">setLogLevel</span><span class="o">(</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">l</span> <span class="o">=</span> <span class="n">getLogLevel</span>
+            <span class="n">setLogLevel</span><span class="o">(</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-testing-the-logging-level">5. Testing the logging level</h2>
 
 <p>The following functions permits testing if a specific logging level is enabled:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">isErrorLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="n">isWarningLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="n">isInfoLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="n">isDebugLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">isErrorLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isWarningLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isInfoLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isDebugLogEnabled</span> <span class="o">:</span> <span class="kt">boolean</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-           <span class="n">isErrorLogEnabled</span>
-        <span class="o">||</span> <span class="n">isWarningLogEnabled</span>
-        <span class="o">||</span> <span class="n">isInfoLogEnabled</span>
-        <span class="o">||</span> <span class="n">isDebugLogEnabled</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
+               <span class="n">isErrorLogEnabled</span>
+            <span class="o">||</span> <span class="n">isWarningLogEnabled</span>
+            <span class="o">||</span> <span class="n">isInfoLogEnabled</span>
+            <span class="o">||</span> <span class="n">isDebugLogEnabled</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="6-change-the-name-of-the-logger">6. Change the name of the logger</h2>
 
@@ -182,23 +182,23 @@ than the message&#39;s level, then the message is not output.</p>
 
 <p>Sometimes, it is helpful to change the printed name of the agent.
 The following function gives the opportunity to change this name.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">setLoggingName</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">setLoggingName</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">setLoggingName</span><span class="o">(</span><span class="s">&quot;the name of the agent&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">Logging</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="n">setLoggingName</span><span class="o">(</span><span class="s">&quot;the name of the agent&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -211,7 +211,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

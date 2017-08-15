@@ -202,7 +202,7 @@ procedures (known as class methods) themselves.</p>
 
 <p>The members of the class, i.e. the fields, methods and constructors must be written between the braces that are
 following the class declaration.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>  <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>  <span class="o">}</span>
 </code></pre></div>
 <h3 id="2-2-class-inheritance">2.2. Class Inheritance</h3>
 
@@ -216,23 +216,23 @@ method <code class="prettyprint">getFullName</code>. These will also be availabl
 <code class="prettyprint">position</code> and <code class="prettyprint">salary</code>.</p>
 
 <p>The definition of the inheritance relationship between two classes is done with the <code class="prettyprint">extends</code> keyword.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
-    <span class="kd">var</span> <span class="n">lastName</span> <span class="o">:</span> <span class="n">String</span>
+        <span class="kd">var</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
+        <span class="kd">var</span> <span class="n">lastName</span> <span class="o">:</span> <span class="n">String</span>
 
-    <span class="kd">def</span> <span class="n">getFullName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">lastName</span>
+        <span class="kd">def</span> <span class="n">getFullName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">lastName</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 
-<span class="kd">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
+    <span class="kd">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">position</span> <span class="o">:</span> <span class="n">String</span>
+        <span class="kd">var</span> <span class="n">position</span> <span class="o">:</span> <span class="n">String</span>
 
-    <span class="kd">var</span> <span class="n">salary</span> <span class="o">:</span> <span class="kt">float</span>
+        <span class="kd">var</span> <span class="n">salary</span> <span class="o">:</span> <span class="kt">float</span>
 
-<span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="2-3-define-a-generic-class">2.3. Define a Generic Class</h3>
 
@@ -254,33 +254,33 @@ To declare a bounded type parameter, list the type parameter&#39;s name, followe
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">AType</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">AType</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">T</span>
+        <span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">T</span>
 
-    <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="o">}</span>
+
+        <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">t</span>
+        <span class="o">}</span>
+
     <span class="o">}</span>
 
-    <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">t</span>
+    <span class="kd">class</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
+
+        <span class="kd">var</span> <span class="n">x</span> <span class="o">:</span> <span class="n">T</span>
+        <span class="kd">var</span> <span class="n">y</span> <span class="o">:</span> <span class="n">T</span>
+
+        <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span>
+            <span class="kd">var</span> <span class="n">n</span> <span class="o">=</span> <span class="nl">Math:</span><span class="o">:</span><span class="n">sqrt</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span><span class="o">)</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
+            <span class="k">return</span> <span class="n">v</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-
-<span class="o">}</span>
-
-<span class="kd">class</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
-
-    <span class="kd">var</span> <span class="n">x</span> <span class="o">:</span> <span class="n">T</span>
-    <span class="kd">var</span> <span class="n">y</span> <span class="o">:</span> <span class="n">T</span>
-
-    <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span>
-        <span class="kd">var</span> <span class="n">n</span> <span class="o">=</span> <span class="nl">Math:</span><span class="o">:</span><span class="n">sqrt</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span><span class="o">)</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
-        <span class="k">return</span> <span class="n">v</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="2-4-constructor-definition">2.4. Constructor Definition</h3>
 
@@ -291,15 +291,15 @@ class over and over again, but use the keyword <code class="prettyprint">new</co
 
 <p>If the super class does not define a no-argument constructor, you have to explicitly call
 one using <code class="prettyprint">super(args...)</code> as the first expression in the body of the constructor.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">extends</span> <span class="n">AnotherClass</span> <span class="o">{</span>
-  <span class="k">new</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">super</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
-  <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">extends</span> <span class="n">AnotherClass</span> <span class="o">{</span>
+      <span class="k">new</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
+      <span class="o">}</span>
 
-  <span class="k">new</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">(</span><span class="s">&quot;default&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
+      <span class="k">new</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">(</span><span class="s">&quot;default&quot;</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="2-5-modifiers">2.5. Modifiers</h3>
 
@@ -326,16 +326,16 @@ The modifiers are usually written before the keyword for defining the class.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TopClass1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">class</span> <span class="nc">TopClass2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TopClass3</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">final</span> <span class="kd">class</span> <span class="nc">TopClass4</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">class</span> <span class="nc">TopClass5</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TopClass1</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">class</span> <span class="nc">TopClass2</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TopClass3</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">final</span> <span class="kd">class</span> <span class="nc">TopClass4</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">strictfp</span> <span class="kd">class</span> <span class="nc">TopClass5</span> <span class="o">{</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h4 id="nested-class-modifiers">Nested Class Modifiers</h4>
 
@@ -364,22 +364,22 @@ Non-static nested classes are called <i>inner classes</i>.</note></p>
 
 <p><caution>Until now, all the nested classes must be declared as static. This restriction may be removed in later
 versions.</caution></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">protected</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kn">package</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">abstract</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">final</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass6</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">strictfp</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass7</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">final</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass6</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">strictfp</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass7</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="field-modifiers">Field Modifiers</h4>
 
@@ -400,13 +400,13 @@ versions.</caution></p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">protected</span> <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kn">package</span> <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">private</span> <span class="kd">var</span> <span class="n">d</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">static</span> <span class="kd">var</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">transient</span> <span class="kd">var</span> <span class="n">h</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">volatile</span> <span class="kd">var</span> <span class="n">g</span> <span class="o">:</span> <span class="n">Object</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kd">protected</span> <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kn">package</span> <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kd">private</span> <span class="kd">var</span> <span class="n">d</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kd">transient</span> <span class="kd">var</span> <span class="n">h</span> <span class="o">:</span> <span class="n">Object</span>
+    <span class="kd">volatile</span> <span class="kd">var</span> <span class="n">g</span> <span class="o">:</span> <span class="n">Object</span>
 </code></pre></div>
 <h4 id="method-modifiers">Method Modifiers</h4>
 
@@ -431,19 +431,19 @@ versions.</caution></p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">protected</span> <span class="kd">def</span> <span class="n">fct2</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kn">package</span> <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">private</span> <span class="kd">def</span> <span class="n">fct4</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
-<span class="kd">final</span> <span class="kd">def</span> <span class="n">fct6</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">native</span> <span class="kd">def</span> <span class="n">fct7</span>
-<span class="kd">static</span> <span class="kd">def</span> <span class="n">fct8</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct9</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">fct10</span> <span class="o">{</span> <span class="o">}</span>
-<span class="c1">// Dispatch functions</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">protected</span> <span class="kd">def</span> <span class="n">fct2</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">def</span> <span class="n">fct4</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
+    <span class="kd">final</span> <span class="kd">def</span> <span class="n">fct6</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">native</span> <span class="kd">def</span> <span class="n">fct7</span>
+    <span class="kd">static</span> <span class="kd">def</span> <span class="n">fct8</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct9</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">fct10</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="c1">// Dispatch functions</span>
+    <span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 </code></pre></div>
 <h4 id="constructor-modifiers">Constructor Modifiers</h4>
 
@@ -461,10 +461,10 @@ versions.</caution></p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">protected</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kn">package</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">char</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">private</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">protected</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kn">package</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">char</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="kd">private</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 </code></pre></div>
 <h3 id="2-6-method-overriding">2.6. Method Overriding</h3>
 
@@ -496,36 +496,36 @@ is not specified in the overriding prototype since it could be inferred by the S
 
 <p>For preventing a function to be overridden, you should add the <code class="prettyprint">final</code> modifier in the signature of
 the method (as in Java).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">PersonEx</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">PersonEx</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">title</span> <span class="o">:</span> <span class="n">String</span>
+        <span class="kd">var</span> <span class="n">title</span> <span class="o">:</span> <span class="n">String</span>
 
-    <span class="kd">override</span> <span class="n">getFullName</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">fullName</span>
-    <span class="o">}</span> 
-<span class="o">}</span>
+        <span class="kd">override</span> <span class="n">getFullName</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">fullName</span>
+        <span class="o">}</span> 
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="2-7-accessing-local-variables-of-the-enclosing-scope">2.7. Accessing Local Variables of the Enclosing Scope</h3>
 
 <p>Local classes (or nested classes, i.e. classes defined inside an other type) have
 the <code class="prettyprint">static</code> modifier. It means that a nested class cannot have access to the
 fields and methods of the instance of the enclosing type. Only accesses to static members are allowed.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="kd">static</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">fct2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-            <span class="c1">// Explicit type specification for the field access</span>
-            <span class="nl">EnclosingClass:</span><span class="o">:</span><span class="n">field1</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
+        <span class="kd">static</span> <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
+        <span class="kd">static</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span>
         <span class="o">}</span>
+        <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass</span> <span class="o">{</span>
+            <span class="kd">def</span> <span class="n">fct2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
+                <span class="c1">// Explicit type specification for the field access</span>
+                <span class="nl">EnclosingClass:</span><span class="o">:</span><span class="n">field1</span>
+            <span class="o">}</span>
 
-        <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span>
-            <span class="c1">// Implicit type specification for the function&#39;s call</span>
-            <span class="n">fct1</span>
+            <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span>
+                <span class="c1">// Implicit type specification for the function&#39;s call</span>
+                <span class="n">fct1</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">}
 </code></pre></div>
 <h2 id="3-interface">3. Interface</h2>
@@ -543,19 +543,19 @@ is) must have functions called X,Y,Z, etc.</p>
 <h3 id="3-1-define-an-interface">3.1. Define an Interface</h3>
 
 <p>In the following example, the <code class="prettyprint">Light</code> interface is defined with the two methods <code class="prettyprint">turnOn</code> and <code class="prettyprint">turnOff</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">turnOn</span>
-    <span class="kd">def</span> <span class="n">turnOff</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">turnOn</span>
+        <span class="kd">def</span> <span class="n">turnOff</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="3-2-interface-inheritance">3.2. Interface Inheritance</h3>
 
 <p>It is possible to specialize the definition of an interface. In the following example, the <code class="prettyprint">VariableIntensityLight</code>
 interface that is refining the previous <code class="prettyprint">Light</code> interface and add specific functions.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">VariableIntensityLight</span> <span class="k">extends</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">setLightIntensity</span><span class="o">(</span><span class="n">intensity</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="n">getLightIntensity</span> <span class="o">:</span> <span class="kt">float</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">VariableIntensityLight</span> <span class="k">extends</span> <span class="n">Light</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="nf">setLightIntensity</span><span class="o">(</span><span class="n">intensity</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
+        <span class="kd">def</span> <span class="n">getLightIntensity</span> <span class="o">:</span> <span class="kt">float</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="3-3-define-a-generic-interface">3.3. Define a Generic Interface</h3>
 
@@ -577,15 +577,15 @@ To declare a bounded type parameter, list the type parameter&#39;s name, followe
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">AnInterface</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">AnInterface</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span>
 
-    <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span>
-<span class="o">}</span>
+        <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span>
+    <span class="o">}</span>
 
-<span class="kd">interface</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span>
-<span class="o">}</span>
+    <span class="kd">interface</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="3-4-interface-implementation">3.4. Interface Implementation</h3>
 
@@ -594,15 +594,15 @@ the implementation relationship between a class and an interface.
 The class must provide an implementation of all the functions defined in the interface.
 The only one exception is when the class is abstract. In this case, the derived classes must implement the
 functions of the interface.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">true</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="o">}</span>
+        <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-5-default-implementation-of-interface-functions">3.5. Default Implementation of Interface Functions</h3>
 
@@ -611,21 +611,21 @@ not providing one. This feature is known as the default method mechanism.</p>
 
 <p>In the following example, two default implementations of the <code class="prettyprint">turnOn</code> and <code class="prettyprint">turnOff</code> functions are provided.
 The implementing class needs to provide a function code only for the <code class="prettyprint">switchLight</code> function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
-        <span class="n">switchLight</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
+            <span class="n">switchLight</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+        <span class="o">}</span>
+        <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
+            <span class="n">switchLight</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+        <span class="o">}</span>
+        <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span>
     <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
-        <span class="n">switchLight</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+    <span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="n">state</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="3-6-modifiers">3.6. Modifiers</h3>
 
@@ -651,14 +651,14 @@ The modifiers are usually written before the keyword for defining the interface.
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TopInterface1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">interface</span> <span class="nc">TopInterface2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">TopInterface3</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">TopInterface4</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TopInterface1</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">interface</span> <span class="nc">TopInterface2</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">TopInterface3</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">TopInterface4</span> <span class="o">{</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h4 id="nested-interface-modifiers">Nested Interface Modifiers</h4>
 
@@ -683,22 +683,22 @@ Nested interfaces that are declared static are called <i>static nested interface
 Non-static nested interfaces are called <i>inner interfaces</i>.</note></p>
 
 <p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">NestedInterface1</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">NestedInterface1</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">protected</span> <span class="kd">interface</span> <span class="nc">NestedInterface2</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kn">package</span> <span class="kd">interface</span> <span class="nc">NestedInterface3</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">private</span> <span class="kd">interface</span> <span class="nc">NestedInterface4</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">NestedInterface5</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">NestedInterface6</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">NestedInterface7</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">interface</span> <span class="nc">NestedInterface2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">interface</span> <span class="nc">NestedInterface3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">interface</span> <span class="nc">NestedInterface4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">NestedInterface5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">NestedInterface6</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">NestedInterface7</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="field-modifiers">Field Modifiers</h4>
 
@@ -714,8 +714,8 @@ Non-static nested interfaces are called <i>inner interfaces</i>.</note></p>
 </ul>
 
 <p><caution>Only fields defined with <code class="prettyprint">val</code> can be put in an interface.</caution></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
-<span class="kd">static</span> <span class="kd">val</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">val</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
 </code></pre></div>
 <h4 id="method-modifiers">Method Modifiers</h4>
 
@@ -731,8 +731,8 @@ Non-static nested interfaces are called <i>inner interfaces</i>.</note></p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span>
-<span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span>
+    <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
 </code></pre></div>
 <h2 id="4-enumeration">4. Enumeration</h2>
 
@@ -745,10 +745,10 @@ that you cannot define methods nor attributes in the enumeration.</p>
 
 <p>For defining an enumeration, you could use the <code class="prettyprint">enum</code> keyword.
 The following example defines the enumeration <code class="prettyprint">MyEnum</code> with two constants: </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">enum</span> <span class="nc">MyEnum</span> <span class="o">{</span>
-    <span class="n">CONSTANT_1</span><span class="o">,</span>
-    <span class="n">CONSTANT_2</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">enum</span> <span class="nc">MyEnum</span> <span class="o">{</span>
+        <span class="n">CONSTANT_1</span><span class="o">,</span>
+        <span class="n">CONSTANT_2</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="4-2-modifiers">4.2. Modifiers</h3>
 
@@ -766,12 +766,12 @@ The modifiers are usually written before the keyword for defining the enumeratio
     * <code class="prettyprint">package</code>: the class is accessible from only the types in the same package.</p>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">TopEnumeration1</span> <span class="o">{</span>
-    <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">enum</span> <span class="nc">TopEnumeration2</span> <span class="o">{</span>
-    <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">TopEnumeration1</span> <span class="o">{</span>
+        <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">enum</span> <span class="nc">TopEnumeration2</span> <span class="o">{</span>
+        <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h4 id="nested-enumeration-modifiers">Nested Enumeration Modifiers</h4>
 
@@ -794,23 +794,23 @@ Nested enumerations that are declared static are called <i>static nested enumera
 Non-static nested enumerations are called <i>inner enumerations</i>.</note></p>
 
 <p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
-        <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
+            <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
+        <span class="o">}</span>
+        <span class="kd">protected</span> <span class="kd">enum</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
+            <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
+        <span class="o">}</span>
+        <span class="kn">package</span> <span class="kd">enum</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
+            <span class="n">CST5</span><span class="o">,</span> <span class="n">CST6</span>
+        <span class="o">}</span>
+        <span class="kd">private</span> <span class="kd">enum</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
+            <span class="n">CST7</span><span class="o">,</span> <span class="n">CST8</span>
+        <span class="o">}</span>
+        <span class="kd">static</span> <span class="kd">enum</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
+            <span class="n">CST9</span><span class="o">,</span> <span class="n">CST10</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">enum</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
-        <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">enum</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
-        <span class="n">CST5</span><span class="o">,</span> <span class="n">CST6</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">enum</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
-        <span class="n">CST7</span><span class="o">,</span> <span class="n">CST8</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">enum</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
-        <span class="n">CST9</span><span class="o">,</span> <span class="n">CST10</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-annotation-type">5. Annotation Type</h2>
 
@@ -832,11 +832,11 @@ This annotation defines three parameters:</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">annotation</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
-  <span class="kd">val</span> <span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
-  <span class="kd">val</span> <span class="n">isTricky</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span>
-  <span class="kd">val</span> <span class="n">lotteryNumbers</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span> <span class="mi">42</span><span class="o">,</span> <span class="mi">137</span> <span class="o">]</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">annotation</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
+      <span class="kd">val</span> <span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
+      <span class="kd">val</span> <span class="n">isTricky</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span>
+      <span class="kd">val</span> <span class="n">lotteryNumbers</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span> <span class="mi">42</span><span class="o">,</span> <span class="mi">137</span> <span class="o">]</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="5-2-modifiers">5.2. Modifiers</h3>
 
@@ -862,12 +862,12 @@ The modifiers are usually written before the keyword for defining the annotation
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType3</span> <span class="o">{</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType1</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType2</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType3</span> <span class="o">{</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h4 id="nested-annotation-type-modifiers">Nested Annotation Type Modifiers</h4>
 
@@ -891,20 +891,20 @@ Nested annotation types that are declared static are called <i>static nested ann
 Non-static nested annotation types are called <i>inner annotation types</i>.</note></p>
 
 <p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType1</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType1</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">protected</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType2</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType3</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">private</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType4</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType5</span> <span class="o">{</span>
+        <span class="o">}</span>
+        <span class="kd">static</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType6</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType6</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h4 id="value-modifiers">Value Modifiers</h4>
 
@@ -920,8 +920,8 @@ Non-static nested annotation types are called <i>inner annotation types</i>.</no
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">val</span> <span class="n">val1</span> <span class="o">:</span> <span class="kt">int</span>
-<span class="kd">static</span> <span class="kd">val</span> <span class="n">val2</span> <span class="o">:</span> <span class="kt">int</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">val</span> <span class="n">val1</span> <span class="o">:</span> <span class="kt">int</span>
+    <span class="kd">static</span> <span class="kd">val</span> <span class="n">val2</span> <span class="o">:</span> <span class="kt">int</span>
 </code></pre></div>
 <h2 id="6-anonymous-class">6. Anonymous Class</h2>
 
@@ -936,30 +936,30 @@ the class in another expression.</p>
 
 <p>The following example, <code class="prettyprint">HelloWorldAnonymousClasses</code>, uses anonymous classes in the
 initialization statements of the local variables <code class="prettyprint">frenchGreeting</code> and <code class="prettyprint">spanishGreeting</code>:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="kd">var</span> <span class="n">spanishGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;mundo&quot;</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="n">frenchGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marc&quot;</span><span class="o">)</span>
-        <span class="n">spanishGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marco&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
     <span class="o">}</span>
-<span class="o">}</span>
+    <span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
+                <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
+                <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
+                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="kd">var</span> <span class="n">spanishGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
+                <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;mundo&quot;</span>
+                <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
+                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">frenchGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marc&quot;</span><span class="o">)</span>
+            <span class="n">spanishGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marco&quot;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="6-2-syntax-of-anonymous-classes">6.2. Syntax of Anonymous Classes</h3>
 
@@ -981,13 +981,13 @@ except that there is a class definition contained in a block of code.</p>
 <p>Because an anonymous class definition is an expression, it must be part of a statement.
 In this example, the anonymous class expression is part of the statement that instantiates
 the <code class="prettyprint">frenchGreeting</code> object.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
-    <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
+        <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
+            <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="6-3-accessing-local-variables-of-the-enclosing-scope-and-declaring-and-accessing-members-of-the-anonymous-class">6.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</h3>
 
@@ -1010,17 +1010,17 @@ local variables of the enclosing scope:</p>
 <p><note>You can declare the following in anonymous classes: fields, extra methods
 (even if they do not implement any methods of the supertype), instance initializers, 
 local classes. However, you cannot declare constructors in an anonymous class.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
-    <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
+        <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
+                <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
+                    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
+                <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="7-modifiers">7. Modifiers</h2>
 
@@ -1033,14 +1033,14 @@ Abstract types cannot be instantiated, but they can be derived.</p>
 
 <p>An abstract method is a method that is declared without an implementation 
 (without braces, and followed by a semicolon), like this:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">abstract</span> <span class="kd">def</span> <span class="nf">moveTo</span><span class="o">(</span><span class="n">deltaX</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">deltaY</span> <span class="o">:</span> <span class="kt">double</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">abstract</span> <span class="kd">def</span> <span class="nf">moveTo</span><span class="o">(</span><span class="n">deltaX</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">deltaY</span> <span class="o">:</span> <span class="kt">double</span><span class="o">)</span>
 </code></pre></div>
 <p>If a type includes abstract methods, then the type itself must be declared abstract, as in:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">GraphicObject</span> <span class="o">{</span>
-    <span class="c1">// declare fields</span>
-    <span class="c1">// declare nonabstract methods</span>
-    <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">draw</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">GraphicObject</span> <span class="o">{</span>
+        <span class="c1">// declare fields</span>
+        <span class="c1">// declare nonabstract methods</span>
+        <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">draw</span>
+    <span class="o">}</span>
 </code></pre></div>
 <p>When an abstract type is derived, the subtype usually provides implementations for all of the
 abstract methods in its parent type. However, if it does not, then the subtype must also be
@@ -1116,33 +1116,33 @@ The third column indicates whether subtypes of the type declared outside this pa
 The fourth column indicates whether all types have access to the member.</p>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">C1</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kd">def</span> <span class="n">pubfct</span> <span class="o">{}</span>
-   <span class="kd">protected</span> <span class="kd">def</span> <span class="n">protfct</span> <span class="o">{}</span>
-   <span class="kn">package</span> <span class="kd">def</span> <span class="n">packfct</span> <span class="o">{}</span>
-   <span class="kd">private</span> <span class="kd">def</span> <span class="n">privfct</span> <span class="o">{}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">C1</span> <span class="o">{</span>
+       <span class="kd">public</span> <span class="kd">def</span> <span class="n">pubfct</span> <span class="o">{}</span>
+       <span class="kd">protected</span> <span class="kd">def</span> <span class="n">protfct</span> <span class="o">{}</span>
+       <span class="kn">package</span> <span class="kd">def</span> <span class="n">packfct</span> <span class="o">{}</span>
+       <span class="kd">private</span> <span class="kd">def</span> <span class="n">privfct</span> <span class="o">{}</span>
 
-   <span class="kd">def</span> <span class="n">test0</span> <span class="o">{</span>
-    <span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">protfct</span><span class="o">;</span>
-    <span class="n">packfct</span><span class="o">;</span>
-    <span class="n">privfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">C2</span> <span class="k">extends</span> <span class="n">C1</span> <span class="o">{</span>
-   <span class="kd">def</span> <span class="n">test1</span> <span class="o">{</span>
-    <span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">protfct</span><span class="o">;</span>
-    <span class="n">packfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">C3</span> <span class="o">{</span>
-   <span class="kd">def</span> <span class="nf">test3</span><span class="o">(</span><span class="n">obj</span> <span class="o">:</span> <span class="n">C1</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">protfct</span><span class="o">;</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">packfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
+       <span class="kd">def</span> <span class="n">test0</span> <span class="o">{</span>
+        <span class="n">pubfct</span><span class="o">;</span>
+        <span class="n">protfct</span><span class="o">;</span>
+        <span class="n">packfct</span><span class="o">;</span>
+        <span class="n">privfct</span><span class="o">;</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">class</span> <span class="nc">C2</span> <span class="k">extends</span> <span class="n">C1</span> <span class="o">{</span>
+       <span class="kd">def</span> <span class="n">test1</span> <span class="o">{</span>
+        <span class="n">pubfct</span><span class="o">;</span>
+        <span class="n">protfct</span><span class="o">;</span>
+        <span class="n">packfct</span><span class="o">;</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">class</span> <span class="nc">C3</span> <span class="o">{</span>
+       <span class="kd">def</span> <span class="nf">test3</span><span class="o">(</span><span class="n">obj</span> <span class="o">:</span> <span class="n">C1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">pubfct</span><span class="o">;</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">protfct</span><span class="o">;</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">packfct</span><span class="o">;</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-3-dispatch-modifier">7.3. dispatch Modifier</h3>
 
@@ -1161,17 +1161,17 @@ visibility of these methods is reducedBy adding the extension keyword to a field
 parameter declaration, its instance methods become extension methods. to protected if they have been
 defined as public methods.
 Client code always binds to the synthesized dispatcher method.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="kd">dispatch</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s a number&quot;</span> 
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="kd">dispatch</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span> 
+      <span class="s">&quot;it&#39;s a number&quot;</span> 
+    <span class="o">}</span>
 
-<span class="kd">def</span> <span class="kd">dispatch</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s an int&quot;</span> 
-<span class="o">}</span>
-<span class="kd">def</span> <span class="n">clientCode</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">printType</span><span class="o">(</span><span class="mf">4.5</span><span class="o">))</span> <span class="c1">// Print &quot;it&#39;s a number&quot;</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">printType</span><span class="o">(</span><span class="mi">4</span><span class="o">))</span>   <span class="c1">// Print &quot;it&#39;s an int&quot;</span>
-<span class="o">}</span>
+    <span class="kd">def</span> <span class="kd">dispatch</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> 
+      <span class="s">&quot;it&#39;s an int&quot;</span> 
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">clientCode</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">printType</span><span class="o">(</span><span class="mf">4.5</span><span class="o">))</span> <span class="c1">// Print &quot;it&#39;s a number&quot;</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">printType</span><span class="o">(</span><span class="mi">4</span><span class="o">))</span>   <span class="c1">// Print &quot;it&#39;s an int&quot;</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-4-extension-modifier">7.4. extension Modifier</h3>
 
@@ -1181,46 +1181,46 @@ an <a href="./GeneralSyntax.html">extension provider</a>.</p>
 <p>Extension methods allow adding new methods to existing  types without modifying them. This is really 
 helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method
 can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">removeVowels</span><span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
-    <span class="n">s</span><span class="o">.</span><span class="n">replaceAll</span><span class="o">(</span><span class="s">&quot;[aeiouAEIOU]&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">)</span> 
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">removeVowels</span><span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="n">s</span><span class="o">.</span><span class="n">replaceAll</span><span class="o">(</span><span class="s">&quot;[aeiouAEIOU]&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">)</span> 
+    <span class="o">}</span>
 </code></pre></div>
 <p>We can call this method either like in Java:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">removeVowels</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">removeVowels</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p>or as an extension method of String:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="s">&quot;Hello&quot;</span><span class="o">.</span><span class="n">removeVowels</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="s">&quot;Hello&quot;</span><span class="o">.</span><span class="n">removeVowels</span>
 </code></pre></div>
 <p>By adding the <code class="prettyprint">extension</code> keyword to a field, a local variable or a parameter declaration, its
 instance methods become extension methods.</p>
 
 <p>In the following example, three functions are defined for illustrating the three types of
 extension providers.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Examples</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a class field.</span>
-    <span class="c1">//</span>
-    <span class="k">extension</span> <span class="kd">var</span> <span class="n">list</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">Examples</span> <span class="o">{</span>
+        <span class="c1">//</span>
+        <span class="c1">// Example of an extension provider on a class field.</span>
+        <span class="c1">//</span>
+        <span class="k">extension</span> <span class="kd">var</span> <span class="n">list</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
 
-    <span class="kd">def</span> <span class="nf">extensionFieldExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls this.list.contains(value)</span>
-    <span class="o">}</span>
+        <span class="kd">def</span> <span class="nf">extensionFieldExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
+            <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls this.list.contains(value)</span>
+        <span class="o">}</span>
 
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a method parameter.</span>
-    <span class="c1">//</span>
-    <span class="kd">def</span> <span class="nf">extensionParameterExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">,</span> <span class="k">extension</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
-    <span class="o">}</span>
+        <span class="c1">//</span>
+        <span class="c1">// Example of an extension provider on a method parameter.</span>
+        <span class="c1">//</span>
+        <span class="kd">def</span> <span class="nf">extensionParameterExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">,</span> <span class="k">extension</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
+            <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
+        <span class="o">}</span>
 
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a local variable.</span>
-    <span class="c1">//</span>
-    <span class="kd">def</span> <span class="nf">extensionLocalVariableExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="k">extension</span> <span class="kd">var</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
+        <span class="c1">//</span>
+        <span class="c1">// Example of an extension provider on a local variable.</span>
+        <span class="c1">//</span>
+        <span class="kd">def</span> <span class="nf">extensionLocalVariableExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
+            <span class="k">extension</span> <span class="kd">var</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
+            <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="7-5-final-modifier">7.5. final Modifier</h3>
 
@@ -1246,21 +1246,21 @@ the type.</p>
 <p>A final type cannot be derived. Doing this can confer security and efficiency benefits, so many
 of the Java standard library classes are final, such as <code class="prettyprint">java.lang.System</code> and
 <code class="prettyprint">java.lang.String</code>. All methods in a final type are implicitly final.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Final field</span>
-    <span class="c1">//</span>
-    <span class="kd">val</span> <span class="n">field</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="c1">//</span>
+        <span class="c1">// Final field</span>
+        <span class="c1">//</span>
+        <span class="kd">val</span> <span class="n">field</span> <span class="o">=</span> <span class="mi">4</span>
 
-    <span class="c1">//</span>
-    <span class="c1">// Final method</span>
-    <span class="c1">//</span>
-    <span class="kd">final</span> <span class="kd">def</span> <span class="n">cannotBeOverriden</span> <span class="o">{</span>
+        <span class="c1">//</span>
+        <span class="c1">// Final method</span>
+        <span class="c1">//</span>
+        <span class="kd">final</span> <span class="kd">def</span> <span class="n">cannotBeOverriden</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">final</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
-    <span class="c1">// This class cannot be derived</span>
-<span class="o">}</span>
+    <span class="kd">final</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
+        <span class="c1">// This class cannot be derived</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-6-native-modifier">7.6. native Modifier</h3>
 
@@ -1270,9 +1270,9 @@ native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
 <p><note>This modifier is provided for enabling agents to access to low-level resources that
 are not supported by the Java API. You should not use this modifier if you can use
 a higher-level API in place of.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">native</span> <span class="kd">def</span> <span class="n">fct</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kd">native</span> <span class="kd">def</span> <span class="n">fct</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-7-static-modifier">7.7. static Modifier</h3>
 
@@ -1290,21 +1290,21 @@ can also be manipulated without creating an instance of the type.</p>
 
 <p>Static methods, which have the <code class="prettyprint">static</code> modifier in their declarations, should be invoked with the
 type name, without the need for creating an instance of the type. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Static field</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="c1">//</span>
-    <span class="c1">// Constant</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">val</span> <span class="n">constant</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="c1">//</span>
-    <span class="c1">// Static method</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">def</span> <span class="n">aMethod</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="c1">//</span>
+        <span class="c1">// Static field</span>
+        <span class="c1">//</span>
+        <span class="kd">static</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span>
+        <span class="c1">//</span>
+        <span class="c1">// Constant</span>
+        <span class="c1">//</span>
+        <span class="kd">static</span> <span class="kd">val</span> <span class="n">constant</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="c1">//</span>
+        <span class="c1">// Static method</span>
+        <span class="c1">//</span>
+        <span class="kd">static</span> <span class="kd">def</span> <span class="n">aMethod</span> <span class="o">{</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="7-8-strictfp-modifier">7.8. strictfp Modifier</h3>
 
@@ -1345,9 +1345,9 @@ necessary the VM does not use intermediates by default.</p>
 
 <p>The <code class="prettyprint">strictfp</code> modifier accomplishes this by truncating all intermediate values to IEEE single precision and
 double precision, as occurred in earlier versions of the JVM.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct</span> <span class="o">{</span> <span class="o">}</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-9-synchronized-modifier">7.9. synchronized Modifier</h3>
 
@@ -1366,21 +1366,21 @@ object&#39;s variables are done through synchronized methods.
 (An important exception: final fields, which cannot be modified after the object is constructed, 
 can be safely read through non-synchronized methods, once the object is constructed)
 This strategy is effective, but can present problems with liveness.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">SynchronizedCounter</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">SynchronizedCounter</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">increment</span> <span class="o">{</span>
-        <span class="n">c</span><span class="o">++</span>
-    <span class="o">}</span>
+        <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">increment</span> <span class="o">{</span>
+            <span class="n">c</span><span class="o">++</span>
+        <span class="o">}</span>
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">decrement</span> <span class="o">{</span>
-        <span class="n">c</span><span class="o">--</span>
-    <span class="o">}</span>
+        <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">decrement</span> <span class="o">{</span>
+            <span class="n">c</span><span class="o">--</span>
+        <span class="o">}</span>
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">value</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">c</span>
+        <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">value</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">c</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="7-10-transient-modifier">7.10. transient Modifier</h3>
 
@@ -1391,9 +1391,9 @@ the types of data stored in the object.</p>
 <p>The <code class="prettyprint">transient</code> modifier is a keyword used as a field modifier.
 When a field is declared transient, it would not be serialized even if the type to which it belongs
 is serialized.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">transient</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kd">transient</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h3 id="7-11-volatile-modifier">7.11. volatile Modifier</h3>
 
@@ -1420,9 +1420,9 @@ always reads the variable from memory (or from a shared cache), never from a loc
 <p><note>From now, it is better to use
 <a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html">atomic references</a>
 in place of volatile variables.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">volatile</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kd">volatile</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h2 id="8-references">8. References</h2>
 
@@ -1439,9 +1439,9 @@ Thank you to the contributors to these documents.</p>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -1454,7 +1454,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

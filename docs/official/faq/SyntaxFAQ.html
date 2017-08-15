@@ -124,8 +124,8 @@ The <code class="prettyprint">a</code> variable is a real constant because it ha
 The <code class="prettyprint">b</code> variable is not a real constant because it is a reference to an object.
 The reference is constant, <em>but</em> the referred object is not. Consequently, it is still
 possible to call the setters of <code class="prettyprint">b</code>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="kd">val</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="kd">val</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
 </code></pre></div>
 <h3 id="1-4-why-cannot-use-the-syntax-a-0-for-arrays">1.4. Why cannot use the syntax &#39;a[0]&#39; for arrays?</h3>
 
@@ -134,10 +134,10 @@ possible to call the setters of <code class="prettyprint">b</code>. </p>
 
 <p>SARL considers that the each array is a list of something.
 Consequently, retrieving the values of the array must be done with <code class="prettyprint">get(int)</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
+    <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
 
-<span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
 </code></pre></div>
 <h3 id="1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the &#39;&lt;&gt;&#39; notation for generic parameters?</h3>
 
@@ -146,8 +146,8 @@ not supported: a generic type expression must be written between them.</p>
 
 <p>For solving this problem, two choices: i) add a type expression between
 &lt; and &gt;; ii) remove the generic parameter list.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">firstSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
-<span class="kd">var</span> <span class="n">secondSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">firstSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="n">secondSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span>
 </code></pre></div>
 <h3 id="1-6-how-can-i-create-instances-of-anonymous-classes">1.6. How can I create instances of anonymous classes?</h3>
 
@@ -155,15 +155,15 @@ not supported: a generic type expression must be written between them.</p>
 must be done with a closure.</p>
 
 <p>Consider the definition of the following interface:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
-     <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
+         <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span>
+    <span class="o">}</span>
 </code></pre></div>
 <p>The on-the-fly definition and instantiation of an instance of this interface,
 a.k.a. anonymous class definition in the Java community, could be written is SARL
 with the following closure:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">instance</span> <span class="o">:</span> <span class="n">MyInterface</span>
-<span class="n">instance</span> <span class="o">=</span> <span class="o">[</span> <span class="n">parameter</span> <span class="o">|</span> <span class="cm">/* The code of myfunction() */</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">instance</span> <span class="o">:</span> <span class="n">MyInterface</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="o">[</span> <span class="n">parameter</span> <span class="o">|</span> <span class="cm">/* The code of myfunction() */</span> <span class="o">]</span>
 </code></pre></div>
 <h3 id="1-7-java-syntax-for-anonymous-classes-is-allowed">1.7. Java syntax for anonymous classes is allowed</h3>
 
@@ -172,33 +172,33 @@ must be done with a closure (see previous question).</p>
 
 <p>The Java-based syntax for defining an anonymous class&#39;s instance is allowed, but not recommended
 in the SARL language. It means that the following code is valid:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyInterface</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
-        <span class="cm">/* The code of myfunction() */</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">var</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyInterface</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+            <span class="cm">/* The code of myfunction() */</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-8-ambiguous-call-to-capacity-function">1.8. Ambiguous call to capacity function</h3>
 
 <p>When the calling a capacity function, the SARL compiler complains with an &quot;ambiguous call&quot; error.
 In the code below, the function <code class="prettyprint">myfunction</code> is defined in the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code>.
 The call to <code class="prettyprint">myfunction</code> in the agent definition is the place where the error occurs.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">C1</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span>
-    <span class="kd">def</span> <span class="n">myfunction2</span>
-<span class="o">}</span>
-<span class="kd">capacity</span> <span class="nc">C2</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span>
-    <span class="kd">def</span> <span class="n">myfunction3</span>
-<span class="o">}</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">C1</span><span class="o">,</span> <span class="n">C2</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">myfunction</span>
-        <span class="n">myfunction2</span>
-        <span class="n">myfunction3</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">C1</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">myfunction</span>
+        <span class="kd">def</span> <span class="n">myfunction2</span>
     <span class="o">}</span>
-<span class="o">}</span>
+    <span class="kd">capacity</span> <span class="nc">C2</span> <span class="o">{</span>
+        <span class="kd">def</span> <span class="n">myfunction</span>
+        <span class="kd">def</span> <span class="n">myfunction3</span>
+    <span class="o">}</span>
+    <span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">C1</span><span class="o">,</span> <span class="n">C2</span>
+        <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+            <span class="n">myfunction</span>
+            <span class="n">myfunction2</span>
+            <span class="n">myfunction3</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div>
 <p>This error is standard because the functions of the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code> are implicitly accessible
 in the scope of the agent definition, see <code class="prettyprint">uses</code> keyword definition. The SARL compiler is then unable
@@ -207,15 +207,15 @@ to determine that is the function to call.</p>
 <p>For solving this issue, the developer must explicitly call the correct version of <code class="prettyprint">myfunction</code> by
 getting the capacity. The following code is the correct call to the function if the function in the
 capacity <code class="prettyprint">C1</code> should be called:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">getSkill</span><span class="o">(</span><span class="n">C1</span><span class="o">).</span><span class="n">myfunction</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">getSkill</span><span class="o">(</span><span class="n">C1</span><span class="o">).</span><span class="n">myfunction</span>
 </code></pre></div>
 <h2 id="2-legal-notice">2. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -228,7 +228,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -89,42 +89,42 @@ agent <strong>default context</strong> or its <strong>default space</strong>. Th
 are illustrated by the top-left context in the figure above. </p>
 
 <p>For instance, the <code class="prettyprint">emit</code> action is a shortcut for:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
 </code></pre></div>
 <p>Therefore, it is actually created on top of the other built-in capacities.</p>
 
 <h2 id="1-retrieving-the-default-context-and-space">1. Retrieving the Default Context and Space</h2>
 
 <p>For retrieving the default context of an agent, this built-in capacity provides the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getDefaultContext</span> <span class="o">:</span> <span class="n">AgentContext</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getDefaultContext</span> <span class="o">:</span> <span class="n">AgentContext</span>
 </code></pre></div>
 <p>For retrieving the default space in the default context of an agent, this built-in capacity provides
 the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getDefaultSpace</span> <span class="o">:</span> <span class="n">EventSpace</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getDefaultSpace</span> <span class="o">:</span> <span class="n">EventSpace</span>
 </code></pre></div>
 <p>For obtaining the address of the agent in the default space, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getDefaultAddress</span> <span class="o">:</span> <span class="n">EventSpace</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getDefaultAddress</span> <span class="o">:</span> <span class="n">EventSpace</span>
 </code></pre></div>
 <h2 id="2-sending-an-event-in-the-default-space">2. Sending an Event in the Default Space</h2>
 
 <p>The core mechanism for information exchanges among agents is <a href="../Event.html">event-based</a>.
 For sending an event in the default space of the default context, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">emit</span><span class="o">(^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span><span class="o">)</span>
 </code></pre></div>
 <p>This function emits the given event with no scope (i.e., all registered agent will receive the
 event) in the default space of the default context.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
-        <span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
+            <span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <p>The call to <code class="prettyprint">emit</code> is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="3-sending-an-event-to-specific-agents-in-the-default-space">3. Sending an Event to Specific Agents in the Default Space</h2>
 
@@ -132,13 +132,13 @@ event) in the default space of the default context.</p>
 
 <p>The previous sending function assumes that there is no restriction on the set of the receivers of the event.
 It is possible to specify a <code class="prettyprint">Scope</code> for applying a restriction.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">Event</span><span class="o">,</span> <span class="n">scope</span> <span class="o">:</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">Event</span><span class="o">,</span> <span class="n">scope</span> <span class="o">:</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
 </code></pre></div>
 <p>A scope is a predicates that is evaluated against the addresses of the receivers. It is defined as:
 <code class="prettyprint">sarl
-interface Scope&lt;T&gt; extends Serializable {
-    def matches(element : T) : boolean
-}
+    interface Scope&lt;T&gt; extends Serializable {
+        def matches(element : T) : boolean
+    }
 </code></p>
 
 <h3 id="3-2-creation-of-scopes-with-the-predefined-api">3.2. Creation of scopes with the predefined API</h3>
@@ -146,11 +146,11 @@ interface Scope&lt;T&gt; extends Serializable {
 <p>It is recommended using the SARL utility functions for creating scopes.
 They are defined in the class <code class="prettyprint">io.sarl.util.Scopes</code>.
 The following example is equivalent to the feature call of <code class="prettyprint">emit</code> without the scoping parameter:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">allParticipants</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">allParticipants</span><span class="o">)</span>
 </code></pre></div>
 <p>A default implementation of a scope using addresses is implemented in the class <code class="prettyprint">io.sarl.util.AddressScope</code>.
 The utility class <code class="prettyprint">Scopes</code> provides the <code class="prettyprint">addresses</code> function for creating an instance of <code class="prettyprint">AddressScope</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">addresses</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">))</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">addresses</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">))</span>
 </code></pre></div>
 <p>The complete list of the functions that are provided by the <code class="prettyprint">Scopes</code> class is
 accessible on the <a href="http://www.sarl.io/docs/api/index.html?io/sarl/util/Scopes.html">Scopes API documentation</a>.</p>
@@ -160,7 +160,7 @@ accessible on the <a href="http://www.sarl.io/docs/api/index.html?io/sarl/util/S
 <p>You are free to create new implementation of <code class="prettyprint">Scope</code> in order to filter the receivers of an
 event according to your own criteria. The easier approach is to write a lambda expression for the scope.
 The previous line of code becomes:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="n">a1</span> <span class="o">||</span> <span class="kc">it</span> <span class="o">==</span> <span class="n">a2</span> <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="n">a1</span> <span class="o">||</span> <span class="kc">it</span> <span class="o">==</span> <span class="n">a2</span> <span class="o">]</span>
 </code></pre></div>
 <p>In the previous code, the lambda expression is written outside the list of the <code class="prettyprint">emit</code> parameters.
 But it corresponds to the last formal parameter of type <code class="prettyprint">Scope&lt;Address&gt;</code>.
@@ -172,14 +172,14 @@ the <code class="prettyprint">matches</code> function, which is defined in the <
 <p>According to the <a href="../general/Extension.html">extension method mechanism</a>, it is possible to call
 the <code class="prettyprint">emit</code> function with the event instance as the receiver expression. The previous
 example becomes:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
 
-    <span class="kd">def</span> <span class="nf">myaction</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
-        <span class="o">^</span><span class="n">event</span><span class="o">.</span><span class="n">emit</span> <span class="o">[</span> <span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">==</span> <span class="n">receiverId</span> <span class="o">]</span> 
+        <span class="kd">def</span> <span class="nf">myaction</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
+            <span class="o">^</span><span class="n">event</span><span class="o">.</span><span class="n">emit</span> <span class="o">[</span> <span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">==</span> <span class="n">receiverId</span> <span class="o">]</span> 
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <p>In the previous code, the receiver of the event is given by the formal parameter <code class="prettyprint">receiverId</code>.
 The scope restricts the receiver according to this identifier.</p>
@@ -187,19 +187,19 @@ The scope restricts the receiver according to this identifier.</p>
 <p>For an abstract point of view, the previous emiting call may be explained with &quot;the event is emited to the receiver&quot;.
 Sometimes, the developer would like to write a code that corresponds to the sentence &quot;the receiver will receive the event&quot;.
 In order to enable this approach to the developer, the SARL API provides the function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">willReceive</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">==</span> <span class="n">receiverId</span> <span class="o">]</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">willReceive</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">==</span> <span class="n">receiverId</span> <span class="o">]</span>
+    <span class="o">}</span>
 </code></pre></div>
 <p>The initial example in this section becomes:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
 
-    <span class="kd">def</span> <span class="nf">myaction</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
-        <span class="n">receiverId</span><span class="o">.</span><span class="n">willReceive</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span> 
+        <span class="kd">def</span> <span class="nf">myaction</span><span class="o">(</span><span class="n">receiverId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">var</span> <span class="o">^</span><span class="kd">event</span> <span class="err">: </span><span class="nc">Event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
+            <span class="n">receiverId</span><span class="o">.</span><span class="n">willReceive</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span> 
+        <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-testing-if-an-element-is-related-to-the-default-context">4. Testing if an element is related to the default context</h2>
 
@@ -244,17 +244,17 @@ was emitted in the default space.</p>
 
 <p><note>According to the <a href="../GeneralSyntax.html">General Syntax Reference</a>,
 the <code class="prettyprint">event.isInDefaultSpace</code> is equivalent to <code class="prettyprint">isInDefaultSpace(event)</code>.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">inDefaultSpace</span> <span class="o">]</span> <span class="o">{</span>
-    <span class="c1">// Do something with the event when it was emitted in the default space</span>
-<span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">inDefaultSpace</span> <span class="o">]</span> <span class="o">{</span>
+        <span class="c1">// Do something with the event when it was emitted in the default space</span>
+    <span class="o">}</span>
 </code></pre></div>
 <h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-05-11</li>
+<li>Version: 0.5</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-08-15</li>
 </ul>
 
 <blockquote>
@@ -267,7 +267,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
 
     </div> <!-- /default layout container -->
 
