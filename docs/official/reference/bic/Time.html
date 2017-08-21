@@ -83,37 +83,37 @@ it may be the operating system time, or a simulator time.</p>
 <h2 id="1-get-the-current-time">1. Get the Current Time</h2>
 
 <p>For obtaining the current time, the <code class="prettyprint">getTime</code> function is provides by the <code class="prettyprint">Time</code> capacity:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">getTime</span><span class="o">(</span><span class="n">timeUnit</span> <span class="o">:</span> <span class="n">TimeUnit</span> <span class="o">=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">getTime</span><span class="o">(</span><span class="n">timeUnit</span> <span class="o">:</span> <span class="n">TimeUnit</span> <span class="o">=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span>
 </code></pre></div>
 <p>The timeUnit parameter will enable you to specify the unit of the replied
 value (hours, seconds, milliseconds, etc.). If it is not provided,
 the values will be expressed in seconds.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Time</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">ct</span> <span class="o">=</span> <span class="n">getTime</span>
-            <span class="kd">var</span> <span class="n">ct2</span> <span class="o">=</span> <span class="n">getTime</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
-            <span class="kd">var</span> <span class="n">ct3</span> <span class="o">=</span> <span class="n">getTime</span><span class="o">(</span><span class="nl">TimeUnit:</span><span class="o">:</span><span class="n">HOURS</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Time</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">ct</span> <span class="o">=</span> <span class="n">getTime</span>
+        <span class="kd">var</span> <span class="n">ct2</span> <span class="o">=</span> <span class="n">getTime</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+        <span class="kd">var</span> <span class="n">ct3</span> <span class="o">=</span> <span class="n">getTime</span><span class="o">(</span><span class="nl">TimeUnit:</span><span class="o">:</span><span class="n">HOURS</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-get-the-factor-for-mapping-to-operating-system-time">2. Get the Factor for Mapping to Operating-System Time</h2>
 
 <p>For the time replied by the <code class="prettyprint">getTime</code> function may be not the operating-system time, e.g. a simulation time.
 In order to map the time replied by the <code class="prettyprint">getTime</code> function and the operating-system time, the
 <code class="prettyprint">getOSTimeFactor</code> function replies a factor that could be applied so that:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="n">operatingSystemTime</span> <span class="o">=</span> <span class="n">getOSTimeFactor</span> <span class="o">*</span> <span class="n">getTime</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">operatingSystemTime</span> <span class="o">=</span> <span class="n">getOSTimeFactor</span> <span class="o">*</span> <span class="n">getTime</span>
 </code></pre></div>
 <p>The provided function is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">getOSTimeFactor</span> <span class="o">:</span> <span class="kt">double</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getOSTimeFactor</span> <span class="o">:</span> <span class="kt">double</span>
 </code></pre></div>
 <h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -126,7 +126,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

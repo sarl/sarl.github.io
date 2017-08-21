@@ -99,12 +99,12 @@ event instance is created.</p>
 <p>The definition of the event should define the event with a read-only identifier (<code class="prettyprint">val</code>).
 Because the identifier is a value, it must be initialize in the constructor of the event.
 Consequently, a constructor is defined with the identifier value as parameter.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">id</span> <span class="o">:</span> <span class="kt">long</span>
-        <span class="k">new</span> <span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="kt">long</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">id</span> <span class="o">:</span> <span class="kt">long</span>
+    <span class="k">new</span> <span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="kt">long</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-definition-of-the-event-builder">2. Definition of the event builder</h2>
 
@@ -113,14 +113,14 @@ Consequently, a constructor is defined with the identifier value as parameter.</
 
 <p>A builder is a class that is able to create an instance of the event when it is invoked.
 The next available unique identifier for the events is stored into a field of the builder (<code class="prettyprint">id</code>).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">class</span> <span class="nc">MyEventBuilder</span> <span class="o">{</span>
-        <span class="kd">private</span> <span class="kd">var</span> <span class="n">id</span> <span class="o">:</span> <span class="kt">long</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="kd">def</span> <span class="n">newInstance</span> <span class="o">:</span> <span class="n">MyEvent</span> <span class="o">{</span>
-            <span class="kd">val</span> <span class="n">eventId</span> <span class="o">=</span> <span class="n">id</span>
-            <span class="n">id</span><span class="o">++</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nf">MyEvent</span><span class="o">(</span><span class="n">eventId</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyEventBuilder</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">var</span> <span class="n">id</span> <span class="o">:</span> <span class="kt">long</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kd">def</span> <span class="n">newInstance</span> <span class="o">:</span> <span class="n">MyEvent</span> <span class="o">{</span>
+        <span class="kd">val</span> <span class="n">eventId</span> <span class="o">=</span> <span class="n">id</span>
+        <span class="n">id</span><span class="o">++</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">MyEvent</span><span class="o">(</span><span class="n">eventId</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>The function <code class="prettyprint">newInstance</code> is defined for creating an instance of the event. This function
 gets the next available global identifier to give it to the event instance, and it increments
@@ -131,17 +131,17 @@ Finally, the <code class="prettyprint">newInstance</code> function create the ev
 
 <p>For using the event builder, you have simply to create an instance of the <code class="prettyprint">MyEventBuilderUser</code>
 class, and use it as follow (two events are created in the example):</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">val</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEventBuilder</span>
-    <span class="kd">var</span> <span class="n">event1</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">newInstance</span>
-    <span class="kd">var</span> <span class="n">event2</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">newInstance</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEventBuilder</span>
+<span class="kd">var</span> <span class="n">event1</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">newInstance</span>
+<span class="kd">var</span> <span class="n">event2</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">newInstance</span>
 </code></pre></div>
 <h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -154,7 +154,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

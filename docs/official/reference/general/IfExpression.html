@@ -82,17 +82,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>The following results in either the value e1 or e2 depending on whether the predicate e1 !== null evaluates to
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> 
-        <span class="n">e1</span>
-    <span class="k">else</span>
-        <span class="n">e2</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> 
+    <span class="n">e1</span>
+<span class="k">else</span>
+    <span class="n">e2</span>
 </code></pre></div>
 <h2 id="2-optional-else-part">2. Optional Else Part</h2>
 
 <p>The else part is optional, which is a shorthand for an else branch that returns the
 default value of the current type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> 
-    <span class="n">e1</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">e1</span>
 </code></pre></div>
 <h2 id="3-conditional-operator">3. Conditional Operator</h2>
 
@@ -100,7 +99,7 @@ default value of the current type.</p>
 This syntax is known as the <a href="https://en.wikipedia.org/wiki/%3F:">conditional operator, inline if, or ternary if</a>
 in many programming languages.
 In programming languages such as Java or C/C++, this conditional operator has the syntax:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">a ? b : c
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">a</span> <span class="o">?</span> <span class="n">b</span> <span class="o">:</span> <span class="n">c</span>
 </code></pre></div>
 <p>It evaluates to <code class="prettyprint">b</code> if the value of <code class="prettyprint">a</code> is true, otherwise to <code class="prettyprint">c</code>.</p>
 
@@ -108,10 +107,10 @@ In programming languages such as Java or C/C++, this conditional operator has th
 an expression. It means that it could be included into another expression like all the other expressions.
 Consequently, there is no need of a specific syntax for the conditional operator in SARL.
 The following example is the SARL equivelant of the Java conditional operator:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="n">b</span> <span class="k">else</span> <span class="n">c</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="n">b</span> <span class="k">else</span> <span class="n">c</span>
 </code></pre></div>
 <p>You can use <code class="prettyprint">if</code> expressions deeply nested within expressions:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">e1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">e2</span> <span class="k">else</span> <span class="n">e2</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">e1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">e2</span> <span class="k">else</span> <span class="n">e2</span>
 </code></pre></div>
 <h2 id="4-acknowledgements">4. Acknowledgements</h2>
 
@@ -123,9 +122,9 @@ The following example is the SARL equivelant of the Java conditional operator:</
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -138,7 +137,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

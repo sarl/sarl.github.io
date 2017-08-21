@@ -336,12 +336,12 @@ replies the boolean value resulting from the operational semantic of the operato
 </tr>
 </thead><tbody>
 <tr>
-<td>a</td>
-<td></td>
-<td>b</td>
+<td>a &#124;&#124; b</td>
+<td>operator_or</td>
+<td>If a then true else b.</td>
 </tr>
 <tr>
-<td>a &amp;&amp;&amp; b</td>
+<td>a &amp;&amp; b</td>
 <td>operator_and</td>
 <td>If a then b else false.</td>
 </tr>
@@ -396,6 +396,32 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#operator_overloading">operator overloading section</a>.</p>
 
+<p>Additional bitwise operators are available into the SARL library, but not associated to any operator:</p>
+
+<table><thead>
+<tr>
+<th>Operator</th>
+<th>Operator Semantic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>a.bitwiseAnd(b)</td>
+<td>Do a bit-per-bit AND operation.</td>
+</tr>
+<tr>
+<td>a.bitwiseOr(b)</td>
+<td>Do a bit-per-bit OR operation.</td>
+</tr>
+<tr>
+<td>a.bitwiseXor(b)</td>
+<td>Do a bit-per-bit XOR operation.</td>
+</tr>
+<tr>
+<td>a.bitwiseNot</td>
+<td>Do a bit-per-bit NEGATION operation.</td>
+</tr>
+</tbody></table>
+
 <h2 id="6-string-operators">6. String Operators</h2>
 
 <p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
@@ -433,82 +459,17 @@ operator. This function can be redefined as explained in the
 <tr>
 <td>a .. b</td>
 <td>operator_upTo</td>
-<td>Create a list of integer values from a (inclusive) to b (inclusive).</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">1..5</code> is the range from 1 to 5 with 1 &lt;= x &lt;= 5.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">5..1</code> is the range from 5 to 1 with 5 &gt;= x &gt;= 1.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>The type of this expression is <code class="prettyprint">IntegerRange</code>.</td>
+<td>Create a list of integer values from a (inclusive) to b (inclusive). <code class="prettyprint">1..5</code> is the range from 1 to 5 with 1 &lt;= x &lt;= 5.  <code class="prettyprint">5..1</code> is the range from 5 to 1 with 5 &gt;= x &gt;= 1.  The type of this expression is <code class="prettyprint">IntegerRange</code>.</td>
 </tr>
 <tr>
 <td>a &gt;.. b</td>
 <td>operator_greaterThanDoubleDot</td>
-<td>Create a list of integer values from a (exclusive) to b (inclusive).</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">5&amp;gt;..1</code> is the range from 4 to 1 with 5 &gt; x &gt;= 1.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">1&amp;gt;..5</code> is the empty range since the constraint is wrong 1 &gt; x &gt;= 5.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>discussion on the operational semantics of this operator.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>The type of this expression is <code class="prettyprint">ExclusiveRange</code>.</td>
+<td>Create a list of integer values from a (exclusive) to b (inclusive). <code class="prettyprint">5&amp;gt;..1</code> is the range from 4 to 1 with 5 &gt; x &gt;= 1.  <code class="prettyprint">1&amp;gt;..5</code> is the empty range since the constraint is wrong 1 &gt; x &gt;= 5.  See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for discussion on the operational semantics of this operator. The type of this expression is <code class="prettyprint">ExclusiveRange</code>.</td>
 </tr>
 <tr>
 <td>a ..&lt; b</td>
 <td>operator_doubleDotLessThan</td>
-<td>Create a list of integer values from a (inclusive) to b (exclusive).</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">1..&amp;lt;5</code> is the range from 1 to 5 with 1 &lt;= x &lt; 5.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="prettyprint">5..&amp;lt;1</code> is the empty range since the constraint is wrong 5 &lt;= x &lt; 1.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>discussion on the operational semantics of this operator.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>The type of this expression is <code class="prettyprint">ExclusiveRange</code>.</td>
+<td>Create a list of integer values from a (inclusive) to b (exclusive). <code class="prettyprint">1..&amp;lt;5</code> is the range from 1 to 5 with 1 &lt;= x &lt; 5. <code class="prettyprint">5..&amp;lt;1</code> is the empty range since the constraint is wrong 5 &lt;= x &lt; 1. See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for discussion on the operational semantics of this operator. The type of this expression is <code class="prettyprint">ExclusiveRange</code>.</td>
 </tr>
 </tbody></table>
 
@@ -547,22 +508,12 @@ Most of the time, the first operand is the collection on which the operator must
 <tr>
 <td>m + p</td>
 <td>operator_plus</td>
-<td>Create a map of type <code class="prettyprint">Map&lt;A,B&gt;</code> that is containing the elements of the map <code class="prettyprint">m</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>and the new pair <code class="prettyprint">p</code> of type <code class="prettyprint">Pair&lt;A,B&gt;</code>.</td>
+<td>Create a map of type <code class="prettyprint">Map&lt;A,B&gt;</code> that is containing the elements of the map <code class="prettyprint">m</code> and the new pair <code class="prettyprint">p</code> of type <code class="prettyprint">Pair&lt;A,B&gt;</code>.</td>
 </tr>
 <tr>
 <td>m - p</td>
 <td>operator_moins</td>
-<td>Create a map of type <code class="prettyprint">Map&lt;A,B&gt;</code> that is containing the elements of the map <code class="prettyprint">m</code>, except</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>the pair <code class="prettyprint">p</code> of type <code class="prettyprint">Pair&lt;A,B&gt;</code>.</td>
+<td>Create a map of type <code class="prettyprint">Map&lt;A,B&gt;</code> that is containing the elements of the map <code class="prettyprint">m</code>, except the pair <code class="prettyprint">p</code> of type <code class="prettyprint">Pair&lt;A,B&gt;</code>.</td>
 </tr>
 <tr>
 <td>a -&gt; b</td>
@@ -611,10 +562,10 @@ operator. This function can be redefined as explained in the
 
 <p>For an example of the <code class="prettyprint">=&amp;gt;</code> operator, consider the class <code class="prettyprint">Person</code> with two attributes inside: <code class="prettyprint">firstName</code> and <code class="prettyprint">lastName</code>.
 The creation of an instance of <code class="prettyprint">Person</code> could be done with:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="k">new</span> <span class="n">Person</span> <span class="o">=&gt;</span> <span class="o">[</span>
-        <span class="n">firstName</span> <span class="o">=</span> <span class="s">&#39;Han&#39;</span><span class="o">;</span>
-        <span class="n">lastName</span> <span class="o">=</span> <span class="s">&#39;Solo&#39;</span>
-    <span class="o">]</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">new</span> <span class="n">Person</span> <span class="o">=&gt;</span> <span class="o">[</span>
+    <span class="n">firstName</span> <span class="o">=</span> <span class="s">&#39;Han&#39;</span><span class="o">;</span>
+    <span class="n">lastName</span> <span class="o">=</span> <span class="s">&#39;Solo&#39;</span>
+<span class="o">]</span>
 </code></pre></div>
 <p><note>Note how the <code class="prettyprint">;</code> allows two expressions on one line</note></p>
 
@@ -633,27 +584,27 @@ lambda expression. The lambda expression replies the value of <code class="prett
  The function that is defining the operator must be named with the <code class="prettyprint">operator_</code> prefix, and have one parameter
  for each operand associated with the operator. In the example, the addition of two pairs <code class="prettyprint">1 -&gt; 3</code> and <code class="prettyprint">4 -&gt; 5</code>.
  gives the pair (a,d).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">operator_plus</span><span class="o">(</span>
-                <span class="n">a</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;,</span>
-                <span class="n">b</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nf">Pair</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="n">key</span><span class="o">,</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span>
-        <span class="kd">var</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">5</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">operator_plus</span><span class="o">(</span>
+            <span class="n">a</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;,</span>
+            <span class="n">b</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Pair</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="n">key</span><span class="o">,</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
+    <span class="kd">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span>
+    <span class="kd">var</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">5</span>
 
-        <span class="c1">// Old-fashion-style call to the overloaded operator</span>
-        <span class="kd">var</span> <span class="n">z1</span> <span class="o">=</span> <span class="n">operator_plus</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+    <span class="c1">// Old-fashion-style call to the overloaded operator</span>
+    <span class="kd">var</span> <span class="n">z1</span> <span class="o">=</span> <span class="n">operator_plus</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
 
-        <span class="c1">// Operator-style call to the overloaded operator</span>
-        <span class="kd">var</span> <span class="n">z2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> 
+    <span class="c1">// Operator-style call to the overloaded operator</span>
+    <span class="kd">var</span> <span class="n">z2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> 
 
-        <span class="c1">// z1 == (1 -&gt; 5)</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">z1</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
+    <span class="c1">// z1 == (1 -&gt; 5)</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">z1</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
 
-        <span class="c1">// z2 == (1 -&gt; 5)</span>
-        <span class="n">println</span><span class="o">(</span><span class="n">z2</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
-    <span class="o">}</span>
+    <span class="c1">// z2 == (1 -&gt; 5)</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">z2</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="11-acknowledgements">11. Acknowledgements</h2>
 
@@ -665,9 +616,9 @@ lambda expression. The lambda expression replies the value of <code class="prett
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -680,7 +631,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

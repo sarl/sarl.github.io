@@ -86,7 +86,7 @@ it is impossible to stop an agent from another agent: the agent to stop must be 
 this query.</p>
 
 <p>The <code class="prettyprint">Lifecycle</code> capacity provides the following function for committing a suicide:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="n">killMe</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">killMe</span>
 </code></pre></div>
 <p>This action automatically unregisters the calling agent from the default context, and therefore all its
 spaces including the default space.</p>
@@ -102,19 +102,19 @@ calling this action, otherwise a <code class="prettyprint">RuntimeException</cod
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Lifecycle</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="n">killMe</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">killMe</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="2-spawning-in-the-default-context">2. Spawning in the default context</h2>
 
 <p>Many time, it is useful for agent to create a new agent into the default context. The following
 functions are provided for this task:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="nl">nbAgents:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
+<span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="nl">nbAgents:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>This action creates one to <code class="prettyprint">nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
 into the default context.
@@ -131,33 +131,33 @@ The <code class="prettyprint">parameters</code> are passed to the spawned agent 
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Lifecycle</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-            <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-            <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-            <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">aid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-            <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
+        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
+        <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="3-spawning-in-a-specific-context">3. Spawning in a specific context</h2>
 
 <p>When one or more agents should be spawned into a specific agent context, the two following functions
 could be used for launching the agents:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-                       <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-                       <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">nbAgents</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span>
-                       <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-                       <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-                       <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
+                   <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
+                   <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
+<span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">nbAgents</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span>
+                   <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
+                   <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
+                   <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
 </code></pre></div>
 <p>This action creates one to <code class="prettyprint">nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
 into the given <code class="prettyprint">context</code>.
@@ -175,31 +175,31 @@ The <code class="prettyprint">parameters</code> are passed to the spawned agent 
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Lifecycle</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-            <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-            <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-            <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-            <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-            <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
+        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
+        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
+        <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="4-spawning-with-a-specific-agent-identifier">4. Spawning with a specific agent identifier</h2>
 
 <p>Some time, it is useful to create an agent with a specific identifier. The following function permits to spawn an agent
 with a given identifier in a specific context:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">def</span> <span class="nf">spawnInContextWithID</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-    <span class="n">agentId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span>
-    <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-    <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawnInContextWithID</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
+<span class="n">agentId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span>
+<span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
+<span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
 </code></pre></div>
 <p>This action creates an instance of the given agent type, with the given identifier, and launches the agent
 into the given context.
@@ -213,28 +213,28 @@ The parameters are passed to the spawned agent inside the <code class="prettypri
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-        <span class="k">uses</span> <span class="n">Lifecycle</span>
-        <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-            <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-            <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-            <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-            <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-            <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContextWithID</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">aid</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="err">#</span><span class="o">[</span><span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">])</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
+        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
+        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
+        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContextWithID</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">aid</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="err">#</span><span class="o">[</span><span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">])</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -247,7 +247,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

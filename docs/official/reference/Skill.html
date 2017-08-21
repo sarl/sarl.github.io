@@ -113,14 +113,14 @@ keyword. This relationship is specified with the <code class="prettyprint">imple
 (defined in the <a href="./Capacity.html">Capacity Reference</a>).
 Note that all the Actions defined in the Capacity must
 have a definition (with a body containing code) in the Skill.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">skill</span> <span class="nc">ConsoleLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">ConsoleLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-2-field-definition">1.2. Field Definition</h3>
 
@@ -130,50 +130,55 @@ Capacity&#39;s implementation) on attributes (properties or fields).</p>
 <p>The following example defines a Skill that uses the standard Java logging library.
 To avoid creating an instance of the Java logger each time the Capacity&#39;s Actions are invoked, an instance
 of the Java logger is created and stored in a field of the Skill.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">skill</span> <span class="nc">StandardJavaLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
-        <span class="c1">// A field is defined in the Skill</span>
-        <span class="kd">val</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="n">anonymousLogger</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">fine</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">StandardJavaLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
+    <span class="c1">// A field is defined in the Skill</span>
+    <span class="kd">val</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="n">anonymousLogger</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">fine</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-3-action-definition">1.3. Action Definition</h3>
 
 <p>It is possible to declare methods in the Skill in addition to those specified by the Capacity. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">skill</span> <span class="nc">MyLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">output</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">output</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="c1">// Define an utility function</span>
-        <span class="c1">// that is outputting the text</span>
-        <span class="kd">def</span> <span class="nf">output</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">t</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">MyLogging</span> <span class="k">implements</span> <span class="n">Logging</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">output</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">output</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="c1">// Define an utility function</span>
+    <span class="c1">// that is outputting the text</span>
+    <span class="kd">def</span> <span class="nf">output</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">t</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-4-constructor-definition">1.4. Constructor Definition</h3>
 
 <p>It is not necessary to specify a constructor for Skills unless a value will be initialized.</p>
 
 <p>Two constructors are defined in the abstract <code class="prettyprint">Skill</code> class: </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">interface</span> <span class="nc">Skill</span> <span class="k">extends</span> <span class="n">AgentTrait</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Skill</span> <span class="k">extends</span> <span class="n">AgentTrait</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <p>Example of constructor definition:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// The constructor is mandatory</span>
-    <span class="c1">// for defining the field &quot;logger&quot;</span>
-    <span class="k">new</span> <span class="o">(</span><span class="n">l</span> <span class="o">:</span> <span class="n">Logger</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">super</span><span class="o">()</span> <span class="c1">// Call the super&#39;s constructor</span>
-        <span class="n">logger</span> <span class="o">=</span> <span class="n">l</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// The constructor is mandatory</span>
+<span class="c1">// for defining the field &quot;logger&quot;</span>
+<span class="k">new</span> <span class="o">(</span><span class="n">l</span> <span class="o">:</span> <span class="n">Logger</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">super</span><span class="o">()</span> <span class="c1">// Call the super&#39;s constructor</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">l</span>
+<span class="o">}</span>
 </code></pre></div>
+<p>If no constructor is defined in the skill type and a super-type is declared, implicit constructors will be assumed.
+Implicit constructors has the same prototypes as the constructors of the super type.
+Details on implicit constructors are given in the reference documentation related to the
+<a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
+
 <h3 id="1-5-multiple-capacity-implementation">1.5. Multiple Capacity Implementation</h3>
 
 <p>In some situations it is useful to combine more than one capacity in a skill.
@@ -182,26 +187,26 @@ Below, the <code class="prettyprint">MyLogging</code> skill is defined as an imp
 All the Actions defined in a Capacity must have an implementation in the related Skill.</p>
 
 <p>If two implemented Capacities include the same Action signature, it must be implemented only once in the Skill.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">capacity</span> <span class="nc">LogReader</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">open</span><span class="o">(</span><span class="n">filename</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-        <span class="kd">def</span> <span class="nf">close</span><span class="o">(</span><span class="n">fid</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">LogReader</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">open</span><span class="o">(</span><span class="n">filename</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">close</span><span class="o">(</span><span class="n">fid</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="kd">skill</span> <span class="nc">MyLogging</span> <span class="k">implements</span> <span class="n">Logging</span><span class="o">,</span> <span class="n">LogReader</span> <span class="o">{</span>
+    <span class="c1">// Shared implementation for the methods</span>
+    <span class="c1">// defind in the two Capacities.</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
-    <span class="kd">skill</span> <span class="nc">MyLogging</span> <span class="k">implements</span> <span class="n">Logging</span><span class="o">,</span> <span class="n">LogReader</span> <span class="o">{</span>
-        <span class="c1">// Shared implementation for the methods</span>
-        <span class="c1">// defind in the two Capacities.</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">open</span><span class="o">(</span><span class="n">filename</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="o">}</span>
-        <span class="kd">def</span> <span class="nf">close</span><span class="o">(</span><span class="n">fid</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-        <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">open</span><span class="o">(</span><span class="n">filename</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">close</span><span class="o">(</span><span class="n">fid</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-6-extending-a-skill">1.6. Extending a Skill</h3>
 
@@ -214,11 +219,11 @@ feature of SARL, which has the same semantics as the inheritance mechanism of th
 to the constraint on the extension of classes in the Java language.</veryimportantnote></p>
 
 <p>In the following code, the <code class="prettyprint">StandardJavaLogging</code> Skill (defined above) is extended to override the info output.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">skill</span> <span class="nc">ExtendedLogging</span> <span class="k">extends</span> <span class="n">StandardJavaLogging</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">super</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;INFO: &quot;</span><span class="o">+</span><span class="n">text</span><span class="o">)</span>
-        <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">ExtendedLogging</span> <span class="k">extends</span> <span class="n">StandardJavaLogging</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;INFO: &quot;</span><span class="o">+</span><span class="n">text</span><span class="o">)</span>
     <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <h3 id="1-7-modifiers">1.7. Modifiers</h3>
 
@@ -245,14 +250,14 @@ The modifiers are usually written before the keyword for defining the Skill.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">skill</span> <span class="nc">Example1</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">skill</span> <span class="nc">Example2</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">skill</span> <span class="nc">Example3</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">final</span> <span class="kd">skill</span> <span class="nc">Example4</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
-    <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">skill</span> <span class="nc">Example1</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kn">package</span> <span class="kd">skill</span> <span class="nc">Example2</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kd">abstract</span> <span class="kd">skill</span> <span class="nc">Example3</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kd">final</span> <span class="kd">skill</span> <span class="nc">Example4</span> <span class="k">implements</span> <span class="n">CapacityExample</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 <h4 id="field-modifiers">Field Modifiers</h4>
 
@@ -270,10 +275,10 @@ The modifiers are usually written before the keyword for defining the Skill.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kd">protected</span> <span class="kd">var</span> <span class="n">example2</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kn">package</span> <span class="kd">var</span> <span class="n">example3</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kd">private</span> <span class="kd">var</span> <span class="n">example4</span> <span class="o">:</span> <span class="n">Object</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
+<span class="kd">protected</span> <span class="kd">var</span> <span class="n">example2</span> <span class="o">:</span> <span class="n">Object</span>
+<span class="kn">package</span> <span class="kd">var</span> <span class="n">example3</span> <span class="o">:</span> <span class="n">Object</span>
+<span class="kd">private</span> <span class="kd">var</span> <span class="n">example4</span> <span class="o">:</span> <span class="n">Object</span>
 </code></pre></div>
 <h4 id="method-modifiers">Method Modifiers</h4>
 
@@ -294,21 +299,21 @@ The modifiers are usually written before the keyword for defining the Skill.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl">    <span class="c1">// Public access function</span>
-    <span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="c1">// Protected access function</span>
-    <span class="kd">protected</span> <span class="kd">def</span> <span class="n">example2</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="c1">// Package access function</span>
-    <span class="kn">package</span> <span class="kd">def</span> <span class="n">example3</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="c1">// Private access function</span>
-    <span class="kd">private</span> <span class="kd">def</span> <span class="n">example4</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="c1">// Abstract function</span>
-    <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">example5</span>
-    <span class="c1">// Not-overridable function</span>
-    <span class="kd">final</span> <span class="kd">def</span> <span class="n">example6</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="c1">// Dispatch functions</span>
-    <span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">example7</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-    <span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">example7</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Public access function</span>
+<span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span> <span class="o">{</span> <span class="o">}</span>
+<span class="c1">// Protected access function</span>
+<span class="kd">protected</span> <span class="kd">def</span> <span class="n">example2</span> <span class="o">{</span> <span class="o">}</span>
+<span class="c1">// Package access function</span>
+<span class="kn">package</span> <span class="kd">def</span> <span class="n">example3</span> <span class="o">{</span> <span class="o">}</span>
+<span class="c1">// Private access function</span>
+<span class="kd">private</span> <span class="kd">def</span> <span class="n">example4</span> <span class="o">{</span> <span class="o">}</span>
+<span class="c1">// Abstract function</span>
+<span class="kd">abstract</span> <span class="kd">def</span> <span class="n">example5</span>
+<span class="c1">// Not-overridable function</span>
+<span class="kd">final</span> <span class="kd">def</span> <span class="n">example6</span> <span class="o">{</span> <span class="o">}</span>
+<span class="c1">// Dispatch functions</span>
+<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">example7</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">example7</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 </code></pre></div>
 <h2 id="2-built-in-skills">2. Built-in Skills</h2>
 
@@ -329,9 +334,9 @@ The built-in Skills are described in the <a href="./BIC.html">Built-in Capacity 
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.5</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-08-15</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-21</li>
 </ul>
 
 <blockquote>
@@ -344,7 +349,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.5.7.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
