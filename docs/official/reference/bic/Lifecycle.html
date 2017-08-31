@@ -114,7 +114,7 @@ calling this action, otherwise a <code class="prettyprint">RuntimeException</cod
 <p>Many time, it is useful for agent to create a new agent into the default context. The following
 functions are provided for this task:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-<span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="nl">nbAgents:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+<span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="nl">nbAgents:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>This action creates one to <code class="prettyprint">nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
 into the default context.
@@ -135,7 +135,7 @@ The <code class="prettyprint">parameters</code> are passed to the spawned agent 
     <span class="k">uses</span> <span class="n">Lifecycle</span>
     <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
         <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
         <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
         <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
@@ -180,7 +180,7 @@ The <code class="prettyprint">parameters</code> are passed to the spawned agent 
     <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
         <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
         <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
         <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
         <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
@@ -234,7 +234,7 @@ The parameters are passed to the spawned agent inside the <code class="prettypri
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-08-21</li>
+<li>Release: 2017-08-31</li>
 </ul>
 
 <blockquote>

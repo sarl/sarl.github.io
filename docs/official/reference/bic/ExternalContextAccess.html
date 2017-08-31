@@ -93,12 +93,12 @@ may use its <code class="prettyprint">getParentID</code> for accessing the conte
 <h2 id="2-retrieving-the-contexts-of-an-agent">2. Retrieving the Contexts of an Agent</h2>
 
 <p>The following function enables an agent to retrieve all the contexts in which it is involved:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getAllContexts</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getAllContexts</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>The default context is included in the replied collection.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
     <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
     <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">getAllContexts</span>
     <span class="o">}</span>
@@ -200,7 +200,7 @@ the container).</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-08-21</li>
+<li>Release: 2017-08-31</li>
 </ul>
 
 <blockquote>

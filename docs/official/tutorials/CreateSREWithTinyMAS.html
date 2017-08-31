@@ -141,7 +141,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 The figure below illustrates the compilation process of a SARL program in which the
 run-time environment is involved.</p>
 
-<p><img src="http://www.sarl.io/images/compilation-process.png" alt="SARL Generation Process"></p>
+<p><img src="http://www.sarl.io/images/compilation_process.png" alt="SARL Generation Process"></p>
 
 <p>The Tiny Multiagent Platform (tinyMAS) is a very small software platform, which permits to implement
 and run agent-based systems. This platform was written by St&eacute;phane GALLAND and Nicolas GAUD for the
@@ -829,6 +829,9 @@ The code is self-explaining.</p>
     <span class="o">}</span>
     <span class="kd">def</span> <span class="nf">setLogLevel</span><span class="o">(</span><span class="n">level</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
     <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">getLogger</span> <span class="o">:</span> <span class="n">Logger</span> <span class="o">{</span>
+        <span class="kc">null</span>
+    <span class="o">}</span>
     <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">message</span> <span class="o">:</span> <span class="n">Object</span><span class="o">,</span> <span class="n">exception</span> <span class="o">:</span> <span class="n">Throwable</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">{</span>
         <span class="nl">System:</span><span class="o">:</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;[&quot;</span> <span class="o">+</span> <span class="n">getId</span><span class="o">.</span><span class="n">getString</span> <span class="o">+</span> <span class="s">&quot;] ERROR: &quot;</span> <span class="o">+</span> <span class="n">message</span><span class="o">)</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">exception</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
@@ -1215,10 +1218,12 @@ The <code class="prettyprint">getInnerAddress</code> function computes the agent
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">hasRegisteredBehavior</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
     <span class="o">!</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">.</span><span class="n">isEmpty</span>
 <span class="o">}</span>
-<span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="k">new</span> <span class="nf">ArrayList</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">)</span>
+<span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nl">Collections3:</span><span class="o">:</span><span class="n">unmodifiableSynchronizedIterable</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">,</span> <span class="kc">this</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>The function call <code class="prettyprint">Collections3::unmodifiableSynchronizedIterable</code> is provided by the SARL Development Kit in order to create synchronized collections.</p>
+
 <h4 id="updating-the-tinymas-agent-life-cycle-for-un-registering-the-behaviors">Updating the tinyMAS agent life-cycle for (un)registering the behaviors</h4>
 
 <p>There is an key difference between the SARL run-time principle, which is fully
@@ -2135,7 +2140,7 @@ updates the existing manifest file with the SRE information.</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-08-21</li>
+<li>Release: 2017-08-31</li>
 </ul>
 
 <blockquote>

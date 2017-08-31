@@ -9,15 +9,15 @@ SARL aims at providing the fundamental abstractions for dealing with concurrency
 Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
 ">
     <meta name="author" content="SARL Team">
-    <link rel="icon" href="../images/favicon.ico" />
-    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Run-time Environments for SARL</title>
+    <title>Generation to the Python Language</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/pygments.css">
-    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,14 +43,14 @@ Considering the variety of existing approaches and meta-models in the field of a
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../docs/index.html">Documentation</a></li>
-        <li><a href="../download/index.html">Download</a></li>
-        <li><a href="../runtime/index.html">Run-time</a></li>
-        <li><a href="../community/index.html">Community</a></li>
-        <li><a href="../news/index.html">News &amp; Events</a></li>
-        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
-        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -64,41 +64,69 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <div class="row">
-	<h1>Run-time Environment for SARL</h1>
+      <h1 id="generation-to-the-python-language">Generation to the Python Language</h1>
 
- <p>A SARL Run-time Environment (SRE) executes or interprets compiled SARL code on an "hardware platform." 
-The figure below illustrates the <a href="../docs/official/compilation/Basics.html">SARL compilation process</a> of a SARL program in which the run-time environment is involved.</p>
+<ul class="page_outline" id="page_outline">
 
-<center><a href="../docs/official/compilation/Basics.html"><img src="../docs/official/compilation/compilation_process.png" alt="Compilation Process"></a></center>
+<li><a href="#1-integration-to-the-standard-compilation-process">1. Integration to the Standard Compilation Process</a></li>
+<li><a href="#2-enabling-and-configuring-the-python-generator">2. Enabling and Configuring the Python Generator</a></li>
+<li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
-<h2>Available Run-time Environments</h2>
+</ul>
 
-<p>The SREs that are known to be execution environments for SARL programs are:</p>
+<p>Python is a widely used high-level programming language for general-purpose programming, created by Guido van Rossum.
+As an interpreted language, Python has a design philosophy that emphasizes code readability, and a syntax that allows
+programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java.</p>
 
- <div class="container marketing">
+<h2 id="1-integration-to-the-standard-compilation-process">1. Integration to the Standard Compilation Process</h2>
 
-  <!-- Three columns of text below the carousel -->
-  <div class="row">
-    <div class="col-lg-4">
-      <a href="http://www.janusproject.io" target="_blank"><img class="img-circle" src="../images/janus-logo-140.png" alt="Janus Logo"></a>
-      <h2><a href="http://www.janusproject.io">Janus Platform</a></h2>
-      <p>Janus is an open-source multi-agent platform fully supported by the SARL developpers.</p>
-      <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <a href="http://github.com/gallandarakhneorg/tinymas" target="_blank"><img class="img-circle" src="../images/tinymas-logo-140.png" alt="tinyMAS Logo"></a>
-      <h2><a href="http://github.com/gallandarakhneorg/tinymas">tinyMAS Platform</a></h2>
-      <p>tinyMAS is an experimental tiny agent platform with limited features and a limited SARL support.</p>
-      <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
-</div>
+<p>The Python generator for SARL compiler is included into the SARL tool-chain, as illustrated by the following figure.</p>
 
-</div>
+<p><img src="./compilation_process.png" alt="Standard Compilation Process for SARL Programs"></p>
 
+<h2 id="2-enabling-and-configuring-the-python-generator">2. Enabling and Configuring the Python Generator</h2>
 
+<p>For enabling and configuring the Python generator, you must open the dedicated preference page into the SARL development environment.
+It is accessible by:</p>
 
+<ul>
+<li>opening the menu item: <code class="prettyprint">Window &gt; Preferences</code>.</li>
+<li>opening the preference section: <code class="prettyprint">SARL &gt; Compiler &gt; Python</code><br></li>
+</ul>
+
+<p>You should show a dialog box similar to the following figure.</p>
+
+<p><img src="./python_generator_config.png" alt="Preference Page into the SARL Development Environment"></p>
+
+<p>This preference page will enable you to:</p>
+
+<ul>
+<li>enable and disable the Python generation;</li>
+<li>configure the Python generator;</li>
+<li>map the Java typenames to their Python equivalents;</li>
+<li>map the Java feature calls to their Python equivalents.</li>
+</ul>
+
+<h2 id="3-legal-notice">3. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.6</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-08-31</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
@@ -113,8 +141,8 @@ The figure below illustrates the <a href="../docs/official/compilation/Basics.ht
       <center>
       <h2>SARL</h2>
       <div>Agent-Oriented Programming Language</div>
-      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
-      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
       </center>
     </div>
     </div>
@@ -123,17 +151,17 @@ The figure below illustrates the <a href="../docs/official/compilation/Basics.ht
       <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
       <ul class="fa-ul">
 		  <li>
-			<a href="../news/index.html">
+			<a href="../../../news/index.html">
 			  <i class="fa-li fa fa-feed"></i> News
 			</a>
 		  </li>
 		  <li>
-			<a href="../about/index.html">
+			<a href="../../../about/index.html">
 			  <i class="fa-li fa fa-info"></i> About
 			</a>
 		  </li>
 		  <li>
-			<a href="../about/index.html#license">
+			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
 			</a>
 		  </li>
@@ -145,7 +173,7 @@ The figure below illustrates the <a href="../docs/official/compilation/Basics.ht
       <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
       <ul class="fa-ul">
 		  <li>
-			<a href="../community/forums.html">
+			<a href="../../../community/forums.html">
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
@@ -193,9 +221,9 @@ The figure below illustrates the <a href="../docs/official/compilation/Basics.ht
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/run_prettify.js"></script>
-	<script src="../js/lang-sarl.js"></script>
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
   </body>
 </html>

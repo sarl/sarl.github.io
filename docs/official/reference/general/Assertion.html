@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../../images/favicon.ico">
 
-    <title>Exception Support</title>
+    <title>Assertion Support</title>
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
@@ -64,57 +64,40 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="exception-support">Exception Support</h1>
+      <h1 id="assertion-support">Assertion Support</h1>
 
-<p>SARL supports exception throwing and catching. The mechanism is similar to the one in Java.</p>
+<p>An assertion is a statement that a predicate is expected to always be true at that point in the code.
+If an assertion evaluates to false at run time, an assertion failure results, which typically causes
+the program to crash, or to throw an assertion exception.</p>
 
-<p>For a description of the exceptions that may be thrown by a function,
-please see <a href="./FuncDecls.html">how to declare exceptions in a function prototype</a>.</p>
+<h2 id="1-assert-statement">1. Assert Statement</h2>
 
-<h2 id="1-throwing-exceptions">1. Throwing Exceptions</h2>
-
-<p>Throwing objects of type <code class="prettyprint">Throwable</code> and the <code class="prettyprint">throw</code> keyword have the same semantics and syntax as in Java; see
-<a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.18">Java Language Specification</a>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;explanation&quot;</span><span class="o">)</span>
+<p>SARL supports assertions in the source code by the <code class="prettyprint">assert</code> keyword.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">assert</span> <span class="n">someCondition</span>
 </code></pre></div>
-<h2 id="2-try-catch-finally">2. Try, Catch, Finally</h2>
-
-<p>The try-catch-finally expression is used to handle exceptional situations. 
-Checked exceptions are treated like runtime exceptions and only optionally 
-validated. You can, but do not have to, catch them as they will be silently thrown. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">try</span> <span class="o">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">()</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">Exception</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// Handle the exception</span>
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="c1">// Do this block after the try block (if no exception thrown), </span>
-    <span class="c1">// the matched catch block (if an exception was catched),</span>
-    <span class="c1">// or before exiting the function (if an exception was thrown</span>
-    <span class="c1">// but not catched).</span>
-<span class="o">}</span>
+<p>The <code class="prettyprint">someCondition</code> expression is the Boolean expression that is dynamically evaluated.
+For example, in the following code, the two first <code class="prettyprint">assert</code> have their conditions evaluated to true, and do not stop the program.
+The third <code class="prettyprint">assert</code> condition is evaluated to false. It causes a stop of the program.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">x</span><span class="o">++</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span>
 </code></pre></div>
-<h2 id="3-try-catch-as-an-expression">3. Try-Catch as an Expression</h2>
+<h2 id="2-error-message">2. Error Message</h2>
 
-<p>For try-catch, the argument is an expression. Consequently, you can
-write code like the following and do not have to rely on
-non-final variables: </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">readFromFile</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span> <span class="o">}</span> 
-<span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">name</span> <span class="o">=</span>  <span class="k">try</span> <span class="o">{</span>
-                    <span class="n">readFromFile</span>
-                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="s">&quot;unknown&quot;</span>
-                <span class="o">}</span>
-    <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
-<span class="o">}</span>
+<p>Sometimes, it is useful to give an explanation about the failure.
+The <code class="prettyprint">assert</code> keyword accepts a string of character that is the message given when the program has crashed.
+The message string follows the condition, with a coma character between them.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">assert</span> <span class="n">someCondition</span><span class="o">,</span> <span class="s">&quot;the failure explanation is here&quot;</span>
 </code></pre></div>
-<h2 id="4-acknowledgements">4. Acknowledgements</h2>
+<h2 id="3-acknowledgements">3. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>

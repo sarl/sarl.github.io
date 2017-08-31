@@ -9,15 +9,15 @@ SARL aims at providing the fundamental abstractions for dealing with concurrency
 Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
 ">
     <meta name="author" content="SARL Team">
-    <link rel="icon" href="../../../../images/favicon.ico" />
-    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Exception Support</title>
+    <title>Basics of the SARL Compilation Process</title>
 
-    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../css/pygments.css">
-    <link rel="stylesheet" href="../../../../css/custom.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,14 +43,14 @@ Considering the variety of existing approaches and meta-models in the field of a
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="../../../../index.html">Home</a></li>
-        <li><a href="../../../../docs/index.html">Documentation</a></li>
-        <li><a href="../../../../download/index.html">Download</a></li>
-        <li><a href="../../../../runtime/index.html">Run-time</a></li>
-        <li><a href="../../../../community/index.html">Community</a></li>
-        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
-        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
-        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -64,57 +64,52 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="exception-support">Exception Support</h1>
+      <h1 id="basics-of-the-sarl-compilation-process">Basics of the SARL Compilation Process</h1>
 
-<p>SARL supports exception throwing and catching. The mechanism is similar to the one in Java.</p>
+<ul class="page_outline" id="page_outline">
 
-<p>For a description of the exceptions that may be thrown by a function,
-please see <a href="./FuncDecls.html">how to declare exceptions in a function prototype</a>.</p>
+<li><a href="#1-standard-compilation-process">1. Standard Compilation Process</a></li>
+<li><a href="#2-other-target-languages-than-java">2. Other Target Languages Than Java</a></li>
+<li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
-<h2 id="1-throwing-exceptions">1. Throwing Exceptions</h2>
+</ul>
 
-<p>Throwing objects of type <code class="prettyprint">Throwable</code> and the <code class="prettyprint">throw</code> keyword have the same semantics and syntax as in Java; see
-<a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.18">Java Language Specification</a>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;explanation&quot;</span><span class="o">)</span>
-</code></pre></div>
-<h2 id="2-try-catch-finally">2. Try, Catch, Finally</h2>
+<h2 id="1-standard-compilation-process">1. Standard Compilation Process</h2>
 
-<p>The try-catch-finally expression is used to handle exceptional situations. 
-Checked exceptions are treated like runtime exceptions and only optionally 
-validated. You can, but do not have to, catch them as they will be silently thrown. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">try</span> <span class="o">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">()</span>
-<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">Exception</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// Handle the exception</span>
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="c1">// Do this block after the try block (if no exception thrown), </span>
-    <span class="c1">// the matched catch block (if an exception was catched),</span>
-    <span class="c1">// or before exiting the function (if an exception was thrown</span>
-    <span class="c1">// but not catched).</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="3-try-catch-as-an-expression">3. Try-Catch as an Expression</h2>
+<p>The SARL tool-chain is the set of programming tools that are used to perform a multiagent system with SARL.
+As illustrated on the following figure, three types of tools are used in sequence in order to create and
+run an agent-based system:</p>
 
-<p>For try-catch, the argument is an expression. Consequently, you can
-write code like the following and do not have to rely on
-non-final variables: </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">readFromFile</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span> <span class="o">}</span> 
-<span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">name</span> <span class="o">=</span>  <span class="k">try</span> <span class="o">{</span>
-                    <span class="n">readFromFile</span>
-                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="s">&quot;unknown&quot;</span>
-                <span class="o">}</span>
-    <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-acknowledgements">4. Acknowledgements</h2>
+<p><img src="./compilation_process.png" alt="Standard Compilation Process for SARL Programs"></p>
 
-<p>This documentation is inspired by the documentations from the
-<a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
-<a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
+<ul>
+<li><strong>SARL Compiler:</strong> The SARL compiler transforms the source SARL language into the target language.
+Several target languages may be considered by this compiler. Because most of the agent frameworks are
+written in Java, the SARL compiler targets this object-oriented programming language by default.
+The SARL compiler translates SARL statements into their object-oriented equivalent statements. Three different
+implementations of the SARL compiler are provided: a specific command-line tool (<a href="../tools/Sarlc.html">sarlc</a>), the Eclipse development
+environment plug-in, and a <a href="https://mvnrepository.com/artifact/io.sarl.maven/sarl-maven-plugin">Maven plug-in</a>.</li>
+<li><strong>Java Compiler:</strong> The files generated by the SARL compiler when it is using the Java generator (see below) are standard Java’s files. They must be compiled with
+one of the compilation tools that are available: Eclipse’s ecl, Oracle’s javac, IBM’s jikes... The result from
+the Java compilation is a collection of binary files (a.k.a. byte-code files) that may be run by a virtual machine.</li>
+<li><strong>SARL Run-time Environment:</strong> The SARL Run-time Environment (SRE) is a collection of tools that enables the
+run of an agent-based application written with SARL. Such an SRE must implement each service and feature that are
+assumed to be provided by the run-time environment. When the target platform is Java-based, the SRE is composed by
+a standard Java Runtime Environment (JRE), and the Janus Java library, which provides the base classes for running
+agents written with SARL. In this latest example, a command-line tool is provided for launching the Janus platform:
+<a href="../tools/Janus.html">janus</a>.</li>
+</ul>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="2-other-target-languages-than-java">2. Other Target Languages Than Java</h2>
+
+<p>As explained in the previous section, the default target language for the SARL compiler is the Java object-oriented programming language.
+Hopefully,you could configure the SARL compiler for enabling the generation to another target language </p>
+
+<ul>
+<li><a href="./PythonGeneration.html">Python</a></li>
+</ul>
+
+<h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
@@ -148,8 +143,8 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <center>
       <h2>SARL</h2>
       <div>Agent-Oriented Programming Language</div>
-      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
-      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
       </center>
     </div>
     </div>
@@ -158,17 +153,17 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
       <ul class="fa-ul">
 		  <li>
-			<a href="../../../../news/index.html">
+			<a href="../../../news/index.html">
 			  <i class="fa-li fa fa-feed"></i> News
 			</a>
 		  </li>
 		  <li>
-			<a href="../../../../about/index.html">
+			<a href="../../../about/index.html">
 			  <i class="fa-li fa fa-info"></i> About
 			</a>
 		  </li>
 		  <li>
-			<a href="../../../../about/index.html#license">
+			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
 			</a>
 		  </li>
@@ -180,7 +175,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
       <ul class="fa-ul">
 		  <li>
-			<a href="../../../../community/forums.html">
+			<a href="../../../community/forums.html">
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
@@ -228,9 +223,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../../../js/jquery.min.js"></script>
-    <script src="../../../../js/bootstrap.min.js"></script>
-    <script src="../../../../js/run_prettify.js"></script>
-	<script src="../../../../js/lang-sarl.js"></script>
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
   </body>
 </html>

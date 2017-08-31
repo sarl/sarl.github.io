@@ -185,13 +185,13 @@ for listening events related to all the contexts (default, external, and inner).
 
 <p>Two functions are provided for accessing to the collection of the registered behaviors:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">hasRegisteredBehavior</span> <span class="o">:</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span>
+<span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span>
 </code></pre></div>
 <p>The hasRegisteredBehavior replies a boolean value, which is indicating if
 a behavior is registered.
 The getRegisteredBehaviors replies an unmodifiable collection of the registered behaviors.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">=</span> <span class="n">hasRegisteredBehavior</span>
-<span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">getRegisteredBehaviors</span>
+<span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">getRegisteredBehaviors</span>
 </code></pre></div>
 <h2 id="7-legal-notice">7. Legal Notice</h2>
 
@@ -199,7 +199,7 @@ The getRegisteredBehaviors replies an unmodifiable collection of the registered 
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-08-21</li>
+<li>Release: 2017-08-31</li>
 </ul>
 
 <blockquote>
