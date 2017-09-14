@@ -194,13 +194,46 @@ the container).</p>
     <span class="c1">// Do something with the event when it was emitted in the space myspace</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="6-legal-notice">6. Legal Notice</h2>
+<h2 id="6-helper-for-firing-an-event-in-a-space">6. Helper for firing an event in a space</h2>
+
+<p>Regarding the definition of the <code class="prettyprint">EventSpace</code> type, the event emiting function takes at least two parameters:</p>
+
+<ul>
+<li>the identifier of the entity, which is firing the event, and</li>
+<li>the event to be fired.</li>
+</ul>
+
+<p>The first parameter is used for setting the event&#39;s source when it was not already done.</p>
+
+<p>The <code class="prettyprint">ExternalContextAccess</code> provides functions for helping to fire events into an event space:
+<code class="prettyprint">sarl
+^space.emit(^event)
+</code></p>
+
+<p>This function&#39;s call is takes two parameters:</p>
+
+<ul>
+<li><code class="prettyprint">^space</code> is the variable which contains the reference to the space in which the event should be fired.</li>
+<li><code class="prettyprint">^event</code> is the variable which contains the event to fire.</li>
+</ul>
+
+<p>This function call is equivalent to:
+<code class="prettyprint">sarl
+^space.emit(getID, ^event)
+</code></p>
+
+<p>The <code class="prettyprint">getID</code> function is provided by the current entity, e.g. an agent, for obtaining the identifier of the emitter.</p>
+
+<p>From a syntactic point of view, the two calls look similar. But, the call to the <code class="prettyprint">ExternalContextAccess</code> function uses
+the extension method syntax: the first argument to the function is written prior to the function&#39;s name.</p>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-08-31</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-09-14</li>
 </ul>
 
 <blockquote>
@@ -213,7 +246,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
 
     </div> <!-- /default layout container -->
 

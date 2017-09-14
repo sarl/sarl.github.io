@@ -80,8 +80,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p><li><a href="#4-variadic-function">4. Variadic Function</a></li>
 <li><a href="#5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</a></li>
 <li><a href="#6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</a></li>
-<li><a href="#7-acknowledgements">7. Acknowledgements</a></li>
-<li><a href="#8-legal-notice">8. Legal Notice</a></li></p>
+<li><a href="#7-dispatch-function">7. Dispatch Function</a></li>
+<li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -160,7 +161,7 @@ type <code class="prettyprint">IllegalStateException</code>. </p>
 <h2 id="3-generic-function">3. Generic Function</h2>
 
 <p>Generic functions are methods that introduce their own type parameters. This is similar to declaring a
-<a href="../OOP.html">generic type</a>,
+<a href="../OOP.html#2-3-define-a-generic-class">generic type</a>,
 but the type parameter&#39;s scope is limited to the function where it is declared.
 Static and non-static generic functions are allowed.</p>
 
@@ -306,19 +307,65 @@ difference with the default values in other languages, such as C++.</importantno
 except that the variadic parameter cannot have a default value. </p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">action</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">,</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">float</span><span class="o">*)</span> <span class="o">{</span> <span class="o">}</span>
 </code></pre></div>
-<h2 id="7-acknowledgements">7. Acknowledgements</h2>
+<h2 id="7-dispatch-function">7. Dispatch Function</h2>
+
+<p>Generally, method resolution and binding is done statically at compile time.
+Method calls are bound based on the static types of arguments.</p>
+
+<p>Sometimes this is not what you want. Especially in the context of extension methods
+you would like to have polymorphic behavior.</p>
+
+<p>The <code class="prettyprint">dispatch</code> modifier permits defining a dispatch method.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> 
+  <span class="s">&quot;it&#39;s an int&quot;</span> 
+<span class="o">}</span>
+<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
+  <span class="s">&quot;it&#39;s a string&quot;</span> 
+<span class="o">}</span>
+<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span> 
+  <span class="s">&quot;it&#39;s a number&quot;</span> 
+<span class="o">}</span>
+
+<span class="kd">def</span> <span class="n">clientCode</span> <span class="o">{</span>
+    <span class="n">getType</span><span class="o">(</span><span class="mf">4.5</span><span class="o">).</span><span class="n">println</span>
+    <span class="n">getType</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="n">println</span>
+    <span class="n">getType</span><span class="o">(</span><span class="s">&quot;a string&quot;</span><span class="o">).</span><span class="n">println</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>For a set of visible dispatch methods in the current type hierarchy with the same name and
+the same number of arguments, the compiler infers a synthetic dispatcher method.
+From the example above, the SARL compiler infers the following function, named the synthesized dispatcher.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span> 
+  <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">Integer</span><span class="o">)</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">Number</span><span class="o">)</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">String</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>This dispatcher uses the common super type of all declared arguments.
+Client code always binds to the synthesized dispatcher method.</p>
+
+<p>In the example, the calls to the <code class="prettyprint">getType</code> functions produces the output:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">it&#39;s a number
+it&#39;s an int
+it&#39;s a string
+</code></pre></div>
+<h2 id="8-acknowledgements">8. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="8-legal-notice">8. Legal Notice</h2>
+<h2 id="9-legal-notice">9. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-08-31</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-09-14</li>
 </ul>
 
 <blockquote>
@@ -331,7 +378,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
 
     </div> <!-- /default layout container -->
 

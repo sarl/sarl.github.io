@@ -89,7 +89,7 @@ agent <strong>default context</strong> or its <strong>default space</strong>. Th
 are illustrated by the top-left context in the figure above. </p>
 
 <p>For instance, the <code class="prettyprint">emit</code> action is a shortcut for:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">getID</span><span class="o">,</span> <span class="o">^</span><span class="n">event</span><span class="o">)</span>
 </code></pre></div>
 <p>Therefore, it is actually created on top of the other built-in capacities.</p>
 
@@ -124,7 +124,7 @@ event) in the default space of the default context.</p>
 <span class="o">}</span>
 </code></pre></div>
 <p>The call to <code class="prettyprint">emit</code> is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(^</span><span class="n">event</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">defaultContext</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">getID</span><span class="o">,</span> <span class="o">^</span><span class="n">event</span><span class="o">)</span>
 </code></pre></div>
 <h2 id="3-sending-an-event-to-specific-agents-in-the-default-space">3. Sending an Event to Specific Agents in the Default Space</h2>
 
@@ -148,9 +148,13 @@ They are defined in the class <code class="prettyprint">io.sarl.util.Scopes</cod
 The following example is equivalent to the feature call of <code class="prettyprint">emit</code> without the scoping parameter:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">allParticipants</span><span class="o">)</span>
 </code></pre></div>
-<p>A default implementation of a scope using addresses is implemented in the class <code class="prettyprint">io.sarl.util.AddressScope</code>.
+<p>A default implementation of a scope using addresses, of <code class="prettyprint">Address</code> type is implemented in the class <code class="prettyprint">io.sarl.util.AddressScope</code>.
 The utility class <code class="prettyprint">Scopes</code> provides the <code class="prettyprint">addresses</code> function for creating an instance of <code class="prettyprint">AddressScope</code>.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">addresses</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">))</span>
+</code></pre></div>
+<p>Another default implementation of a scope using identifiers, of <code class="prettyprint">UUID</code> type is implemented in the class <code class="prettyprint">io.sarl.util.IdentifierScope</code>.
+The utility class <code class="prettyprint">Scopes</code> provides the <code class="prettyprint">identifiers</code> function for creating an instance of <code class="prettyprint">IdentifierScope</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">,</span> <span class="nl">Scopes:</span><span class="o">:</span><span class="n">identifiers</span><span class="o">(</span><span class="n">id1</span><span class="o">,</span> <span class="n">id2</span><span class="o">))</span>
 </code></pre></div>
 <p>The complete list of the functions that are provided by the <code class="prettyprint">Scopes</code> class is
 accessible on the <a href="http://www.sarl.io/docs/api/index.html?io/sarl/util/Scopes.html">Scopes API documentation</a>.</p>
@@ -253,8 +257,8 @@ the <code class="prettyprint">event.isInDefaultSpace</code> is equivalent to <co
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-08-31</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-09-14</li>
 </ul>
 
 <blockquote>
@@ -267,7 +271,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
 
     </div> <!-- /default layout container -->
 

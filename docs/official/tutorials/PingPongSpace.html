@@ -236,17 +236,19 @@ they were defined as actions in the agent.</p>
 <p>The <code class="prettyprint">DefaultContextInteractions</code> capacity provides the function <code class="prettyprint">emit(Event)</code> for
 sending an event in the default space of the default context.</p>
 
+<p>The <code class="prettyprint">ExternalContextAccess</code> capacity provides the function <code class="prettyprint">emit(EventSpace, Event)</code> for
+sending an event in the given space.</p>
+
+<p>This latest function is used for sending the events.</p>
+
 <p>The <code class="prettyprint">Ping</code> event must be built with an index value as argument. This argument
 is the index stored in the <code class="prettyprint">Ping</code> event. For accessing the occurrence of the
 <code class="prettyprint">Ping</code> event, you must use the special keyword <code class="prettyprint">occurrence</code>.
 In the following example, the <code class="prettyprint">Pong</code> event is built with the index argument
-stored in the received <code class="prettyprint">Ping</code> event. Because an event must always have a source
-and the space is not able to set this source for you, you must set the source of the
-event by yourself. The source of the event is the address of the pong agent in
-the sub-space. This address is replied by the <code class="prettyprint">getAddress</code> function.</p>
+stored in the received <code class="prettyprint">Ping</code> event.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">ExternalContextAccess</span><span class="o">,</span> <span class="n">Behaviors</span>
 
     <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
@@ -258,7 +260,6 @@ the sub-space. This address is replied by the <code class="prettyprint">getAddre
     <span class="o">}</span>
     <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -278,9 +279,15 @@ for sending an event with a specific scope.</p>
 of an instance of <code class="prettyprint">AddressScope</code> is done with the utility function <code class="prettyprint">Scopes.addresses(Address*)</code>,
 which is getting a collection of addresses for building the matching predicate in the scope.</p>
 
-<p>In the following code, the scope permits to restrict to the initial sender of the <code class="prettyprint">Ping</code> event. </p>
+<p>The SARL SDK contains also the class <code class="prettyprint">IdentifierScope</code>. It is another implementation of a <code class="prettyprint">Scope</code> on addresses. The creation
+of an instance of <code class="prettyprint">IdentifierScope</code> is done with the utility function <code class="prettyprint">Scopes.identifiers(UUID*)</code>,
+which is getting a collection of identifiers for building the matching predicate in the scope.</p>
+
+<p>In the following code, we select the first type of scope. It permits to restrict to the initial sender
+of the <code class="prettyprint">Ping</code> event. Because, the address of the initial sender is known directly, it is easier to
+use <code class="prettyprint">Scopes.addresses(Address*)</code> than Scopes.identifiers(UUID*)`.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">ExternalContextAccess</span><span class="o">,</span> <span class="n">Behaviors</span>
 
     <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
@@ -292,10 +299,9 @@ which is getting a collection of addresses for building the matching predicate i
     <span class="o">}</span>
     <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span>
             <span class="n">evt</span><span class="o">,</span>
-            <span class="n">Scopes</span><span class="o">.</span><span class="n">addresses</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">))</span>
+            <span class="nl">Scopes:</span><span class="o">:</span><span class="n">addresses</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">))</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -352,7 +358,7 @@ This new <code class="prettyprint">Ping</code> event has an index greater than t
 <code class="prettyprint">Pong</code> event.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">ExternalContextAccess</span><span class="o">,</span> <span class="n">Behaviors</span>
 
     <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
@@ -364,7 +370,6 @@ This new <code class="prettyprint">Ping</code> event has an index greater than t
     <span class="o">}</span>
     <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -378,7 +383,7 @@ of the <code class="prettyprint">Ping</code> event.</p>
 receiving the <code class="prettyprint">Initialize</code> event.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">ExternalContextAccess</span><span class="o">,</span> <span class="n">Behaviors</span>
 
     <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
@@ -388,12 +393,10 @@ receiving the <code class="prettyprint">Initialize</code> event.</p>
             <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">as</span> <span class="n">UUID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="n">asEventListener</span><span class="o">())</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
     <span class="o">}</span>
     <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -420,7 +423,7 @@ one agent belonging to the default space. If not, the agent is sending the initi
 <code class="prettyprint">Ping</code> event, and stopping the periodic task.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
 
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Schedules</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">ExternalContextAccess</span><span class="o">,</span> <span class="n">Behaviors</span><span class="o">,</span> <span class="n">Schedules</span>
 
     <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">OpenEventSpace</span>
 
@@ -433,7 +436,6 @@ one agent belonging to the default space. If not, the agent is sending the initi
         <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
                 <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-                <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
                 <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span> <span class="n">evt</span> <span class="o">)</span>
                 <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
             <span class="o">}</span>
@@ -441,7 +443,6 @@ one agent belonging to the default space. If not, the agent is sending the initi
     <span class="o">}</span>
     <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
         <span class="kd">var</span> <span class="n">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">)</span>
-        <span class="n">evt</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">getAddress</span><span class="o">(</span><span class="n">getID</span><span class="o">)</span>
         <span class="o">^</span><span class="n">space</span><span class="o">.</span><span class="n">emit</span><span class="o">(</span><span class="n">evt</span><span class="o">)</span> <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -478,8 +479,8 @@ by the <code class="prettyprint">Lifecycle</code> capacity too.</p>
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-08-31</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-09-14</li>
 </ul>
 
 <blockquote>
@@ -492,7 +493,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
 
     </div> <!-- /default layout container -->
 

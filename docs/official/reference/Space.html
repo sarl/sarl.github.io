@@ -139,8 +139,8 @@ The most basic scope is represented by a collection of addresses.</p>
 
 <p>SARL provides a Java interface that is representing all the spaces:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Space</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
     <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span>
+    <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The <code class="prettyprint">getSpaceID</code> function replies the identifier of the space.
@@ -151,8 +151,8 @@ of the agents belonging to the space.</p>
 
 <p>Spaces that are based on event propagation mechanism are defined as:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">EventSpace</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">,</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
-    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">Event</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">UUID</span><span class="o">,</span> <span class="n">Event</span><span class="o">,</span> <span class="n">Scope</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;)</span>
+    <span class="kd">def</span> <span class="nf">emit</span><span class="o">(</span><span class="n">UUID</span><span class="o">,</span> <span class="n">Event</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">getAddress</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -276,7 +276,7 @@ about any major changes on this part of the API.</caution></p>
 
     <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(</span><span class="n">entity</span> <span class="o">:</span> <span class="n">EventListener</span><span class="o">)</span> <span class="o">{</span>
         <span class="kc">this</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">PhysicObject</span><span class="o">)</span>
-        <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Address</span><span class="o">(</span><span class="n">ID</span><span class="o">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
+        <span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Address</span><span class="o">(</span><span class="n">spaceID</span><span class="o">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">ID</span><span class="o">)</span>
         <span class="kd">synchronized</span> <span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">participantInternalDataStructure</span><span class="o">.</span><span class="n">registerParticipant</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">entity</span><span class="o">)</span>
         <span class="o">}</span>
@@ -329,8 +329,8 @@ by injection the factory of distributed data structures provided by the Janus pl
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.6</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-08-31</li>
+<li>Status: Stable Release</li>
+<li>Release: 2017-09-14</li>
 </ul>
 
 <blockquote>
@@ -343,7 +343,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
 
     </div> <!-- /default layout container -->
 
