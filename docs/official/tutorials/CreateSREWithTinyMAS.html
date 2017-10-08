@@ -1306,7 +1306,7 @@ instant during the tinyMAS agent life-cycle, we must define the
 agent living function (<code class="prettyprint">live</code>) in the <code class="prettyprint">TMSarlAgent</code> type.</p>
 
 <p>We assume that the <code class="prettyprint">behaviorsSkill</code> field is defined and set
-(Section <a href="#Creating_built-in_capacity_instances_in_the_agent">Creating
+(Section <a href="#7-creating-built-in-capacity-instances-in-the-agent">Creating
 built-in capacity instances in the agent</a> explains how to proceed).
 This field contains a reference to the <code class="prettyprint">BehaviorsSkill</code> skill owned by the agent.</p>
 
@@ -2072,7 +2072,7 @@ a specific section, named <code>SARL-Runtime-Environment</code>.</p>
 
 SARL-Runtime-Environment:
 SRE-Name: TinyMAS
-SARL-Spec-Version: 0.6
+SARL-Spec-Version: 0.7
 Standalone-SRE: true
 VM-Arguments: -ea
 Program-Arguments:
@@ -2149,9 +2149,10 @@ programmatically without having a specific SRE library into the <em>compilation 
 <p>The <code class="prettyprint">SREBootstrap</code> service provides the following functions:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SREBootstrap</span> <span class="o">{</span>
     <span class="kd">def</span> <span class="n">isActive</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">startWithoutAgent</span> <span class="o">:</span> <span class="n">AgentContext</span>
     <span class="kd">def</span> <span class="n">getBootAgentIdentifier</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
     <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
 <span class="o">}</span>
 </code></pre></div>
 <h3 id="13-1-configuration-by-hand">13.1. Configuration by hand</h3>
@@ -2212,9 +2213,9 @@ The resulting Mavne configuration becomes (after upadting the configuration abov
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-09-14</li>
+<li>Version: 0.7</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-10-08</li>
 </ul>
 
 <blockquote>
@@ -2227,7 +2228,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

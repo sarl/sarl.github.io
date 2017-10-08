@@ -68,18 +68,67 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <ul class="page_outline" id="page_outline">
 
-<li><a href="#1-boot-of-janus">1. Boot of Janus</a></li>
-<li><a href="#2-launching-more-agents-programmatically-with-janus">2. Launching more agents programmatically with Janus</a></li>
-<li><a href="#3-what-s-next">3. What's next?</a></li>
-<li><a href="#4-legal-notice">4. Legal Notice</a></li>
+<li><a href="#1-definition-of-the-sre-bootstrap">1. Definition of the SRE Bootstrap</a></li>
+<li><a href="#2-using-the-sre-bootstrap">2. Using the SRE Bootstrap</a></li>
+<li><a href="#3-direct-access-to-the-api-of-the-janus-sre">3.  Direct Access to the API of the Janus SRE</a></li>
+<li><a href="#4-what-s-next">4. What's next?</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
 
 </ul>
 
 <p>For running an agent, you must launch this agent on the runtime environment.
-This document explains how to launch an agent on the
-<a href="http://www.janusproject.io">Janus platform</a> from a Java program.</p>
+This document explains how to launch an agent on any SARL Run-time Environment (SRE)
+from a Java program.</p>
 
-<h2 id="1-boot-of-janus">1. Boot of Janus</h2>
+<p>The default SRE is the <a href="http://www.janusproject.io">Janus platform</a>. </p>
+
+<h2 id="1-definition-of-the-sre-bootstrap">1. Definition of the SRE Bootstrap</h2>
+
+<p>In the SARL API, a bootstrap is definition is provided.
+It represents an access point to the SRE from any program.
+This access point may be used for accessing the features of the underlying SRE,
+independently of the implementation.
+In other words, the SRE Bootstrap gives access to the standard SRE functions without
+forcing you to add an explicit dependency to the SRE Library, e.g. Janus, into your
+application classpath.</p>
+
+<p>The SARL API defines a SRE bootstrap as:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SREBootstrap</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">isActive</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">startWithoutAgent</span> <span class="o">:</span> <span class="n">AgentContext</span>
+    <span class="kd">def</span> <span class="n">getBootAgentIdentifier</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>A run-time environment, such as <a href="http://www.janusproject.io">Janus</a> must provide a service implementing this bootstrap interface.
+The standard Java service management feature is used. in other words, the SRE should
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">declare the service implementation</a> into
+its <code class="prettyprint">META-INF/services/io.sarl.core.SREBootstrap</code> file.</p>
+
+<h2 id="2-using-the-sre-bootstrap">2. Using the SRE Bootstrap</h2>
+
+<p>In order to help you to use the bootstrap functions, the SARL API provides a static utility type, named <code class="prettyprint">SRE</code>.
+In the following code, the <code class="prettyprint">SRE</code> utility type is used for retrieving the bootstrap.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyProgram</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">arguments</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">bootstrap</span> <span class="o">=</span> <span class="nl">SRE:</span><span class="o">:</span><span class="n">getBootstrap</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div>
+<p>Then, it is possible to use the bootstrap for launching an agent. In the following example, a agent of type
+<code class="prettyprint">MyAgent</code> is launched.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">bootstrap</span> <span class="o">=</span> <span class="nl">SRE:</span><span class="o">:</span><span class="n">getBootstrap</span>
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">startAgent</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">))</span>
+</code></pre></div>
+<p>In the case you want to launch more than one agent programmatically,
+you could call the <code class="prettyprint">startAgent</code> function the number of times you need.</p>
+
+<h2 id="3-direct-access-to-the-api-of-the-janus-sre">3.  Direct Access to the API of the Janus SRE</h2>
+
+<p>Caution: using the API of Janus within your program is not recommended by the SARL team.</p>
 
 <p>The Janus platform provides a <code class="prettyprint">Boot</code> class. For launching the platform, you must use this boot class.</p>
 
@@ -106,8 +155,6 @@ If you want to launch more agents, please read the next section.</importantnote>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="2-launching-more-agents-programmatically-with-janus">2. Launching more agents programmatically with Janus</h2>
-
 <p>In  the case you want to launch more than one agent programmatically,
 you could use the <code class="prettyprint">Kernel</code> instance provided by Janus.</p>
 
@@ -136,20 +183,20 @@ second agent is launched by the <code class="prettyprint">spawn</code> function.
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="3-whats-next">3. What&#39;s next?</h2>
+<h2 id="4-whats-next">4. What&#39;s next?</h2>
 
 <p>Now, you are ready for developing agents with the SARL language.
 Please read the rest of the documentation for obtaining more details.</p>
 
 <p><a href="../index.html">Next&gt;</a></p>
 
-<h2 id="4-legal-notice">4. Legal Notice</h2>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-09-14</li>
+<li>Version: 0.7</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-10-08</li>
 </ul>
 
 <blockquote>
@@ -162,7 +209,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

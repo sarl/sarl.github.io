@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Creating Space with Operation User Accessibility</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="creating-space-with-operation-user-accessibility">Creating Space with Operation User Accessibility</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-capacity-definition">1. Capacity Definition</a></li>
+<li><a href="#2-space-definition">2. Space Definition</a></li>
+<li><a href="#3-skill-definition">3. Skill Definition</a></li>
+<li><a href="#4-accessing-to-the-function-caller-instance">4. Accessing to the function caller instance</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+
+</ul>
+
+<p>This document describes the basics of the writing of a space that is able to have the identity of
+the caller of a space&#39;s function.</p>
+
+<p>The concept is inspired by the Agents &amp; Artifacts metamodel implemented by the <a href="http://cartago.sourceforge.net/">CArtAgO project</a>.
+In this approach, artifacts have operations, properties an can trigger events. In addition, artifact implementations can
+identify their operation callers in order to prevent agents to manipulate the artifact using someone else&#39;s identity.</p>
+
+<p>The idea using a space is very similar: agents &quot;register&quot; in the space in order to receive its events, but cannot emit any,
+and can invoke space operations like an artifact.
+The question was regarding the identity parameter, since CArtAgO allows to determine the caller implicitly.</p>
+
+<p>In this document, a space is defined with caller identity as parameter. An a capacity/skill is defined for invoking
+the operation on the space.</p>
+
+<h2 id="1-capacity-definition">1. Capacity Definition</h2>
+
+<p>The first step is the <a href="../reference/Capacity.html">definition of a capacity</a> that enables an agent to access to
+the operations of the space.</p>
+
+<p>In the following example, the <code class="prettyprint">MyCapacity</code> capacity is defined with the <code class="prettyprint">functionAccessibleToTheAgent</code> function. </p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">MyCapacity</span> <span class="o">{</span>
+
+    <span class="kd">def</span> <span class="nf">functionAccessibleToTheAgent</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span>
+
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="2-space-definition">2. Space Definition</h2>
+
+<p>Currently, the definition of a space into SARL with specific keywords is not yet supported.
+You must define a space with the definition of a class that extends the <code class="prettyprint">Space</code> type.
+In the following example, the <code class="prettyprint">MySpace</code> space is declared:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MySpace</span> <span class="k">implements</span> <span class="n">Space</span> <span class="o">{</span>
+
+    <span class="kd">val</span> <span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span>
+    <span class="k">new</span> <span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">id</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kc">null</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The <code class="prettyprint">functionAccessibleToTheAgent</code> function, initially defined into the <code class="prettyprint">MyCapacity</code> capacity must be defined into the
+<code class="prettyprint">MySpace</code> space. But for enabling the space to have the identity of the function caller, the identity
+must be given as formal parameter, in addition to the already defined parameters.
+Back to the example, the code becomes:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MySpace</span> <span class="k">implements</span> <span class="n">Space</span> <span class="o">{</span>
+
+    <span class="kd">def</span> <span class="nf">functionAccessibleToTheAgent</span><span class="o">(</span><span class="n">callerIdentity</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Do something</span>
+    <span class="o">}</span>
+    <span class="kd">val</span> <span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span>
+    <span class="k">new</span> <span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.</span><span class="n">id</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kc">null</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In order to enable the creation of an instance of MySpace, a space specification must be defined:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MySpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">MySpace</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">MySpace</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">MySpace</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="3-skill-definition">3. Skill Definition</h2>
+
+<p>In order to do a bridge between the defined capacity and the space, a skill must be defined.
+The main role of this skill is to determine the identity of the operation&#39;s caller for giving
+it to the space.
+Back to the example, the code for the skill is:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">MySkill</span> <span class="k">implements</span> <span class="n">MyCapacity</span> <span class="o">{</span>
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">MySpace</span>
+    <span class="kd">def</span> <span class="nf">functionAccessibleToTheAgent</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kc">this</span><span class="o">.^</span><span class="n">space</span><span class="o">.</span><span class="n">functionAccessibleToTheAgent</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">ID</span><span class="o">,</span> <span class="n">parameter</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In the previous code, the reference to the space is put into a skill&#39;s field, named <code class="prettyprint">^space</code>.
+This field is not initialized in the previous example. You could initialize it into the installation function of
+the skill : <code class="prettyprint">def install() : void</code></p>
+
+<p>The definition of the functionAccessibleToTheAgent name is based on the delegation design pattern : the skill calls the similar space&#39;s function.
+The difference is that the skill&#39;s call include the identifier of the function&#39;s caller, i.e. the agent&#39;s identifier.</p>
+
+<h2 id="4-accessing-to-the-function-caller-instance">4. Accessing to the function caller instance</h2>
+
+<p>Sometimes, it is useful to obtain the instance of the object, which has called the skill&#39;s function.
+The caller may be the agent itself or one of its behaviors.
+The definition of the abstract type <code class="prettyprint">Skill</code> includes the <code class="prettyprint">getCaller</code> function:</p>
+
+<p>Into the skill&#39;s functions, you could use this function for obtaining the skill function&#39;s caller.
+This function replies the behavior instance, which has called the function, or <code class="prettyprint">ǹull</code> if the caller
+is the agent.</p>
+
+<p>Back to the previous example, let&#39;s change the type of caller identity from <code class="prettyprint">UUID</code> to <code class="prettyprint">Object</code> in order
+to give the instance of the caller to the space. The code of the skill becomes:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">skill</span> <span class="nc">MySkill</span> <span class="k">implements</span> <span class="n">MyCapacity</span> <span class="o">{</span>
+
+    <span class="kd">var</span> <span class="o">^</span><span class="kd">space</span> <span class="err">: </span><span class="nc">MySpace</span>
+
+    <span class="kd">def</span> <span class="nf">functionAccessibleToTheAgent</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">theCaller</span> <span class="o">=</span> <span class="n">getCaller</span> <span class="o">?:</span> <span class="kc">this</span><span class="o">.</span><span class="n">owner</span>
+        <span class="kc">this</span><span class="o">.^</span><span class="n">space</span><span class="o">.</span><span class="n">functionAccessibleToTheAgent</span><span class="o">(</span><span class="n">theCaller</span><span class="o">,</span> <span class="n">parameter</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.7</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-10-08</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2017 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

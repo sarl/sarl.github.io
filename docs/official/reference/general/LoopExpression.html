@@ -73,8 +73,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#3-while-loop">3. While Loop</a></li>
 <li><a href="#4-do-while-loop">4. Do-While Loop</a></li>
 <li><a href="#5-breaking-a-loop">5. Breaking a loop</a></li>
-<li><a href="#6-acknowledgements">6. Acknowledgements</a></li>
-<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+<li><a href="#6-jump-to-the-next-iteration">6. Jump to the next iteration</a></li>
+<li><a href="#7-acknowledgements">7. Acknowledgements</a></li>
+<li><a href="#8-legal-notice">8. Legal Notice</a></li>
 
 </ul>
 
@@ -136,8 +137,8 @@ The type of a while loop is <code class="prettyprint">void</code>.</p>
 <h2 id="5-breaking-a-loop">5. Breaking a loop</h2>
 
 <p>The <code class="prettyprint">break</code> keyword is provides for breaking the enclosing loop.
-When this keyword is run, the control flow exists for the nearest
-enclosing loop, and run the statement that is jsut following the loop
+When this keyword is run, the control flow exits for the nearest
+enclosing loop, and run the statement that is just following the loop
 expression in the sequence of instructions.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
@@ -145,19 +146,32 @@ expression in the sequence of instructions.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="6-acknowledgements">6. Acknowledgements</h2>
+<h2 id="6-jump-to-the-next-iteration">6. Jump to the next iteration</h2>
+
+<p>The <code class="prettyprint">continue</code> keyword is provides for stopping the execution of the
+current iteration into loop, and jumping to the next iteration.
+When this keyword is run, the control flow jumps to the next iteration
+for the nearest enclosing loop, and run the statement that is just at
+the beginning of the loop&#39;s block expression.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">tab</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">continue</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="7-acknowledgements">7. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="7-legal-notice">7. Legal Notice</h2>
+<h2 id="8-legal-notice">8. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.6</li>
-<li>Status: Stable Release</li>
-<li>Release: 2017-09-14</li>
+<li>Version: 0.7</li>
+<li>Status: Draft Release</li>
+<li>Release: 2017-10-08</li>
 </ul>
 
 <blockquote>
@@ -170,7 +184,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.6.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
