@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.6.1</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0-6-1">Changes in 0.6.1</h1>
+
+<p>Release date: 2017-10-220.</p>
+
+<h2 id="language-and-compiler">Language and Compiler</h2>
+
+<ul>
+<li>Testing the <code class="prettyprint">int == Integer</code> and <code class="prettyprint">int == AtomicInteger</code> equalities. (<a href="http://github.com/sarl/sarl/commit/60945fac4be429549c35d52380dad79425bff0a5">details</a>)</li>
+<li>Add implicit definitions of operators on numbers. (<a href="http://github.com/sarl/sarl/commit/5b31f89c2d704423d8ee44787593850d0d697be6">details</a>)</li>
+</ul>
+
+<h2 id="sarl-core-api">SARL Core API</h2>
+
+<ul>
+<li>Add &quot;void&quot; return type to the behavior guard evaluator. (<a href="http://github.com/sarl/sarl/commit/0438eb30bd720f2f3fe33504a4db24fc76379c7b">details</a>)</li>
+</ul>
+
+<h2 id="user-interface">User Interface</h2>
+
+<ul>
+<li>Update outline for displaying the static constructors in a specific way. (<a href="http://github.com/sarl/sarl/commit/65a7b7563559adb1dd2347c256e462eeb734a513">details</a>)</li>
+</ul>
+
+<h2 id="eclipse-product">Eclipse Product</h2>
+
+<ul>
+<li>Upgrade Eclipse JDT, M2E and UI. (<a href="http://github.com/sarl/sarl/commit/58f5f8e0522a84edabef20c561f4c5d890b8b112">details</a>)</li>
+<li>Run-as feature explores the folders for finding the agent definitions. (<a href="http://github.com/sarl/sarl/commit/8516e4523796ca086096fc457d99b7bcef45a153">details</a>)</li>
+<li>Display exception stack trace into the error dialogs. (<a href="http://github.com/sarl/sarl/commit/d4a372e2298f17124e4507d8204a1f18ded9044f">details</a>)</li>
+</ul>
+
+<h2 id="contributions">Contributions</h2>
+
+<ul>
+<li>Fixing the name of the fractal example&#39;s project. (<a href="http://github.com/sarl/sarl/commit/89bdd8a213e9549a490d3fae1a774d8ff29b3ac6">details</a>)</li>
+<li>Add explicit &quot;void&quot; return type to functions. (<a href="http://github.com/sarl/sarl/commit/c89c45a6cb9c1ee413a79d9beb23d30abd58270a">details</a>)</li>
+</ul>
+
+<h2 id="changes-in-the-previous-versions">Changes in the Previous Versions</h2>
+
+<ul>
+<li><a href="./changes_0.6.0.html">Changes in the version 0.6.0</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
