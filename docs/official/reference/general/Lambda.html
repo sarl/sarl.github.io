@@ -93,10 +93,13 @@ method.</p>
 
 <p>A lambda expression is code surrounded by square brackets (inspired from Smalltalk).
 Like a method declaration, a lambda expression may declare parameters.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="o">[</span> <span class="n">e</span> <span class="o">:</span> <span class="n">ActionEvent</span> <span class="o">|</span>
-    <span class="n">textField</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Something happened!&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">toString</span>
-<span class="o">]</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+[ e : ActionEvent |
+    textField.text = "Something happened!" + e.toString
+]
+</pre></div>
+
 <p>The lambda above has one parameter called e which is of type <code class="prettyprint">ActionEvent</code>.
 The code after the <code class="prettyprint">|</code> operator is the internal code of the lambda expression.</p>
 
@@ -104,10 +107,13 @@ The code after the <code class="prettyprint">|</code> operator is the internal c
 
 <p>You do not have to specify the type explicitly because it can be inferred from the context.
 For example, when using inferred type, the code in the previous section becomes:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="o">[</span> <span class="n">e</span> <span class="o">|</span>
-    <span class="n">textField</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Something happened!&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">toString</span>
-<span class="o">]</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+[ e |
+    textField.text = "Something happened!" + e.toString
+]
+</pre></div>
+
 <p>The type of <code class="prettyprint">e</code> is inferred according to its usage.</p>
 
 <h2 id="3-implicit-parameters-it">3. Implicit Parameters: it</h2>
@@ -116,32 +122,44 @@ For example, when using inferred type, the code in the previous section becomes:
 for these parameters, which is to leave the declaration including the vertical bar out.</p>
 
 <p>The name of the single parameter becomes <code class="prettyprint">it</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="o">[</span>
-    <span class="n">textField</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Something happened!&quot;</span> <span class="o">+</span> <span class="kc">it</span><span class="o">.</span><span class="n">toString</span>
-<span class="o">]</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+[
+    textField.text = "Something happened!" + it.toString
+]
+</pre></div>
+
 <h2 id="4-empty-list-of-parameters">4. Empty List of Parameters</h2>
 
 <p>A lambda expression with zero arguments is written with a bar after the opening bracket:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">runnable</span> <span class="o">:</span> <span class="n">Runnable</span> <span class="o">=</span> <span class="o">[</span> <span class="o">|</span>
-    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello I&#39;m executed!&quot;</span><span class="o">)</span>
-<span class="o">]</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+val runnable : Runnable = [ |
+    println("Hello I'm executed!")
+]
+</pre></div>
+
 <h2 id="5-lambda-as-the-last-parameter-of-a-method">5. Lambda as the Last Parameter of a Method</h2>
 
 <p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
 
 <p>For instance if you want to sort some strings by their length, you could use either of the following two examples.
 The first example uses the notation with the lambda expression inside the argument list.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
-<span class="c1">// Lambda expression is written outside the parenthesis</span>
-<span class="n">Collections</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="o">[</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span> <span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">length</span> <span class="o">])</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+var t : List<String>
+// Lambda expression is written outside the parenthesis
+Collections.sort(t, [ a, b | a.length - b.length ])
+</pre></div>
+
 <p>The second example uses the notation with the lambda expression outside the argument list.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
-<span class="c1">// Lambda expression is written outside the parenthesis</span>
-<span class="n">Collections</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="n">t</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span> <span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">length</span> <span class="o">]</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+var t : List<String>
+// Lambda expression is written outside the parenthesis
+Collections.sort(t) [ a, b | a.length - b.length ]
+</pre></div>
+
 <h2 id="6-type-of-a-lambda-expression">6. Type of a Lambda Expression</h2>
 
 <h3 id="6-1-pure-sarl-notation">6.1. Pure SARL Notation</h3>
@@ -151,8 +169,11 @@ The syntax for specifying the type of a lambda is: <code class="prettyprint">(pa
 
 <p>The following example defines a variable <code class="prettyprint">f</code>, which is a lambda taking one parameter of <code class="prettyprint">String</code>, and
 returning a value of <code class="prettyprint">Boolean</code>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">f</span> <span class="o">:</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">Boolean</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+var f : (String) => Boolean
+</pre></div>
+
 <p>If the lambda is a procedure, i.e. it has no return type, then the return type to specify must be <code class="prettyprint">void</code>.</p>
 
 <h3 id="6-2-java-like-notation">6.2. Java-like Notation</h3>
@@ -163,9 +184,12 @@ returning a value of <code class="prettyprint">Boolean</code>. </p>
 different numbers of parameters.</p>
 
 <p>For example, the SARL erasure <code class="prettyprint">(String) =&gt; Boolean</code> may be written with the Java notation:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Same type of function.</span>
-<span class="kd">var</span> <span class="n">f2</span> <span class="o">:</span> <span class="n">Functions</span><span class="o">.</span><span class="n">Function1</span><span class="o">&lt;?</span> <span class="k">super</span> <span class="n">String</span><span class="o">,?</span> <span class="k">extends</span> <span class="n">Boolean</span><span class="o">&gt;</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+// Same type of function.
+var f2 : Functions.Function1<? super String,? extends Boolean>
+</pre></div>
+
 <p>The <code class="prettyprint">Function1</code> interface represents a function with a single formal parameter (with the type equals to the first generic parameter),
 and returning a value of type equals to the second generic parameter.
 Depending of the number of parameters, you may use <code class="prettyprint">Function0</code> to <code class="prettyprint">Function5</code>, or <code class="prettyprint">Procedure0</code> to <code class="prettyprint">Procedure6</code>. </p>
@@ -182,7 +206,7 @@ Depending of the number of parameters, you may use <code class="prettyprint">Fun
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -246,6 +270,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

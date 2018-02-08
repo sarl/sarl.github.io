@@ -137,9 +137,12 @@ block is allowed).</p>
 <p>The example below contains the definition of <code class="prettyprint">Event1</code> and <code class="prettyprint">Event2</code>, which are both empty.
 The first event is defined with the &quot;empty block&quot; syntax.
 The second event is defined with the &quot;nothing&quot; syntax.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>  <span class="o">}</span>
-<span class="kd">event</span> <span class="nc">Event2</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+event Event1 {  }
+event Event2
+</pre></div>
+
 <h3 id="2-2-define-an-event-with-attributes">2.2. Define an event with attributes</h3>
 
 <p>An Event may can carry additional information beyond its name (or type).
@@ -159,12 +162,15 @@ Each declaration of the attributes illustrates one possible syntax for defining 
 <p>According to the type inference mechanism used by SARL, the attribute <code class="prettyprint">something</code> will have the type <code class="prettyprint">Object</code>.</p>
 
 <p><note> Because of the use of the <code class="prettyprint">var</code> keyword, the values of these attributes can be modified.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
-    <span class="kd">var</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-    <span class="kd">var</span> <span class="n">something</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+event MyEvent {
+    var number : Integer
+    var string = "abc"
+    var something : Object
+}
+</pre></div>
+
 <h3 id="2-3-define-an-event-with-value-attributes">2.3. Define an event with value attributes</h3>
 
 <p>Events in SARL will carry data that is unmodifiable 
@@ -180,15 +186,18 @@ is not read-only (only the initial reference is).</importantnote></p>
 variable, there should be a way to specify the initial value.
 The initial value can be specified at the end of the <code class="prettyprint">val</code>
 directive or by specifying a constructor.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
-    <span class="kd">val</span> <span class="n">number</span> <span class="o">:</span> <span class="n">Integer</span>
 
-    <span class="k">new</span><span class="o">(</span><span class="n">nb</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">number</span> <span class="o">=</span> <span class="n">nb</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+event MyEvent {
+    val string = "abcd"
+    val number : Integer
+    
+    new(nb : Integer) {
+        number = nb
+    }
+}
+</pre></div>
+
 <p>If no constructor is defined in the event type and a super-type is declared, implicit constructors will be assumed.
 Implicit constructors has the same prototypes as the constructors of the super type.
 Details on implicit constructors are given in the reference documentation related to the
@@ -214,24 +223,30 @@ A second event <code class="prettyprint">Event2</code>, is defined as an extensi
 It is now possible to create instances of these events. For <code class="prettyprint">Event1</code>, only the attribute <code class="prettyprint">string</code>
 is available. For <code class="prettyprint">Event2</code>, two attributes are available (<code class="prettyprint">Event2</code> inherits one field from
 <code class="prettyprint">Event2</code> and defines one field).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Event1</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">string</span> <span class="o">:</span> <span class="n">String</span>
-<span class="o">}</span>
-<span class="kd">event</span> <span class="nc">Event2</span> <span class="k">extends</span> <span class="n">Event1</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">number</span> <span class="o">:</span> <span class="kt">int</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+event Event1 {
+    var string : String
+}
+event Event2 extends Event1 {
+    var number : int
+}
+</pre></div>
+
 <h4 id="use">Use</h4>
 
 <p>The following code illustrates the use of event instances.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Create an instance of Event1 and set its attribute.</span>
-<span class="kd">var</span> <span class="n">e1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event1</span>
-<span class="n">e1</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-<span class="c1">// Create an instance of Event2 and set its attributes.</span>
-<span class="kd">var</span> <span class="n">e2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event2</span>
-<span class="n">e2</span><span class="o">.</span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span>
-<span class="n">e2</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">345</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+// Create an instance of Event1 and set its attribute.
+var e1 = new Event1
+e1.string = "abc"
+// Create an instance of Event2 and set its attributes.
+var e2 = new Event2
+e2.string = "abc"
+e2.number = 345
+</pre></div>
+
 <h3 id="2-5-modifiers">2.5. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
@@ -256,13 +271,16 @@ The modifiers are usually written before the keyword for defining the event.</p>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">event</span> <span class="nc">Example1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">event</span> <span class="nc">Example2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">final</span> <span class="kd">event</span> <span class="nc">Example3</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+public event Example1 {
+}
+package event Example2 {
+}
+final event Example3 {
+}
+</pre></div>
+
 <h4 id="field-modifiers">Field Modifiers</h4>
 
 <p>The modifiers for the fields in an event are:</p>
@@ -276,8 +294,11 @@ The modifiers are usually written before the keyword for defining the event.</p>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">var</span> <span class="n">example1</span> <span class="o">:</span> <span class="n">Object</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+public var example1 : Object
+</pre></div>
+
 <h2 id="3-reserved-events">3. Reserved Events</h2>
 
 <p>Several events are defined and reserved by the SARL Core Specification.
@@ -299,7 +320,7 @@ events.</veryimportantnote></p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -363,6 +384,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

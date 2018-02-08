@@ -188,6 +188,10 @@ The following macro provides you the ability to run a SARL script for generating
 <p>The <code class="prettyprint">Dynamic</code> macro is supposed to replies a value that could be interpreted as a string of characters.
 The given string of characters will replace the <code class="prettyprint">Dynamic</code> macro into the generated Markdown text.</p>
 
+<p>The replied value by <code class="prettyprint">Dynamic</code> is assumed to be a valid Markdown text. If this value should
+be automatically formatted within a block of code, you should use the following macro: </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[:DynamicCode:](expression)
+</code></pre></div>
 <h3 id="1-7-generate-code-from-java-type">1.7. Generate code from Java type</h3>
 
 <p>You could generate a piece of code from a Java type with the following macro:</p>
@@ -280,7 +284,7 @@ The other resources, such as images should be in the <code class="prettyprint">s
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -344,6 +348,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

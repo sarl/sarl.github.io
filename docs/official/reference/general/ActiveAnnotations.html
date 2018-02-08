@@ -90,64 +90,76 @@ The following sections describe there annotations.</p>
 <p>If you want to add getter and or setter methods for your fields, <code class="prettyprint">@Accessors</code> is your friend.
 This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.
 Let&#39;s a basic example.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@Accessors</span> <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+@Accessors var name : String
+</pre></div>
+
 <p>will compile to the code:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">private</span> <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
 
-<span class="kd">public</span> <span class="kd">def</span> <span class="n">getName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-            <span class="kc">this</span><span class="o">.</span><span class="n">name</span>
-<span class="o">}</span>
+<div class="highlight highlight-SARL"><pre>
+private var name : String
+ 
+public def getName : String {
+            this.name
+}
+    
+public def setName(name : String) : void {
+  this.name = name
+}
+</pre></div>
 
-<span class="kd">public</span> <span class="kd">def</span> <span class="nf">setName</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span> <span class="o">{</span>
-  <span class="kc">this</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="o">}</span>
-</code></pre></div>
 <p>By default a public getter and a public setter method is created. The <code class="prettyprint">@Accessors</code> can be configured to tell
 that you only want one or the other and to change the visibility. This is done by passing the visibility types
 as parameters to the annotation.
 You can also use the annotation on class level to do the same for all fields.</p>
 
 <p>Here is a more complex example, that shows how it works:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@Accessors</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
-  <span class="kd">var</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
-  <span class="nd">@Accessors</span><span class="o">(</span><span class="n">PUBLIC_GETTER</span><span class="o">,</span> <span class="n">PROTECTED_SETTER</span><span class="o">)</span> <span class="kd">var</span> <span class="n">age</span> <span class="o">:</span> <span class="kt">int</span>
-  <span class="nd">@Accessors</span><span class="o">(</span><span class="n">NONE</span><span class="o">)</span> <span class="kd">var</span> <span class="n">internalField</span> <span class="o">:</span> <span class="n">String</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+@Accessors class Person {
+  var name : String
+  var firstName : String
+  @Accessors(PUBLIC_GETTER, PROTECTED_SETTER) var age : int
+  @Accessors(NONE) var internalField : String
+}
+</pre></div>
+
 <p>will compile to the code:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
-  <span class="kd">private</span> <span class="kd">var</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
-  <span class="kd">private</span> <span class="kd">var</span> <span class="n">age</span> <span class="o">:</span> <span class="kt">int</span>
-  <span class="kd">private</span> <span class="kd">var</span> <span class="n">internalField</span> <span class="o">:</span> <span class="n">String</span>
 
-  <span class="kd">public</span> <span class="kd">def</span> <span class="n">getName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">name</span>
-  <span class="o">}</span>
+<div class="highlight highlight-SARL"><pre>
+class Person {
+  private var name : String
+  private var firstName : String
+  private var age : int
+  private var internalField : String
+  
+  public def getName : String {
+    this.name
+  }
+  
+  public def setName(name : String) : void {
+    this.name = name
+  }
+  
+  public def getFirstName : String {
+    this.firstName
+  }
+  
+  public def setFirstName(firstName : String) : void {
+    this.firstName = firstName
+  }
+  
+  public def getAge : int {
+    this.age
+  }
+  
+  protected def setAge(age : int) : void {
+    this.age = age
+  }
+}
+</pre></div>
 
-  <span class="kd">public</span> <span class="kd">def</span> <span class="nf">setName</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kd">def</span> <span class="n">getFirstName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">firstName</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kd">def</span> <span class="nf">setFirstName</span><span class="o">(</span><span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstName</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kd">def</span> <span class="n">getAge</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">age</span>
-  <span class="o">}</span>
-
-  <span class="kd">protected</span> <span class="kd">def</span> <span class="nf">setAge</span><span class="o">(</span><span class="n">age</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
 <h2 id="2-data">2.  @Data</h2>
 
 <p>The annotation <code class="prettyprint">@Data</code> will turn an annotated class into a value object class. A class annotated with
@@ -164,16 +176,19 @@ You can also use the annotation on class level to do the same for all fields.</p
 <p>This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@Data</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">val</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
-  <span class="kd">val</span> <span class="n">lastName</span> <span class="o">:</span> <span class="n">String</span>
 
-  <span class="kd">static</span> <span class="kd">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">String</span><span class="o">*)</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
-    <span class="n">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">getFirstName</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">lastName</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+@Data class Person {
+  val firstName : String
+  val lastName : String
+
+  static def main(args : String*) {
+    val p = new Person(args.get(0), args.get(1))
+    println(p.getFirstName + ' ' + p.lastName)
+  }
+}
+</pre></div>
+
 <h2 id="3-delegate">3.  @Delegate</h2>
 
 <p>The <code class="prettyprint">@Delegate</code> annotation automatically generates delegate methods for all interfaces shared between the delegate
@@ -181,47 +196,59 @@ and the currently implemented class. You can optionally restrict it to explicitl
 This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
 
 <p>Let&#39;s start with a basic example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SomeInterface</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">function</span><span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span>
-<span class="o">}</span>
-<span class="kd">interface</span> <span class="nc">SubTypeOfSomeInterface</span> <span class="k">extends</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">anotherFunction</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>
 
-  <span class="c1">// generates all methods of SomeInterface and delegates to this field</span>
-  <span class="nd">@Delegate</span> <span class="kd">var</span> <span class="n">myDelegate</span> <span class="o">:</span> <span class="n">SubTypeOfSomeInterface</span>
+<div class="highlight highlight-SARL"><pre>
+interface SomeInterface {
+    def function(param : String) : int
+}
+interface SubTypeOfSomeInterface extends SomeInterface {
+    def anotherFunction
+}
+class MyClass implements SomeInterface {
+ 
+  // generates all methods of SomeInterface and delegates to this field
+  @Delegate var myDelegate : SubTypeOfSomeInterface
+ 
+}
+</pre></div>
 
-<span class="o">}</span>
-</code></pre></div>
 <p>The previous code is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>             
-  <span class="kd">var</span> <span class="n">myDelegate</span> <span class="o">:</span> <span class="n">SubTypeOfSomeInterface</span>
 
-  <span class="kd">def</span> <span class="nf">function</span><span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">myDelegate</span><span class="o">.</span><span class="n">function</span><span class="o">(</span><span class="n">param</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+class MyClass implements SomeInterface {             
+  var myDelegate : SubTypeOfSomeInterface
+  
+  def function(param : String) : int {
+    return this.myDelegate.function(param)
+  }
+}
+</pre></div>
+
 <p>It is not only possible to delegate to fields, but also to methods so you could lazily
 create the delegate object or use a different one each time.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-    <span class="nd">@Delegate</span> <span class="kd">def</span> <span class="n">provideDelegate</span> <span class="o">:</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MyDelegate</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>The previous code is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">function</span><span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">provideDelegate</span><span class="o">().</span><span class="n">function</span><span class="o">(</span><span class="n">param</span><span class="o">)</span>
-    <span class="o">}</span>
 
-    <span class="kd">def</span> <span class="n">provideDelegate</span> <span class="o">:</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MyDelegate</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+class MyClass implements SomeInterface {
+    @Delegate def provideDelegate : SomeInterface {
+        return new MyDelegate
+    }
+}
+</pre></div>
+
+<p>The previous code is equivalent to:</p>
+
+<div class="highlight highlight-SARL"><pre>
+class MyClass implements SomeInterface {
+    def function(param : String) : int {
+        return provideDelegate().function(param)
+    }
+
+    def provideDelegate : SomeInterface {
+        return new MyDelegate
+    }
+}
+</pre></div>
+
 <p>If you use a method, additional parameters could be declared, that will tell you about the method that should be invoked:</p>
 
 <ul>
@@ -231,26 +258,32 @@ create the delegate object or use a different one each time.</p>
 </ul>
 
 <p>Let&#39;s the following example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-    <span class="nd">@Delegate</span> <span class="kd">def</span> <span class="n">provideDelegate</span><span class="o">(</span><span class="n">methodName</span> <span class="o">:</span> <span class="n">String</span><span class="o">,</span> <span class="n">parameterTypes</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?&gt;[],</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MyDelegate</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>The previous code is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">function</span><span class="o">(</span><span class="n">param</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">provideDelegate</span><span class="o">(</span>
-            <span class="s">&quot;function&quot;</span><span class="o">,</span>
-            <span class="err">#</span><span class="o">[</span><span class="k">typeof</span><span class="o">(</span><span class="n">String</span><span class="o">)],</span>
-            <span class="err">#</span><span class="o">[</span><span class="n">param</span><span class="o">]).</span><span class="n">function</span><span class="o">(</span><span class="n">param</span><span class="o">)</span>
-    <span class="o">}</span>
 
-    <span class="kd">def</span> <span class="nf">provideDelegate</span><span class="o">(</span><span class="n">methodName</span> <span class="o">:</span> <span class="n">String</span><span class="o">,</span> <span class="n">parameterTypes</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?&gt;[],</span> <span class="n">arguments</span> <span class="o">:</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">SomeInterface</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MyDelegate</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+class MyClass implements SomeInterface {
+    @Delegate def provideDelegate(methodName : String, parameterTypes : Class<?>[], arguments : Object[]) : SomeInterface {
+        return new MyDelegate
+    }
+}
+</pre></div>
+
+<p>The previous code is equivalent to:</p>
+
+<div class="highlight highlight-SARL"><pre>
+class MyClass implements SomeInterface {
+    def function(param : String) : int {
+        return provideDelegate(
+            "function",
+            #[typeof(String)],
+            #[param]).function(param)
+    }
+
+    def provideDelegate(methodName : String, parameterTypes : Class<?>[], arguments : Object[]) : SomeInterface {
+        return new MyDelegate
+    }
+}
+</pre></div>
+
 <h2 id="4-tostring">4. @ToString</h2>
 
 <p>The <code class="prettyprint">@ToString</code> annotation enables to generate the function that replies the string representation
@@ -259,25 +292,31 @@ All non-static fields of the annotated class, and all of its superclasses are us
 This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
 
 <p>Let&#39;s a basic example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@ToString</span>
-<span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
-  <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
-  <span class="kd">var</span> <span class="n">field2</span> <span class="o">:</span> <span class="n">String</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>The previous code is equivalent to:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
-  <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
-  <span class="kd">var</span> <span class="n">field2</span> <span class="o">:</span> <span class="n">String</span>
 
-  <span class="kd">def</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ToStringBuilder</span><span class="o">(</span><span class="kc">this</span><span class="o">)</span>
-    <span class="n">buffer</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&quot;field1&quot;</span><span class="o">,</span> <span class="kc">this</span><span class="o">.</span><span class="n">field1</span><span class="o">);</span>
-    <span class="n">buffer</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&quot;field2&quot;</span><span class="o">,</span> <span class="kc">this</span><span class="o">.</span><span class="n">field2</span><span class="o">);</span>
-    <span class="k">return</span> <span class="n">buffer</span><span class="o">.</span><span class="n">toString</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<div class="highlight highlight-SARL"><pre>
+@ToString
+class MyClass {
+  var field1 : int
+  var field2 : String
+}
+</pre></div>
+
+<p>The previous code is equivalent to:</p>
+
+<div class="highlight highlight-SARL"><pre>
+class MyClass {
+  var field1 : int
+  var field2 : String
+
+  def toString() : String {
+    var buffer = new ToStringBuilder(this)
+    buffer.add("field1", this.field1);
+    buffer.add("field2", this.field2);
+    return buffer.toString
+  }
+}
+</pre></div>
+
 <p>For brevity there are options to the annotation to hide field names, skip fields with null values and print everything on one line.</p>
 
 <h2 id="5-acknowledgements">5. Acknowledgements</h2>
@@ -292,7 +331,7 @@ This annotation can be applied to object-oriented types. The agent-oriented type
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -356,6 +395,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

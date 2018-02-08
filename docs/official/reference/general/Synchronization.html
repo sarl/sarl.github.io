@@ -73,20 +73,26 @@ The only difference is that in SARL it is an expression and can therefore be use
 <h2 id="1-standard-syntax">1. Standard Syntax</h2>
 
 <p>The synchronization statement can be used as in Java:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-<span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+var lock = new Object
+synchronized (lock) {
+    println("Hello")
+}
+</pre></div>
+
 <h2 id="2-expression-syntax">2. Expression Syntax</h2>
 
 <p>Because the <code class="prettyprint">synchronized</code> keyword is an expression, it is possible to write synchronized code inside another expression.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-<span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="kd">synchronized</span> <span class="o">(</span><span class="n">lock</span><span class="o">)</span> <span class="o">{</span> 
-        <span class="s">&quot;Hello&quot;</span> 
-<span class="o">}</span>
-<span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+var lock = new Object
+val name = synchronized (lock) { 
+        "Hello" 
+}
+println(name)
+</pre></div>
+
 <h2 id="3-acknowledgements">3. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
@@ -99,7 +105,7 @@ The only difference is that in SARL it is an expression and can therefore be use
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -163,6 +169,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

@@ -95,9 +95,12 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h2 id="1-basic-agent-definition">1. Basic agent definition</h2>
 
 <p>Agents are defined using the <code class="prettyprint">agent</code> keyword.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+agent MyAgent {
+}
+</pre></div>
+
 <h2 id="2-package-definition">2. Package definition</h2>
 
 <p>SARL elements are organized in packages. You can define the package using the <code class="prettyprint">package</code> keyword.</p>
@@ -128,14 +131,17 @@ Therefore FirstAgent and SecondAgent belong to the same package, i.e. <code clas
 
 <p><note>The <code class="prettyprint">println</code> function is provided by the <code class="prettyprint">Logging</code> capacity. It permits printing a message
 on the log output.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.core.Logging</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="k">on</span> <span class="n">MyEvent</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Received MyEvent&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+import io.sarl.core.Logging
+agent MyAgent {
+    uses Logging
+    on MyEvent {
+        println("Received MyEvent")
+    }
+}
+</pre></div>
+
 <h3 id="3-3-lifecycle-events">3.3. Lifecycle events</h3>
 
 <p>SARL defines two <strong>lifecycle</strong> events :</p>
@@ -150,19 +156,22 @@ You can react to this event just like with any other event defined in SARL.</p>
 
 <p>Likewise, when the agent is going to stop its execution (we will see how to stop an agent later on), it will receive
 a <code class="prettyprint">Destroy</code> Event. The purpose of this event is to release any system resource properly.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.core.Logging</span>
-<span class="kn">import</span> <span class="nn">io.sarl.core.Initialize</span>
-<span class="kn">import</span> <span class="nn">io.sarl.core.Destroy</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;MyAgent spawned&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Destroy</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;MyAgent destroyed&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+import io.sarl.core.Logging
+import io.sarl.core.Initialize
+import io.sarl.core.Destroy
+agent MyAgent {
+    uses Logging
+    on Initialize {
+        println("MyAgent spawned")
+    }
+    on Destroy {
+        println("MyAgent destroyed")
+    }
+}
+</pre></div>
+
 <h3 id="3-4-accessing-the-events-occurrence">3.4. Accessing the event&#39;s occurrence</h3>
 
 <p>Inside a behavior declaration you may need to access the event instance the agent is reacting to.</p>
@@ -170,20 +179,23 @@ a <code class="prettyprint">Destroy</code> Event. The purpose of this event is t
 <p>This instance is called an <code class="prettyprint">occurrence</code>.</p>
 
 <p>In the case of an Initialize events you can access the arguments for the agent spawn using <code class="prettyprint">occurrence.parameters</code>).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.core.Logging</span>
-<span class="kn">import</span> <span class="nn">io.sarl.core.Initialize</span>
-<span class="kn">import</span> <span class="nn">io.sarl.core.Destroy</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;MyAgent spawned&quot;</span><span class="o">)</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;My Parameters are :&quot;</span> <span class="o">+</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Destroy</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;MyAgent destroyed&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+import io.sarl.core.Logging
+import io.sarl.core.Initialize
+import io.sarl.core.Destroy
+agent MyAgent {
+    uses Logging
+    on Initialize {
+        println("MyAgent spawned")
+        println("My Parameters are :" + occurrence.parameters.toString)
+    }
+    on Destroy {
+        println("MyAgent destroyed")
+    }
+}
+</pre></div>
+
 <h2 id="4-agent-communication">4. Agent Communication</h2>
 
 <p>Agents need to send data and stimuli to other agents. This communication takes the form of event sending
@@ -200,25 +212,31 @@ of the agent.</note></p>
 <p>For sending an event in the default space, the <code class="prettyprint">DefaultContextInteractions</code> built-in capacity should be used.</p>
 
 <p>Below, we define an agent that is using this capacity.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">io.sarl.core.DefaultContextInteractions</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+import io.sarl.core.DefaultContextInteractions
+agent MyAgent {
+    uses DefaultContextInteractions
+}
+</pre></div>
+
 <h3 id="4-2-send-an-event-in-the-default-space">4.2. Send an event in the default space</h3>
 
 <p>The <code class="prettyprint">DefaultContextInteractions</code> built-in capacity provides functions for sending events in the default space.</p>
 
 <p>Below, we define an action in which an instance of <code class="prettyprint">MyEvent</code> is created, and then sent into the default space with the function
 call <code class="prettyprint">emit(e)</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="kd">def</span> <span class="n">doSomething</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyEvent</span>
-        <span class="n">emit</span><span class="o">(</span><span class="n">e</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+agent MyAgent {
+    uses DefaultContextInteractions
+    def doSomething {
+        var e = new MyEvent
+        emit(e)
+    }
+}
+</pre></div>
+
 <h2 id="5-whats-next">5. What&#39;s next?</h2>
 
 <p>In the next section, we will learn how to start a SARL agent on the command line.</p>
@@ -231,7 +249,7 @@ call <code class="prettyprint">emit(e)</code>.</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -295,6 +313,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

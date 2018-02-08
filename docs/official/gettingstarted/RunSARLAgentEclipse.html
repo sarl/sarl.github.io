@@ -230,13 +230,16 @@ This event is fired when the launched agent is started.</p>
 
 <p>For retrieving the values passed on the command line, you must handle the <code class="prettyprint">Initialize</code> event, as illustrated
 by the following example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Command line parameters: &quot;</span> <span class="o">+</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+agent MyAgent {
+    uses Logging
+    on Initialize {
+        println("Command line parameters: " + occurrence.parameters)
+    }
+}
+</pre></div>
+
 <h2 id="4-whats-next">4. What&#39;s next?</h2>
 
 <p>In the next section, we will learn how to launch your SARL project from the command line.</p>
@@ -249,7 +252,7 @@ by the following example:</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -313,6 +316,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">

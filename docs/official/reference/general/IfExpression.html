@@ -82,17 +82,23 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>The following results in either the value e1 or e2 depending on whether the predicate e1 !== null evaluates to
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> 
-    <span class="n">e1</span>
-<span class="k">else</span>
-    <span class="n">e2</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+if (e1 !== null) 
+    e1
+else
+    e2
+</pre></div>
+
 <h2 id="2-optional-else-part">2. Optional Else Part</h2>
 
 <p>The else part is optional, which is a shorthand for an else branch that returns the
 default value of the current type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">e1</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+if (e1 !== null) e1
+</pre></div>
+
 <h2 id="3-conditional-operator">3. Conditional Operator</h2>
 
 <p>Sometimes, it is useful to put a if-then-else expression inside another expression.
@@ -107,11 +113,17 @@ In programming languages such as Java or C/C++, this conditional operator has th
 an expression. It means that it could be included into another expression like all the other expressions.
 Consequently, there is no need of a specific syntax for the conditional operator in SARL.
 The following example is the SARL equivelant of the Java conditional operator:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="n">b</span> <span class="k">else</span> <span class="n">c</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+if (a) b else c
+</pre></div>
+
 <p>You can use <code class="prettyprint">if</code> expressions deeply nested within expressions:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">name</span> <span class="o">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">e1</span> <span class="o">!==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">e1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">e2</span> <span class="k">else</span> <span class="n">e2</span>
-</code></pre></div>
+
+<div class="highlight highlight-SARL"><pre>
+val name = if (e1 !== null) e1 + ' ' + e2 else e2
+</pre></div>
+
 <h2 id="4-acknowledgements">4. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
@@ -124,7 +136,7 @@ The following example is the SARL equivelant of the Java conditional operator:</
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
 <li>Status: Draft Release</li>
-<li>Release: 2017-10-08</li>
+<li>Release: 2017-10-23</li>
 </ul>
 
 <blockquote>
@@ -188,6 +200,13 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
 		
 		  <li>
 			<a href="https://github.com/sarl/sarl" target="_blank">
