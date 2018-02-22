@@ -93,21 +93,23 @@ forcing you to add an explicit dependency to the SRE Library, e.g. Janus, into y
 application classpath.</p>
 
 <p>The SARL API defines a SRE bootstrap as:</p>
-
-<div class="highlight highlight-SARL"><pre>
-interface SREBootstrap {
-    def [getBootAgentIdentifier](http://www.sarl.io) : UUID
-    def [isActive](http://www.sarl.io) : boolean
-    def [startAgent](http://www.sarl.io)(Class<Agent>, Object[]) : UUID
-    def [startAgent](http://www.sarl.io)(int, Class<Agent>, Object[]) : Iterable<UUID>
-    def [startWithoutAgent](http://www.sarl.io) : AgentContext
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SREBootstrap</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">getBootAgentIdentifier</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="n">isActive</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">setBootAgentTypeContextUUID</span>
+    <span class="kd">def</span> <span class="n">setDefaultContextUUID</span>
+    <span class="kd">def</span> <span class="nf">setOffline</span><span class="o">(</span><span class="kt">boolean</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="n">setRandomContextUUID</span>
+    <span class="kd">def</span> <span class="nf">setVerboseLevel</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+    <span class="kd">def</span> <span class="n">startWithoutAgent</span> <span class="o">:</span> <span class="n">AgentContext</span>
+<span class="o">}</span>
+</code></pre></div>
 <p>A run-time environment, such as <a href="http://www.janusproject.io">Janus</a> must provide a service implementing this bootstrap interface.
 The standard Java service management feature is used. in other words, the SRE should
 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">declare the service implementation</a> into
-its <code class="prettyprint">META-INF/services/io.sarl.core.SREBootstrap</code> file.</p>
+its <code class="prettyprint">META-INF/services/io.sarl.bootstrap.SREBootstrap</code> file.</p>
 
 <h2 id="2-using-the-sre-bootstrap">2. Using the SRE Bootstrap</h2>
 
@@ -196,8 +198,8 @@ Please read the rest of the documentation for obtaining more details.</p>
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -210,7 +212,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -230,16 +230,13 @@ This event is fired when the launched agent is started.</p>
 
 <p>For retrieving the values passed on the command line, you must handle the <code class="prettyprint">Initialize</code> event, as illustrated
 by the following example:</p>
-
-<div class="highlight highlight-SARL"><pre>
-agent MyAgent {
-    uses Logging
-    on Initialize {
-        println("Command line parameters: " + occurrence.parameters)
-    }
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Command line parameters: &quot;</span> <span class="o">+</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <h2 id="4-whats-next">4. What&#39;s next?</h2>
 
 <p>In the next section, we will learn how to launch your SARL project from the command line.</p>
@@ -251,8 +248,8 @@ agent MyAgent {
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -265,7 +262,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 

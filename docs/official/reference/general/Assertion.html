@@ -73,33 +73,24 @@ the program to crash, or to throw an assertion exception.</p>
 <h2 id="1-assert-statement">1. Assert Statement</h2>
 
 <p>SARL supports assertions in the source code by the <code class="prettyprint">assert</code> keyword.</p>
-
-<div class="highlight highlight-SARL"><pre>
-assert someCondition
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">assert</span> <span class="n">someCondition</span>
+</code></pre></div>
 <p>The <code class="prettyprint">someCondition</code> expression is the Boolean expression that is dynamically evaluated.
 For example, in the following code, the two first <code class="prettyprint">assert</code> have their conditions evaluated to true, and do not stop the program.
 The third <code class="prettyprint">assert</code> condition is evaluated to false. It causes a stop of the program.</p>
-
-<div class="highlight highlight-SARL"><pre>
-x = 1
-assert x > 0
-x++
-assert x > 1
-assert x <= 1
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">x</span><span class="o">++</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">assert</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</code></pre></div>
 <h2 id="2-error-message">2. Error Message</h2>
 
 <p>Sometimes, it is useful to give an explanation about the failure.
 The <code class="prettyprint">assert</code> keyword accepts a string of character that is the message given when the program has crashed.
 The message string follows the condition, with a coma character between them.</p>
-
-<div class="highlight highlight-SARL"><pre>
-assert someCondition, "the failure explanation is here"
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">assert</span> <span class="n">someCondition</span><span class="o">,</span> <span class="s">&quot;the failure explanation is here&quot;</span>
+</code></pre></div>
 <h2 id="3-acknowledgements">3. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
@@ -111,8 +102,8 @@ assert someCondition, "the failure explanation is here"
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -125,7 +116,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -121,6 +121,12 @@ name of the agent as parameter, <code class="prettyprint">myapp.MyAgent</code> i
 <p>The janus command-line tool provides options that will enable you to tune the launching configuration:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">janus --help
 </code></pre></div>
+<p>One of the command-line options that is usually mandatory is the --jar option, which enables you to specify the jar files that contains your application:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">janus --jar path/to/myapp.jar myapp.MyAgent
+</code></pre></div>
+<p>If the <code class="prettyprint">janus</code> script indicates to you an error &quot;agent not found&quot;, most of the time it is because your application&#39;s jar file is not on the class path.
+The --jar option becomes mandatory for specifying the jar file.</p>
+
 <h2 id="2-use-the-standard-java-method">2. Use the standard java method</h2>
 
 <h3 id="2-1-boot-of-janus">2.1. Boot of Janus</h3>
@@ -220,8 +226,8 @@ For obtaining the list of these options, you should type:</p>
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -234,7 +240,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 

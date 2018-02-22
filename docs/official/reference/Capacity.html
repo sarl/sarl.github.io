@@ -110,16 +110,13 @@ a Capacity: no attribute or field is allowed, and no body (code) for the Action 
 is defined. This Capacity enables an Agent to log information and debugging messages.</p>
 
 <p><note>Defining a Capacity without Actions is a symptom of a design problem.</note></p>
-
-<div class="highlight highlight-SARL"><pre>
-capacity Logging {
-    // Log an information message
-    def info(text : String)
-    // Log a debugging message
-    def debug(text : String)
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Logging</span> <span class="o">{</span>
+    <span class="c1">// Log an information message</span>
+    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+    <span class="c1">// Log a debugging message</span>
+    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
 <h3 id="1-2-extending-a-capacity">1.2. Extending a Capacity</h3>
 
 <p>In some situations, it is useful to specialize the definition of a Capacity. Capacity specialization is supported
@@ -132,31 +129,25 @@ object-oriented language.</p>
 This is similar to the implementation of interfaces in the Java language.</veryimportantnote></p>
 
 <p>In the following code, the <code class="prettyprint">Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
-
-<div class="highlight highlight-SARL"><pre>
-capacity ErrorLogging extends Logging {
-    // Log a error message
-    def error(text : String)
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">ErrorLogging</span> <span class="k">extends</span> <span class="n">Logging</span> <span class="o">{</span>
+    <span class="c1">// Log a error message</span>
+    <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
 <h3 id="1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</h3>
 
 <p>In some situations, it is useful to define a Capacity by extending more than one Capacity.
 Below, the <code class="prettyprint">Cap3</code> Capacity is defined as an extension of the Capacities <code class="prettyprint">Cap1</code> and <code class="prettyprint">Cap2</code>.</p>
-
-<div class="highlight highlight-SARL"><pre>
-capacity Cap1 {
-    def action1
-}
-capacity Cap2 {
-    def action2
-}
-capacity Cap3 extends Cap1, Cap2 {
-    def action3
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Cap1</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action1</span>
+<span class="o">}</span>
+<span class="kd">capacity</span> <span class="nc">Cap2</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action2</span>
+<span class="o">}</span>
+<span class="kd">capacity</span> <span class="nc">Cap3</span> <span class="k">extends</span> <span class="n">Cap1</span><span class="o">,</span> <span class="n">Cap2</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">action3</span>
+<span class="o">}</span>
+</code></pre></div>
 <h3 id="1-4-modifiers">1.4. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for Capacity.
@@ -179,14 +170,11 @@ The modifiers are usually written before the keyword defining the Capacity.</p>
 </ul>
 
 <p>Examples:</p>
-
-<div class="highlight highlight-SARL"><pre>
-public capacity Example1 {
-}
-package capacity Example2 {
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">capacity</span> <span class="nc">Example1</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kn">package</span> <span class="kd">capacity</span> <span class="nc">Example2</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div>
 <h4 id="method-modifiers">Method Modifiers</h4>
 
 <p>The modifiers for the Actions (methods) in a Capacity are:</p>
@@ -200,12 +188,9 @@ package capacity Example2 {
 </ul>
 
 <p>Example:</p>
-
-<div class="highlight highlight-SARL"><pre>
-// Public access function
-public def example1
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Public access function</span>
+<span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span>
+</code></pre></div>
 <h2 id="2-built-in-capacities">2. Built-in Capacities</h2>
 
 <p>Several Capacities are defined and reserved by the SARL Core Specification.
@@ -240,8 +225,8 @@ A Capacity cannot be called by itself since it does not provide an implementatio
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -254,7 +239,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 

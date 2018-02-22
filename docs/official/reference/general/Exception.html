@@ -75,48 +75,39 @@ please see <a href="./FuncDecls.html#2-declare-exceptions-in-the-function-protot
 
 <p>Throwing objects of type <code class="prettyprint">Throwable</code> and the <code class="prettyprint">throw</code> keyword have the same semantics and syntax as in Java; see
 <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.18">Java Language Specification</a>. </p>
-
-<div class="highlight highlight-SARL"><pre>
-throw new IllegalArgumentException("explanation")
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;explanation&quot;</span><span class="o">)</span>
+</code></pre></div>
 <h2 id="2-try-catch-finally">2. Try, Catch, Finally</h2>
 
 <p>The try-catch-finally expression is used to handle exceptional situations. 
 Checked exceptions are treated like runtime exceptions and only optionally 
 validated. You can, but do not have to, catch them as they will be silently thrown. </p>
-
-<div class="highlight highlight-SARL"><pre>
-try {
-    throw new RuntimeException()
-} catch(e : Exception) {
-    // Handle the exception
-} finally {
-    // Do this block after the try block (if no exception thrown), 
-    // the matched catch block (if an exception was catched),
-    // or before exiting the function (if an exception was thrown
-    // but not catched).
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">try</span> <span class="o">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">()</span>
+<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">Exception</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Handle the exception</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="c1">// Do this block after the try block (if no exception thrown), </span>
+    <span class="c1">// the matched catch block (if an exception was catched),</span>
+    <span class="c1">// or before exiting the function (if an exception was thrown</span>
+    <span class="c1">// but not catched).</span>
+<span class="o">}</span>
+</code></pre></div>
 <h2 id="3-try-catch-as-an-expression">3. Try-Catch as an Expression</h2>
 
 <p>For try-catch, the argument is an expression. Consequently, you can
 write code like the following and do not have to rely on
 non-final variables: </p>
-
-<div class="highlight highlight-SARL"><pre>
-def readFromFile : String { } 
-def example {
-    val name =  try {
-                    readFromFile
-                } catch (e : IOException) {
-                    "unknown"
-                }
-    println(name)
-}
-</pre></div>
-
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">readFromFile</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span> <span class="o">}</span> 
+<span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
+    <span class="kd">val</span> <span class="n">name</span> <span class="o">=</span>  <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">readFromFile</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">e</span> <span class="o">:</span> <span class="n">IOException</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="s">&quot;unknown&quot;</span>
+                <span class="o">}</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
 <h2 id="4-acknowledgements">4. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
@@ -128,8 +119,8 @@ def example {
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.7</li>
-<li>Status: Draft Release</li>
-<li>Release: 2017-10-23</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-02-22</li>
 </ul>
 
 <blockquote>
@@ -142,7 +133,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.0.</small></p>
 
     </div> <!-- /default layout container -->
 
