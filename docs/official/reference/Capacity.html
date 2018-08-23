@@ -78,7 +78,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p><li><a href="#2-built-in-capacities">2. Built-in Capacities</a></li>
 <li><a href="#3-use-of-the-capacities">3. Use of the Capacities</a></li>
-<li><a href="#4-legal-notice">4. Legal Notice</a></li></p>
+<li><a href="#4-associating-a-default-skill-to-a-capacity">4. Associating a default skill to a capacity</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -220,13 +221,43 @@ A Capacity cannot be called by itself since it does not provide an implementatio
 <li><a href="./Behavior.html">Behavior</a></li>
 </ul>
 
-<h2 id="4-legal-notice">4. Legal Notice</h2>
+<h2 id="4-associating-a-default-skill-to-a-capacity">4. Associating a default skill to a capacity</h2>
+
+<p>As described within the previous section, when a capacity&#39;s function is invoked, the function&#39;s implementation is retreived from
+the <a href="./Skill.html">skill</a> that was associated to the capacity.</p>
+
+<p>The standard way for associating a capacity and a skill is to call the <code class="prettyprint">setSkill</code> function within an agent or a behavior, as
+detailed in the <a href="./Agent.html">agent&#39;s documentation</a>.</p>
+
+<p>Nevertheless, let the case in which we would like to bind a capacity to a default skill.
+In other words, we would like to specify that a skill should be associated by default to a capacity if the <code class="prettyprint">setSkill</code> function
+is not invoked.</p>
+
+<p>The way to realize this it is to the <code class="prettyprint">@DefaultSkill</code>.
+This annotation may be attached to a capacity&#39;s declaration in order to specify the skill that should be binded by default to
+the capacity.  </p>
+
+<p>In the following example, the <code class="prettyprint">MyCapacity</code> capacity and the <code class="prettyprint">MySkill</code> skill are declared.
+The [:defaultskillannon] annotation specifies that an instance of <code class="prettyprint">MySkill</code> should be binded to the
+<code class="prettyprint">MyCapacity</code> capacity if the developer does not change the binding programmatically.</p>
+
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@DefaultSkill</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MySkill</span><span class="o">))</span>
+<span class="kd">capacity</span> <span class="nc">MyCapacity</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">myfunction</span>
+<span class="o">}</span>
+<span class="kd">skill</span> <span class="nc">MySkill</span> <span class="k">implements</span> <span class="n">MyCapacity</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">myfunction</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.7</li>
-<li>Status: Stable Release</li>
-<li>Release: 2018-04-03</li>
+<li>Version: 0.8</li>
+<li>Status: Draft Release</li>
+<li>Release: 2018-08-19</li>
 </ul>
 
 <blockquote>
@@ -239,7 +270,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.2.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

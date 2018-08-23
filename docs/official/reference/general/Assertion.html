@@ -91,19 +91,56 @@ The <code class="prettyprint">assert</code> keyword accepts a string of characte
 The message string follows the condition, with a coma character between them.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">assert</span> <span class="n">someCondition</span><span class="o">,</span> <span class="s">&quot;the failure explanation is here&quot;</span>
 </code></pre></div>
-<h2 id="3-acknowledgements">3. Acknowledgements</h2>
+<h1 id="enable-and-disable-assertions">Enable and Disable Assertions.</h1>
+
+<p>By default, assertions are disabled. It means that they are not evaluated at run-time.
+In this way, if someone is launching your application, the application is running quickly, and
+the assert errors cannot occur. It is compliant with the fact that assertions are tests by and for
+the application&#39;s developers: the final user of the application is not care about the implementation
+constraints.</p>
+
+<p>For enabling and disabling the assertions, you must change the launch configuration within the SARL product,
+or use an option that is provided by the SARL run-time environment.</p>
+
+<h2 id="3-inside-the-sarl-development-environment">3. Inside the SARL Development Environment</h2>
+
+<p>Within the SARL development environment, you must define a launch configuration for running a SARL application.
+Two launch configurations are available:
+* &quot;SARL Agent&quot; for launching an agent, and
+* &quot;SARL Application&quot; for launching a standard application (based on the definition of a <code class="prettyprint">main</code> method), which will launch the SARL framework later. </p>
+
+<p>Both of these launch configurations allow you to enable or disable the assertions.
+On the figure below, you could see the &quot;Enable assertions in run mode&quot; and &quot;Enable assertions in debug mode&quot;
+checkboxes within the &quot;Launch Options&quot; section.
+If the first (resp. second) box is checked, assertions will be enabled when you application was launched in run (resp. debug) mode. </p>
+
+<p><img src="./enableassertions.png" alt="Screenshot of the dialog box of a SARL launch configuration"></p>
+
+<h2 id="4-launching-the-janus-framework">4. Launching the Janus framework</h2>
+
+<p>The Janus framework is one implementation of a SARL run-time environment. You have to use one of its command-line
+options for enabling assertions. All the command-line options are detailed on a <a href="../../tools/Janus.html">dedicated page</a>.
+Usually, the option for enabling the assertions is the same as the one of the Java virtual machine: -ea.</p>
+
+<h2 id="5-launching-the-java-virtual-machine">5. Launching the Java virtual machine</h2>
+
+<p>If you want to run your SARL application by launching the Java virtual machine, you could use the standard command
+line options <code class="prettyprint">-enableassertions</code> and <code class="prettyprint">-ea</code> that are provided by this virtual machine:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">    java [ -enableassertions | -ea  ] &lt;class name&gt;
+</code></pre></div>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="4-legal-notice">4. Legal Notice</h2>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.7</li>
-<li>Status: Stable Release</li>
-<li>Release: 2018-04-03</li>
+<li>Version: 0.8</li>
+<li>Status: Draft Release</li>
+<li>Release: 2018-08-19</li>
 </ul>
 
 <blockquote>
@@ -116,7 +153,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.2.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

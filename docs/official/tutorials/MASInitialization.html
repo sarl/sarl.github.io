@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Initialization of a Multiagent System</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="initialization-of-a-multiagent-system">Initialization of a Multiagent System</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-example-of-a-problematic-system">1. Example of a problematic system</a></li>
+<li><a href="#2-solution-waiting-for-the-agent-spawning">2. Solution: waiting for the agent spawning</a></li>
+<li><a href="#3-legal-notice">3. Legal Notice</a></li>
+
+</ul>
+
+<p>This document describes the key elements and the best practices for initializing and starting up a multiagent system.
+Before reading this document, it is recommended reading
+the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p>Initialization of a multiagent system is a hard problem, and specifically with SARL in which the
+<a href="./ParallelExecution.html">agent spawning is run in parallel</a>.</p>
+
+<p>The problem is: how ensuring that all the agents on the system are alive before starting to run their
+standard behaviors?</p>
+
+<h2 id="1-example-of-a-problematic-system">1. Example of a problematic system</h2>
+
+<p>First, let consider a SARL code that is not working well regarding the initialization of the system.
+In the following code, the type of agent <code class="prettyprint">MyAgent</code> is defined.
+This type of agent emits an <code class="prettyprint">MyEvent</code> event when the application starts, i.e. when the agent is initialized.
+It also logs the message <code class="prettyprint">&quot;Event received&quot;</code> when the agent is initialized.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">MyEvent</span>
+<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">MyEvent</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Event received&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>For starting the system, we could define a booting agent that starts 100 agents of the previously defined type:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">spawn</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">))</span>
+        <span class="o">}</span>
+        <span class="n">killMe</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>There is no warranty that the following sentences are true:
+* The order of the agent initialization is the same as the order of the <code class="prettyprint">spawn</code> calls;
+* When the spawning loop is finished, all agents are spawned.
+* The number of logged messages is always equal to 100 * 100 = 10,000, i.o.w. 100 spawned agents that are receiving the events from itself and the other agents.</p>
+
+<p>But, according to the operational semantic of the spawning loop, the number of received messages
+is defined by the mathematical suite f(n) = f(n-1) + n = (n(n+1))/2, illustrated in the table below.
+For 100 agents, the number of logged messages should be 5,050, not 10,000.</p>
+
+<table><thead>
+<tr>
+<th>Number of spawned agents</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Number of received messages</td>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+<td>10</td>
+<td>15</td>
+</tr>
+</tbody></table>
+
+<p>Moreover, According to the expected <a href="./ParallelExecution.html">agent spawning&#39;s parallel execution</a>, the calls to the
+<code class="prettyprint">spawn</code> function form a sequence of 100 calls; And, each call to the <code class="prettyprint">spawn</code> function starts a spawning task that is run within a separated thread.
+Consequently, the general behavior of the system is not deterministic.
+We cannot infer the number of messages that will be logged because some event may be fired by agents when several
+other agents are still waiting for their spawns. The only one fact is that the number of logged messages is lower than or equal to f(100).</p>
+
+<h2 id="2-solution-waiting-for-the-agent-spawning">2. Solution: waiting for the agent spawning</h2>
+
+<p>A possible solution to the previously mentionned problem is to split the starting up of the application into two steps:
+1. Spawning of the agents: agents are spawn, and the system waits until all the agents are alive and ready.
+2. Application start: a specific event is given to all the agents for notifying them that they could start their &quot;standard&quot; behaviors.</p>
+
+<p>Consequently, the agent&#39;s code may be redefined as follow:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">StartApplication</span>
+<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">StartApplication</span> <span class="o">{</span>
+        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">MyEvent</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Event received&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The agent emits the <code class="prettyprint">MyEvent</code> event only when the application has started.
+This application-start event is represented by the <code class="prettyprint">StartApplication</code> event.</p>
+
+<p>The booting agent becomes:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">DefaultContextInteractions</span>
+
+    <span class="kd">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">spawn</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent</span><span class="o">))</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="k">on</span> <span class="n">AgentSpawned</span> <span class="o">[!</span><span class="kc">it</span><span class="o">.</span><span class="n">agentIdentifiers</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="n">ID</span><span class="o">)]</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">++</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">StartApplication</span><span class="o">)</span> <span class="o">[</span><span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">!=</span> <span class="n">ID</span><span class="o">]</span>
+            <span class="n">killMe</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The two major steps of the multiagent system initialization are implemented.
+First, when the boot agent starts its life, it is spawning all the agents.
+Each time an agent is spawned, the booting agent is notified with an <code class="prettyprint">AgentSpawned</code> event.
+When the number of spawned agents reaches 100, the booting agent notifies about the application start
+and commits a suicide.</p>
+
+<h2 id="3-legal-notice">3. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.8</li>
+<li>Status: Draft Release</li>
+<li>Release: 2018-08-19</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

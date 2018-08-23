@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Parallel execution within the agents</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="parallel-execution-within-the-agents">Parallel execution within the agents</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-event-firing-dispatching-and-handling">1. Event Firing, Dispatching and Handling</a></li>
+<li><a href="#2-agent-spawning">2. Agent Spawning</a></li>
+<li><a href="#3-agent-killing">3. Agent Killing</a></li>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li>
+
+</ul>
+
+<p>This document describes the key features of SARL that are run in parallel on the SARL Runtime Environment (SRE).
+Before reading this document, it is recommended reading
+the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p>Each SRE provides a support for running the agents. Depending on the specifications of the SRE, the
+parallel execution of the agent&#39;s components may be used at different places.
+Nevertheless, according the SARL language&#39;s specifications, several features are assumed to be run in parallel.
+They are briefly explained below. </p>
+
+<h2 id="1-event-firing-dispatching-and-handling">1. Event Firing, Dispatching and Handling</h2>
+
+<p>In SARL, event-based communication is the interaction mechanism that is provided by default.
+Firing an event is done within an interaction space by calling one of the dedicated function that are defined within
+the <a href="../reference/bic/DefaultContextInteractions.html"><code class="prettyprint">DefaultContextInteractions</code></a>,
+<a href="../reference/bic/ExternalContextAccess.html"><code class="prettyprint">ExternalContextAccess</code></a> and
+<a href="../reference/bic/InnerContextAccess.html"><code class="prettyprint">InnerContextAccess</code></a> capacities.</p>
+
+<p>The event firing mechanism could be divided into three steps:
+1. Event firing: the event is fired by a source object;
+2. Event dispatching: the event is routed to the agents that should receive the event; and
+3. Event handling: the event is provided to each agent, and the defined event handlers (named behavior units) are run.</p>
+
+<p>Each of these steps are basically run in different threads.
+Let the following code:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">MyEvent</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Event sent&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">MyEvent</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Event received&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The call to <code class="prettyprint">emit</code> is run within the thread of the calling block, i.e. <code class="prettyprint">on Initialize</code>.
+The event is provides to the SRE, that is routing this event within a dedicated &quot;hidden&quot; thread.
+Consequently, the call to <code class="prettyprint">emit</code> returns quickly. And, there is no warranty that the event&#39;s routing
+is started nor terminated when the function returns. </p>
+
+<p>In order to allow the parallel treatment of the events by an agent, each event handler, e.g. <code class="prettyprint">on MyEvent</code>
+is run in a dedicated thread.</p>
+
+<p><caution>In the previous example, there is no warranty about the order of printing of the two messages. Because of the parallel execution
+of the threads, the <code class="prettyprint">&quot;Agent was spawned&quot;</code> message may be displayed before the <code class="prettyprint">&quot;Spawn query called&quot;</code> message.</caution></p>
+
+<h2 id="2-agent-spawning">2. Agent Spawning</h2>
+
+<p>Agent spawning is the action to create and start an agent from another agent.
+The spawning function is provided by the 
+<a href="../reference/bic/Lifecycle.html"><code class="prettyprint">Lifecycle</code></a> capacity.</p>
+
+<p>The agent spawning process is divided into several steps:
+1. Call of the spawning function;
+2. Creation of the agent within the computer memory;
+3. SRE-specific initialization of the agent capacities and internal fields;
+4. Synchronous execution of the [:initializeblock] of the agent;
+5. Firing of the AgentSpawned event.</p>
+
+<p>Step 1 is run within the thread of the caller.
+Steps 2 to 5 are run within an internal thread of the SRE.</p>
+
+<p>Let the following code:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">spawn</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MyAgent2</span><span class="o">))</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Spawn query called&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">AgentSpawned</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Agent was spawned&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">agent</span> <span class="nc">MyAgent2</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Do initialization&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The <code class="prettyprint">&quot;Do initialization&quot;</code> message is always logged before the <code class="prettyprint">&quot;Agent was spawned&quot;</code> message because the executed code corresponds to
+steps 5 and 4, respectively. These steps are run on the same thread.</p>
+
+<p>But, there is no warranty about when the <code class="prettyprint">&quot;Do initialization&quot;</code> message is logged. According to the parallel execution,
+it may be logged at any time. Consequently, the possible output cases are:
+* <code class="prettyprint">&quot;Spawn query called&quot;</code>, <code class="prettyprint">&quot;Do initialization&quot;</code>, <code class="prettyprint">&quot;Agent was spawned&quot;</code>
+* <code class="prettyprint">&quot;Do initialization&quot;</code>, <code class="prettyprint">&quot;Spawn query called&quot;</code>, <code class="prettyprint">&quot;Agent was spawned&quot;</code>
+* <code class="prettyprint">&quot;Do initialization&quot;</code>, <code class="prettyprint">&quot;Agent was spawned&quot;</code>, <code class="prettyprint">&quot;Spawn query called&quot;</code></p>
+
+<h2 id="3-agent-killing">3. Agent Killing</h2>
+
+<p>Agent killing is the action to stop and destroy an agent.
+The killing function is provided by the 
+<a href="../reference/bic/Lifecycle.html"><code class="prettyprint">Lifecycle</code></a> capacity.</p>
+
+<p>The agent killing process is divided into several steps:
+1. Call of the killing function;
+2. Synchronous execution of the [:destroyblock] of the agent;
+3. SRE-specific destruction of the agent;
+4. Firing of the AgentKilled event.</p>
+
+<p>Step 1 is run within the thread of the caller.
+Steps 2 to 4 are run within an internal thread of the SRE.</p>
+
+<p>Let the following code:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">killMe</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Destroy</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Do destruction&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">AgentKilled</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="s">&quot;Agent was killed&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The <code class="prettyprint">&quot;Agent was killed&quot;</code> message is always logged after the <code class="prettyprint">&quot;Do destruction&quot;</code> message because the executed code corresponds to
+steps 4 and 3, respectively. These steps are run on the same thread.</p>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.8</li>
+<li>Status: Draft Release</li>
+<li>Release: 2018-08-19</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

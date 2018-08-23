@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>Janus Command-line Launcher</title>
+    <title>Maven Plugin for the SARL Compiler</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -64,113 +64,245 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="janus-command-line-launcher">Janus Command-line Launcher</h1>
+      <h1 id="maven-plugin-for-the-sarl-compiler">Maven Plugin for the SARL Compiler</h1>
 
 <ul class="page_outline" id="page_outline">
 
 <li><a href="#1-usage">1. Usage</a></li>
-<li><a href="#2-command-line-options">2. Command-Line Options</a></li>
+<li><a href="#2-configuration">2. Configuration</a></li>
 <li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
 </ul>
 
-<p><a href="http://www.janusproject.io">Janus</a> is the default SARL Run-time Environment (SRE).
-Its role is to provide all the libraries and plugins that are needed for running SARL agents.</p>
+<p><a href="http://maven.apache.org">Apache Maven</a> is a build automation tool used primarily for Java projects.</p>
 
-<p>For launching the Janus platform from a command-line shell, you could use the <code class="prettyprint">janus</code> tool.</p>
+<p>Maven addresses two aspects of building software: first, it describes how software is built, 
+and second, it describes its dependencies.
+Unlike earlier tools like <a href="https://en.wikipedia.org/wiki/Apache_Ant">Apache Ant</a>, it uses conventions
+for the build procedure, and only exceptions need to be written down.
+An XML file describes the software project being built, its dependencies on other external modules
+and components, the build order, directories, and required plug-ins. It comes with pre-defined
+targets for performing certain well-defined tasks such as compilation of code and its packaging.</p>
+
+<p>In order to compile SARL code within a Maven-based project, a compilation plug-in is provided, named
+<code class="prettyprint">sarl-maven-plugin</code>.</p>
 
 <h2 id="1-usage">1. Usage</h2>
 
-<p>The <code class="prettyprint">janus</code> tool takes arguments:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">janus [OPTIONS] &lt;agent_fully_qualified_name&gt;
+<p>Open the file <code class="prettyprint">pom.xml</code> of your project, and edit it for obtaining a content similar to the
+configuration below.</p>
+
+<p>Replace the version number <code class="prettyprint">0.8.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the
+<a href="http://search.maven.org/">Maven Central Repository</a> for the last available version.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;project&gt;</span>
+    ...
+    <span class="nt">&lt;properties&gt;</span>
+       ...
+       <span class="nt">&lt;sarl.version&gt;</span>0.8.0-SNAPSHOT<span class="nt">&lt;/sarl.version&gt;</span>
+       <span class="nt">&lt;compiler.level&gt;</span>1.8<span class="nt">&lt;/compiler.level&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+    ...
+    <span class="nt">&lt;build&gt;</span>
+       <span class="nt">&lt;plugins&gt;</span>
+          ...
+          <span class="nt">&lt;plugin&gt;</span>
+             <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
+             <span class="nt">&lt;artifactId&gt;</span>sarl-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+             <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+             <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
+             <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;source&gt;</span>${compiler.level}<span class="nt">&lt;/source&gt;</span>
+                <span class="nt">&lt;target&gt;</span>${compiler.level}<span class="nt">&lt;/target&gt;</span>
+             <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/plugin&gt;</span>
+       <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+    ...
+    <span class="nt">&lt;dependencies&gt;</span>
+      ...
+       <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>io.sarl.maven.sdk<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+       <span class="nt">&lt;/dependency&gt;</span>
+       ...
+    <span class="nt">&lt;/dependencies&gt;</span>
+    ...
+ <span class="nt">&lt;/project&gt;</span>
 </code></pre></div>
-<p>The <code class="prettyprint">agent_fully_qualified_name</code> is the name of the agent to launch. This name is equal to the
-fully qualified name of the agent&#39;s type.</p>
+<h2 id="2-configuration">2. Configuration</h2>
 
-<p><note>Janus enables to launch only one agent from the command-line shell. If you want to launch
-more than one agent, you should launch a first agent, which will create the other agents.</note></p>
-
-<p>You could change the behavior of the <code class="prettyprint">janus</code> tool with the command-line options.
-For obtaining a list of the options, type:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">janus -help
-</code></pre></div>
-<h2 id="2-command-line-options">2. Command-Line Options</h2>
-
-<p>The complete list of the options is:</p>
+<p>The configuration section may contains the following elements.</p>
 
 <table><thead>
 <tr>
-<th>Option</th>
+<th>Property</th>
+<th>Maven Goal</th>
+<th>Property Type</th>
 <th>Description</th>
+<th>Default Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">-B</code>, <code class="prettyprint">--bootid</code></td>
-<td>The Janus context UUID is computed from the classname of the boot agent. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to true and false.</td>
+<td>detail</td>
+<td>help</td>
+<td>boolean</td>
+<td>If true, display all settable properties for each goal.</td>
+<td>false</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-cp</code>, <code class="prettyprint">--classpath</code></td>
-<td>Add entries to the Java classpath</td>
+<td>encoding</td>
+<td>compile, testCompile</td>
+<td>java.lang.String</td>
+<td>Encoding.</td>
+<td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">--cli</code></td>
-<td>Show the command line arguments received by Janus.</td>
+<td>extraGenerators</td>
+<td>compile, testCompile</td>
+<td>java.lang.String[]</td>
+<td>Indicates if the extra-language generators to be enabled.</td>
+<td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">-D</code>, <code class="prettyprint">--define &lt;property=value&gt;</code></td>
-<td>Define a system property.</td>
+<td>generateCloneFunctions</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the clone functions must be generated by the SARL maven plugin.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-e</code>, <code class="prettyprint">--embedded</code></td>
-<td>Janus is run inside another application.</td>
+<td>generateEqualityTestFunctions</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the equality test functions must be generated by the SARL maven plugin.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-f</code>, <code class="prettyprint">--file</code></td>
-<td>Load system properties from a file.</td>
+<td>generateInlines</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the inline annotations must be generated by the SARL maven plugin.</td>
+<td>false</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-h</code>, <code class="prettyprint">--help</code></td>
-<td>Display this help.</td>
+<td>generatePures</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the pure annotations must be generated by the SARL maven plugin.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-l</code>, <code class="prettyprint">--log</code></td>
-<td>Set the logging level. Default level is &#39;info&#39;. The available logging levels are: none (0), error (1), warning (2), info (3), fine (4), finer (5), finest (6), all (7).</td>
+<td>generateSerialNumberFields</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the serial number fields must be generated by the SARL maven plugin.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">--nologo</code></td>
-<td>Hide the Janus logo.</td>
+<td>generateStorageFiles</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the storage files should be generated.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-o</code>, <code class="prettyprint">--offline</code></td>
-<td>Run the platform offline: it cannot communicate with other platform instances. It is equivalent as setting the property &#39;janus.network.offline&#39; to true.</td>
+<td>generateToStringFunctions</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the toString functions must be generated by the SARL maven plugin.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-q</code>, <code class="prettyprint">--quiet</code></td>
-<td>Decrease the logging level.</td>
+<td>generateTraceFiles</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the trace files should be generated.</td>
+<td>true</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-R</code>, <code class="prettyprint">--randomid</code></td>
-<td>The Janus context UUID is computed randomly. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to false and true.</td>
+<td>goal</td>
+<td>help</td>
+<td>java.lang.String</td>
+<td>The name of the goal for which to show help. If unspecified, all goals will be displayed.</td>
+<td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">-showclasspath</code></td>
-<td>Show the classpath used by the application.</td>
+<td>indentSize</td>
+<td>help</td>
+<td>int</td>
+<td>The number of spaces per indentation level, should be positive.</td>
+<td>2</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-s</code>, <code class="prettyprint">--showdefaults</code></td>
-<td>Show the default values of the system properties.</td>
+<td>input</td>
+<td>clean, compile, initialize, testCompile</td>
+<td>java.io.File</td>
+<td>The directory in which the standard SARL code files are located.</td>
+<td>src/main/sarl</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-v</code>, <code class="prettyprint">--verbose</code></td>
-<td>Increase the logging level.</td>
+<td>javaCompiler</td>
+<td>compile, testCompile</td>
+<td>java.lang.String</td>
+<td>Indicates the Java compiler to be invoked by the SARL maven plugin.</td>
+<td></td>
 </tr>
 <tr>
-<td><code class="prettyprint">-version</code></td>
-<td>Display the version of Janus.</td>
+<td>lineLength</td>
+<td>help</td>
+<td>int</td>
+<td>The maximum length of a display line, should be positive.</td>
+<td>80</td>
 </tr>
 <tr>
-<td><code class="prettyprint">-W</code>, <code class="prettyprint">--worldid</code></td>
-<td>The Janus context UUID is the default hard-coded one. It is equivalent as setting the properties &#39;janus.context.id.boot&#39; and &#39;janus.context.id.random&#39; to false, both.</td>
+<td>optimization</td>
+<td>compile, testCompile</td>
+<td>java.lang.String</td>
+<td>Indicates the level of optimization.</td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>clean, compile, initialize, testCompile</td>
+<td>java.io.File</td>
+<td>The directory in which the Java code files are generated from the standard SARL code files.</td>
+<td>src/main/generated-sources/sarl</td>
+</tr>
+<tr>
+<td>source</td>
+<td>compile, testCompile</td>
+<td>java.lang.String</td>
+<td>Version of the Java specification used for the source files.</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>tempDirectory</td>
+<td>compile, testCompile</td>
+<td>java.io.File</td>
+<td>Location of the temporary compiler directory.</td>
+<td></td>
+</tr>
+<tr>
+<td>testInput</td>
+<td>clean, compile, initialize, testCompile</td>
+<td>java.io.File</td>
+<td>The directory in which the test SARL code files are located.</td>
+<td>src/test/sarl</td>
+</tr>
+<tr>
+<td>testOutput</td>
+<td>clean, compile, initialize, testCompile</td>
+<td>java.io.File</td>
+<td>The directory in which the Java code files are generated from the test SARL code files.</td>
+<td>src/test/generated-sources/sarl</td>
+</tr>
+<tr>
+<td>tycho</td>
+<td>compile, testCompile</td>
+<td>boolean</td>
+<td>Indicates if the classpath is provided by Tycho.</td>
+<td>false</td>
 </tr>
 </tbody></table>
 

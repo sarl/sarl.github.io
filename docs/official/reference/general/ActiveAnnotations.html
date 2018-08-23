@@ -71,9 +71,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#1-accessors">1. @Accessors</a></li>
 <li><a href="#2-data">2.  @Data</a></li>
 <li><a href="#3-delegate">3.  @Delegate</a></li>
-<li><a href="#4-tostring">4. @ToString</a></li>
-<li><a href="#5-acknowledgements">5. Acknowledgements</a></li>
-<li><a href="#6-legal-notice">6. Legal Notice</a></li>
+<li><a href="#4-noequalitytestfunctionsgeneration">4. @NoEqualityTestFunctionsGeneration</a></li>
+<li><a href="#5-tostring">5. @ToString</a></li>
+<li><a href="#6-acknowledgements">6. Acknowledgements</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
 
 </ul>
 
@@ -251,7 +252,34 @@ create the delegate object or use a different one each time.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="4-tostring">4. @ToString</h2>
+<h2 id="4-noequalitytestfunctionsgeneration">4. @NoEqualityTestFunctionsGeneration</h2>
+
+<p>The <code class="prettyprint">@NoEqualityTestFunctionsGeneration</code> annotation disables the generation the equality test functions, i.e. <code class="prettyprint">equals()</code> and <code class="prettyprint">hashCode()</code> from
+the field declarations.</p>
+
+<p>By default, the SARL compiler generates the equality test functions from the type&#39;s fields. In several cases, this automatic
+behavior should be avoiding because the standard equality test that is provided by the Java run-time environment should be used.
+In this case, <code class="prettyprint">@NoEqualityTestFunctionsGeneration</code> annotation may be used to mark a type or a field for being excluded of the equality test generation. </p>
+
+<p>The annotation may mark a type, as in the following example.
+In this case, no equality test function is generated within the marked type and all its subtypes.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@NoEqualityTestFunctionsGeneration</span>
+<span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
+  <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
+  <span class="kd">var</span> <span class="n">field2</span> <span class="o">:</span> <span class="n">String</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The annotation may mark a specific field in order to exclude it from the equality test generation.
+In the following example, the <code class="prettyprint">field2</code> field is marked with the annotation. Consequently, it
+is not included within the equality test within the <code class="prettyprint">equals()</code> function, and the hash code replied
+by the <code class="prettyprint">hashCode()</code> function does not include the hash code of the <code class="prettyprint">field2</code> field.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
+  <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
+  <span class="nd">@NoEqualityTestFunctionsGeneration</span>
+  <span class="kd">var</span> <span class="n">field2</span> <span class="o">:</span> <span class="n">String</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="5-tostring">5. @ToString</h2>
 
 <p>The <code class="prettyprint">@ToString</code> annotation enables to generate the function that replies the string representation
 of an object, a.k.a. as the <code class="prettyprint">toString()</code> function in a Java program.
@@ -280,19 +308,19 @@ This annotation can be applied to object-oriented types. The agent-oriented type
 </code></pre></div>
 <p>For brevity there are options to the annotation to hide field names, skip fields with null values and print everything on one line.</p>
 
-<h2 id="5-acknowledgements">5. Acknowledgements</h2>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="6-legal-notice">6. Legal Notice</h2>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.7</li>
-<li>Status: Stable Release</li>
-<li>Release: 2018-04-03</li>
+<li>Version: 0.8</li>
+<li>Status: Draft Release</li>
+<li>Release: 2018-08-19</li>
 </ul>
 
 <blockquote>
@@ -305,7 +333,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.7.2.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
