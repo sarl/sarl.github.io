@@ -188,16 +188,20 @@ the application&#39;s classpath. This plugin may be used for launching an agent.
 you may use the Maven execution plugin for classing this booting class.</p>
 
 <p>The typical command line is:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:java -Dexec.mainClass=&quot;io.janusproject.Boot&quot;
+<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:exec -Dexec.executable=java -Dexec.args=&quot;-cp %classpath io.janusproject.Boot&quot;
 </code></pre></div>
-<p>The option <code class="prettyprint">-Dexec.mainClass</code> specifies the fully qualified name of <code class="prettyprint">io.janusproject.Boot</code>.</p>
+<p>The option <code class="prettyprint">-Dexec.executable</code> specifies the Java executable.</p>
+
+<p>The option <code class="prettyprint">-Dexec.args</code> contains the command line arguments to pass to Java.
+The first argument is the classpath of the project. You must not change <code class="prettyprint">%classpath</code> because it will be dynamically
+replaced by the Maven plugin. </p>
 
 <h3 id="3-2-specify-the-agent-to-launch">3.2. Specify the Agent to Launch</h3>
 
 <p>The example given in the previous section causes an error.
 Indeed, it is mandatory to specify the fully qualified name
 of the agent to launch:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:java -Dexec.mainClass=&quot;io.janusproject.Boot&quot; -Dexec.args=myapp.MyAgent
+<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:exec -Dexec.executable=java -Dexec.args=&quot;-cp %classpath io.janusproject.Boot &lt;qualified_name_of_the_agent&gt;&quot;
 </code></pre></div>
 <p><veryimportant>The Janus platform allows to start only one agent from the command line.
 If you want to start a collection of agents, you must select
@@ -213,7 +217,7 @@ one of the following approaches:</p>
 
 <p>The Janus platform provides a collection of command line options.
 For obtaining the list of these options, you should type:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:java -Dexec.mainClass=&quot;io.janusproject.Boot&quot; -Dexec.args=--help
+<div class="highlight"><pre><code class="language-text" data-lang="text">mvn exec:exec -Dexec.executable=java -Dexec.args=&quot;-cp %classpath io.janusproject.Boot --help&quot;
 </code></pre></div>
 <h2 id="4-whats-next">4. What&#39;s next?</h2>
 
@@ -227,7 +231,7 @@ For obtaining the list of these options, you should type:</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.8</li>
 <li>Status: Draft Release</li>
-<li>Release: 2018-08-19</li>
+<li>Release: 2018-09-13</li>
 </ul>
 
 <blockquote>

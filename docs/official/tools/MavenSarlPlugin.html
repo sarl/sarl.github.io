@@ -100,6 +100,7 @@ configuration below.</p>
        ...
        <span class="nt">&lt;sarl.version&gt;</span>0.8.0-SNAPSHOT<span class="nt">&lt;/sarl.version&gt;</span>
        <span class="nt">&lt;compiler.level&gt;</span>1.8<span class="nt">&lt;/compiler.level&gt;</span>
+       <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
     <span class="nt">&lt;/properties&gt;</span>
     ...
     <span class="nt">&lt;build&gt;</span>
@@ -114,6 +115,16 @@ configuration below.</p>
                 <span class="nt">&lt;source&gt;</span>${compiler.level}<span class="nt">&lt;/source&gt;</span>
                 <span class="nt">&lt;target&gt;</span>${compiler.level}<span class="nt">&lt;/target&gt;</span>
              <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/plugin&gt;</span>
+          <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.6.2<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;source&gt;</span>${compiler.level}<span class="nt">&lt;/source&gt;</span>
+                <span class="nt">&lt;target&gt;</span>${compiler.level}<span class="nt">&lt;/target&gt;</span>
+                <span class="nt">&lt;encoding&gt;</span>${project.build.sourceEncoding}<span class="nt">&lt;/encoding&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
           <span class="nt">&lt;/plugin&gt;</span>
        <span class="nt">&lt;/plugins&gt;</span>
     <span class="nt">&lt;/build&gt;</span>
@@ -312,7 +323,7 @@ configuration below.</p>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.8</li>
 <li>Status: Draft Release</li>
-<li>Release: 2018-08-19</li>
+<li>Release: 2018-09-13</li>
 </ul>
 
 <blockquote>
