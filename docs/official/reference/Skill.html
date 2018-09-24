@@ -73,10 +73,12 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-1-basic-definition">1.1. Basic Definition</a></li>
   <li><a href="#1-2-field-definition">1.2. Field Definition</a></li>
   <li><a href="#1-3-action-definition">1.3. Action Definition</a></li>
-  <li><a href="#1-4-constructor-definition">1.4. Constructor Definition</a></li>
-  <li><a href="#1-5-multiple-capacity-implementation">1.5. Multiple Capacity Implementation</a></li>
-  <li><a href="#1-6-extending-a-skill">1.6. Extending a Skill</a></li>
-  <li><a href="#1-7-modifiers">1.7. Modifiers</a></li>
+  <li><a href="#1-4-initialization-of-a-skill">1.4. Initialization of a skill</a></li>
+  <li><a href="#1-5-uninitialization-of-a-skill">1.5. Uninitialization of a skill</a></li>
+  <li><a href="#1-6-constructor-definition">1.6. Constructor Definition</a></li>
+  <li><a href="#1-7-multiple-capacity-implementation">1.7. Multiple Capacity Implementation</a></li>
+  <li><a href="#1-8-extending-a-skill">1.8. Extending a Skill</a></li>
+  <li><a href="#1-9-modifiers">1.9. Modifiers</a></li>
 </ul>
 
 <p><li><a href="#2-built-in-skills">2. Built-in Skills</a></li>
@@ -158,7 +160,29 @@ of the Java logger is created and stored in a field of the Skill.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h3 id="1-4-constructor-definition">1.4. Constructor Definition</h3>
+<h3 id="1-4-initialization-of-a-skill">1.4. Initialization of a skill</h3>
+
+<p>Several elements of the skill can be used only after the skill is attached to its owning agent.
+For example, the value returned by the function <code class="prettyprint">getOwner</code> is not <code class="prettyprint">null</code> only when the skill is
+attached to an agent, i.e. its owner. </p>
+
+<p>In order to enable the developer to write a code that is run when the skill is attached, the function
+<code class="prettyprint">install</code> could be defined and implemented. The code below provides an example in which the value
+returned by <code class="prettyprint">getOwner</code> is checked.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">install</span> <span class="o">{</span>
+    <span class="c1">// Initialization of the skill</span>
+    <span class="n">assert</span> <span class="n">getOwner</span> <span class="o">!==</span> <span class="kc">null</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="1-5-uninitialization-of-a-skill">1.5. Uninitialization of a skill</h3>
+
+<p>In a similar way as <code class="prettyprint">install</code>, it is possible to execute a code when the skill is detached from it owning agent.
+For this purpose, the <code class="prettyprint">uninstall</code> function should be defined, as illustrated below: </p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">uninstall</span> <span class="o">{</span>
+    <span class="c1">// Do uninstallation statements</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="1-6-constructor-definition">1.6. Constructor Definition</h3>
 
 <p>It is not necessary to specify a constructor for Skills unless a value will be initialized.</p>
 
@@ -179,7 +203,7 @@ Implicit constructors has the same prototypes as the constructors of the super t
 Details on implicit constructors are given in the reference documentation related to the
 <a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
 
-<h3 id="1-5-multiple-capacity-implementation">1.5. Multiple Capacity Implementation</h3>
+<h3 id="1-7-multiple-capacity-implementation">1.7. Multiple Capacity Implementation</h3>
 
 <p>In some situations it is useful to combine more than one capacity in a skill.
 Below, the <code class="prettyprint">MyLogging</code> skill is defined as an implementation of the capacities
@@ -208,7 +232,7 @@ All the Actions defined in a Capacity must have an implementation in the related
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h3 id="1-6-extending-a-skill">1.6. Extending a Skill</h3>
+<h3 id="1-8-extending-a-skill">1.8. Extending a Skill</h3>
 
 <p>In some situations it is useful to specialize the definition of a Skill. This mechanism is supported by the <strong>inheritance</strong>
 feature of SARL, which has the same semantics as the inheritance mechanism of the Java object-oriented language.</p>
@@ -225,7 +249,7 @@ to the constraint on the extension of classes in the Java language.</veryimporta
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h3 id="1-7-modifiers">1.7. Modifiers</h3>
+<h3 id="1-9-modifiers">1.9. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the Skill.
@@ -335,8 +359,8 @@ The built-in Skills are described in the <a href="./BIC.html">Built-in Capacity 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.8</li>
-<li>Status: Draft Release</li>
-<li>Release: 2018-09-13</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-09-23</li>
 </ul>
 
 <blockquote>
@@ -349,7 +373,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
 
     </div> <!-- /default layout container -->
 

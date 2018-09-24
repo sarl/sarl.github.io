@@ -72,15 +72,16 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-inferred-parameter-type">2. Inferred Parameter Type</a></li>
 <li><a href="#3-implicit-parameters-it">3. Implicit Parameters: it</a></li>
 <li><a href="#4-empty-list-of-parameters">4. Empty List of Parameters</a></li>
-<li><a href="#5-lambda-as-the-last-parameter-of-a-method">5. Lambda as the Last Parameter of a Method</a></li>
-<li><a href="#6-type-of-a-lambda-expression">6. Type of a Lambda Expression</a></li>
+<li><a href="#5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</a></li>
+<li><a href="#6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</a></li>
+<li><a href="#7-type-of-a-lambda-expression">7. Type of a Lambda Expression</a></li>
 <ul>
-  <li><a href="#6-1-pure-sarl-notation">6.1. Pure SARL Notation</a></li>
-  <li><a href="#6-2-java-like-notation">6.2. Java-like Notation</a></li>
+  <li><a href="#7-1-pure-sarl-notation">7.1. Pure SARL Notation</a></li>
+  <li><a href="#7-2-java-like-notation">7.2. Java-like Notation</a></li>
 </ul>
 
-<p><li><a href="#7-acknowledgements">7. Acknowledgements</a></li>
-<li><a href="#8-legal-notice">8. Legal Notice</a></li></p>
+<p><li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -127,7 +128,24 @@ for these parameters, which is to leave the declaration including the vertical b
     <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello I&#39;m executed!&quot;</span><span class="o">)</span>
 <span class="o">]</span>
 </code></pre></div>
-<h2 id="5-lambda-as-the-last-parameter-of-a-method">5. Lambda as the Last Parameter of a Method</h2>
+<h2 id="5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</h2>
+
+<p>When the lamda expression is passed to a single-parameter function, the brackets that are enclosing the lambda
+declaration could be missed. It specific syntax is called the short notation of a lambda expression. </p>
+
+<p>Consider the following definition of a function with lambda expression as a single parameter:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">aFunction</span><span class="o">(</span><span class="n">aParameter</span> <span class="o">:</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The call to the previously defined function with the short notation is:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">aFunction</span><span class="o">(</span><span class="n">a</span> <span class="o">|</span> <span class="k">new</span> <span class="n">Object</span><span class="o">)</span>
+</code></pre></div>
+<p>This call is equivalent to the following one, with the standard notation:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">aFunction</span><span class="o">([</span><span class="n">a</span> <span class="o">|</span> <span class="k">new</span> <span class="n">Object</span><span class="o">])</span>
+</code></pre></div>
+<p>As for the standard notation, the parameter and the bar could be missed when their is no formal parameter.</p>
+
+<h2 id="6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</h2>
 
 <p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
 
@@ -142,9 +160,9 @@ The first example uses the notation with the lambda expression inside the argume
 <span class="c1">// Lambda expression is written outside the parenthesis</span>
 <span class="n">Collections</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="n">t</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span> <span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">length</span> <span class="o">]</span>
 </code></pre></div>
-<h2 id="6-type-of-a-lambda-expression">6. Type of a Lambda Expression</h2>
+<h2 id="7-type-of-a-lambda-expression">7. Type of a Lambda Expression</h2>
 
-<h3 id="6-1-pure-sarl-notation">6.1. Pure SARL Notation</h3>
+<h3 id="7-1-pure-sarl-notation">7.1. Pure SARL Notation</h3>
 
 <p>Because SARL is a strongly typed programming language, each lambda expression has a type.
 The syntax for specifying the type of a lambda is: <code class="prettyprint">(parameter types) =&gt; return type</code></p>
@@ -155,7 +173,7 @@ returning a value of <code class="prettyprint">Boolean</code>. </p>
 </code></pre></div>
 <p>If the lambda is a procedure, i.e. it has no return type, then the return type to specify must be <code class="prettyprint">void</code>.</p>
 
-<h3 id="6-2-java-like-notation">6.2. Java-like Notation</h3>
+<h3 id="7-2-java-like-notation">7.2. Java-like Notation</h3>
 
 <p>The SARL lambda expressions are mapped to the Java types defined in <code class="prettyprint">Functions</code> or <code class="prettyprint">Procedures</code>.</p>
 
@@ -170,19 +188,19 @@ different numbers of parameters.</p>
 and returning a value of type equals to the second generic parameter.
 Depending of the number of parameters, you may use <code class="prettyprint">Function0</code> to <code class="prettyprint">Function5</code>, or <code class="prettyprint">Procedure0</code> to <code class="prettyprint">Procedure6</code>. </p>
 
-<h2 id="7-acknowledgements">7. Acknowledgements</h2>
+<h2 id="8-acknowledgements">8. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="8-legal-notice">8. Legal Notice</h2>
+<h2 id="9-legal-notice">9. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.8</li>
-<li>Status: Draft Release</li>
-<li>Release: 2018-09-13</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-09-23</li>
 </ul>
 
 <blockquote>
@@ -195,7 +213,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
 
     </div> <!-- /default layout container -->
 

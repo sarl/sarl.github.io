@@ -92,13 +92,13 @@ targets for performing certain well-defined tasks such as compilation of code an
 <p>Open the file <code class="prettyprint">pom.xml</code> of your project, and edit it for obtaining a content similar to the
 configuration below.</p>
 
-<p>Replace the version number <code class="prettyprint">0.8.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the
+<p>Replace the version number <code class="prettyprint">0.8.0</code> of SARL with the one you want to use. You could search on the
 <a href="http://search.maven.org/">Maven Central Repository</a> for the last available version.</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;project&gt;</span>
     ...
     <span class="nt">&lt;properties&gt;</span>
        ...
-       <span class="nt">&lt;sarl.version&gt;</span>0.8.0-SNAPSHOT<span class="nt">&lt;/sarl.version&gt;</span>
+       <span class="nt">&lt;sarl.version&gt;</span>0.8.0<span class="nt">&lt;/sarl.version&gt;</span>
        <span class="nt">&lt;compiler.level&gt;</span>1.8<span class="nt">&lt;/compiler.level&gt;</span>
        <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
     <span class="nt">&lt;/properties&gt;</span>
@@ -114,6 +114,7 @@ configuration below.</p>
              <span class="nt">&lt;configuration&gt;</span>
                 <span class="nt">&lt;source&gt;</span>${compiler.level}<span class="nt">&lt;/source&gt;</span>
                 <span class="nt">&lt;target&gt;</span>${compiler.level}<span class="nt">&lt;/target&gt;</span>
+                <span class="nt">&lt;encoding&gt;</span>${project.build.sourceEncoding}<span class="nt">&lt;/encoding&gt;</span>
              <span class="nt">&lt;/configuration&gt;</span>
           <span class="nt">&lt;/plugin&gt;</span>
           <span class="nt">&lt;plugin&gt;</span>
@@ -322,8 +323,8 @@ configuration below.</p>
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
 <li>Version: 0.8</li>
-<li>Status: Draft Release</li>
-<li>Release: 2018-09-13</li>
+<li>Status: Stable Release</li>
+<li>Release: 2018-09-23</li>
 </ul>
 
 <blockquote>
@@ -336,7 +337,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
 
     </div> <!-- /default layout container -->
 
