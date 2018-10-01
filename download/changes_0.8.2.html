@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.8.2</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0-8-2">Changes in 0.8.2</h1>
+
+<p>Release date: 2018-10-01.</p>
+
+<h2 id="1-sarl-language">1. SARL Language</h2>
+
+<ul>
+<li>In synthetic functions that are generated for supporting the default valued parameters, the returned type of the automatically generated functions delegate to the original (typed by the SARL developer) function&#39;s return type when this return type is inferred from the context. (<a href="http://github.com/sarl/sarl/commit/30421ae95b7efe3e398888fdadd55ccca6172128">details</a>)</li>
+</ul>
+
+<h2 id="2-eclipse-product">2. Eclipse Product</h2>
+
+<ul>
+<li>Fixing the invalid command into the launching script for Ubuntu OS. (<a href="http://github.com/sarl/sarl/commit/32a5d65495fd289e41215058ee90dd1063120704">details</a>)</li>
+</ul>
+
+<h2 id="3-janus-run-time-environment">3. Janus Run-time Environment</h2>
+
+<ul>
+<li>Revert Java stream usage in the Event dispatching in AbstractEventSpace. This issue caused events to be never delivered, including the <code class="prettyprint">Initialize</code> events. (<a href="http://github.com/sarl/sarl/commit/658bd4628b09afcb400e31777299ee79b2441c10">details</a>)</li>
+<li>Ensure an agent killing in &quot;on Initialize&quot; has effects. (<a href="http://github.com/sarl/sarl/commit/d44010c16973436378d0a4e936e8a7f3af88a062">details</a>)</li>
+<li>When the <code class="prettyprint">killMe</code> function is called multiple times, a debug message is output for notifying that the agent was already killed. In older versions, this state was output into an information message. (<a href="http://github.com/sarl/sarl/commit/81bf1af8ae5de010e8df588a6afd2ef1c17f4bd2">details</a>)</li>
+</ul>
+
+<h2 id="4-changes-in-the-previous-versions">4. Changes in the Previous Versions</h2>
+
+<ul>
+<li><a href="./changes_0.8.1.html">Changes in the version 0.8.1</a></li>
+<li><a href="./changes_0.8.0.html">Changes in the version 0.8.0</a></li>
+<li><a href="./changes_0.7.2.html">Changes in the version 0.7.2</a></li>
+<li><a href="./changes_0.7.1.html">Changes in the version 0.7.1</a></li>
+<li><a href="./changes_0.7.0.html">Changes in the version 0.7.0</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
