@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.8.6</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0-8-6">Changes in 0.8.6</h1>
+
+<p>Release date: 2018-11-28.</p>
+
+<h2 id="1-sarl-language">1. SARL Language</h2>
+
+<h3 id="1-1-java-model-inferrer">1.1. Java Model Inferrer</h3>
+
+<ul>
+<li>Make the lambdas able to be serializable (<a href="http://github.com/sarl/sarl/commit/13dfb0d5d17c28b65840d1606cc0c4ee445d02d5">1</a>, <a href="http://github.com/sarl/sarl/commit/9f409b392d05d9feebbaf082371f6ad9d4e528ac">2</a>, <a href="http://github.com/sarl/sarl/commit/5e35f2c94426bd645c0dac9e0ce8d095533fefba">3</a>). A lambda is usually used for specifying the scope of the event sending actions. Since a lambda contains a code that reference local objects, and the scope is evaluated when the event is deliver to each agent, the scope function cannot be properly evaluated when the event and its scope have been transferred through a computer network. This change into the SARL compiler enables to generate a Java version of the lambdas in order to be serializable.</li>
+</ul>
+
+<h3 id="1-2-sarl-core-library">1.2. SARL Core Library</h3>
+
+<ul>
+<li>Move number extensions into the module <code class="prettyprint">io.sarl.lang.core</code> (<a href="http://github.com/sarl/sarl/commit/9ebe793ced14314e0f966d37bc2201bfe5d32719">details</a>). The extensions are usually used for generated an inline version of the operations on the numbers. When the <code class="prettyprint">@Inline</code> is disabled into the compiler configuration, the Java functions provided by the number extensions must be accessible from the public SARL API. Consequently, the extensions are moved from the module <code class="prettyprint">io.sarl.lang</code> (private API) to <code class="prettyprint">io.sarl.lang.core</code> (public API).</li>
+</ul>
+
+<h3 id="1-3-command-line-compiler">1.3. Command Line Compiler</h3>
+
+<ul>
+<li>Remove hard dependencies to experimental contributions (<a href="http://github.com/sarl/sarl/commit/e023358599c74e79e5f95eb439e29f72f73ba691">details</a>). This decision enables to avoid run-time errors when the experimental libraries are not available in the tool&#39;s classpath.</li>
+</ul>
+
+<h2 id="2-sarl-development-toolkit-sdk">2. SARL Development Toolkit (SDK)</h2>
+
+<ul>
+<li>Ensure API events are fully serializable (<a href="http://github.com/sarl/sarl/commit/d3eaaecd6527645544e2bf33efde8dcfc3d0ba0e">details</a>). All the events that are defined into the SDK are fixed in order to enable their serialization. </li>
+</ul>
+
+<h2 id="3-janus-run-time-environment">3. Janus Run-time Environment</h2>
+
+<ul>
+<li>Gson serializer is disabled because it cannot handle the lambda serialization (<a href="http://github.com/sarl/sarl/commit/cbd6814c55474e722128fb4a10d93d2209aeabc1">details</a>). It is replaced by the native Java serializer.</li>
+<li>Send events into the local instance of the SRE if an error occured when sending over the network (<a href="http://github.com/sarl/sarl/commit/9d3adb6ab8ba80de4cb42cc32333cfd835aa528c">details</a>).</li>
+<li>Fixing the formatting of the error messages into the network service (<a href="http://github.com/sarl/sarl/commit/d35e17b827b0a69c13bbf1dea7b38c3e55f901bb">details</a>).</li>
+<li>Fixing error messages of the GsonEventSerializer (<a href="http://github.com/sarl/sarl/commit/4f7271a41bf90ec895e4f2f3adae6dad055a5621">details</a>).</li>
+</ul>
+
+<h2 id="4-eclipse-product">4. Eclipse Product</h2>
+
+<h3 id="4-1-internal-ui-implementation">4.1. Internal UI Implementation</h3>
+
+<ul>
+<li>Avoid the double paste of a text into the SARL editor (<a href="http://github.com/sarl/sarl/commit/688b693792bad84088551ac2912314337aa65854">details</a>). When the &quot;auto-formatting when pasting&quot; feature was enabled, the text is pasted two times. This change fixes this issue.</li>
+<li>Print a warning when the errors in the editor and the SARL model are not the same (<a href="http://github.com/sarl/sarl/commit/56c77adabaac13eacada9e21e1084419487c8293">details</a>). This change shold enable the SARL developpers to detect when and why the state of the SARL editor becomes invalid regarding the SARL model behind the editor.</li>
+</ul>
+
+<h3 id="4-2-eclipse-product">4.2. Eclipse Product</h3>
+
+<h4 id="4-2-1-launching-configurations">4.2.1. Launching Configurations</h4>
+
+<ul>
+<li>Re-enabling the source tab into the SARL launch configurations (<a href="http://github.com/sarl/sarl/commit/fb7e37e77e58b1a9f8d039b221fd8195d13e9cda">details</a>). This tab is used to configuration the search path for the SARL sources.</li>
+</ul>
+
+<h4 id="4-2-3-ui-components">4.2.3. UI Components</h4>
+
+<ul>
+<li>Avoid to open a dialog box for adding the SARL nature to a project (<a href="http://github.com/sarl/sarl/commit/b8608b437c5404fcc76ecf6f092aa25ce609c8ab">details</a>). The addition of the SARL nature is added without querying the user to confirm.</li>
+</ul>
+
+<h2 id="5-maven-tools">5. Maven Tools</h2>
+
+<ul>
+<li>Remove hard dependencies to experimental contributions (<a href="http://github.com/sarl/sarl/commit/e023358599c74e79e5f95eb439e29f72f73ba691">details</a>). This decision enables to avoid run-time errors when the experimental libraries are not available in the tool&#39;s classpath.</li>
+</ul>
+
+<h2 id="6-sarl-documentation">6. SARL Documentation</h2>
+
+<ul>
+<li>A language comparison is written into a specific page (<a href="http://github.com/sarl/sarl/commit/e2181cca47f48ad8d720011e197e24bc55f572b8">1</a>, <a href="http://github.com/sarl/sarl/commit/29894d4ae80b650cec10b4ce7af533f9111e8ba0">2</a>).</li>
+</ul>
+
+<h2 id="7-tools-for-sarl-contributors">7. Tools for SARL Contributors</h2>
+
+<ul>
+<li>Add unit test for testing the operation conformance on numbers. (<a href="http://github.com/sarl/sarl/commit/0c774e2dc74795ab179748ca2be084f90c46b1c2">details</a>) Xbase library is officially conformant to the Java specification regarding the typecasting (implicit or explicit) of the numbers. In order to highlight the different cases, and to prepare SARL for the introduction of the cast operator overriding, a set of unit tests have been added.</li>
+<li>Make the test tools faster (<a href="http://github.com/sarl/sarl/commit/0a9e8eb36abbfb0fb765fa276da11e45b19aa8c1">1</a>, <a href="http://github.com/sarl/sarl/commit/e3966d577f94a4d7a376c084048ac491b8dfea85">2</a>).</li>
+</ul>
+
+<h2 id="6-changes-in-the-previous-versions">6. Changes in the Previous Versions</h2>
+
+<ul>
+<li><a href="./changes_0.8.5.html">Changes in the version 0.8.5</a></li>
+<li><a href="./changes_0.8.4.html">Changes in the version 0.8.4</a></li>
+<li><a href="./changes_0.8.3.html">Changes in the version 0.8.3</a></li>
+<li><a href="./changes_0.8.2.html">Changes in the version 0.8.2</a></li>
+<li><a href="./changes_0.8.1.html">Changes in the version 0.8.1</a></li>
+<li><a href="./changes_0.8.0.html">Changes in the version 0.8.0</a></li>
+<li><a href="./changes_0.7.2.html">Changes in the version 0.7.2</a></li>
+<li><a href="./changes_0.7.1.html">Changes in the version 0.7.1</a></li>
+<li><a href="./changes_0.7.0.html">Changes in the version 0.7.0</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
