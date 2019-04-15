@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>API Documentation for SARL</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="api-documentation-for-sarl">API Documentation for SARL</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-doclet-for-sarl">1. Doclet for SARL</a></li>
+<li><a href="#2-maven-generation">2. Maven Generation</a></li>
+<li><a href="#3-command-line-generation">3. Command-Line Generation</a></li>
+<li><a href="#4-specific-options-of-the-sarl-doclet">4. Specific Options of the SARL Doclet</a></li>
+<ul>
+  <li><a href="#4-1-doclet-options">4.1. Doclet Options</a></li>
+  <li><a href="#4-2-exclude-elements-from-the-documentation">4.2. Exclude elements from the documentation</a></li>
+</ul>
+
+<p><li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<p>Good API documentation is one of the many factors contributing to the overall success of a software project.
+Fortunately, SARL provide a tool for generating API documentation from comments present in the source code.</p>
+
+<p>Because the SARL compiler generates Java code, the SARL documentation tool is based 
+on the famous <a href="https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm">Javadoc tool</a>.
+Javadoc is a documentation generator created by Sun Microsystems (now Oracle) for the
+Java language for generating API documentation in HTML format from Java
+source code. The HTML format is used for adding the convenience of being able to hyperlink related documents together.</p>
+
+<p>The <a href="https://www.oracle.com/technetwork/articles/java/index-137868.html">&quot;doc comments&quot; format</a> used by
+Javadoc is the de facto industry standard for documenting Java classes. SARL uses the 
+same standard format.</p>
+
+<p>Documentation does not affect performance in neither in SARL not Java as all comments are removed at compilation time. Writing
+comments and documentation is for better understanding the code and thus better maintaining it.</p>
+
+<h2 id="1-doclet-for-sarl">1. Doclet for SARL</h2>
+
+<p>Javadoc also provides an API for creating doclets and taglets, which allows users to analyze the
+structure of an application. This enables to generate specific documentation pages.</p>
+
+<p>SARL comes with a specific doclet that replaces all the elements written with the Java syntax 
+by their equivalent into the SARL syntax.
+The SARL doclet is provided into the Maven module:</p>
+
+<ul>
+<li>Group Id: <code class="prettyprint">io.sarl.docs</code></li>
+<li>Artifact Id: <code class="prettyprint">io.sarl.docs.doclet</code></li>
+</ul>
+
+<p>See the next sections for details on the usage of the SARL doclet.</p>
+
+<h2 id="2-maven-generation">2. Maven Generation</h2>
+
+<p>The Maven Javadoc Plugin uses the Javadoc tool to generate documentation for the specified project.
+The Maven Javadoc Plugin gets the parameter values that will be used from the plugin configuration
+specified in the POM file.</p>
+
+<p>To generate output from an alternate doclet, add configuration similar to the following to your POM 
+file.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-javadoc-plugin<span class="nt">&lt;/artifactId&gt;</span>
+
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;doclet&gt;</span>io.sarl.docs.doclet.SarlDoclet<span class="nt">&lt;/doclet&gt;</span>
+                <span class="nt">&lt;docletArtifact&gt;</span>
+                    <span class="nt">&lt;groupId&gt;</span>io.sarl.docs<span class="nt">&lt;/groupId&gt;</span>
+                    <span class="nt">&lt;artifactId&gt;</span>io.sarl.docs.doclet<span class="nt">&lt;/artifactId&gt;</span>
+                    <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;/docletArtifact&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+<h2 id="3-command-line-generation">3. Command-Line Generation</h2>
+
+<p>As described into the <a href="https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm">Javadoc documentation</a>,
+the javadoc command has options for doclets. 
+The Javadoc command provides <code class="prettyprint">-doclet</code> option for specifying a custom doclet.</p>
+
+<p>A typical command-line to launch is:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">javadoc -doclet io.sarl.docs.doclet.SarlDoclet
+        -cp doclet-0.9.0-SNAPSHOT.jar:path_to_sources
+        -source 1.8
+        -sourcepath path_to_sources
+        -d path_to_documentation
+</code></pre></div>
+<p>In order to use the SARL doclet, you have to specific the name of the doclet with the <code class="prettyprint">-doclet</code>.
+You must also include the SARL doclet binary file into the class path with the <code class="prettyprint">-cp</code>.
+In the example above, the name of the SARL doclet&#39;s jar file is <code class="prettyprint">doclet-0.9.0-SNAPSHOT.jar</code>.</p>
+
+<h2 id="4-specific-options-of-the-sarl-doclet">4. Specific Options of the SARL Doclet</h2>
+
+<p>The SARL doclet provides specific options that may be used into the documentation text 
+itself, or from the command-line.</p>
+
+<h3 id="4-1-doclet-options">4.1. Doclet Options</h3>
+
+<p>The SARL doclet has the same options as the <a href="https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm#JSJAV-GUID-F9E5D57D-5A94-4043-A010-B24511A7BAB2">Standard doclet</a>.</p>
+
+<h3 id="4-2-exclude-elements-from-the-documentation">4.2. Exclude elements from the documentation</h3>
+
+<p>It is possible to exclude elements from the documentation by adding the <code class="prettyprint">@ExcludeFromApidoc</code> 
+into the SARL documentation. For example:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/** This is an example of excluded documentation.
+ *
+ * @ExcludeFromApidoc
+ */
+class TheClass {
+}
+</code></pre></div>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.9</li>
+<li>Status: Stable Release</li>
+<li>Release: 2019-04-15</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

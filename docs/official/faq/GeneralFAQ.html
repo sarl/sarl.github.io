@@ -94,13 +94,20 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-5-why-does-the-sarl-product-launch-but-not-contain-any-features-related-to-sarl">2.5. Why does the SARL product launch but not contain any features related to SARL?</a></li>
   <li><a href="#2-6-why-does-the-content-assistant-not-propose-any-suggestion-on-macos">2.6. Why does the content assistant not propose any suggestion on MacOS?</a></li>
 </ul>
-<li><a href="#3-contribute-to-sarl">3. Contribute to SARL</a></li>
+<li><a href="#3-implementation-of-sarl-applications">3. Implementation of SARL Applications</a></li>
 <ul>
-  <li><a href="#3-1-where-are-the-sources-for-sarl">3.1. Where are the sources for SARL?</a></li>
-  <li><a href="#3-2-how-can-i-find-the-current-issues">3.2. How can I find the current issues?</a></li>
-  <li><a href="#3-3-how-can-i-report-a-problem-or-a-bug-in-sarl-components">3.3. How can I report a problem or a bug in SARL components?</a></li>
+  <li><a href="#3-1-is-it-possible-to-obtain-examples-of-sarl-code-for-applications">3.1. Is it possible to obtain examples of SARL code for applications?</a></li>
+  <li><a href="#3-2-how-can-we-know-when-an-agent-has-been-created-fully-after-being-spawn">3.2. How can we know when an agent has been created fully after being spawn?</a></li>
+  <li><a href="#3-3-be-careful-on-the-emit-of-events-in-on-initialize">3.3. Be careful on the emit of events in &quot;on Initialize&quot;</a></li>
+  <li><a href="#3-4-how-can-the-warnings-given-by-the-sarl-compiler-be-avoided">3.4. How can the warnings given by the SARL compiler be avoided?</a></li>
 </ul>
-<li><a href="#4-legal-notice">4. Legal Notice</a></li></p>
+<li><a href="#4-contribute-to-sarl">4. Contribute to SARL</a></li>
+<ul>
+  <li><a href="#4-1-where-are-the-sources-for-sarl">4.1. Where are the sources for SARL?</a></li>
+  <li><a href="#4-2-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</a></li>
+  <li><a href="#4-3-how-can-i-report-a-problem-or-a-bug-in-sarl-components">4.3. How can I report a problem or a bug in SARL components?</a></li>
+</ul>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
 
 <p></ul></p>
 
@@ -117,13 +124,13 @@ agent-oriented paradigm holds the keys to effectively meet this challenge.</p>
 <p>Syntactically and semantically SARL has its roots in the Java programming language but improves on many aspects:</p>
 
 <ul>
-<li><a href="../index.html#5-2-agent-oriented-programming">Agent specific statements</a> - provide specific statements for agent programming</li>
+<li><a href="../index.html#agent-oriented-programming">Agent specific statements</a> - provide specific statements for agent programming</li>
 <li><a href="../reference/GeneralSyntax.html">Type inference</a> - you rarely need to write down type signatures anymore</li>
 <li><a href="../reference/general/Lambda.html">Lambda expressions</a> - concise syntax for anonymous function literals</li>
 <li><a href="../reference/general/Operators.html">Operator overloading</a> - make your libraries even more expressive</li>
 <li><a href="../reference/general/Extension.html">Extension methods</a> - enhance closed types with new functionality</li>
 <li><a href="../reference/general/SwitchExpression.html">Powerful switch expressions</a> - type based switching with implicit casts</li>
-<li><a href="../reference/GeneralSyntax.html#4-details-on-the-sarl-language-elements">No statements</a> - everything is an expression</li>
+<li><a href="../reference/GeneralSyntax.html#details-on-the-sarl-language-elements">No statements</a> - everything is an expression</li>
 <li>Full support for Java generics - including all conformance and conversion rules</li>
 <li>Translates to Java not bytecode - understand what is going on and use your code for platforms such as Android or GWT</li>
 </ul>
@@ -133,7 +140,7 @@ agent-oriented paradigm holds the keys to effectively meet this challenge.</p>
 <p><strong>The language is platform- and architecture-independent.</strong></p>
 
 <p>For a brief comparison between SARL, Java and Xtend languages, see the Section
-&quot;<a href="../reference/OOP.html#1-comparison-between-sarl-and-other-languages">Comparison between SARL and other languages</a>&quot;.</p>
+&quot;<a href="../reference/OOP.html#comparison-between-sarl-and-other-languages">Comparison between SARL and other languages</a>&quot;.</p>
 
 <h3 id="1-2-can-i-use-sarl-to-make-agent-based-software">1.2. Can I use SARL to make agent-based software?</h3>
 
@@ -327,36 +334,149 @@ But, the Spotlight tool on MacOS is also using the same shortcut key.</p>
 
 <p><img src="./ctrlspaceprefs.png" alt="Content assist shortcut change"></p>
 
-<h2 id="3-contribute-to-sarl">3. Contribute to SARL</h2>
+<h2 id="3-implementation-of-sarl-applications">3. Implementation of SARL Applications</h2>
 
-<h3 id="3-1-where-are-the-sources-for-sarl">3.1. Where are the sources for SARL?</h3>
+<h3 id="3-1-is-it-possible-to-obtain-examples-of-sarl-code-for-applications">3.1. Is it possible to obtain examples of SARL code for applications?</h3>
+
+<p><strong>Yes</strong>.</p>
+
+<p>The SARL development environment contains a collection of SARL applications that may be used for creating your own applications.
+They are called the &quot;SARL examples&quot;.</p>
+
+<p>In order to create a fresh project based on of these SARL examples, you have to use the menu <code class="prettyprint">File &gt; New &gt; Example</code>.
+This menu opens a dialog box with a list of examples from which you may select one for creating your fresh project.
+The SARL examples have been put into several categories:</p>
+
+<ul>
+<li>SARL Tutorials: the SARL code that is associated to one of the tutorial from the official documentation pages.</li>
+<li>SARL Examples without user interface: a collection of fully-featured applications without graphical user interface.</li>
+<li>SARL Examples with JavaFX: a collection of fully-featured applications with a JavaFX-based user interface.</li>
+<li>SARL Templates of applications: a collection of templates for creating a fresh SARL application.</li>
+</ul>
+
+<h3 id="3-2-how-can-we-know-when-an-agent-has-been-created-fully-after-being-spawn">3.2. How can we know when an agent has been created fully after being spawn?</h3>
+
+<p>An event <code class="prettyprint">AgentSpawned</code> will be emitted when an agent has been created and can
+be handled, say by a coordinator, to know the agent is now alive! For example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">AgentSpawned</span> <span class="o">{</span>
+    <span class="n">info</span><span class="o">(</span><span class="s">&quot;Agent {0} of type {1} has been created successfully and is now alive!&quot;</span><span class="o">,</span>
+        <span class="kc">occurrence</span><span class="o">.</span><span class="n">agentIdentifiers</span><span class="o">,</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">agentType</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="3-3-be-careful-on-the-emit-of-events-in-on-initialize">3.3. Be careful on the emit of events in &quot;on Initialize&quot;</h3>
+
+<p>The <code class="prettyprint">on Initialize</code> event handler in agents is a bit special, as it is the code ran when an agent is born.
+As such, its execution is more &quot;synchronous&quot; than other on-behavior rules. In particular:</p>
+
+<ol>
+<li>Any event emitted within an <code class="prettyprint">on Initialize</code>, will not be processed until that
+<code class="prettyprint">on Initialize</code> code finishes. So, your agent initialization should not depend
+(and wait) on any fired event being processed, as they won&#39;t!</li>
+<li>When spawning an agent in <code class="prettyprint">on Initialize</code>, the spawn instructions will return only
+after the agent has been created. However, creation of the agent (i.e., of the
+corresponding object) does not include initialization of the agent via its 
+<code class="prettyprint">on Initialize</code> handler. Said so, the Java thread manager may process those
+initialization processes of the new agent before continuing with the execution
+of the spawning agent (and this seems to be the case in many Linux boxes
+where the executor service of Java tends to have the same behavior during
+all the runs). If you change computer, it may be different. In the following
+example, the thread executor service of Java seems to give the priority to
+the <code class="prettyprint">on Initialize</code> of <code class="prettyprint">Agent2</code> instead of continuing the run of the
+spawn function.</li>
+</ol>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">Agent1</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Logging</span><span class="o">,</span> <span class="n">Lifecycle</span>
+    <span class="kd">var</span> <span class="n">agent_name</span> <span class="o">=</span> <span class="s">&quot;agent1&quot;</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; spawned&quot;</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; spawning Agent2&quot;</span><span class="o">)</span>
+        <span class="n">spawn</span><span class="o">(</span><span class="n">Agent2</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; end&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">agent</span> <span class="nc">Agent2</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Logging</span>
+    <span class="kd">var</span> <span class="n">agent_name</span> <span class="o">=</span> <span class="s">&quot;agent2&quot;</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; spawned&quot;</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; sleeping&quot;</span><span class="o">)</span>
+        <span class="nl">Thread:</span><span class="o">:</span><span class="n">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; woke up&quot;</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; end&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; init2&quot;</span><span class="o">)</span>
+        <span class="n">info</span><span class="o">(</span><span class="n">agent_name</span> <span class="o">+</span> <span class="s">&quot; init2 end&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The output has been:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Launching the agent: Agent1
+agent1 spawned
+agent1 spawning Agent2
+agent2 spawned
+agent2 init2
+agent2 sleeping
+agent2 init2 end
+agent2 woke up
+agent2 end
+agent1 end
+</code></pre></div>
+<p>Here it appears as the <code class="prettyprint">on Initialize</code> behaviors have been run all before
+the execution resumes after the <code class="prettyprint">spawn()</code> statement, but this is just one way
+and one should not rely on that behavior being guaranteed: once the spawned
+agent is created, the <code class="prettyprint">spawn()</code> commands returns.</p>
+
+<h3 id="3-4-how-can-the-warnings-given-by-the-sarl-compiler-be-avoided">3.4. How can the warnings given by the SARL compiler be avoided?</h3>
+
+<p>You can use <code class="prettyprint">@SupressWarnings(...)</code> annotations in the entities you do not want
+to be warned. For example, a typical warning SARL will give is lack of
+synchronization for variables that can be accessed/edited concurrently:
+<code class="prettyprint">
+[WARNING] The field noToSpawn should be synchronized for avoiding value inconsistency
+due to parallel execution. [BootMultiSWIAgents.sarl:70]
+</code></p>
+
+<p>To get rid of such warnings, assuming you are aware of the potential issue and
+have planned for it, you can do:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&quot;potential_field_synchronization_problem&quot;</span><span class="o">)</span>
+<span class="kd">agent</span> <span class="nc">BootMultiSWIAgents</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>See the <a href="https://github.com/sarl/sarl/blob/master/main/coreplugins/io.sarl.lang/src/io/sarl/lang/validation/IssueCodes.java">Issue Codes</a>
+for a complete list of what can be suppressed.</p>
+
+<h2 id="4-contribute-to-sarl">4. Contribute to SARL</h2>
+
+<h3 id="4-1-where-are-the-sources-for-sarl">4.1. Where are the sources for SARL?</h3>
 
 <p>The sources for SARL are available on
 <a href="https://github.com/sarl/sarl">Github</a>.
 Details for getting the source code may be found on the
 <a href="http://www.sarl.io/download/">download page</a>. </p>
 
-<h3 id="3-2-how-can-i-find-the-current-issues">3.2. How can I find the current issues?</h3>
+<h3 id="4-2-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</h3>
 
 <p>SARL Core Developers use <a href="https://github.com/sarl/sarl">Github</a>
 to manage bug tracking and project workflow. 
 The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a>. </p>
 
-<h3 id="3-3-how-can-i-report-a-problem-or-a-bug-in-sarl-components">3.3. How can I report a problem or a bug in SARL components?</h3>
+<h3 id="4-3-how-can-i-report-a-problem-or-a-bug-in-sarl-components">4.3. How can I report a problem or a bug in SARL components?</h3>
 
 <p>You should submit your issue on <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
 
-<h2 id="4-legal-notice">4. Legal Notice</h2>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.8</li>
+<li>Version: 0.9</li>
 <li>Status: Stable Release</li>
-<li>Release: 2018-09-23</li>
+<li>Release: 2019-04-15</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
 <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -365,7 +485,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
 
     </div> <!-- /default layout container -->
 

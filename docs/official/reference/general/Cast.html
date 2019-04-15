@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../../images/favicon.ico">
 
-    <title>Typecasting</title>
+    <title>Cast and Type Conversions</title>
 
     <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
@@ -64,37 +64,339 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="typecasting">Typecasting</h1>
+      <h1 id="cast-and-type-conversions">Cast and Type Conversions</h1>
 
-<p>Typecasting is an explicit type conversion, also known as type coercion, is a type conversion by the compiler.</p>
-
-<h2 id="1-syntax">1. Syntax</h2>
-
-<p>The typecasting of an expression to a specific type must be done with the <code class="prettyprint">as</code> keyword. This keywords must
-be typed after the expression and before the casting type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">something</span> <span class="k">as</span> <span class="n">Integer</span>
-<span class="mi">56</span> <span class="k">as</span> <span class="n">Integer</span>
+<p>Because SARL is statically-typed at compile time, after a variable is declared, it cannot be declared again or assigned a
+value of another type unless that type is implicitly convertible to the variable&#39;s type.
+For example, the <code class="prettyprint">String</code> cannot be implicitly converted to <code class="prettyprint">int</code>. Therefore, after you declare <code class="prettyprint">i</code> as an <code class="prettyprint">int</code>, you
+cannot assign the string <code class="prettyprint">&quot;Hello&quot;</code> to it, as the following code shows:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">i</span> <span class="o">:</span> <span class="kt">int</span>
+<span class="n">i</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span> <span class="c1">// Error: &quot;Cannot cast String to int&quot;</span>
 </code></pre></div>
-<p>In the first example, the <code class="prettyprint">something</code> expression is casted to <code class="prettyprint">Integer</code>.
-In the second example, the <code class="prettyprint">56</code> expression is casted to <code class="prettyprint">Integer</code> too.</p>
+<p>However, you might sometimes need to copy a value into a variable or method parameter of another type.
+For example, you might have an integer variable that you need to pass to a method whose parameter is typed as <code class="prettyprint">double</code>.
+Or you might need to assign a class variable to a variable of an interface type. These kinds of operations are
+called <em>type conversions</em>.
+In SARL, you can perform the following kinds of conversions:</p>
 
-<h2 id="2-acknowledgements">2. Acknowledgements</h2>
+<ul>
+<li><strong>Implicit conversions:</strong> No special syntax is required because the conversion is type safe and no data will be lost.
+Examples include conversions from smaller to larger number types, and conversions from derived classes to base classes.</li>
+<li><strong>Explicit conversions (casts):</strong> Explicit conversions require a casting operator. Casting is required when information
+might be lost in the conversion, or when the conversion might not succeed for other reasons. Typical examples include
+numeric conversion to a type that has less precision or a smaller range, and conversion of a base-class instance to a
+derived class.</li>
+<li><strong>User-defined conversions:</strong> User-defined conversions are performed by special methods that you can define to enable
+explicit and implicit conversions between custom types that do not have a base class–derived class relationship.
+For more information, see <a href="#4-conversion-operators">Conversion Operators</a>.</li>
+</ul>
+
+<h2 id="1-implicit-conversions">1. Implicit Conversions</h2>
+
+<p>For built-in types, e.g. numeric types, an implicit conversion can be made when the value to be stored can fit into
+the variable without being truncated or rounded off. For example, a variable of type long (64-bit integer) 
+can store any value that an int (32-bit integer) can store. In the following example, the compiler implicitly
+converts the value of <code class="prettyprint">num</code> on the right to a type long before assigning it to <code class="prettyprint">bigNum</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">num</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="kd">var</span> <span class="n">bigNum</span> <span class="o">:</span> <span class="kt">long</span> <span class="o">=</span> <span class="n">num</span>
+</code></pre></div>
+<p>The following table shows the predefined implicit conversions between SARL types.</p>
+
+<table><thead>
+<tr>
+<th>From</th>
+<th>To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>T[]</td>
+<td>List<T></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte, short, int, long, float, double</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>byte, short, int, long, float, double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character, String</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>char, String</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>double</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float, double</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>float, double</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer, long, float, double</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>int, long, float, double</td>
+</tr>
+<tr>
+<td>List<T></td>
+<td>T[]</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long, float, double</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>long, float, double</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short, int, long, float, double</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>short, int, long, float, double</td>
+</tr>
+<tr>
+<td>String</td>
+<td>char, Character (if string length is 1)</td>
+</tr>
+</tbody></table>
+
+<h2 id="2-explicit-conversions">2. Explicit Conversions</h2>
+
+<p>However, if a conversion cannot be made without a risk of losing information, the compiler requires that you perform
+an explicit conversion, which is called a cast. A cast is a way of explicitly informing the compiler that you
+intend to make the conversion and that you are aware that data loss might occur. To perform a cast, specify
+the value or variable to be converted, followed by the <code class="prettyprint">as</code> keyword and the type that you are casting.
+The following program casts a <code class="prettyprint">double</code> to an <code class="prettyprint">int</code>. The program will not compile without the cast.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">double</span> <span class="o">=</span> <span class="mf">1234.7</span>
+<span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">int</span>
+<span class="c1">// Cast double to int.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="k">as</span> <span class="kt">int</span>
+</code></pre></div>
+<p>For object types, an explicit cast is required if you need to convert from a base type to a derived type:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Create a new derived type</span>
+<span class="kd">var</span> <span class="n">g</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Giraffe</span>
+
+<span class="c1">// implicit conversion to base type is safe.</span>
+<span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Animal</span> <span class="o">=</span> <span class="n">g</span>
+
+<span class="c1">// Explicit conversion is required to cast back to derived type.</span>
+<span class="c1">// Note: This will compile but will throw an exception at run time if the right-side</span>
+<span class="c1">// object is not in fact a Giraffe.</span>
+<span class="kd">var</span> <span class="n">g2</span> <span class="o">:</span> <span class="n">Giraffe</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">a</span> <span class="k">as</span> <span class="n">Giraffe</span>
+</code></pre></div>
+<p>A casting operation between reference types does not change the run-time type of the underlying object; it only changes
+the type of the value that is being used as a reference to that object.</p>
+
+<p>The following table shows the predefined explicit conversions that are predefined into 
+SARL.</p>
+
+<table><thead>
+<tr>
+<th>From</th>
+<th>To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>boolean</td>
+<td>String</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>char</td>
+<td>String</td>
+</tr>
+<tr>
+<td>double</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>float</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>int</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>long</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>String</td>
+</tr>
+<tr>
+<td>short</td>
+<td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+</tr>
+<tr>
+<td>String</td>
+<td>boolean, char, byte, short, int, long, float, double, AtomicInteger,  AtomicLong, AtomicDouble</td>
+</tr>
+<tr>
+<td></td>
+<td>BigInteger, BigDecimal</td>
+</tr>
+</tbody></table>
+
+<h2 id="3-type-conversion-exceptions-at-run-time">3. Type Conversion Exceptions at Run Time</h2>
+
+<p>In some reference type conversions, the compiler cannot determine whether a cast will be valid. It is possible for
+a casting operation that compiles correctly to fail at run time. As shown in the following example, a type cast
+that fails at run time will cause an <code class="prettyprint">ClassCastException</code> to be thrown.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Reptile</span> <span class="k">extends</span> <span class="n">Animal</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Mammal</span> <span class="k">extends</span> <span class="n">Animal</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">def</span> <span class="n">main</span> <span class="o">{</span>
+        <span class="n">test</span><span class="o">(</span><span class="k">new</span> <span class="n">Mammal</span><span class="o">())</span>
+    <span class="o">}</span>
+    <span class="kd">static</span> <span class="kd">def</span> <span class="nf">test</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">Animal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Cause a ClassCastException at run time</span>
+        <span class="c1">// because Mammal is not convertible to [:reptiletype].</span>
+        <span class="kd">var</span> <span class="n">r</span> <span class="o">:</span> <span class="n">Reptile</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="k">as</span> <span class="n">Reptile</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>SARL provides the <code class="prettyprint">instanceof</code> operator to enable you to test for compatibility before actually performing a cast.</p>
+
+<p>The <code class="prettyprint">instanceof</code> operator evaluates type compatibility at runtime. It determines whether an object instance or
+the result of an expression can be converted to a specified type. It has the syntax:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">expr</span> <span class="k">instanceof</span> <span class="n">type</span>
+</code></pre></div>
+<p>where <code class="prettyprint">expr</code> is an expression that evaluates to an instance of some type, and <code class="prettyprint">type</code> is the name of the
+type to which the result of <code class="prettyprint">expr</code> is to be converted. The <code class="prettyprint">instanceof</code> operator is <code class="prettyprint">true</code> if
+<code class="prettyprint">expr</code> is non-null and the object that results from evaluating the expression can be converted to
+<code class="prettyprint">type</code>; otherwise, it returns <code class="prettyprint">false</code>.</p>
+
+<h2 id="4-conversion-operators">4. Conversion Operators</h2>
+
+<p>SARL enables programmers to declare conversions on classes or basic types so that classes or basic types can
+be converted to and/or from other classes or basic types. Conversions are associated to the <code class="prettyprint">as</code>
+type casting operator. When the compiler cannot proceed an implicit nor explicit casting, it tries
+to find within the current code scope the definition of a casting operator function.
+Depending on the category of the type to cast to, the name of this casting operator function is different:</p>
+
+<ul>
+<li><strong>Object type:</strong> the casting operator function&#39;s name must have the prefix <code class="prettyprint">to</code> followed by the simple name
+(first letter upper case) of the cast type, e.g. <code class="prettyprint">toString</code>.</li>
+<li><strong>Basic type:</strong> the casting operator function&#39;s name must start with the name of the basic type (all lower
+case) following by the post-fix <code class="prettyprint">Value</code>, e.g. <code class="prettyprint">intValue</code>.</li>
+</ul>
+
+<p>Additionnally, the return type of the casting operator function must be the cast type, and not a sub-type of the
+type specified as right operand of the casting operator.</p>
+
+<p>A single parameter may be specified or not. If it is specified, it is the expression to cast.
+It means that the type of the formal parameter is the expected type of the expression.
+If the formal parameter is omitted, the current object (<code class="prettyprint">this</code>) is assumed to be converted.</p>
+
+<p>In the following example, the function <code class="prettyprint">toInteger</code> is defined for converting a <code class="prettyprint">Type</code> to <code class="prettyprint">Integer</code>.
+When the expression <code class="prettyprint">obj as Integer</code> is evaluated by the compiler, the function <code class="prettyprint">toInteger</code> is discovered and used
+for proceeding the cast.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Type</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">toInteger</span> <span class="o">:</span> <span class="n">Integer</span> <span class="o">{</span> <span class="mi">0</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">main</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">Type</span>
+        <span class="kd">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span> <span class="k">as</span> <span class="n">Integer</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In the second example below, the function <code class="prettyprint">toInteger</code> is defined in the same class as the one where the cast operator is
+defined.
+When the expression <code class="prettyprint">obj as Integer</code> is evaluated by the compiler, the function <code class="prettyprint">toInteger</code> is discovered and used
+for proceeding the cast.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Type</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">main</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">Type</span>
+        <span class="kd">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span> <span class="k">as</span> <span class="n">Integer</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">toInteger</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">Type</span><span class="o">)</span> <span class="o">:</span> <span class="n">Integer</span> <span class="o">{</span> <span class="mi">0</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Any function that is declared into the scope of the cast operator, and following the rules that are described above, may
+be a candidate for being the cast operator function.</p>
+
+<p>The two previous example have an object type as the cast type. The two following examples have the basic type <code class="prettyprint">int</code>.
+The declarations of the <code class="prettyprint">toInteger</code> are replaced by declarations of <code class="prettyprint">intValue</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Type</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">intValue</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span> <span class="mi">0</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">main</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">Type</span>
+        <span class="kd">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span> <span class="k">as</span> <span class="kt">int</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Type</span> <span class="o">{</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="n">main</span> <span class="o">{</span>
+        <span class="kd">var</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">Type</span>
+        <span class="kd">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span> <span class="k">as</span> <span class="kt">int</span>
+    <span class="o">}</span>
+    <span class="kd">def</span> <span class="nf">intValue</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="n">Type</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span> <span class="mi">0</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="3-legal-notice">3. Legal Notice</h2>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.8</li>
+<li>Version: 0.9</li>
 <li>Status: Stable Release</li>
-<li>Release: 2018-09-23</li>
+<li>Release: 2019-04-15</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
 <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -103,7 +405,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
 
     </div> <!-- /default layout container -->
 

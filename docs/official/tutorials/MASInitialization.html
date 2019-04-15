@@ -142,7 +142,7 @@ For 100 agents, the number of logged messages should be 5,050, not 10,000.</p>
 </tbody></table>
 
 <p>Moreover, According to the expected <a href="./ParallelExecution.html">agent spawning&#39;s parallel execution</a>, the calls to the
-<code class="prettyprint">spawn</code> function form a sequence of 100 calls; And, each call to the <code class="prettyprint">spawn</code> function starts a spawning task that is run within a separated thread.
+<code class="prettyprint">spawn</code> function form a sequence of 100 calls; And, each call to the <code class="prettyprint">spawn</code> function starts a spawning task that is run within a separate thread.
 Consequently, the general behavior of the system is not deterministic.
 We cannot infer the number of messages that will be logged because some event may be fired by agents when several
 other agents are still waiting for their spawns. The only one fact is that the number of logged messages is lower than or equal to f(100).</p>
@@ -172,7 +172,7 @@ This application-start event is represented by the <code class="prettyprint">Sta
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
     <span class="k">uses</span> <span class="n">Lifecycle</span><span class="o">,</span> <span class="n">DefaultContextInteractions</span>
 
-    <span class="kd">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicInteger</span>
 
     <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
         <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="mi">1</span><span class="o">..</span><span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
@@ -181,9 +181,9 @@ This application-start event is represented by the <code class="prettyprint">Sta
     <span class="o">}</span>
 
     <span class="k">on</span> <span class="n">AgentSpawned</span> <span class="o">[!</span><span class="kc">it</span><span class="o">.</span><span class="n">agentIdentifiers</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="n">ID</span><span class="o">)]</span> <span class="o">{</span>
-        <span class="n">count</span><span class="o">++</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">StartApplication</span><span class="o">)</span> <span class="o">[</span><span class="kc">it</span><span class="o">.</span><span class="n">UUID</span> <span class="o">!=</span> <span class="n">ID</span><span class="o">]</span>
+        <span class="kd">var</span> <span class="n">n</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">incrementAndGet</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">===</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">StartApplication</span><span class="o">)</span>
             <span class="n">killMe</span>
         <span class="o">}</span>
     <span class="o">}</span>
@@ -199,13 +199,13 @@ and commits a suicide.</p>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.8</li>
+<li>Version: 0.9</li>
 <li>Status: Stable Release</li>
-<li>Release: 2018-09-23</li>
+<li>Release: 2019-04-15</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
 <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -214,7 +214,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
 
     </div> <!-- /default layout container -->
 

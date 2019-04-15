@@ -72,12 +72,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-changing-the-name-of-a-task">2. Changing the name of a task</a></li>
 <li><a href="#3-launching-a-task-for-a-single-run">3. Launching a Task for a single run</a></li>
 <li><a href="#4-launching-a-delayed-task">4. Launching a Delayed Task</a></li>
-<li><a href="#5-launching-a-periodic-task-at-a-fixed-rate">5. Launching a Periodic Task at a Fixed Rate</a></li>
-<li><a href="#6-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">6. Launching a Periodic Task with a Fixed Delay between the Runs</a></li>
-<li><a href="#7-cancelling-a-task">7. Cancelling a Task</a></li>
-<li><a href="#8-conditional-execution-of-a-task">8. Conditional Execution of a Task</a></li>
-<li><a href="#9-retreiving-the-active-tasks">9. Retreiving the active tasks</a></li>
-<li><a href="#10-legal-notice">10. Legal Notice</a></li>
+<li><a href="#5-launching-a-task-at-a-specific-time">5. Launching a Task at a Specific Time</a></li>
+<li><a href="#6-launching-a-periodic-task-at-a-fixed-rate">6. Launching a Periodic Task at a Fixed Rate</a></li>
+<li><a href="#7-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">7. Launching a Periodic Task with a Fixed Delay between the Runs</a></li>
+<li><a href="#8-cancelling-a-task">8. Cancelling a Task</a></li>
+<li><a href="#9-conditional-execution-of-a-task">9. Conditional Execution of a Task</a></li>
+<li><a href="#10-retreiving-the-active-tasks">10. Retreiving the active tasks</a></li>
+<li><a href="#11-legal-notice">11. Legal Notice</a></li>
 
 </ul>
 
@@ -182,18 +183,49 @@ is the same as the task given as parameter.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="5-launching-a-periodic-task-at-a-fixed-rate">5. Launching a Periodic Task at a Fixed Rate</h2>
+<h2 id="5-launching-a-task-at-a-specific-time">5. Launching a Task at a Specific Time</h2>
+
+<p>For running a task at a specific time, the following function is provided:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">at</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">time</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
+</code></pre></div>
+<p>Without its optional argument, the function submits the given procedure (a lambda expression as defined in
+the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to an executor provided by the runtime
+platform. The execution of the procedure will start at the provided time.
+If the given time is not in the futur, the task is not run.
+This function replies the agent task for controlling its execution.</p>
+
+<p>With its optional argument, the function behaves in a similar way as the first, except that it
+accepts an agent task as parameter. This task will attach to the given procedure. The replied task
+is the same as the task given as parameter.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="k">uses</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
+    <span class="kd">var</span> <span class="n">t1</span> <span class="o">:</span> <span class="n">AgentTask</span>
+    <span class="kd">var</span> <span class="n">t2</span> <span class="o">:</span> <span class="n">AgentTask</span>
+    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">at</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
+            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+        <span class="o">]</span>
+
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">at</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
+            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="6-launching-a-periodic-task-at-a-fixed-rate">6. Launching a Periodic Task at a Fixed Rate</h2>
 
 <p>For running a periodic task with a fixed starting rate, the following function is provided:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">every</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">delay</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
 </code></pre></div>
-<p>The first function submits the given procedure (a lambda expression as defined in
+<p>The function without the default parameter submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to
 an executor provided by the runtime platform. The execution of the procedure
 will be launched periodically with a period of the given number of milliseconds.
 This function replies the agent task for controlling its execution.</p>
 
-<p>The second function behaves in a similar way as the first, except that it
+<p>The function with the default parameter behaves in a similar way as the first, except that it
 accepts an agent task as parameter. This task will attach to the given
 procedure. The replied task is the same as the task given as parameter.</p>
 
@@ -292,7 +324,7 @@ For example, consider the following code:</p>
 </tr>
 </tbody></table>
 
-<h2 id="6-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">6. Launching a Periodic Task with a Fixed Delay between the Runs</h2>
+<h2 id="7-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">7. Launching a Periodic Task with a Fixed Delay between the Runs</h2>
 
 <p>For running a periodic task with a fixed duration between the runs, the following function is provided:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">atFixedDelay</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">delay</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
@@ -385,7 +417,7 @@ The <code class="prettyprint">atFixedDelay</code> function ensures that only one
 </tr>
 </tbody></table>
 
-<h2 id="7-cancelling-a-task">7. Cancelling a Task</h2>
+<h2 id="8-cancelling-a-task">8. Cancelling a Task</h2>
 
 <p>It may be useful to cancel a running task, e.g. a periodic task. The <code class="prettyprint">Schedules</code> capacity
 provides the following functions for managing the execution cancellation of an agent task:</p>
@@ -423,7 +455,7 @@ whether the thread executing this task should be interrupted in an attempt to st
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="8-conditional-execution-of-a-task">8. Conditional Execution of a Task</h2>
+<h2 id="9-conditional-execution-of-a-task">9. Conditional Execution of a Task</h2>
 
 <p>Sometimes, it may be useful to execute a task if a condition is <code class="prettyprint">true</code> or <code class="prettyprint">false</code>. The 
 <code class="prettyprint">AgentTask</code> type, which is representing an instance of <code class="prettyprint">AgentTask</code> provides
@@ -458,7 +490,7 @@ already checked if a guard is assosiated and <code class="prettyprint">true</cod
 <span class="c1">// Execute the task</span>
 <span class="n">myTask</span><span class="o">.</span><span class="n">execute</span> <span class="o">[</span> <span class="n">doSomething</span> <span class="o">]</span>
 </code></pre></div>
-<h2 id="9-retreiving-the-active-tasks">9. Retreiving the active tasks</h2>
+<h2 id="10-retreiving-the-active-tasks">10. Retreiving the active tasks</h2>
 
 <p>The list of the active tasks may be retreived by invoking the following function:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getActiveTasks</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
@@ -470,17 +502,17 @@ already checked if a guard is assosiated and <code class="prettyprint">true</cod
     <span class="n">info</span><span class="o">(</span><span class="s">&quot;Active task: &quot;</span> <span class="o">+</span> <span class="n">taskName</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="10-legal-notice">10. Legal Notice</h2>
+<h2 id="11-legal-notice">11. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.8</li>
+<li>Version: 0.9</li>
 <li>Status: Stable Release</li>
-<li>Release: 2018-09-23</li>
+<li>Release: 2019-04-15</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
 <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -489,7 +521,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
 
     </div> <!-- /default layout container -->
 

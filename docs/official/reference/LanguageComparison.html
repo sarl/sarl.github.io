@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Comparison between SARL and Other Languages</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="comparison-between-sarl-and-other-languages">Comparison between SARL and Other Languages</h1>
+
+<p><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>, <a href="https://www.eclipse.org/xtend/">Xtend</a> and
+<a href="http://scala-lang.org/">Scala</a> are object-oriented programming languages.
+As SARL, Xtend is based on the <a href="https://www.eclipse.org/Xtext/">Xtext</a> libraries for compiling to the Java language.</p>
+
+<p>The main features coming from the Java language are supported by SARL too. The following table provides the major
+differences between the SARL, Java, Xtend and Scala languages, excluding any feature provided by the development
+environment (Eclipse, IntelliJ...)</p>
+
+<table><thead>
+<tr><th></th><th>SARL</th><th>Java</th><th>Xtend</th><th>Scala</th></tr>
+</thead><tbody>
+<tr><td colspan=5><strong>Agent-oriented programming</strong></td></tr>
+<tr><td><a href="../index.html#agent-oriented-programming">Agent, Capacity, Skill, Behavior...</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Partial: actor paradigm</td></tr>
+<tr><td colspan=5><strong>Object-oriented programming</strong></td></tr>
+<tr><td><a href="./OOP.html">Definition of class and interface types</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./OOP.html#enumeration">Object-oriented enumeration</a>
+            <td style="background: orange; color: white;">No, only constants could be defined</td>
+            <td style="background: green; color: white;">Yes, constants and functions could be defined</td>
+            <td style="background: orange; color: white;">No, only constants could be defined</td>
+            <td style="background: green; color: white;">Yes, constants and functions could be defined</td></tr>
+<tr><td><a href="./OOP.html#annotation-type">Definition of annotation types</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./OOP.html#static-constructor-definition">Definition of static constructors</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">See companion object</td></tr>
+<tr><td>Inheritance of constructors</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td><a href="./general/ActiveAnnotations.html#Data">Automatic creation of read-only data structure</a></td>
+            <td style="background: yellow; color: black;">Manual with <code>@Data</code> annotation</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@Data</code> annotation</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td><a href="./general/ActiveAnnotations.html#Accessors">Automatic creation of getters and setters</a></td>
+            <td style="background: yellow; color: black;">Manual with <code>@Accessors</code> annotation</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@Accessors</code> annotation</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td>Automatic creation of final-field constructor</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@FinalFieldsConstructor</code> annotation</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td>Automatic creation of <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-"><code>equals()</code></a>
+            and <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#hashCode--"><code>hashCode()</code></a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@EqualsHashCode</code> annotation</td>
+            <td style="background: green; color: white;">Yes, see case class</td></tr>
+<tr><td>Automatic creation of <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--"><code>clone()</code></a>
+            when <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html">cloneable type</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td>Automatic creation of a serialVersionUID field when
+        <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html">serializable type</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@SerialVersionUID</code></td></tr>
+<tr><td><a href="./general/ActiveAnnotations.html#ToString">Automatic creation of the <code>toString()</code> function.</a></td>
+            <td style="background: yellow; color: black;">Manual with <code>@ToString</code> annotation</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: yellow; color: black;">Manual with <code>@ToString</code> annotation</td>
+            <td style="background: green; color: white;">Yes, see case class</td></tr>
+<tr><td colspan=5><strong>Functions, Procedures and Operators</strong></td></tr>
+<tr><td><a href="./general/FuncDecls.html#7-dispatch-function">Definition of dispatch functions</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td><a href="./general/Extension.html">Extension methods</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/FuncDecls.html#variadic-function">Definition of variadic functions</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/FuncDecls.html#default-value-for-the-formal-parameters">Definition of default values for the formal parameters</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/Operators.html#operator-overloading">Operator overloading (except assignment and casting, see below)</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/Cast.html">Cast operator overloading</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td><a href="./general/Operators.html">Assignment operator overloading</a></td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td>Automatic detection of <a href="http://download.eclipse.org/modeling/tmf/xtext/javadoc/2.9/org/eclipse/xtext/xbase/lib/Pure.html">pure functions</a> and marking</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: orange; color: white;">No</td></tr>
+<tr><td colspan=5><strong>Expressions</strong></td></tr>
+<tr><td><a href="./general/Lambda.html">Definition of lambda expressions</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/VarDecls.html#typing">Inference of types</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/LoopExpression.html#breaking-a-loop">Support the <code>break</code> statement</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/LoopExpression.html#jump-to-the-next-iteration">Support the <code>continue</code> statement</a></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: orange; color: white;">No</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/Cast.html#implicit-conversions">Implicit typecasting between number values</a>, including <code>AtomicInteger</code>, <code>AtomicLong</code>, <code>AtomicDouble</code>, <code>BigInteger</code>, and <code>BigDecimal</code></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: yellow; color: black;">Partial: <a href="./general/Types.html#primitive-types">primitive</a> to <a href="./general/Types.html#primitive-types">primitive</a> types, primitive to object <a href="./general/Types.html#primitive-types">wrapper</a> types, and object <a href="./general/Types.html#primitive-types">wrapper</a> to <a href="./general/Types.html#primitive-types">primitive</a> types</td>
+            <td style="background: yellow; color: black;">Partial: <a href="./general/Types.html#primitive-types">primitive</a> to <a href="./general/Types.html#primitive-types">primitive</a> types, primitive to object <a href="./general/Types.html#primitive-types">wrapper</a> types, and object <a href="./general/Types.html#primitive-types">wrapper</a> to <a href="./general/Types.html#primitive-types">primitive</a> types</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+<tr><td><a href="./general/Operators.html">Arithmetic operations with any type of number as operand</a>, including <code>AtomicInteger</code>, <code>AtomicLong</code>, <code>AtomicDouble</code>, <code>BigInteger</code>, and <code>BigDecimal</code></td>
+            <td style="background: green; color: white;">Yes</td>
+            <td style="background: yellow; color: black;">Partial: <a href="./general/Types.html#primitive-types">primitive</a> and <a href="./general/Types.html#primitive-types">wrapper</a> types</td>
+            <td style="background: yellow; color: black;">Partial: <a href="./general/Types.html#primitive-types">primitive</a> and <a href="./general/Types.html#primitive-types">wrapper</a> types</td>
+            <td style="background: green; color: white;">Yes</td></tr>
+</tbody></table>
+
+<h2 id="1-references">1. References</h2>
+
+<p>This documentation is based on elements from the following sources:</p>
+
+<ul>
+<li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+<li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+<li><a href="https://www.scala-lang.org/">Scala Home Page</a></li>
+</ul>
+
+<h2 id="2-legal-notice">2. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.9</li>
+<li>Status: Stable Release</li>
+<li>Release: 2019-04-15</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

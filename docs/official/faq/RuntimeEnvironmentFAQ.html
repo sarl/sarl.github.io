@@ -89,7 +89,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</a></li>
 <ul>
   <li><a href="#3-1-are-events-received-in-the-same-order-than-when-they-are-sent">3.1. Are events received in the same order than when they are sent?</a></li>
-  <li><a href="#3-2-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.2. Must I configure the Janus kernels to be connected to other Janus kernels?</a></li>
+  <li><a href="#3-2-how-events-are-treated-by-the-run-time-environment">3.2. How events are treated by the run-time environment?</a></li>
+  <li><a href="#3-3-how-the-spawn-function-is-run-by-the-run-time-environment">3.3. How the spawn function is run by the run-time environment?</a></li>
+  <li><a href="#3-4-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.4. Must I configure the Janus kernels to be connected to other Janus kernels?</a></li>
 </ul>
 <li><a href="#4-contribute-to-janus">4. Contribute to Janus</a></li>
 <ul>
@@ -239,7 +241,42 @@ environment. For example, the
 the event handlers in parallel. The real order of execution depends on
 how the Java executor is running the handlers on the threads.</p>
 
-<h3 id="3-2-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.2. Must I configure the Janus kernels to be connected to other Janus kernels?</h3>
+<h3 id="3-2-how-events-are-treated-by-the-run-time-environment">3.2. How events are treated by the run-time environment?</h3>
+
+<p>When the event <code class="prettyprint">e</code> is received by an agent the following algorithm is applied:
+<code class="prettyprint">
+if &quot;on Initialize&quot; is currently running then
+   add e to a buffer of events.
+else if &quot;on Destroy&quot; is currently running then
+   ignore the event.
+else
+   fire(e)
+fi
+</code>
+The function <code class="prettyprint">fire(e)</code> retrieves all the <code class="prettyprint">on E</code> and runs them in parallel, and
+there is a synchronization point after the running of all the <code class="prettyprint">on E</code> if <code class="prettyprint">E</code> is
+<code class="prettyprint">Initialize</code> or <code class="prettyprint">Destroy</code> (for forcing synchronous execution of <code class="prettyprint">on Initialize</code>
+and <code class="prettyprint">on Destroy</code>). At the end of the <code class="prettyprint">on Initialize</code> (after synchronization point),
+all the buffered events are fired.</p>
+
+<p>Observe that if the event is fired from within the <code class="prettyprint">on Initialize</code>, the same algorithm
+is applied whatever the receiving agent.</p>
+
+<h3 id="3-3-how-the-spawn-function-is-run-by-the-run-time-environment">3.3. How the spawn function is run by the run-time environment?</h3>
+
+<p>Regarding <code class="prettyprint">spawn()</code>, the function runs in two parts:</p>
+
+<ol>
+<li>First, the spawn agent is created. This part is run in the same thread as the
+caller of spawn, so the spawn call blocks.</li>
+<li>Once the spawn agent has been created, the initialization process runs
+within a separated thread from the spawner agent. So, the call <code class="prettyprint">spawn()</code> is
+not locked. Then, the created thread runs all the initialization process,
+including the synchronous execution of <code class="prettyprint">on Initialize</code> (see previous question).
+Consequently, the <code class="prettyprint">on Initialize</code> of the spawn agent will not block the spawn caller.</li>
+</ol>
+
+<h3 id="3-4-must-i-configure-the-janus-kernels-to-be-connected-to-other-janus-kernels">3.4. Must I configure the Janus kernels to be connected to other Janus kernels?</h3>
 
 <p><strong>No</strong>.</p>
 
@@ -271,13 +308,13 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.8</li>
+<li>Version: 0.9</li>
 <li>Status: Stable Release</li>
-<li>Release: 2018-09-23</li>
+<li>Release: 2019-04-15</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2018 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
 <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -286,7 +323,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.8.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
 
     </div> <!-- /default layout container -->
 
