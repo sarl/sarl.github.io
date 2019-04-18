@@ -275,12 +275,15 @@ of your SARL Run-time Environment, such as <a href="../tools/Janus.html">Janus</
 
 <h3 id="1-13-equality-and-identity-comparison-in-sarl-and-checking-for-null-same-as-java">1.13. Equality and identity comparison (<code class="prettyprint">==</code>, <code class="prettyprint">===</code>, <code class="prettyprint">!=</code>, <code class="prettyprint">!==</code>) in SARL and checking for null: same as Java?</h3>
 
-<p>The mapping of the operator from SARL to Java are:
-* <code class="prettyprint">a === b</code> becomes <code class="prettyprint">a == b</code>
-* <code class="prettyprint">a !== b</code> becomes <code class="prettyprint">a != b</code>
-* <code class="prettyprint">a == b</code> becomes <code class="prettyprint">a == null ? (b == null) : a.equals(b)</code>
-* <code class="prettyprint">a != b</code> becomes <code class="prettyprint">!Objects.equals(a,b)</code>. This is null-safe (part of Google API)
-  and the code of the function is <code class="prettyprint">a == b || (a != null &amp;&amp; a.equals(b))</code>.</p>
+<p>The mapping of the operator from SARL to Java are:</p>
+
+<ul>
+<li><code class="prettyprint">a === b</code> becomes <code class="prettyprint">a == b</code></li>
+<li><code class="prettyprint">a !== b</code> becomes <code class="prettyprint">a != b</code></li>
+<li><code class="prettyprint">a == b</code> becomes <code class="prettyprint">a == null ? (b == null) : a.equals(b)</code></li>
+<li><code class="prettyprint">a != b</code> becomes <code class="prettyprint">!Objects.equals(a,b)</code>. This is null-safe (part of Google API)
+and the code of the function is <code class="prettyprint">a == b || (a != null &amp;&amp; a.equals(b))</code>.</li>
+</ul>
 
 <p>It is always better to test valid against <code class="prettyprint">null</code> with the <code class="prettyprint">===</code> or <code class="prettyprint">!==</code> operators.</p>
 
@@ -294,8 +297,7 @@ not replaced neither <code class="prettyprint">operator_equals</code> nor <code 
 But with <code class="prettyprint">null == value</code>, an ambiguous call error occurs before the warning is generated.
 In fact, the SARL compiler tries to find an overloading function for the <code class="prettyprint">==</code> operator.
 Since <code class="prettyprint">null</code> has not a specific type, the SARL compiler find multiple overloading functions.
-Check the <a href="http://www.sarl.io/docs/official/reference/general/Operators.html#3-comparison-operators">documentation</a> 
-for details on the overloading mechanism of SARL.</p>
+Check the <a href="http://www.sarl.io/docs/official/reference/general/Operators.html#3-comparison-operators">documentation</a> for details on the overloading mechanism of SARL.</p>
 
 <h3 id="1-14-how-to-return-two-values">1.14. How to return two values?</h3>
 
