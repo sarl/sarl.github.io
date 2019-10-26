@@ -78,10 +78,11 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p><li><a href="#2-defining-a-space">2. Defining a Space</a></li>
 <ul>
-  <li><a href="#2-1-defining-a-space">2.1. Defining a Space</a></li>
+  <li><a href="#2-1-defining-the-physicspace">2.1. Defining the PhysicSpace</a></li>
   <li><a href="#2-2-basic-implementation">2.2. Basic Implementation</a></li>
   <li><a href="#2-3-basic-network-support">2.3. Basic Network Support</a></li>
   <li><a href="#2-4-defining-a-spacespecification">2.4. Defining a SpaceSpecification</a></li>
+  <li><a href="#2-5-access-to-the-default-space-instance-within-a-space-specification">2.5. Access to the Default Space Instance within a space specification</a></li>
 </ul>
 <li><a href="#3-legal-notice">3. Legal Notice</a></li></p>
 
@@ -133,11 +134,11 @@ The most basic scope is represented by a collection of addresses.</p>
 
 <h2 id="1-types-of-spaces">1. Types of Spaces</h2>
 
-<p>SARL provides a collection of Java interfaces that are representing different types of spaces.</p>
+<p>SARL provides a collection of interfaces that are representing different types of spaces.</p>
 
 <h3 id="1-1-space">1.1. Space</h3>
 
-<p>SARL provides a Java interface that is representing all the spaces:</p>
+<p>SARL provides an interface that is representing all the spaces:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Space</span> <span class="o">{</span>
     <span class="kd">def</span> <span class="n">getParticipants</span> <span class="o">:</span> <span class="n">SynchronizedSet</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
     <span class="kd">def</span> <span class="n">getSpaceID</span> <span class="o">:</span> <span class="n">SpaceID</span>
@@ -167,7 +168,9 @@ The <code class="prettyprint">emit</code> functions permits fire of an event in 
     <span class="kd">def</span> <span class="nf">unregister</span><span class="o">(</span><span class="n">EventListener</span><span class="o">)</span> <span class="o">:</span> <span class="n">Address</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>The functions <code class="prettyprint">register</code> and <code class="prettyprint">unregister</code> permit an agent to be involved or not.</p>
+<p>The functions <code class="prettyprint">register</code> and <code class="prettyprint">unregister</code> permit an agent to be involved or not.
+The function <code class="prettyprint">register</code> fires the event <code class="prettyprint">ParticipantJoined</code>.
+And, the function <code class="prettyprint">unregister</code> fires the event <code class="prettyprint">ParticipantLeft</code>.</p>
 
 <h3 id="1-4-restricted-access-event-space">1.4. Restricted Access Event Space</h3>
 
@@ -182,7 +185,7 @@ The <code class="prettyprint">emit</code> functions permits fire of an event in 
 
 <h2 id="2-defining-a-space">2. Defining a Space</h2>
 
-<p>The definition of a new space must be done with an object-oriented language&#39;s features statements.</p>
+<p>The definition of a new space must be done with object-oriented language&#39;s features.</p>
 
 <p>For defining a space, three steps must be followed:</p>
 
@@ -192,23 +195,25 @@ The <code class="prettyprint">emit</code> functions permits fire of an event in 
 <li>Definition of the space specification.</li>
 </ul>
 
-<p>In the rest of this section, we use the example of the definition of a physic space: a space in which objects are located. </p>
+<p>In the rest of this section, we use the example of the definition of a physic space: a space in which objects have a 
+spatial position. </p>
 
-<h3 id="2-1-defining-a-space">2.1. Defining a Space</h3>
+<h3 id="2-1-defining-the-physicspace">2.1. Defining the PhysicSpace</h3>
 
-<p>The first step for the definition of a new type of space is the specification of the Java interface that is describing
+<p>The first step for the definition of a new type of space is the specification of the interface that is describing
 the functions provided by the space.</p>
 
-<p>The new space type must extend one of the predefined types. In the following example, the new space is related to
-the physic environment in which the agents may evolve.</p>
+<p>The new space type must extend one of the predefined types, below <code class="prettyprint">Space</code>. In the following example, the new space
+is related to the physic environment in which the agents may evolve.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">PhysicSpace</span> <span class="k">extends</span> <span class="n">Space</span> <span class="o">{</span>
     <span class="kd">def</span> <span class="nf">moveObject</span><span class="o">(</span><span class="n">identifier</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">y</span> <span class="o">:</span> <span class="kt">float</span><span class="o">,</span> <span class="n">z</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">bindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">unbindBody</span><span class="o">(^</span><span class="kd">agent</span> <span class="err">: </span><span class="nc">EventListener</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>This space permits to move an object (including the physical representation of the agent, its body).
-Additionally, the space gives to the agent the ability to be binded to its body, and to release the control of its body.
+<p>This space permits to move an object, i.e. the physical representation of the agent 
+(named body). Additionally, the space gives to the agent the ability to be binded to its body, and
+to release the control of its body.
 The <code class="prettyprint">EventListener</code> type is the event listening mechanism associated to the agent. It may be obtained with
 the <code class="prettyprint">Behaviors</code> built-in capacity (see the corresponding
 <a href="./bic/Behaviors.html">built-in capacity reference</a> for details).</p>
@@ -218,7 +223,7 @@ the <code class="prettyprint">Behaviors</code> built-in capacity (see the corres
 <p>The definition of the space implementation depends upon the runtime environment.</p>
 
 <p><caution>This section of the space reference document may evolved in future releases of SARL. Please activate
-the &quot;deprecated feature use&quot; warning in your Java compilation configuration for ensuring
+the &quot;deprecated feature use&quot; warning in your compilation configuration for ensuring
 that you will be notified about any major changes on this part of the API.</caution></p>
 
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
@@ -262,15 +267,16 @@ routing the events to all the agents other the computer network.</important></p>
 network.</p>
 
 <p><caution>This section of the space reference document may evolved in future releases of SARL. Please activate the
-&quot;deprecated feature use&quot; warning in your Java compilation configuration for ensuring that you will be notified
+&quot;deprecated feature use&quot; warning in your compilation configuration for ensuring that you will be notified
 about any major changes on this part of the API.</caution></p>
 
 <p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">NetworkPhysicSpaceImpl</span> <span class="k">extends</span> <span class="n">AbstractEventSpace</span> <span class="k">implements</span> <span class="n">PhysicSpace</span> <span class="o">{</span>
     <span class="kd">val</span> <span class="n">entities</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">,</span><span class="n">PhysicObject</span><span class="o">&gt;</span>
 
-    <span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">factory</span> <span class="o">:</span> <span class="n">DistributedDataStructureService</span><span class="o">,</span>
+            <span class="n">lockProvider</span> <span class="o">:</span> <span class="n">Provider</span><span class="o">&lt;</span><span class="n">ReadWriteLock</span><span class="o">&gt;)</span> <span class="o">{</span>
+        <span class="k">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">factory</span><span class="o">,</span> <span class="n">lockProvider</span><span class="o">)</span>
         <span class="kc">this</span><span class="o">.</span><span class="n">entities</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">getMap</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="n">toString</span> <span class="o">+</span> <span class="s">&quot;-physicObjects&quot;</span><span class="o">)</span>
     <span class="o">}</span>
 
@@ -324,13 +330,52 @@ This specification may create the space instance according to rules, or provide 
 <p>The example above is the specification that permits to create a physic space with networking. It retrieves
 by injection the factory of distributed data structures provided by the Janus platform.</p>
 
+<h3 id="2-5-access-to-the-default-space-instance-within-a-space-specification">2.5. Access to the Default Space Instance within a space specification</h3>
+
+<p>If the space instance needs to be linked to the default space of the context, it is 
+necessary to retrieve the instance of the default space within the space specification.
+Then, this specification is in charge of passing the default space instance to the 
+space instance.</p>
+
+<p>By contract, the default space instance could be []injected into the space specification 
+instance](<a href="https://en.wikipedia.org/wiki/Dependency_injection">https://en.wikipedia.org/wiki/Dependency_injection</a>). The following constraints 
+apply:</p>
+
+<ol>
+<li>The injected feature is an object field of the space specification, or a formal parameter;</li>
+<li>The injected feature must be of type <code class="prettyprint">OpenEventSpace</code>;</li>
+<li>The injected feature must be marked with one of the two following methods:
+a. annotated with <code class="prettyprint">@Named(&quot;defaultSpace&quot;)</code>, or
+b. annotated with <code class="prettyprint">@DefaultSpace</code>.</li>
+</ol>
+
+<p>The following example illustrates the first method of marking of an object field:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MySpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">MySpace</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Inject</span>
+    <span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;defaultSpace&quot;</span><span class="o">)</span>
+    <span class="kd">var</span> <span class="n">defaultSpace</span> <span class="o">:</span> <span class="n">OpenEventSpace</span>
+    <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">MySpace</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">MySpaceImpl</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The following example illustrates the second method of marking of an object field:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MySpaceSpecification</span> <span class="k">implements</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">MySpace</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Inject</span>
+    <span class="nd">@io.sarl.util.DefaultSpace</span>
+    <span class="kd">var</span> <span class="n">defaultSpace</span> <span class="o">:</span> <span class="n">OpenEventSpace</span>
+    <span class="kd">def</span> <span class="nf">create</span><span class="o">(</span><span class="n">id</span> <span class="o">:</span> <span class="n">SpaceID</span><span class="o">,</span> <span class="n">params</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">MySpace</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">MySpaceImpl</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -343,7 +388,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

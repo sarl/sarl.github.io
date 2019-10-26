@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.10.0</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0-10-0">Changes in 0.10.0</h1>
+
+<p>Release date: 2019-10-26.</p>
+
+<h2 id="1-major-changes">1. Major Changes</h2>
+
+<p>Number of major changes : 8</p>
+
+<h3 id="1-1-support-of-java-11">1.1. Support of Java 11</h3>
+
+<p>The entire SARL project was tested against the versions 8 and 11 of Java.
+The version 8 must still be used for running the SARL DSL Environment in order to create SARL libraries that could be used on a JRE 1.8.</p>
+
+<p>For application developers who are using SARL, they could use either Java 8 or Java 11 for running the SARL Development environment, or
+the SARL applications that are the result of the SARL compilation.</p>
+
+<h3 id="1-2-try-with-resources">1.2. Try-with-resources</h3>
+
+<p>The try-with-resources statement is a try statement that declares one or more resources.
+A resource is an object that must be closed after the program is finished with it.
+The try-with-resources statement ensures that each resource is closed at the end of the statement.
+Any object that implements <code class="prettyprint">AutoCloseable</code>, which includes all objects which implement <code class="prettyprint">Closeable</code>, can be used as a resource.</p>
+
+<p>The following example reads the first line from a file. It uses an instance of <code class="prettyprint">BufferedReader</code> to read data from the file.
+<code class="prettyprint">BufferedReader</code> is a resource that must be closed after the program is finished with it:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">def readFirstLineFromFile(path : String) : String {
+    try (var br = new BufferedReader(new FileReader(path))) {
+        return br.readLine
+    }
+}
+</code></pre></div>
+<p>In this example, the resource declared in the try-with-resources statement is a <code class="prettyprint">BufferedReader</code>.
+The declaration statement appears within parentheses immediately after the <code class="prettyprint">try</code> keyword.
+The class <code class="prettyprint">BufferedReader</code>, inherited from Java libraries, implements the interface <code class="prettyprint">AutoCloseable</code>.
+Because the <code class="prettyprint">BufferedReader</code> instance is declared in a try-with-resource statement, it will be closed regardless of
+whether the <code class="prettyprint">try</code> statement completes normally or abruptly.</p>
+
+<h3 id="1-3-implicit-names-for-lambda-formal-parameters">1.3. Implicit Names for Lambda Formal Parameters</h3>
+
+<p>When a lambda (also known as closure) has multiple parameters, and no name is provided by the SARL developer, the SARL compiler in its previous version generates an error because it was able to consider only <code class="prettyprint">it</code> as an implicitly declared variable, i.e. there was too many implicit parameter to declare by the compiler and it cannot do that.</p>
+
+<p>In its version 0.10, the SARL compiler is able to a generate default name for each of the formal parameters of a lambda, even if there are multiple unnamed parameters.
+The implicit name for the first parameter becomes <code class="prettyprint">$0</code>, <code class="prettyprint">$1</code> for the second, <code class="prettyprint">$2</code> for the third, etc.</p>
+
+<p>The example below shows the definition of an interface, a class that is calling an instance of the previous interface, and a piece of code that is invoking the class.
+It is interesting to note that the arguments&#39; values of the lambda expressions are accessed with their implicit names.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">interface MyInterface {
+    def a(a : int, b : char, c : String)
+}
+
+class MyClass {
+    def b(lambda : MyInterface) {
+        lambda.a(1, &#39;2&#39;, &quot;3&quot;)
+    }
+}
+
+var i = new Myclass
+i.b [
+    println($0)
+    println($1)
+    println($2)
+]
+</code></pre></div>
+<h3 id="1-4-introduction-of-the-two-events-participantjoined-and-participantleft">1.4. Introduction of the two events ParticipantJoined and ParticipantLeft</h3>
+
+<p>The events <code class="prettyprint">ParticipantJoined</code> and <code class="prettyprint">ParticipantLeft</code> are introduced.
+The first is fired when an agent has joined a space that has participants, e.g. an event space.
+The second is fired when an agent has left a space.</p>
+
+<h3 id="1-5-better-concurrent-execution-with-read-write-locks">1.5. Better Concurrent Execution with Read-Write Locks</h3>
+
+<p>The uses of mutual exclusion locks were replaced by similar uses of read-write locks.</p>
+
+<p>A read-write lock maintains a pair of associated locks, one for read-only operations and one for writing.
+The read lock may be held simultaneously by multiple reader threads, so long as there are no writers.
+The write lock is exclusive.
+The read-write lock implementation guarantees that the memory synchronization effects of <code class="prettyprint">writeLock</code> operations also hold with respect to the associated <code class="prettyprint">readLock</code>.
+That is, a thread successfully acquiring the read lock will see all updates made upon previous release of the write lock.</p>
+
+<p>A read-write lock allows for a greater level of concurrency in accessing shared data than that permitted by a mutual exclusion lock.
+It exploits the fact that while only a single thread at a time (a writer thread) can modify the shared data, in many cases any number of threads can
+concurrently read the data (hence reader threads). In theory, the increase in concurrency permitted by the use of a read-write lock will lead to
+performance improvements over the use of a mutual exclusion lock.</p>
+
+<h3 id="1-6-tool-for-generating-the-api-documentation">1.6. Tool for generating the API documentation</h3>
+
+<p>Sarldoc is a documentation generator for the SARL language for generating API documentation in HTML format from SARL source code.
+The HTML format is used for adding the convenience of being able to hyperlink related documents together.
+To pass source code to sarldoc, you have to provide the names of the folders in which the SARL code files are located.
+Then, the sarldoc tool generates a set of HTML files that contains the API documentation of your program.</p>
+
+<h3 id="1-7-performance-improvements">1.7. Performance improvements</h3>
+
+<p>The SARL compiler was reviewed in order to remove several memory leaks that cause low performances when compiling large number of SARL files. Even if this task is always active, several improvements have been obtained in this version of SARL.</p>
+
+<h3 id="1-8-new-demonstration-the-reynolds-boids">1.8. New demonstration: the Reynold&#39;s Boids</h3>
+
+<p>Boids is an artificial life program, developed by Craig Reynolds in 1986, which simulates the flocking behaviour of birds. The name &quot;boid&quot; corresponds to a shortened version of &quot;bird-oid object&quot;, which refers to a bird-like object.
+As with most artificial life simulations, Boids is an example of emergent behavior; that is, the complexity of Boids arises from the interaction of individual agents (the boids, in this case) adhering to a set of simple rules. The rules applied in the simplest Boids world are as follows:</p>
+
+<ul>
+<li>separation: steer to avoid crowding local flockmates;</li>
+<li>alignment: steer towards the average heading of local flockmates;</li>
+<li>cohesion: steer to move toward the average position (center of mass) of local flockmates.</li>
+</ul>
+
+<p>The SARL development environment provides an implementation of the Reynold&#39;s Boids within the set of available &quot;examples.&quot;
+This version of the Boids is implemented with the Java AWT graphical library.</p>
+
+<h2 id="2-detailed-changes">2. Detailed Changes</h2>
+
+<h3 id="2-1-sarl-language">2.1. SARL Language</h3>
+
+<h4 id="2-1-1-sarl-syntax">2.1.1. SARL Syntax</h4>
+
+<ul>
+<li>Add support for try-with-resource statements (<a href="http://github.com/sarl/sarl/commit/3fda23ac3fdd614f7026b3e9466b96547d031a41">details</a>).</li>
+<li>When a lambda has multiple parameters, and no name is provided by the SARL developer, the compiler generates default names for each of the formal parameters. The implicit name for the first parameter is <code class="prettyprint">$0</code>, <code class="prettyprint">$1</code> for the second, <code class="prettyprint">$2</code> for the third, etc. (<a href="http://github.com/sarl/sarl/commit/1056c08d08e1bc7bc209cfb43e6a80a8127ea5d1">details</a>).</li>
+<li><code class="prettyprint">throw</code> becomes a statement that has side effect (<a href="http://github.com/sarl/sarl/commit/f69552d67f29573c56b24d0af45c5f981393d06d">details</a>).</li>
+</ul>
+
+<h4 id="2-1-2-sarl-validator">2.1.2. SARL Validator</h4>
+
+<ul>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">1</a>, <a href="http://github.com/sarl/sarl/commit/af3b9adb2c3b3b9f0f701b3cd8e3423f9f58976d">2</a>).</li>
+<li>Avoid the generation of &quot;possible side-effect on occurrence&quot; when <code class="prettyprint">occurrence</code> is used within complex expressions (<a href="http://github.com/sarl/sarl/commit/e6f6f7036f5b9a408f8e0064ca42c6a5c04e3a96">details</a>).</li>
+<li>Change the texts associated to the warnings on the possible invalid usage of <code class="prettyprint">occurrence</code> (<a href="http://github.com/sarl/sarl/commit/925187245dd336359e336b75ae3f6e702ca4e31c">details</a>). The meaning of previous error message was not enough clear to the SARL developers. The message is refactored in order to be more explicit and clear.</li>
+<li>Remove the search of the Xtext library on the classpath when validating (<a href="http://github.com/sarl/sarl/commit/c7dfbfefcd720dd17d32aecad02a7e34f5529cc0">details</a>).</li>
+<li>Allow to ignore warnings related to raw types (<a href="http://github.com/sarl/sarl/commit/b1dfa05adaf6515ff162791a3bfc8bca46c79db9">details</a>).</li>
+</ul>
+
+<h4 id="2-1-3-java-model-inferrer">2.1.3. Java Model Inferrer</h4>
+
+<ul>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">details</a>).</li>
+<li>Avoid memory leaks caused due to cyclic references in the action prototype provider (<a href="http://github.com/sarl/sarl/commit/e7999e6806d32511b1326b581b90f2a2f1065eb8">1</a>, <a href="http://github.com/sarl/sarl/commit/82edde914855b8f2306f46e9363da8fb5aa1b580">2</a>).</li>
+<li>Add <code class="prettyprint">release()</code> function in the <code class="prettyprint">GenerationContext</code> type in order to limit memory leaks (<a href="http://github.com/sarl/sarl/commit/bcfca13b8dd30a9d67ea16a8b902ae66c4c007f6">details</a>).</li>
+<li>Use string representations for the SARL version (<a href="http://github.com/sarl/sarl/commit/6a01e6475237edff6843da1eb4f9bc0801d2563f">details</a>). The version of SARL was stored into a floating-point number. This approach was fine until the version becomes 0.10. With this version number, it is impossible to make the difference between <code class="prettyprint">0.1</code> and <code class="prettyprint">0.10</code>.</li>
+<li>Fixing the automatic annotation related to the purity of the function (<a href="http://github.com/sarl/sarl/commit/e454e62d25bb57587b2717fe1652871759b399c9">details</a>).</li>
+</ul>
+
+<h4 id="2-1-4-sarl-core-library">2.1.4. SARL Core Library</h4>
+
+<ul>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">details</a>).</li>
+<li>Events:
+
+<ul>
+<li>Add the events <code class="prettyprint">ParticipantJoined</code> and <code class="prettyprint">ParticipantLeft</code>, and the associated supported into the SRE (<a href="http://github.com/sarl/sarl/commit/1ebc123d16032b0a646b0f21b1aa6aad5538410f">details</a>).</li>
+</ul></li>
+<li>Context:
+
+<ul>
+<li>Updating the documentation of <code class="prettyprint">getOrCreateSpaceWithSpec</code> in order to indicate that the default space is ignored (<a href="http://github.com/sarl/sarl/commit/c8638205238e2573895be0f446102af4c143b8e4">details</a>).</li>
+</ul></li>
+<li>Annotations:
+
+<ul>
+<li>Enable the <a href="http://github.com/DefaultSkill">DefaultSkill</a> annotation (<a href="http://github.com/sarl/sarl/commit/277a1534b9a9be9f2d9f46656f3926adbdb92693">details</a>). This annotation could be attached to a <code class="prettyprint">Capacity</code> in order to specify the default skill to create into an agent, if one skill is not explicitly provided.</li>
+<li>Move the <code class="prettyprint">SarlAccessorsProcessor</code> annotation, which is provessing the <code class="prettyprint">@Accessors</code> annoations into the SARL core library (<a href="http://github.com/sarl/sarl/commit/a36aecbe86567fddd2a1da3b33e0ba2fa4285b1c">details</a>). Indeed, for being used by the compiler, the <code class="prettyprint">SarlAccessorsProcessor</code> annotation must be in the classpath of the project, i.e. the core library.</li>
+</ul></li>
+<li>Core:
+
+<ul>
+<li>Change the access modifier to public for the pure functions of <code class="prettyprint">AgentTrait</code> (<a href="http://github.com/sarl/sarl/commit/a377633b8d17a9030f4d53fb097a12489cf1a15c">details</a>) in order to enable access to these read-only information.</li>
+</ul></li>
+<li>Bootstrap:
+
+<ul>
+<li>Add <code class="prettyprint">getService</code> function into the Bootstrap (<a href="http://github.com/sarl/sarl/commit/1dccd1c91a465bdd68f34ca8dc3563f26d5189ca">details</a>). This function enables the access to SRE services from any point in the code.</li>
+<li>Add <code class="prettyprint">getKernelLogger</code> function into the Bootstrap (<a href="http://github.com/sarl/sarl/commit/6bf3c4143f4a967e11ad43474d266fe23cfc0aa5">details</a>). This function enables the access to the SRE kernel logger from any point in the code.</li>
+<li>Add <code class="prettyprint">isRunning</code> function into the Bootstrap (<a href="http://github.com/sarl/sarl/commit/a0f9911e8d96fe43a7db259e4cb5056f2baf9504">details</a>) in order to determine any instance of the SRE is running.</li>
+<li>Add <code class="prettyprint">startAgentWithID</code> function into the Bootstrap (<a href="http://github.com/sarl/sarl/commit/c6fe8a1c6ccf84166f98a38dec2a953419d7e1bc">details</a>).</li>
+</ul></li>
+</ul>
+
+<h4 id="2-1-5-sarl-batch-compiler">2.1.5. SARL Batch Compiler</h4>
+
+<ul>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">details</a>).</li>
+<li>Fixing classpath definition into the batch compiler that avoid proper compilation on certain siuations (<a href="http://github.com/sarl/sarl/commit/65923327be097709103d948100818f2be14a7bfb">details</a>).</li>
+<li>Fixing the deletion of the temporary folders that are created by the batch compiler (<a href="http://github.com/sarl/sarl/commit/1db12587527b20b7ac44e914082e1f76f15a8580">details</a>).</li>
+</ul>
+
+<h3 id="2-2-sarl-development-toolkit-sdk">2.2. SARL Development Toolkit (SDK)</h3>
+
+<ul>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">details</a>).</li>
+<li>Remove <code class="prettyprint">io.sarl.javafx</code> from the SDK (<a href="http://github.com/sarl/sarl/commit/51cfaba39d41ef9eb15fbf6d199231ae83149036">details</a>). The features that are provided by this module are not supposed to be used by all the SARL applications. Moreover, the dependency to JavaFX libraries (in JDK or not) should be managed by the SARL developer, not by the SARL SDK itself. The module is transformed into a maven library (see below).</li>
+<li>Move concurrent utilities into a dedicated package (<a href="http://github.com/sarl/sarl/commit/2ac315b60b630ceea2d92993042586ce014324c5">details</a>).</li>
+<li>Fixing the API documentation for <code class="prettyprint">Collections3</code> (<a href="http://github.com/sarl/sarl/commit/8bd69f6977d57b930f8f19249401bdbf04d48297">details</a>).</li>
+</ul>
+
+<h3 id="2-3-eclipse-development-environment">2.3. Eclipse Development Environment</h3>
+
+<h4 id="2-3-1-general-changes">2.3.1. General Changes</h4>
+
+<ul>
+<li>Use the Concurrent Mark Sweep GC that may provide better performances (<a href="http://github.com/sarl/sarl/commit/9eb099792d730dd6edbf6e2e6249be35e67c324b">details</a>).</li>
+<li>Do not generate launching scripts for 32-bit platforms (<a href="http://github.com/sarl/sarl/commit/43076d4a04ddb4587349388459650c33f2f4845b">details</a>).</li>
+<li>Change splash screen and about dialog&#39;s pictures (<a href="http://github.com/sarl/sarl/commit/440b3d9fcda65a4a6f86404c06c191e11142d4d6">1</a>, <a href="https://github.com/sarl/sarl/commit/244372711037222ef7f88b2981196db19f430442">2</a>).</li>
+<li>Add en entry into the FAQ about the difference between the &quot;SARL agent&quot; and &quot;SARL application&quot; launch configurations (<a href="https://github.com/sarl/sarl/commit/ba65993152a04b8f670d20fd54de0582755d571f">details</a>).</li>
+</ul>
+
+<h4 id="2-3-2-outline-component">2.3.2. Outline Component</h4>
+
+<ul>
+<li>Add the getter and setter functions when no argument is provided to the <a href="http://github.com/Accessors">Accessors</a> annotation (<a href="http://github.com/sarl/sarl/commit/85d1a2f0229778e35ee56acafa985a2259b5a0a6">details</a>).</li>
+<li>Display the accessor functions when multiple types of accessors are given to the <a href="http://github.com/Accessors">Accessors</a> annotation (<a href="http://github.com/sarl/sarl/commit/9ef4cb6a716a8eb9fefb96058862d8cbe99a2ec8">details</a>).</li>
+<li>Unify the rendering of the members into the inner types and the root types (<a href="http://github.com/sarl/sarl/commit/ffbb19e34fc4ec5dac5ad05b99a52250efc94fbf">details</a>).</li>
+<li>Show inherited constructors when the type has no member (<a href="http://github.com/sarl/sarl/commit/d65a8cfafaa21315d59c40205140d51a5485446f">details</a>).</li>
+<li>Colorized with a specific color (that could be edited into the general preferences) the inherited constructors (<a href="http://github.com/sarl/sarl/commit/189a265c71298fa40efc42ea0e7268373661449b">details</a>).</li>
+</ul>
+
+<h4 id="2-3-3-wizards">2.3.3. Wizards</h4>
+
+<ul>
+<li>Add the events <code class="prettyprint">SpaceCreated</code>, <code class="prettyprint">SpaceDestroy</code> into the template that is used by the new-agent wizard (<a href="https://github.com/sarl/sarl/commit/84110684478012552c1357c6486d4913ac1e9973">details</a>).</li>
+<li>Fixing the incorrect behavior of the project creation wizard when the manually provided folder of the project already exists and contains a non maven SARL project with java files (<a href="https://github.com/sarl/sarl/commit/3a6ba529bb317924b4ac8910c8ecd6caacb21298">details</a>).</li>
+<li>Fixing description text of the wizards (<a href="http://github.com/sarl/sarl/commit/d1101b90043d0d48dd12ed4f85e78c2a24de8345">details</a>).</li>
+</ul>
+
+<h4 id="2-3-4-other-components">2.3.4. Other Components</h4>
+
+<ul>
+<li>Enable the programmatic creation of launch configurations with a given name (<a href="https://github.com/sarl/sarl/commit/cea4caab8a0a83ecb3e3691f50802b165d51c343">details</a>).</li>
+<li>Export the icons into the m2e plugin (<a href="http://github.com/sarl/sarl/commit/1b3e29f207b85c9bb78dc509fa42b62b53e8421f">details</a>).</li>
+<li>Replace the calls to the deprecated function <code class="prettyprint">AbstractUIPlugin.imageDescriptorFromPlugin()</code> (<a href="http://github.com/sarl/sarl/commit/3d29e46cf728c1a0ce4ef7502a1f9978f2a6b44a">details</a>).</li>
+</ul>
+
+<h3 id="2-4-external-contributions-to-sarl">2.4. External Contributions to SARL</h3>
+
+<h4 id="2-4-1-examples">2.4.1. Examples</h4>
+
+<ul>
+<li>Add example : Reynold&#39;s Boids (<a href="https://github.com/sarl/sarl/commit/b10d34ca7af8a51087c31d58dc6b3cad0355ad55">1</a>, <a href="https://github.com/sarl/sarl/commit/137c93576bff3e4b1fc9ae4e708c92f59a098943">2</a>).</li>
+<li>Update the &quot;hello world&quot; example, following the upgrade of the event dispatching mechanism (<a href="https://github.com/sarl/sarl/commit/73004bb750ba51607c98ec5a314c0f223c5a4d8a">details</a>). The agent does not receive any more the system events that it is not supposed to received. Then, the corresponding <code class="prettyprint">on</code> statements were removed.</li>
+<li>Add launch configurations for each example project (<a href="https://github.com/sarl/sarl/commit/5383cd46f1dff261b87e14eb139e0c9497645843">details</a>).</li>
+<li>Add the capability to create a launch configuration for each example into the example-creation wizard (<a href="https://github.com/sarl/sarl/commit/21b6799131f4565cd7a88e43b33033e87c2e243f">1</a>, <a href="https://github.com/sarl/sarl/commit/c38196f60d7d508b1ad6d9eeb532d07a3d34753c">2</a>, <a href="https://github.com/sarl/sarl/commit/2abb38ebce2d0f887df31ac78a4d36e37062a72d">3</a>).</li>
+<li>The syntax for paths of the files to open that are specified into the <code class="prettyprint">plugin.xml</code> file is normalized (<a href="https://github.com/sarl/sarl/commit/a40596ac5f7890aec02a7529b551d40c2159983b">details</a>). The example-creation wizard searches for the file based on the specified location (named <code class="prettyprint">&lt;loc&gt;</code> below):
+1) file with path <code class="prettyprint">&lt;loc&gt;</code> exists;
+2) file with path <code class="prettyprint">&lt;project-name&gt;/&lt;loc&gt;</code> exists;
+3) file with path <code class="prettyprint">&lt;project-name&gt;/src/main/sarl/&lt;loc&gt;</code> exists.</li>
+<li>Enable the injection instances of the SARL component into the example-creation wizard (<a href="https://github.com/sarl/sarl/commit/a8b894033d4f15b615512c96dbcffe1f2041d5bf">details</a>).</li>
+<li>Explain how to launch each JavaFX example into their README (<a href="http://github.com/sarl/sarl/commit/73d8f0431d807d45ba71492ba35aabc2a99b68d4">details</a>).</li>
+<li>Change the background of the examples&#39; icons from black to white in order to be integrated in a nicer way into the Eclipse environment (<a href="https://github.com/sarl/sarl/commit/31e2d61b6b0f9445809feb2c4eaf4bbd1a195933">details</a>).</li>
+</ul>
+
+<h4 id="2-4-2-latex-styles">2.4.2. LaTeX Styles</h4>
+
+<ul>
+<li>Remove color macros from the not-colorized LaTeX style (<a href="http://github.com/sarl/sarl/commit/4095562b644a36efe83e7f64e33f8f3bd488d6e0">details</a>).</li>
+</ul>
+
+<h3 id="2-5-janus-run-time-environment">2.5. Janus Run-time Environment</h3>
+
+<ul>
+<li>Add the support of the events <code class="prettyprint">ParticipantJoined</code> and <code class="prettyprint">ParticipantLeft</code> (<a href="http://github.com/sarl/sarl/commit/1ebc123d16032b0a646b0f21b1aa6aad5538410f">details</a>).</li>
+<li>Use read-write locks in place of the mutual exclusion locks (<a href="http://github.com/sarl/sarl/commit/bca119548da6c34b73e27bb101e295adce728d33">details</a>).</li>
+<li>Add shutdown function in order to force shutdown programmatically (<a href="http://github.com/sarl/sarl/commit/fa4f390e97be85ceb1732e74e2242f74cfe976df">details</a>).</li>
+<li>Inject the default space instance into the space specifications (<a href="http://github.com/sarl/sarl/commit/5f3950372dd2b22f7b08e44d5aa6dde593baf5aa">1</a>, <a href="http://github.com/sarl/sarl/commit/6549c38111c915a83eff9c5d24c0e95470d41a99">2</a>).</li>
+<li>Ignore the default space inside the <code class="prettyprint">getOrCreateSpaceWithSpec</code> function (<a href="http://github.com/sarl/sarl/commit/2b6a1e15e3011b42c3b1f129cb2937c1a71ec3f0">details</a>).</li>
+<li>Replace the cached thread pool by a fixed thread pool with 32 threads in order to avoid out-of-memory exception due to a too large number of created threads (<a href="https://github.com/sarl/sarl/commit/84facf175bfdd16ceeb1ed5e1306743346c0f533">details</a>).</li>
+<li>Add a constraint on the maximum version for the JDK into the Janus launching scripts (<a href="http://github.com/sarl/sarl/commit/c3475bd955fc614b5e4beafe39449973a72d9f15">details</a>).</li>
+<li>Propagate the deprecation flag from <code class="prettyprint">StandardBuiltinCapacitiesProvider</code> to the invokers of this provider (<a href="http://github.com/sarl/sarl/commit/69538e4178728183ed4f81952a00d386fb398ae7">details</a>).</li>
+<li>The Janus Boot object uses now two output streams: standard and error (<a href="http://github.com/sarl/sarl/commit/47b0d3927a60894c81360238b901948f0654ee67">details</a>).</li>
+<li>Add links to the Gitter forum into the FAQ (<a href="https://github.com/sarl/sarl/commit/30d9d59a25cd0194b13c6f99140b9c8bd0d3c218">details</a>).</li>
+</ul>
+
+<h3 id="2-6-maven-tools">2.6. Maven Tools</h3>
+
+<h4 id="2-6-1-maven-base-library">2.6.1. Maven Base Library</h4>
+
+<ul>
+<li>Add the implicit dependency to guice multibindings library, which is implicitly used by guice but not present into the dependencies (<a href="http://github.com/sarl/sarl/commit/6fd55a721051e10d684e42cb06b5c66222e4386c">details</a>).</li>
+</ul>
+
+<h4 id="2-6-2-bootique-application-module">2.6.2. Bootique Application Module</h4>
+
+<ul>
+<li>Add Maven library for building a bootique-based application (<a href="http://github.com/sarl/sarl/commit/dc5cc4926741679b143bc164963a825f0164a0a1">details</a>).</li>
+<li>Catch the bootique and guice exceptions, and format them in a better way for console logging (<a href="http://github.com/sarl/sarl/commit/7389257c666384b004ce5e90169e808c683429ef">details</a>).</li>
+</ul>
+
+<h4 id="2-6-3-javafx-application-module">2.6.3. JavaFX Application Module</h4>
+
+<ul>
+<li>Add <code class="prettyprint">io.sarl.javafx</code> module (<a href="http://github.com/sarl/sarl/commit/e429d9d8b4c8299e9d26e56c904a38f3825e8da6">details</a>).</li>
+</ul>
+
+<h4 id="2-6-4-documentation-generator-plugin">2.6.4. Documentation Generator Plugin</h4>
+
+<ul>
+<li>Remove unnecessary Maven dependencies into the documentation generator and the associated testing project (<a href="http://github.com/sarl/sarl/commit/62d21173a2146f2b8f33006193f43c5f44df09ba">details</a>).</li>
+</ul>
+
+<h3 id="2-7-command-line-tools">2.7. Command-Line Tools</h3>
+
+<h4 id="2-7-1-sarlc">2.7.1. sarlc</h4>
+
+<ul>
+<li>Rename &quot;working directory&quot; options and functions to &quot;temp directory&quot; (<a href="http://github.com/sarl/sarl/commit/29a275a81e9184578c5c0e399e83b67429bd88b3">details</a>).</li>
+<li>Ensure canonical paths are used by sarlc to properly detect the project&#39;s file structure (<a href="http://github.com/sarl/sarl/commit/7d02ce2d0ed04cc67e9f08f3ad7fadf6cc15850e">details</a>).</li>
+<li>Deep re-implementation of the tool in order to fix the issues in the computation of classpath that was resulting to an invalid path (<a href="http://github.com/sarl/sarl/commit/3b1b0ec8469686c99942b0d0c5249a2c7edce718">details</a>).</li>
+</ul>
+
+<h4 id="2-7-2-sarldoc">2.7.2. sarldoc</h4>
+
+<ul>
+<li>Add the <code class="prettyprint">sarldoc</code> command-line tools for creation the API documentation from the CLI (<a href="http://github.com/sarl/sarl/commit/9da2496e2dcc0a73b6287c439cfee1fc36f48cbb">1</a>, <a href="http://github.com/sarl/sarl/commit/e5e67fc23ea614660d916e7c79f4152c53f345e6">2</a>, <a href="http://github.com/sarl/sarl/commit/45e33c6302f3f8ac1c67955a152ccddd54230e73">3</a>, <a href="http://github.com/sarl/sarl/commit/92f5fc77ceeb8dd13e31f12b469a09d918aac03d">4</a>, <a href="http://github.com/sarl/sarl/commit/835acc4adcbc6c5516e093cc52b6426a60f5e4e3">5</a>, <a href="http://github.com/sarl/sarl/commit/bcf9b90a37d6a0abf008f5e0cbb64a461264cfe7">6</a>, <a href="http://github.com/sarl/sarl/commit/dfeb08b94a1bc9ab2acf0cce8e6fc8100ca51521">7</a>, <a href="http://github.com/sarl/sarl/commit/c916031e6b738aaf410da4a4791ac6f5049a831e">8</a>, <a href="http://github.com/sarl/sarl/commit/2387857a792cd79190780c3753e465c9d82c09b0">9</a>)</li>
+</ul>
+
+<h3 id="2-8-sarl-documentation">2.8. SARL Documentation</h3>
+
+<ul>
+<li>Add a document on how to inject the default space instance into a space specification (<a href="http://github.com/sarl/sarl/commit/6ce2a0cbc7cfa23545b8988936b00aadb30021b8">details</a>).</li>
+<li>Add the documentation page for the sarldoc command line tool (<a href="http://github.com/sarl/sarl/commit/8cd151d007d6c07d4c593c04489d2b0507e53af7">details</a>).</li>
+<li>Remove unnecessary documentation (<a href="http://github.com/sarl/sarl/commit/2a4975078961e3e6380b74bd03fb80f3816df786">details</a>).</li>
+</ul>
+
+<h3 id="2-9-tools-for-sarl-contributors">2.9. Tools for SARL Contributors</h3>
+
+<h4 id="2-9-1-development-environment">2.9.1. Development Environment</h4>
+
+<ul>
+<li>Validate the use of the Java versions 8 and 11 (<a href="https://github.com/sarl/sarl/commit/271d7affe54efbc365e9199824a733fcc5fdfae1">details</a>):
+
+<ul>
+<li>Version for running the SARL DSL Environment: min 1.8, max 1.8;</li>
+<li>Version for running the SARL Development Environment: min 1.8, max 1.11;</li>
+<li>Version for running the SARL applications: min 1.8, max 1.11.</li>
+</ul></li>
+<li>Force the <code class="prettyprint">build.properties</code>, <code class="prettyprint">MANIFEST.MF</code> files and specific Java classes to contains the JDK and JRE version numbers that is provided in the general pom file (<a href="https://github.com/sarl/sarl/commit/9ac7a0ef13389e21f3f19ec43b9d5ec95031122b">details</a>).</li>
+<li>Update the Eclipse working sets (<a href="http://github.com/sarl/sarl/commit/7042b8392cb7b74e8e8aad5ebfd9666b0017d6f6">details</a>).</li>
+<li>Update the minimum versions of the tools into the contributor documentation (<a href="http://github.com/sarl/sarl/commit/10722f450c6c401160d939b6cc4c8b607fbca6cd">details</a>).</li>
+<li>Update the release guidelines (<a href="http://github.com/sarl/sarl/commit/ca00ff994598c730339972def4e19a60e0b8cace">details</a>).</li>
+</ul>
+
+<h4 id="2-9-2-dependencies">2.9.2. Dependencies</h4>
+
+<ul>
+<li>Make the <code class="prettyprint">io.sarl.javafx</code> module able to use the JavaFX&#39;s dependency for JDK8 or JDK11 (<a href="https://github.com/sarl/sarl/commit/d4280730d3a0432a4f8f074d79204602120ef69d">details</a>).</li>
+<li>Upgrade to Eclipse 2019-09 and Xtext 2.19 (<a href="http://github.com/sarl/sarl/commit/d3d62a77ae31ba4d5af20d74302063c44deae66e">details</a>).</li>
+<li>Upgrade to guava 21.0 (<a href="http://github.com/sarl/sarl/commit/e2fc12b3c8025e160e0d0ca1d0f9ce889cdda9ae">details</a>).</li>
+<li>Upgrade to afc 16.0 (<a href="http://github.com/sarl/sarl/commit/3291b6786dbfa8c6d094c0faf668f7abc1c1c41c">details</a>).</li>
+<li>Upgrade to slf4j 2.0.0-alpha1 (<a href="http://github.com/sarl/sarl/commit/5a1f0ab8a6b70b9ea2f34709feec0d80eeb673e9">details</a>).</li>
+<li>Upgrade to hazelcast 3.12.1 (<a href="http://github.com/sarl/sarl/commit/a562cee0a2c58353b37058fedc4b80bc354c9ec7">details</a>).</li>
+<li>Upgrade to flexmark 0.50.16 (<a href="http://github.com/sarl/sarl/commit/240b1243e65b0389443345b4988312a2d631f93c">details</a>).</li>
+</ul>
+
+<h4 id="2-9-3-back-door-to-the-sre">2.9.3. Back Door to the SRE</h4>
+
+<ul>
+<li>Add <code class="prettyprint">setInternalSkill</code> (<a href="http://github.com/sarl/sarl/commit/aeb75789cdcb8f3647b9aad0c506c5233343b8f4">details</a>).</li>
+<li>Deprecate unused functions into <code class="prettyprint">SREutils</code> (<a href="http://github.com/sarl/sarl/commit/32de24f5983ddf870af4bd8ed498d054c69ec53a">details</a>).</li>
+</ul>
+
+<h4 id="2-9-4-unit-tests">2.9.4. Unit Tests</h4>
+
+<ul>
+<li>Add tests for casting operator overidding (<a href="http://github.com/sarl/sarl/commit/d98a14138d16763fea1a53eefd2f08e1ff9c7eda">details</a>).</li>
+<li>Add the unit tests for <code class="prettyprint">Accessors</code> annotation (<a href="http://github.com/sarl/sarl/commit/0b521479ea5bbd0ed621fb09038d2dde0468b886">details</a>).</li>
+<li>Add several missed tests (<a href="http://github.com/sarl/sarl/commit/dd6fe7e2e2dcd8172225a7437c019e139bd3c39c">details</a>).</li>
+<li>Add unit tests for the CLI program sarlc (<a href="http://github.com/sarl/sarl/commit/cc33683cbed3b9ba74044c83299e932ca214f6b1">details</a>).</li>
+<li>Add unit test for testing the launch of Janus, i.e. dependency checking (<a href="http://github.com/sarl/sarl/commit/61fa16eda3a1a6d428db7e9634598ea3c4eda3c4">details</a>).</li>
+</ul>
+
+<h4 id="2-9-5-generator-of-the-sarl-compiler-mwe2-tools">2.9.5. Generator of the SARL Compiler (MWE2 Tools)</h4>
+
+<ul>
+<li>Add an hidden dependency that is mandatory for running the MWE2 script (<a href="http://github.com/sarl/sarl/commit/06e88a591e78cf52d3b4517ab19f2ba3220a6d99">details</a>).</li>
+<li>Replace the call to the deprecated function <code class="prettyprint">Files.toString()</code> (<a href="http://github.com/sarl/sarl/commit/787b54158f663456a4b764d4c17b5c78a9e82bcd">details</a>).</li>
+<li>Ensure that the <code class="prettyprint">DefaultActionPrototypeProvider</code> is an eager singleton in order to limit memory leaks (<a href="http://github.com/sarl/sarl/commit/32f6fff95ca942a607adb4d1676f299f710692d4">details</a>).</li>
+</ul>
+
+<h2 id="3-changes-in-the-previous-versions">3. Changes in the Previous Versions</h2>
+
+<ul>
+<li><a href="./changes_0.9.0.html">Changes in the version 0.9.0</a></li>
+</ul>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

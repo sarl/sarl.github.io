@@ -380,7 +380,7 @@ context.</p>
 an singleton collection instance that is containing the default space.
 This function must reply a auto-synchronized collection. We use the <code class="prettyprint">Collections3</code> utility
 class, provided in the SARL API, for creating the synchronized collection.
-The first parameter of the <code class="prettyprint">synchronizedCollection</code> function is the collection to synchronized,
+The first parameter of the <code class="prettyprint">synchronizedSingleton</code> function is the collection to synchronized,
 the second parameter is the object on from which the synchronization token will be obtained.</p>
 
 <p>The <code class="prettyprint">getSpace(Class)</code> function is supposed to reply the existing spaces that were created
@@ -391,15 +391,15 @@ only the default space if the given space specification type is <code class="pre
 <p>The <code class="prettyprint">getSpace(UUID)</code> function replies the default space only if the given UUID is the
 identifier of the default space. In the other cases, the function replies nothing.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getSpaces</span> <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Space</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="nl">Collections3:</span><span class="o">:</span><span class="n">synchronizedCollection</span><span class="o">(</span><span class="nl">Collections:</span><span class="o">:</span><span class="n">singleton</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">),</span> <span class="kc">this</span><span class="o">)</span>
+                <span class="nl">Collections3:</span><span class="o">:</span><span class="n">synchronizedSingleton</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span><span class="o">)</span>
 <span class="o">}</span>
 <span class="kd">def</span> <span class="nf">getSpaces</span><span class="o">(</span><span class="n">spec</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">SpaceSpecification</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;)</span>
         <span class="o">:</span> <span class="n">SynchronizedCollection</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span>
         <span class="k">with</span> <span class="n">S</span> <span class="k">extends</span> <span class="n">Space</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">spec</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">spec</span> <span class="o">==</span> <span class="k">typeof</span><span class="o">(</span><span class="n">EventSpaceSpecification</span><span class="o">))</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nl">Collections3:</span><span class="o">:</span><span class="n">synchronizedCollection</span><span class="o">(</span><span class="nl">Collections:</span><span class="o">:</span><span class="n">singleton</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span> <span class="k">as</span> <span class="n">S</span><span class="o">),</span> <span class="kc">this</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nl">Collections3:</span><span class="o">:</span><span class="n">synchronizedSingleton</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">defaultSpace</span> <span class="k">as</span> <span class="n">S</span><span class="o">)</span>
     <span class="o">}</span>
-    <span class="k">return</span> <span class="nl">Collections3:</span><span class="o">:</span><span class="n">synchronizedCollection</span><span class="o">(</span><span class="nl">Collections:</span><span class="o">:</span><span class="n">emptyList</span><span class="o">,</span> <span class="kc">this</span><span class="o">)</span>
+    <span class="k">return</span> <span class="nl">Collections3:</span><span class="o">:</span><span class="n">emptySynchronizedSet</span>
 <span class="o">}</span>
 <span class="kd">def</span> <span class="nf">getSpace</span><span class="o">(</span><span class="n">spaceUUID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">S</span>
         <span class="k">with</span> <span class="n">S</span> <span class="k">extends</span> <span class="n">Space</span> <span class="o">{</span>
@@ -409,6 +409,9 @@ identifier of the default space. In the other cases, the function replies nothin
     <span class="k">return</span> <span class="kc">null</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>The function call <code class="prettyprint">synchronizedSingleton</code> is provided by the SARL Development Kit in order to create synchronized collections.
+The argument of this function is the collection to synchronize.</p>
+
 <h4 id="definition-of-the-creation-functions-for-spaces">Definition of the creation functions for spaces</h4>
 
 <p>The context provides functions for creating spaces. Because we assume that no additional space could be created upon the tinyMAS
@@ -1236,10 +1239,32 @@ The <code class="prettyprint">getInnerAddress</code> function computes the agent
     <span class="o">!</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">.</span><span class="n">isEmpty</span>
 <span class="o">}</span>
 <span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="nl">Collections3:</span><span class="o">:</span><span class="n">unmodifiableSynchronizedIterable</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">,</span> <span class="kc">this</span><span class="o">)</span>
+                <span class="kc">this</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">readLock</span><span class="o">.</span><span class="n">lock</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="nl">Collections3:</span><span class="o">:</span><span class="n">unmodifiableSynchronizedIterable</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">,</span> <span class="kc">this</span><span class="o">.</span><span class="n">lock</span><span class="o">)</span>
+                <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+                    <span class="kc">this</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">readLock</span><span class="o">.</span><span class="n">unlock</span>
+                <span class="o">}</span>
+<span class="o">}</span>
+            <span class="kd">val</span> <span class="n">lock</span> <span class="o">:</span> <span class="n">ReadWriteLock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReentrantReadWriteLock</span>
+</code></pre></div>
+<p>The function call <code class="prettyprint">Collections3::unmodifiableSynchronizedIterable</code> is provided by the SARL Development Kit in order to create synchronized collections.
+The first argument of this function is the collection to synchronize.
+The second argument is the locking object that is supporting the synchronization of 
+the given collection.
+Usually, the locking object is an instance of <code class="prettyprint">ReentrantReadWriteLock</code>.
+The call to <code class="prettyprint">Collections3::unmodifiableSynchronizedIterable</code> is enclosed by a typical code block that is enabling the 
+synchronization on the list of behaviors as reader of this list.</p>
+
+<p>If you don&#39;t want to apply a real synchronization on the replied collection, you could 
+replace the previous code by:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getRegisteredBehaviors</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">Behavior</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nl">Collections3:</span><span class="o">:</span><span class="n">unmodifiableSynchronizedIterable</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">behaviors</span><span class="o">,</span> <span class="nl">NoReadWriteLock:</span><span class="o">:</span><span class="n">SINGLETON</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>The function call <code class="prettyprint">Collections3::unmodifiableSynchronizedIterable</code> is provided by the SARL Development Kit in order to create synchronized collections.</p>
+<p>In the previous code, <code class="prettyprint">NoReadWriteLock::SINGLETON</code> is a specific locking object that is doing exactly 
+nothing regarding the synchronization. In other words, this this locking object, the
+synchronization of the collection is disable. </p>
 
 <h4 id="updating-the-tinymas-agent-life-cycle-for-un-registering-the-behaviors">Updating the tinyMAS agent life-cycle for (un)registering the behaviors</h4>
 
@@ -2100,7 +2125,7 @@ a specific section, named <code>SARL-Runtime-Environment</code>.</p>
 
 SARL-Runtime-Environment:
 SRE-Name: TinyMAS
-SARL-Spec-Version: 0.9
+SARL-Spec-Version: 0.10
 Standalone-SRE: true
 VM-Arguments: -ea
 Program-Arguments:
@@ -2177,9 +2202,12 @@ programmatically without having a specific SRE library into the <em>compilation 
 <p>The <code class="prettyprint">SREBootstrap</code> service provides the following functions:</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SREBootstrap</span> <span class="o">{</span>
     <span class="kd">def</span> <span class="n">getBootAgentIdentifier</span> <span class="o">:</span> <span class="n">UUID</span>
+    <span class="kd">def</span> <span class="n">getKernelLogger</span> <span class="o">:</span> <span class="n">Logger</span>
+    <span class="kd">def</span> <span class="nf">getService</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">Object</span>
     <span class="kd">def</span> <span class="n">getUniverseContextUUID</span> <span class="o">:</span> <span class="n">UUID</span>
     <span class="kd">def</span> <span class="n">getUniverseSpaceUUID</span> <span class="o">:</span> <span class="n">UUID</span>
     <span class="kd">def</span> <span class="n">isActive</span> <span class="o">:</span> <span class="kt">boolean</span>
+    <span class="kd">def</span> <span class="n">isRunning</span> <span class="o">:</span> <span class="kt">boolean</span>
     <span class="kd">def</span> <span class="n">setBootAgentTypeContextUUID</span>
     <span class="kd">def</span> <span class="nf">setOffline</span><span class="o">(</span><span class="kt">boolean</span><span class="o">)</span>
     <span class="kd">def</span> <span class="n">setRandomContextUUID</span>
@@ -2187,8 +2215,11 @@ programmatically without having a specific SRE library into the <em>compilation 
     <span class="kd">def</span> <span class="nf">setUniverseContextUUID</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">setUniverseSpaceUUID</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">setVerboseLevel</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span>
+    <span class="kd">def</span> <span class="n">shutdown</span>
+    <span class="kd">def</span> <span class="nf">shutdown</span><span class="o">(</span><span class="kt">boolean</span><span class="o">)</span>
     <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">UUID</span>
     <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
+    <span class="kd">def</span> <span class="nf">startAgentWithID</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">Object</span><span class="o">[])</span>
     <span class="kd">def</span> <span class="n">startWithoutAgent</span> <span class="o">:</span> <span class="n">AgentContext</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -2250,9 +2281,9 @@ The resulting Mavne configuration becomes (after upadting the configuration abov
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -2265,7 +2296,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

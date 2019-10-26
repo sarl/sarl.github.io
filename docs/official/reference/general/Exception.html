@@ -108,19 +108,43 @@ non-final variables: </p>
     <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="4-acknowledgements">4. Acknowledgements</h2>
+<h2 id="4-the-try-with-resources-statement">4. The try-with-resources Statement</h2>
+
+<p>The try-with-resources statement is a try statement that declares one or more resources. A resource
+is an object that must be closed after the program is finished with it. The try-with-resources
+statement ensures that each resource is closed at the end of the statement. Any object that
+implements <code class="prettyprint">java.lang.AutoCloseable</code>, which includes all objects which implement <code class="prettyprint">java.io.Closeable</code>,
+can be used as a resource.</p>
+
+<p>The following example reads the first line from a file. It uses an instance of <code class="prettyprint">BufferedReader</code>
+to read data from the file. <code class="prettyprint">BufferedReader</code> is a resource that must be closed after the
+program is finished with it:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">static</span> <span class="kd">def</span> <span class="nf">readFirstLineFromFile</span><span class="o">(</span><span class="n">path</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">(</span><span class="kd">var</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">path</span><span class="o">)))</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">br</span><span class="o">.</span><span class="n">readLine</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, the resource declared in the try-with-resources statement is a <code class="prettyprint">BufferedReader</code>.
+The declaration statement appears within parentheses immediately after the <code class="prettyprint">try</code> keyword.
+The class <code class="prettyprint">BufferedReader</code> implements the interface <code class="prettyprint">java.lang.AutoCloseable</code>.
+Because the <code class="prettyprint">BufferedReader</code> instance is declared in a try-with-resource statement, it will be
+closed regardless of whether the try statement completes normally or abruptly (as a result of the method
+<code class="prettyprint">BufferedReader.readLine</code> throwing an <code class="prettyprint">IOException</code>).</p>
+
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -133,7 +157,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -70,8 +70,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <li><a href="#1-basic-definition">1. Basic Definition</a></li>
 <li><a href="#2-inferred-parameter-type">2. Inferred Parameter Type</a></li>
-<li><a href="#3-implicit-parameters-it">3. Implicit Parameters: it</a></li>
-<li><a href="#4-empty-list-of-parameters">4. Empty List of Parameters</a></li>
+<li><a href="#3-implicit-parameters">3. Implicit Parameters</a></li>
+<ul>
+  <li><a href="#3-1-case-of-a-single-parameter-it">3.1. Case of a single parameter: it</a></li>
+  <li><a href="#3-2-case-of-multiple-parameters">3.2. Case of multiple parameters</a></li>
+</ul>
+
+<p><li><a href="#4-empty-list-of-parameters">4. Empty List of Parameters</a></li>
 <li><a href="#5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</a></li>
 <li><a href="#6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</a></li>
 <li><a href="#7-type-of-a-lambda-expression">7. Type of a Lambda Expression</a></li>
@@ -79,8 +84,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#7-1-pure-sarl-notation">7.1. Pure SARL Notation</a></li>
   <li><a href="#7-2-java-like-notation">7.2. Java-like Notation</a></li>
 </ul>
-
-<p><li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
+<li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
 <li><a href="#9-legal-notice">9. Legal Notice</a></li></p>
 
 <p></ul></p>
@@ -98,7 +102,7 @@ Like a method declaration, a lambda expression may declare parameters.</p>
     <span class="n">textField</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Something happened!&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">toString</span>
 <span class="o">]</span>
 </code></pre></div>
-<p>The lambda above has one parameter called e which is of type <code class="prettyprint">ActionEvent</code>.
+<p>The lambda above has one parameter called <code class="prettyprint">e</code> which is of type <code class="prettyprint">ActionEvent</code>.
 The code after the <code class="prettyprint">|</code> operator is the internal code of the lambda expression.</p>
 
 <h2 id="2-inferred-parameter-type">2. Inferred Parameter Type</h2>
@@ -111,7 +115,9 @@ For example, when using inferred type, the code in the previous section becomes:
 </code></pre></div>
 <p>The type of <code class="prettyprint">e</code> is inferred according to its usage.</p>
 
-<h2 id="3-implicit-parameters-it">3. Implicit Parameters: it</h2>
+<h2 id="3-implicit-parameters">3. Implicit Parameters</h2>
+
+<h3 id="3-1-case-of-a-single-parameter-it">3.1. Case of a single parameter: it</h3>
 
 <p>As lambdas with one parameter are a common case, there  a special short hand notation
 for these parameters, which is to leave the declaration including the vertical bar out.</p>
@@ -119,6 +125,41 @@ for these parameters, which is to leave the declaration including the vertical b
 <p>The name of the single parameter becomes <code class="prettyprint">it</code>.</p>
 <div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="o">[</span>
     <span class="n">textField</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Something happened!&quot;</span> <span class="o">+</span> <span class="kc">it</span><span class="o">.</span><span class="n">toString</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="3-2-case-of-multiple-parameters">3.2. Case of multiple parameters</h3>
+
+<p>When a lambda has multiple parameters, and no name is provided by the SARL developer, 
+the compiler generates default names for each of the formal parameters.
+The implicit name for the first parameter is <code class="prettyprint">$0</code>, <code class="prettyprint">$1</code> for the second,
+<code class="prettyprint">$2</code> for the third, etc.</p>
+
+<p>Let the following interface declaration:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
+    <span class="kd">def</span> <span class="nf">myfct</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The following code is a lambda expression implementing the <code class="prettyprint">MyInterface</code> interface.
+Because the <code class="prettyprint">myfct</code> function has four formal parameters, the lambda expression 
+has four parameters with implicit the following implicit names: <code class="prettyprint">$0</code>, <code class="prettyprint">$1</code>, and <code class="prettyprint">$2</code>.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="o">[</span>
+            <span class="o">[:</span><span class="nl">Success:</span><span class="o">]</span>
+            <span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
+            <span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
+                <span class="kd">def</span> <span class="nf">myfct</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span>
+            <span class="o">}</span>
+            <span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
+                <span class="kd">def</span> <span class="nf">called</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">MyInterface</span><span class="o">)</span> <span class="o">{}</span>
+                <span class="kd">def</span> <span class="n">example</span> <span class="o">{</span>
+                    <span class="n">called</span><span class="o">(</span>
+                    <span class="o">[:</span><span class="n">On</span><span class="o">]</span>
+                    <span class="o">[</span>
+                        <span class="n">$0</span> <span class="o">+</span> <span class="n">$1</span> <span class="o">+</span> <span class="n">$2</span>
+                    <span class="o">]</span>
+                    <span class="o">[:</span><span class="n">Off</span><span class="o">])</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">[:</span><span class="nl">End:</span><span class="o">]</span> <span class="o">+</span>  <span class="o">+</span> 
 <span class="o">]</span>
 </code></pre></div>
 <h2 id="4-empty-list-of-parameters">4. Empty List of Parameters</h2>
@@ -198,9 +239,9 @@ Depending of the number of parameters, you may use <code class="prettyprint">Fun
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -213,7 +254,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

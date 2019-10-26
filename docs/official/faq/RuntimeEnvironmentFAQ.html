@@ -81,10 +81,12 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-1-is-my-operating-system-compatible-with-janus">2.1. Is my operating system compatible with Janus?</a></li>
   <li><a href="#2-2-what-is-the-version-of-the-java-virtual-machine-to-install">2.2. What is the version of the Java virtual machine to install?</a></li>
   <li><a href="#2-3-how-to-launch-an-agent-in-janus">2.3. How to launch an agent in Janus?</a></li>
-  <li><a href="#2-4-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.4. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</a></li>
-  <li><a href="#2-5-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.5. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</a></li>
-  <li><a href="#2-6-error-agent-class-not-found">2.6. Error: &quot;Agent class not found.&quot;</a></li>
-  <li><a href="#2-7-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.7. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</a></li>
+  <li><a href="#2-4-in-the-eclipse-sarl-product-what-is-the-difference-between-the-launch-configurations-sarl-agent-and-sarl-application">2.4. In the Eclipse SARL product, what is the difference between the launch configurations &quot;SARL Agent&quot; and &quot;SARL Application&quot;?</a></li>
+  <li><a href="#2-5-in-the-eclipse-sarl-product-what-is-the-difference-between-the-launch-configurations-java-application-and-sarl-application">2.5. In the Eclipse SARL product, what is the difference between the launch configurations &quot;Java Application&quot; and &quot;SARL Application&quot;?</a></li>
+  <li><a href="#2-6-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.6. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</a></li>
+  <li><a href="#2-7-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.7. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</a></li>
+  <li><a href="#2-8-error-agent-class-not-found">2.8. Error: &quot;Agent class not found.&quot;</a></li>
+  <li><a href="#2-9-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.9. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</a></li>
 </ul>
 <li><a href="#3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</a></li>
 <ul>
@@ -134,7 +136,8 @@ holons.</p>
 <p>If you cannot find an answer to your question in the FAQ, nor the reference documents, nor
 the <a href="https://github.com/sarl/sarl/issues">existing SARL issues</a>,
 you may ask the SARL developers on 
-<a href="https://groups.google.com/forum/#!forum/sarl">the SARL forum</a>.</p>
+<a href="https://groups.google.com/forum/#!forum/sarl">the SARL forum</a>, or 
+on the <a href="https://gitter.im/sarl/Lobby">instant messaging forum</a>.</p>
 
 <h3 id="1-4-where-can-i-found-information-on-the-release-planning-of-janus">1.4. Where can I found information on the release planning of Janus?</h3>
 
@@ -148,12 +151,14 @@ on Github.</p>
 
 <p>The <a href="http://www.janusproject.io">Janus runtime platform</a>
 is a Java application. Every operating system which has 
-a Java Virtual Machine with at least with the 1.8
+a Java Virtual Machin, especially the Java Development Kit (JDK),
+with at least with the 1.8
 standard may be used to run Janus. </p>
 
 <h3 id="2-2-what-is-the-version-of-the-java-virtual-machine-to-install">2.2. What is the version of the Java virtual machine to install?</h3>
 
-<p>Janus requires the JRE and the JDK 1.8 or higher to run and compile.
+<p>Janus requires the JDK 1.8 or higher
+(and strictly lower than 12) to run and compile.
 Note that if you plan to create Android applications, you may 
 configure your JDK to produce 1.6 class files from 1.8 Java code,
 depending of the current supported standard on Android platforms.</p>
@@ -168,7 +173,38 @@ depending of the current supported standard on Android platforms.</p>
 <li><a href="../gettingstarted/RunSARLAgentJava.html">From a Java program</a>.</li>
 </ul>
 
-<h3 id="2-4-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.4. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</h3>
+<h3 id="2-4-in-the-eclipse-sarl-product-what-is-the-difference-between-the-launch-configurations-sarl-agent-and-sarl-application">2.4. In the Eclipse SARL product, what is the difference between the launch configurations &quot;SARL Agent&quot; and &quot;SARL Application&quot;?</h3>
+
+<p>There is two methods for starting an application that will run SARL agents:</p>
+
+<ul>
+<li>start an agent that will create all the components of the application, or</li>
+<li>start a standard Java application that will start the SRE later during its execution. </li>
+</ul>
+
+<p>For the first case, the qualified name of the agent type to be launched must be provided.
+This case is supported by the <em>SARL Agent</em> launch configuration.</p>
+
+<p>For the second case, the <code class="prettyprint">main()</code> function of the application should be launched in 
+order to start it. This case is supported by the <em>SARL Application</em> launch configuration.</p>
+
+<p>Both launch configurations adds the SARL Run-time Environment into the run-time classpath.
+The selected SRE depends on the configuration of your Eclipse SARL product.</p>
+
+<h3 id="2-5-in-the-eclipse-sarl-product-what-is-the-difference-between-the-launch-configurations-java-application-and-sarl-application">2.5. In the Eclipse SARL product, what is the difference between the launch configurations &quot;Java Application&quot; and &quot;SARL Application&quot;?</h3>
+
+<p>Both &quot;Java Application&quot; and &quot;SARL Application&quot; are launch configurations for starting 
+a Java application, i.e. invoking the <code class="prettyprint">main()</code> function for starting up.</p>
+
+<p>The difference between them is that the &quot;SARL Application&quot; launch configuration is 
+automatically adding in the application classpath the SARL Run-time Environment that
+is configured into your Eclipse SARL project.
+The &quot;Java Application&quot; does not.</p>
+
+<p>Consequently, if you need to run agents and if you start your application with a &quot;Java 
+Application&quot; launch configuration, you must add manually the SRE libraries in the classpath.</p>
+
+<h3 id="2-6-error-the-sre-is-not-standalone-it-does-not-contain-the-java-dependencies">2.6. Error: &quot;The SRE is not standalone. It does not contain the Java dependencies.&quot;</h3>
 
 <p>This error occurs when there is no SARL Runtime Environment (SRE) installed on your
 Eclipse environment, OR when the installed SRE is not compatible with the installed
@@ -178,10 +214,7 @@ version of the SARL tools, which are embedded in Eclipse.</p>
 <a href="http://www.janusproject.io">Janus platform</a>, and install it in your Eclipse
 (Menu <code>Window&gt; Preferences&gt; SARL&gt; Installed SREs</code>).</p>
 
-<p><caution>If the latest stable version of Janus is not working, you should
-download the latest development version.</caution></p>
-
-<h3 id="2-5-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.5. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</h3>
+<h3 id="2-7-error-incompatible-sre-with-sarl-1-1-1-1-version-must-be-lower-than-0-0-0">2.7. Error: &quot;Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.&quot;</h3>
 
 <p>This error occurs when the SARL Runtime Environment (SRE) has a version lower than
 the version of the SARL tools, which are embedded in the Eclipse IDE.
@@ -195,7 +228,7 @@ For the Janus platform, the versions of the latest stable and development releas
 For determining if the Janus platform implements the correct version of the SARL specification,
 please read the explanation  on <a href="http://www.janusproject.io/#versionnumber">how Janus version numbers are built</a>.</p>
 
-<h3 id="2-6-error-agent-class-not-found">2.6. Error: &quot;Agent class not found.&quot;</h3>
+<h3 id="2-8-error-agent-class-not-found">2.8. Error: &quot;Agent class not found.&quot;</h3>
 
 <p>When the Janus platform cannot find the class file for the start-up agent, it
 displays the error message <code class="prettyprint">&quot;Agent class not found&quot;</code>.</p>
@@ -212,7 +245,7 @@ displays the error message <code class="prettyprint">&quot;Agent class not found
 <code class="prettyprint">--cli</code>. This option stops Janus after displaying the command line arguments,
 including the <code class="prettyprint">--cli</code> option.</p>
 
-<h3 id="2-7-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.7. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</h3>
+<h3 id="2-9-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.9. Error: &quot;Invalid byte 2 of 4-byte UTF-8 sequence.&quot;</h3>
 
 <p>When installing Janus as an SRE in the Eclipse interface, the plugin loads the Jar file of the
 SRE with the default API.
@@ -220,13 +253,14 @@ The Jar archiver uses the default file encoding of the operating system.
 On Linux and MacOS 10, it is almost UTF-8. On Windows, it is Latin1. And on MacOS (before 10),
 it is Mac-Roman.</p>
 
-<p>Unfortunately, the Janus Jar file is generated on a Linux operating system (UTF-8).
+<p>The Janus Jar file is generated on a Linux operating system (UTF-8).
 When the Java virtual machine tries to uncompress and use the content of the Jar, it
-complains about an invalid charset format.</p>
+may complain about an invalid charset format.</p>
 
 <p>For solving this issue, you could launch your Eclipse with the command line option
 <code class="prettyprint">-Dfile.encoding=UTF-8</code>, which is forcing the Eclipse product to consider the
-file as encoded with the UTF-8 charset.</p>
+file as encoded with the UTF-8 charset.
+Note that this option is defined into the Eclipse SARL product since version 0.4.</p>
 
 <h2 id="3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</h2>
 
@@ -243,7 +277,7 @@ how the Java executor is running the handlers on the threads.</p>
 
 <h3 id="3-2-how-events-are-treated-by-the-run-time-environment">3.2. How events are treated by the run-time environment?</h3>
 
-<p>When the event <code class="prettyprint">e</code> is received by an agent the following algorithm is applied:
+<p>When the event <code class="prettyprint">e</code> of type <code class="prettyprint">E</code> is received by an agent the following algorithm is applied:
 <code class="prettyprint">
 if &quot;on Initialize&quot; is currently running then
    add e to a buffer of events.
@@ -308,9 +342,9 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -323,7 +357,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

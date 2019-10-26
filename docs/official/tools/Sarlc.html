@@ -98,127 +98,15 @@ For obtaining a list of the options, type:</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code class="prettyprint">-b path</code>, <code class="prettyprint">--bootclasspath=path</code></td>
-<td>Cross-compiles against the specified set of boot classes. As with the user class path, boot class path entries are separated by colons (:) and can be directories, JAR archives, or ZIP archives.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--classpath=path</code></td>
-<td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARL<em>CLASSPATH environment variable. If neither SARL</em>CLASSPATH, --cp nor --classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--config=yaml_location</code></td>
-<td>Specifies YAML config location, which can be a file path or a URL.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--cp=path</code></td>
-<td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARL<em>CLASSPATH environment variable. If neither SARL</em>CLASSPATH, --cp nor --classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-d directory_name</code>, <code class="prettyprint">--directory=directory_name</code></td>
-<td>Sets the destination directory for Java source files that are generated from the SARL files. The directory must already exist because sarlc does not create it. If a SARL declaration is part of a package, then sarlc puts the Java source file in a subdirectory that reflects the package name and creates directories as needed. If the --directory option is not specified, then sarlc assumes src/main/generated-sources/sarl.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-e [encoding]</code>, <code class="prettyprint">--encoding[=encoding]</code></td>
-<td>Sets the source file encoding name, such as EUC-JP and UTF-8. If the --encoding option is not specified, then the platform default converter is used.</td>
-</tr>
-<tr>
-<td>`--generateclones[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--generateequalitytests[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--generateinlines[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--generatepures[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--generateserials[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--generatetostring[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--generator=identifiers</code></td>
-<td>Enables extra-language generators. The parameter is a list of identifiers of the generators to turn on, separated by &#39;:&#39;. See the option -G for printing out the list of the available generators.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-h</code>, <code class="prettyprint">--help</code></td>
-<td>Prints this message.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-H</code>, <code class="prettyprint">--help-config</code></td>
-<td>Prints information about application modules and their configuration options.</td>
-</tr>
-<tr>
-<td>`--javacompiler[=none</td>
-<td>ecj</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--javasource[=version]</code></td>
-<td>Specifies the Java version of Java source code accepted, and of the Java class files for targeting a specified release of the Java virtual machine. Java class files will run on the specified target and on later releases, but not on earlier releases of the Java virtual machine. Valid targets are: 1.8 (or 8).</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--json</code></td>
-<td>When present, the output of the configuration has the Json format.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-l level</code>, <code class="prettyprint">--log=level</code></td>
-<td>Change the logging level. Possible values are: OFF, ERROR, WARNING, INFO, DEBUG, TRACE, ALL</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-o directory_name</code>, <code class="prettyprint">--outputdir=directory_name</code></td>
-<td>Sets the destination directory for class files. The directory must already exist because sarlc does not create it. If a class is part of a package, then sarlc puts the class file in a subdirectory that reflects the package name and creates directories as needed. If the --outputdir option is not specified, then sarlc assumes target/classes.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-C</code>, <code class="prettyprint">--printconfig</code></td>
-<td>Print the current configuration. The output format is Yaml by default. See --json for a Json output, and --xml for a XML output.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-G</code>, <code class="prettyprint">--printgenerators</code></td>
-<td>Prints the list of the available extra-language generators.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-p</code>, <code class="prettyprint">--progress</code></td>
-<td>Prints the progress bar on the console.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-v</code>, <code class="prettyprint">--version</code></td>
-<td>Prints release information.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">--workingdir=directory_name</code></td>
-<td>Directory in which the temporary files will be generated during the compilation process.</td>
-</tr>
-<tr>
-<td>`--writestorages[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td>`--writetraces[=true</td>
-<td>false]`</td>
-</tr>
-<tr>
-<td><code class="prettyprint">-x</code>, <code class="prettyprint">--xml</code></td>
-<td>When present, the output of the configuration has the XML format.</td>
-</tr>
 </tbody></table>
 
 <h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
 <li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.9</li>
+<li>Version: 0.10</li>
 <li>Status: Stable Release</li>
-<li>Release: 2019-04-15</li>
+<li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
@@ -231,7 +119,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.9.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
 
     </div> <!-- /default layout container -->
 

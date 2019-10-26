@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>SARL Documentation Generator</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="sarl-documentation-generator">SARL Documentation Generator</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-usage">1. Usage</a></li>
+<li><a href="#2-command-line-options">2. Command-Line Options</a></li>
+<li><a href="#3-documentation-comments">3. Documentation Comments</a></li>
+<ul>
+  <li><a href="#3-1-source-code-comments">3.1. Source Code Comments</a></li>
+  <li><a href="#3-2-method-comment-inheritance">3.2. Method Comment Inheritance</a></li>
+  <li><a href="#3-3-type-declaration-comment-inheritance">3.3. Type Declaration Comment Inheritance</a></li>
+</ul>
+
+<p><li><a href="#4-tags">4. Tags</a></li>
+<li><a href="#5-acknowledgements">5. Acknowledgements</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
+
+<p></ul></p>
+
+<p>sarldoc is a documentation generator for the SARL language for generating API documentation in HTML format from SARL source code.
+The HTML format is used for adding the convenience of being able to hyperlink related documents together.</p>
+
+<p>The &quot;doc comments&quot; format used by sarldoc is the same as the one used by the <a href="https://en.wikipedia.org/wiki/Javadoc">Javadoc</a> 
+tool. Indeed, sarldoc delegates the generation of the documentation to Javadoc with a specific 
+documentation pattern for SARL code.</p>
+
+<p>sarldoc does not affect performance in SARL as all comments are removed at compilation time. Writing comments and
+sarldoc is for better understanding the code and thus better maintaining it.</p>
+
+<h2 id="1-usage">1. Usage</h2>
+
+<p>The <code class="prettyprint">sarldoc</code> tool takes arguments:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sarldoc [OPTIONS] &lt;source folder&gt;...
+</code></pre></div>
+<p>The <code class="prettyprint">sarldoc</code> tool takes at least one <code class="prettyprint">source folder</code> from which the SARL files are read.</p>
+
+<p>You could change the behavior of the <code class="prettyprint">sarldoc</code> compiler with the command-line options.
+For obtaining a list of the options, type:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sarldoc -h
+</code></pre></div>
+<h2 id="2-command-line-options">2. Command-Line Options</h2>
+
+<p>The complete list of the options is:</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="3-documentation-comments">3. Documentation Comments</h2>
+
+<p>This section describes source code comments and comment inheritance.</p>
+
+<h3 id="3-1-source-code-comments">3.1. Source Code Comments</h3>
+
+<p>You can include documentation comments in the source code, ahead of declarations for SARL 
+construct such as agent, behavior, capacity, skill, event, class, interface, method, constructor, or field.
+A documentation comment consists of the characters between <code class="prettyprint">/**</code> and <code class="prettyprint">*/</code> that end it. Leading asterisks are
+allowed on each line and are described further in the following section. The text in a comment can continue
+onto multiple lines.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="cm">/**</span>
+<span class="cm">* This is the typical format of a simple documentation comment</span>
+<span class="cm">* that spans two lines.</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="placement-of-comments">Placement of Comments</h4>
+
+<p>Documentation comments are recognized only when placed immediately before SARl constructs, 
+such as agent, behavior, capacity, skill, event, class, interface, constructor, method, or field declarations.
+Documentation comments placed in the body of a method are ignored. The <code class="prettyprint">sarldoc</code> command recognizes only one
+documentation comment per declaration statement.</p>
+
+<h4 id="parts-of-comments">Parts of Comments</h4>
+
+<p>A documentation comment has a main description followed by a tag section. The main description begins after the starting
+delimiter <code class="prettyprint">/**</code> and continues until the tag section. The tag section starts with the first block tag, which is defined
+by the first <code class="prettyprint">@</code> character that begins a line (ignoring leading asterisks, white space, and leading separator <code class="prettyprint">/**</code>).
+It is possible to have a comment with only a tag section and no main description. The main description cannot continue
+after the tag section begins. The argument to a tag can span multiple lines. There can be any number of tags, and some
+types of tags can be repeated while others cannot. For example, this <code class="prettyprint">@see</code> tag starts the tag section:</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="cm">/**</span>
+<span class="cm">* This sentence holds the main description for this documentation comment.</span>
+<span class="cm">* @see java.lang.Object</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="block-and-inline-tags">Block and Inline Tags</h4>
+
+<p>A tag is a special keyword within a documentation comment that the <code class="prettyprint">sarldoc</code> command processes. There are two kinds of
+tags: block tags, which appear as an <code class="prettyprint">@tag</code> tag (also known as standalone tags), and inline tags, which appear within
+braces, as an <code class="prettyprint">{@tag}</code> tag.</p>
+
+<p>To be interpreted, a block tag must appear at the beginning of a line, ignoring leading
+asterisks, white space, and the separator (<code class="prettyprint">/**</code>). This means you can use the <code class="prettyprint">@</code> character elsewhere in the text and
+it will not be interpreted as the start of a tag. If you want to start a line with the <code class="prettyprint">@</code> character and not have it
+be interpreted, then use the HTML entity <code class="prettyprint">&amp;#064;</code>. Each block tag has associated text, which includes any text
+following the tag up to, but not including, either the next tag, or the end of the documentation comment. This associated
+text can span multiple lines.</p>
+
+<p>An inline tag is allowed and interpreted anywhere that text is allowed. The following example contains the
+<code class="prettyprint">@deprecated</code> block tag and the `{@link}&quot; inline tag.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="cm">/**</span>
+<span class="cm">* @deprecated As of SARL 1.1, replaced by {@link #setBounds(int,int,int,int)}</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="write-comments-in-html">Write comments in HTML</h4>
+
+<p>The text must be written in HTML with HTML entities and HTML tags. You can use whichever version of HTML your
+browser supports. The standard <code class="prettyprint">sarldoc</code> generates HTML 3.2-compliant code elsewhere (outside of the documentation
+comments) with the inclusion of cascading style sheets and frames. HTML 4.0 is preferred for generated files
+because of the frame sets.</p>
+
+<p>For example, entities for the less than symbol (<code class="prettyprint">&lt;</code>) and the greater than symbol (<code class="prettyprint">&gt;</code>) should be written as <code class="prettyprint">&amp;lt;</code>
+and <code class="prettyprint">&amp;gt;</code>. Similarly, the ampersand (<code class="prettyprint">&amp;</code>) should be written as <code class="prettyprint">&amp;amp;</code>. The bold HTML tag <code class="prettyprint">&lt;b&gt;</code> is shown
+in the following example.</p>
+<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="cm">/**</span>
+<span class="cm">* This is a &lt;b&gt;doc&lt;/b&gt; comment.</span>
+<span class="cm">* @see java.lang.Object</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="leading-asterisks">Leading Asterisks</h4>
+
+<p>When the <code class="prettyprint">sarldoc</code> command parses a documentation comment, leading asterisks (<code class="prettyprint">*</code>) on each line are discarded, and blanks
+and tabs that precede the initial asterisks (<code class="prettyprint">*</code>) are also discarded. If you omit the leading asterisk on a line, then
+the leading white space is no longer removed so that you can paste code examples directly into a documentation comment
+inside a <code class="prettyprint">&lt;PRE&gt;</code> tag with its indentation preserved. Spaces are interpreted by browsers more uniformly than
+tabs. Indentation is relative to the left margin (rather than the separator <code class="prettyprint">/**</code> or <code class="prettyprint">&lt;PRE&gt;</code> tag).</p>
+
+<h4 id="first-sentence">First Sentence</h4>
+
+<p>The first sentence of each documentation comment should be a summary sentence that contains a concise but complete
+description of the declared entity. This sentence ends at the first period that is followed by a blank, tab, or line
+terminator, or at the first block tag. The <code class="prettyprint">sarldoc</code> command copies this first sentence to the member summary at
+the top of the HTML page.</p>
+
+<h3 id="3-2-method-comment-inheritance">3.2. Method Comment Inheritance</h3>
+
+<p>The <code class="prettyprint">sarldoc</code> command allows method comment inheritance in type declarations to fill in missing text or to explicitly
+inherit method comments. Constructors, fields, and nested types do not inherit documentation comments.</p>
+
+<p><caution>The source file for an inherited method must be on the path for the documentation comment to be available to
+copy. Neither the class nor its package needs to be passed in on the command line.</caution></p>
+
+<p>When a main description, or <code class="prettyprint">@return</code>, <code class="prettyprint">@param</code>, or <code class="prettyprint">@throws</code> tag is missing from a method comment, the <code class="prettyprint">sarldoc</code> command
+copies the corresponding main description or tag comment from the method it overrides or implements (if any).
+When an <code class="prettyprint">@param</code> tag for a particular parameter is missing, the comment for that parameter is copied from the method
+further up the inheritance hierarchy. When an <code class="prettyprint">@throws</code> tag for a particular exception is missing, the <code class="prettyprint">@throws</code> tag
+is copied only when that exception is declared.</p>
+
+<p>Insert the <code class="prettyprint">{@inheritDoc}</code> inline tag in a method main description or <code class="prettyprint">@return</code>, <code class="prettyprint">@param</code>, or <code class="prettyprint">@throws</code> tag comment.
+The corresponding inherited main description or tag comment is copied into that spot.</p>
+
+<h3 id="3-3-type-declaration-comment-inheritance">3.3. Type Declaration Comment Inheritance</h3>
+
+<p>Comment inheritance occurs in all possible cases of inheritance from type declarations:</p>
+
+<ul>
+<li>When a method in a type overrides a method in a super-type</li>
+<li>When a method in a type implements a method in an interface</li>
+</ul>
+
+<p>In the first case, the <code class="prettyprint">sarldoc</code> command generates the subheading &quot;Overrides&quot; in the documentation for the
+overriding method. A link to the method being overridden is included, whether or not the comment is inherited.</p>
+
+<p>In the second case, when a method in a specified type implements a method in an interface, the <code class="prettyprint">sarldoc</code> command
+generates the subheading &quot;Specified by&quot; in the documentation for the overriding method. A link to the method being
+implemented is included, whether or not the comment is inherited.</p>
+
+<h2 id="4-tags">4. Tags</h2>
+
+<p>The <code class="prettyprint">sarldoc</code> command parses special tags when they are embedded within a SARL documentation comment. The
+<code class="prettyprint">sarldoc</code> tags let you autogenerate a complete, well-formatted API from your source code. The tags start with
+an &quot;at&quot; sign (<code class="prettyprint">@</code>) and are case-sensitive. They must be typed with the uppercase and lowercase letters as shown.
+A tag must start at the beginning of a line (after any leading spaces and an optional asterisk), or it is treated
+as text. By convention, tags with the same name are grouped together. For example, put all <code class="prettyprint">@see</code> tags together.</p>
+
+<p>Tags have the following types:</p>
+
+<ul>
+<li>Bock tags: Place block tags only in the tag section that follows the description. Block tags have the form: <code class="prettyprint">@tag</code>.</li>
+<li>Inline tags: Place inline tags anywhere in the main description or in the comments for block tags. Inline tags are
+enclosed within braces: <code class="prettyprint">{@tag}</code>.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Tag</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">@author text</code></td>
+<td>Adds an author entry with the specified name text.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@code text}</code></td>
+<td>Displays text in code font without interpreting the text as HTML markup or nested tags.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@deprecated text</code></td>
+<td>Adds a comment indicating that this API should no longer be used (even though it may continue to work).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@docRoot}</code></td>
+<td>Represents the relative path to the generated document&#39;s (destination) root directory from any generated page.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@exception class-name text</code></td>
+<td>See <code class="prettyprint">@throws</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@inheritDoc}</code></td>
+<td>Copies documentation from the nearest inheritable type into the current documentation comment at this tag&#39;s location.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@link ref label}</code></td>
+<td>Inserts an inline link with a visible text label that points to the documentation for the specified element.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@linkplain ref label}</code></td>
+<td>Behaves the same as the <code class="prettyprint">{@link}</code> tag, except the link label is displayed in plain text rather than code font.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@literal text}</code></td>
+<td>Displays text without interpreting the text as HTML markup or nested tags.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@param name text</code></td>
+<td>Adds a parameter with the specified name followed by the specified description to the Parameters section.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@return text</code></td>
+<td>Adds a Returns section with the description text.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@see ref</code></td>
+<td>Adds a See Also heading with a link or text entry that points to a reference.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@since text</code></td>
+<td>Adds a Since heading with the specified text value to the generated documentation.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@throws class-name text</code></td>
+<td>Adds a Throws subheading to the generated documentation, with the class-name and description text.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">{@value ref}</code></td>
+<td>Adds a Throws subheading to the generated documentation, with the class-name and description text.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">@version text</code></td>
+<td>Adds a Version subheading with the specified text value to the generated documents.</td>
+</tr>
+</tbody></table>
+
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
+
+<p>This documentation is inspired by the documentation from the
+<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html">Oracle Javadoc</a> project.</p>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
+<ul>
+<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
+<li>Version: 0.10</li>
+<li>Status: Stable Release</li>
+<li>Release: 2019-10-26</li>
+</ul>
+
+<blockquote>
+<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+<p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
