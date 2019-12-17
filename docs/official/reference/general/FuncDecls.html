@@ -76,93 +76,98 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#3-2-definition-with-brackets">3.2. Definition with brackets</a></li>
   <li><a href="#3-3-bounded-type-parameters">3.3. Bounded Type Parameters</a></li>
 </ul>
-
-<p><li><a href="#4-variadic-function">4. Variadic Function</a></li>
+<li><a href="#4-variadic-function">4. Variadic Function</a></li>
 <li><a href="#5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</a></li>
 <li><a href="#6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</a></li>
 <li><a href="#7-dispatch-function">7. Dispatch Function</a></li>
 <li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
-<li><a href="#9-legal-notice">9. Legal Notice</a></li></p>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>A function, or method, or action, is a named block of code that can be invoked.</p>
 
-<p>A function declaration starts with the keyword <code class="prettyprint">def</code>. This declaration can only occur
-in top-level features, such as <code class="prettyprint">agent</code>.</p>
+<p>A function declaration starts with the keyword <code>def</code>. This declaration can only occur
+in top-level features, such as <code>agent</code>.</p>
 
-<h2 id="1-standard-declarations">1. Standard Declarations</h2>
+<p>##1. Standard Declarations</p>
 
 <p>The standard function declaration follows the following syntax:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
-</code></pre></div>
-<p><note>The parameters are implicitly declared with the keyword <code class="prettyprint">val</code> so are read-only.</note></p>
+
+<pre><code>def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
+</code></pre>
+
+<note>The parameters are implicitly declared with the keyword `val` so are read-only.</note>
 
 <p>The following code gives examples of function declarations:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// No parameter.</span>
-<span class="c1">// Return type: void</span>
-<span class="kd">def</span> <span class="n">action1</span> <span class="o">{</span>
-<span class="o">}</span>
 
-<span class="c1">// No parameter.</span>
-<span class="c1">// Return type: int</span>
-<span class="kd">def</span> <span class="n">action2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="mi">0</span>
-<span class="o">}</span>
+<pre><code class="language-sarl">// No parameter.
+// Return type: void
+def action1 {
+}
 
-<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-<span class="c1">// Return type: void</span>
-<span class="kd">def</span> <span class="nf">action3</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-<span class="o">}</span>
+// No parameter.
+// Return type: int
+def action2 : int {
+	return 0
+}
 
-<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-<span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
-<span class="c1">// Return type: void</span>
-<span class="kd">def</span> <span class="nf">action4</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-<span class="o">}</span>
+// Parameter 1, named 'a', of type int.
+// Return type: void
+def action3(a : int) {
+}
 
-<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-<span class="c1">// Return type: double</span>
-<span class="kd">def</span> <span class="nf">action5</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="mi">0</span>
-<span class="o">}</span>
+// Parameter 1, named 'a', of type int.
+// Parameter 2, named 'b', of type String.
+// Return type: void
+def action4(a : int, b : String) {
+}
 
-<span class="c1">// Parameter 1, named &#39;a&#39;, of type int.</span>
-<span class="c1">// Parameter 2, named &#39;b&#39;, of type String.</span>
-<span class="c1">// Return type: String</span>
-<span class="kd">def</span> <span class="nf">action6</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="2-declare-exceptions-in-the-function-prototype">2. Declare exceptions in the function prototype</h2>
+// Parameter 1, named 'a', of type int.
+// Return type: double
+def action5(a : int) : double {
+	return 0
+}
 
-<p>The section &quot;<a href="./Exception.html">Exception Support</a>&quot; shows how to write
+// Parameter 1, named 'a', of type int.
+// Parameter 2, named 'b', of type String.
+// Return type: String
+def action6(a : int, b : String) : String {
+}
+</code></pre>
+
+<p>##2. Declare exceptions in the function prototype</p>
+
+<p>The section “<a href="./Exception.html">Exception Support</a>” shows how to write
 an exception handler in the code. Sometimes, it is appropriate for code
 to catch exceptions that can occur within it. In other cases, however,
 it is better to let a method further down the call stack handle the exception.</p>
 
-<p>If a function doesn&#39;t catch the checked exceptions that can occur within
+<p>If a function doesn’t catch the checked exceptions that can occur within
 it, the function may specify that it can throw these exceptions.</p>
 
-<p><note>This specification is optional since the SARL compiler determines the
+<note>This specification is optional since the SARL compiler determines the
 exceptions that are not catched, and assumes that they are implicitly
-thrown outside the function.</note></p>
+thrown outside the function.</note>
 
 <p>The declaration of the thrown exceptions is done with the 
-<code class="prettyprint">throws</code> keyword, followed by a list of thrown exception types.
-This declaration must be put between the list of formal parameters and the function&#39;s code.</p>
+<code>throws</code> keyword, followed by a list of thrown exception types.
+This declaration must be put between the list of formal parameters and the function’s code.</p>
 
-<p>In the following example, the function <code class="prettyprint">myaction</code> is defined with no formal
+<p>In the following example, the function <code>myaction</code> is defined with no formal
 parameters and no return type.
 This function indicates to its caller that it could throw an exception of
-type <code class="prettyprint">IllegalStateException</code>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">myaction</span> <span class="k">throws</span> <span class="n">IllegalStateException</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="3-generic-function">3. Generic Function</h2>
+type <code>IllegalStateException</code>.</p>
+
+<pre><code class="language-sarl">def myaction throws IllegalStateException {
+}
+</code></pre>
+
+<p>##3. Generic Function</p>
 
 <p>Generic functions are methods that introduce their own type parameters. This is similar to declaring a
 <a href="../OOP.html#define-a-generic-class">generic type</a>,
-but the type parameter&#39;s scope is limited to the function where it is declared.
+but the type parameter’s scope is limited to the function where it is declared.
 Static and non-static generic functions are allowed.</p>
 
 <p>You can write a single generic method declaration that can be called with arguments of
@@ -171,94 +176,104 @@ the compiler handles each method call appropriately. Following are the rules to 
 generic functions:</p>
 
 <ul>
-<li>All generic method declarations have a type parameter section written with the <code class="prettyprint">with</code> or the bracket syntax.</li>
-<li>Each type parameter section contains one or more type parameters separated by commas. A type parameter, also known as a type variable, is an identifier that specifies a generic type name.</li>
-<li>The type parameters can be used to declare the return type and acts as placeholders for the types of the arguments passed to the generic method, which are known as actual type arguments.</li>
+  <li>All generic method declarations have a type parameter section written with the <code>with</code> or the bracket syntax.</li>
+  <li>Each type parameter section contains one or more type parameters separated by commas. A type parameter, also known as a type variable, is an identifier that specifies a generic type name.</li>
+  <li>The type parameters can be used to declare the return type and acts as placeholders for the types of the arguments passed to the generic method, which are known as actual type arguments.</li>
 </ul>
 
-<p>A generic method&#39;s body is declared like that of any other method.</p>
+<p>A generic method’s body is declared like that of any other method.</p>
 
-<p><note>Type parameters can represent only reference types, not primitive types (like <code class="prettyprint">int</code>, <code class="prettyprint">double</code> and <code class="prettyprint">char</code>).</note></p>
+<note>Type parameters can represent only reference types, not primitive types (like `int`, `double` and `char`).</note>
 
-<p>Two syntaxes are allowed for defining the type parameters of the actions: the <code class="prettyprint">with</code> syntax, and the bracket syntax.</p>
+<p>Two syntaxes are allowed for defining the type parameters of the actions: the <code>with</code> syntax, and the bracket syntax.</p>
 
-<h3 id="3-1-definition-with-with-keyword">3.1. Definition with &quot;with&quot; keyword</h3>
+<p>###3.1. Definition with “with” keyword</p>
 
-<p>The <code class="prettyprint">with</code> syntax for a generic function includes a type parameter, after the <code class="prettyprint">with</code>
-keyword, between the function&#39;s return type and the function&#39;s body.</p>
+<p>The <code>with</code> syntax for a generic function includes a type parameter, after the <code>with</code>
+keyword, between the function’s return type and the function’s body.</p>
 
-<p>In the following example, the function specifies a type <code class="prettyprint">T</code>, which is used both
+<p>In the following example, the function specifies a type <code>T</code>, which is used both
 as type for the element parameter and the generic type of the Collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="k">with</span> <span class="n">T</span> <span class="o">{</span>
-    <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
-    <span class="k">return</span> <span class="n">element</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-2-definition-with-brackets">3.2. Definition with brackets</h3>
+
+<pre><code class="language-sarl">def addAndReturn(element : T, collection : Collection&lt;T&gt;) : T with T {
+    collection.add(element)
+    return element
+}
+</code></pre>
+
+<p>###3.2. Definition with brackets</p>
 
 <p>The bracket syntax for a generic function includes a type parameter, inside angle brackets, and
-appears before the function&#39;s name.</p>
+appears before the function’s name.</p>
 
-<p>In the following example, the function specifies a type <code class="prettyprint">T</code>, which is used both
+<p>In the following example, the function specifies a type <code>T</code>, which is used both
 as type for the element parameter and the generic type of the Collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">addAndReturn</span><span class="o">(</span><span class="n">element</span> <span class="o">:</span> <span class="n">T</span><span class="o">,</span> <span class="n">collection</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
-    <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span>
-    <span class="k">return</span> <span class="n">element</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-3-bounded-type-parameters">3.3. Bounded Type Parameters</h3>
 
-<p>There may be times when you&#39;ll want to restrict the kinds of types that are allowed to be
+<pre><code class="language-sarl">def &lt;T&gt; addAndReturn(element : T, collection : Collection&lt;T&gt;) : T {
+    collection.add(element)
+    return element
+}
+</code></pre>
+
+<p>###3.3. Bounded Type Parameters</p>
+
+<p>There may be times when you’ll want to restrict the kinds of types that are allowed to be
 passed to a type parameter. For example, a method that operates on numbers might only want
 to accept instances of Number or its subclasses. This is what bounded type parameters are for.</p>
 
-<p>To declare a bounded type parameter, list the type parameter&#39;s name, followed by the
-<code class="prettyprint">extends</code> keyword, followed by a class name. This keyword indicates that <code class="prettyprint">T</code>
+<p>To declare a bounded type parameter, list the type parameter’s name, followed by the
+<code>extends</code> keyword, followed by a class name. This keyword indicates that <code>T</code>
 must be a subtype of the following type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">print</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="k">with</span> <span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Type = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">getClass</span><span class="o">)</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&quot;Value = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-variadic-function">4. Variadic Function</h2>
+
+<pre><code class="language-sarl">def print(value : T) with T extends Number {
+    System.out.println("Type = " + value.getClass)
+    System.out.println("Value = " + value)
+}
+</code></pre>
+
+<p>##4. Variadic Function</p>
 
 <p>A variadic function is a function of indefinite arity: one which accepts a variable number of arguments.</p>
 
-<p>SARL allows you to define the last parameter of a function as variadic with the operator <code class="prettyprint">*</code>.
+<p>SARL allows you to define the last parameter of a function as variadic with the operator <code>*</code>.
 This operator has an informal meaning similar to the cardinality in
 <a href="https://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a>: zero to many.</p>
 
 <p>In the code of the variadic function, the variadic parameter is assumed to be an array of objects of
-the parameter type. </p>
+the parameter type.</p>
 
-<p>In other languages, such as Java and C++, the variadic operator is <code class="prettyprint">...</code>.</p>
+<p>In other languages, such as Java and C++, the variadic operator is <code>...</code>.</p>
 
 <p>In the following example, two variadic functions are defined:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Function with indefinite number of integers as parameters</span>
-<span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="c1">// Function which takes a boolean, a double and an indefinite </span>
-<span class="c1">// number of integers as parameters</span>
-<span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">*)</span> <span class="o">{</span>
-    <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-    <span class="n">info</span><span class="o">(</span><span class="n">b</span><span class="o">)</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">info</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">// Function with indefinite number of integers as parameters
+def action1(v : int*) {
+	for (value : v) {
+		info(value)
+	}
+}
+// Function which takes a boolean, a double and an indefinite 
+// number of integers as parameters
+def action2(a : boolean, b : double, c : int*) {
+	info(a)
+	info(b)
+	for (value : c) {
+		info(value)
+	}
+}
+</code></pre>
+
 <p>Examples of calls to the two previous variadic functions are:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">action1</span><span class="o">()</span>
-<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
-<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">)</span>
-<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
-<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
-</code></pre></div>
-<h2 id="5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</h2>
+
+<pre><code class="language-sarl">action1()
+action1(1)
+action1(1, 3)
+action2(true, 3.0)
+action2(true, 3.0, 1)
+action2(true, 3.0, 1, 5)
+</code></pre>
+
+<p>##5. Default Value for the Formal Parameters</p>
 
 <p>SARL allows you to specify a default value for a formal parameter.</p>
 
@@ -267,47 +282,53 @@ the action can skip passing a value for the corresponding argument.
 And, when the function is called, the default value is given to the
 skipped argument.</p>
 
-<p><importantnote> In SARL, if a formal parameter has a default value, the following formal
+<importantnote> In SARL, if a formal parameter has a default value, the following formal
 parameters do not need to have default values as well. This is a major
-difference with the default values in other languages, such as C++.</importantnote></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Function with one parameter with a default value.</span>
-<span class="kd">def</span> <span class="nf">action1</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">info</span><span class="o">(</span><span class="s">&quot;v == &quot;</span> <span class="o">+</span> <span class="n">v</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="c1">// Function which takes a boolean, a double and an integer as parameters.</span>
-<span class="c1">// The first and third parameters have default values. </span>
-<span class="kd">def</span> <span class="nf">action2</span><span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">=</span><span class="kc">true</span><span class="o">,</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">c</span> <span class="o">:</span> <span class="kt">int</span><span class="o">=</span><span class="mi">7</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">info</span><span class="o">(</span><span class="s">&quot;a == &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">)</span>
-    <span class="n">info</span><span class="o">(</span><span class="s">&quot;b == &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="o">)</span>
-    <span class="n">info</span><span class="o">(</span><span class="s">&quot;c == &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
+difference with the default values in other languages, such as C++.</importantnote>
+
+<pre><code class="language-sarl">// Function with one parameter with a default value.
+def action1(v : int = 5) {
+	info("v == " + v)
+}
+// Function which takes a boolean, a double and an integer as parameters.
+// The first and third parameters have default values. 
+def action2(a : boolean=true, b : double, c : int=7) {
+	info("a == " + a)
+	info("b == " + b)
+	info("c == " + c)
+}
+</code></pre>
+
 <p>Examples of calls to the two previous functions are:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// v == 1</span>
-<span class="n">action1</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
 
-<span class="c1">// v == 5</span>
-<span class="n">action1</span><span class="o">()</span>
+<pre><code class="language-sarl">// v == 1
+action1(1)
 
-<span class="c1">// a == true, b == 3.0, c == 1</span>
-<span class="n">action2</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+// v == 5
+action1()
 
-<span class="c1">// a == false, b == 4.0, c == 7</span>
-<span class="n">action2</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="mf">4.0</span><span class="o">)</span>
+// a == true, b == 3.0, c == 1
+action2(true, 3.0, 1)
 
-<span class="c1">// a == true, b == 7.0, c == 56</span>
-<span class="n">action2</span><span class="o">(</span><span class="mf">7.0</span><span class="o">,</span> <span class="mi">56</span><span class="o">)</span>
+// a == false, b == 4.0, c == 7
+action2(false, 4.0)
 
-<span class="c1">// a == true, b == 9.0, c == 7</span>
-<span class="n">action2</span><span class="o">(</span><span class="mf">9.0</span><span class="o">)</span>
-</code></pre></div>
-<h2 id="6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</h2>
+// a == true, b == 7.0, c == 56
+action2(7.0, 56)
+
+// a == true, b == 9.0, c == 7
+action2(9.0)
+</code></pre>
+
+<p>##6. Mixing Variadic Parameter and Default Values</p>
 
 <p>It is possible to mix the variadic parameter and the default values,
-except that the variadic parameter cannot have a default value. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">action</span><span class="o">(</span><span class="n">v</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span><span class="o">,</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">float</span><span class="o">*)</span> <span class="o">{</span> <span class="o">}</span>
-</code></pre></div>
-<h2 id="7-dispatch-function">7. Dispatch Function</h2>
+except that the variadic parameter cannot have a default value.</p>
+
+<pre><code class="language-sarl">def action(v : int = 5, a : float*) { }
+</code></pre>
+
+<p>##7. Dispatch Function</p>
 
 <p>Generally, method resolution and binding is done statically at compile time.
 Method calls are bound based on the static types of arguments.</p>
@@ -315,67 +336,73 @@ Method calls are bound based on the static types of arguments.</p>
 <p>Sometimes this is not what you want. Especially in the context of extension methods
 you would like to have polymorphic behavior.</p>
 
-<p>The <code class="prettyprint">dispatch</code> modifier permits defining a dispatch method.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s an int&quot;</span> 
-<span class="o">}</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s a string&quot;</span> 
-<span class="o">}</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s a number&quot;</span> 
-<span class="o">}</span>
+<p>The <code>dispatch</code> modifier permits defining a dispatch method.</p>
 
-<span class="kd">def</span> <span class="n">clientCode</span> <span class="o">{</span>
-    <span class="n">getType</span><span class="o">(</span><span class="mf">4.5</span><span class="o">).</span><span class="n">println</span>
-    <span class="n">getType</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="n">println</span>
-    <span class="n">getType</span><span class="o">(</span><span class="s">&quot;a string&quot;</span><span class="o">).</span><span class="n">println</span>
-<span class="o">}</span>
-</code></pre></div>
+<pre><code class="language-sarl">dispatch def getType(x : Integer) { 
+  "it's an int" 
+}
+dispatch def getType(x : String) { 
+  "it's a string" 
+}
+dispatch def getType(x : Number) { 
+  "it's a number" 
+}
+ 
+def clientCode {
+	getType(4.5).println
+	getType(4).println
+	getType("a string").println
+}
+</code></pre>
+
 <p>For a set of visible dispatch methods in the current type hierarchy with the same name and
 the same number of arguments, the compiler infers a synthetic dispatcher method.
 From the example above, the SARL compiler infers the following function, named the synthesized dispatcher.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">printType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">Integer</span><span class="o">)</span>
-  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">Number</span><span class="o">)</span>
-  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">printType</span><span class="o">(</span><span class="n">x</span> <span class="k">as</span> <span class="n">String</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def printType(x : Object) { 
+  if (x instanceof Integer) {
+    printType(x as Integer)
+  } else if (x instanceof Number) {
+    printType(x as Number)
+  } else if (x instanceof String) {
+    printType(x as String)
+  }
+}
+</code></pre>
+
 <p>This dispatcher uses the common super type of all declared arguments.
 Client code always binds to the synthesized dispatcher method.</p>
 
-<p>In the example, the calls to the <code class="prettyprint">getType</code> functions produces the output:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">it&#39;s a number
-it&#39;s an int
-it&#39;s a string
-</code></pre></div>
-<h2 id="8-acknowledgements">8. Acknowledgements</h2>
+<p>In the example, the calls to the <code>getType</code> functions produces the output:</p>
+
+<pre><code>it's a number
+it's an int
+it's a string
+</code></pre>
+
+<p>##8. Acknowledgements</p>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="9-legal-notice">9. Legal Notice</h2>
+<p>##9. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -415,6 +442,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

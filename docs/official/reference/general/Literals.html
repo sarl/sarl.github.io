@@ -75,8 +75,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#3-1-general-notation">3.1. General Notation</a></li>
   <li><a href="#3-2-integer-suffixes">3.2. Integer suffixes</a></li>
 </ul>
-
-<p><li><a href="#4-floating-point-value-suffixes">4. Floating-point-value suffixes</a></li>
+<li><a href="#4-floating-point-value-suffixes">4. Floating-point-value suffixes</a></li>
 <ul>
   <li><a href="#4-1-large-numbers">4.1. Large Numbers</a></li>
 </ul>
@@ -90,289 +89,328 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#8-3-immutable-collections">8.3. Immutable Collections</a></li>
 </ul>
 <li><a href="#9-acknowledgements">9. Acknowledgements</a></li>
-<li><a href="#10-legal-notice">10. Legal Notice</a></li></p>
+<li><a href="#10-legal-notice">10. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>A literal denotes a fixed, unchangeable value. Literals for strings, numbers, booleans, null, and Java types are
 supported, as well as literals for unmodifiable collection types like lists, sets, maps, and arrays.</p>
 
-<h2 id="1-string-literals">1. String Literals</h2>
+<p>##1. String Literals</p>
 
-<p>A string literal is of type <code class="prettyprint">String</code>. String literals are enclosed in a pair of single quotes
+<p>A string literal is of type <code>String</code>. String literals are enclosed in a pair of single quotes
 or double quotes. Special characters can be quoted with a backslash or defined using unicode
 notation.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&#39;Hello World!&#39;</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="s">&quot;Hello World!&quot;</span>
-<span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&#39;Hello &quot;World!&quot;&#39;</span>
-<span class="kd">var</span> <span class="n">d</span> <span class="o">=</span> <span class="s">&quot;Hello &quot;</span><span class="n">World</span><span class="o">!</span><span class="s">&quot;&quot;</span>
-<span class="kd">var</span> <span class="n">e</span> <span class="o">=</span> <span class="s">&quot;Hello </span>
-<span class="s">            World!&quot;</span>
-</code></pre></div>
-<p><note>Unlike Java, SARL strings can span multiple lines, as ilustrated by the variable <code class="prettyprint">e</code> above.</note></p>
 
-<h2 id="2-character-literals">2. Character Literals</h2>
+<pre><code class="language-sarl">var a = 'Hello World!'
+var b = "Hello World!"
+var c = 'Hello "World!"'
+var d = "Hello "World!""
+var e = "Hello 
+			World!"
+</code></pre>
+
+<note>Unlike Java, SARL strings can span multiple lines, as ilustrated by the variable `e` above.</note>
+
+<p>##2. Character Literals</p>
 
 <p>Character literals use the same notation as String literals. If a single-character String literal is
-used in a context where a primitive char or the wrapper type <code class="prettyprint">Character</code> or <code class="prettyprint">char</code> is expected,
-the compiler will treat the literal as a <code class="prettyprint">Character</code> or <code class="prettyprint">char</code> value.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">char</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">char</span> <span class="o">=</span> <span class="s">&quot;b&quot;</span>
-</code></pre></div>
-<h2 id="3-number-literals">3. Number Literals</h2>
+used in a context where a primitive char or the wrapper type <code>Character</code> or <code>char</code> is expected,
+the compiler will treat the literal as a <code>Character</code> or <code>char</code> value.</p>
 
-<h3 id="3-1-general-notation">3.1. General Notation</h3>
+<pre><code class="language-sarl">var a : char = 'a'
+var b : char = "b"
+</code></pre>
+
+<p>##3. Number Literals</p>
+
+<p>###3.1. General Notation</p>
 
 <p>SARL supports the same number literals as Java with two exceptions: there is no notation
 for specifying octal numbers, and if you put the dot character in a number, you must
 specify both the integer and fractional parts.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">42</span>      <span class="c1">// Decimal</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mh">0xbeef</span>  <span class="c1">// Hexadecimal</span>
-<span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">077</span>     <span class="c1">// Decimal 77, NOT octal</span>
-<span class="kd">var</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.1</span>     <span class="c1">// The leading zero must be specified</span>
-<span class="kd">var</span> <span class="n">e</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1">// The trailing zero must be specified</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Type of Integer</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Hexadecimal</td>
-<td>Prefix is <code class="prettyprint">0x</code></td>
-<td><code class="prettyprint">0xbeef</code></td>
-</tr>
-<tr>
-<td>Octal</td>
-<td>Not supported</td>
-<td></td>
-</tr>
-<tr>
-<td>Decimal</td>
-<td>No prefix, no fractional part</td>
-<td><code class="prettyprint">077</code></td>
-</tr>
-<tr>
-<td>Rational</td>
-<td>No prefix, fractional part</td>
-<td><code class="prettyprint">0.1</code></td>
-</tr>
-</tbody></table>
 
-<h3 id="3-2-integer-suffixes">3.2. Integer suffixes</h3>
+<pre><code class="language-sarl">var a = 42		// Decimal
+var b = 0xbeef	// Hexadecimal
+var c = 077		// Decimal 77, NOT octal
+var d = 0.1		// The leading zero must be specified
+var e = 1.0		// The trailing zero must be specified
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type of Integer</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hexadecimal</td>
+      <td>Prefix is <code>0x</code></td>
+      <td><code>0xbeef</code></td>
+    </tr>
+    <tr>
+      <td>Octal</td>
+      <td>Not supported</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Decimal</td>
+      <td>No prefix, no fractional part</td>
+      <td><code>077</code></td>
+    </tr>
+    <tr>
+      <td>Rational</td>
+      <td>No prefix, fractional part</td>
+      <td><code>0.1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>###3.2. Integer suffixes</p>
 
 <p>Post-fixing an integer literal may change its type:</p>
 
 <ul>
-<li>no suffix is for <code class="prettyprint">int</code> number,</li>
-<li>suffix <code class="prettyprint">l</code> or <code class="prettyprint">L</code> is for <code class="prettyprint">long</code> number (uppercase is less likely to be confused with <code class="prettyprint">1</code>), and</li>
-<li>suffix <code class="prettyprint">bi</code> or <code class="prettyprint">BI</code> is for <code class="prettyprint">BigInteger</code> number.</li>
+  <li>no suffix is for <code>int</code> number,</li>
+  <li>suffix <code>l</code> or <code>L</code> is for <code>long</code> number (uppercase is less likely to be confused with <code>1</code>), and</li>
+  <li>suffix <code>bi</code> or <code>BI</code> is for <code>BigInteger</code> number.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">anInteger</span> <span class="o">=</span> <span class="mi">1234</span>
 
-<span class="kd">var</span> <span class="n">aLong</span> <span class="o">=</span> <span class="mi">1234L</span>
+<pre><code class="language-sarl">var anInteger = 1234
 
-<span class="kd">var</span> <span class="n">aBigInteger</span> <span class="o">=</span> <span class="mi">1234</span><span class="n">bi</span>
-</code></pre></div>
-<h2 id="4-floating-point-value-suffixes">4. Floating-point-value suffixes</h2>
+var aLong = 1234L
+
+var aBigInteger = 1234bi
+</code></pre>
+
+<p>##4. Floating-point-value suffixes</p>
 
 <p>Post-fixing a floating-point literal may change its type:</p>
 
 <ul>
-<li>no suffix is for <code class="prettyprint">double</code> number,</li>
-<li>suffix <code class="prettyprint">d</code> or <code class="prettyprint">D</code> is for <code class="prettyprint">double</code> number,</li>
-<li>suffix <code class="prettyprint">f</code> or <code class="prettyprint">F</code> is for <code class="prettyprint">float</code> number, and</li>
-<li>suffix <code class="prettyprint">bd</code> or <code class="prettyprint">BD</code> is for <code class="prettyprint">BigDecimal</code> number. </li>
+  <li>no suffix is for <code>double</code> number,</li>
+  <li>suffix <code>d</code> or <code>D</code> is for <code>double</code> number,</li>
+  <li>suffix <code>f</code> or <code>F</code> is for <code>float</code> number, and</li>
+  <li>suffix <code>bd</code> or <code>BD</code> is for <code>BigDecimal</code> number.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">aDouble</span> <span class="o">=</span> <span class="mf">1234.0</span>
 
-<span class="kd">var</span> <span class="n">anotherDouble</span> <span class="o">=</span> <span class="mi">5678</span><span class="n">d</span>
+<pre><code class="language-sarl">var aDouble = 1234.0
 
-<span class="kd">var</span> <span class="n">aFloat</span> <span class="o">=</span> <span class="mf">1234.0f</span>
+var anotherDouble = 5678d
 
-<span class="kd">var</span> <span class="n">anotherFloat</span> <span class="o">=</span> <span class="mi">5678</span><span class="n">f</span>
+var aFloat = 1234.0f
 
-<span class="kd">var</span> <span class="n">aBigDecimal</span> <span class="o">=</span> <span class="mi">1234</span><span class="n">bd</span>
-</code></pre></div>
-<h3 id="4-1-large-numbers">4.1. Large Numbers</h3>
+var anotherFloat = 5678f
 
-<p>As in Java 7, you can separate digits using <code class="prettyprint">_</code> for better readability of large numbers.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// underscore is ignored, L for long</span>
-<span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="n">_345_678L</span>
-</code></pre></div>
-<h2 id="5-boolean-literals">5. Boolean Literals</h2>
+var aBigDecimal = 1234bd
+</code></pre>
 
-<p>There are two boolean literals, <code class="prettyprint">true</code> and <code class="prettyprint">false</code>, which correspond to their Java counterpart of type <code class="prettyprint">boolean</code>.</p>
+<p>###4.1. Large Numbers</p>
 
-<h2 id="6-null-literal">6. Null Literal</h2>
+<p>As in Java 7, you can separate digits using <code>_</code> for better readability of large numbers.</p>
 
-<p>The null pointer literal <code class="prettyprint">null</code> has exactly the same semantics as in Java: a reference to nothing.</p>
+<pre><code class="language-sarl">// underscore is ignored, L for long
+var a = 12_345_678L
+</code></pre>
 
-<h2 id="7-type-literals">7. Type Literals</h2>
+<p>##5. Boolean Literals</p>
+
+<p>There are two boolean literals, <code>true</code> and <code>false</code>, which correspond to their Java counterpart of type <code>boolean</code>.</p>
+
+<p>##6. Null Literal</p>
+
+<p>The null pointer literal <code>null</code> has exactly the same semantics as in Java: a reference to nothing.</p>
+
+<p>##7. Type Literals</p>
 
 <p>A type literal is the fully qualified name of a type in the SARL language.
-The syntax for type literals is generally the plain name of the type. Nested types use the delimiter <code class="prettyprint">.</code>.
-The following example is the type literal for the <code class="prettyprint">Agent</code> type.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Agent</span>
-</code></pre></div>
-<p>To disambiguate the type expression with the <code class="prettyprint">.</code> operator for invoking a function, the type literal may
-also be specified using the <code class="prettyprint">typeof</code> operator.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">typeof</span><span class="o">(</span><span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Agent</span><span class="o">)</span>
-</code></pre></div>
+The syntax for type literals is generally the plain name of the type. Nested types use the delimiter <code>.</code>.
+The following example is the type literal for the <code>Agent</code> type.</p>
+
+<pre><code class="language-sarl">io.sarl.lang.core.Agent
+</code></pre>
+
+<p>To disambiguate the type expression with the <code>.</code> operator for invoking a function, the type literal may
+also be specified using the <code>typeof</code> operator.</p>
+
+<pre><code class="language-sarl">typeof(io.sarl.lang.core.Agent)
+</code></pre>
+
 <p>Consequently, it is possible to access the members of a type reflectively by using its plain name.
-In the following example, the fields declared in the <code class="prettyprint">String</code> class are provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">String</span><span class="o">.</span><span class="n">getDeclaredFields</span>
-</code></pre></div>
-<h2 id="8-collection-literals">8. Collection Literals</h2>
+In the following example, the fields declared in the <code>String</code> class are provided:</p>
+
+<pre><code class="language-sarl">String.getDeclaredFields
+</code></pre>
+
+<p>##8. Collection Literals</p>
 
 <p>The collection literals permit to specify collections of values.</p>
 
-<h3 id="8-1-mutable-collections">8.1. Mutable Collections</h3>
+<p>###8.1. Mutable Collections</p>
 
-<p>It is easy to create instances of collections since the methods in <code class="prettyprint">CollectionLiterals</code> are automatically imported.
+<p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported.
 They permit you to create instances of collections from the JDK.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">CollectionLiterals</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">emptyList</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">emptyMap</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">emptySet</span> <span class="o">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newArrayList</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newArrayList</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newHashMap</span> <span class="o">:</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newHashMap</span><span class="o">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;[]*)</span> <span class="o">:</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newHashSet</span> <span class="o">:</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newHashSet</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newImmutableList</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newImmutableMap</span><span class="o">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;[]*)</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newImmutableSet</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newLinkedHashMap</span> <span class="o">:</span> <span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newLinkedHashMap</span><span class="o">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;[]*)</span> <span class="o">:</span> <span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newLinkedHashSet</span> <span class="o">:</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newLinkedHashSet</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">newLinkedList</span> <span class="o">:</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newLinkedList</span><span class="o">(</span><span class="n">Object</span><span class="o">[]*)</span> <span class="o">:</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newTreeMap</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newTreeMap</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;,</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;[])</span> <span class="o">:</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newTreeSet</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">newTreeSet</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>In the following example, an array-based list with two strings of characters and a linked hash map with two pairs are created. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">myList</span> <span class="o">=</span> <span class="n">newArrayList</span><span class="o">(</span><span class="s">&#39;Hello&#39;</span><span class="o">,</span> <span class="s">&#39;world&#39;</span><span class="o">)</span>
-<span class="kd">var</span> <span class="n">myMap</span> <span class="o">=</span> <span class="n">newLinkedHashMap</span><span class="o">(</span><span class="s">&#39;a&#39;</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">,</span> <span class="s">&#39;b&#39;</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">)</span>
-</code></pre></div>
-<h3 id="8-2-array-literals">8.2. Array Literals</h3>
+
+<pre><code class="language-sarl">interface CollectionLiterals {
+	def emptyList : List&lt;Object&gt;
+	def emptyMap : Map&lt;Object, Object&gt;
+	def emptySet : Set&lt;Object&gt;
+	def newArrayList : ArrayList&lt;Object&gt;
+	def newArrayList(Object[]*) : ArrayList&lt;Object&gt;
+	def newHashMap : HashMap&lt;Object, Object&gt;
+	def newHashMap(Pair&lt;Object, Object&gt;[]*) : HashMap&lt;Object, Object&gt;
+	def newHashSet : HashSet&lt;Object&gt;
+	def newHashSet(Object[]*) : HashSet&lt;Object&gt;
+	def newImmutableList(Object[]*) : List&lt;Object&gt;
+	def newImmutableMap(Pair&lt;Object, Object&gt;[]*) : Map&lt;Object, Object&gt;
+	def newImmutableSet(Object[]*) : Set&lt;Object&gt;
+	def newLinkedHashMap : LinkedHashMap&lt;Object, Object&gt;
+	def newLinkedHashMap(Pair&lt;Object, Object&gt;[]*) : LinkedHashMap&lt;Object, Object&gt;
+	def newLinkedHashSet : LinkedHashSet&lt;Object&gt;
+	def newLinkedHashSet(Object[]*) : LinkedHashSet&lt;Object&gt;
+	def newLinkedList : LinkedList&lt;Object&gt;
+	def newLinkedList(Object[]*) : LinkedList&lt;Object&gt;
+	def newTreeMap(Comparator&lt;Object&gt;) : TreeMap&lt;Object, Object&gt;
+	def newTreeMap(Comparator&lt;Object&gt;, Pair&lt;Object, Object&gt;[]) : TreeMap&lt;Object, Object&gt;
+	def newTreeSet(Comparator&lt;Object&gt;) : TreeSet&lt;Object&gt;
+	def newTreeSet(Comparator&lt;Object&gt;, Object[]) : TreeSet&lt;Object&gt;
+}
+</code></pre>
+
+<p>In the following example, an array-based list with two strings of characters and a linked hash map with two pairs are created.</p>
+
+<pre><code class="language-sarl">var myList = newArrayList('Hello', 'world')
+var myMap = newLinkedHashMap('a' -&gt; 1, 'b' -&gt; 2)
+</code></pre>
+
+<p>###8.2. Array Literals</p>
 
 <p>Java arrays can be created either using a literal as described in the next section, or a new array with a fixed size.</p>
 
 <h4 id="array-creation">Array Creation</h4>
 
-<p>The methods from <code class="prettyprint">ArrayLiterals</code> are automatically included.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">ArrayLiterals</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">newArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="n">Object</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="n">Object</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newBooleanArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newBooleanArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newByteArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">byte</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newByteArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">byte</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newCharArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">char</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newCharArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">char</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newDoubleArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newDoubleArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">double</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newFloatArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">float</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newFloatArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">float</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newIntArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newIntArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newLongArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">long</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newLongArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">long</span><span class="o">[][]</span>
-    <span class="kd">def</span> <span class="nf">newShortArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">short</span><span class="o">[]</span>
-    <span class="kd">def</span> <span class="nf">newShortArrayOfSize</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">)</span> <span class="o">:</span> <span class="kt">short</span><span class="o">[][]</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>This utility class provides a collection of methods, such as `<code class="prettyprint">ArrayLiterals</code>.newArrayOfSize(int)`
+<p>The methods from <code>ArrayLiterals</code> are automatically included.</p>
+
+<pre><code class="language-sarl">interface ArrayLiterals {
+	def newArrayOfSize(int) : Object[]
+	def newArrayOfSize(int, int) : Object[][]
+	def newBooleanArrayOfSize(int) : boolean[]
+	def newBooleanArrayOfSize(int, int) : boolean[][]
+	def newByteArrayOfSize(int) : byte[]
+	def newByteArrayOfSize(int, int) : byte[][]
+	def newCharArrayOfSize(int) : char[]
+	def newCharArrayOfSize(int, int) : char[][]
+	def newDoubleArrayOfSize(int) : double[]
+	def newDoubleArrayOfSize(int, int) : double[][]
+	def newFloatArrayOfSize(int) : float[]
+	def newFloatArrayOfSize(int, int) : float[][]
+	def newIntArrayOfSize(int) : int[]
+	def newIntArrayOfSize(int, int) : int[][]
+	def newLongArrayOfSize(int) : long[]
+	def newLongArrayOfSize(int, int) : long[][]
+	def newShortArrayOfSize(int) : short[]
+	def newShortArrayOfSize(int, int) : short[][]
+}
+</code></pre>
+
+<p>This utility class provides a collection of methods, such as ``ArrayLiterals<code>.newArrayOfSize(int)</code>
  for creating array literals.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// variable a contains a array of size 400 which contains Objects.</span>
-<span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span> <span class="o">=</span> <span class="n">newArrayOfSize</span><span class="o">(</span><span class="mi">400</span><span class="o">)</span>
-<span class="c1">// variable b contains a array of size 200 which contains int values.</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">=</span> <span class="n">newIntArrayOfSize</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">// variable a contains a array of size 400 which contains Objects.
+var a : String[] = newArrayOfSize(400)
+// variable b contains a array of size 200 which contains int values.
+var b : int[] = newIntArrayOfSize(200)
+</code></pre>
+
 <h4 id="array-element-accessors">Array Element Accessors</h4>
 
-<p>Retrieving and setting values of arrays is done through the extension methods <code class="prettyprint">get(int)</code> and
-<code class="prettyprint">set(int, T)</code>.
+<p>Retrieving and setting values of arrays is done through the extension methods <code>get(int)</code> and
+<code>set(int, T)</code>.
 The first parameter of these two functions are the position of the element to get or set.
-As with Java, the index of the elements in the array starts with <code class="prettyprint">0</code>.
+As with Java, the index of the elements in the array starts with <code>0</code>.
 The second parameter of set is the value to put at the specified position in the array.</p>
 
-<p>The method <code class="prettyprint">length</code> is available for retrieving the size of the array.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="s">&#39;Hello&#39;</span><span class="o">,</span> <span class="s">&#39;world&#39;</span><span class="o">,</span> <span class="s">&#39;!&#39;</span><span class="o">]</span>
+<p>The method <code>length</code> is available for retrieving the size of the array.</p>
 
-<span class="c1">// variable b contains the second element of the array a: &#39;world&#39;.</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<pre><code class="language-sarl">var a = #['Hello', 'world', '!']
 
-<span class="c1">// change the first element in the array a.</span>
-<span class="n">a</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="s">&#39;New Element&#39;</span><span class="o">)</span>
+// variable b contains the second element of the array a: 'world'.
+var b = a.get(1)
 
-<span class="c1">// variable c contains the size of the array a: 3.</span>
-<span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">length</span>
-</code></pre></div>
+// change the first element in the array a.
+a.set(0, 'New Element')
+
+// variable c contains the size of the array a: 3.
+var c = a.length
+</code></pre>
+
 <h4 id="array-to-list">Array to List</h4>
 
 <p>Arrays are automatically converted to lists when needed. This is similar to the boxing and unboxing features
 provided by Java to convert between the primitives and their respective object types.
 This convertion is not done by copying the elements of array.
-The [Facade design pattern] is used for creating a specific <code class="prettyprint">List</code> implementation that uses the
+The [Facade design pattern] is used for creating a specific <code>List</code> implementation that uses the
 original array as its internal backed data structure.
-This method is similar to the <code class="prettyprint">Arrays.asList</code> function provided by the Java API.</p>
+This method is similar to the <code>Arrays.asList</code> function provided by the Java API.</p>
 
 <p>In the following example, an array is defined and converted to a list.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">myArray</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">]</span>
-<span class="kd">val</span> <span class="n">myList</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">myArray</span>
-</code></pre></div>
-<h3 id="8-3-immutable-collections">8.3. Immutable Collections</h3>
+
+<pre><code class="language-sarl">val myArray : int[] = #[1,2,3]
+val myList : List&lt;Integer&gt; = myArray
+</code></pre>
+
+<p>###8.3. Immutable Collections</p>
 
 <p>In addition to the functions described in the previous section, SARL supports collection literals to create
 immutable collections and arrays, depending on the target type. There are three types of immutable
 collections: array, set, and hash table.</p>
 
-<p>An immutable array of values is specified with the <code class="prettyprint">#[</code> and <code class="prettyprint">]</code> delimiters.  </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span> <span class="s">&#39;Hello&#39;</span><span class="o">,</span> <span class="s">&#39;World&#39;</span> <span class="o">]</span>
-</code></pre></div>
-<p>An immutable set of values is specified with the <code class="prettyprint">#{</code> and <code class="prettyprint">}</code> delimiters.  </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">b</span> <span class="o">=</span> <span class="err">#</span><span class="o">{</span> <span class="s">&#39;Hello&#39;</span><span class="o">,</span> <span class="s">&#39;World&#39;</span> <span class="o">}</span>
-</code></pre></div>
-<p>An immutable map of pairs is specified with the <code class="prettyprint">#{</code> and <code class="prettyprint">}</code> delimiters, as for immutable sets, but
-the values are pairs, using the <code class="prettyprint">-&gt;</code>.  </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="err">#</span><span class="o">{</span> <span class="s">&#39;a&#39;</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">,</span><span class="s">&#39;b&#39;</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">}</span>
-</code></pre></div>
-<h2 id="9-acknowledgements">9. Acknowledgements</h2>
+<p>An immutable array of values is specified with the <code>#[</code> and <code>]</code> delimiters.</p>
+
+<pre><code class="language-sarl">var a = #[ 'Hello', 'World' ]
+</code></pre>
+
+<p>An immutable set of values is specified with the <code>#{</code> and <code>}</code> delimiters.</p>
+
+<pre><code class="language-sarl">var b = #{ 'Hello', 'World' }
+</code></pre>
+
+<p>An immutable map of pairs is specified with the <code>#{</code> and <code>}</code> delimiters, as for immutable sets, but
+the values are pairs, using the <code>-&gt;</code>.</p>
+
+<pre><code class="language-sarl">var c = #{ 'a' -&gt; 1 ,'b' -&gt; 2 }
+</code></pre>
+
+<p>##9. Acknowledgements</p>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="10-legal-notice">10. Legal Notice</h2>
+<p>##10. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -412,6 +450,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

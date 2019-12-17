@@ -78,130 +78,144 @@ Considering the variety of existing approaches and meta-models in the field of a
 </ul>
 
 <p>A script is a text file containing SARL code. Each script must follow the format:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;package declaration&gt;
+
+<pre><code>&lt;package declaration&gt;
 &lt;imports&gt;
 &lt;top-level features&gt;
-</code></pre></div>
-<h2 id="1-package-declaration">1. Package Declaration</h2>
+</code></pre>
+
+<p>##1. Package Declaration</p>
 
 <p>To structure your software, it is common to put scripts in different packages (as Java does for the classes).</p>
 
-<p>The keyword <code class="prettyprint">package</code> permits you to define the name of the package associated with a
+<p>The keyword <code>package</code> permits you to define the name of the package associated with a
 SARL file. Consequently, all the features defined in the script are contained in this package,
 and their names are qualified with the name of the package.</p>
 
-<p>The package&#39;s name also affects the generation of the Java files implementing the SARL script. Indeed,
+<p>The package’s name also affects the generation of the Java files implementing the SARL script. Indeed,
 all the Java files are generated in a folder with the name of the package.</p>
 
-<p>In the following example, the qualified name of an agent defined in the file is <code class="prettyprint">io.sarl.docs.reference.gsr</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
-</code></pre></div>
-<p><note> If the <code class="prettyprint">package</code> keyword is not used, the default package will be used. The default
-package has an empty name. It is recommended in the SARL Best Practices to specify a package&#39;s
-name.</note> </p>
+<p>In the following example, the qualified name of an agent defined in the file is <code>io.sarl.docs.reference.gsr</code>.</p>
 
-<h2 id="2-import-directive">2. Import Directive</h2>
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
+</code></pre>
+
+<note> If the `package` keyword is not used, the default package will be used. The default
+package has an empty name. It is recommended in the SARL Best Practices to specify a package's
+name.</note>
+
+<p>##2. Import Directive</p>
 
 <p>The <em>imports</em> section of a SARL script is dedicated to declaring imported classes.
 Each time you want to use a feature defined in another package, (a different file)
-you include it with the <code class="prettyprint">import</code> directive.</p>
+you include it with the <code>import</code> directive.</p>
 
-<p><note>This directive works in a similar way as in the Java language.</note></p>
+<note>This directive works in a similar way as in the Java language.</note>
 
-<p>The <code class="prettyprint">import</code> keyword is followed by the qualified name of the feature to import.
-In the following code, the first directive imports <code class="prettyprint">java.util.List</code>.</p>
+<p>The <code>import</code> keyword is followed by the qualified name of the feature to import.
+In the following code, the first directive imports <code>java.util.List</code>.</p>
 
 <p>Optionally, you can import all the features defined by a package.
 This can be done by replacing the name of the feature by the
-wildcard character <code class="prettyprint">*</code>. The second import directive is an example of the inclusion of
-all the classes defined in <code class="prettyprint">java.net</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">java.util.List</span>
-<span class="kn">import</span> <span class="nn">java.net.*</span>
-</code></pre></div>
-<h2 id="3-static-import-directive">3. Static Import Directive</h2>
+wildcard character <code>*</code>. The second import directive is an example of the inclusion of
+all the classes defined in <code>java.net</code>.</p>
+
+<pre><code class="language-sarl">import java.util.List
+import java.net.*
+</code></pre>
+
+<p>##3. Static Import Directive</p>
 
 <p>Sometimes, it is necessary to import a class to access its statically defined functions,
-i.e., a function that can be called without any associated object&#39;s instance.</p>
+i.e., a function that can be called without any associated object’s instance.</p>
 
 <p>To do this, you may invoke the static function with the fully qualified name of the
-class. For example, the function <code class="prettyprint">max</code> is invoked with this syntax in the example below.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">java.util.Collections</span>
-<span class="c1">//...</span>
+class. For example, the function <code>max</code> is invoked with this syntax in the example below.</p>
 
-        <span class="kd">var</span> <span class="n">col</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
-        <span class="nl">Collections:</span><span class="o">:</span><span class="n">max</span><span class="o">(</span><span class="n">col</span><span class="o">)</span>
-</code></pre></div>
+<pre><code class="language-sarl">import java.util.Collections
+//...
+
+		var col : Collection&lt;Integer&gt;
+		Collections::max(col)
+</code></pre>
+
 <p>As an alternative, the static-import mechanism permits you to reference the function directly.
-A static import is specified with the <code class="prettyprint">static</code> keyword just after the <code class="prettyprint">import</code> keyword.
+A static import is specified with the <code>static</code> keyword just after the <code>import</code> keyword.
 The following identifier must be a fully qualified name of one or more functions (with the
 wildcard character).</p>
 
-<p>In the example below, all the functions defined in <code class="prettyprint">java.util.Collections</code> are imported.
+<p>In the example below, all the functions defined in <code>java.util.Collections</code> are imported.
 Following this import, it is possible to invoke a static function with its unqualified
-name, as the call to <code class="prettyprint">max</code> below.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">Collections</span><span class="o">.*</span>
-<span class="c1">//...</span>
+name, as the call to <code>max</code> below.</p>
 
-        <span class="kd">var</span> <span class="n">col</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
-        <span class="n">max</span><span class="o">(</span><span class="n">col</span><span class="o">)</span>
-</code></pre></div>
-<h2 id="4-top-level-features">4. Top-Level Features</h2>
+<pre><code class="language-sarl">import static java.util.Collections.*
+//...
+
+		var col : Collection&lt;Integer&gt;
+		max(col)
+</code></pre>
+
+<p>##4. Top-Level Features</p>
 
 <p>Most of a SARL script consists of the definitions of top-level features. These features are the
-core concepts of SARL, such as <code class="prettyprint">agent</code>, <code class="prettyprint">event</code>, or <code class="prettyprint">capacity</code>.
+core concepts of SARL, such as <code>agent</code>, <code>event</code>, or <code>capacity</code>.
 All these top-level features are documented in their own reference documents.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-<span class="o">}</span>
 
-<span class="kd">event</span> <span class="nc">MyEvent</span>
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
+agent MyAgent {
+}
 
-<span class="kd">capacity</span> <span class="nc">MyCapacity</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+event MyEvent
+
+capacity MyCapacity {
+}
+</code></pre>
+
 <p>Additionally, it is possible to write object-oriented statements with
-the SARL syntax for <code class="prettyprint">class</code>, <code class="prettyprint">interface</code>, <code class="prettyprint">enum</code>, and <code class="prettyprint">annotation</code>.
+the SARL syntax for <code>class</code>, <code>interface</code>, <code>enum</code>, and <code>annotation</code>.
 The inclusion of these object-oriented statements will help you to write your
 application with a single language: SARL. The object-oriented programmation support
 is described in the <a href="../OOP.html">reference documentation</a>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="n">sarl</span><span class="o">.</span><span class="n">docs</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">gsr</span>
 
-<span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
-<span class="o">}</span>
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
 
-<span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
-<span class="o">}</span>
+class MyClass {
+}
 
-<span class="kd">enum</span> <span class="nc">MyEnum</span> <span class="o">{</span>
-    <span class="n">CONSTANT</span>
-<span class="o">}</span>
+interface MyInterface {
+}
 
-<span class="kd">annotation</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-acknowledgements">5. Acknowledgements</h2>
+enum MyEnum {
+	CONSTANT
+}
+
+annotation MyAnnotation {
+}
+</code></pre>
+
+<p>##5. Acknowledgements</p>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="6-legal-notice">6. Legal Notice</h2>
+<p>##6. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -241,6 +255,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

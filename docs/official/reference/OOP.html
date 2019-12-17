@@ -82,8 +82,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-9-method-overriding">2.9. Method Overriding</a></li>
   <li><a href="#2-10-accessing-local-variables-of-the-enclosing-scope">2.10. Accessing Local Variables of the Enclosing Scope</a></li>
 </ul>
-
-<p><li><a href="#3-interface">3. Interface</a></li>
+<li><a href="#3-interface">3. Interface</a></li>
 <ul>
   <li><a href="#3-1-define-an-interface">3.1. Define an Interface</a></li>
   <li><a href="#3-2-interface-inheritance">3.2. Interface Inheritance</a></li>
@@ -123,9 +122,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#7-11-volatile-modifier">7.11. volatile Modifier</a></li>
 </ul>
 <li><a href="#8-references">8. References</a></li>
-<li><a href="#9-legal-notice">9. Legal Notice</a></li></p>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>SARL enables to declare objects with an object-oriented programming approach.
 This document describes the basic support of object-oriented programming provided by SARL.
@@ -138,57 +137,61 @@ The basics of OOP are enabled in the SARL scripts. If you need more complex or m
 complete support of the OOP, you should use a dedicated language, such as Java,
 <a href="https://eclipse.org/xtend/">Xtend</a>, or <a href="http://www.scala-lang.org/">Scala</a>.</p>
 
-<p><note>The SARL Eclipse product includes the tools for programming with the Java and Xtend languages.</note></p>
+<note>The SARL Eclipse product includes the tools for programming with the Java and Xtend languages.</note>
 
-<h2 id="1-comparison-between-sarl-and-other-languages">1. Comparison between SARL and Other Languages</h2>
+<p>##1. Comparison between SARL and Other Languages</p>
 
 <p>A comparison between SARL and other programming languages could be found <a href="./LanguageComparison.html">here</a>.</p>
 
-<h2 id="2-class">2. Class</h2>
+<p>##2. Class</p>
 
 <p>Objects are structures that contain both data and procedures. Classes are definitions for the data format and
 available procedures for a given type or class of objects. They may also contain data and
 procedures (known as class methods) themselves.</p>
 
-<h3 id="2-1-define-a-class">2.1. Define a Class</h3>
+<p>###2.1. Define a Class</p>
 
-<p>For defining a class, you could use the <code class="prettyprint">class</code> keyword. The following example defines the class <code class="prettyprint">MyClass</code>.</p>
+<p>For defining a class, you could use the <code>class</code> keyword. The following example defines the class <code>MyClass</code>.</p>
 
 <p>The members of the class, i.e. the fields, methods and constructors must be written between the braces that are
 following the class declaration.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>  <span class="o">}</span>
-</code></pre></div>
-<h3 id="2-2-class-inheritance">2.2. Class Inheritance</h3>
+
+<pre><code class="language-sarl">class MyClass {  }
+</code></pre>
+
+<p>###2.2. Class Inheritance</p>
 
 <p>Languages that support classes almost always support inheritance. This allows classes to be arranged in a
-hierarchy that represents &quot;is-a-type-of&quot; relationships.</p>
+hierarchy that represents “is-a-type-of” relationships.</p>
 
-<p>For example, class <code class="prettyprint">Employee</code> might inherit from class <code class="prettyprint">Person</code>.
+<p>For example, class <code>Employee</code> might inherit from class <code>Person</code>.
 All the data and methods available to the parent class also appear in the child class with the same names.
-For example, class <code class="prettyprint">Person</code> might define variables <code class="prettyprint">firstName</code> and <code class="prettyprint">lastName</code> with
-method <code class="prettyprint">getFullName</code>. These will also be available in class Employee, which might add the variables
-<code class="prettyprint">position</code> and <code class="prettyprint">salary</code>.</p>
+For example, class <code>Person</code> might define variables <code>firstName</code> and <code>lastName</code> with
+method <code>getFullName</code>. These will also be available in class Employee, which might add the variables
+<code>position</code> and <code>salary</code>.</p>
 
-<p>The definition of the inheritance relationship between two classes is done with the <code class="prettyprint">extends</code> keyword.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<p>The definition of the inheritance relationship between two classes is done with the <code>extends</code> keyword.</p>
 
-    <span class="kd">var</span> <span class="n">firstName</span> <span class="o">:</span> <span class="n">String</span>
-    <span class="kd">var</span> <span class="n">lastName</span> <span class="o">:</span> <span class="n">String</span>
+<pre><code class="language-sarl">class Person {
+	
+	var firstName : String
+	var lastName : String
+	
+	def getFullName : String {
+		this.firstName + " " + this.lastName
+	}
+}
 
-    <span class="kd">def</span> <span class="n">getFullName</span> <span class="o">:</span> <span class="n">String</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">lastName</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+class Employee extends Person {
+	
+	var position : String
+	
+	var salary : float
 
-<span class="kd">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
+}
+</code></pre>
 
-    <span class="kd">var</span> <span class="n">position</span> <span class="o">:</span> <span class="n">String</span>
-
-    <span class="kd">var</span> <span class="n">salary</span> <span class="o">:</span> <span class="kt">float</span>
-
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="2-3-define-a-generic-class">2.3. Define a Generic Class</h3>
+<p>###2.3. Define a Generic Class</p>
 
 <p>A generic class declaration looks like a non-generic class declaration, except that the class name
 is followed by a type parameter section.</p>
@@ -197,278 +200,294 @@ is followed by a type parameter section.</p>
 by commas. These classes are known as parameterized classes or parameterized types
 because they accept one or more parameters.</p>
 
-<p>There may be times when you&#39;ll want to restrict the kinds of types that are allowed to be passed
+<p>There may be times when you’ll want to restrict the kinds of types that are allowed to be passed
 to a type parameter. For example, a method that operates on numbers might only want to
 accept instances of Number or its subclasses. This is what bounded type parameters are for.
-To declare a bounded type parameter, list the type parameter&#39;s name, followed by:</p>
+To declare a bounded type parameter, list the type parameter’s name, followed by:</p>
 
 <ul>
-<li>the <code class="prettyprint">extends</code> keyword, followed by its upper bound; or</li>
-<li>the <code class="prettyprint">super</code> keyword, followed by its lower bound.</li>
+  <li>the <code>extends</code> keyword, followed by its upper bound; or</li>
+  <li>the <code>super</code> keyword, followed by its lower bound.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">AType</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">T</span>
+<pre><code class="language-sarl">class AType&lt;T&gt; {
 
-    <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span>
-    <span class="o">}</span>
+	var t : T
 
-    <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="kc">this</span><span class="o">.</span><span class="n">t</span>
-    <span class="o">}</span>
+	def add(t : T) {
+		this.t = t
+	}
 
-<span class="o">}</span>
+	def get : T {
+		return this.t
+	}
 
-<span class="kd">class</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
+}
 
-    <span class="kd">var</span> <span class="n">x</span> <span class="o">:</span> <span class="n">T</span>
-    <span class="kd">var</span> <span class="n">y</span> <span class="o">:</span> <span class="n">T</span>
+class Vector&lt;T extends Number&gt; {
 
-    <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span>
-        <span class="kd">var</span> <span class="n">n</span> <span class="o">=</span> <span class="nl">Math:</span><span class="o">:</span><span class="n">sqrt</span><span class="o">(</span><span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span><span class="o">**</span><span class="mi">2</span><span class="o">)</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">this</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">floatValue</span> <span class="o">/</span> <span class="n">n</span>
-        <span class="k">return</span> <span class="n">v</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="2-4-constructor-definition">2.4. Constructor Definition</h3>
+	var x : T
+	var y : T
+
+	def norm : Vector&lt;? extends Number&gt; {
+		var v = new Vector
+		var n = Math::sqrt(this.x.floatValue**2 + this.y.floatValue**2)
+		v.x = this.x.floatValue / n
+		v.y = this.y.floatValue / n
+		return v
+	}
+}
+</code></pre>
+
+<p>###2.4. Constructor Definition</p>
 
 <p>An SARL class can define any number of constructors. Unlike Java, you do not have to repeat the name of the
-class over and over again, but use the keyword <code class="prettyprint">new</code> to declare a constructor.</p>
+class over and over again, but use the keyword <code>new</code> to declare a constructor.</p>
 
-<p>Constructors can also delegate to other constructors using <code class="prettyprint">this(args...)</code> in their first line.</p>
+<p>Constructors can also delegate to other constructors using <code>this(args...)</code> in their first line.</p>
 
 <p>If the super class does not define a no-argument constructor, you have to explicitly call
-one using <code class="prettyprint">super(args...)</code> as the first expression in the body of the constructor.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="k">extends</span> <span class="n">AnotherClass</span> <span class="o">{</span>
-  <span class="k">new</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">super</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
-  <span class="o">}</span>
+one using <code>super(args...)</code> as the first expression in the body of the constructor.</p>
 
-  <span class="k">new</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kc">this</span><span class="o">(</span><span class="s">&quot;default&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<pre><code class="language-sarl">class MyClass extends AnotherClass {
+  new (s : String) {
+    super(s)
+  }
+
+  new() {
+    this("default")
+  }
+}
+</code></pre>
+
 <p>If no constructor is defined in the type and a super-type is declared, implicit constructors will be assumed.
 Implicit constructors has the same prototypes as the constructors of the super type.
 Details on implicit constructors are given in the reference documentation related to the
 <a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
 
-<h3 id="2-5-static-constructor-definition">2.5. Static Constructor Definition</h3>
+<p>###2.5. Static Constructor Definition</p>
 
 <p>A static constructor is used to initialize any static data, or to perform a particular action that needs to
 be performed once only. It is called automatically before the first instance is created or any static members are referenced.
 In the Java programming language, the static constructor is known as <em>static initialization block</em>.</p>
 
-<p>In the following example, the static field <code class="prettyprint">staticField</code> is defined with the <code class="prettyprint">final</code> modifier.
+<p>In the following example, the static field <code>staticField</code> is defined with the <code>final</code> modifier.
 It means the field must be intialized into the field declaration or into a static constructor.
-The static constructor is defined with the <code class="prettyprint">new</code> prefixed by the <code class="prettyprint">static</code>.
-The code block of the static constructor contains an assignment that is initializing the <code class="prettyprint">staticField</code> field.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
-  <span class="kd">static</span> <span class="kd">val</span> <span class="n">staticField</span> <span class="o">:</span> <span class="kt">int</span>
+The static constructor is defined with the <code>new</code> prefixed by the <code>static</code>.
+The code block of the static constructor contains an assignment that is initializing the <code>staticField</code> field.</p>
 
-  <span class="kd">static</span> <span class="k">new</span> <span class="o">{</span>
-    <span class="n">staticField</span> <span class="o">=</span> <span class="mi">2</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<pre><code class="language-sarl">class MyClass {
+  static val staticField : int
+  
+  static new {
+    staticField = 2
+  }
+}
+</code></pre>
+
 <p>Static constructors have the following properties:</p>
 
 <ul>
-<li>A static constructor does not take access modifiers or have parameters.</li>
-<li>A static constructor is called automatically to initialize the class before the first instance is created.</li>
-<li>A static constructor cannot be called directly.</li>
-<li>The user has no control on when the static constructor is executed in the program.</li>
-<li>A static constructor cannot throw an exception, except an <em>unchecked exception</em> (instance of <code class="prettyprint">RuntimeException</code> or <code class="prettyprint">Error</code>).</li>
+  <li>A static constructor does not take access modifiers or have parameters.</li>
+  <li>A static constructor is called automatically to initialize the class before the first instance is created.</li>
+  <li>A static constructor cannot be called directly.</li>
+  <li>The user has no control on when the static constructor is executed in the program.</li>
+  <li>A static constructor cannot throw an exception, except an <em>unchecked exception</em> (instance of <code>RuntimeException</code> or <code>Error</code>).</li>
 </ul>
 
-<h3 id="2-6-field-definition">2.6. Field Definition</h3>
+<p>###2.6. Field Definition</p>
 
 <p>A field could be declared into a class following the <a href="./general/VarDecls.html">variable declaration syntax</a>.</p>
 
-<p>A field may be declared with the <code class="prettyprint">static</code> modifier. In this case, it becomes a static field, or class variable.
+<p>A field may be declared with the <code>static</code> modifier. In this case, it becomes a static field, or class variable.
 A static field is a variable defined in a class of which a single copy exists, regardless of how many instances of the class exist.
 A static field is not an instance variable. It is a special type of class attribute (or class property, field, or data member).</p>
 
-<h3 id="2-7-method-definition">2.7. Method Definition</h3>
+<p>###2.7. Method Definition</p>
 
 <p>A method could be declared into a class following the <a href="./general/FuncDecls.html">function declaration syntax</a>.
-The overriding of an inhertited method is explained in section <a href="#2-9-method-overriding">&quot;Method Overriding&quot;</a>.</p>
+The overriding of an inhertited method is explained in section <a href="#2-9-method-overriding">“Method Overriding”</a>.</p>
 
-<p>A method may be declared with the <code class="prettyprint">static</code> modifier. In this case, it becomes a static method, or class method.
+<p>A method may be declared with the <code>static</code> modifier. In this case, it becomes a static method, or class method.
 A static method is a function that is not associated to a specific instance of the class.</p>
 
-<h3 id="2-8-modifiers">2.8. Modifiers</h3>
+<p>###2.8. Modifiers</p>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the class.
 The modifiers are usually written before the keyword for defining the class.</p>
 
-<p>The complete description of the modifiers&#39; semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
+<p>The complete description of the modifiers’ semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
 
 <h4 id="top-class-modifiers">Top Class Modifiers</h4>
 
 <p>A top class may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>:  the class is accessible from any other type (default);</li>
-<li><code class="prettyprint">package</code>: the class is accessible from only the types in the same package.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the class is abstract and cannot be instanced.</li>
-<li><code class="prettyprint">final</code>: avoid to be derived.</li>
-<li><code class="prettyprint">strictfp</code>: avoid the methods of the class to use intermediate floating number formats.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>:  the class is accessible from any other type (default);</li>
+      <li><code>package</code>: the class is accessible from only the types in the same package.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the class is abstract and cannot be instanced.</li>
+  <li><code>final</code>: avoid to be derived.</li>
+  <li><code>strictfp</code>: avoid the methods of the class to use intermediate floating number formats.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TopClass1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">class</span> <span class="nc">TopClass2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TopClass3</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">final</span> <span class="kd">class</span> <span class="nc">TopClass4</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">class</span> <span class="nc">TopClass5</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public class TopClass1 {
+}
+package class TopClass2 {
+}
+abstract class TopClass3 {
+}
+final class TopClass4 {
+}
+strictfp class TopClass5 {
+}
+</code></pre>
+
 <h4 id="nested-class-modifiers">Nested Class Modifiers</h4>
 
 <p>A nested class may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the class (default);</li>
-<li><code class="prettyprint">protected</code>: the class is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the class is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the class is accessible only within its class.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the class is abstract and cannot be instanced.</li>
-<li><code class="prettyprint">final</code>: avoid to be derived.</li>
-<li><code class="prettyprint">static</code>: the inner class do not have access to the non-static members of the enclosing type.</li>
-<li><code class="prettyprint">strictfp</code>: avoid the methods of the class to use intermediate floating number formats.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the class (default);</li>
+      <li><code>protected</code>: the class is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the class is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the class is accessible only within its class.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the class is abstract and cannot be instanced.</li>
+  <li><code>final</code>: avoid to be derived.</li>
+  <li><code>static</code>: the inner class do not have access to the non-static members of the enclosing type.</li>
+  <li><code>strictfp</code>: avoid the methods of the class to use intermediate floating number formats.</li>
 </ul>
 
-<p><note>Terminology: Nested classes are divided into two categories: static and non-static.
+<note>Terminology: Nested classes are divided into two categories: static and non-static.
 Nested classes that are declared static are called <i>static nested classes</i>.
-Non-static nested classes are called <i>inner classes</i>.</note></p>
+Non-static nested classes are called <i>inner classes</i>.</note>
 
-<p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
+<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
 
-<p><caution>Until now, all the nested classes must be declared as static. This restriction may be removed in later
-versions.</caution></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">final</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass6</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">strictfp</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass7</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<caution>Until now, all the nested classes must be declared as static. This restriction may be removed in later
+versions.</caution>
+
+<pre><code class="language-sarl">class EnclosingClass {
+	public static class NestedClass1 {
+	}
+	protected static class NestedClass2 {
+	}
+	package static class NestedClass3 {
+	}
+	private static class NestedClass4 {
+	}
+	abstract static class NestedClass5 {
+	}
+	final static class NestedClass6 {
+	}
+	strictfp static class NestedClass7 {
+	}
+}
+</code></pre>
+
 <h4 id="field-modifiers">Field Modifiers</h4>
 
 <p>The modifiers for the fields in a class are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the field;</li>
-<li><code class="prettyprint">protected</code>: the field is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the field is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the field is accessible only within its class (default).</li>
-</ul></li>
-<li><code class="prettyprint">static</code>: the field is a class field, not an instance field.</li>
-<li><code class="prettyprint">transient</code>: the field is never serialized.</li>
-<li><code class="prettyprint">volatile</code>: the field is modified by different threads. It is never cached thread-locally, and synchronized.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the field;</li>
+      <li><code>protected</code>: the field is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the field is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the field is accessible only within its class (default).</li>
+    </ul>
+  </li>
+  <li><code>static</code>: the field is a class field, not an instance field.</li>
+  <li><code>transient</code>: the field is never serialized.</li>
+  <li><code>volatile</code>: the field is modified by different threads. It is never cached thread-locally, and synchronized.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">protected</span> <span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kn">package</span> <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">private</span> <span class="kd">var</span> <span class="n">d</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">static</span> <span class="kd">var</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">transient</span> <span class="kd">var</span> <span class="n">h</span> <span class="o">:</span> <span class="n">Object</span>
-<span class="kd">volatile</span> <span class="kd">var</span> <span class="n">g</span> <span class="o">:</span> <span class="n">Object</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public var a : Object
+protected var b : Object
+package var c : Object
+private var d : Object
+static var e : Object
+transient var h : Object
+volatile var g : Object
+</code></pre>
+
 <h4 id="method-modifiers">Method Modifiers</h4>
 
 <p>The modifiers for the methods in a class are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the method (default);</li>
-<li><code class="prettyprint">protected</code>:  the method is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the method is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the method is accessible only within its class.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the method has no implementation in the class.</li>
-<li><code class="prettyprint">dispatch</code>: the method provides an implementation for the dispatch method mechanism.</li>
-<li><code class="prettyprint">final</code>: the method cannot be overridden in derived classes.</li>
-<li><code class="prettyprint">native</code>: the implementation of the method is inside a native library (DLL, SO, DYNLIB).</li>
-<li><code class="prettyprint">static</code>: the method is a class method, not an instance method.</li>
-<li><code class="prettyprint">strictfp</code>: avoid the method to use intermediate floating number formats.</li>
-<li><code class="prettyprint">synchronized</code>: the method is synchronized on the class instance.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the method (default);</li>
+      <li><code>protected</code>:  the method is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the method is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the method is accessible only within its class.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the method has no implementation in the class.</li>
+  <li><code>dispatch</code>: the method provides an implementation for the dispatch method mechanism.</li>
+  <li><code>final</code>: the method cannot be overridden in derived classes.</li>
+  <li><code>native</code>: the implementation of the method is inside a native library (DLL, SO, DYNLIB).</li>
+  <li><code>static</code>: the method is a class method, not an instance method.</li>
+  <li><code>strictfp</code>: avoid the method to use intermediate floating number formats.</li>
+  <li><code>synchronized</code>: the method is synchronized on the class instance.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">protected</span> <span class="kd">def</span> <span class="n">fct2</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kn">package</span> <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">private</span> <span class="kd">def</span> <span class="n">fct4</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
-<span class="kd">final</span> <span class="kd">def</span> <span class="n">fct6</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">native</span> <span class="kd">def</span> <span class="n">fct7</span>
-<span class="kd">static</span> <span class="kd">def</span> <span class="n">fct8</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct9</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">fct10</span> <span class="o">{</span> <span class="o">}</span>
-<span class="c1">// Dispatch functions</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">fct11</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">Float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public def fct1 { }
+protected def fct2 { }
+package def fct3 { }
+private def fct4 { }
+abstract def fct5
+final def fct6 { }
+native def fct7
+static def fct8 { }
+strictfp def fct9 { }
+synchronized def fct10 { }
+// Dispatch functions
+dispatch def fct11(p : Integer) { }
+dispatch def fct11(p : Float) { }
+</code></pre>
+
 <h4 id="constructor-modifiers">Constructor Modifiers</h4>
 
 <p>The modifiers for the constructors of a class are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the constructor (default);</li>
-<li><code class="prettyprint">protected</code>: the constructor is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the constructor is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the constructor is accessible only within its class.</li>
-</ul></li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the constructor (default);</li>
+      <li><code>protected</code>: the constructor is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the constructor is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the constructor is accessible only within its class.</li>
+    </ul>
+  </li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">protected</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kn">package</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">char</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-<span class="kd">private</span> <span class="nf">new</span><span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
-</code></pre></div>
-<h3 id="2-9-method-overriding">2.9. Method Overriding</h3>
+
+<pre><code class="language-sarl">public new(p : int) { }
+protected new(p : float) { }
+package new(p : char) { }
+private new(p : boolean) { }
+</code></pre>
+
+<p>###2.9. Method Overriding</p>
 
 <p>Method overriding is a language feature that allows a subclass or child class
 to provide a specific implementation of a method that is already provided by
@@ -484,82 +503,92 @@ then the version in the parent class will be executed, but if an object of the
 subclass is used to invoke the method, then the version in the child class
 will be executed.</p>
 
-<p>The following code defines the class <code class="prettyprint">PersonEx</code> as a subclass of <code class="prettyprint">Person</code>,
+<p>The following code defines the class <code>PersonEx</code> as a subclass of <code>Person</code>,
 and in which the title (mister, madam, miss) is added.
 Then the full name of the person becomes the sequence of the title, first name and last name.
 Since the first name and last name are already sequenced in the function
-<code class="prettyprint">getFullName</code> of the superclass, we should override this function for changing
-its behavior. The <code class="prettyprint">override</code> keyword is specified for clearly marking this
-implementation of <code class="prettyprint">getFullName</code> as an override of the parent&#39;s implementation.</p>
+<code>getFullName</code> of the superclass, we should override this function for changing
+its behavior. The <code>override</code> keyword is specified for clearly marking this
+implementation of <code>getFullName</code> as an override of the parent’s implementation.</p>
 
-<p><note>The return type of the <code class="prettyprint">getFullName</code> method (called with the name <code class="prettyprint">fullName</code>,
-according to the <a href="./general/MemberAccess.html#property-syntax">property access syntax</a>)
-is not specified in the overriding prototype since it could be inferred by the SARL compiler.</note></p>
+<note>The return type of the `getFullName` method (called with the name `fullName`,
+according to the [property access syntax](./general/MemberAccess.html#property-syntax))
+is not specified in the overriding prototype since it could be inferred by the SARL compiler.</note>
 
-<p>For preventing a function to be overridden, you should add the <code class="prettyprint">final</code> modifier in the signature of
+<p>For preventing a function to be overridden, you should add the <code>final</code> modifier in the signature of
 the method (as in Java).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">PersonEx</span> <span class="k">extends</span> <span class="n">Person</span> <span class="o">{</span>
 
-    <span class="kd">var</span> <span class="n">title</span> <span class="o">:</span> <span class="n">String</span>
+<pre><code class="language-sarl">class PersonEx extends Person {
+	
+	var title : String
+	
+	override getFullName {
+		return title + " " + super.fullName
+	} 
+}
+</code></pre>
 
-    <span class="kd">override</span> <span class="n">getFullName</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">fullName</span>
-    <span class="o">}</span> 
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="2-10-accessing-local-variables-of-the-enclosing-scope">2.10. Accessing Local Variables of the Enclosing Scope</h3>
+<p>###2.10. Accessing Local Variables of the Enclosing Scope</p>
 
 <p>Local classes (or nested classes, i.e. classes defined inside an other type) have
-the <code class="prettyprint">static</code> modifier. It means that a nested class cannot have access to the
+the <code>static</code> modifier. It means that a nested class cannot have access to the
 fields and methods of the instance of the enclosing type. Only accesses to static members are allowed.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="n">field1</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="kd">static</span> <span class="kd">def</span> <span class="n">fct1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NestedClass</span> <span class="o">{</span>
-        <span class="kd">def</span> <span class="n">fct2</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">{</span>
-            <span class="c1">// Explicit type specification for the field access</span>
-            <span class="nl">EnclosingClass:</span><span class="o">:</span><span class="n">field1</span>
-        <span class="o">}</span>
 
-        <span class="kd">def</span> <span class="n">fct3</span> <span class="o">{</span>
-            <span class="c1">// Implicit type specification for the function&#39;s call</span>
-            <span class="n">fct1</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">}
-</code></pre></div>
-<h2 id="3-interface">3. Interface</h2>
+<pre><code class="language-sarl">class EnclosingClass {
+	static var field1 : int
+	static def fct1 {
+	}
+	static class NestedClass {
+		def fct2 : int {
+			// Explicit type specification for the field access
+			EnclosingClass::field1
+		}
+
+		def fct3 {
+			// Implicit type specification for the function's call
+			fct1
+		}
+	}
+}
+</code></pre>
+
+<pre><code>}
+</code></pre>
+
+<p>##3. Interface</p>
 
 <p>An interface is a description of the actions that an object can do.
-For example when you flip a light switch, the light goes on, you don&#39;t
+For example when you flip a light switch, the light goes on, you don’t
 care how, just that it does. In object-oriented programming, an
 interface is a description of all functions that an object must have
-in order to be an &quot;X&quot;.</p>
+in order to be an “X”.</p>
 
 <p>The purpose of interfaces is to allow the program to enforce these
 properties, and to know that an object of type T (whatever the interface
 is) must have functions called X,Y,Z, etc.</p>
 
-<h3 id="3-1-define-an-interface">3.1. Define an Interface</h3>
+<p>###3.1. Define an Interface</p>
 
-<p>In the following example, the <code class="prettyprint">Light</code> interface is defined with the two methods <code class="prettyprint">turnOn</code> and <code class="prettyprint">turnOff</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">turnOn</span>
-    <span class="kd">def</span> <span class="n">turnOff</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-2-interface-inheritance">3.2. Interface Inheritance</h3>
+<p>In the following example, the <code>Light</code> interface is defined with the two methods <code>turnOn</code> and <code>turnOff</code>.</p>
 
-<p>It is possible to specialize the definition of an interface. In the following example, the <code class="prettyprint">VariableIntensityLight</code>
-interface that is refining the previous <code class="prettyprint">Light</code> interface and add specific functions.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">VariableIntensityLight</span> <span class="k">extends</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">setLightIntensity</span><span class="o">(</span><span class="n">intensity</span> <span class="o">:</span> <span class="kt">float</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="n">getLightIntensity</span> <span class="o">:</span> <span class="kt">float</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-3-define-a-generic-interface">3.3. Define a Generic Interface</h3>
+<pre><code class="language-sarl">interface Light {
+	def turnOn
+	def turnOff
+}
+</code></pre>
+
+<p>###3.2. Interface Inheritance</p>
+
+<p>It is possible to specialize the definition of an interface. In the following example, the <code>VariableIntensityLight</code>
+interface that is refining the previous <code>Light</code> interface and add specific functions.</p>
+
+<pre><code class="language-sarl">interface VariableIntensityLight extends Light {
+	def setLightIntensity(intensity : float)
+	def getLightIntensity : float
+}
+</code></pre>
+
+<p>###3.3. Define a Generic Interface</p>
 
 <p>A generic interface declaration looks like a non-generic interface declaration, except that the interface name
 is followed by a type parameter section.</p>
@@ -568,399 +597,434 @@ is followed by a type parameter section.</p>
 by commas. These interfaces are known as parameterized interfaces or parameterized types
 because they accept one or more parameters.</p>
 
-<p>There may be times when you&#39;ll want to restrict the kinds of types that are allowed to be passed
+<p>There may be times when you’ll want to restrict the kinds of types that are allowed to be passed
 to a type parameter. For example, a method that operates on numbers might only want to
 accept instances of Number or its subclasses. This is what bounded type parameters are for.
-To declare a bounded type parameter, list the type parameter&#39;s name, followed by:</p>
+To declare a bounded type parameter, list the type parameter’s name, followed by:</p>
 
 <ul>
-<li>the <code class="prettyprint">extends</code> keyword, followed by its upper bound; or</li>
-<li>the <code class="prettyprint">super</code> keyword, followed by its lower bound.</li>
+  <li>the <code>extends</code> keyword, followed by its upper bound; or</li>
+  <li>the <code>super</code> keyword, followed by its lower bound.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">AnInterface</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">add</span><span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">T</span><span class="o">)</span>
 
-    <span class="kd">def</span> <span class="n">get</span> <span class="o">:</span> <span class="n">T</span>
-<span class="o">}</span>
+<pre><code class="language-sarl">interface AnInterface&lt;T&gt; {
+	def add(t : T)
 
-<span class="kd">interface</span> <span class="nc">Vector</span><span class="o">&lt;</span><span class="n">T</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">norm</span> <span class="o">:</span> <span class="n">Vector</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Number</span><span class="o">&gt;</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-4-interface-implementation">3.4. Interface Implementation</h3>
+	def get : T
+}
 
-<p>A class is able to implement an interface. The <code class="prettyprint">implements</code> keyword is used for defining
+interface Vector&lt;T extends Number&gt; {
+	def norm : Vector&lt;? extends Number&gt;
+}
+</code></pre>
+
+<p>###3.4. Interface Implementation</p>
+
+<p>A class is able to implement an interface. The <code>implements</code> keyword is used for defining
 the implementation relationship between a class and an interface.
 The class must provide an implementation of all the functions defined in the interface.
 The only one exception is when the class is abstract. In this case, the derived classes must implement the
 functions of the interface.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-5-default-implementation-of-interface-functions">3.5. Default Implementation of Interface Functions</h3>
+
+<pre><code class="language-sarl">class TheLight implements Light {
+	var isSwitchedOn = false
+	def turnOn {
+		this.isSwitchedOn = true
+	}
+	def turnOff {
+		this.isSwitchedOn = false
+	}
+}
+</code></pre>
+
+<p>###3.5. Default Implementation of Interface Functions</p>
 
 <p>As in Java 8, interface types could provide default function implementation if the implementation class is
 not providing one. This feature is known as the default method mechanism.</p>
 
-<p>In the following example, two default implementations of the <code class="prettyprint">turnOn</code> and <code class="prettyprint">turnOff</code> functions are provided.
-The implementing class needs to provide a function code only for the <code class="prettyprint">switchLight</code> function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">Light</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">turnOn</span> <span class="o">{</span>
-        <span class="n">switchLight</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">turnOff</span> <span class="o">{</span>
-        <span class="n">switchLight</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">TheLight</span> <span class="k">implements</span> <span class="n">Light</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="kd">def</span> <span class="nf">switchLight</span><span class="o">(</span><span class="n">state</span> <span class="o">:</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">isSwitchedOn</span> <span class="o">=</span> <span class="n">state</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-6-modifiers">3.6. Modifiers</h3>
+<p>In the following example, two default implementations of the <code>turnOn</code> and <code>turnOff</code> functions are provided.
+The implementing class needs to provide a function code only for the <code>switchLight</code> function:</p>
+
+<pre><code class="language-sarl">interface Light {
+	def turnOn {
+		switchLight(true)
+	}
+	def turnOff {
+		switchLight(false)
+	}
+	def switchLight(state : boolean)
+}
+class TheLight implements Light {
+	var isSwitchedOn = false
+	def switchLight(state : boolean) {
+		this.isSwitchedOn = state
+	}
+}
+</code></pre>
+
+<p>###3.6. Modifiers</p>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the interface.
 The modifiers are usually written before the keyword for defining the interface.</p>
 
-<p>The complete description of the modifiers&#39; semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
+<p>The complete description of the modifiers’ semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
 
 <h4 id="top-interface-modifiers">Top Interface Modifiers</h4>
 
 <p>A top interface may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: the class is accessible from any other type (default);</li>
-<li><code class="prettyprint">package</code>: the class is accessible from only the types in the same package.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the interface is abstract (not needed since all the interfaces are abstract).</li>
-<li><code class="prettyprint">strictfp</code>: avoid the methods of the implementing classes to use intermediate floating number formats.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: the class is accessible from any other type (default);</li>
+      <li><code>package</code>: the class is accessible from only the types in the same package.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the interface is abstract (not needed since all the interfaces are abstract).</li>
+  <li><code>strictfp</code>: avoid the methods of the implementing classes to use intermediate floating number formats.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TopInterface1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">interface</span> <span class="nc">TopInterface2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">TopInterface3</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">TopInterface4</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public interface TopInterface1 {
+}
+package interface TopInterface2 {
+}
+abstract interface TopInterface3 {
+}
+strictfp interface TopInterface4 {
+}
+</code></pre>
+
 <h4 id="nested-interface-modifiers">Nested Interface Modifiers</h4>
 
 <p>A nested interface may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the interface (default);</li>
-<li><code class="prettyprint">protected</code>: the interface is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the interface is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the interface is accessible only within its class.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the interface is abstract (not needed since all the interfaces are abstract).</li>
-<li><code class="prettyprint">static</code>: the inner interface do not have access to the non-static members of the enclosing type.</li>
-<li><code class="prettyprint">strictfp</code>: avoid the methods of the interface to use intermediate floating number formats.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the interface (default);</li>
+      <li><code>protected</code>: the interface is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the interface is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the interface is accessible only within its class.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the interface is abstract (not needed since all the interfaces are abstract).</li>
+  <li><code>static</code>: the inner interface do not have access to the non-static members of the enclosing type.</li>
+  <li><code>strictfp</code>: avoid the methods of the interface to use intermediate floating number formats.</li>
 </ul>
 
-<p><note>Terminology: Nested interfaces are divided into two categories: static and non-static.
+<note>Terminology: Nested interfaces are divided into two categories: static and non-static.
 Nested interfaces that are declared static are called <i>static nested interfaces</i>.
-Non-static nested interfaces are called <i>inner interfaces</i>.</note></p>
+Non-static nested interfaces are called <i>inner interfaces</i>.</note>
 
-<p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">NestedInterface1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">interface</span> <span class="nc">NestedInterface2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">interface</span> <span class="nc">NestedInterface3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">interface</span> <span class="nc">NestedInterface4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">interface</span> <span class="nc">NestedInterface5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">NestedInterface6</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">strictfp</span> <span class="kd">interface</span> <span class="nc">NestedInterface7</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h4 id="field-modifiers">Field Modifiers</h4>
+<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+
+<pre><code class="language-sarl">class EnclosingClass {
+	public interface NestedInterface1 {
+	}
+	protected interface NestedInterface2 {
+	}
+	package interface NestedInterface3 {
+	}
+	private interface NestedInterface4 {
+	}
+	abstract interface NestedInterface5 {
+	}
+	static interface NestedInterface6 {
+	}
+	strictfp interface NestedInterface7 {
+	}
+}
+</code></pre>
+
+<h4 id="field-modifiers-1">Field Modifiers</h4>
 
 <p>The modifiers for the fields in an interface are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the field (default);</li>
-</ul></li>
-<li><code class="prettyprint">static</code>: the field is a class field, not an instance field (default).</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the field (default);</li>
+    </ul>
+  </li>
+  <li><code>static</code>: the field is a class field, not an instance field (default).</li>
 </ul>
 
-<p><caution>Only fields defined with <code class="prettyprint">val</code> can be put in an interface.</caution></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
-<span class="kd">static</span> <span class="kd">val</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Object</span><span class="o">;</span>
-</code></pre></div>
-<h4 id="method-modifiers">Method Modifiers</h4>
+<caution>Only fields defined with `val` can be put in an interface.</caution>
+
+<pre><code class="language-sarl">public val a : Object;
+static val e : Object;
+</code></pre>
+
+<h4 id="method-modifiers-1">Method Modifiers</h4>
 
 <p>The modifiers for the methods in an interface are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the method (default);</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the method is abstract (not needed since all the interface methods are abstract).</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the method (default);</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the method is abstract (not needed since all the interface methods are abstract).</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">def</span> <span class="n">fct1</span>
-<span class="kd">abstract</span> <span class="kd">def</span> <span class="n">fct5</span>
-</code></pre></div>
-<h2 id="4-enumeration">4. Enumeration</h2>
+
+<pre><code class="language-sarl">public def fct1
+abstract def fct5
+</code></pre>
+
+<p>##4. Enumeration</p>
 
 <p>An enumeration specifies a list of constant values assigned to a type.</p>
 
 <p>The SARL enumeration is not object-oriented unlike the enumeration in the Java programming language. It means
 that you cannot define methods nor attributes in the enumeration.</p>
 
-<h3 id="4-1-define-an-enumeration">4.1. Define an Enumeration</h3>
+<p>###4.1. Define an Enumeration</p>
 
-<p>For defining an enumeration, you could use the <code class="prettyprint">enum</code> keyword.
-The following example defines the enumeration <code class="prettyprint">MyEnum</code> with two constants: </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">enum</span> <span class="nc">MyEnum</span> <span class="o">{</span>
-    <span class="n">CONSTANT_1</span><span class="o">,</span>
-    <span class="n">CONSTANT_2</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="4-2-modifiers">4.2. Modifiers</h3>
+<p>For defining an enumeration, you could use the <code>enum</code> keyword.
+The following example defines the enumeration <code>MyEnum</code> with two constants:</p>
+
+<pre><code class="language-sarl">enum MyEnum {
+	CONSTANT_1,
+	CONSTANT_2
+}
+</code></pre>
+
+<p>###4.2. Modifiers</p>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the enumeration.
 The modifiers are usually written before the keyword for defining the enumeration.</p>
 
-<p>The complete description of the modifiers&#39; semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
+<p>The complete description of the modifiers’ semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
 
 <h4 id="top-enumeration-modifiers">Top Enumeration Modifiers</h4>
 
-<p>A top enumeration may be declared with one or more modifiers, which affect its runtime behavior:
-* Access modifiers:
-    * <code class="prettyprint">public</code>:  the class is accessible from any other type (default);
-    * <code class="prettyprint">package</code>: the class is accessible from only the types in the same package.</p>
+<p>A top enumeration may be declared with one or more modifiers, which affect its runtime behavior:</p>
+<ul>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>:  the class is accessible from any other type (default);</li>
+      <li><code>package</code>: the class is accessible from only the types in the same package.</li>
+    </ul>
+  </li>
+</ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">TopEnumeration1</span> <span class="o">{</span>
-    <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">enum</span> <span class="nc">TopEnumeration2</span> <span class="o">{</span>
-    <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public enum TopEnumeration1 {
+	CST1, CST2
+}
+package enum TopEnumeration2 {
+	CST3, CST4
+}
+</code></pre>
+
 <h4 id="nested-enumeration-modifiers">Nested Enumeration Modifiers</h4>
 
 <p>A nested interface may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the enumeration (default);</li>
-<li><code class="prettyprint">protected</code>: the enumeration is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the enumeration is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the enumeration is accessible only within its class.</li>
-</ul></li>
-<li><code class="prettyprint">static</code>: the inner enumeration do not have access to the non-static members of the enclosing type.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the enumeration (default);</li>
+      <li><code>protected</code>: the enumeration is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the enumeration is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the enumeration is accessible only within its class.</li>
+    </ul>
+  </li>
+  <li><code>static</code>: the inner enumeration do not have access to the non-static members of the enclosing type.</li>
 </ul>
 
-<p><note>Terminology: Nested enumerations are divided into two categories: static and non-static.
+<note>Terminology: Nested enumerations are divided into two categories: static and non-static.
 Nested enumerations that are declared static are called <i>static nested enumerations</i>.
-Non-static nested enumerations are called <i>inner enumerations</i>.</note></p>
+Non-static nested enumerations are called <i>inner enumerations</i>.</note>
 
-<p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">NestedClass1</span> <span class="o">{</span>
-        <span class="n">CST1</span><span class="o">,</span> <span class="n">CST2</span>
-    <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">enum</span> <span class="nc">NestedClass2</span> <span class="o">{</span>
-        <span class="n">CST3</span><span class="o">,</span> <span class="n">CST4</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">enum</span> <span class="nc">NestedClass3</span> <span class="o">{</span>
-        <span class="n">CST5</span><span class="o">,</span> <span class="n">CST6</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">enum</span> <span class="nc">NestedClass4</span> <span class="o">{</span>
-        <span class="n">CST7</span><span class="o">,</span> <span class="n">CST8</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">enum</span> <span class="nc">NestedClass5</span> <span class="o">{</span>
-        <span class="n">CST9</span><span class="o">,</span> <span class="n">CST10</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-annotation-type">5. Annotation Type</h2>
+<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+
+<pre><code class="language-sarl">class EnclosingClass {
+	public enum NestedClass1 {
+		CST1, CST2
+	}
+	protected enum NestedClass2 {
+		CST3, CST4
+	}
+	package enum NestedClass3 {
+		CST5, CST6
+	}
+	private enum NestedClass4 {
+		CST7, CST8
+	}
+	static enum NestedClass5 {
+		CST9, CST10
+	}
+}
+</code></pre>
+
+<p>##5. Annotation Type</p>
 
 <p>An annotation is a form of syntactic metadata that can be added to SARL source code.
 Annotations can be reflective in that they can be embedded in binary files generated by the
 SARL compiler, and may be retained by the Virtual Machine to be made retrievable at run-time.</p>
 
-<h3 id="5-1-define-an-annotation">5.1. Define an Annotation</h3>
+<p>###5.1. Define an Annotation</p>
 
-<p>For defining an annotation, you could use the <code class="prettyprint">annotation</code> keyword.</p>
+<p>For defining an annotation, you could use the <code>annotation</code> keyword.</p>
 
-<p>The following example defines the annotation <code class="prettyprint">MyAnnotation</code>.
+<p>The following example defines the annotation <code>MyAnnotation</code>.
 This annotation defines three parameters:</p>
 
 <ul>
-<li><code class="prettyprint">value</code>, an array of strings of characters, without default value;</li>
-<li><code class="prettyprint">isTricky</code>, a boolean value, with the default <code class="prettyprint">false</code>;</li>
-<li><code class="prettyprint">lotteryNumbers</code>, an array of integer numbers, with a default value.</li>
+  <li><code>value</code>, an array of strings of characters, without default value;</li>
+  <li><code>isTricky</code>, a boolean value, with the default <code>false</code>;</li>
+  <li><code>lotteryNumbers</code>, an array of integer numbers, with a default value.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">annotation</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
-  <span class="kd">val</span> <span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">[]</span>
-  <span class="kd">val</span> <span class="n">isTricky</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span>
-  <span class="kd">val</span> <span class="n">lotteryNumbers</span> <span class="o">:</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span> <span class="mi">42</span><span class="o">,</span> <span class="mi">137</span> <span class="o">]</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="5-2-modifiers">5.2. Modifiers</h3>
+
+<pre><code class="language-sarl">annotation MyAnnotation {
+  val value : String[]
+  val isTricky : boolean = false
+  val lotteryNumbers : int[] = #[ 42, 137 ]
+}
+</code></pre>
+
+<p>###5.2. Modifiers</p>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the annotation types.
 The modifiers are usually written before the keyword for defining the annotation type.</p>
 
-<p>The complete description of the modifiers&#39; semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
+<p>The complete description of the modifiers’ semantic is available in <a href="#7-definition-of-all-the-supported-modifiers">this section</a>.</p>
 
 <h4 id="top-annotation-type-modifiers">Top Annotation Type Modifiers</h4>
 
 <p>A top annotation type may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: the annotation type is accessible from any other type (default);</li>
-<li><code class="prettyprint">package</code>: the annotation type is accessible from only the types in the same package.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the annotation type is abstract and cannot be instanced.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: the annotation type is accessible from any other type (default);</li>
+      <li><code>package</code>: the annotation type is accessible from only the types in the same package.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the annotation type is abstract and cannot be instanced.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType2</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">TopAnnotationType3</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public annotation TopAnnotationType1 {
+}
+package annotation TopAnnotationType2 {
+}
+abstract annotation TopAnnotationType3 {
+}
+</code></pre>
+
 <h4 id="nested-annotation-type-modifiers">Nested Annotation Type Modifiers</h4>
 
 <p>A nested annotation type may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the annotation type (default);</li>
-<li><code class="prettyprint">protected</code>: the annotation type is accessible within the same package, and derived classes;</li>
-<li><code class="prettyprint">package</code>: the annotation type is accessible only within the same package as its class;</li>
-<li><code class="prettyprint">private</code>: the annotation type is accessible only within its class.</li>
-</ul></li>
-<li><code class="prettyprint">abstract</code>: the annotation type is abstract and cannot be instanced.</li>
-<li><code class="prettyprint">static</code>: the inner annotation type do not have access to the non-static members of the enclosing type.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the annotation type (default);</li>
+      <li><code>protected</code>: the annotation type is accessible within the same package, and derived classes;</li>
+      <li><code>package</code>: the annotation type is accessible only within the same package as its class;</li>
+      <li><code>private</code>: the annotation type is accessible only within its class.</li>
+    </ul>
+  </li>
+  <li><code>abstract</code>: the annotation type is abstract and cannot be instanced.</li>
+  <li><code>static</code>: the inner annotation type do not have access to the non-static members of the enclosing type.</li>
 </ul>
 
-<p><note>Terminology: Nested annotation types are divided into two categories: static and non-static.
+<note>Terminology: Nested annotation types are divided into two categories: static and non-static.
 Nested annotation types that are declared static are called <i>static nested annotation types</i>.
-Non-static nested annotation types are called <i>inner annotation types</i>.</note></p>
+Non-static nested annotation types are called <i>inner annotation types</i>.</note>
 
-<p><note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">EnclosingClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType1</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">protected</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType2</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kn">package</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType3</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType4</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">abstract</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType5</span> <span class="o">{</span>
-    <span class="o">}</span>
-    <span class="kd">static</span> <span class="kd">annotation</span> <span class="nc">NestedAnnotationType6</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+
+<pre><code class="language-sarl">class EnclosingClass {
+	public annotation NestedAnnotationType1 {
+	}
+	protected annotation NestedAnnotationType2 {
+	}
+	package annotation NestedAnnotationType3 {
+	}
+	private annotation NestedAnnotationType4 {
+	}
+	abstract annotation NestedAnnotationType5 {
+	}
+	static annotation NestedAnnotationType6 {
+	}
+}
+</code></pre>
+
 <h4 id="value-modifiers">Value Modifiers</h4>
 
 <p>The modifiers for the values in an annotation type are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: there are no restrictions on accessing the value;</li>
-</ul></li>
-<li><code class="prettyprint">static</code>: the value is a class value, not an instance value.</li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: there are no restrictions on accessing the value;</li>
+    </ul>
+  </li>
+  <li><code>static</code>: the value is a class value, not an instance value.</li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">val</span> <span class="n">val1</span> <span class="o">:</span> <span class="kt">int</span>
-<span class="kd">static</span> <span class="kd">val</span> <span class="n">val2</span> <span class="o">:</span> <span class="kt">int</span>
-</code></pre></div>
-<h2 id="6-anonymous-class">6. Anonymous Class</h2>
+
+<pre><code class="language-sarl">public val val1 : int
+static val val2 : int
+</code></pre>
+
+<p>##6. Anonymous Class</p>
 
 <p>Anonymous classes enable you to make your code more concise. They enable you to declare and instantiate a
 class at the same time. They are like local classes except that they do not have a name. Use them if you
 need to use a local class only once.</p>
 
-<h3 id="6-1-declaring-anonymous-classes">6.1. Declaring Anonymous Classes</h3>
+<p>###6.1. Declaring Anonymous Classes</p>
 
 <p>While local classes are class declarations, anonymous classes are expressions, which means that you define
 the class in another expression.</p>
 
-<p>The following example, <code class="prettyprint">HelloWorldAnonymousClasses</code>, uses anonymous classes in the
-initialization statements of the local variables <code class="prettyprint">frenchGreeting</code> and <code class="prettyprint">spanishGreeting</code>:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
+<p>The following example, <code>HelloWorldAnonymousClasses</code>, uses anonymous classes in the
+initialization statements of the local variables <code>frenchGreeting</code> and <code>spanishGreeting</code>:</p>
 
-        <span class="kd">var</span> <span class="n">spanishGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;mundo&quot;</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="n">frenchGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marc&quot;</span><span class="o">)</span>
-        <span class="n">spanishGreeting</span><span class="o">.</span><span class="n">greetSomeone</span><span class="o">(</span><span class="s">&quot;Marco&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="6-2-syntax-of-anonymous-classes">6.2. Syntax of Anonymous Classes</h3>
+<pre><code class="language-sarl">interface HelloWorld {
+    def greetSomeone(someone : String)
+}
+class HelloWorldAnonymousClasses {
+    def sayHello {
+        var frenchGreeting = new HelloWorld {
+            var name = "tout le monde"
+            def greetSomeone(someone : String) {
+                name = someone
+                println("Salut " + name)
+            }
+        }
+
+        var spanishGreeting = new HelloWorld {
+            var name = "mundo"
+            def greetSomeone(someone : String) {
+                name = someone
+                println("Hola, " + name)
+            }
+        }
+        frenchGreeting.greetSomeone("Marc")
+        spanishGreeting.greetSomeone("Marco")
+    }
+}
+</code></pre>
+
+<p>###6.2. Syntax of Anonymous Classes</p>
 
 <p>As mentioned previously, an anonymous class is an expression.
 The syntax of an anonymous class expression is like the invocation of a constructor,
@@ -971,141 +1035,152 @@ except that there is a class definition contained in a block of code.</p>
 <p>The anonymous class expression consists of the following:</p>
 
 <ul>
-<li>The <code class="prettyprint">new</code> operator</li>
-<li>The name of an interface to implement or a class to extend. In this example, the anonymous class is implementing the interface <code class="prettyprint">HelloWorld</code>.</li>
-<li>Parentheses that contain the arguments to a constructor, just like a normal class instance creation expression. When you implement an interface, there is no constructor, so you do not need to put parameters, as in this example.</li>
-<li>A body, which is a class declaration body. More specifically, in the body, method declarations are allowed but statements are not.</li>
+  <li>The <code>new</code> operator</li>
+  <li>The name of an interface to implement or a class to extend. In this example, the anonymous class is implementing the interface <code>HelloWorld</code>.</li>
+  <li>Parentheses that contain the arguments to a constructor, just like a normal class instance creation expression. When you implement an interface, there is no constructor, so you do not need to put parameters, as in this example.</li>
+  <li>A body, which is a class declaration body. More specifically, in the body, method declarations are allowed but statements are not.</li>
 </ul>
 
 <p>Because an anonymous class definition is an expression, it must be part of a statement.
 In this example, the anonymous class expression is part of the statement that instantiates
-the <code class="prettyprint">frenchGreeting</code> object.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;tout le monde&quot;</span>
-    <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="6-3-accessing-local-variables-of-the-enclosing-scope-and-declaring-and-accessing-members-of-the-anonymous-class">6.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</h3>
+the <code>frenchGreeting</code> object.</p>
+
+<pre><code class="language-sarl">var frenchGreeting = new HelloWorld {
+    var name = "tout le monde"
+    def greetSomeone(someone : String) {
+        name = someone
+        println("Salut " + name)
+    }
+}
+</code></pre>
+
+<p>###6.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</p>
 
 <p>Anonymous classes can capture variables; they have the same access to
 local variables of the enclosing scope:</p>
 
 <ul>
-<li>An anonymous class has access to the members of its enclosing class.</li>
-<li>An anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final.</li>
-<li>A declaration of a type (such as a variable) in an anonymous class shadows any other declarations in the enclosing scope that have the same name.</li>
+  <li>An anonymous class has access to the members of its enclosing class.</li>
+  <li>An anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final.</li>
+  <li>A declaration of a type (such as a variable) in an anonymous class shadows any other declarations in the enclosing scope that have the same name.</li>
 </ul>
 
 <p>Anonymous classes have restrictions with respect to their members:</p>
 
 <ul>
-<li>You cannot declare static initializers or member interfaces in an anonymous class.</li>
-<li>An anonymous class can have static members provided that they are constant variables.</li>
+  <li>You cannot declare static initializers or member interfaces in an anonymous class.</li>
+  <li>An anonymous class can have static members provided that they are constant variables.</li>
 </ul>
 
-<p><note>You can declare the following in anonymous classes: fields, extra methods
+<note>You can declare the following in anonymous classes: fields, extra methods
 (even if they do not implement any methods of the supertype), instance initializers, 
-local classes. However, you cannot declare constructors in an anonymous class.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">HelloWorldAnonymousClasses</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span>
-    <span class="kd">def</span> <span class="n">sayHello</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">frenchGreeting</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorld</span> <span class="o">{</span>
-            <span class="kd">def</span> <span class="nf">greetSomeone</span><span class="o">(</span><span class="n">someone</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">name</span> <span class="o">=</span> <span class="n">someone</span>
-                <span class="n">println</span><span class="o">(</span><span class="s">&quot;Salut &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">)</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="7-definition-of-all-the-supported-modifiers">7. Definition of all the supported modifiers</h2>
+local classes. However, you cannot declare constructors in an anonymous class.</note>
+
+<pre><code class="language-sarl">class HelloWorldAnonymousClasses {
+	var name : String
+	def sayHello {
+		var frenchGreeting = new HelloWorld {
+			def greetSomeone(someone : String) {
+				name = someone
+				println("Salut " + name)
+			}
+		}
+	}
+}
+</code></pre>
+
+<p>##7. Definition of all the supported modifiers</p>
 
 <p>In this section, the semantic of the different modifiers is explained.</p>
 
-<h3 id="7-1-abstract-modifier">7.1. abstract Modifier</h3>
+<p>###7.1. abstract Modifier</p>
 
-<p>An abstract type is a type that is declared <code class="prettyprint">abstract</code> (it may or may not include abstract methods).
+<p>An abstract type is a type that is declared <code>abstract</code> (it may or may not include abstract methods).
 Abstract types cannot be instantiated, but they can be derived.</p>
 
 <p>An abstract method is a method that is declared without an implementation 
 (without braces, and followed by a semicolon), like this:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">abstract</span> <span class="kd">def</span> <span class="nf">moveTo</span><span class="o">(</span><span class="n">deltaX</span> <span class="o">:</span> <span class="kt">double</span><span class="o">,</span> <span class="n">deltaY</span> <span class="o">:</span> <span class="kt">double</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">abstract def moveTo(deltaX : double, deltaY : double)
+</code></pre>
+
 <p>If a type includes abstract methods, then the type itself must be declared abstract, as in:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">GraphicObject</span> <span class="o">{</span>
-    <span class="c1">// declare fields</span>
-    <span class="c1">// declare nonabstract methods</span>
-    <span class="kd">abstract</span> <span class="kd">def</span> <span class="n">draw</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">abstract class GraphicObject {
+	// declare fields
+	// declare nonabstract methods
+	abstract def draw
+}
+</code></pre>
+
 <p>When an abstract type is derived, the subtype usually provides implementations for all of the
 abstract methods in its parent type. However, if it does not, then the subtype must also be
 declared abstract.</p>
 
-<h3 id="7-2-access-modifiers-public-protected-package-private">7.2. Access Modifiers: public, protected, package, private</h3>
+<p>###7.2. Access Modifiers: public, protected, package, private</p>
 
 <p>Access level modifiers determine whether other types can use a particular field or invoke
 a particular method. There are two levels of access control:</p>
 
 <ul>
-<li>At the top level in a SARL script.</li>
-<li>At the member level - inside another type.</li>
+  <li>At the top level in a SARL script.</li>
+  <li>At the member level - inside another type.</li>
 </ul>
 
-<p>A type may be declared with the modifier <code class="prettyprint">public</code>, in which case that type is visible to
-all types everywhere. If a type has the modifier <code class="prettyprint">package</code>, it is visible only within its own package
+<p>A type may be declared with the modifier <code>public</code>, in which case that type is visible to
+all types everywhere. If a type has the modifier <code>package</code>, it is visible only within its own package
 (packages are named groups of related types).</p>
 
-<p>At the member level, you can also use the <code class="prettyprint">public</code> modifier or <code class="prettyprint">package</code> modifier just as
+<p>At the member level, you can also use the <code>public</code> modifier or <code>package</code> modifier just as
 with top-level types, and with the same meaning.
-For members, there are two additional access modifiers: <code class="prettyprint">private</code> and <code class="prettyprint">protected</code>.
-The <code class="prettyprint">private</code> modifier specifies that the member can only be accessed in its own type.
-The <code class="prettyprint">protected</code> modifier specifies that the member can only be accessed within its own package
-as with <code class="prettyprint">package</code>) and, in addition, by a derived type of its type in another package.</p>
+For members, there are two additional access modifiers: <code>private</code> and <code>protected</code>.
+The <code>private</code> modifier specifies that the member can only be accessed in its own type.
+The <code>protected</code> modifier specifies that the member can only be accessed within its own package
+as with <code>package</code>) and, in addition, by a derived type of its type in another package.</p>
 
 <p>The following table shows the access to members permitted by each modifier.</p>
 
-<table><thead>
-<tr>
-<th>Modifier</th>
-<th>From the type</th>
-<th>From the package</th>
-<th>From subtypes</th>
-<th>Other</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">public</code></td>
-<td>yes</td>
-<td>yes</td>
-<td>yes</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code class="prettyprint">protected</code></td>
-<td>yes</td>
-<td>yes</td>
-<td>yes</td>
-<td>no</td>
-</tr>
-<tr>
-<td><code class="prettyprint">package</code></td>
-<td>yes</td>
-<td>yes</td>
-<td>no</td>
-<td>no</td>
-</tr>
-<tr>
-<td><code class="prettyprint">private</code></td>
-<td>yes</td>
-<td>no</td>
-<td>no</td>
-<td>no</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>From the type</th>
+      <th>From the package</th>
+      <th>From subtypes</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>public</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code>protected</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>package</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>private</code></td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>The first column indicates whether the type itself has access to the member defined by the
 access level. As you can see, a type always has access to its own members.
@@ -1115,35 +1190,37 @@ The third column indicates whether subtypes of the type declared outside this pa
 The fourth column indicates whether all types have access to the member.</p>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">C1</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kd">def</span> <span class="n">pubfct</span> <span class="o">{}</span>
-   <span class="kd">protected</span> <span class="kd">def</span> <span class="n">protfct</span> <span class="o">{}</span>
-   <span class="kn">package</span> <span class="kd">def</span> <span class="n">packfct</span> <span class="o">{}</span>
-   <span class="kd">private</span> <span class="kd">def</span> <span class="n">privfct</span> <span class="o">{}</span>
 
-   <span class="kd">def</span> <span class="n">test0</span> <span class="o">{</span>
-    <span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">protfct</span><span class="o">;</span>
-    <span class="n">packfct</span><span class="o">;</span>
-    <span class="n">privfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">C2</span> <span class="k">extends</span> <span class="n">C1</span> <span class="o">{</span>
-   <span class="kd">def</span> <span class="n">test1</span> <span class="o">{</span>
-    <span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">protfct</span><span class="o">;</span>
-    <span class="n">packfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">C3</span> <span class="o">{</span>
-   <span class="kd">def</span> <span class="nf">test3</span><span class="o">(</span><span class="n">obj</span> <span class="o">:</span> <span class="n">C1</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">pubfct</span><span class="o">;</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">protfct</span><span class="o">;</span>
-    <span class="n">obj</span><span class="o">.</span><span class="n">packfct</span><span class="o">;</span>
-   <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-3-dispatch-modifier">7.3. dispatch Modifier</h3>
+<pre><code class="language-sarl">class C1 {
+   public def pubfct {}
+   protected def protfct {}
+   package def packfct {}
+   private def privfct {}
+
+   def test0 {
+   	pubfct;
+   	protfct;
+   	packfct;
+    privfct;
+   }
+}
+class C2 extends C1 {
+   def test1 {
+   	pubfct;
+   	protfct;
+   	packfct;
+   }
+}
+class C3 {
+   def test3(obj : C1) {
+   	obj.pubfct;
+   	obj.protfct;
+   	obj.packfct;
+   }
+}
+</code></pre>
+
+<p>###7.3. dispatch Modifier</p>
 
 <p>Generally, method resolution and binding is done statically at compile time.
 Method calls are bound based on the static types of arguments.</p>
@@ -1151,27 +1228,29 @@ Method calls are bound based on the static types of arguments.</p>
 <p>Sometimes this is not what you want. Especially in the context of extension methods
 you would like to have polymorphic behavior.</p>
 
-<p>The <code class="prettyprint">dispatch</code> modifier permits defining a <a href="./general/FuncDecls.html#dispatch-function">dispatch method</a>.
+<p>The <code>dispatch</code> modifier permits defining a <a href="./general/FuncDecls.html#dispatch-function">dispatch method</a>.
 For a set of visible dispatch methods in the current type hierarchy with the same name and
 the same number of arguments, the compiler infers a synthetic dispatcher method.
 This dispatcher uses the common super type of all declared arguments.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Number</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s a number&quot;</span> 
-<span class="o">}</span>
 
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s an int&quot;</span> 
-<span class="o">}</span>
-<span class="kd">dispatch</span> <span class="kd">def</span> <span class="nf">getType</span><span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
-  <span class="s">&quot;it&#39;s a string&quot;</span> 
-<span class="o">}</span>
-<span class="kd">def</span> <span class="n">clientCode</span> <span class="o">{</span>
-    <span class="n">getType</span><span class="o">(</span><span class="mf">4.5</span><span class="o">).</span><span class="n">println</span>
-    <span class="n">getType</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="n">println</span>
-    <span class="n">getType</span><span class="o">(</span><span class="s">&quot;a string&quot;</span><span class="o">).</span><span class="n">println</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-4-extension-modifier">7.4. extension Modifier</h3>
+<pre><code class="language-sarl">dispatch def getType(x : Number) { 
+  "it's a number" 
+}
+ 
+dispatch def getType(x : Integer) { 
+  "it's an int" 
+}
+dispatch def getType(x : String) { 
+  "it's a string" 
+}
+def clientCode {
+	getType(4.5).println
+	getType(4).println
+	getType("a string").println
+}
+</code></pre>
+
+<p>###7.4. extension Modifier</p>
 
 <p>This modifier enables to mark a field, a formal parameter, or a local variable as
 an <a href="./general/Extension.html">extension provider</a>.</p>
@@ -1179,59 +1258,67 @@ an <a href="./general/Extension.html">extension provider</a>.</p>
 <p>Extension methods allow adding new methods to existing  types without modifying them. This is really 
 helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method
 can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">removeVowels</span><span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span> 
-    <span class="n">s</span><span class="o">.</span><span class="n">replaceAll</span><span class="o">(</span><span class="s">&quot;[aeiouAEIOU]&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">)</span> 
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def removeVowels(s : String) { 
+	s.replaceAll("[aeiouAEIOU]", "") 
+}
+</code></pre>
+
 <p>We can call this method either like in Java:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">removeVowels</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">removeVowels("Hello")
+</code></pre>
+
 <p>or as an extension method of String:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="s">&quot;Hello&quot;</span><span class="o">.</span><span class="n">removeVowels</span>
-</code></pre></div>
-<p>By adding the <code class="prettyprint">extension</code> keyword to a field, a local variable or a parameter declaration, its
+
+<pre><code class="language-sarl">"Hello".removeVowels
+</code></pre>
+
+<p>By adding the <code>extension</code> keyword to a field, a local variable or a parameter declaration, its
 instance methods become extension methods.</p>
 
 <p>In the following example, three functions are defined for illustrating the three types of
 extension providers.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">Examples</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a class field.</span>
-    <span class="c1">//</span>
-    <span class="k">extension</span> <span class="kd">var</span> <span class="n">list</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
 
-    <span class="kd">def</span> <span class="nf">extensionFieldExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls this.list.contains(value)</span>
-    <span class="o">}</span>
+<pre><code class="language-sarl">class Examples {
+	//
+	// Example of an extension provider on a class field.
+	//
+	extension var list : ArrayList&lt;String&gt; = newArrayList
+	
+	def extensionFieldExample(value : String) : boolean {
+		value.contains // calls this.list.contains(value)
+	}
+	
+	//
+	// Example of an extension provider on a method parameter.
+	//
+	def extensionParameterExample(value : String, extension o : ArrayList&lt;String&gt;) : boolean {
+		value.contains // calls o.contains(value)
+	}
+	
+	//
+	// Example of an extension provider on a local variable.
+	//
+	def extensionLocalVariableExample(value : String) : boolean {
+		extension var o : ArrayList&lt;String&gt; = newArrayList
+		value.contains // calls o.contains(value)
+	}
+}
+</code></pre>
 
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a method parameter.</span>
-    <span class="c1">//</span>
-    <span class="kd">def</span> <span class="nf">extensionParameterExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">,</span> <span class="k">extension</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
-    <span class="o">}</span>
+<p>###7.5. final Modifier</p>
 
-    <span class="c1">//</span>
-    <span class="c1">// Example of an extension provider on a local variable.</span>
-    <span class="c1">//</span>
-    <span class="kd">def</span> <span class="nf">extensionLocalVariableExample</span><span class="o">(</span><span class="n">value</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">{</span>
-        <span class="k">extension</span> <span class="kd">var</span> <span class="n">o</span> <span class="o">:</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span>
-        <span class="n">value</span><span class="o">.</span><span class="n">contains</span> <span class="c1">// calls o.contains(value)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-5-final-modifier">7.5. final Modifier</h3>
-
-<p>The <code class="prettyprint">final</code> keyword is used in several different contexts to define an entity which may only be
+<p>The <code>final</code> keyword is used in several different contexts to define an entity which may only be
 assigned once.</p>
 
 <p>Once a final variable has been assigned, it always contains the same value. If a final variable
 holds a reference to an object, then the state of the object may be changed by operations on the
 object, but the variable will always refer to the same object.</p>
 
-<p><caution>The SARL compiler complains if you write the <code class="prettyprint">final</code> modifer in conjonction with the <code class="prettyprint">var</code>
-or <code class="prettyprint">val</code> modifiers. Indeed, the <code class="prettyprint">val</code> modifier defines a final variable; and the
-<code class="prettyprint">var</code> modifier defines a no-final variable.</caution></p>
+<caution>The SARL compiler complains if you write the `final` modifer in conjonction with the `var`
+or `val` modifiers. Indeed, the `val` modifier defines a final variable; and the
+`var` modifier defines a no-final variable.</caution>
 
 <p>This applies also to arrays, because arrays are objects; if a final variable holds a reference to
 an array, then the components of the array may be changed by operations on the array, but the variable
@@ -1242,72 +1329,78 @@ behavior from a subtype altering a method that may be crucial to the function or
 the type.</p>
 
 <p>A final type cannot be derived. Doing this can confer security and efficiency benefits, so many
-of the Java standard library classes are final, such as <code class="prettyprint">java.lang.System</code> and
-<code class="prettyprint">java.lang.String</code>. All methods in a final type are implicitly final.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Final field</span>
-    <span class="c1">//</span>
-    <span class="kd">val</span> <span class="n">field</span> <span class="o">=</span> <span class="mi">4</span>
+of the Java standard library classes are final, such as <code>java.lang.System</code> and
+<code>java.lang.String</code>. All methods in a final type are implicitly final.</p>
 
-    <span class="c1">//</span>
-    <span class="c1">// Final method</span>
-    <span class="c1">//</span>
-    <span class="kd">final</span> <span class="kd">def</span> <span class="n">cannotBeOverriden</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">final</span> <span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
-    <span class="c1">// This class cannot be derived</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-6-native-modifier">7.6. native Modifier</h3>
+<pre><code class="language-sarl">class A {
+	//
+	// Final field
+	//
+	val field = 4
+	
+	//
+	// Final method
+	//
+	final def cannotBeOverriden {
+	}
+}
+final class B {
+	// This class cannot be derived
+}
+</code></pre>
 
-<p>The <code class="prettyprint">native</code> keyword is applied to a method to indicate that the method is implemented in
+<p>###7.6. native Modifier</p>
+
+<p>The <code>native</code> keyword is applied to a method to indicate that the method is implemented in
 native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
 
-<p><note>This modifier is provided for enabling agents to access to low-level resources that
+<note>This modifier is provided for enabling agents to access to low-level resources that
 are not supported by the Java API. You should not use this modifier if you can use
-a higher-level API in place of.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">native</span> <span class="kd">def</span> <span class="n">fct</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-7-static-modifier">7.7. static Modifier</h3>
+a higher-level API in place of.</note>
 
-<p>The <code class="prettyprint">static</code> keyword is used for creating fields and methods that belong to the type, rather than to an
+<pre><code class="language-sarl">class A {
+	native def fct
+}
+</code></pre>
+
+<p>###7.7. static Modifier</p>
+
+<p>The <code>static</code> keyword is used for creating fields and methods that belong to the type, rather than to an
 instance of the type.</p>
 
 <p>Sometimes, you want to have variables that are common to all instances. This is accomplished with
-the <code class="prettyprint">static</code> modifier. Fields that have the static modifier in their declaration are called static
+the <code>static</code> modifier. Fields that have the static modifier in their declaration are called static
 fields (or class variables in object-oriented programming). They are associated with the type,
 rather than with any instance. Every instance of the type shares a static field, which is in one
 fixed location in memory. Any instance can change the value of a static variable, but static variables
 can also be manipulated without creating an instance of the type.</p>
 
-<p><note>Constants are usually defined as final static fields</note></p>
+<note>Constants are usually defined as final static fields</note>
 
-<p>Static methods, which have the <code class="prettyprint">static</code> modifier in their declarations, should be invoked with the
-type name, without the need for creating an instance of the type. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="c1">//</span>
-    <span class="c1">// Static field</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="c1">//</span>
-    <span class="c1">// Constant</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">val</span> <span class="n">constant</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="c1">//</span>
-    <span class="c1">// Static method</span>
-    <span class="c1">//</span>
-    <span class="kd">static</span> <span class="kd">def</span> <span class="n">aMethod</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-8-strictfp-modifier">7.8. strictfp Modifier</h3>
+<p>Static methods, which have the <code>static</code> modifier in their declarations, should be invoked with the
+type name, without the need for creating an instance of the type.</p>
 
-<p>The <code class="prettyprint">strictfp</code> modifier is a keyword that restricts floating-point calculations to ensure portability.
-The <code class="prettyprint">strictfp</code> command was originally introduced into Java with the Java virtual machine (JVM) version 1.2
+<pre><code class="language-sarl">class A {
+	//
+	// Static field
+	//
+	static var field : int
+	//
+	// Constant
+	//
+	static val constant = 4
+	//
+	// Static method
+	//
+	static def aMethod {
+	}
+}
+</code></pre>
+
+<p>###7.8. strictfp Modifier</p>
+
+<p>The <code>strictfp</code> modifier is a keyword that restricts floating-point calculations to ensure portability.
+The <code>strictfp</code> command was originally introduced into Java with the Java virtual machine (JVM) version 1.2
 and is available for use on all currently updated Java VMs.</p>
 
 <p>The IEEE standard IEEE 754 specifies a standard method for both floating-point calculations and
@@ -1325,29 +1418,34 @@ necessary the VM does not use intermediates by default.</p>
 
 <p>From the VM perspective, turning on this higher precision means the following:</p>
 
-<table><thead>
-<tr>
-<th>Precision</th>
-<th>Intermediate</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>32 bits</td>
-<td>64 bits</td>
-</tr>
-<tr>
-<td>64 bits</td>
-<td>80 bits (if available)</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Precision</th>
+      <th>Intermediate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>32 bits</td>
+      <td>64 bits</td>
+    </tr>
+    <tr>
+      <td>64 bits</td>
+      <td>80 bits (if available)</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>The <code class="prettyprint">strictfp</code> modifier accomplishes this by truncating all intermediate values to IEEE single precision and
+<p>The <code>strictfp</code> modifier accomplishes this by truncating all intermediate values to IEEE single precision and
 double precision, as occurred in earlier versions of the JVM.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">strictfp</span> <span class="kd">def</span> <span class="n">fct</span> <span class="o">{</span> <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-9-synchronized-modifier">7.9. synchronized Modifier</h3>
+
+<pre><code class="language-sarl">class A {
+	strictfp def fct { }
+}
+</code></pre>
+
+<p>###7.9. synchronized Modifier</p>
 
 <p>The SARL programming language provides two basic synchronization idioms: synchronized methods and synchronized
 statements.
@@ -1355,49 +1453,53 @@ The synchronized statements are described in the
 <a href="./general/Synchronization.html">general reference</a>.
 This section is about synchronized methods.</p>
 
-<p>To make a method synchronized, simply add the <code class="prettyprint">synchronized</code> modifier to its declaration (see
+<p>To make a method synchronized, simply add the <code>synchronized</code> modifier to its declaration (see
 example below).</p>
 
 <p>Synchronized methods enable a simple strategy for preventing thread interference and memory
 consistency errors: if an object is visible to more than one thread, all reads or writes to that
-object&#39;s variables are done through synchronized methods.
+object’s variables are done through synchronized methods.
 (An important exception: final fields, which cannot be modified after the object is constructed, 
 can be safely read through non-synchronized methods, once the object is constructed)
 This strategy is effective, but can present problems with liveness.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">SynchronizedCounter</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">increment</span> <span class="o">{</span>
-        <span class="n">c</span><span class="o">++</span>
-    <span class="o">}</span>
+<pre><code class="language-sarl">class SynchronizedCounter {
+	var c = 0
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">decrement</span> <span class="o">{</span>
-        <span class="n">c</span><span class="o">--</span>
-    <span class="o">}</span>
+	synchronized def increment {
+		c++
+	}
 
-    <span class="kd">synchronized</span> <span class="kd">def</span> <span class="n">value</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">c</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-10-transient-modifier">7.10. transient Modifier</h3>
+	synchronized def decrement {
+		c--
+	}
+
+	synchronized def value {
+		return c
+	}
+}
+</code></pre>
+
+<p>###7.10. transient Modifier</p>
 
 <p>Java and SARL provide a mechanism, called object serialization where an object can be represented as
-a sequence of bytes that includes the object&#39;s data as well as information about the object&#39;s type and
+a sequence of bytes that includes the object’s data as well as information about the object’s type and
 the types of data stored in the object.</p>
 
-<p>The <code class="prettyprint">transient</code> modifier is a keyword used as a field modifier.
+<p>The <code>transient</code> modifier is a keyword used as a field modifier.
 When a field is declared transient, it would not be serialized even if the type to which it belongs
 is serialized.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">transient</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="7-11-volatile-modifier">7.11. volatile Modifier</h3>
 
-<p>While the <code class="prettyprint">volatile</code> modifier itself comes from the C programming language, it has a completely
+<pre><code class="language-sarl">class A {
+	transient var field : int = 4
+}
+</code></pre>
+
+<p>###7.11. volatile Modifier</p>
+
+<p>While the <code>volatile</code> modifier itself comes from the C programming language, it has a completely
 different meaning in Java, and then in SARL. This may not help in growing an understanding of it, 
-googling for volatile could lead to different results. Let&#39;s take a quick side step and see what
+googling for volatile could lead to different results. Let’s take a quick side step and see what
 volatile means in C first.</p>
 
 <p>In the C language the compiler ordinarily assumes that variables cannot change value by themselves.
@@ -1407,49 +1509,51 @@ not to apply these optimizations.</p>
 
 <p>Back to Java and SARL. The meaning of volatile in C would be useless in Java. The JVM uses
 native libraries to interact with the OS and hardware. Further more, it is simply impossible
-to point Java variables to specific addresses, so variables actually won&#39;t change value by themselves.</p>
+to point Java variables to specific addresses, so variables actually won’t change value by themselves.</p>
 
 <p>However, the value of variables on the JVM can be changed by different threads. By default the
-compiler assumes that variables won&#39;t change in other threads. Hence it can apply optimizations such
+compiler assumes that variables won’t change in other threads. Hence it can apply optimizations such
 as reordering memory operations and caching the variable in a CPU register. Using a volatile variable
 instructs the compiler not to apply these optimizations. This guarantees that a reading thread
 always reads the variable from memory (or from a shared cache), never from a local cache.</p>
 
-<p><note>From now, it is better to use
-<a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html">atomic references</a>
-in place of volatile variables.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="kd">volatile</span> <span class="kd">var</span> <span class="n">field</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="8-references">8. References</h2>
+<note>From now, it is better to use
+[atomic references](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html)
+in place of volatile variables.</note>
+
+<pre><code class="language-sarl">class A {
+	volatile var field : int = 4
+}
+</code></pre>
+
+<p>##8. References</p>
 
 <p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
 Thank you to the contributors to these documents.</p>
 
 <ul>
-<li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
-<li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
-<li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
 </ul>
 
-<h2 id="9-legal-notice">9. Legal Notice</h2>
+<p>##9. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -1489,6 +1593,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

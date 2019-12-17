@@ -76,10 +76,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#4-1-doclet-options">4.1. Doclet Options</a></li>
   <li><a href="#4-2-exclude-elements-from-the-documentation">4.2. Exclude elements from the documentation</a></li>
 </ul>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
 
-<p><li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
-
-<p></ul></p>
+</ul>
 
 <p>Good API documentation is one of the many factors contributing to the overall success of a software project.
 Fortunately, SARL provide a tool for generating API documentation from comments present in the source code.</p>
@@ -90,14 +89,14 @@ Javadoc is a documentation generator created by Sun Microsystems (now Oracle) fo
 Java language for generating API documentation in HTML format from Java
 source code. The HTML format is used for adding the convenience of being able to hyperlink related documents together.</p>
 
-<p>The <a href="https://www.oracle.com/technetwork/articles/java/index-137868.html">&quot;doc comments&quot; format</a> used by
+<p>The <a href="https://www.oracle.com/technetwork/articles/java/index-137868.html">“doc comments” format</a> used by
 Javadoc is the de facto industry standard for documenting Java classes. SARL uses the 
 same standard format.</p>
 
 <p>Documentation does not affect performance in neither in SARL not Java as all comments are removed at compilation time. Writing
 comments and documentation is for better understanding the code and thus better maintaining it.</p>
 
-<h2 id="1-doclet-for-sarl">1. Doclet for SARL</h2>
+<p>##1. Doclet for SARL</p>
 
 <p>Javadoc also provides an API for creating doclets and taglets, which allows users to analyze the
 structure of an application. This enables to generate specific documentation pages.</p>
@@ -107,13 +106,13 @@ by their equivalent into the SARL syntax.
 The SARL doclet is provided into the Maven module:</p>
 
 <ul>
-<li>Group Id: <code class="prettyprint">io.sarl.docs</code></li>
-<li>Artifact Id: <code class="prettyprint">io.sarl.docs.doclet</code></li>
+  <li>Group Id: <code>io.sarl.docs</code></li>
+  <li>Artifact Id: <code>io.sarl.docs.doclet</code></li>
 </ul>
 
 <p>See the next sections for details on the usage of the SARL doclet.</p>
 
-<h2 id="2-maven-generation">2. Maven Generation</h2>
+<p>##2. Maven Generation</p>
 
 <p>The Maven Javadoc Plugin uses the Javadoc tool to generate documentation for the specified project.
 The Maven Javadoc Plugin gets the parameter values that will be used from the plugin configuration
@@ -121,78 +120,84 @@ specified in the POM file.</p>
 
 <p>To generate output from an alternate doclet, add configuration similar to the following to your POM 
 file.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>maven-javadoc-plugin<span class="nt">&lt;/artifactId&gt;</span>
 
-            <span class="nt">&lt;configuration&gt;</span>
-                <span class="nt">&lt;doclet&gt;</span>io.sarl.docs.doclet.SarlDoclet<span class="nt">&lt;/doclet&gt;</span>
-                <span class="nt">&lt;docletArtifact&gt;</span>
-                    <span class="nt">&lt;groupId&gt;</span>io.sarl.docs<span class="nt">&lt;/groupId&gt;</span>
-                    <span class="nt">&lt;artifactId&gt;</span>io.sarl.docs.doclet<span class="nt">&lt;/artifactId&gt;</span>
-                    <span class="nt">&lt;version&gt;</span>${sarl.version}<span class="nt">&lt;/version&gt;</span>
-                <span class="nt">&lt;/docletArtifact&gt;</span>
-            <span class="nt">&lt;/configuration&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-<span class="nt">&lt;/build&gt;</span>
-</code></pre></div>
-<h2 id="3-command-line-generation">3. Command-Line Generation</h2>
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+
+            &lt;configuration&gt;
+                &lt;doclet&gt;io.sarl.docs.doclet.SarlDoclet&lt;/doclet&gt;
+                &lt;docletArtifact&gt;
+                    &lt;groupId&gt;io.sarl.docs&lt;/groupId&gt;
+                    &lt;artifactId&gt;io.sarl.docs.doclet&lt;/artifactId&gt;
+                    &lt;version&gt;${sarl.version}&lt;/version&gt;
+                &lt;/docletArtifact&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>##3. Command-Line Generation</p>
 
 <p>As described into the <a href="https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm">Javadoc documentation</a>,
 the javadoc command has options for doclets. 
-The Javadoc command provides <code class="prettyprint">-doclet</code> option for specifying a custom doclet.</p>
+The Javadoc command provides <code>-doclet</code> option for specifying a custom doclet.</p>
 
 <p>A typical command-line to launch is:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">javadoc -doclet io.sarl.docs.doclet.SarlDoclet
+
+<pre><code>javadoc -doclet io.sarl.docs.doclet.SarlDoclet
         -cp doclet-0.10.jar:path_to_sources
         -source 1.8
         -sourcepath path_to_sources
         -d path_to_documentation
-</code></pre></div>
-<p>In order to use the SARL doclet, you have to specific the name of the doclet with the <code class="prettyprint">-doclet</code>.
-You must also include the SARL doclet binary file into the class path with the <code class="prettyprint">-cp</code>.
-In the example above, the name of the SARL doclet&#39;s jar file is <code class="prettyprint">doclet-[:sarl.specification.release_version!].jar</code>.</p>
+</code></pre>
 
-<h2 id="4-specific-options-of-the-sarl-doclet">4. Specific Options of the SARL Doclet</h2>
+<p>In order to use the SARL doclet, you have to specific the name of the doclet with the <code>-doclet</code>.
+You must also include the SARL doclet binary file into the class path with the <code>-cp</code>.
+In the example above, the name of the SARL doclet’s jar file is <code>doclet-[:sarl.specification.release_version!].jar</code>.</p>
+
+<p>##4. Specific Options of the SARL Doclet</p>
 
 <p>The SARL doclet provides specific options that may be used into the documentation text 
 itself, or from the command-line.</p>
 
-<h3 id="4-1-doclet-options">4.1. Doclet Options</h3>
+<p>###4.1. Doclet Options</p>
 
 <p>The SARL doclet has the same options as the <a href="https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm#JSJAV-GUID-F9E5D57D-5A94-4043-A010-B24511A7BAB2">Standard doclet</a>.</p>
 
-<h3 id="4-2-exclude-elements-from-the-documentation">4.2. Exclude elements from the documentation</h3>
+<p>###4.2. Exclude elements from the documentation</p>
 
-<p>It is possible to exclude elements from the documentation by adding the <code class="prettyprint">@ExcludeFromApidoc</code> 
+<p>It is possible to exclude elements from the documentation by adding the <code>@ExcludeFromApidoc</code> 
 into the SARL documentation. For example:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">/** This is an example of excluded documentation.
+
+<pre><code>/** This is an example of excluded documentation.
  *
  * @ExcludeFromApidoc
  */
 class TheClass {
 }
-</code></pre></div>
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+</code></pre>
+
+<p>##5. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -232,6 +237,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

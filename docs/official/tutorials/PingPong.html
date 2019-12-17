@@ -74,8 +74,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-1-ping-event">2.1. Ping Event</a></li>
   <li><a href="#2-2-pong-event">2.2. Pong Event</a></li>
 </ul>
-
-<p><li><a href="#3-pong-agent">3. Pong agent</a></li>
+<li><a href="#3-pong-agent">3. Pong agent</a></li>
 <ul>
   <li><a href="#3-1-first-definition">3.1. First definition</a></li>
   <li><a href="#3-2-handling-the-ping-event">3.2. Handling the Ping event</a></li>
@@ -91,9 +90,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#4-5-delaying-the-sending-of-the-first-ping">4.5. Delaying the sending of the first Ping</a></li>
 </ul>
 <li><a href="#5-launch-the-agents">5. Launch the agents</a></li>
-<li><a href="#6-legal-notice">6. Legal Notice</a></li></p>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>This document describes how to create a simple agent-based application in which agents are
 exchanging basic messages.
@@ -101,229 +100,248 @@ Before reading this document, it is recommended reading
 the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
 
 <div class="bt-download">
-<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-tutorials-pingpong/src/main/sarl/io/sarl/examples/pingpong"><img alt="See the code" src="http://www.sarl.io/images/download-icon.png"/></a>
+<a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-tutorials-pingpong/src/main/sarl/io/sarl/examples/pingpong"><img alt="See the code" src="http://www.sarl.io/images/download-icon.png" /></a>
 </div>
-
 <p>The elements that are explained in this tutorial are:</p>
 
 <ul>
-<li>the definition of an event;</li>
-<li>the definition of an agent;</li>
-<li>the sending of an event occurrence in the default space;</li>
-<li>the receiving of event occurrences; and</li>
-<li>the definition of a <em>proactive</em> behavior: waiting for partners.</li>
+  <li>the definition of an event;</li>
+  <li>the definition of an agent;</li>
+  <li>the sending of an event occurrence in the default space;</li>
+  <li>the receiving of event occurrences; and</li>
+  <li>the definition of a <em>proactive</em> behavior: waiting for partners.</li>
 </ul>
 
 <p>The source code related to this tutorial may be found
 in the <a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-tutorials-pingpong/src/main/sarl/io/sarl/examples/pingpong">GitHub of the SARL demos</a>.</p>
 
-<h2 id="1-principle-of-the-application">1. Principle of the Application</h2>
+<p>##1. Principle of the Application</p>
 
 <p>The principle of the application is the following:</p>
 
 <ul>
-<li>The <code class="prettyprint">Ping</code> agent is sending a <code class="prettyprint">Ping</code> message to all agents. </li>
-<li>The <code class="prettyprint">PongAgent</code> agent is receiving the <code class="prettyprint">Ping</code> message, and replies with a <code class="prettyprint">Pong</code> message to the sender of the <code class="prettyprint">Ping</code> message.</li>
-<li>The <code class="prettyprint">Ping</code> agent is receiving a <code class="prettyprint">Pong</code> message and replies to the sender of the <code class="prettyprint">Pong</code> with a new <code class="prettyprint">Ping</code> message.</li>
+  <li>The <code>Ping</code> agent is sending a <code>Ping</code> message to all agents.</li>
+  <li>The <code>PongAgent</code> agent is receiving the <code>Ping</code> message, and replies with a <code>Pong</code> message to the sender of the <code>Ping</code> message.</li>
+  <li>The <code>Ping</code> agent is receiving a <code>Pong</code> message and replies to the sender of the <code>Pong</code> with a new <code>Ping</code> message.</li>
 </ul>
 
 <p>These messages contain an integer number that indicates the number of the event.</p>
 
-<p><img src="./pingpong.png" alt="Ping-Pong Example"></p>
+<p><img src="./pingpong.png" alt="Ping-Pong Example" /></p>
 
-<h2 id="2-event-definition">2. Event definition</h2>
+<p>##2. Event definition</p>
 
-<p>First, the <code class="prettyprint">Ping</code> and <code class="prettyprint">Pong</code> events must be defined.</p>
+<p>First, the <code>Ping</code> and <code>Pong</code> events must be defined.</p>
 
-<h3 id="2-1-ping-event">2.1. Ping Event</h3>
+<p>###2.1. Ping Event</p>
 
-<p>The <code class="prettyprint">Ping</code> is an event that contains the index of the event. This index indicates
-at which position the event is located in the sequence of sent <code class="prettyprint">Ping</code> event.</p>
+<p>The <code>Ping</code> is an event that contains the index of the event. This index indicates
+at which position the event is located in the sequence of sent <code>Ping</code> event.</p>
 
-<p>The <code class="prettyprint">index</code> attribute is a <em>value</em>, for making it unmodifiable after its initialization.</p>
+<p>The <code>index</code> attribute is a <em>value</em>, for making it unmodifiable after its initialization.</p>
 
-<p>For setting the value of the <code class="prettyprint">index</code> value, it is mandatory to define a constructor. </p>
+<p>For setting the value of the <code>index</code> value, it is mandatory to define a constructor.</p>
 
-<h3 id="2-2-pong-event">2.2. Pong Event</h3>
+<p>###2.2. Pong Event</p>
 
-<p>The <code class="prettyprint">Pong</code> is an event that contains the index of the <code class="prettyprint">Ping</code> event for which the
-<code class="prettyprint">Pong</code> event is created.</p>
+<p>The <code>Pong</code> is an event that contains the index of the <code>Ping</code> event for which the
+<code>Pong</code> event is created.</p>
 
-<p>The <code class="prettyprint">index</code> attribute is also a <em>value</em>, and it must be set in a constructor. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">event</span> <span class="nc">Pong</span> <span class="o">{</span>
-    <span class="kd">val</span> <span class="n">index</span> <span class="o">:</span> <span class="kt">int</span>
-    <span class="k">new</span><span class="o">(</span><span class="n">i</span> <span class="o">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="3-pong-agent">3. Pong agent</h2>
+<p>The <code>index</code> attribute is also a <em>value</em>, and it must be set in a constructor.</p>
+
+<pre><code class="language-sarl">event Pong {
+	val index : int
+	new(i : int) {
+		this.index = i
+	}
+}
+</code></pre>
+
+<p>##3. Pong agent</p>
 
 <p>The second step of this tutorial is the definition of the
-agent that is waiting for <code class="prettyprint">Ping</code> events, and replying
-<code class="prettyprint">Pong</code> events.</p>
+agent that is waiting for <code>Ping</code> events, and replying
+<code>Pong</code> events.</p>
 
-<h3 id="3-1-first-definition">3.1. First definition</h3>
+<p>###3.1. First definition</p>
 
 <p>The initial definition of the pong agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-2-handling-the-ping-event">3.2. Handling the Ping event</h3>
 
-<p>The pong agent needs to handle the <code class="prettyprint">Ping</code> events.
-For that, a &quot;behavior unit&quot; must be defined in the
+<pre><code class="language-sarl">agent PongAgent {
+}
+</code></pre>
+
+<p>###3.2. Handling the Ping event</p>
+
+<p>The pong agent needs to handle the <code>Ping</code> events.
+For that, a “behavior unit” must be defined in the
 agent. According to the 
 <a href="../reference/Agent.html">Agent Reference</a>,
-the <code class="prettyprint">on</code> keyword followed by the name of the event 
+the <code>on</code> keyword followed by the name of the event 
 permits to define a handler of events.
 This handler will be invoked by the runtime environment
-each time the agent is receiving a <code class="prettyprint">Ping</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-3-replying-to-ping-with-a-pong">3.3. Replying to Ping with a Pong</h3>
+each time the agent is receiving a <code>Ping</code> event.</p>
 
-<p>Now, it is time to define how the pong agent is replying with a <code class="prettyprint">Pong</code> message.</p>
+<pre><code class="language-sarl">agent PongAgent {
+	on Ping {
+	}
+}
+</code></pre>
+
+<p>###3.3. Replying to Ping with a Pong</p>
+
+<p>Now, it is time to define how the pong agent is replying with a <code>Pong</code> message.</p>
 
 <p>First, sending an event in the default space must be done with a built-in capacity:
-<code class="prettyprint">DefaultContextInteractions</code>. This capacity provides a collection of functions that 
+<code>DefaultContextInteractions</code>. This capacity provides a collection of functions that 
 enable the agent to interact with the default context, and its default space.</p>
 
-<p>For using the capacity, it is recommended declaring it with the <code class="prettyprint">uses</code> keyword.
+<p>For using the capacity, it is recommended declaring it with the <code>uses</code> keyword.
 This keyword permits the agent to directly call the functions of the capacity as if
 they were defined as actions in the agent.</p>
 
-<p>The <code class="prettyprint">DefaultContextInteractions</code> capacity provides the function <code class="prettyprint">emit(Event)</code> for
+<p>The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event)</code> for
 emitting an event in the default space of the default context.</p>
 
-<p>The <code class="prettyprint">Pong</code> event must be built with an index value as argument. This argument
-is the index stored in the <code class="prettyprint">Ping</code> event. For accessing the occurrence of the
-<code class="prettyprint">Ping</code> event, you must use the special keyword <code class="prettyprint">occurrence</code>.
-In the following example, the <code class="prettyprint">Pong</code> event is built with the index argument
-stored in the received <code class="prettyprint">Ping</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">)</span> <span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="3-4-restricting-the-scope-of-the-pong-event">3.4. Restricting the scope of the Pong event</h3>
+<p>The <code>Pong</code> event must be built with an index value as argument. This argument
+is the index stored in the <code>Ping</code> event. For accessing the occurrence of the
+<code>Ping</code> event, you must use the special keyword <code>occurrence</code>.
+In the following example, the <code>Pong</code> event is built with the index argument
+stored in the received <code>Ping</code> event.</p>
+
+<pre><code class="language-sarl">agent PongAgent {
+	uses DefaultContextInteractions
+	on Ping {
+		emit( new Pong( occurrence.index ) )
+	}
+}
+</code></pre>
+
+<p>###3.4. Restricting the scope of the Pong event</p>
 
 <p>In the previous code, the event is emitted to all the agents belonging to the default
 space, including the pong agent.</p>
 
-<p>For restricting the receiver of the <code class="prettyprint">Pong</code> event to the initial sender of the
-<code class="prettyprint">Ping</code> event, you must define a scope for the <code class="prettyprint">Pong</code> event.
-The <code class="prettyprint">DefaultContextInteractions</code> capacity provides the function <code class="prettyprint">emit(Event, Scope&lt;Address&gt;)</code>
+<p>For restricting the receiver of the <code>Pong</code> event to the initial sender of the
+<code>Ping</code> event, you must define a scope for the <code>Pong</code> event.
+The <code>DefaultContextInteractions</code> capacity provides the function <code>emit(Event, Scope&lt;Address&gt;)</code>
 for sending an event with a specific scope.</p>
 
 <p>If you have to scope to a single address or a single identifier, you should use the lambda expression notation,
 as illustrated in the following code. In this code, the scope permits to restrict to the initial sender
-of the <code class="prettyprint">Ping</code> event. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PongAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Ping</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Pong</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-ping-agent">4. Ping Agent</h2>
+of the <code>Ping</code> event.</p>
 
-<p>The third step of this tutorial is the definition of the agent that is sending <code class="prettyprint">Ping</code> events, and waiting for
-<code class="prettyprint">Ping</code> events.</p>
+<pre><code class="language-sarl">agent PongAgent {
+	uses DefaultContextInteractions
+	on Ping {
+		emit(new Pong( occurrence.index ))
+			[ it == occurrence.source ]
+	}
+}
+</code></pre>
 
-<h3 id="4-1-first-definition">4.1. First definition</h3>
+<p>##4. Ping Agent</p>
+
+<p>The third step of this tutorial is the definition of the agent that is sending <code>Ping</code> events, and waiting for
+<code>Ping</code> events.</p>
+
+<p>###4.1. First definition</p>
 
 <p>The initial definition of the ping agent is:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="4-2-handling-the-pong-event">4.2. Handling the Pong event</h3>
 
-<p>The ping agent needs to handle the <code class="prettyprint">Pong</code> events. For that, a &quot;behavior unit&quot; must be defined in the
+<pre><code class="language-sarl">agent PingAgent {
+}
+</code></pre>
+
+<p>###4.2. Handling the Pong event</p>
+
+<p>The ping agent needs to handle the <code>Pong</code> events. For that, a “behavior unit” must be defined in the
 agent.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="4-3-re-sending-a-ping-when-receiving-a-pong">4.3. Re-sending a Ping when receiving a Pong</h3>
 
-<p>When the ping agent is receiving a <code class="prettyprint">Pong</code> event, it re-sends a <code class="prettyprint">Ping</code> event
-to the sender of the <code class="prettyprint">Ping</code> event.
-This new <code class="prettyprint">Ping</code> event has an index greater than the one of the <code class="prettyprint">Pong</code> event.</p>
+<pre><code class="language-sarl">agent PingAgent {
+	on Pong {
+	}
+}
+</code></pre>
 
-<p>The receiving of the <code class="prettyprint">Ping</code> event is restricted to the sender of the
-<code class="prettyprint">Pong</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="4-4-sending-the-first-ping">4.4. Sending the first Ping</h3>
+<p>###4.3. Re-sending a Ping when receiving a Pong</p>
+
+<p>When the ping agent is receiving a <code>Pong</code> event, it re-sends a <code>Ping</code> event
+to the sender of the <code>Ping</code> event.
+This new <code>Ping</code> event has an index greater than the one of the <code>Pong</code> event.</p>
+
+<p>The receiving of the <code>Ping</code> event is restricted to the sender of the
+<code>Pong</code> event.</p>
+
+<pre><code class="language-sarl">agent PingAgent {
+	uses DefaultContextInteractions
+	on Pong {
+		emit(new Ping( occurrence.index + 1 ))
+			[ it == occurrence.source ]
+	}
+}
+</code></pre>
+
+<p>###4.4. Sending the first Ping</p>
 
 <p>For starting the exchanges among the agents, it is mandatory to send a first occurrence
-of the <code class="prettyprint">Ping</code> event.</p>
+of the <code>Ping</code> event.</p>
 
 <p>This emit is done when the ping agent is started, i.e. when the agent is
-receiving the <code class="prettyprint">Initialize</code> event.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-    <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="4-5-delaying-the-sending-of-the-first-ping">4.5. Delaying the sending of the first Ping</h3>
+receiving the <code>Initialize</code> event.</p>
+
+<pre><code class="language-sarl">agent PingAgent {
+	uses DefaultContextInteractions
+	on Pong {
+		emit(new Ping( occurrence.index + 1 ))
+			[ it == occurrence.source ]
+	}
+	on Initialize {
+		emit( new Ping(0) )
+	}
+}
+</code></pre>
+
+<p>###4.5. Delaying the sending of the first Ping</p>
 
 <p>The previous code has a major problem: if there is no pong agent launched
-when the ping agent is sending the first <code class="prettyprint">Ping</code> event, the application
+when the ping agent is sending the first <code>Ping</code> event, the application
 will reach a deadlock, even if the pong agent is launched later.</p>
 
 <p>For solving this problem, the ping agent must wait for sending the initial
-<code class="prettyprint">Ping</code> event until the pong agent is belonging to the default space.</p>
+<code>Ping</code> event until the pong agent is belonging to the default space.</p>
 
-<p>The concrete implementation is based on the <code class="prettyprint">Schedules</code> capacity, which provides
+<p>The concrete implementation is based on the <code>Schedules</code> capacity, which provides
 a collection of functions for creating and launching asynchronous tasks.</p>
 
-<p>In the following code, a task is created with the name <code class="prettyprint">waiting_for_partner</code>.
-This task is executed every second with the <code class="prettyprint">every</code> function (given by the <code class="prettyprint">Schedules</code>
+<p>In the following code, a task is created with the name <code>waiting_for_partner</code>.
+This task is executed every second with the <code>every</code> function (given by the <code>Schedules</code>
 capacity). The code between the brackets contains the statements
 that will be periodically executed.</p>
 
 <p>In this periodically executed code, the agent is testing if it is the only
 one agent belonging to the default space. If not, the agent is sending the initial
-<code class="prettyprint">Ping</code> event, and stopping the periodic task.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">PingAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">DefaultContextInteractions</span><span class="o">,</span> <span class="n">Schedules</span>
-    <span class="k">on</span> <span class="n">Pong</span> <span class="o">{</span>
-        <span class="n">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Ping</span><span class="o">(</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">))</span>
-            <span class="o">[</span> <span class="kc">it</span> <span class="o">==</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">source</span> <span class="o">]</span>
-    <span class="o">}</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="kd">val</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;waiting_for_partner&quot;</span><span class="o">)</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">every</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">defaultSpace</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">emit</span><span class="o">(</span> <span class="k">new</span> <span class="n">Ping</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span>
-                <span class="n">task</span><span class="o">.</span><span class="n">cancel</span>
-            <span class="o">}</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-launch-the-agents">5. Launch the agents</h2>
+<code>Ping</code> event, and stopping the periodic task.</p>
+
+<pre><code class="language-sarl">agent PingAgent {
+	uses DefaultContextInteractions, Schedules
+	on Pong {
+		emit(new Ping( occurrence.index + 1 ))
+			[ it == occurrence.source ]
+	}
+	on Initialize {
+		val task = task("waiting_for_partner")
+		task.every(1000) [
+			if (defaultSpace.participants.size &gt; 1) {
+				emit( new Ping(0) )
+				task.cancel
+			}
+		]
+	}
+}
+</code></pre>
+
+<p>##5. Launch the agents</p>
 
 <p>The fourth step of this tutorial is the definition of the launching process.
 In the rest of this section, we discuss the use of the
@@ -334,40 +352,42 @@ Then, this launched agent must spawn the other agents in the system.</p>
 <p>The principle is to launch a single instance of Janus, and run all the agents inside.
 Because of the design of the Janus platform, we must define an
 agent that will launch the other agents. This agent is named
-<code class="prettyprint">BootAgent</code>. It is defined below.</p>
+<code>BootAgent</code>. It is defined below.</p>
 
-<p>The boot agent uses the <code class="prettyprint">Lifecycle</code> capacity for launching agents in the default context.
-This capacity provides the function <code class="prettyprint">spawn(Class&lt;? extends Agent&gt;)</code>
+<p>The boot agent uses the <code>Lifecycle</code> capacity for launching agents in the default context.
+This capacity provides the function <code>spawn(Class&lt;? extends Agent&gt;)</code>
 for launching an agent of the given type.
 When the boot agent has launched the two expected agents,
-it is killing itself. This is done with the <code class="prettyprint">killMe</code>
-function, which is provided by the <code class="prettyprint">Lifecycle</code> capacity too.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">BootAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">spawn</span><span class="o">(</span><span class="n">PongAgent</span><span class="o">)</span>
-        <span class="n">spawn</span><span class="o">(</span><span class="n">PingAgent</span><span class="o">)</span>
-        <span class="n">killMe</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="6-legal-notice">6. Legal Notice</h2>
+it is killing itself. This is done with the <code>killMe</code>
+function, which is provided by the <code>Lifecycle</code> capacity too.</p>
+
+<pre><code class="language-sarl">agent BootAgent {
+	uses Lifecycle
+	on Initialize {
+		spawn(PongAgent)
+		spawn(PingAgent)
+		killMe
+	}
+}
+</code></pre>
+
+<p>##6. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -407,6 +427,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

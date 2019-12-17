@@ -74,7 +74,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-2-why-can-i-not-put-a-string-in-the-package-name">1.2. Why can I not put a string in the package name?</a></li>
   <li><a href="#1-3-is-the-val-keyword-defining-a-constant">1.3. Is the 'val' keyword defining a constant?</a></li>
   <li><a href="#1-4-why-cannot-use-the-syntax-a-0-for-arrays">1.4. Why cannot use the syntax 'a[0]' for arrays?</a></li>
-  <li><a href="#1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the '<>' notation for generic parameters?</a></li>
+  <li><a href="#1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the '&lt;&gt;' notation for generic parameters?</a></li>
   <li><a href="#1-6-why-can-not-a-static-field-be-defined-in-an-agent-type-declaration-agent-skill-behavior">1.6. Why can not a static field be defined in an agent type declaration (agent, skill, behavior)?</a></li>
   <li><a href="#1-7-how-can-i-create-instances-of-anonymous-classes">1.7. How can I create instances of anonymous classes?</a></li>
   <li><a href="#1-8-java-syntax-for-anonymous-classes-is-allowed">1.8. Java syntax for anonymous classes is allowed</a></li>
@@ -85,14 +85,13 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-13-equality-and-identity-comparison-in-sarl-and-checking-for-null-same-as-java">1.13. Equality and identity comparison (`==`, `===`, `!=`, `!==`) in SARL and checking for null: same as Java?</a></li>
   <li><a href="#1-14-how-to-return-two-values">1.14. How to return two values?</a></li>
 </ul>
+<li><a href="#2-legal-notice">2. Legal Notice</a></li>
 
-<p><li><a href="#2-legal-notice">2. Legal Notice</a></li></p>
+</ul>
 
-<p></ul></p>
+<p>##1. General Syntax</p>
 
-<h2 id="1-general-syntax">1. General Syntax</h2>
-
-<h3 id="1-1-can-i-use-the-same-syntax-as-in-java-for-number-literals">1.1. Can I use the same syntax as in Java for number literals?</h3>
+<p>###1.1. Can I use the same syntax as in Java for number literals?</p>
 
 <p><strong>No</strong>.</p>
 
@@ -102,159 +101,181 @@ be specify also, even if these parts are equal
 to zero.  Consequently:</p>
 
 <ul>
-<li><code class="prettyprint">123.0</code> is correct;</li>
-<li><code class="prettyprint">0.123</code> is correct;</li>
-<li><code class="prettyprint">123.</code> is incorrect;</li>
-<li><code class="prettyprint">.123</code> is incorrect.</li>
+  <li><code>123.0</code> is correct;</li>
+  <li><code>0.123</code> is correct;</li>
+  <li><code>123.</code> is incorrect;</li>
+  <li><code>.123</code> is incorrect.</li>
 </ul>
 
-<h3 id="1-2-why-can-i-not-put-a-string-in-the-package-name">1.2. Why can I not put a string in the package name?</h3>
+<p>###1.2. Why can I not put a string in the package name?</p>
 
 <p>It is not allowed to put a SARL keyword, such as
-<code class="prettyprint">agent</code>, in the name of a package.</p>
+<code>agent</code>, in the name of a package.</p>
 
-<p>But, if you prefix with the <code class="prettyprint">^</code> character the string
+<p>But, if you prefix with the <code>^</code> character the string
 that corresponds to a keyword, then it is possible
 to obtain a package name with one of its components
 equals to a SARL keyword:</p>
 
-<h3 id="1-3-is-the-val-keyword-defining-a-constant">1.3. Is the &#39;val&#39; keyword defining a constant?</h3>
+<p>###1.3. Is the ‘val’ keyword defining a constant?</p>
 
 <p><strong>Yes and No</strong>.</p>
 
-<p>Indeed, the <code class="prettyprint">val</code> keyword defines a name that it could be initialized only once time.
-It is similar to the <code class="prettyprint">final</code> modifier of the Java language.</p>
+<p>Indeed, the <code>val</code> keyword defines a name that it could be initialized only once time.
+It is similar to the <code>final</code> modifier of the Java language.</p>
 
-<p>Consider the example below: two values are defined, <code class="prettyprint">a</code> and <code class="prettyprint">b</code>.
-The <code class="prettyprint">a</code> variable is a real constant because it has a raw type and it is initialized.
-The <code class="prettyprint">b</code> variable is not a real constant because it is a reference to an object.
+<p>Consider the example below: two values are defined, <code>a</code> and <code>b</code>.
+The <code>a</code> variable is a real constant because it has a raw type and it is initialized.
+The <code>b</code> variable is not a real constant because it is a reference to an object.
 The reference is constant, <em>but</em> the referred object is not. Consequently, it is still
-possible to call the setters of <code class="prettyprint">b</code>. </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">val</span> <span class="n">a</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="kd">val</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-</code></pre></div>
-<h3 id="1-4-why-cannot-use-the-syntax-a-0-for-arrays">1.4. Why cannot use the syntax &#39;a[0]&#39; for arrays?</h3>
+possible to call the setters of <code>b</code>.</p>
+
+<pre><code class="language-sarl">val a : int = 4
+val b : Object = new Object
+</code></pre>
+
+<p>###1.4. Why cannot use the syntax ‘a[0]’ for arrays?</p>
 
 <p>In SARL, the array type may be written with the classic array syntax, such as
-<code class="prettyprint">int[]</code>, or the object-oriented syntax, such as <code class="prettyprint">List&lt;Integer&gt;</code>.</p>
+<code>int[]</code>, or the object-oriented syntax, such as <code>List&lt;Integer&gt;</code>.</p>
 
 <p>SARL considers that the each array is a list of something.
-Consequently, retrieving the values of the array must be done with <code class="prettyprint">get(int)</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">=</span> <span class="err">#</span><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
-<span class="kd">var</span> <span class="n">b</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">newArrayList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+Consequently, retrieving the values of the array must be done with <code>get(int)</code>.</p>
 
-<span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-</code></pre></div>
-<h3 id="1-5-why-can-i-not-use-the-notation-for-generic-parameters">1.5. Why can I not use the &#39;&lt;&gt;&#39; notation for generic parameters?</h3>
+<pre><code class="language-sarl">var a : Integer[] = #[1, 2, 3]
+var b : List&lt;Integer&gt; = newArrayList(1, 2, 3)
 
-<p>In SARL, the empty generic parameter list, written <code class="prettyprint">&lt;&gt;</code> is
+a.get(0) == b.get(0)
+</code></pre>
+
+<p>###1.5. Why can I not use the ‘&lt;&gt;’ notation for generic parameters?</p>
+
+<p>In SARL, the empty generic parameter list, written <code>&lt;&gt;</code> is
 not supported: a generic type expression must be written between them.</p>
 
 <p>For solving this problem, two choices: i) add a type expression between
 &lt; and &gt;; ii) remove the generic parameter list.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">firstSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>
-<span class="kd">var</span> <span class="n">secondSolution</span> <span class="o">:</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span>
-</code></pre></div>
-<h3 id="1-6-why-can-not-a-static-field-be-defined-in-an-agent-type-declaration-agent-skill-behavior">1.6. Why can not a static field be defined in an agent type declaration (agent, skill, behavior)?</h3>
+
+<pre><code class="language-sarl">var firstSolution : List&lt;Integer&gt; = new ArrayList&lt;Integer&gt;
+var secondSolution : List&lt;Integer&gt; = new ArrayList
+</code></pre>
+
+<p>###1.6. Why can not a static field be defined in an agent type declaration (agent, skill, behavior)?</p>
 
 <p>This is a design choice given that our entities are agents and as such they should not
-&quot;share&quot; data unless done explicitly in an agent-oriented manner, for example via
+“share” data unless done explicitly in an agent-oriented manner, for example via
 resources or communication channels.
-Having static fields in agents or skills would break the &quot;independency&quot; of agents,
+Having static fields in agents or skills would break the “independency” of agents,
 also known as their autonomy.</p>
 
 <p>It is most probable that such static data can be seen as a resource outside the skill
 or agent, and as such it should be managed outside it (for example by using the artifact
 meta-model).</p>
 
-<h3 id="1-7-how-can-i-create-instances-of-anonymous-classes">1.7. How can I create instances of anonymous classes?</h3>
+<p>###1.7. How can I create instances of anonymous classes?</p>
 
-<p>In SARL, the creation of anonymous classes (interface implementation...)
+<p>In SARL, the creation of anonymous classes (interface implementation…)
 must be done with a closure.</p>
 
 <p>Consider the definition of the following interface:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="o">{</span>
-     <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">:</span> <span class="kt">void</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">interface MyInterface {
+     def myfunction(parameter : Object) : void
+}
+</code></pre>
+
 <p>The on-the-fly definition and instantiation of an instance of this interface,
 a.k.a. anonymous class definition in the Java community, could be written is SARL
 with the following closure:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">instance</span> <span class="o">:</span> <span class="n">MyInterface</span>
-<span class="n">instance</span> <span class="o">=</span> <span class="o">[</span> <span class="n">parameter</span> <span class="o">|</span> <span class="cm">/* The code of myfunction() */</span> <span class="o">]</span>
-</code></pre></div>
-<h3 id="1-8-java-syntax-for-anonymous-classes-is-allowed">1.8. Java syntax for anonymous classes is allowed</h3>
 
-<p>In SARL, it is recommended tp create anonymous classes (interface implementation...)
+<pre><code class="language-sarl">var instance : MyInterface
+instance = [ parameter | /* The code of myfunction() */ ]
+</code></pre>
+
+<p>###1.8. Java syntax for anonymous classes is allowed</p>
+
+<p>In SARL, it is recommended tp create anonymous classes (interface implementation…)
 must be done with a closure (see previous question).</p>
 
-<p>The Java-based syntax for defining an anonymous class&#39;s instance is allowed, but not recommended
+<p>The Java-based syntax for defining an anonymous class’s instance is allowed, but not recommended
 in the SARL language. It means that the following code is valid:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">var</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyInterface</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="nf">myfunction</span><span class="o">(</span><span class="n">parameter</span> <span class="o">:</span> <span class="n">Object</span><span class="o">)</span> <span class="o">{</span>
-        <span class="cm">/* The code of myfunction() */</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="1-9-ambiguous-call-to-capacity-function">1.9. Ambiguous call to capacity function</h3>
 
-<p>When the calling a capacity function, the SARL compiler complains with an &quot;ambiguous call&quot; error.
-In the code below, the function <code class="prettyprint">myfunction</code> is defined in the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code>.
-The call to <code class="prettyprint">myfunction</code> in the agent definition is the place where the error occurs.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">C1</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span>
-    <span class="kd">def</span> <span class="n">myfunction2</span>
-<span class="o">}</span>
-<span class="kd">capacity</span> <span class="nc">C2</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span>
-    <span class="kd">def</span> <span class="n">myfunction3</span>
-<span class="o">}</span>
-<span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">C1</span><span class="o">,</span> <span class="n">C2</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">myfunction</span>
-        <span class="n">myfunction2</span>
-        <span class="n">myfunction3</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>This error is standard because the functions of the capacities <code class="prettyprint">C1</code> and <code class="prettyprint">C2</code> are implicitly accessible
-in the scope of the agent definition, see <code class="prettyprint">uses</code> keyword definition. The SARL compiler is then unable
+<pre><code class="language-sarl">var instance = new MyInterface() {
+	def myfunction(parameter : Object) {
+		/* The code of myfunction() */
+	}
+}
+</code></pre>
+
+<p>###1.9. Ambiguous call to capacity function</p>
+
+<p>When the calling a capacity function, the SARL compiler complains with an “ambiguous call” error.
+In the code below, the function <code>myfunction</code> is defined in the capacities <code>C1</code> and <code>C2</code>.
+The call to <code>myfunction</code> in the agent definition is the place where the error occurs.</p>
+
+<pre><code class="language-sarl">capacity C1 {
+	def myfunction
+	def myfunction2
+}
+capacity C2 {
+	def myfunction
+	def myfunction3
+}
+agent MyAgent {
+	uses C1, C2
+	on Initialize {
+	    myfunction
+	    myfunction2
+	    myfunction3
+	}
+}
+</code></pre>
+
+<p>This error is standard because the functions of the capacities <code>C1</code> and <code>C2</code> are implicitly accessible
+in the scope of the agent definition, see <code>uses</code> keyword definition. The SARL compiler is then unable
 to determine that is the function to call.</p>
 
-<p>For solving this issue, the developer must explicitly call the correct version of <code class="prettyprint">myfunction</code> by
+<p>For solving this issue, the developer must explicitly call the correct version of <code>myfunction</code> by
 getting the capacity. The following code is the correct call to the function if the function in the
-capacity <code class="prettyprint">C1</code> should be called:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">getSkill</span><span class="o">(</span><span class="n">C1</span><span class="o">).</span><span class="n">myfunction</span>
-</code></pre></div>
-<h3 id="1-10-why-is-an-error-or-a-warning-put-on-the-occurrence-keyword">1.10. Why is an error or a warning put on the occurrence keyword?</h3>
+capacity <code>C1</code> should be called:</p>
+
+<pre><code class="language-sarl">getSkill(C1).myfunction
+</code></pre>
+
+<p>###1.10. Why is an error or a warning put on the occurrence keyword?</p>
 
 <p>Consider this code:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">CarArrivedPercept</span> <span class="o">{</span>
-    <span class="n">cars</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">.</span><span class="n">car</span><span class="o">).</span><span class="n">floor</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">floor</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>We know that <code class="prettyprint">occurrence</code> is static, so cannot be changed. However, in the above code,
-<code class="prettyprint">occurrence.car</code>, is not being changed/assigned, but just used to refer to another entity
+
+<pre><code class="language-sarl">on CarArrivedPercept {
+    cars.get(occurrence.car).floor = occurrence.floor
+}
+</code></pre>
+
+<p>We know that <code>occurrence</code> is static, so cannot be changed. However, in the above code,
+<code>occurrence.car</code>, is not being changed/assigned, but just used to refer to another entity
 where assignment is performed.
-However, SARL compiler will think that <code class="prettyprint">occurrence.car</code> may be changed due to a border effect
-of the <code class="prettyprint">get</code>, and complain with warning.</p>
+However, SARL compiler will think that <code>occurrence.car</code> may be changed due to a border effect
+of the <code>get</code>, and complain with warning.</p>
 
 <p>Consider this code:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">CarArrivedPercept</span> <span class="o">{</span>
-    <span class="kc">occurrence</span><span class="o">.</span><span class="n">floor</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>The line <code class="prettyprint">occurrence.floor = 1</code> generates an error because in this case the SARL compiler
-is sure that the <code class="prettyprint">occurrence</code> instance is changed.</p>
+
+<pre><code class="language-sarl">on CarArrivedPercept {
+    occurrence.floor = 1
+}
+</code></pre>
+
+<p>The line <code>occurrence.floor = 1</code> generates an error because in this case the SARL compiler
+is sure that the <code>occurrence</code> instance is changed.</p>
 
 <p>In order to avoid the warning above, you could write the code as:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">CarArrivedPercept</span> <span class="o">{</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">car</span>
-    <span class="n">cars</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">c</span><span class="o">).</span><span class="n">floor</span> <span class="o">=</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">floor</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="1-11-can-we-document-sarl-code-for-javadoc">1.11. Can we document SARL code for JavaDoc?</h3>
+
+<pre><code class="language-sarl">on CarArrivedPercept {
+    var c = occurrence.car
+    cars.get(c).floor = occurrence.floor
+}
+</code></pre>
+
+<p>###1.11. Can we document SARL code for JavaDoc?</p>
 
 <p>Yes. Since the SARL compiler generates valid Java code including the documentation,
 you could generate the documentation of your SARL program with the standard javadoc
@@ -263,78 +284,80 @@ tool applied on the generated Java files.</p>
 <p>Additionnally, you could use a specific Javadoc doclet in order to generate a documentation 
 that follows the SARL syntax, intead of the Java syntax.</p>
 
-<p>You could find details on the page dedicated to the <a href="../tools/APIDocumentation.html">Maven documentation plugin</a>. </p>
+<p>You could find details on the page dedicated to the <a href="../tools/APIDocumentation.html">Maven documentation plugin</a>.</p>
 
-<h3 id="1-12-how-do-i-control-the-log-level-of-the-logging-built-in-capacity">1.12. How do I control the log-level of the Logging built-in capacity?</h3>
+<p>###1.12. How do I control the log-level of the Logging built-in capacity?</p>
 
-<p>Use <code class="prettyprint">setLogLevel()</code> of the <code class="prettyprint">Logging</code> capacity, as explained here in the
+<p>Use <code>setLogLevel()</code> of the <code>Logging</code> capacity, as explained here in the
 <a href="http://www.sarl.io/docs/official/reference/bic/Logging.html">API documentation</a>.</p>
 
 <p>You could also control the general configuration of the log level from the options
 of your SARL Run-time Environment, such as <a href="../tools/Janus.html">Janus</a>.</p>
 
-<h3 id="1-13-equality-and-identity-comparison-in-sarl-and-checking-for-null-same-as-java">1.13. Equality and identity comparison (<code class="prettyprint">==</code>, <code class="prettyprint">===</code>, <code class="prettyprint">!=</code>, <code class="prettyprint">!==</code>) in SARL and checking for null: same as Java?</h3>
+<p>###1.13. Equality and identity comparison (<code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code>) in SARL and checking for null: same as Java?</p>
 
 <p>The mapping of the operator from SARL to Java are:</p>
 
 <ul>
-<li><code class="prettyprint">a === b</code> becomes <code class="prettyprint">a == b</code></li>
-<li><code class="prettyprint">a !== b</code> becomes <code class="prettyprint">a != b</code></li>
-<li><code class="prettyprint">a == b</code> becomes <code class="prettyprint">a == null ? (b == null) : a.equals(b)</code></li>
-<li><code class="prettyprint">a != b</code> becomes <code class="prettyprint">!Objects.equals(a,b)</code>. This is null-safe (part of Google API)
-and the code of the function is <code class="prettyprint">a == b || (a != null &amp;&amp; a.equals(b))</code>.</li>
+  <li><code>a === b</code> becomes <code>a == b</code></li>
+  <li><code>a !== b</code> becomes <code>a != b</code></li>
+  <li><code>a == b</code> becomes <code>a == null ? (b == null) : a.equals(b)</code></li>
+  <li><code>a != b</code> becomes <code>!Objects.equals(a,b)</code>. This is null-safe (part of Google API)
+and the code of the function is <code>a == b || (a != null &amp;&amp; a.equals(b))</code>.</li>
 </ul>
 
-<p>It is always better to test valid against <code class="prettyprint">null</code> with the <code class="prettyprint">===</code> or <code class="prettyprint">!==</code> operators.</p>
+<p>It is always better to test valid against <code>null</code> with the <code>===</code> or <code>!==</code> operators.</p>
 
-<p>Because the SARL <code class="prettyprint">==</code> operator is mapped to the Java <code class="prettyprint">equals()</code> function, and the
-<code class="prettyprint">===</code> and <code class="prettyprint">!==</code> operators to the Java <code class="prettyprint">==</code> and <code class="prettyprint">!=</code> operators, it is better/safer,
-and a best practice, to use <code class="prettyprint">===</code> and <code class="prettyprint">!==</code> when one of the operands is of primitive
-type, e.g. <code class="prettyprint">null</code>, number constants, primitive type variables. These operators are
-not replaced neither <code class="prettyprint">operator_equals</code> nor <code class="prettyprint">operator_notEquals</code> within the Java code.</p>
+<p>Because the SARL <code>==</code> operator is mapped to the Java <code>equals()</code> function, and the
+<code>===</code> and <code>!==</code> operators to the Java <code>==</code> and <code>!=</code> operators, it is better/safer,
+and a best practice, to use <code>===</code> and <code>!==</code> when one of the operands is of primitive
+type, e.g. <code>null</code>, number constants, primitive type variables. These operators are
+not replaced neither <code>operator_equals</code> nor <code>operator_notEquals</code> within the Java code.</p>
 
-<p>Usually, the SARL compiler generates a warning to push you to use <code class="prettyprint">===</code> in place of <code class="prettyprint">==</code>.
-But with <code class="prettyprint">null == value</code>, an ambiguous call error occurs before the warning is generated.
-In fact, the SARL compiler tries to find an overloading function for the <code class="prettyprint">==</code> operator.
-Since <code class="prettyprint">null</code> has not a specific type, the SARL compiler find multiple overloading functions.
+<p>Usually, the SARL compiler generates a warning to push you to use <code>===</code> in place of <code>==</code>.
+But with <code>null == value</code>, an ambiguous call error occurs before the warning is generated.
+In fact, the SARL compiler tries to find an overloading function for the <code>==</code> operator.
+Since <code>null</code> has not a specific type, the SARL compiler find multiple overloading functions.
 Check the <a href="http://www.sarl.io/docs/official/reference/general/Operators.html#3-comparison-operators">documentation</a> for details on the overloading mechanism of SARL.</p>
 
-<h3 id="1-14-how-to-return-two-values">1.14. How to return two values?</h3>
+<p>###1.14. How to return two values?</p>
 
-<p>SARL comes with a <code class="prettyprint">Pair&lt;A,B&gt;</code> class to build an object for storing two values, nicknamed &quot;key&quot; and &quot;value&quot;. It comes useful when a method has
+<p>SARL comes with a <code>Pair&lt;A,B&gt;</code> class to build an object for storing two values, nicknamed “key” and “value”. It comes useful when a method has
 to return two values instead of just one. For example, the following function returns the next floor and direction that an elevator has to serve:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">kb_getNextJob</span><span class="o">()</span> <span class="o">:</span> <span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="c1">//...</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>As of Java 8, and as part of JavaFX, Java provides this <code class="prettyprint">Pair&lt;A,B&gt;</code> class; check <a href="https://www.geeksforgeeks.org/pair-class-in-java/">here</a> and
-<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html">here</a>. Note Pairs are different from <code class="prettyprint">Map</code>, which can be seen as a collection
+
+<pre><code class="language-sarl">def kb_getNextJob() : Pair&lt;Integer, Double&gt; {
+    //...
+}
+</code></pre>
+
+<p>As of Java 8, and as part of JavaFX, Java provides this <code>Pair&lt;A,B&gt;</code> class; check <a href="https://www.geeksforgeeks.org/pair-class-in-java/">here</a> and
+<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html">here</a>. Note Pairs are different from <code>Map</code>, which can be seen as a collection
 of Pairs and with a proper key/value semantics.</p>
 
-<p>There exist more advanced implementations of <code class="prettyprint">Pair</code>, for example from Apache. See <a href="https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/tuple/package-summary.html">here</a>,
+<p>There exist more advanced implementations of <code>Pair</code>, for example from Apache. See <a href="https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/tuple/package-summary.html">here</a>,
 <a href="https://www.baeldung.com/java-pairs">here</a> and <a href="https://gangmax.me/blog/2017/10/10/how-to-return-multiple-values-from-a-java-method/">here</a>.</p>
 
-<p>SARL itself have compact syntax do deal with <code class="prettyprint">Pair</code>, by using <code class="prettyprint">a -&gt; b</code> to create a <code class="prettyprint">Pair</code> object <code class="prettyprint">(a,b)</code>. There are also compact ways of manipulating Collection and Maps.</p>
+<p>SARL itself have compact syntax do deal with <code>Pair</code>, by using <code>a -&gt; b</code> to create a <code>Pair</code> object <code>(a,b)</code>. There are also compact ways of manipulating Collection and Maps.</p>
 
 <p>Check SARL documentation on that <a href="../reference/general/Operators.html#collection-operators">here</a>.</p>
 
-<h2 id="2-legal-notice">2. Legal Notice</h2>
+<p>##2. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -374,6 +397,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

@@ -66,191 +66,212 @@ Considering the variety of existing approaches and meta-models in the field of a
 		
       <h1 id="externalcontextaccess-capacity">ExternalContextAccess Capacity</h1>
 
-<p>The built-in capacity <code class="prettyprint">ExternalContextAccess</code> provides access to the
+<p>The built-in capacity <code>ExternalContextAccess</code> provides access to the
 <a href="../Space.html">context</a> that the agent is a part of, and actions
 required to join new <a href="../Space.html">contexts</a>, and leave them.</p>
 
-<p>The context supported by this built-in capacity is the &quot;external context,&quot; illustrated by the
+<p>The context supported by this built-in capacity is the “external context,” illustrated by the
 top-right context in the figure above.</p>
 
-<h2 id="1-retrieving-a-context">1. Retrieving a Context</h2>
+<p>##1. Retrieving a Context</p>
 
 <p>For retrieving the context with a particular ID, this built-in capacity provides the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">getContext</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentContext</span>
-</code></pre></div>
-<p>The agent must have joined (see below) the context before calling this action. Or, the agent
-may use its <code class="prettyprint">getParentID</code> for accessing the context in which it is located (the default context).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-    <span class="kd">var</span> <span class="n">id</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">id</span> <span class="o">=</span> <span class="n">getParentID</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">getContext</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="2-retrieving-the-universe-context">2. Retrieving the Universe Context</h2>
 
-<p>In all the SARL application, a default context exists. It&#39;s name is the Universe context.
+<pre><code class="language-sarl">def getContext(contextID : UUID) : AgentContext
+</code></pre>
+
+<p>The agent must have joined (see below) the context before calling this action. Or, the agent
+may use its <code>getParentID</code> for accessing the context in which it is located (the default context).</p>
+
+<pre><code class="language-sarl">agent A {
+	uses ExternalContextAccess
+	var id : UUID
+	var c : AgentContext
+	def myaction {
+		id = getParentID
+		c = getContext(id)
+	}
+}
+</code></pre>
+
+<p>##2. Retrieving the Universe Context</p>
+
+<p>In all the SARL application, a default context exists. It’s name is the Universe context.
 It is fully managed by the SARL run-time environment.
 For retrieving this particular context, this built-in capacity provides the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">getUniverseContext</span><span class="o">()</span> <span class="o">:</span> <span class="n">AgentContext</span>
-</code></pre></div>
-<h2 id="3-retrieving-the-contexts-of-an-agent">3. Retrieving the Contexts of an Agent</h2>
+
+<pre><code class="language-sarl">def getUniverseContext() : AgentContext
+</code></pre>
+
+<p>##3. Retrieving the Contexts of an Agent</p>
 
 <p>The following function enables an agent to retrieve all the contexts in which it is involved:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getAllContexts</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def getAllContexts : SynchronizedIterable&lt;AgentContext&gt;
+</code></pre>
+
 <p>The default context is included in the replied collection.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-    <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">SynchronizedIterable</span><span class="o">&lt;</span><span class="n">AgentContext</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">getAllContexts</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-joining-an-existing-context">4. Joining an Existing Context</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses ExternalContextAccess
+	var c : SynchronizedIterable&lt;AgentContext&gt;
+	def myaction {
+		c = getAllContexts
+	}
+}
+</code></pre>
+
+<p>##4. Joining an Existing Context</p>
 
 <p>Agents must be able to join a new parent context. The following function gives this capability to them:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">join</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">expectedDefaultSpaceID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def join(contextID : UUID, expectedDefaultSpaceID : UUID)
+</code></pre>
+
 <p>This action registers the agent in the default space of the context.</p>
 
-<p>The agent will be involved in the context with the ID given by <code class="prettyprint">contextID</code>.
-The parameter <code class="prettyprint">expectedDefaultSpaceID</code> is only used to check if the caller of this function
+<p>The agent will be involved in the context with the ID given by <code>contextID</code>.
+The parameter <code>expectedDefaultSpaceID</code> is only used to check if the caller of this function
 knows the ID of the default space in the context to be involved in. 
-If the given <code class="prettyprint">expectedDefaultSpaceID</code> does not match the ID of the default space in the context
-<code class="prettyprint">contextID</code>, then the access to the context is forbidden.</p>
+If the given <code>expectedDefaultSpaceID</code> does not match the ID of the default space in the context
+<code>contextID</code>, then the access to the context is forbidden.</p>
 
-<p><importantnote> The context must already exist, and the default space inside this context must have the same ID 
-as <code class="prettyprint">expectedDefaultSpaceID</code>.</importantnote></p>
+<importantnote> The context must already exist, and the default space inside this context must have the same ID 
+as `expectedDefaultSpaceID`.</importantnote>
 
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">ContextJoined</code> in the inner context&#39;s default space.</li>
-<li><code class="prettyprint">MemberJoined</code> in the parent context&#39;s default space.</li>
+  <li><code>ContextJoined</code> in the inner context’s default space.</li>
+  <li><code>MemberJoined</code> in the parent context’s default space.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-        <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">ids</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-        <span class="n">ids</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-        <span class="n">join</span><span class="o">(</span><span class="n">idc</span><span class="o">,</span> <span class="n">ids</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-leaving-a-context">5. Leaving a Context</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses ExternalContextAccess
+		var idc : UUID
+		var ids : UUID
+	def myaction {
+		idc = UUID::randomUUID
+		ids = UUID::randomUUID
+		join(idc, ids)
+	}
+}
+</code></pre>
+
+<p>##5. Leaving a Context</p>
 
 <p>When an agent wants to leave a context, it must invoke:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">leave</span><span class="o">(</span><span class="n">contextID</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def leave(contextID : UUID)
+</code></pre>
+
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">ContextLeft</code> in the inner context&#39;s default space.</li>
-<li><code class="prettyprint">MemberLeft</code> in the parent context&#39;s default space.</li>
+  <li><code>ContextLeft</code> in the inner context’s default space.</li>
+  <li><code>MemberLeft</code> in the parent context’s default space.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">ExternalContextAccess</span>
-    <span class="kd">var</span> <span class="n">idc</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">idc</span> <span class="o">=</span> <span class="nl">UUID:</span><span class="o">:</span><span class="n">randomUUID</span>
-        <span class="n">leave</span><span class="o">(</span><span class="n">idc</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="6-testing-if-an-element-is-related-to-an-external-context">6. Testing if an element is related to an external context</h2>
 
-<p>The <code class="prettyprint">ExternalContextAccess</code> provides a collection of utility functions that test if their
+<pre><code class="language-sarl">agent A {
+	uses ExternalContextAccess
+	var idc : UUID
+	def myaction {
+		idc = UUID::randomUUID
+		leave(idc)
+	}
+}
+</code></pre>
+
+<p>##6. Testing if an element is related to an external context</p>
+
+<p>The <code>ExternalContextAccess</code> provides a collection of utility functions that test if their
 parameters are related to the any external context.</p>
 
-<table><thead>
-<tr>
-<th>Function</th>
-<th>Explanation</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">isInSpace(Event, Space)</code></td>
-<td>tests if the given event was emitted in the given space.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">isInSpace(Event, SpaceID)</code></td>
-<td>tests if the given event was emitted in the space with the given identifier.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">isInSpace(Event, UUID)</code></td>
-<td>tests if the given event was emitted in the space with the given identifier.</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>isInSpace(Event, Space)</code></td>
+      <td>tests if the given event was emitted in the given space.</td>
+    </tr>
+    <tr>
+      <td><code>isInSpace(Event, SpaceID)</code></td>
+      <td>tests if the given event was emitted in the space with the given identifier.</td>
+    </tr>
+    <tr>
+      <td><code>isInSpace(Event, UUID)</code></td>
+      <td>tests if the given event was emitted in the space with the given identifier.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>The following example illustrates the use of the <code class="prettyprint">isInSpace</code> function in the guard
+<p>The following example illustrates the use of the <code>isInSpace</code> function in the guard
 of an behavior unit. In this example, the behavior unit is run only if the event
-of type <code class="prettyprint">AnEvent</code> was emitted in the space <code class="prettyprint">myspace</code> (declared as attribute in
+of type <code>AnEvent</code> was emitted in the space <code>myspace</code> (declared as attribute in
 the container).</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">on</span> <span class="n">AnEvent</span> <span class="o">[</span> <span class="n">isInSpace</span><span class="o">(</span><span class="kc">occurrence</span><span class="o">,</span> <span class="n">myspace</span><span class="o">)</span> <span class="o">]</span> <span class="o">{</span>
-    <span class="c1">// Do something with the event when it was emitted in the space myspace</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="7-helper-for-firing-an-event-in-a-space">7. Helper for firing an event in a space</h2>
 
-<p>Regarding the definition of the <code class="prettyprint">EventSpace</code> type, the event emiting function takes at least two parameters:</p>
+<pre><code class="language-sarl">on AnEvent [ isInSpace(occurrence, myspace) ] {
+	// Do something with the event when it was emitted in the space myspace
+}
+</code></pre>
+
+<p>##7. Helper for firing an event in a space</p>
+
+<p>Regarding the definition of the <code>EventSpace</code> type, the event emiting function takes at least two parameters:</p>
 
 <ul>
-<li>the identifier of the entity, which is firing the event, and</li>
-<li>the event to be fired.</li>
+  <li>the identifier of the entity, which is firing the event, and</li>
+  <li>the event to be fired.</li>
 </ul>
 
-<p>The first parameter is used for setting the event&#39;s source when it was not already done.</p>
+<p>The first parameter is used for setting the event’s source when it was not already done.</p>
 
-<p>The <code class="prettyprint">ExternalContextAccess</code> provides functions for helping to fire events into an event space:
-<code class="prettyprint">sarl
-^space.emit(^event)
-</code></p>
+<p>The <code>ExternalContextAccess</code> provides functions for helping to fire events into an event space:</p>
+<pre><code class="language-sarl">^space.emit(^event)
+</code></pre>
 
-<p>This function&#39;s call is takes two parameters:</p>
+<p>This function’s call is takes two parameters:</p>
 
 <ul>
-<li><code class="prettyprint">^space</code> is the variable which contains the reference to the space in which the event should be fired.</li>
-<li><code class="prettyprint">^event</code> is the variable which contains the event to fire.</li>
+  <li><code>^space</code> is the variable which contains the reference to the space in which the event should be fired.</li>
+  <li><code>^event</code> is the variable which contains the event to fire.</li>
 </ul>
 
-<p>This function call is equivalent to:
-<code class="prettyprint">sarl
-^space.emit(getID, ^event)
-</code></p>
+<p>This function call is equivalent to:</p>
+<pre><code class="language-sarl">^space.emit(getID, ^event)
+</code></pre>
 
-<p>The <code class="prettyprint">getID</code> function is provided by the current entity, e.g. an agent, for obtaining the identifier of the emitter.</p>
+<p>The <code>getID</code> function is provided by the current entity, e.g. an agent, for obtaining the identifier of the emitter.</p>
 
-<p>From a syntactic point of view, the two calls look similar. But, the call to the <code class="prettyprint">ExternalContextAccess</code> function uses
-the extension method syntax: the first argument to the function is written prior to the function&#39;s name.</p>
+<p>From a syntactic point of view, the two calls look similar. But, the call to the <code>ExternalContextAccess</code> function uses
+the extension method syntax: the first argument to the function is written prior to the function’s name.</p>
 
-<h2 id="8-legal-notice">8. Legal Notice</h2>
+<p>##8. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -290,6 +311,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

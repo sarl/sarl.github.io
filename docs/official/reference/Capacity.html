@@ -75,13 +75,12 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</a></li>
   <li><a href="#1-4-modifiers">1.4. Modifiers</a></li>
 </ul>
-
-<p><li><a href="#2-built-in-capacities">2. Built-in Capacities</a></li>
+<li><a href="#2-built-in-capacities">2. Built-in Capacities</a></li>
 <li><a href="#3-use-of-the-capacities">3. Use of the Capacities</a></li>
 <li><a href="#4-associating-a-default-skill-to-a-capacity">4. Associating a default skill to a capacity</a></li>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>This document describes how to define Capacities in SARL. Before reading this document, we recommend that you read
 the <a href="./GeneralSyntax.html">General Syntax Reference</a>.</p>
@@ -100,56 +99,62 @@ associated with a given Capacity. Acquiring a new Capacity enables an Agent to g
 This provides Agents with a self-adaptation mechanism that allows them to dynamically change their architecture
 according to their current needs and goals.</p>
 
-<h2 id="1-defining-a-capacity">1. Defining a Capacity</h2>
+<p>##1. Defining a Capacity</p>
 
-<h3 id="1-1-capacity-definition">1.1. Capacity Definition</h3>
+<p>###1.1. Capacity Definition</p>
 
 <p>A Capacity is the specification of a collection of Actions. Consequently, only Action signatures can be defined inside
 a Capacity: no attribute or field is allowed, and no body (code) for the Action may be present.</p>
 
-<p>The definition of a Capacity is done with the <code class="prettyprint">capacity</code> keyword. Below, a Capacity that permits logging messages
+<p>The definition of a Capacity is done with the <code>capacity</code> keyword. Below, a Capacity that permits logging messages
 is defined. This Capacity enables an Agent to log information and debugging messages.</p>
 
-<p><note>Defining a Capacity without Actions is a symptom of a design problem.</note></p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Logging</span> <span class="o">{</span>
-    <span class="c1">// Log an information message</span>
-    <span class="kd">def</span> <span class="nf">info</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-    <span class="c1">// Log a debugging message</span>
-    <span class="kd">def</span> <span class="nf">debug</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="1-2-extending-a-capacity">1.2. Extending a Capacity</h3>
+<note>Defining a Capacity without Actions is a symptom of a design problem.</note>
+
+<pre><code class="language-sarl">capacity Logging {
+	// Log an information message
+	def info(text : String)
+	// Log a debugging message
+	def debug(text : String)
+}
+</code></pre>
+
+<p>###1.2. Extending a Capacity</p>
 
 <p>In some situations, it is useful to specialize the definition of a Capacity. Capacity specialization is supported
 by the inheritance feature of SARL, which has the same semantics as the inheritance mechanism of the Java
 object-oriented language.</p>
 
-<p>The extended Capacity is specified just after the <code class="prettyprint">extends</code> keyword.</p>
+<p>The extended Capacity is specified just after the <code>extends</code> keyword.</p>
 
-<p><veryimportantnote> A Capacity type can extend <strong>zero-to-many</strong> other Capacity types.
-This is similar to the implementation of interfaces in the Java language.</veryimportantnote></p>
+<veryimportantnote> A Capacity type can extend __zero-to-many__ other Capacity types.
+This is similar to the implementation of interfaces in the Java language.</veryimportantnote>
 
-<p>In the following code, the <code class="prettyprint">Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">ErrorLogging</span> <span class="k">extends</span> <span class="n">Logging</span> <span class="o">{</span>
-    <span class="c1">// Log a error message</span>
-    <span class="kd">def</span> <span class="nf">error</span><span class="o">(</span><span class="n">text</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="1-3-extending-multiple-capacities">1.3. Extending Multiple Capacities</h3>
+<p>In the following code, the <code>Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
+
+<pre><code class="language-sarl">capacity ErrorLogging extends Logging {
+	// Log a error message
+	def error(text : String)
+}
+</code></pre>
+
+<p>###1.3. Extending Multiple Capacities</p>
 
 <p>In some situations, it is useful to define a Capacity by extending more than one Capacity.
-Below, the <code class="prettyprint">Cap3</code> Capacity is defined as an extension of the Capacities <code class="prettyprint">Cap1</code> and <code class="prettyprint">Cap2</code>.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">capacity</span> <span class="nc">Cap1</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">action1</span>
-<span class="o">}</span>
-<span class="kd">capacity</span> <span class="nc">Cap2</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">action2</span>
-<span class="o">}</span>
-<span class="kd">capacity</span> <span class="nc">Cap3</span> <span class="k">extends</span> <span class="n">Cap1</span><span class="o">,</span> <span class="n">Cap2</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">action3</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3 id="1-4-modifiers">1.4. Modifiers</h3>
+Below, the <code>Cap3</code> Capacity is defined as an extension of the Capacities <code>Cap1</code> and <code>Cap2</code>.</p>
+
+<pre><code class="language-sarl">capacity Cap1 {
+	def action1
+}
+capacity Cap2 {
+	def action2
+}
+capacity Cap3 extends Cap1, Cap2 {
+	def action3
+}
+</code></pre>
+
+<p>###1.4. Modifiers</p>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for Capacity.
 The modifiers are usually written before the keyword defining the Capacity.</p>
@@ -162,112 +167,118 @@ The modifiers are usually written before the keyword defining the Capacity.</p>
 <p>A Capacity may be declared with one or more modifiers, which affect its runtime behavior:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: the Capacity is accessible from any other type (default);</li>
-<li><code class="prettyprint">package</code>: the Capacity is accessible only from types in the same package.</li>
-</ul></li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: the Capacity is accessible from any other type (default);</li>
+      <li><code>package</code>: the Capacity is accessible only from types in the same package.</li>
+    </ul>
+  </li>
 </ul>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">public</span> <span class="kd">capacity</span> <span class="nc">Example1</span> <span class="o">{</span>
-<span class="o">}</span>
-<span class="kn">package</span> <span class="kd">capacity</span> <span class="nc">Example2</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">public capacity Example1 {
+}
+package capacity Example2 {
+}
+</code></pre>
+
 <h4 id="method-modifiers">Method Modifiers</h4>
 
 <p>The modifiers for the Actions (methods) in a Capacity are:</p>
 
 <ul>
-<li>Access modifiers:
-
-<ul>
-<li><code class="prettyprint">public</code>: the Action is accessible from any type.</li>
-</ul></li>
+  <li>Access modifiers:
+    <ul>
+      <li><code>public</code>: the Action is accessible from any type.</li>
+    </ul>
+  </li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Public access function</span>
-<span class="kd">public</span> <span class="kd">def</span> <span class="n">example1</span>
-</code></pre></div>
-<h2 id="2-built-in-capacities">2. Built-in Capacities</h2>
+
+<pre><code class="language-sarl">// Public access function
+public def example1
+</code></pre>
+
+<p>##2. Built-in Capacities</p>
 
 <p>Several Capacities are defined and reserved by the SARL Core Specification.
 They compose the minimal set of Capacities that a runtime environment must support to run a SARL program.</p>
 
-<p><veryimportantnote> You must not define a Capacity with a fully qualified name equals to one
-of the reserved Capacities.</veryimportantnote></p>
+<veryimportantnote> You must not define a Capacity with a fully qualified name equals to one
+of the reserved Capacities.</veryimportantnote>
 
 <p>The built-in Capacities are defined in the <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
 
-<h2 id="3-use-of-the-capacities">3. Use of the Capacities</h2>
+<p>##3. Use of the Capacities</p>
 
 <p>The use of a Capacity is related to the associated <a href="./Skill.html">Skills</a>.
 A Capacity cannot be called by itself since it does not provide an implementation: this is the role of the Skill.</p>
 
-<p>When a function <code class="prettyprint">fct</code> of the Capacity <code class="prettyprint">C</code> is called, it means that the Agent silently does:</p>
+<p>When a function <code>fct</code> of the Capacity <code>C</code> is called, it means that the Agent silently does:</p>
 
 <ul>
-<li>Find the Skill <code class="prettyprint">S</code> associated to <code class="prettyprint">C</code>; and</li>
-<li>Call <code class="prettyprint">fct</code> on the object <code class="prettyprint">S</code>.</li>
+  <li>Find the Skill <code>S</code> associated to <code>C</code>; and</li>
+  <li>Call <code>fct</code> on the object <code>S</code>.</li>
 </ul>
 
 <p>Details on the use of the Capacities may be found in the following:</p>
 
 <ul>
-<li><a href="./Agent.html">Agent</a></li>
-<li><a href="./Behavior.html">Behavior</a></li>
+  <li><a href="./Agent.html">Agent</a></li>
+  <li><a href="./Behavior.html">Behavior</a></li>
 </ul>
 
-<h2 id="4-associating-a-default-skill-to-a-capacity">4. Associating a default skill to a capacity</h2>
+<p>##4. Associating a default skill to a capacity</p>
 
-<p>As described within the previous section, when a capacity&#39;s function is invoked, the function&#39;s implementation is retreived from
+<p>As described within the previous section, when a capacity’s function is invoked, the function’s implementation is retreived from
 the <a href="./Skill.html">skill</a> that was associated to the capacity.</p>
 
-<p>The standard way for associating a capacity and a skill is to call the <code class="prettyprint">setSkill</code> function within an agent or a behavior, as
-detailed in the <a href="./Agent.html">agent&#39;s documentation</a>.</p>
+<p>The standard way for associating a capacity and a skill is to call the <code>setSkill</code> function within an agent or a behavior, as
+detailed in the <a href="./Agent.html">agent’s documentation</a>.</p>
 
 <p>Nevertheless, let the case in which we would like to bind a capacity to a default skill.
-In other words, we would like to specify that a skill should be associated by default to a capacity if the <code class="prettyprint">setSkill</code> function
+In other words, we would like to specify that a skill should be associated by default to a capacity if the <code>setSkill</code> function
 is not invoked.</p>
 
-<p>The way to realize this it is to the <code class="prettyprint">@DefaultSkill</code>.
-This annotation may be attached to a capacity&#39;s declaration in order to specify the skill that should be binded by default to
-the capacity.  </p>
+<p>The way to realize this it is to the <code>@DefaultSkill</code>.
+This annotation may be attached to a capacity’s declaration in order to specify the skill that should be binded by default to
+the capacity.</p>
 
-<p>In the following example, the <code class="prettyprint">MyCapacity</code> capacity and the <code class="prettyprint">MySkill</code> skill are declared.
-The [:defaultskillannon] annotation specifies that an instance of <code class="prettyprint">MySkill</code> should be binded to the
-<code class="prettyprint">MyCapacity</code> capacity if the developer does not change the binding programmatically.</p>
+<p>In the following example, the <code>MyCapacity</code> capacity and the <code>MySkill</code> skill are declared.
+The [:defaultskillannon] annotation specifies that an instance of <code>MySkill</code> should be binded to the
+<code>MyCapacity</code> capacity if the developer does not change the binding programmatically.</p>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="nd">@DefaultSkill</span><span class="o">(</span><span class="k">typeof</span><span class="o">(</span><span class="n">MySkill</span><span class="o">))</span>
-<span class="kd">capacity</span> <span class="nc">MyCapacity</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span>
-<span class="o">}</span>
-<span class="kd">skill</span> <span class="nc">MySkill</span> <span class="k">implements</span> <span class="n">MyCapacity</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">myfunction</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<pre><code class="language-sarl">@DefaultSkill(typeof(MySkill))
+capacity MyCapacity {
+	def myfunction
+}
+skill MySkill implements MyCapacity {
+	def myfunction {
+	}
+}
+</code></pre>
+
+<p>##5. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -307,6 +318,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

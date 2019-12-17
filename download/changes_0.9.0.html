@@ -64,152 +64,153 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="changes-in-0-9-0">Changes in 0.9.0</h1>
+      <h1 id="changes-in-090">Changes in 0.9.0</h1>
 
 <p>Release date: 2019-04-15.</p>
 
 <h2 id="1-sarl-language">1. SARL Language</h2>
 
-<h3 id="1-1-sarl-language-grammar">1.1. SARL Language Grammar</h3>
+<h3 id="11-sarl-language-grammar">1.1. SARL Language Grammar</h3>
 
 <ul>
-<li>Major upgrades:
-
-<ul>
-<li>Upgrade to Xtext 2.17.1 (<a href="http://github.com/sarl/sarl/commit/fa1771a8185ba35f4417a26b85e107d00a371c1b">1</a>, <a href="http://github.com/sarl/sarl/commit/f7343006b4694de8343543ff4d0df47a8c78f360">2</a>, <a href="http://github.com/sarl/sarl/commit/dee2fc05aba1512ba87628bcc11f6c31a3068d6c">3</a>). This version of Xtext provides better performances. It is also fixing issues related to the Xtext editor.</li>
-<li>Upgrade to Eclipse 2019-03 (<a href="http://github.com/sarl/sarl/commit/5c095d62a99ad3ae51a682b8af9dc6ad68f63372">details</a>). See <a href="#3_1_Multi_platform_Configurations">major implications of this upgrade</a>.</li>
-</ul></li>
-<li>Operators:
-
-<ul>
-<li>Add overriding of the cast operator (<a href="http://github.com/sarl/sarl/commit/b1f3c8520eee87f54f7f46b53b6bfd54c403af2c">1</a>, <a href="http://github.com/sarl/sarl/commit/0a62cdf1cf57f00a5956cd7816bc457af2e90f7b">2</a>, <a href="http://github.com/sarl/sarl/commit/0b602a1010dfa3584d7f599e59816af2f3abd4f3">3</a>): it is now possible to create overriding functions that may be invoked when the <code class="prettyprint">as</code> operator is used and the standard casting behavior cannot be applied. Several casting operations are predefined for convertings numbers and strings.</li>
-</ul></li>
-<li>Active Annotations:
-
-<ul>
-<li>Enable <a href="http://www.sarl.io/docs/official/reference/general/ActiveAnnotations.html">active annotations</a> on SARL type declarations. (<a href="http://github.com/sarl/sarl/commit/efc3585fd99efdaef708d25da3be4064714ce370">details</a>)</li>
-</ul></li>
-<li>References to <code class="prettyprint">it</code> into the closures/lambdas:
-
-<ul>
-<li>Bug fix: implicit references to <code class="prettyprint">it</code> into the closures are not causing serialisation issues, e.g. when the lambda is embedded into an event as the scope of this event. (<a href="http://github.com/sarl/sarl/commit/3095f04ed8a08747a29be0ccb04d53fb3b372949">details</a>)</li>
-<li>Bug fix: avoid infinite loop when searching for <code class="prettyprint">it</code> references into the lambda expressions (<a href="http://github.com/sarl/sarl/commit/9d4ea66ce5646b06bea4bb5e20fc7e028f42c399">details</a>).</li>
-</ul></li>
+  <li>Major upgrades:
+    <ul>
+      <li>Upgrade to Xtext 2.17.1 (<a href="http://github.com/sarl/sarl/commit/fa1771a8185ba35f4417a26b85e107d00a371c1b">1</a>, <a href="http://github.com/sarl/sarl/commit/f7343006b4694de8343543ff4d0df47a8c78f360">2</a>, <a href="http://github.com/sarl/sarl/commit/dee2fc05aba1512ba87628bcc11f6c31a3068d6c">3</a>). This version of Xtext provides better performances. It is also fixing issues related to the Xtext editor.</li>
+    </ul>
+  </li>
+  <li>Upgrade to Eclipse 2019-03 (<a href="http://github.com/sarl/sarl/commit/5c095d62a99ad3ae51a682b8af9dc6ad68f63372">details</a>). See <a href="#3_1_Multi_platform_Configurations">major implications of this upgrade</a>.</li>
+  <li>Operators:
+    <ul>
+      <li>Add overriding of the cast operator (<a href="http://github.com/sarl/sarl/commit/b1f3c8520eee87f54f7f46b53b6bfd54c403af2c">1</a>, <a href="http://github.com/sarl/sarl/commit/0a62cdf1cf57f00a5956cd7816bc457af2e90f7b">2</a>, <a href="http://github.com/sarl/sarl/commit/0b602a1010dfa3584d7f599e59816af2f3abd4f3">3</a>): it is now possible to create overriding functions that may be invoked when the <code>as</code> operator is used and the standard casting behavior cannot be applied. Several casting operations are predefined for convertings numbers and strings.</li>
+    </ul>
+  </li>
+  <li>Active Annotations:
+    <ul>
+      <li>Enable <a href="http://www.sarl.io/docs/official/reference/general/ActiveAnnotations.html">active annotations</a> on SARL type declarations. (<a href="http://github.com/sarl/sarl/commit/efc3585fd99efdaef708d25da3be4064714ce370">details</a>)</li>
+    </ul>
+  </li>
+  <li>References to <code>it</code> into the closures/lambdas:
+    <ul>
+      <li>Bug fix: implicit references to <code>it</code> into the closures are not causing serialisation issues, e.g. when the lambda is embedded into an event as the scope of this event. (<a href="http://github.com/sarl/sarl/commit/3095f04ed8a08747a29be0ccb04d53fb3b372949">details</a>)</li>
+      <li>Bug fix: avoid infinite loop when searching for <code>it</code> references into the lambda expressions (<a href="http://github.com/sarl/sarl/commit/9d4ea66ce5646b06bea4bb5e20fc7e028f42c399">details</a>).</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="1-2-sarl-validator">1.2. SARL Validator</h3>
+<h3 id="12-sarl-validator">1.2. SARL Validator</h3>
 
 <ul>
-<li>The validator warns only when a event firing declaration does not concern an early-exit event. (<a href="http://github.com/sarl/sarl/commit/cbf663090a7b4ef3828cfeb1d2c9aff549847177">details</a>)</li>
-<li>The warning &quot;unused function&quot; is not any more generated when a function is invoked with one of its arguments with a default values (<a href="http://github.com/sarl/sarl/commit/342b3f69efbaabc8edb8b927d6db693643de2287">details</a>).</li>
+  <li>The validator warns only when a event firing declaration does not concern an early-exit event. (<a href="http://github.com/sarl/sarl/commit/cbf663090a7b4ef3828cfeb1d2c9aff549847177">details</a>)</li>
+  <li>The warning “unused function” is not any more generated when a function is invoked with one of its arguments with a default values (<a href="http://github.com/sarl/sarl/commit/342b3f69efbaabc8edb8b927d6db693643de2287">details</a>).</li>
 </ul>
 
-<h3 id="1-3-java-model-inferrer">1.3. Java Model Inferrer</h3>
+<h3 id="13-java-model-inferrer">1.3. Java Model Inferrer</h3>
 
 <ul>
-<li>Avoid Java error when using <code class="prettyprint">it</code> variable into the serializable lambdas. (<a href="http://github.com/sarl/sarl/commit/885910369457d17f636ad74749001199dbd81863">details</a>)</li>
-<li>Make the generation of the type members faster. (<a href="http://github.com/sarl/sarl/commit/ebe9bb805a5e27e9ea805cdf798baf4327807dc3">details</a>)</li>
-<li>Ignoring files without Xtext content during the generation of the Java code (<a href="http://github.com/sarl/sarl/commit/4150202c493e00134e9de80ac13f0e0a4da52de7">details</a>).</li>
+  <li>Avoid Java error when using <code>it</code> variable into the serializable lambdas. (<a href="http://github.com/sarl/sarl/commit/885910369457d17f636ad74749001199dbd81863">details</a>)</li>
+  <li>Make the generation of the type members faster. (<a href="http://github.com/sarl/sarl/commit/ebe9bb805a5e27e9ea805cdf798baf4327807dc3">details</a>)</li>
+  <li>Ignoring files without Xtext content during the generation of the Java code (<a href="http://github.com/sarl/sarl/commit/4150202c493e00134e9de80ac13f0e0a4da52de7">details</a>).</li>
 </ul>
 
 <h2 id="2-sarl-development-toolkit-sdk">2. SARL Development Toolkit (SDK)</h2>
 
-<h3 id="2-1-new-features">2.1. New Features</h3>
+<h3 id="21-new-features">2.1. New Features</h3>
 
 <ul>
-<li>Add casting operators for:
-
-<ul>
-<li>strings and numbers (<a href="http://github.com/sarl/sarl/commit/c27aeb9ec853501cd890f744cc5c51163785fd82">details</a>).</li>
-<li>strings and booleans (<a href="http://github.com/sarl/sarl/commit/fce1b1afa9f1b76b706a48386ecc769786bcf977">details</a>).</li>
-<li>Big numbers (<a href="http://github.com/sarl/sarl/commit/2dc79846eff8a22ad7a99ed2eea3f01bcfd34100">details</a>).</li>
-</ul></li>
-<li>Bootstrap API:
-
-<ul>
-<li>add functions into the Bootstrap API (<a href="http://github.com/sarl/sarl/commit/64908d58e6d94426dff87ee4b9c53243069a6d13">details</a>): <code class="prettyprint">setSpecificContextUUID</code>, <code class="prettyprint">setUniverseContextUUID</code>, <code class="prettyprint">getUniverseContextUUID</code>, <code class="prettyprint">setUniverseSpaceUUID</code> and <code class="prettyprint">getUniverseSpaceUUID</code>.</li>
-<li>deprecate <code class="prettyprint">setDefaultContextUUID</code> (<a href="http://github.com/sarl/sarl/commit/85e1f21ec63fa3a383a5f50e27839191c547fc29">details</a>).</li>
-</ul></li>
+  <li>Add casting operators for:
+    <ul>
+      <li>strings and numbers (<a href="http://github.com/sarl/sarl/commit/c27aeb9ec853501cd890f744cc5c51163785fd82">details</a>).</li>
+      <li>strings and booleans (<a href="http://github.com/sarl/sarl/commit/fce1b1afa9f1b76b706a48386ecc769786bcf977">details</a>).</li>
+      <li>Big numbers (<a href="http://github.com/sarl/sarl/commit/2dc79846eff8a22ad7a99ed2eea3f01bcfd34100">details</a>).</li>
+    </ul>
+  </li>
+  <li>Bootstrap API:
+    <ul>
+      <li>add functions into the Bootstrap API (<a href="http://github.com/sarl/sarl/commit/64908d58e6d94426dff87ee4b9c53243069a6d13">details</a>): <code>setSpecificContextUUID</code>, <code>setUniverseContextUUID</code>, <code>getUniverseContextUUID</code>, <code>setUniverseSpaceUUID</code> and <code>getUniverseSpaceUUID</code>.</li>
+      <li>deprecate <code>setDefaultContextUUID</code> (<a href="http://github.com/sarl/sarl/commit/85e1f21ec63fa3a383a5f50e27839191c547fc29">details</a>).</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="2-2-time-extension">2.2. Time Extension</h3>
+<h3 id="22-time-extension">2.2. Time Extension</h3>
 
 <ul>
-<li>Replace the numeric constants into the inline expressions of the time extension by the corresponding static constants (<a href="http://github.com/sarl/sarl/commit/c13b9a022fb18a7c21628596d84ddf126b5fd5e5">details</a>).</li>
+  <li>Replace the numeric constants into the inline expressions of the time extension by the corresponding static constants (<a href="http://github.com/sarl/sarl/commit/c13b9a022fb18a7c21628596d84ddf126b5fd5e5">details</a>).</li>
 </ul>
 
 <h2 id="3-eclipse-product">3. Eclipse Product</h2>
 
-<h4 id="3-1-multi-platform-configurations">3.1. Multi-platform Configurations</h4>
+<h4 id="31-multi-platform-configurations">3.1. Multi-platform Configurations</h4>
 
 <ul>
-<li>Removing all the support for x86 architectures (<a href="http://github.com/sarl/sarl/commit/0b99ed715b6c1ed0e9da371e5601da1edf2b6564">details</a>). These architectures are not any more supported by the Eclipse framework. Consequently, these is not any more a SARL product for the 32-bit platforms.</li>
+  <li>Removing all the support for x86 architectures (<a href="http://github.com/sarl/sarl/commit/0b99ed715b6c1ed0e9da371e5601da1edf2b6564">details</a>). These architectures are not any more supported by the Eclipse framework. Consequently, these is not any more a SARL product for the 32-bit platforms.</li>
 </ul>
 
-<h4 id="3-2-ui-components">3.2. UI Components</h4>
+<h4 id="32-ui-components">3.2. UI Components</h4>
 
 <ul>
-<li>Add the action &quot;Convert to SARL Maven Project&quot; into the pop-up menu on a project (<a href="http://github.com/sarl/sarl/commit/8e7448a81c884101bf87c2bdaaca1221a04c33d4">details</a>). This option enables to convert a standard SARL project into its equivalent Maven SARL project.</li>
-<li>Do not display the editor&#39;s inconsistent state when the editor is dirty (<a href="http://github.com/sarl/sarl/commit/53f9864c122a3666add2368ebebb6dc1e892fe23">details</a>). This small update is a first answer to the old issue related to the inconsistent state of the editor comparing to the rest of the widgets (errors are appearing into the editor and not into the other widgets).</li>
+  <li>Add the action “Convert to SARL Maven Project” into the pop-up menu on a project (<a href="http://github.com/sarl/sarl/commit/8e7448a81c884101bf87c2bdaaca1221a04c33d4">details</a>). This option enables to convert a standard SARL project into its equivalent Maven SARL project.</li>
+  <li>Do not display the editor’s inconsistent state when the editor is dirty (<a href="http://github.com/sarl/sarl/commit/53f9864c122a3666add2368ebebb6dc1e892fe23">details</a>). This small update is a first answer to the old issue related to the inconsistent state of the editor comparing to the rest of the widgets (errors are appearing into the editor and not into the other widgets).</li>
 </ul>
 
 <h2 id="4-external-contributions-to-sarl-examples">4. External Contributions to SARL: Examples</h2>
 
 <ul>
-<li>Fixing the Sierpinski fractal demo in order to follow the recent evolution of the SARL syntax (<a href="http://github.com/sarl/sarl/commit/6aa7827592b3b701ba749bca2137021d0f98ff5b">details</a>).</li>
+  <li>Fixing the Sierpinski fractal demo in order to follow the recent evolution of the SARL syntax (<a href="http://github.com/sarl/sarl/commit/6aa7827592b3b701ba749bca2137021d0f98ff5b">details</a>).</li>
 </ul>
 
 <h2 id="5-janus-run-time-environment">5. Janus Run-time Environment</h2>
 
 <ul>
-<li>Allow cancellation of <a href="http://www.sarl.io/docs/api/io/sarl/core/AgentTask.html">scheduled tasks</a> before any future object is not provided by the Java thread manager (<a href="http://github.com/sarl/sarl/commit/bb9ad7a7bfa366aed1ff2dad802636f608529ebe">details</a>). The cancellation is buffered until the future object is provided by the Java thread manager. At this time the task is automatically cancelled.</li>
-<li>Upgrade to ZeroMQ 0.5.0 (<a href="http://github.com/sarl/sarl/commit/a3f39b3a7e707f7c8a5131137b89827cec2aec89">details</a>).</li>
-<li>Upgrade to Hazelcast 3.11.2 (<a href="http://github.com/sarl/sarl/commit/a3c191ee7a45ea0887c53cdadbde11c2103b0bb8">details</a>).</li>
+  <li>Allow cancellation of <a href="http://www.sarl.io/docs/api/io/sarl/core/AgentTask.html">scheduled tasks</a> before any future object is not provided by the Java thread manager (<a href="http://github.com/sarl/sarl/commit/bb9ad7a7bfa366aed1ff2dad802636f608529ebe">details</a>). The cancellation is buffered until the future object is provided by the Java thread manager. At this time the task is automatically cancelled.</li>
+  <li>Upgrade to ZeroMQ 0.5.0 (<a href="http://github.com/sarl/sarl/commit/a3f39b3a7e707f7c8a5131137b89827cec2aec89">details</a>).</li>
+  <li>Upgrade to Hazelcast 3.11.2 (<a href="http://github.com/sarl/sarl/commit/a3c191ee7a45ea0887c53cdadbde11c2103b0bb8">details</a>).</li>
 </ul>
 
 <h2 id="6-maven-tools">6. Maven Tools</h2>
 
 <ul>
-<li>The batch compiler must not fail when only warnings were found into the compiled SARL code (<a href="http://github.com/sarl/sarl/commit/a8877906d72e9db66f72f0732e2ec3ee4261fa34">details</a>).</li>
+  <li>The batch compiler must not fail when only warnings were found into the compiled SARL code (<a href="http://github.com/sarl/sarl/commit/a8877906d72e9db66f72f0732e2ec3ee4261fa34">details</a>).</li>
 </ul>
 
 <h2 id="7-sarl-documentation">7. SARL Documentation</h2>
 
-<h3 id="7-1-documentation-of-the-sarl-language">7.1. Documentation of the SARL Language</h3>
+<h3 id="71-documentation-of-the-sarl-language">7.1. Documentation of the SARL Language</h3>
 
 <ul>
-<li>Complete the documentation on the casting features (<a href="http://github.com/sarl/sarl/commit/11beddf779174efac40c635dcb0c20191ce67ec3">details</a>).</li>
+  <li>Complete the documentation on the casting features (<a href="http://github.com/sarl/sarl/commit/11beddf779174efac40c635dcb0c20191ce67ec3">details</a>).</li>
 </ul>
 
-<h3 id="7-2-faq">7.2. FAQ</h3>
+<h3 id="72-faq">7.2. FAQ</h3>
 
 <ul>
-<li>Add FAQ questions from the <a href="https://bitbucket.org/snippets/ssardina/9er67X">Sebastian Sardina&#39;s FAQ</a>. (<a href="http://github.com/sarl/sarl/commit/f883f0db7ed18ebee7f32e26c21b8b68e2621abd">details</a>)</li>
-<li>Add <a href="http://www.sarl.io/docs/official/faq/GeneralFAQ.html#3-1-is-it-possible-to-obtain-examples-of-sarl-code-for-applications">FAQ</a> for creating a project from a typical example of application (<a href="http://github.com/sarl/sarl/commit/71839d40192dfa52ba24c8736e44fd7b9f53a50b">details</a>).</li>
+  <li>Add FAQ questions from the <a href="https://bitbucket.org/snippets/ssardina/9er67X">Sebastian Sardina’s FAQ</a>. (<a href="http://github.com/sarl/sarl/commit/f883f0db7ed18ebee7f32e26c21b8b68e2621abd">details</a>)</li>
+  <li>Add <a href="http://www.sarl.io/docs/official/faq/GeneralFAQ.html#3-1-is-it-possible-to-obtain-examples-of-sarl-code-for-applications">FAQ</a> for creating a project from a typical example of application (<a href="http://github.com/sarl/sarl/commit/71839d40192dfa52ba24c8736e44fd7b9f53a50b">details</a>).</li>
 </ul>
 
-<h3 id="7-3-documentation-of-sarl-code">7.3. Documentation of SARL Code</h3>
+<h3 id="73-documentation-of-sarl-code">7.3. Documentation of SARL Code</h3>
 
 <ul>
-<li>Add a <a href="http://www.sarl.io/docs/official/tools/APIDocumentation.html">documentation</a> that explain how to create an API documentation for the SARL code, as Javadoc is doing for any Java code (<a href="http://github.com/sarl/sarl/commit/486e2aaf32489b0e35c0e83f5bdc70ad4109ec1e">details</a>).</li>
+  <li>Add a <a href="http://www.sarl.io/docs/official/tools/APIDocumentation.html">documentation</a> that explain how to create an API documentation for the SARL code, as Javadoc is doing for any Java code (<a href="http://github.com/sarl/sarl/commit/486e2aaf32489b0e35c0e83f5bdc70ad4109ec1e">details</a>).</li>
 </ul>
 
 <h2 id="8-tools-for-sarl-contributors">8. Tools for SARL Contributors</h2>
 
 <ul>
-<li>Removing support for x86 architectures because Eclipse 2019-03 is not any more supporting them (<a href="http://github.com/sarl/sarl/commit/0b99ed715b6c1ed0e9da371e5601da1edf2b6564">details</a>).</li>
-<li>Upgrade to Maven API 3.6.0 (<a href="http://github.com/sarl/sarl/commit/96b9fe6fb02b0f9428ea304c648e40329f0a7354">details</a>).</li>
-<li>Upgrade to Tycho 1.3.0 (<a href="http://github.com/sarl/sarl/commit/0ef376c0186caf22e71b2ff805d73da22740f292">1</a>, <a href="http://github.com/sarl/sarl/commit/f5feea06e8805df5af6fb3b54d5784a6a2c72dd0">2</a>). Add Tycho compiler options into the Maven pom file (<a href="http://github.com/sarl/sarl/commit/654e974d39f6ed27900adbbf7ad4852473069cb8">details</a>).</li>
-<li>Upgrade <a href="http://www.arakhne.org/afc/">Arakhne libraries</a> to version 15.2 (<a href="http://github.com/sarl/sarl/commit/514f0b52d1e73cbd900004d92f89a43db2d1d683">details</a>).</li>
-<li>In the massive testing API, replacing the hard-coded <code class="prettyprint">\n</code> by <code class="prettyprint">System.lineSeparator()</code> to avoid errors on Windows (<a href="http://github.com/sarl/sarl/commit/ba4e280359a862521bf64fefbcbb2410f79f48c5">details</a>).</li>
-<li>Removing reference to <code class="prettyprint">org.eclipse.equinox.ds</code>, and replacing it by `org.apache.felix.scr (<a href="http://github.com/sarl/sarl/commit/b2378435efc3841f8c88519cfa12deebb5eba19c">details</a>).</li>
+  <li>Removing support for x86 architectures because Eclipse 2019-03 is not any more supporting them (<a href="http://github.com/sarl/sarl/commit/0b99ed715b6c1ed0e9da371e5601da1edf2b6564">details</a>).</li>
+  <li>Upgrade to Maven API 3.6.0 (<a href="http://github.com/sarl/sarl/commit/96b9fe6fb02b0f9428ea304c648e40329f0a7354">details</a>).</li>
+  <li>Upgrade to Tycho 1.3.0 (<a href="http://github.com/sarl/sarl/commit/0ef376c0186caf22e71b2ff805d73da22740f292">1</a>, <a href="http://github.com/sarl/sarl/commit/f5feea06e8805df5af6fb3b54d5784a6a2c72dd0">2</a>). Add Tycho compiler options into the Maven pom file (<a href="http://github.com/sarl/sarl/commit/654e974d39f6ed27900adbbf7ad4852473069cb8">details</a>).</li>
+  <li>Upgrade <a href="http://www.arakhne.org/afc/">Arakhne libraries</a> to version 15.2 (<a href="http://github.com/sarl/sarl/commit/514f0b52d1e73cbd900004d92f89a43db2d1d683">details</a>).</li>
+  <li>In the massive testing API, replacing the hard-coded <code>\n</code> by <code>System.lineSeparator()</code> to avoid errors on Windows (<a href="http://github.com/sarl/sarl/commit/ba4e280359a862521bf64fefbcbb2410f79f48c5">details</a>).</li>
+  <li>Removing reference to <code>org.eclipse.equinox.ds</code>, and replacing it by `org.apache.felix.scr (<a href="http://github.com/sarl/sarl/commit/b2378435efc3841f8c88519cfa12deebb5eba19c">details</a>).</li>
 </ul>
 
 <h2 id="9-changes-in-the-previous-versions">9. Changes in the Previous Versions</h2>
 
 <ul>
-<li><a href="./changes_0.8.6.html">Changes in the version 0.8.6</a></li>
+  <li><a href="./changes_0.8.6.html">Changes in the version 0.8.6</a></li>
 </ul>
+
 
     </div> <!-- /default layout container -->
 
@@ -246,6 +247,11 @@ Considering the variety of existing approaches and meta-models in the field of a
 		  <li>
 			<a href="../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

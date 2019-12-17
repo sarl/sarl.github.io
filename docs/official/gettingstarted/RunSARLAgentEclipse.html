@@ -75,8 +75,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-3-add-the-janus-runtime-environment">1.3. Add the Janus runtime environment</a></li>
   <li><a href="#1-4-give-parameters-to-the-agent">1.4. Give parameters to the Agent</a></li>
 </ul>
-
-<p><li><a href="#2-create-a-java-launch-configuration">2. Create a Java Launch Configuration</a></li>
+<li><a href="#2-create-a-java-launch-configuration">2. Create a Java Launch Configuration</a></li>
 <ul>
   <li><a href="#2-1-create-a-java-application-configuration">2.1. Create a Java application configuration</a></li>
   <li><a href="#2-2-add-the-janus-runtime-environment">2.2. Add the Janus runtime environment</a></li>
@@ -85,10 +84,10 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#2-5-give-parameters-to-the-agent">2.5. Give parameters to the Agent</a></li>
 </ul>
 <li><a href="#3-retrieve-the-command-line-parameters-in-the-agent">3. Retrieve the Command Line Parameters in the Agent</a></li>
-<li><a href="#4-what-s-next">4. What&#39;s next?</a></li>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li></p>
+<li><a href="#4-what-s-next">4. What's next?</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>For running an agent, you must launch this agent on the runtime environment.
 In this document, we assume that the runtime environment is the <a href="http://www.janusproject.io">Janus platform</a>.</p>
@@ -96,30 +95,30 @@ In this document, we assume that the runtime environment is the <a href="http://
 <p>Two major methods are available for launching a SARL application inside the SARL Eclipse IDE:</p>
 
 <ul>
-<li>Use a <a href="#1-create-a-sarl-launch-configuration">SARL launch configuration</a>.</li>
-<li>Use a <a href="#2-create-a-java-launch-configuration">Java launch configuration</a>.</li>
+  <li>Use a <a href="#1-create-a-sarl-launch-configuration">SARL launch configuration</a>.</li>
+  <li>Use a <a href="#2-create-a-java-launch-configuration">Java launch configuration</a>.</li>
 </ul>
 
 <p>The SARL launch configuration is recommended.</p>
 
-<h2 id="1-create-a-sarl-launch-configuration">1. Create a SARL Launch Configuration</h2>
+<p>##1. Create a SARL Launch Configuration</p>
 
 <p>For launching the SARL agents on the runtime environment inside the SARL Eclipse IDE, you must
 define a <em>Run Configuration</em>.</p>
 
-<p><veryimportant>If your project is Maven-based, you could not use this method for launching your
-application. You must use the <a href="#2-create-a-java-launch-configuration">Java launch configuration</a>.</veryimportant></p>
+<veryimportant>If your project is Maven-based, you could not use this method for launching your
+application. You must use the [Java launch configuration](#2-create-a-java-launch-configuration).</veryimportant>
 
-<h3 id="1-1-create-a-java-application-configuration">1.1. Create a Java application configuration</h3>
+<p>###1.1. Create a Java application configuration</p>
 
 <p>Open the run configuration dialog box by selecting <strong>Run &gt; Run Configurations</strong>, and create a new SARL
 application. You obtain a page similar to:</p>
 
-<p><img src="./EclipseRunConfiguration_0_0.png" alt="SARL Application"></p>
+<p><img src="./EclipseRunConfiguration_0_0.png" alt="SARL Application" /></p>
 
 <p>Change the <em>name</em> of the run configuration, and select the <em>project</em>, which is containing your agent.</p>
 
-<h3 id="1-2-specify-the-agent-to-execute">1.2. Specify the agent to execute</h3>
+<p>###1.2. Specify the agent to execute</p>
 
 <p>The second step is the specification of the agent to launch.
 Keep in mind that you can only give one start-up agent to 
@@ -128,42 +127,42 @@ specified start-up agent.</p>
 
 <p>The start-up agent is given in the <em>Agent qualified name</em> field of
 the <em>Main</em> tab. You must enter the fully qualified name
-of the agent that must be launched. </p>
+of the agent that must be launched.</p>
 
-<p><img src="./EclipseRunConfiguration_0_1.png" alt="Agent to Launch"></p>
+<p><img src="./EclipseRunConfiguration_0_1.png" alt="Agent to Launch" /></p>
 
 <p>At the bottom of this page, you may change configuration options for the runtime environment.</p>
 
-<h3 id="1-3-add-the-janus-runtime-environment">1.3. Add the Janus runtime environment</h3>
+<p>###1.3. Add the Janus runtime environment</p>
 
 <p>For running your agent, you must specify a SARL runtime environment.
 In this tutorial, we assume that you want to use the <a href="http://www.janusproject.io">Janus platform</a>.</p>
 
-<p>If you don&#39;t want to use the Janus platform, you must download the
+<p>If you don’t want to use the Janus platform, you must download the
 runtime environment that you want to use, and install it in the SARL Eclipse environment as follow.
 You add a <strong>SARL runtime environment</strong> (or SRE) in
 the <em>Runtime environment</em> tab. You should click on the <strong>Installed SREs</strong> button for
 managing the installed runtime environments (or open the corresponding preference page).
-After adding the SRE&#39;s JAR file, you obtain a dialog box similar to:</p>
+After adding the SRE’s JAR file, you obtain a dialog box similar to:</p>
 
-<p><img src="./EclipseRunConfiguration_0_2.png" alt="Add Janus"></p>
+<p><img src="./EclipseRunConfiguration_0_2.png" alt="Add Janus" /></p>
 
-<h3 id="1-4-give-parameters-to-the-agent">1.4. Give parameters to the Agent</h3>
+<p>###1.4. Give parameters to the Agent</p>
 
 <p>It is possible to give arguments to the launched agent.
 Indeed, all the arguments given as program arguments
-are put in the <code class="prettyprint">parameters</code> attribute of the <code class="prettyprint">Initialize</code> event.
+are put in the <code>parameters</code> attribute of the <code>Initialize</code> event.
 This event is fired when the launched agent is started.</p>
 
-<p>The following example gives the values <code class="prettyprint">FirstArgument</code> and
-<code class="prettyprint">SecondArgument</code> to the launched agent:</p>
+<p>The following example gives the values <code>FirstArgument</code> and
+<code>SecondArgument</code> to the launched agent:</p>
 
-<p><img src="./EclipseRunConfiguration_0_3.png" alt="Program Arguments"></p>
+<p><img src="./EclipseRunConfiguration_0_3.png" alt="Program Arguments" /></p>
 
 <p>On this page, you could also specify the parameters to give to the SARL runtime environment or
 to the Java virtual machine.</p>
 
-<h2 id="2-create-a-java-launch-configuration">2. Create a Java Launch Configuration</h2>
+<p>##2. Create a Java Launch Configuration</p>
 
 <p>For launching the SARL agents on the Janus runtime environment inside
 the Eclipse IDE, you must define a <em>Run Configuration</em>.</p>
@@ -171,37 +170,37 @@ the Eclipse IDE, you must define a <em>Run Configuration</em>.</p>
 <p>This section is dedicated to the definition of a launcher for Java application (the standard and classical
 launching configuration in the Eclipse community).</p>
 
-<h3 id="2-1-create-a-java-application-configuration">2.1. Create a Java application configuration</h3>
+<p>###2.1. Create a Java application configuration</p>
 
 <p>Open the run configuration dialog box by selecting <strong>Run &gt; Run Configurations</strong>, and create a new Java
 Application. You obtain a page similar to:</p>
 
-<p><img src="./EclipseRunConfiguration_1_0.png" alt="Java Application"></p>
+<p><img src="./EclipseRunConfiguration_1_0.png" alt="Java Application" /></p>
 
 <p>Change the <em>name</em> of the run configuration, and select the <em>project</em>, which is containing your agent.</p>
 
-<h3 id="2-2-add-the-janus-runtime-environment">2.2. Add the Janus runtime environment</h3>
+<p>###2.2. Add the Janus runtime environment</p>
 
 <p>For running your agent with the Janus runtime environment, you must add the Janus library in the class path.</p>
 
 <p>For adding the Janus library, select the <strong>Classpath</strong> tab, and <strong>User Entries</strong>.
 Click on the <strong>Advanced</strong> button. You will be able to select the type of classpath
-entry to add. Select &quot;Add Library&quot;. </p>
+entry to add. Select “Add Library”.</p>
 
-<p><img src="./EclipseRunConfiguration_1_1.png" alt="Add Library in the classpath"></p>
+<p><img src="./EclipseRunConfiguration_1_1.png" alt="Add Library in the classpath" /></p>
 
-<p>Then, you are able to select the library for the Janus runtime environment. </p>
+<p>Then, you are able to select the library for the Janus runtime environment.</p>
 
-<p><img src="./EclipseRunConfiguration_1_2.png" alt="Add Janus Library"></p>
+<p><img src="./EclipseRunConfiguration_1_2.png" alt="Add Janus Library" /></p>
 
-<h3 id="2-3-specify-the-janus-boot-agent">2.3. Specify the Janus Boot agent</h3>
+<p>###2.3. Specify the Janus Boot agent</p>
 
 <p>You can go back to the <em>Main</em> tab, and enter the <em>Main class</em>.
-The main class <strong>must always be</strong> <code class="prettyprint">io.janusproject.Boot</code>.</p>
+The main class <strong>must always be</strong> <code>io.janusproject.Boot</code>.</p>
 
-<p><img src="./EclipseRunConfiguration_1_3.png" alt="Janus Boot Class"></p>
+<p><img src="./EclipseRunConfiguration_1_3.png" alt="Janus Boot Class" /></p>
 
-<h3 id="2-4-specify-the-agent-to-execute">2.4. Specify the agent to execute</h3>
+<p>###2.4. Specify the agent to execute</p>
 
 <p>The last step is the specification of the agent to launch.
 Keep in mind that you can give to the Janus runtime environment
@@ -210,56 +209,58 @@ specified start-up agent.</p>
 
 <p>The start-up agent is given in the <em>Program arguments</em> field of
 the <em>Arguments</em> tab. You must enter the fully qualified name
-of the agent that must be launched. </p>
+of the agent that must be launched.</p>
 
-<p><img src="./EclipseRunConfiguration_1_4.png" alt="Agent to Launch"></p>
+<p><img src="./EclipseRunConfiguration_1_4.png" alt="Agent to Launch" /></p>
 
-<h3 id="2-5-give-parameters-to-the-agent">2.5. Give parameters to the Agent</h3>
+<p>###2.5. Give parameters to the Agent</p>
 
 <p>It is possible to give arguments to the launched agent.
 Indeed, all the arguments given as program arguments
-are put in the <code class="prettyprint">parameters</code> attribute of the <code class="prettyprint">Initialize</code> event.
+are put in the <code>parameters</code> attribute of the <code>Initialize</code> event.
 This event is fired when the launched agent is started.</p>
 
-<p>The following example gives the values <code class="prettyprint">FirstParam</code> and
-<code class="prettyprint">SecondParam</code> to the launched agent:</p>
+<p>The following example gives the values <code>FirstParam</code> and
+<code>SecondParam</code> to the launched agent:</p>
 
-<p><img src="./EclipseRunConfiguration_1_5.png" alt="Program Arguments"></p>
+<p><img src="./EclipseRunConfiguration_1_5.png" alt="Program Arguments" /></p>
 
-<h2 id="3-retrieve-the-command-line-parameters-in-the-agent">3. Retrieve the Command Line Parameters in the Agent</h2>
+<p>##3. Retrieve the Command Line Parameters in the Agent</p>
 
-<p>For retrieving the values passed on the command line, you must handle the <code class="prettyprint">Initialize</code> event, as illustrated
+<p>For retrieving the values passed on the command line, you must handle the <code>Initialize</code> event, as illustrated
 by the following example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">MyAgent</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Logging</span>
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">println</span><span class="o">(</span><span class="s">&quot;Command line parameters: &quot;</span> <span class="o">+</span> <span class="kc">occurrence</span><span class="o">.</span><span class="n">parameters</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-whats-next">4. What&#39;s next?</h2>
+
+<pre><code class="language-sarl">agent MyAgent {
+	uses Logging
+	on Initialize {
+		println("Command line parameters: " + occurrence.parameters)
+	}
+}
+</code></pre>
+
+<p>##4. What’s next?</p>
 
 <p>In the next section, we will learn how to launch your SARL project from the command line.</p>
 
 <p><a href="./RunSARLAgentCLI.html">Next&gt;</a></p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<p>##5. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -299,6 +300,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

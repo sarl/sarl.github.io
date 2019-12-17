@@ -79,16 +79,15 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-7-generate-code-from-java-type">1.7. Generate code from Java type</a></li>
   <li><a href="#1-8-generating-an-outline">1.8. Generating an Outline</a></li>
 </ul>
-
-<p><li><a href="#2-syntax-extensions">2. Syntax Extensions</a></li>
+<li><a href="#2-syntax-extensions">2. Syntax Extensions</a></li>
 <ul>
   <li><a href="#2-1-changing-the-characters-for-enclosing-the-macro-parameter">2.1. Changing the characters for enclosing the macro parameter</a></li>
   <li><a href="#2-2-comments-in-the-file">2.2. Comments in the file</a></li>
 </ul>
 <li><a href="#3-maven-tool-for-generating-the-documentation">3. Maven Tool for Generating the Documentation</a></li>
-<li><a href="#4-legal-notice">4. Legal Notice</a></li></p>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li>
 
-<p></ul></p>
+</ul>
 
 <p>The SARL documentation is built from a collection of <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> files that may contain
 additional macros in order to validate the content of the documentation.</p>
@@ -96,205 +95,225 @@ additional macros in order to validate the content of the documentation.</p>
 <p>The Mardown support is extended in order to:</p>
 
 <ol>
-<li>check if a SARL code is compiling or not;</li>
-<li>check if SARL expression could be interpreted to a valid value;</li>
-<li>copy and paste virtually pieces of SARL code into the text;</li>
-<li>check if the links are pointing to existing local files;</li>
-<li>check if the reference to the local images are pointing to existing files.</li>
+  <li>check if a SARL code is compiling or not;</li>
+  <li>check if SARL expression could be interpreted to a valid value;</li>
+  <li>copy and paste virtually pieces of SARL code into the text;</li>
+  <li>check if the links are pointing to existing local files;</li>
+  <li>check if the reference to the local images are pointing to existing files.</li>
 </ol>
 
-<h2 id="1-extra-macros">1. Extra Macros</h2>
+<p>##1. Extra Macros</p>
 
-<h3 id="1-1-compile-a-sarl-code-with-success">1.1. Compile a SARL code with success</h3>
+<p>###1.1. Compile a SARL code with success</p>
 
-<p>For compiling a SARL code, and failing the validation if it cannot be compiled with success, you may use the <code class="prettyprint">Success</code> macro:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Success:]
-    type your SARL code here.
+<p>For compiling a SARL code, and failing the validation if it cannot be compiled with success, you may use the <code>Success</code> macro:</p>
+
+<pre><code class="language-text">[:Success:]
+	type your SARL code here.
 [:End:]
-</code></pre></div>
-<p>Any piece of text in this macro, i.e. between <code class="prettyprint">Success</code> and <code class="prettyprint">End</code> is assumed to be a SARL code, except the other macros
+</code></pre>
+
+<p>Any piece of text in this macro, i.e. between <code>Success</code> and <code>End</code> is assumed to be a SARL code, except the other macros
 explained in this documentation.</p>
 
 <p>The SARL code inside this macro is not rendered into the final Markdown document.
-If you want to render a part of the code, you should use the <code class="prettyprint">On</code> macro (see below).</p>
+If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
 
-<h3 id="1-2-compile-a-sarl-code-with-expected-errors">1.2. Compile a SARL code with expected errors</h3>
+<p>###1.2. Compile a SARL code with expected errors</p>
 
-<p>For compiling a SARL code, and failing the validation if it can be compiled with success, you may use the <code class="prettyprint">Failure</code> macro:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Failure:]
-    type your SARL code here.
+<p>For compiling a SARL code, and failing the validation if it can be compiled with success, you may use the <code>Failure</code> macro:</p>
+
+<pre><code class="language-text">[:Failure:]
+	type your SARL code here.
 [:End:]
-</code></pre></div>
-<p>Any piece of text in this macro, i.e. between <code class="prettyprint">Success</code> and <code class="prettyprint">End</code>  is assumed to be a SARL code, except the other macros
+</code></pre>
+
+<p>Any piece of text in this macro, i.e. between <code>Success</code> and <code>End</code>  is assumed to be a SARL code, except the other macros
 explained in this documentation.</p>
 
 <p>The SARL code inside this macro is not rendered into the final Markdown document.
-If you want to render a part of the code, you should use the <code class="prettyprint">On</code> macro (see below).</p>
+If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
 
-<h3 id="1-3-changing-the-visibility-of-the-sarl-code">1.3. Changing the visibility of the SARL code</h3>
+<p>###1.3. Changing the visibility of the SARL code</p>
 
-<p>With two previous macros, i.e. <code class="prettyprint">Success</code> and <code class="prettyprint">Failure</code>, the SARL code is not put into the final Markdown document by default.
-In order to output a part of the SARL code, you should manually turn on the rendering of the code with the <code class="prettyprint">On</code> macro.
-Turning off the visibility flag could be done with the <code class="prettyprint">Off</code> macro.</p>
+<p>With two previous macros, i.e. <code>Success</code> and <code>Failure</code>, the SARL code is not put into the final Markdown document by default.
+In order to output a part of the SARL code, you should manually turn on the rendering of the code with the <code>On</code> macro.
+Turning off the visibility flag could be done with the <code>Off</code> macro.</p>
 
-<p>The following example gives you the general syntax of the two macros: </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Success:]
-    this part of the code is invisible
-    [:On]
-    this part of the code is visible
-    [:Off]
-    this part of the code is invisible again 
+<p>The following example gives you the general syntax of the two macros:</p>
+
+<pre><code class="language-text">[:Success:]
+	this part of the code is invisible
+	[:On]
+	this part of the code is visible
+	[:Off]
+	this part of the code is invisible again 
 [:End:] 
-</code></pre></div>
-<h3 id="1-4-evaluating-a-sarl-expression">1.4. Evaluating a SARL expression</h3>
+</code></pre>
 
-<p>Several validation may need to interpret and evaluate a SARL expression. The <code class="prettyprint">Fact</code> macro takes a parameter that is a valid SARL
+<p>###1.4. Evaluating a SARL expression</p>
+
+<p>Several validation may need to interpret and evaluate a SARL expression. The <code>Fact</code> macro takes a parameter that is a valid SARL
 expression. This expression is interpreted and the result is evaluated.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Fact:](expression)
-</code></pre></div>
-<p>The <code class="prettyprint">Fact</code> macro is succeeding is the expression is evaluated to:</p>
+
+<pre><code class="language-text">[:Fact:](expression)
+</code></pre>
+
+<p>The <code>Fact</code> macro is succeeding is the expression is evaluated to:</p>
 
 <ol>
-<li>a boolean value that is equal to <code class="prettyprint">true</code>, or</li>
-<li>an object instance that is not <code class="prettyprint">null</code>.</li>
+  <li>a boolean value that is equal to <code>true</code>, or</li>
+  <li>an object instance that is not <code>null</code>.</li>
 </ol>
 
-<h3 id="1-5-capture-sarl-code-into-the-documentation">1.5. Capture SARL code into the documentation</h3>
+<p>###1.5. Capture SARL code into the documentation</p>
 
 <p>Many times, a part of the SARL code is mentionned in the documentation text. In order to have the same value in
 the code itself and in the documentation text, you could use the copying and referencing macros.</p>
 
-<p>For saving a piece of the SARL code, you should use the macro <code class="prettyprint">[:id](value)</code>, where
-<code class="prettyprint">id</code> is a name that you should give to the saved value (only alphnumerical and dot characters are allowed).
-The <code class="prettyprint">value</code> is the text to capture.</p>
+<p>For saving a piece of the SARL code, you should use the macro <code>[:id](value)</code>, where
+<code>id</code> is a name that you should give to the saved value (only alphnumerical and dot characters are allowed).
+The <code>value</code> is the text to capture.</p>
 
-<p>For putting back in the text the captured text, you should use the macro <code class="prettyprint">[:id:]</code>, with
-the <code class="prettyprint">id</code> is the name of the captured value. This macro put the saved text inside a Markdown code environment.</p>
+<p>For putting back in the text the captured text, you should use the macro <code>[:id:]</code>, with
+the <code>id</code> is the name of the captured value. This macro put the saved text inside a Markdown code environment.</p>
 
-<p>If the given <code class="prettyprint">id</code> is not associated to a captured value, the parser will search for an environment property that has its name
-equals to the <code class="prettyprint">id</code>.</p>
+<p>If the given <code>id</code> is not associated to a captured value, the parser will search for an environment property that has its name
+equals to the <code>id</code>.</p>
 
 <p>If you want to avoid the generation of a Markdown block around the captured text, you should use the syntax:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:my.id.without.code.block!]
-</code></pre></div>
+
+<pre><code class="language-text">[:my.id.without.code.block!]
+</code></pre>
+
 <p>This protection is implicit in the parameters and the content of the other macros that are described on this page.</p>
 
-<h3 id="1-6-dynamic-generation-of-the-markdown-text">1.6. Dynamic generation of the Markdown text</h3>
+<p>###1.6. Dynamic generation of the Markdown text</p>
 
 <p>Sometimes, it is useful to create the Markdown text via a script in order to introduce dynamic building of the documentation.
 The following macro provides you the ability to run a SARL script for generating the documentation.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Dynamic:](expression)
-</code></pre></div>
-<p>The <code class="prettyprint">Dynamic</code> macro is supposed to replies a value that could be interpreted as a string of characters.
-The given string of characters will replace the <code class="prettyprint">Dynamic</code> macro into the generated Markdown text.</p>
 
-<p>The replied value by <code class="prettyprint">Dynamic</code> is assumed to be a valid Markdown text. If this value should
-be automatically formatted within a block of code, you should use the following macro: </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:DynamicCode:](expression)
-</code></pre></div>
-<h3 id="1-7-generate-code-from-java-type">1.7. Generate code from Java type</h3>
+<pre><code class="language-text">[:Dynamic:](expression)
+</code></pre>
+
+<p>The <code>Dynamic</code> macro is supposed to replies a value that could be interpreted as a string of characters.
+The given string of characters will replace the <code>Dynamic</code> macro into the generated Markdown text.</p>
+
+<p>The replied value by <code>Dynamic</code> is assumed to be a valid Markdown text. If this value should
+be automatically formatted within a block of code, you should use the following macro:</p>
+
+<pre><code class="language-text">[:DynamicCode:](expression)
+</code></pre>
+
+<p>###1.7. Generate code from Java type</p>
 
 <p>You could generate a piece of code from a Java type with the following macro:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:ShowType:](typename)
-</code></pre></div>
-<p>This macro extracts the type definition with the reflection mechanism for the given <code class="prettyprint">typename</code>.
+
+<pre><code class="language-text">[:ShowType:](typename)
+</code></pre>
+
+<p>This macro extracts the type definition with the reflection mechanism for the given <code>typename</code>.
 The output of this macro is a formatted SARL code that corresponds to the extracted information.</p>
 
-<h3 id="1-8-generating-an-outline">1.8. Generating an Outline</h3>
+<p>###1.8. Generating an Outline</p>
 
 <p>By default, Markdown does not include a specific tag for generating the outline.
-If you put the <code class="prettyprint">Outline</code> macro, it will be replaced by a generated outline.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[:Outline:]
-</code></pre></div>
+If you put the <code>Outline</code> macro, it will be replaced by a generated outline.</p>
+
+<pre><code class="language-text">[:Outline:]
+</code></pre>
+
 <p>The section headings will be updating with a section number.</p>
 
-<h2 id="2-syntax-extensions">2. Syntax Extensions</h2>
+<p>##2. Syntax Extensions</p>
 
-<h3 id="2-1-changing-the-characters-for-enclosing-the-macro-parameter">2.1. Changing the characters for enclosing the macro parameter</h3>
+<p>###2.1. Changing the characters for enclosing the macro parameter</p>
 
-<p>Several of the macros above take a parameter. Sometimes the characters <code class="prettyprint">(</code> and <code class="prettyprint">)</code> are not suitable for enclosing a parameter
-value because the <code class="prettyprint">)</code> character is inside the value.</p>
+<p>Several of the macros above take a parameter. Sometimes the characters <code>(</code> and <code>)</code> are not suitable for enclosing a parameter
+value because the <code>)</code> character is inside the value.</p>
 
 <p>In order to enable you to put a special character in a parameter value, you are able to change the characters for enclosing
 the parameter values. The accepted characters are:</p>
 
 <ul>
-<li><code class="prettyprint">( value )</code></li>
-<li><code class="prettyprint">{ value }</code></li>
-<li><code class="prettyprint">| value |</code></li>
-<li><code class="prettyprint">$ value $</code></li>
+  <li><code>( value )</code></li>
+  <li><code>{ value }</code></li>
+  <li><code>| value |</code></li>
+  <li><code>$ value $</code></li>
 </ul>
 
-<h3 id="2-2-comments-in-the-file">2.2. Comments in the file</h3>
+<p>###2.2. Comments in the file</p>
 
-<p>Any text enclosing by <code class="prettyprint">&amp;lt;!---</code> and <code class="prettyprint">--&amp;gt;</code> is assumed to be a comment that should not appear in the generated files.</p>
+<p>Any text enclosing by <code>&amp;lt;!---</code> and <code>--&amp;gt;</code> is assumed to be a comment that should not appear in the generated files.</p>
 
 <p>Note that the standard HTML comments are still copied into the generated files.</p>
 
-<h2 id="3-maven-tool-for-generating-the-documentation">3. Maven Tool for Generating the Documentation</h2>
+<p>##3. Maven Tool for Generating the Documentation</p>
 
 <p>The parser that is supporting the macros above is provided in a Maven plugin. You may create a Maven project with the following
 configuration:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
-    <span class="nt">&lt;dependency&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>io.sarl.maven.docs.testing<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;/dependencies&gt;</span>
 
-<span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>io.sarl.maven<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>io.sarl.maven.docs.generator<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
-            <span class="nt">&lt;executions&gt;</span>
-                <span class="nt">&lt;execution&gt;</span>
-                    <span class="nt">&lt;id&gt;</span>mytests-initialize<span class="nt">&lt;/id&gt;</span>
-                    <span class="nt">&lt;goals&gt;</span>
-                        <span class="nt">&lt;goal&gt;</span>initialize<span class="nt">&lt;/goal&gt;</span>
-                    <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;phase&gt;</span>initialize<span class="nt">&lt;/phase&gt;</span>
-                <span class="nt">&lt;/execution&gt;</span>
-                <span class="nt">&lt;execution&gt;</span>
-                    <span class="nt">&lt;id&gt;</span>mytests-generate<span class="nt">&lt;/id&gt;</span>
-                    <span class="nt">&lt;goals&gt;</span>
-                        <span class="nt">&lt;goal&gt;</span>generate<span class="nt">&lt;/goal&gt;</span>
-                    <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;phase&gt;</span>compile<span class="nt">&lt;/phase&gt;</span>
-                <span class="nt">&lt;/execution&gt;</span>
-                <span class="nt">&lt;execution&gt;</span>
-                    <span class="nt">&lt;id&gt;</span>mytests-validate<span class="nt">&lt;/id&gt;</span>
-                    <span class="nt">&lt;goals&gt;</span>
-                        <span class="nt">&lt;goal&gt;</span>generatetests<span class="nt">&lt;/goal&gt;</span>
-                    <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;phase&gt;</span>generate-test-sources<span class="nt">&lt;/phase&gt;</span>
-                <span class="nt">&lt;/execution&gt;</span>
-            <span class="nt">&lt;/executions&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-<span class="nt">&lt;/build&gt;</span>
-</code></pre></div>
-<p>By default, the Markdown code should be in the <code class="prettyprint">src/main/documentation</code> folder.
-The other resources, such as images should be in the <code class="prettyprint">src/main/resources</code> folder.</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
+		&lt;artifactId&gt;io.sarl.maven.docs.testing&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
 
-<h2 id="4-legal-notice">4. Legal Notice</h2>
+&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
+			&lt;artifactId&gt;io.sarl.maven.docs.generator&lt;/artifactId&gt;
+			&lt;extensions&gt;true&lt;/extensions&gt;
+			&lt;executions&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-initialize&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;initialize&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;initialize&lt;/phase&gt;
+				&lt;/execution&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-generate&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;generate&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;compile&lt;/phase&gt;
+				&lt;/execution&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-validate&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;generatetests&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;generate-test-sources&lt;/phase&gt;
+				&lt;/execution&gt;
+			&lt;/executions&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>By default, the Markdown code should be in the <code>src/main/documentation</code> folder.
+The other resources, such as images should be in the <code>src/main/resources</code> folder.</p>
+
+<p>##4. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -334,6 +353,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

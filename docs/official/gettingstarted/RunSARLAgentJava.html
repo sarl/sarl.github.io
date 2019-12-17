@@ -80,9 +80,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 This document explains how to launch an agent on any SARL Run-time Environment (SRE)
 from a Java program.</p>
 
-<p>The default SRE is the <a href="http://www.janusproject.io">Janus platform</a>. </p>
+<p>The default SRE is the <a href="http://www.janusproject.io">Janus platform</a>.</p>
 
-<h2 id="1-definition-of-the-sre-bootstrap">1. Definition of the SRE Bootstrap</h2>
+<p>##1. Definition of the SRE Bootstrap</p>
 
 <p>In the SARL API, a bootstrap is definition is provided.
 It represents an access point to the SRE from any program.
@@ -93,136 +93,147 @@ forcing you to add an explicit dependency to the SRE Library, e.g. Janus, into y
 application classpath.</p>
 
 <p>The SARL API defines a SRE bootstrap as:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">interface</span> <span class="nc">SREBootstrap</span> <span class="o">{</span>
-    <span class="kd">def</span> <span class="n">getBootAgentIdentifier</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="n">getKernelLogger</span> <span class="o">:</span> <span class="n">Logger</span>
-    <span class="kd">def</span> <span class="nf">getService</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;)</span> <span class="o">:</span> <span class="n">Object</span>
-    <span class="kd">def</span> <span class="n">getUniverseContextUUID</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="n">getUniverseSpaceUUID</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="n">isActive</span> <span class="o">:</span> <span class="kt">boolean</span>
-    <span class="kd">def</span> <span class="n">isRunning</span> <span class="o">:</span> <span class="kt">boolean</span>
-    <span class="kd">def</span> <span class="n">setBootAgentTypeContextUUID</span>
-    <span class="kd">def</span> <span class="nf">setOffline</span><span class="o">(</span><span class="kt">boolean</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="n">setRandomContextUUID</span>
-    <span class="kd">def</span> <span class="n">setSpecificContextUUID</span>
-    <span class="kd">def</span> <span class="nf">setUniverseContextUUID</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="nf">setUniverseSpaceUUID</span><span class="o">(</span><span class="n">UUID</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="nf">setVerboseLevel</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="n">shutdown</span>
-    <span class="kd">def</span> <span class="nf">shutdown</span><span class="o">(</span><span class="kt">boolean</span><span class="o">)</span>
-    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">UUID</span>
-    <span class="kd">def</span> <span class="nf">startAgent</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">Object</span><span class="o">[])</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-    <span class="kd">def</span> <span class="nf">startAgentWithID</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">UUID</span><span class="o">,</span> <span class="n">Object</span><span class="o">[])</span>
-    <span class="kd">def</span> <span class="n">startWithoutAgent</span> <span class="o">:</span> <span class="n">AgentContext</span>
-<span class="o">}</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">interface SREBootstrap {
+	def getBootAgentIdentifier : UUID
+	def getKernelLogger : Logger
+	def getService(Class&lt;Object&gt;) : Object
+	def getUniverseContextUUID : UUID
+	def getUniverseSpaceUUID : UUID
+	def isActive : boolean
+	def isRunning : boolean
+	def setBootAgentTypeContextUUID
+	def setOffline(boolean)
+	def setRandomContextUUID
+	def setSpecificContextUUID
+	def setUniverseContextUUID(UUID)
+	def setUniverseSpaceUUID(UUID)
+	def setVerboseLevel(int)
+	def shutdown
+	def shutdown(boolean)
+	def startAgent(Class&lt;Agent&gt;, Object[]) : UUID
+	def startAgent(int, Class&lt;Agent&gt;, Object[]) : Iterable&lt;UUID&gt;
+	def startAgentWithID(Class&lt;Agent&gt;, UUID, Object[])
+	def startWithoutAgent : AgentContext
+}
+</code></pre>
+
 <p>A run-time environment, such as <a href="http://www.janusproject.io">Janus</a> must provide a service implementing this bootstrap interface.
 The standard Java service management feature is used. in other words, the SRE should
 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">declare the service implementation</a> into
-its <code class="prettyprint">META-INF/services/io.sarl.bootstrap.SREBootstrap</code> file.</p>
+its <code>META-INF/services/io.sarl.bootstrap.SREBootstrap</code> file.</p>
 
-<h2 id="2-using-the-sre-bootstrap">2. Using the SRE Bootstrap</h2>
+<p>##2. Using the SRE Bootstrap</p>
 
-<p>In order to help you to use the bootstrap functions, the SARL API provides a static utility type, named <code class="prettyprint">SRE</code>.
-In the following Java code, the <code class="prettyprint">SRE</code> utility type is used for retrieving the bootstrap.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    public class MyProgram {
+<p>In order to help you to use the bootstrap functions, the SARL API provides a static utility type, named <code>SRE</code>.
+In the following Java code, the <code>SRE</code> utility type is used for retrieving the bootstrap.</p>
 
-        public static void main(String[] arguments) {
-            SREBootstrap bootstrap = SRE.getBootstrap();
-        }
+<pre><code>	public class MyProgram {
+	
+		public static void main(String[] arguments) {
+			SREBootstrap bootstrap = SRE.getBootstrap();
+		}
+	
+	}
+</code></pre>
 
-    }
-</code></pre></div>
 <p>Then, it is possible to use the bootstrap for launching an agent. In the following example, a agent of type
-<code class="prettyprint">MyAgent</code> is launched. Please note that you must not create an instance of an agent by yourself.
+<code>MyAgent</code> is launched. Please note that you must not create an instance of an agent by yourself.
 It is the role of the SARL run-time environment to create this instance for you, with the proper initialization.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    SREBootstrap bootstrap = SRE.getBootstrap();
-    bootstrap.startAgent(MyAgent.class)
-</code></pre></div>
-<p>In the case you want to launch more than one agent programmatically,
-you could call the <code class="prettyprint">startAgent</code> function the number of times you need.</p>
 
-<h2 id="3-direct-access-to-the-api-of-the-janus-sre">3.  Direct Access to the API of the Janus SRE</h2>
+<pre><code>	SREBootstrap bootstrap = SRE.getBootstrap();
+	bootstrap.startAgent(MyAgent.class)
+</code></pre>
+
+<p>In the case you want to launch more than one agent programmatically,
+you could call the <code>startAgent</code> function the number of times you need.</p>
+
+<p>##3.  Direct Access to the API of the Janus SRE</p>
 
 <p>Caution: using the API of Janus within your program is not recommended by the SARL team. Prefer to use the Bootstrap API.</p>
 
-<p>The Janus platform provides a <code class="prettyprint">Boot</code> class. For launching the platform, you must use this boot class.</p>
+<p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must use this boot class.</p>
 
-<p>The <code class="prettyprint">Boot</code> class provides the <code class="prettyprint">startJanus</code> function, which permits to launch Janus programmatically.</p>
+<p>The <code>Boot</code> class provides the <code>startJanus</code> function, which permits to launch Janus programmatically.</p>
 
-<p>Let consider you want to launch your agent, defined in the <code class="prettyprint">MyAgent</code> class.
+<p>Let consider you want to launch your agent, defined in the <code>MyAgent</code> class.
 The following SARL code gives you an example of how to launch this agent in Janus.</p>
 
-<p>The first parameter of the <code class="prettyprint">startJanus</code> function is the Java type of the agent
+<p>The first parameter of the <code>startJanus</code> function is the Java type of the agent
 to launch.</p>
 
-<p>The second parameter of the <code class="prettyprint">startJanus</code> function is the list of parameters to
-pass with the <code class="prettyprint">Initialize</code> event to the launched agent.</p>
+<p>The second parameter of the <code>startJanus</code> function is the list of parameters to
+pass with the <code>Initialize</code> event to the launched agent.</p>
 
-<p><importantnode>The Janus platform enables to launch a single agent at start-up.
-If you want to launch more agents, please read the next section.</importantnote></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    import io.janusproject.Boot;
-    import myprogram.MyAgent;
-    public class MyProgram {
-        public static void main(String[] args) {
-            Boot.startJanus(MyAgent.class, args);
-        }
-    }
-</code></pre></div>
-<p>In  the case you want to launch more than one agent programmatically,
-you could use the <code class="prettyprint">Kernel</code> instance provided by Janus.</p>
+<importantnode>The Janus platform enables to launch a single agent at start-up.
+If you want to launch more agents, please read the next section.&lt;/importantnote&gt;
 
-<p>This instance is replied by the <code class="prettyprint">startJanus</code> function of the <code class="prettyprint">Boot</code> class.</p>
 
-<p>The <code class="prettyprint">Kernel</code> type provides the <code class="prettyprint">spawn</code> functions, which permit launching
-an agent programmatically.</p>
+		import io.janusproject.Boot;
+		import myprogram.MyAgent;
+		public class MyProgram {
+		 	public static void main(String[] args) {
+				Boot.startJanus(MyAgent.class, args);
+			}
+		}
 
-<p>The previous example could be updated for launching two agents of the same type.
-The resulting code is shown below.</p>
 
-<p>The first parameter of the <code class="prettyprint">spawn</code> function is the Java type of the agent to launch.</p>
+In  the case you want to launch more than one agent programmatically,
+you could use the `Kernel` instance provided by Janus.
 
-<p>The second parameter of the <code class="prettyprint">spawn</code> function is the list of parameters to
-pass with the [:initevent] event to the launched agent.</p>
+This instance is replied by the `startJanus` function of the `Boot` class.
 
-<p><important>that the first agent is launched by the <code class="prettyprint">startJanus</code> function, and the 
-second agent is launched by the <code class="prettyprint">spawn</code> function.</important></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    import io.janusproject.Boot;
-    import myprogram.MyAgent;
-    public class MyProgram {
-        public static void main(String[] args) {
-            Boot.startJanus(MyAgent.class, args);
-            janusKernel.spawn(MyAgent.class, args);
-        }
-    }
-</code></pre></div>
-<h2 id="4-whats-next">4. What&#39;s next?</h2>
+The `Kernel` type provides the `spawn` functions, which permit launching
+an agent programmatically.
 
-<p>Now, you are ready for developing agents with the SARL language.
-Please read the rest of the documentation for obtaining more details.</p>
+The previous example could be updated for launching two agents of the same type.
+The resulting code is shown below.
 
-<p><a href="../index.html">Next&gt;</a></p>
+The first parameter of the `spawn` function is the Java type of the agent to launch.
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+The second parameter of the `spawn` function is the list of parameters to
+pass with the [:initevent] event to the launched agent.
 
-<ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
-</ul>
+<important>that the first agent is launched by the `startJanus` function, and the 
+second agent is launched by the `spawn` function.</important>
 
-<blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
-you may not use this file except in compliance with the License.
-You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
-</blockquote>
+		import io.janusproject.Boot;
+		import myprogram.MyAgent;
+		public class MyProgram {
+		 	public static void main(String[] args) {
+				Boot.startJanus(MyAgent.class, args);
+				janusKernel.spawn(MyAgent.class, args);
+			}
+		}
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+
+##4. What's next?
+
+Now, you are ready for developing agents with the SARL language.
+Please read the rest of the documentation for obtaining more details.
+
+[Next&gt;](../index.html)
+
+
+##5. Legal Notice
+
+* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
+* Version: 0.10
+* Status: Stable Release
+* Release: 2019-10-26
+
+&gt; Copyright &copy; 2014-2019 [the original authors or authors](http://www.sarl.io/about/index.html).
+&gt;
+&gt; Licensed under the Apache License, Version 2.0;
+&gt; you may not use this file except in compliance with the License.
+&gt; You may obtain a copy of the [License](http://www.apache.org/licenses/LICENSE-2.0).
+&gt;
+&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+
+<small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small>
+</importantnode>
 
     </div> <!-- /default layout container -->
 
@@ -259,6 +270,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

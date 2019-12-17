@@ -82,51 +82,61 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 </ul>
 
-<p>The built-in capacity <code class="prettyprint">Schedules</code> enables the agent to schedule tasks for future or periodic execution.</p>
+<p>The built-in capacity <code>Schedules</code> enables the agent to schedule tasks for future or periodic execution.</p>
 
-<h2 id="1-creating-named-tasks">1. Creating Named Tasks</h2>
+<p>##1. Creating Named Tasks</p>
 
 <p>A named task may be created with:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">task</span><span class="o">(</span><span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def task(name : String) : AgentTask
+</code></pre>
+
 <p>The replied task may be used for future execution, or controlling the execution.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span>
 
-    <span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">AgentTask</span>
+<pre><code class="language-sarl">agent A {
+	uses Schedules
 
-    <span class="kd">def</span> <span class="n">action</span> <span class="o">{</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;abc&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="2-changing-the-name-of-a-task">2. Changing the name of a task</h2>
+	var t : AgentTask
+
+	def action {
+		t = task("abc")
+	}
+}
+</code></pre>
+
+<p>##2. Changing the name of a task</p>
 
 <p>A task has a name that serves as its identifier. You could change the task name by calling the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">setName</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span><span class="o">,</span> <span class="n">name</span> <span class="o">:</span> <span class="n">String</span><span class="o">)</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def setName(task : AgentTask, name : String)
+</code></pre>
+
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span>
 
-    <span class="kd">var</span> <span class="n">t</span> <span class="o">:</span> <span class="n">AgentTask</span>
+<pre><code class="language-sarl">agent A {
+	uses Schedules
 
-    <span class="k">on</span> <span class="n">Initialize</span> <span class="o">{</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="s">&quot;abc&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-    <span class="kd">def</span> <span class="n">action</span> <span class="o">{</span>
-        <span class="kc">this</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">setName</span><span class="o">(</span><span class="s">&quot;newName&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
+	var t : AgentTask
 
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="3-launching-a-task-for-a-single-run">3. Launching a Task for a single run</h2>
+	on Initialize {
+		t = task("abc")
+	}
+	def action {
+		this.t.setName("newName")
+	}
+	
+}
+</code></pre>
+
+<p>##3. Launching a Task for a single run</p>
 
 <p>For running a task once time, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">execute</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def execute(task : AgentTask = null, procedure : (Agent) =&gt; void) : AgentTask
+</code></pre>
+
 <p>Without its optional argument, the function submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to an executor provided by the runtime
 platform. The execution of the procedure will be executed once time as soon as possible. This function
@@ -137,27 +147,31 @@ agent task as parameter. This task will attach to the given procedure. The repli
 the task given as parameter.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
 
-    <span class="kd">var</span> <span class="n">t1</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">var</span> <span class="n">t2</span> <span class="o">:</span> <span class="n">AgentTask</span>
+<pre><code class="language-sarl">agent A {
+	uses Schedules, Logging
 
-    <span class="kd">def</span> <span class="n">action</span> <span class="o">{</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">execute</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">execute</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-launching-a-delayed-task">4. Launching a Delayed Task</h2>
+	var t1 : AgentTask
+	var t2 : AgentTask
+
+	def action {
+		t1 = execute [ a : Agent |
+			info(a)
+		]
+		t1 = t2.execute [ a : Agent |
+			info(a)
+		]
+	}
+}
+</code></pre>
+
+<p>##4. Launching a Delayed Task</p>
 
 <p>For running a task in a given delay, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">in</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">delay</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def in(task : AgentTask = null, delay : long, procedure : (Agent) =&gt; void) : AgentTask
+</code></pre>
+
 <p>Without its optional argument, the function submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to an executor provided by the runtime
 platform. The execution of the procedure will be delayed during the given number of milliseconds.
@@ -168,26 +182,30 @@ accepts an agent task as parameter. This task will attach to the given procedure
 is the same as the task given as parameter.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
-    <span class="kd">var</span> <span class="n">t1</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">var</span> <span class="n">t2</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">in</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
 
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">in</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-launching-a-task-at-a-specific-time">5. Launching a Task at a Specific Time</h2>
+<pre><code class="language-sarl">agent A {
+	uses Schedules, Logging
+	var t1 : AgentTask
+	var t2 : AgentTask
+	def myaction {
+		t1 = in(1000) [ a : Agent |
+			info(a)
+		]
+		
+		t1 = t2.in(1000) [ a : Agent |
+			info(a)
+		]
+	}
+}
+</code></pre>
+
+<p>##5. Launching a Task at a Specific Time</p>
 
 <p>For running a task at a specific time, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">at</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">time</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def at(task : AgentTask = null, time : long, procedure : (Agent) =&gt; void) : AgentTask
+</code></pre>
+
 <p>Without its optional argument, the function submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to an executor provided by the runtime
 platform. The execution of the procedure will start at the provided time.
@@ -199,26 +217,30 @@ accepts an agent task as parameter. This task will attach to the given procedure
 is the same as the task given as parameter.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span><span class="o">,</span> <span class="n">Logging</span>
-    <span class="kd">var</span> <span class="n">t1</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">var</span> <span class="n">t2</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">at</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
 
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">at</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Agent</span> <span class="o">|</span>
-            <span class="n">info</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="6-launching-a-periodic-task-at-a-fixed-rate">6. Launching a Periodic Task at a Fixed Rate</h2>
+<pre><code class="language-sarl">agent A {
+	uses Schedules, Logging
+	var t1 : AgentTask
+	var t2 : AgentTask
+	def myaction {
+		t1 = at(1000) [ a : Agent |
+			info(a)
+		]
+		
+		t1 = t2.at(1000) [ a : Agent |
+			info(a)
+		]
+	}
+}
+</code></pre>
+
+<p>##6. Launching a Periodic Task at a Fixed Rate</p>
 
 <p>For running a periodic task with a fixed starting rate, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">every</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">delay</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def every(task : AgentTask = null, delay : long, procedure : (Agent) =&gt; void) : AgentTask
+</code></pre>
+
 <p>The function without the default parameter submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to
 an executor provided by the runtime platform. The execution of the procedure
@@ -230,105 +252,112 @@ accepts an agent task as parameter. This task will attach to the given
 procedure. The replied task is the same as the task given as parameter.</p>
 
 <p>If the duration of the task is greater to the given period length, then
-multiple task&#39;s instances will be run in parallel.
+multiple task’s instances will be run in parallel.
 For example, consider the following code:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">every</span><span class="o">(</span><span class="mi">500</span><span class="o">)</span> <span class="o">[</span> <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">)</span> <span class="o">]</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">every(500) [ sleep(2000) ]
+</code></pre>
+
 <p>At a given time, four instances of the task are run in parallel (A, B, C, D for example):</p>
 
-<table><thead>
-<tr>
-<th>t=</th>
-<th>0</th>
-<th>500</th>
-<th>1000</th>
-<th>1500</th>
-<th>2000</th>
-<th>2500</th>
-<th>3000</th>
-<th>3500</th>
-<th>4000</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>A</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>B</td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>C</td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>D</td>
-<td></td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-</tr>
-<tr>
-<td>F</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>t=</th>
+      <th>0</th>
+      <th>500</th>
+      <th>1000</th>
+      <th>1500</th>
+      <th>2000</th>
+      <th>2500</th>
+      <th>3000</th>
+      <th>3500</th>
+      <th>4000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="7-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">7. Launching a Periodic Task with a Fixed Delay between the Runs</h2>
+<p>##7. Launching a Periodic Task with a Fixed Delay between the Runs</p>
 
 <p>For running a periodic task with a fixed duration between the runs, the following function is provided:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">atFixedDelay</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">delay</span> <span class="o">:</span> <span class="kt">long</span><span class="o">,</span> <span class="n">procedure</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">void</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def atFixedDelay(task : AgentTask = null, delay : long, procedure : (Agent) =&gt; void) : AgentTask
+</code></pre>
+
 <p>Without its optional argument, the function submits the given procedure (a lambda expression as defined in
 the <a href="../GeneralSyntax.html">General Syntax Reference</a>) to an executor provided by the runtime
 platform. The execution of the procedure will be launched periodically with a duration between the runs
@@ -338,187 +367,210 @@ of the given number of milliseconds. This function replies the agent task for co
 accepts an agent task as parameter. This task will attach to the given procedure. The replied task is
 the same as the task given as parameter.</p>
 
-<p>The <code class="prettyprint">atFixedDelay</code> function has not the same issue ass the <code class="prettyprint">every</code> function regarding the possibility
+<p>The <code>atFixedDelay</code> function has not the same issue ass the <code>every</code> function regarding the possibility
 to have several runs in parallel.
-The <code class="prettyprint">atFixedDelay</code> function ensures that only one run of the procedure will be executed at a given time.</p>
+The <code>atFixedDelay</code> function ensures that only one run of the procedure will be executed at a given time.</p>
 
 <p>For example, the following code may be illustrated by the table below.</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">atFixedDelay</span><span class="o">(</span><span class="mi">500</span><span class="o">)</span> <span class="o">[</span> <span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">)</span> <span class="o">]</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>t=</th>
-<th>0</th>
-<th>500</th>
-<th>1000</th>
-<th>1500</th>
-<th>2000</th>
-<th>2500</th>
-<th>3000</th>
-<th>3500</th>
-<th>4000</th>
-<th>4500</th>
-<th>5000</th>
-<th>5500</th>
-<th>6000</th>
-<th>6500</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>A</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>B</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>C</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-</tr>
-</tbody></table>
 
-<h2 id="8-cancelling-a-task">8. Cancelling a Task</h2>
+<pre><code class="language-sarl">atFixedDelay(500) [ sleep(2000) ]
+</code></pre>
 
-<p>It may be useful to cancel a running task, e.g. a periodic task. The <code class="prettyprint">Schedules</code> capacity
+<table>
+  <thead>
+    <tr>
+      <th>t=</th>
+      <th>0</th>
+      <th>500</th>
+      <th>1000</th>
+      <th>1500</th>
+      <th>2000</th>
+      <th>2500</th>
+      <th>3000</th>
+      <th>3500</th>
+      <th>4000</th>
+      <th>4500</th>
+      <th>5000</th>
+      <th>5500</th>
+      <th>6000</th>
+      <th>6500</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>##8. Cancelling a Task</p>
+
+<p>It may be useful to cancel a running task, e.g. a periodic task. The <code>Schedules</code> capacity
 provides the following functions for managing the execution cancellation of an agent task:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">cancel</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span><span class="o">,</span> <span class="n">mayInterruptIfRunning</span> <span class="o">:</span> <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="nf">isCanceled</span><span class="o">(</span><span class="n">task</span> <span class="o">:</span> <span class="n">AgentTask</span><span class="o">)</span> <span class="o">:</span> <span class="kt">boolean</span>
-</code></pre></div>
-<p>The first function will reply <code class="prettyprint">false</code> if the task has already completed, has already been canceled,
+
+<pre><code class="language-sarl">def cancel(task : AgentTask, mayInterruptIfRunning : boolean = true) : boolean
+def isCanceled(task : AgentTask) : boolean
+</code></pre>
+
+<p>The first function will reply <code>false</code> if the task has already completed, has already been canceled,
 or could not be canceled for some other reason (a failure means replying false).
-If successful, and this task has not started when <code class="prettyprint">cancel</code> is called, this task should never
-run. If the task has already started, then the <code class="prettyprint">mayInterruptIfRunning</code> parameter determines
+If successful, and this task has not started when <code>cancel</code> is called, this task should never
+run. If the task has already started, then the <code>mayInterruptIfRunning</code> parameter determines
 whether the thread executing this task should be interrupted in an attempt to stop the task.</p>
 
-<p>The <code class="prettyprint">isCanceled</code> function enables to test if a task was canceled or not.</p>
+<p>The <code>isCanceled</code> function enables to test if a task was canceled or not.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Schedules</span>
 
-    <span class="kd">var</span> <span class="n">t1</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">var</span> <span class="n">t2</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">var</span> <span class="n">t3</span> <span class="o">:</span> <span class="n">AgentTask</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">in</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span> <span class="o">[</span> <span class="o">]</span>
-        <span class="n">t2</span> <span class="o">=</span> <span class="n">in</span><span class="o">(</span><span class="mi">5000</span><span class="o">)</span> <span class="o">[</span> <span class="o">]</span>
-        <span class="n">t2</span> <span class="o">=</span> <span class="n">in</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span> <span class="o">[</span> <span class="o">]</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">t1</span><span class="o">.</span><span class="n">isCanceled</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">t1</span><span class="o">.</span><span class="n">cancel</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">t2</span><span class="o">.</span><span class="n">isCanceled</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">t2</span><span class="o">.</span><span class="n">cancel</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">t3</span><span class="o">.</span><span class="n">isCanceled</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">t3</span><span class="o">.</span><span class="n">cancel</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="9-conditional-execution-of-a-task">9. Conditional Execution of a Task</h2>
+<pre><code class="language-sarl">agent A {
+	uses Schedules
+	
+	var t1 : AgentTask
+	var t2 : AgentTask
+	var t3 : AgentTask
+	def myaction {
+		t1 = in(1000) [ ]
+		t2 = in(5000) [ ]
+		t2 = in(10000) [ ]
+		if (!t1.isCanceled) {
+			t1.cancel
+		}
+		if (!t2.isCanceled) {
+			t2.cancel(true)
+		}
+		if (!t3.isCanceled) {
+			t3.cancel(false)
+		}
+	}
+}
+</code></pre>
 
-<p>Sometimes, it may be useful to execute a task if a condition is <code class="prettyprint">true</code> or <code class="prettyprint">false</code>. The 
-<code class="prettyprint">AgentTask</code> type, which is representing an instance of <code class="prettyprint">AgentTask</code> provides
+<p>##9. Conditional Execution of a Task</p>
+
+<p>Sometimes, it may be useful to execute a task if a condition is <code>true</code> or <code>false</code>. The 
+<code>AgentTask</code> type, which is representing an instance of <code>AgentTask</code> provides
 the functions for assosiating a condition, named the guard, to the task:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getGuard</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">boolean</span>
-<span class="kd">def</span> <span class="nf">setGuard</span><span class="o">(</span><span class="n">condition</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">boolean</span><span class="o">)</span>
-</code></pre></div>
-<p>The first function replies the guard associated to the task, or <code class="prettyprint">null</code> if
+
+<pre><code class="language-sarl">def getGuard : (Agent) =&gt; boolean
+def setGuard(condition : (Agent) =&gt; boolean)
+</code></pre>
+
+<p>The first function replies the guard associated to the task, or <code>null</code> if
 there is no associated guard. The second function enables you to change the associated guard.</p>
 
-<p>Additionaly, the <code class="prettyprint">AgentTask</code> type provides utility functions for easier guard association:  </p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">ifTrue</span><span class="o">(</span><span class="n">condition</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-<span class="kd">def</span> <span class="nf">unless</span><span class="o">(</span><span class="n">condition</span> <span class="o">:</span> <span class="o">(</span><span class="n">Agent</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="kt">boolean</span><span class="o">)</span> <span class="o">:</span> <span class="n">AgentTask</span>
-</code></pre></div>
-<p>The <code class="prettyprint">ifTrue</code> function is equivalent to <code class="prettyprint">setGuard</code>, except that it is replying the current agent task.
-The <code class="prettyprint">unless</code> function sets the guard of the task to the negation of the given condition. It replies
+<p>Additionaly, the <code>AgentTask</code> type provides utility functions for easier guard association:</p>
+
+<pre><code class="language-sarl">def ifTrue(condition : (Agent) =&gt; boolean) : AgentTask
+def unless(condition : (Agent) =&gt; boolean) : AgentTask
+</code></pre>
+
+<p>The <code>ifTrue</code> function is equivalent to <code>setGuard</code>, except that it is replying the current agent task.
+The <code>unless</code> function sets the guard of the task to the negation of the given condition. It replies
 the current task.</p>
 
-<p><caution>The <code class="prettyprint">ifTrue</code> and <code class="prettyprint">unless</code> functions should not be used on the result of the scheduling functions.
-Indeed, if you call these two function on the value replied by <code class="prettyprint">execute</code> for example, the execution platform
-could have launched the task before the guard is set. Consider the following code</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="n">execute</span> <span class="o">[</span> <span class="n">doSomething</span> <span class="o">].</span><span class="n">unless</span> <span class="o">[</span> <span class="n">myVar</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">]</span>
-</code></pre></div>
-<p>The call to <code class="prettyprint">execute</code> is done before the call to <code class="prettyprint">unless</code>. It means that the execution platform could have
-already checked if a guard is assosiated and <code class="prettyprint">true</code>, before the <code class="prettyprint">unless</code> function sets the guard.</caution></p>
+<caution>The `ifTrue` and `unless` functions should not be used on the result of the scheduling functions.
+Indeed, if you call these two function on the value replied by `execute` for example, the execution platform
+could have launched the task before the guard is set. Consider the following code
+
+```sarl
+execute [ doSomething ].unless [ myVar &gt; 5 ]
+```
+
+
+The call to `execute` is done before the call to `unless`. It means that the execution platform could have
+already checked if a guard is assosiated and `true`, before the `unless` function sets the guard.</caution>
 
 <p>The best practice for setting the task guards is to create a task, set the guard, and execute the task:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="c1">// Create the task instance</span>
-<span class="kd">var</span> <span class="n">myTask</span> <span class="o">=</span> <span class="n">task</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
-<span class="c1">// Set the guard</span>
-<span class="n">myTask</span><span class="o">.</span><span class="n">unless</span> <span class="o">[</span> <span class="n">myVar</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">]</span>
-<span class="c1">// Execute the task</span>
-<span class="n">myTask</span><span class="o">.</span><span class="n">execute</span> <span class="o">[</span> <span class="n">doSomething</span> <span class="o">]</span>
-</code></pre></div>
-<h2 id="10-retreiving-the-active-tasks">10. Retreiving the active tasks</h2>
+
+<pre><code class="language-sarl">// Create the task instance
+var myTask = task(null)
+// Set the guard
+myTask.unless [ myVar &gt; 5 ]
+// Execute the task
+myTask.execute [ doSomething ]
+</code></pre>
+
+<p>##10. Retreiving the active tasks</p>
 
 <p>The list of the active tasks may be retreived by invoking the following function:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">getActiveTasks</span> <span class="o">:</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
-</code></pre></div>
-<p>The replied collection is unmodifiable and contains the names of the active tasks. </p>
+
+<pre><code class="language-sarl">def getActiveTasks : Collection&lt;String&gt;
+</code></pre>
+
+<p>The replied collection is unmodifiable and contains the names of the active tasks.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="k">for</span> <span class="o">(</span><span class="n">taskName</span> <span class="o">:</span> <span class="n">getActiveTasks</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">info</span><span class="o">(</span><span class="s">&quot;Active task: &quot;</span> <span class="o">+</span> <span class="n">taskName</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="11-legal-notice">11. Legal Notice</h2>
+
+<pre><code class="language-sarl">for (taskName : getActiveTasks) {
+	info("Active task: " + taskName)
+}
+</code></pre>
+
+<p>##11. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -558,6 +610,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>

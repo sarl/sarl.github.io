@@ -76,175 +76,191 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 </ul>
 
-<p>The built-in capacity <code class="prettyprint">Lifecycle</code> provides actions for spawning new agents on different external contexts and
-the inner context, as well as the <code class="prettyprint">killMe</code> action to stop the execution of an agent.</p>
+<p>The built-in capacity <code>Lifecycle</code> provides actions for spawning new agents on different external contexts and
+the inner context, as well as the <code>killMe</code> action to stop the execution of an agent.</p>
 
-<h2 id="1-stopping-the-agent-execution">1. Stopping the Agent Execution</h2>
+<p>##1. Stopping the Agent Execution</p>
 
 <p>Because of the autonomy property of an agent, it can be stopped only by committing a suicide. It means that
 it is impossible to stop an agent from another agent: the agent to stop must be able to accept or reject
 this query.</p>
 
-<p>The <code class="prettyprint">Lifecycle</code> capacity provides the following function for committing a suicide:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="n">killMe</span>
-</code></pre></div>
+<p>The <code>Lifecycle</code> capacity provides the following function for committing a suicide:</p>
+
+<pre><code class="language-sarl">def killMe
+</code></pre>
+
 <p>This action automatically unregisters the calling agent from the default context, and therefore all its
 spaces including the default space.</p>
 
-<p><veryimportantnote> If the killed agent was a composed agent, it must not have members any more before
-calling this action, otherwise a <code class="prettyprint">RuntimeException</code> is thrown.</veryimportantnote></p>
+<veryimportantnote> If the killed agent was a composed agent, it must not have members any more before
+calling this action, otherwise a `RuntimeException` is thrown.</veryimportantnote>
 
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">AgentKilled</code> in the default space of all contexts to which the calling agent belongs.</li>
-<li><code class="prettyprint">Destroy</code> inside the killed agent agent.</li>
+  <li><code>AgentKilled</code> in the default space of all contexts to which the calling agent belongs.</li>
+  <li><code>Destroy</code> inside the killed agent agent.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="n">killMe</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="2-spawning-in-the-default-context">2. Spawning in the default context</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses Lifecycle
+	def myaction {
+		killMe
+	}
+}
+</code></pre>
+
+<p>##2. Spawning in the default context</p>
 
 <p>Many time, it is useful for agent to create a new agent into the default context. The following
 functions are provided for this task:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-<span class="kd">def</span> <span class="nf">spawn</span><span class="o">(</span><span class="nl">nbAgents:</span> <span class="kt">int</span><span class="o">,</span> <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span> <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-</code></pre></div>
-<p>This action creates one to <code class="prettyprint">nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
+
+<pre><code class="language-sarl">def spawn(agentType : Class&lt;? extends Agent&gt;, parameters : Object*) : UUID
+def spawn(nbAgents: int, agentType : Class&lt;? extends Agent&gt;, parameters : Object*) : Iterable&lt;UUID&gt;
+</code></pre>
+
+<p>This action creates one to <code>nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
 into the default context.
-The first <code class="prettyprint">spawn</code> function above is spawning a single agent and replies the identifier of the spawned agent.
-The second <code class="prettyprint">spawn</code> function is spawning the given number of agents and replies the identifiers of the
+The first <code>spawn</code> function above is spawning a single agent and replies the identifier of the spawned agent.
+The second <code>spawn</code> function is spawning the given number of agents and replies the identifiers of the
 spawned agents.
-The <code class="prettyprint">parameters</code> are passed to the spawned agent inside the <code class="prettyprint">Initialize</code> event: the <code class="prettyprint">parameters</code> field.</p>
+The <code>parameters</code> are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
 
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">AgentSpawned</code> in the default space of the default context. The source of the event is this spawner.</li>
-<li><code class="prettyprint">Initialize</code> in spawned agent.</li>
+  <li><code>AgentSpawned</code> in the default space of the default context. The source of the event is this spawner.</li>
+  <li><code>Initialize</code> in spawned agent.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-        <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="3-spawning-in-a-specific-context">3. Spawning in a specific context</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses Lifecycle
+	def myaction {
+		var aid : UUID
+		var listaid : Iterable&lt;UUID&gt;
+		var type : Class&lt;? extends Agent&gt;
+		var p1 : Object
+		var p2 : Object
+		type = typeof(A)
+		p1 = new Object
+		p2 = new Object
+		aid = spawn(type, p1, p2)
+		listaid = spawn(5, type, p1, p2)
+	}
+}
+</code></pre>
+
+<p>##3. Spawning in a specific context</p>
 
 <p>When one or more agents should be spawned into a specific agent context, the two following functions
 could be used for launching the agents:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-                   <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-                   <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-<span class="kd">def</span> <span class="nf">spawnInContext</span><span class="o">(</span><span class="n">nbAgents</span> <span class="o">:</span> <span class="kt">int</span><span class="o">,</span>
-                   <span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-                   <span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-                   <span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-</code></pre></div>
-<p>This action creates one to <code class="prettyprint">nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
-into the given <code class="prettyprint">context</code>.
-The first <code class="prettyprint">spawn</code> function is spawning a single agent and replies the identifier of the spawned agent.
-The second <code class="prettyprint">spawn</code> function is spawning the given number of agents and replies the identifiers of the
+
+<pre><code class="language-sarl">def spawnInContext(agentType : Class&lt;? extends Agent&gt;,
+                   context : AgentContext,
+                   parameters : Object*) : UUID
+def spawnInContext(nbAgents : int,
+                   agentType : Class&lt;? extends Agent&gt;,
+                   context : AgentContext,
+                   parameters : Object*) : Iterable&lt;UUID&gt;
+</code></pre>
+
+<p>This action creates one to <code>nbAgents</code> instance(s) of the given agent type, and launches the agent(s)
+into the given <code>context</code>.
+The first <code>spawn</code> function is spawning a single agent and replies the identifier of the spawned agent.
+The second <code>spawn</code> function is spawning the given number of agents and replies the identifiers of the
 spawned agents.
-The <code class="prettyprint">parameters</code> are passed to the spawned agent inside the <code class="prettyprint">Initialize</code> event: the
-<code class="prettyprint">parameters</code> field.</p>
+The <code>parameters</code> are passed to the spawned agent inside the <code>Initialize</code> event: the
+<code>parameters</code> field.</p>
 
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">AgentSpawned</code> in the default space of the context. The source of the event is the calling agent.</li>
-<li><code class="prettyprint">Initialize</code> in spawned agent.</li>
+  <li><code>AgentSpawned</code> in the default space of the context. The source of the event is the calling agent.</li>
+  <li><code>Initialize</code> in spawned agent.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">listaid</span> <span class="o">:</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">UUID</span><span class="o">&gt;</span>
-        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-        <span class="n">listaid</span> <span class="o">=</span> <span class="n">spawnInContext</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="4-spawning-with-a-specific-agent-identifier">4. Spawning with a specific agent identifier</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses Lifecycle
+	def myaction {
+		var c : AgentContext
+		var aid : UUID
+		var listaid : Iterable&lt;UUID&gt;
+		var type : Class&lt;? extends Agent&gt;
+		var p1 : Object
+		var p2 : Object
+		type = typeof(A)
+		p1 = new Object
+		p2 = new Object
+		aid = spawnInContext(type, c, p1, p2)
+		listaid = spawnInContext(5, type, c, p1, p2)
+	}
+}
+</code></pre>
+
+<p>##4. Spawning with a specific agent identifier</p>
 
 <p>Some time, it is useful to create an agent with a specific identifier. The following function permits to spawn an agent
 with a given identifier in a specific context:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">def</span> <span class="nf">spawnInContextWithID</span><span class="o">(</span><span class="n">agentType</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;,</span>
-<span class="n">agentId</span> <span class="o">:</span> <span class="n">UUID</span><span class="o">,</span>
-<span class="n">context</span> <span class="o">:</span> <span class="n">AgentContext</span><span class="o">,</span>
-<span class="n">parameters</span> <span class="o">:</span> <span class="n">Object</span><span class="o">*)</span> <span class="o">:</span> <span class="n">UUID</span>
-</code></pre></div>
+
+<pre><code class="language-sarl">def spawnInContextWithID(agentType : Class&lt;? extends Agent&gt;,
+agentId : UUID,
+context : AgentContext,
+parameters : Object*) : UUID
+</code></pre>
+
 <p>This action creates an instance of the given agent type, with the given identifier, and launches the agent
 into the given context.
-The parameters are passed to the spawned agent inside the <code class="prettyprint">Initialize</code> event: the <code class="prettyprint">parameters</code> field.</p>
+The parameters are passed to the spawned agent inside the <code>Initialize</code> event: the <code>parameters</code> field.</p>
 
 <p>This action fires two events:</p>
 
 <ul>
-<li><code class="prettyprint">AgentSpawned</code> in the default space of the context. The source of the event is the calling agent.</li>
-<li><code class="prettyprint">Initialize</code> in spawned agent.</li>
+  <li><code>AgentSpawned</code> in the default space of the context. The source of the event is the calling agent.</li>
+  <li><code>Initialize</code> in spawned agent.</li>
 </ul>
 
 <p>Example:</p>
-<div class="highlight"><pre><code class="language-sarl" data-lang="sarl"><span class="kd">agent</span> <span class="nc">A</span> <span class="o">{</span>
-    <span class="k">uses</span> <span class="n">Lifecycle</span>
-    <span class="kd">def</span> <span class="n">myaction</span> <span class="o">{</span>
-        <span class="kd">var</span> <span class="n">c</span> <span class="o">:</span> <span class="n">AgentContext</span>
-        <span class="kd">var</span> <span class="n">aid</span> <span class="o">:</span> <span class="n">UUID</span>
-        <span class="kd">var</span> <span class="n">type</span> <span class="o">:</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="k">extends</span> <span class="n">Agent</span><span class="o">&gt;</span>
-        <span class="kd">var</span> <span class="n">p1</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="kd">var</span> <span class="n">p2</span> <span class="o">:</span> <span class="n">Object</span>
-        <span class="n">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="o">(</span><span class="n">A</span><span class="o">)</span>
-        <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span>
-        <span class="n">aid</span> <span class="o">=</span> <span class="n">spawnInContextWithID</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">aid</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="err">#</span><span class="o">[</span><span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">])</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<pre><code class="language-sarl">agent A {
+	uses Lifecycle
+	def myaction {
+		var c : AgentContext
+		var aid : UUID
+		var type : Class&lt;? extends Agent&gt;
+		var p1 : Object
+		var p2 : Object
+		type = typeof(A)
+		p1 = new Object
+		p2 = new Object
+		aid = spawnInContextWithID(type, aid, c, #[p1, p2])
+	}
+}
+</code></pre>
+
+<p>##5. Legal Notice</p>
 
 <ul>
-<li>Specification: SARL General-purpose Agent-Oriented Programming Language (&quot;Specification&quot;)</li>
-<li>Version: 0.10</li>
-<li>Status: Stable Release</li>
-<li>Release: 2019-10-26</li>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.10</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2019-10-26</li>
 </ul>
 
 <blockquote>
-<p>Copyright &copy; 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-<p>Licensed under the Apache License, Version 2.0;
+  <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
 You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-<p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
 <p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
@@ -284,6 +300,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
 		  <li>
 			<a href="../../../../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
       </ul>
