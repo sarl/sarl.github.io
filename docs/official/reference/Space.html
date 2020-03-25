@@ -79,9 +79,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 <ul>
   <li><a href="#2-1-defining-the-physicspace">2.1. Defining the PhysicSpace</a></li>
   <li><a href="#2-2-basic-implementation">2.2. Basic Implementation</a></li>
-  <li><a href="#2-3-basic-network-support">2.3. Basic Network Support</a></li>
-  <li><a href="#2-4-defining-a-spacespecification">2.4. Defining a SpaceSpecification</a></li>
-  <li><a href="#2-5-access-to-the-default-space-instance-within-a-space-specification">2.5. Access to the Default Space Instance within a space specification</a></li>
+  <li><a href="#2-3-defining-a-spacespecification">2.3. Defining a SpaceSpecification</a></li>
+  <li><a href="#2-4-access-to-the-default-space-instance-within-a-space-specification">2.4. Access to the Default Space Instance within a space specification</a></li>
 </ul>
 <li><a href="#3-legal-notice">3. Legal Notice</a></li>
 
@@ -131,25 +130,39 @@ precisely control/filter the potential recipients of an event.
 listeners for a given event.</strong>
 The most basic scope is represented by a collection of addresses.</p>
 
-<p>##1. Types of Spaces</p>
+<h2 id="1-types-of-spaces">1. Types of Spaces</h2>
 
 <p>SARL provides a collection of interfaces that are representing different types of spaces.</p>
 
-<p>###1.1. Space</p>
+<h3 id="11-space">1.1. Space</h3>
 
 <p>SARL provides an interface that is representing all the spaces:</p>
 
 <pre><code class="language-sarl">interface Space {
-	def getParticipants : SynchronizedSet&lt;UUID&gt;
+	def forEachStrongParticipant((Object) =&gt; void)
+	def getNumberOfStrongParticipants : int
 	def getSpaceID : SpaceID
+	def isPseudoEmpty : boolean
+	def isPseudoEmpty(UUID) : boolean
 }
 </code></pre>
 
-<p>The <code>getSpaceID</code> function replies the identifier of the space.
-The <code>getParticipants</code> function replies the identifiers
-of the agents belonging to the space.</p>
+<p>The <code>getSpaceID</code> function replies the identifier of the space.</p>
 
-<p>###1.2. Event Space</p>
+<p>Participants to the space are software entities, e.g. agents that are participating to the interaction in the space.
+Two types of participant are forseen:</p>
+
+<ul>
+  <li><em>strong participant</em>: this is the standard or regular type. If the space has a strong participant, it is considered as an not empty space and cannot be destroyed from the system;</li>
+  <li><em>weak participant</em>: this is a special type. If the space has only weak participants, i.e. no strong participant is involved, it is considered as en empty space and could be destroy from the system.</li>
+</ul>
+
+<p>The <code>getNumberOfStrongParticipants</code> function replies the number of strong participants that are registered to the space.
+The [:ispseudoemptyfct] function replies if the space has at least a strong participant registered.
+If the parameter is given, it is the identifier of the participant that should be ignored. In other words,
+the [:ispseudoemptyfct] function replies if another strong participant than the one with the given identifier is registered.</p>
+
+<h3 id="12-event-space">1.2. Event Space</h3>
 
 <p>Spaces that are based on event propagation mechanism are defined as:</p>
 
@@ -163,12 +176,12 @@ of the agents belonging to the space.</p>
 <p>The <code>getAddress</code> function replies the address in the space of the agent that has the given identifier.
 The <code>emit</code> functions permits fire of an event in the space.</p>
 
-<p>###1.3. Open Event Space</p>
+<h3 id="13-open-event-space">1.3. Open Event Space</h3>
 
 <p>Event spaces that are allowing the agents to be register and unregister are “open event spaces”:</p>
 
 <pre><code class="language-sarl">interface OpenEventSpace {
-	def register(EventListener) : Address
+	def register(EventListener, boolean) : Address
 	def unregister(EventListener) : Address
 }
 </code></pre>
@@ -177,7 +190,7 @@ The <code>emit</code> functions permits fire of an event in the space.</p>
 The function <code>register</code> fires the event <code>ParticipantJoined</code>.
 And, the function <code>unregister</code> fires the event <code>ParticipantLeft</code>.</p>
 
-<p>###1.4. Restricted Access Event Space</p>
+<h3 id="14-restricted-access-event-space">1.4. Restricted Access Event Space</h3>
 
 <p>When an event space needs to control the registration access, it should be a “restricted access event space”:</p>
 
@@ -190,7 +203,7 @@ And, the function <code>unregister</code> fires the event <code>ParticipantLeft<
 
 <p>The functions given by this type of space permits implementing a space with restricted access, based on the standard Java API.</p>
 
-<p>##2. Defining a Space</p>
+<h2 id="2-defining-a-space">2. Defining a Space</h2>
 
 <p>The definition of a new space must be done with object-oriented language’s features.</p>
 
@@ -205,7 +218,7 @@ And, the function <code>unregister</code> fires the event <code>ParticipantLeft<
 <p>In the rest of this section, we use the example of the definition of a physic space: a space in which objects have a 
 spatial position.</p>
 
-<p>###2.1. Defining the PhysicSpace</p>
+<h3 id="21-defining-the-physicspace">2.1. Defining the PhysicSpace</h3>
 
 <p>The first step for the definition of a new type of space is the specification of the interface that is describing
 the functions provided by the space.</p>
@@ -227,7 +240,7 @@ The <code>EventListener</code> type is the event listening mechanism associated 
 the <code>Behaviors</code> built-in capacity (see the corresponding
 <a href="./bic/Behaviors.html">built-in capacity reference</a> for details).</p>
 
-<p>###2.2. Basic Implementation</p>
+<h3 id="22-basic-implementation">2.2. Basic Implementation</h3>
 
 <p>The definition of the space implementation depends upon the runtime environment.</p>
 
@@ -239,6 +252,24 @@ that you will be notified about any major changes on this part of the API.</caut
 
 <pre><code class="language-sarl">class PhysicSpaceImpl extends AbstractEventSpace implements PhysicSpace {
 	val entities = &lt;UUID, PhysicObject&gt;newHashMap
+	
+	val strongRepository = new ConcurrentHashMap&lt;UUID, Participant&gt;
+	var weakRepository : ConcurrentHashMap&lt;UUID, Participant&gt;
+	override getInternalStrongParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
+		this.strongRepository 
+	}
+
+	override getInternalWeakParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
+		this.weakRepository
+	}
+	override ensureInternalWeakParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
+		var r = this.weakRepository
+		if (r === null) {
+			this.weakRepository = new ConcurrentHashMap
+			r = this.weakRepository
+		}
+		return this.weakRepository
+	}
 	def moveObject(identifier : UUID, x : float, y : float, z : float) {
 		synchronized (this.entities) {
 			var o = this.entities.get(identifier)
@@ -272,56 +303,7 @@ to distribute the information and the interaction objects over a computer networ
 the support of the interaction. Consequently, it should provide the mechanisms for
 routing the events to all the agents other the computer network.</important>
 
-<p>###2.3. Basic Network Support</p>
-
-<p>As described in the previous section, the space implementation should route the information among the agents over a computer
-network.</p>
-
-<caution>This section of the space reference document may evolved in future releases of SARL. Please activate the
-"deprecated feature use" warning in your compilation configuration for ensuring that you will be notified
-about any major changes on this part of the API.</caution>
-
-<p>Below, the implementation extends one of the abstract classes provided by the <a href="http://www.janusproject.io">Janus Platform</a>.</p>
-
-<pre><code class="language-sarl">class NetworkPhysicSpaceImpl extends AbstractEventSpace implements PhysicSpace {
-	val entities : Map&lt;UUID,PhysicObject&gt;
-	
-	public new(id : SpaceID, factory : DistributedDataStructureService,
-	        lockProvider : Provider&lt;ReadWriteLock&gt;) {
-		super(id, factory, lockProvider)
-		this.entities = factory.getMap(id.toString + "-physicObjects")
-	}
-	
-	def bindBody(entity : EventListener) {
-		this.entities.put(entity.ID, new PhysicObject)
-		var a = new Address(spaceID, entity.ID)
-		synchronized (this.participantInternalDataStructure) {
-			return this.participantInternalDataStructure.registerParticipant(a, entity)
-		}
-	}
-	
-	def unbindBody(entity : EventListener) {
-		this.entities.remove(entity.ID)
-		synchronized (this.participantInternalDataStructure) {
-			return this.participantInternalDataStructure.unregisterParticipant(entity)
-		}
-	}
-	
-	def moveObject(identifier : UUID, x : float, y : float, z : float) {
-		var o = this.entities.remove(identifier)
-		if (o !== null) {
-			o.move(x, y, z)
-			this.entities.put(identifier, o)
-		}
-	}
-}
-</code></pre>
-
-<important>The collection of the physic objects is a distributed map over the computer network. It means that each node
-of the platform has a direct access to the objects' instances. If whose to say that is implementation may face some problems,
-such as the serialization of the physic objects, and the scalability of the distributed map.</important>
-
-<p>###2.4. Defining a SpaceSpecification</p>
+<h3 id="23-defining-a-spacespecification">2.3. Defining a SpaceSpecification</h3>
 
 <p>For creating instances of spaces, it is necessary to define a space specification.
 This specification may create the space instance according to rules, or provide information and rules to the spaces.</p>
@@ -335,19 +317,7 @@ This specification may create the space instance according to rules, or provide 
 
 <p>The example above is the specification related to the first implementation of the <code>PhysicSpace</code>.</p>
 
-<pre><code class="language-sarl">class NetworkPhysicSpaceSpecification implements SpaceSpecification&lt;PhysicSpace&gt; {
-	@Inject
-	var factory : DistributedDataStructureService
-	def create(id : SpaceID, params : Object*) : PhysicSpace {
-		return new NetworkPhysicSpaceImpl(id, factory)
-	}
-}
-</code></pre>
-
-<p>The example above is the specification that permits to create a physic space with networking. It retrieves
-by injection the factory of distributed data structures provided by the Janus platform.</p>
-
-<p>###2.5. Access to the Default Space Instance within a space specification</p>
+<h3 id="24-access-to-the-default-space-instance-within-a-space-specification">2.4. Access to the Default Space Instance within a space specification</h3>
 
 <p>If the space instance needs to be linked to the default space of the context, it is 
 necessary to retrieve the instance of the default space within the space specification.
@@ -390,17 +360,17 @@ b. annotated with <code>@DefaultSpace</code>.</li>
 }
 </code></pre>
 
-<p>##3. Legal Notice</p>
+<h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -409,7 +379,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

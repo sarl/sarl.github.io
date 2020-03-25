@@ -84,7 +84,7 @@ the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
 <p>The problem is: how ensuring that all the agents on the system are alive before starting to run their
 standard behaviors?</p>
 
-<p>##1. Example of a problematic system</p>
+<h2 id="1-example-of-a-problematic-system">1. Example of a problematic system</h2>
 
 <p>First, let consider a SARL code that is not working well regarding the initialization of the system.
 In the following code, the type of agent <code>MyAgent</code> is defined.
@@ -156,7 +156,7 @@ Consequently, the general behavior of the system is not deterministic.
 We cannot infer the number of messages that will be logged because some event may be fired by agents when several
 other agents are still waiting for their spawns. The only one fact is that the number of logged messages is lower than or equal to f(100).</p>
 
-<p>##2. Solution: waiting for the agent spawning</p>
+<h2 id="2-solution-waiting-for-the-agent-spawning">2. Solution: waiting for the agent spawning</h2>
 
 <p>A possible solution to the previously mentionned problem is to split the starting up of the application into two steps:</p>
 <ol>
@@ -194,7 +194,7 @@ This application-start event is represented by the <code>StartApplication</code>
 		}
 	}
 	
-	on AgentSpawned [!it.agentIdentifiers.contains(ID)] {
+	on AgentSpawned [it.agentID != ID] {
 		var n = this.count.incrementAndGet
 		if (n === 100) {
 			emit(new StartApplication)
@@ -210,17 +210,17 @@ Each time an agent is spawned, the booting agent is notified with an <code>Agent
 When the number of spawned agents reaches 100, the booting agent notifies about the application start
 and commits a suicide.</p>
 
-<p>##3. Legal Notice</p>
+<h2 id="3-legal-notice">3. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -229,7 +229,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

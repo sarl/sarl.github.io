@@ -92,7 +92,7 @@ documentation pattern for SARL code.</p>
 <p>sarldoc does not affect performance in SARL as all comments are removed at compilation time. Writing comments and
 sarldoc is for better understanding the code and thus better maintaining it.</p>
 
-<p>##1. Usage</p>
+<h2 id="1-usage">1. Usage</h2>
 
 <p>The <code>sarldoc</code> tool takes arguments:</p>
 
@@ -107,18 +107,18 @@ For obtaining a list of the options, type:</p>
 <pre><code>sarldoc -h
 </code></pre>
 
-<p>##2. Command-Line Options</p>
+<h2 id="2-command-line-options">2. Command-Line Options</h2>
 
 <p>The complete list of the options is:</p>
 
 <p>| Option | Description |
 | —— | ———– |</p>
 
-<p>##3. Documentation Comments</p>
+<h2 id="3-documentation-comments">3. Documentation Comments</h2>
 
 <p>This section describes source code comments and comment inheritance.</p>
 
-<p>###3.1. Source Code Comments</p>
+<h3 id="31-source-code-comments">3.1. Source Code Comments</h3>
 
 <p>You can include documentation comments in the source code, ahead of declarations for SARL 
 construct such as agent, behavior, capacity, skill, event, class, interface, method, constructor, or field.
@@ -207,7 +207,7 @@ description of the declared entity. This sentence ends at the first period that 
 terminator, or at the first block tag. The <code>sarldoc</code> command copies this first sentence to the member summary at
 the top of the HTML page.</p>
 
-<p>###3.2. Method Comment Inheritance</p>
+<h3 id="32-method-comment-inheritance">3.2. Method Comment Inheritance</h3>
 
 <p>The <code>sarldoc</code> command allows method comment inheritance in type declarations to fill in missing text or to explicitly
 inherit method comments. Constructors, fields, and nested types do not inherit documentation comments.</p>
@@ -224,7 +224,7 @@ is copied only when that exception is declared.</p>
 <p>Insert the <code>{@inheritDoc}</code> inline tag in a method main description or <code>@return</code>, <code>@param</code>, or <code>@throws</code> tag comment.
 The corresponding inherited main description or tag comment is copied into that spot.</p>
 
-<p>###3.3. Type Declaration Comment Inheritance</p>
+<h3 id="33-type-declaration-comment-inheritance">3.3. Type Declaration Comment Inheritance</h3>
 
 <p>Comment inheritance occurs in all possible cases of inheritance from type declarations:</p>
 
@@ -240,7 +240,7 @@ overriding method. A link to the method being overridden is included, whether or
 generates the subheading “Specified by” in the documentation for the overriding method. A link to the method being
 implemented is included, whether or not the comment is inherited.</p>
 
-<p>##4. Tags</p>
+<h2 id="4-tags">4. Tags</h2>
 
 <p>The <code>sarldoc</code> command parses special tags when they are embedded within a SARL documentation comment. The
 <code>sarldoc</code> tags let you autogenerate a complete, well-formatted API from your source code. The tags start with
@@ -331,22 +331,22 @@ enclosed within braces: <code>{@tag}</code>.</li>
   </tbody>
 </table>
 
-<p>##5. Acknowledgements</p>
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentation from the
 <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html">Oracle Javadoc</a> project.</p>
 
-<p>##6. Legal Notice</p>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -355,7 +355,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

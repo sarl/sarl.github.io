@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title></title>
+    <title>English Auction with Holons</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -64,7 +64,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <p>Ok# English Auction with Holons</p>
+      <h1 id="english-auction-with-holons">English Auction with Holons</h1>
 
 <ul class="page_outline" id="page_outline">
 
@@ -116,7 +116,7 @@ readers, the [Agent Reference](../reference/Agent.html) may be read.</note>
 <p>The source code related to this tutorial may be found in the
 <a href="https://github.com/sarl/sarl/tree/master/contribs/io.sarl.examples/io.sarl.examples.plugin/projects/io-sarl-tutorials-holonicauction/src/main/sarl/io/sarl/examples/holonicauction">Github of the SARL demos</a>.</p>
 
-<p>##1. Principle of the English Auction</p>
+<h2 id="1-principle-of-the-english-auction">1. Principle of the English Auction</h2>
 
 <p>This type of auction is arguably the most common form of auction in use today. 
 Participants bid openly against one another, with each subsequent bid required to
@@ -134,7 +134,7 @@ potential bidders.</p>
 
 <p>Source: <a href="https://en.wikipedia.org/wiki/Auction">Wikipedia</a></p>
 
-<p>##2. Principle of the Application</p>
+<h2 id="2-principle-of-the-application">2. Principle of the Application</h2>
 
 <p>The principle of the application is the following:</p>
 
@@ -150,7 +150,7 @@ potential bidders.</p>
 
 <p><img src="./holonic_auction.png" alt="Holonic Auction" /></p>
 
-<p>##3. Why are the sub-agents in the inner context?</p>
+<h2 id="3-why-are-the-sub-agents-in-the-inner-context">3. Why are the sub-agents in the inner context?</h2>
 
 <p>According to the <a href="../reference/BIC.html">Built-in Capacity Reference</a>,
 a sub-agent is living in the <strong>inner context</strong> of a super-agent.
@@ -166,13 +166,13 @@ in the hierarchy of agents. The default space of the inner context
 becomes the natural place where the super-agent and
 its sub-agents are interacting.</note>
 
-<p>##4. Definitions of the events</p>
+<h2 id="4-definitions-of-the-events">4. Definitions of the events</h2>
 
 <p>In the application, two events are needed: the event from the auctioneer for notifying the
 bidders of the new price; and the event that is sent by a bidder to the auctioneer with a
 bid inside.</p>
 
-<p>###4.1. Price event</p>
+<h3 id="41-price-event">4.1. Price event</h3>
 
 <p>The <code>Price</code> event is the event sent by the auctioneer for notifying a bidder that
 the price has changed. This event contains the new price.</p>
@@ -186,7 +186,7 @@ event Price {
 }
 </code></pre>
 
-<p>###4.2. Playing event</p>
+<h3 id="42-playing-event">4.2. Playing event</h3>
 
 <p>The <code>Bid</code> event is the event sent by a bidder to the auctioneer.
 This event contains the value of the bid.</p>
@@ -199,12 +199,12 @@ This event contains the value of the bid.</p>
 }
 </code></pre>
 
-<p>##5. Definition of the bidder</p>
+<h2 id="5-definition-of-the-bidder">5. Definition of the bidder</h2>
 
 <p>The bidder agent is reacting to new price notifications, and could offer a new bid if the
 new price is not  exceeding its maximal price.</p>
 
-<p>###5.1. Initial definition</p>
+<h3 id="51-initial-definition">5.1. Initial definition</h3>
 
 <p>The initial definition of the bidder is below. The <code>random</code> attribute contains an instance of
 a random number generator (from the Java library). The <code>maxPrice</code> attribute is the maximum value
@@ -221,7 +221,7 @@ The bidder selects the maximum price between 100 and 1000 randomly.</p>
 }
 </code></pre>
 
-<p>###5.2. Bidding</p>
+<h3 id="52-bidding">5.2. Bidding</h3>
 
 <p>The definition of the bidder agent is extended by the bidding behavior.
 The bidding must occur when the auctioneer is notifying a new price, i.e. when the
@@ -273,7 +273,7 @@ other sub-agents will receive this event.</cautionnote>
 }
 </code></pre>
 
-<p>###5.3. Restrict the bid to the auctioneer</p>
+<h3 id="53-restrict-the-bid-to-the-auctioneer">5.3. Restrict the bid to the auctioneer</h3>
 
 <p>For restricting the recipients of the <code>Bid</code> event to the auctioneer, it is mandatory to specify a
 scope for the event.
@@ -319,7 +319,7 @@ always the same.</note>
 }
 </code></pre>
 
-<p>###5.4. Definition of the auctioneer</p>
+<h3 id="54-definition-of-the-auctioneer">5.4. Definition of the auctioneer</h3>
 
 <p>The third step of this tutorial is the definition of the auctioneer that is initiating
 the auction, waiting for bids, and selecting the winner.</p>
@@ -532,7 +532,7 @@ executed in parallel by different threads.</p>
 }
 </code></pre>
 
-<p>###5.5. Stop the agents</p>
+<h3 id="55-stop-the-agents">5.5. Stop the agents</h3>
 
 <p>The previous code works well at one exception. When the auction is closed, the system does not stop.
 Indeed, the auctioneer does not send any more the <code>Price</code> event. This
@@ -655,17 +655,17 @@ to stop its execution.</p>
 }
 </code></pre>
 
-<p>##6. Legal Notice</p>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -674,7 +674,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -91,7 +91,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>The SARL default editor will open.</p>
 
-<p>##1. Basic agent definition</p>
+<h2 id="1-basic-agent-definition">1. Basic agent definition</h2>
 
 <p>Agents are defined using the <code>agent</code> keyword.</p>
 
@@ -99,7 +99,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 }
 </code></pre>
 
-<p>##2. Package definition</p>
+<h2 id="2-package-definition">2. Package definition</h2>
 
 <p>SARL elements are organized in packages. You can define the package using the <code>package</code> keyword.</p>
 
@@ -110,18 +110,18 @@ The character <code>^</code> in the package name permits to use a SARL keyword i
 [General Syntax Reference](../reference/GeneralSyntax.html) for details).
 Therefore FirstAgent and SecondAgent belong to the same package, i.e. `io.sarl.docs.gettingstarted.^agent`.</importantnote>
 
-<p>##3. Agent Perceptions</p>
+<h2 id="3-agent-perceptions">3. Agent Perceptions</h2>
 
 <p>Agents need to perceive their environment in order to react to external stimuli. Perceptions take the form of events
 (see <a href="../reference/Event.html">Event</a> and <a href="../reference/Agent.html">Agent</a> References for details).</p>
 
-<p>###3.1. Declare an Event</p>
+<h3 id="31-declare-an-event">3.1. Declare an Event</h3>
 
 <p>To declare a new event use the <code>event</code> keyword. The following code defines a new event <code>MyEvent</code>.</p>
 
 <p><code>event MyEvent</code></p>
 
-<p>###3.2. Define an agent Perceptions</p>
+<h3 id="32-define-an-agent-perceptions">3.2. Define an agent Perceptions</h3>
 
 <p>Now, we will want our agent to react to <code>MyEvent</code> and print a message on the console.</p>
 
@@ -139,7 +139,7 @@ agent MyAgent {
 }
 </code></pre>
 
-<p>###3.3. Lifecycle events</p>
+<h3 id="33-lifecycle-events">3.3. Lifecycle events</h3>
 
 <p>SARL defines two <strong>lifecycle</strong> events :</p>
 
@@ -168,7 +168,7 @@ agent MyAgent {
 }
 </code></pre>
 
-<p>###3.4. Accessing the event’s occurrence</p>
+<h3 id="34-accessing-the-events-occurrence">3.4. Accessing the event’s occurrence</h3>
 
 <p>Inside a behavior declaration you may need to access the event instance the agent is reacting to.</p>
 
@@ -191,12 +191,12 @@ agent MyAgent {
 }
 </code></pre>
 
-<p>##4. Agent Communication</p>
+<h2 id="4-agent-communication">4. Agent Communication</h2>
 
 <p>Agents need to send data and stimuli to other agents. This communication takes the form of event sending
 (see <a href="../reference/Event.html">Event</a> and <a href="../reference/Agent.html">Agent</a> References for details).</p>
 
-<p>###4.1. Use the capacity to send an event in the default space</p>
+<h3 id="41-use-the-capacity-to-send-an-event-in-the-default-space">4.1. Use the capacity to send an event in the default space</h3>
 
 <p>Now, we will want our agent to send data to other agents. The data are embedded into events. The definition of an
 event is described above.</p>
@@ -214,7 +214,7 @@ agent MyAgent {
 }
 </code></pre>
 
-<p>###4.2. Send an event in the default space</p>
+<h3 id="42-send-an-event-in-the-default-space">4.2. Send an event in the default space</h3>
 
 <p>The <code>DefaultContextInteractions</code> built-in capacity provides functions for sending events in the default space.</p>
 
@@ -230,23 +230,23 @@ call <code>emit(e)</code>.</p>
 }
 </code></pre>
 
-<p>##5. What’s next?</p>
+<h2 id="5-whats-next">5. What’s next?</h2>
 
 <p>In the next section, we will learn how to start a SARL agent in the Eclipse IDE.</p>
 
 <p><a href="./RunSARLAgentEclipse.html">Next&gt;</a></p>
 
-<p>##6. Legal Notice</p>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -255,7 +255,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

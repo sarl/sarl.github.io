@@ -102,9 +102,9 @@ additional macros in order to validate the content of the documentation.</p>
   <li>check if the reference to the local images are pointing to existing files.</li>
 </ol>
 
-<p>##1. Extra Macros</p>
+<h2 id="1-extra-macros">1. Extra Macros</h2>
 
-<p>###1.1. Compile a SARL code with success</p>
+<h3 id="11-compile-a-sarl-code-with-success">1.1. Compile a SARL code with success</h3>
 
 <p>For compiling a SARL code, and failing the validation if it cannot be compiled with success, you may use the <code>Success</code> macro:</p>
 
@@ -119,7 +119,7 @@ explained in this documentation.</p>
 <p>The SARL code inside this macro is not rendered into the final Markdown document.
 If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
 
-<p>###1.2. Compile a SARL code with expected errors</p>
+<h3 id="12-compile-a-sarl-code-with-expected-errors">1.2. Compile a SARL code with expected errors</h3>
 
 <p>For compiling a SARL code, and failing the validation if it can be compiled with success, you may use the <code>Failure</code> macro:</p>
 
@@ -134,7 +134,7 @@ explained in this documentation.</p>
 <p>The SARL code inside this macro is not rendered into the final Markdown document.
 If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
 
-<p>###1.3. Changing the visibility of the SARL code</p>
+<h3 id="13-changing-the-visibility-of-the-sarl-code">1.3. Changing the visibility of the SARL code</h3>
 
 <p>With two previous macros, i.e. <code>Success</code> and <code>Failure</code>, the SARL code is not put into the final Markdown document by default.
 In order to output a part of the SARL code, you should manually turn on the rendering of the code with the <code>On</code> macro.
@@ -151,7 +151,7 @@ Turning off the visibility flag could be done with the <code>Off</code> macro.</
 [:End:] 
 </code></pre>
 
-<p>###1.4. Evaluating a SARL expression</p>
+<h3 id="14-evaluating-a-sarl-expression">1.4. Evaluating a SARL expression</h3>
 
 <p>Several validation may need to interpret and evaluate a SARL expression. The <code>Fact</code> macro takes a parameter that is a valid SARL
 expression. This expression is interpreted and the result is evaluated.</p>
@@ -166,7 +166,7 @@ expression. This expression is interpreted and the result is evaluated.</p>
   <li>an object instance that is not <code>null</code>.</li>
 </ol>
 
-<p>###1.5. Capture SARL code into the documentation</p>
+<h3 id="15-capture-sarl-code-into-the-documentation">1.5. Capture SARL code into the documentation</h3>
 
 <p>Many times, a part of the SARL code is mentionned in the documentation text. In order to have the same value in
 the code itself and in the documentation text, you could use the copying and referencing macros.</p>
@@ -188,7 +188,7 @@ equals to the <code>id</code>.</p>
 
 <p>This protection is implicit in the parameters and the content of the other macros that are described on this page.</p>
 
-<p>###1.6. Dynamic generation of the Markdown text</p>
+<h3 id="16-dynamic-generation-of-the-markdown-text">1.6. Dynamic generation of the Markdown text</h3>
 
 <p>Sometimes, it is useful to create the Markdown text via a script in order to introduce dynamic building of the documentation.
 The following macro provides you the ability to run a SARL script for generating the documentation.</p>
@@ -205,7 +205,7 @@ be automatically formatted within a block of code, you should use the following 
 <pre><code class="language-text">[:DynamicCode:](expression)
 </code></pre>
 
-<p>###1.7. Generate code from Java type</p>
+<h3 id="17-generate-code-from-java-type">1.7. Generate code from Java type</h3>
 
 <p>You could generate a piece of code from a Java type with the following macro:</p>
 
@@ -215,7 +215,7 @@ be automatically formatted within a block of code, you should use the following 
 <p>This macro extracts the type definition with the reflection mechanism for the given <code>typename</code>.
 The output of this macro is a formatted SARL code that corresponds to the extracted information.</p>
 
-<p>###1.8. Generating an Outline</p>
+<h3 id="18-generating-an-outline">1.8. Generating an Outline</h3>
 
 <p>By default, Markdown does not include a specific tag for generating the outline.
 If you put the <code>Outline</code> macro, it will be replaced by a generated outline.</p>
@@ -225,9 +225,9 @@ If you put the <code>Outline</code> macro, it will be replaced by a generated ou
 
 <p>The section headings will be updating with a section number.</p>
 
-<p>##2. Syntax Extensions</p>
+<h2 id="2-syntax-extensions">2. Syntax Extensions</h2>
 
-<p>###2.1. Changing the characters for enclosing the macro parameter</p>
+<h3 id="21-changing-the-characters-for-enclosing-the-macro-parameter">2.1. Changing the characters for enclosing the macro parameter</h3>
 
 <p>Several of the macros above take a parameter. Sometimes the characters <code>(</code> and <code>)</code> are not suitable for enclosing a parameter
 value because the <code>)</code> character is inside the value.</p>
@@ -242,13 +242,13 @@ the parameter values. The accepted characters are:</p>
   <li><code>$ value $</code></li>
 </ul>
 
-<p>###2.2. Comments in the file</p>
+<h3 id="22-comments-in-the-file">2.2. Comments in the file</h3>
 
 <p>Any text enclosing by <code>&amp;lt;!---</code> and <code>--&amp;gt;</code> is assumed to be a comment that should not appear in the generated files.</p>
 
 <p>Note that the standard HTML comments are still copied into the generated files.</p>
 
-<p>##3. Maven Tool for Generating the Documentation</p>
+<h2 id="3-maven-tool-for-generating-the-documentation">3. Maven Tool for Generating the Documentation</h2>
 
 <p>The parser that is supporting the macros above is provided in a Maven plugin. You may create a Maven project with the following
 configuration:</p>
@@ -297,17 +297,17 @@ configuration:</p>
 <p>By default, the Markdown code should be in the <code>src/main/documentation</code> folder.
 The other resources, such as images should be in the <code>src/main/resources</code> folder.</p>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -316,7 +316,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

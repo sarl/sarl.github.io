@@ -96,7 +96,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>A literal denotes a fixed, unchangeable value. Literals for strings, numbers, booleans, null, and Java types are
 supported, as well as literals for unmodifiable collection types like lists, sets, maps, and arrays.</p>
 
-<p>##1. String Literals</p>
+<h2 id="1-string-literals">1. String Literals</h2>
 
 <p>A string literal is of type <code>String</code>. String literals are enclosed in a pair of single quotes
 or double quotes. Special characters can be quoted with a backslash or defined using unicode
@@ -112,7 +112,7 @@ var e = "Hello
 
 <note>Unlike Java, SARL strings can span multiple lines, as ilustrated by the variable `e` above.</note>
 
-<p>##2. Character Literals</p>
+<h2 id="2-character-literals">2. Character Literals</h2>
 
 <p>Character literals use the same notation as String literals. If a single-character String literal is
 used in a context where a primitive char or the wrapper type <code>Character</code> or <code>char</code> is expected,
@@ -122,9 +122,9 @@ the compiler will treat the literal as a <code>Character</code> or <code>char</c
 var b : char = "b"
 </code></pre>
 
-<p>##3. Number Literals</p>
+<h2 id="3-number-literals">3. Number Literals</h2>
 
-<p>###3.1. General Notation</p>
+<h3 id="31-general-notation">3.1. General Notation</h3>
 
 <p>SARL supports the same number literals as Java with two exceptions: there is no notation
 for specifying octal numbers, and if you put the dot character in a number, you must
@@ -169,7 +169,7 @@ var e = 1.0		// The trailing zero must be specified
   </tbody>
 </table>
 
-<p>###3.2. Integer suffixes</p>
+<h3 id="32-integer-suffixes">3.2. Integer suffixes</h3>
 
 <p>Post-fixing an integer literal may change its type:</p>
 
@@ -188,7 +188,7 @@ var aLong = 1234L
 var aBigInteger = 1234bi
 </code></pre>
 
-<p>##4. Floating-point-value suffixes</p>
+<h2 id="4-floating-point-value-suffixes">4. Floating-point-value suffixes</h2>
 
 <p>Post-fixing a floating-point literal may change its type:</p>
 
@@ -212,7 +212,7 @@ var anotherFloat = 5678f
 var aBigDecimal = 1234bd
 </code></pre>
 
-<p>###4.1. Large Numbers</p>
+<h3 id="41-large-numbers">4.1. Large Numbers</h3>
 
 <p>As in Java 7, you can separate digits using <code>_</code> for better readability of large numbers.</p>
 
@@ -220,15 +220,15 @@ var aBigDecimal = 1234bd
 var a = 12_345_678L
 </code></pre>
 
-<p>##5. Boolean Literals</p>
+<h2 id="5-boolean-literals">5. Boolean Literals</h2>
 
 <p>There are two boolean literals, <code>true</code> and <code>false</code>, which correspond to their Java counterpart of type <code>boolean</code>.</p>
 
-<p>##6. Null Literal</p>
+<h2 id="6-null-literal">6. Null Literal</h2>
 
 <p>The null pointer literal <code>null</code> has exactly the same semantics as in Java: a reference to nothing.</p>
 
-<p>##7. Type Literals</p>
+<h2 id="7-type-literals">7. Type Literals</h2>
 
 <p>A type literal is the fully qualified name of a type in the SARL language.
 The syntax for type literals is generally the plain name of the type. Nested types use the delimiter <code>.</code>.
@@ -249,11 +249,11 @@ In the following example, the fields declared in the <code>String</code> class a
 <pre><code class="language-sarl">String.getDeclaredFields
 </code></pre>
 
-<p>##8. Collection Literals</p>
+<h2 id="8-collection-literals">8. Collection Literals</h2>
 
 <p>The collection literals permit to specify collections of values.</p>
 
-<p>###8.1. Mutable Collections</p>
+<h3 id="81-mutable-collections">8.1. Mutable Collections</h3>
 
 <p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported.
 They permit you to create instances of collections from the JDK.</p>
@@ -290,7 +290,7 @@ They permit you to create instances of collections from the JDK.</p>
 var myMap = newLinkedHashMap('a' -&gt; 1, 'b' -&gt; 2)
 </code></pre>
 
-<p>###8.2. Array Literals</p>
+<h3 id="82-array-literals">8.2. Array Literals</h3>
 
 <p>Java arrays can be created either using a literal as described in the next section, or a new array with a fixed size.</p>
 
@@ -366,7 +366,7 @@ This method is similar to the <code>Arrays.asList</code> function provided by th
 val myList : List&lt;Integer&gt; = myArray
 </code></pre>
 
-<p>###8.3. Immutable Collections</p>
+<h3 id="83-immutable-collections">8.3. Immutable Collections</h3>
 
 <p>In addition to the functions described in the previous section, SARL supports collection literals to create
 immutable collections and arrays, depending on the target type. There are three types of immutable
@@ -388,23 +388,23 @@ the values are pairs, using the <code>-&gt;</code>.</p>
 <pre><code class="language-sarl">var c = #{ 'a' -&gt; 1 ,'b' -&gt; 2 }
 </code></pre>
 
-<p>##9. Acknowledgements</p>
+<h2 id="9-acknowledgements">9. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##10. Legal Notice</p>
+<h2 id="10-legal-notice">10. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -413,7 +413,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

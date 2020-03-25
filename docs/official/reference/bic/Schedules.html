@@ -84,7 +84,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>The built-in capacity <code>Schedules</code> enables the agent to schedule tasks for future or periodic execution.</p>
 
-<p>##1. Creating Named Tasks</p>
+<h2 id="1-creating-named-tasks">1. Creating Named Tasks</h2>
 
 <p>A named task may be created with:</p>
 
@@ -106,7 +106,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 }
 </code></pre>
 
-<p>##2. Changing the name of a task</p>
+<h2 id="2-changing-the-name-of-a-task">2. Changing the name of a task</h2>
 
 <p>A task has a name that serves as its identifier. You could change the task name by calling the following function:</p>
 
@@ -130,7 +130,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 }
 </code></pre>
 
-<p>##3. Launching a Task for a single run</p>
+<h2 id="3-launching-a-task-for-a-single-run">3. Launching a Task for a single run</h2>
 
 <p>For running a task once time, the following function is provided:</p>
 
@@ -165,7 +165,7 @@ the task given as parameter.</p>
 }
 </code></pre>
 
-<p>##4. Launching a Delayed Task</p>
+<h2 id="4-launching-a-delayed-task">4. Launching a Delayed Task</h2>
 
 <p>For running a task in a given delay, the following function is provided:</p>
 
@@ -199,7 +199,7 @@ is the same as the task given as parameter.</p>
 }
 </code></pre>
 
-<p>##5. Launching a Task at a Specific Time</p>
+<h2 id="5-launching-a-task-at-a-specific-time">5. Launching a Task at a Specific Time</h2>
 
 <p>For running a task at a specific time, the following function is provided:</p>
 
@@ -234,7 +234,7 @@ is the same as the task given as parameter.</p>
 }
 </code></pre>
 
-<p>##6. Launching a Periodic Task at a Fixed Rate</p>
+<h2 id="6-launching-a-periodic-task-at-a-fixed-rate">6. Launching a Periodic Task at a Fixed Rate</h2>
 
 <p>For running a periodic task with a fixed starting rate, the following function is provided:</p>
 
@@ -351,7 +351,7 @@ For example, consider the following code:</p>
   </tbody>
 </table>
 
-<p>##7. Launching a Periodic Task with a Fixed Delay between the Runs</p>
+<h2 id="7-launching-a-periodic-task-with-a-fixed-delay-between-the-runs">7. Launching a Periodic Task with a Fixed Delay between the Runs</h2>
 
 <p>For running a periodic task with a fixed duration between the runs, the following function is provided:</p>
 
@@ -451,7 +451,7 @@ The <code>atFixedDelay</code> function ensures that only one run of the procedur
   </tbody>
 </table>
 
-<p>##8. Cancelling a Task</p>
+<h2 id="8-cancelling-a-task">8. Cancelling a Task</h2>
 
 <p>It may be useful to cancel a running task, e.g. a periodic task. The <code>Schedules</code> capacity
 provides the following functions for managing the execution cancellation of an agent task:</p>
@@ -493,7 +493,7 @@ whether the thread executing this task should be interrupted in an attempt to st
 }
 </code></pre>
 
-<p>##9. Conditional Execution of a Task</p>
+<h2 id="9-conditional-execution-of-a-task">9. Conditional Execution of a Task</h2>
 
 <p>Sometimes, it may be useful to execute a task if a condition is <code>true</code> or <code>false</code>. The 
 <code>AgentTask</code> type, which is representing an instance of <code>AgentTask</code> provides
@@ -538,7 +538,7 @@ myTask.unless [ myVar &gt; 5 ]
 myTask.execute [ doSomething ]
 </code></pre>
 
-<p>##10. Retreiving the active tasks</p>
+<h2 id="10-retreiving-the-active-tasks">10. Retreiving the active tasks</h2>
 
 <p>The list of the active tasks may be retreived by invoking the following function:</p>
 
@@ -554,17 +554,17 @@ myTask.execute [ doSomething ]
 }
 </code></pre>
 
-<p>##11. Legal Notice</p>
+<h2 id="11-legal-notice">11. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -573,7 +573,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

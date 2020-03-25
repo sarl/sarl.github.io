@@ -99,9 +99,9 @@ associated with a given Capacity. Acquiring a new Capacity enables an Agent to g
 This provides Agents with a self-adaptation mechanism that allows them to dynamically change their architecture
 according to their current needs and goals.</p>
 
-<p>##1. Defining a Capacity</p>
+<h2 id="1-defining-a-capacity">1. Defining a Capacity</h2>
 
-<p>###1.1. Capacity Definition</p>
+<h3 id="11-capacity-definition">1.1. Capacity Definition</h3>
 
 <p>A Capacity is the specification of a collection of Actions. Consequently, only Action signatures can be defined inside
 a Capacity: no attribute or field is allowed, and no body (code) for the Action may be present.</p>
@@ -119,7 +119,7 @@ is defined. This Capacity enables an Agent to log information and debugging mess
 }
 </code></pre>
 
-<p>###1.2. Extending a Capacity</p>
+<h3 id="12-extending-a-capacity">1.2. Extending a Capacity</h3>
 
 <p>In some situations, it is useful to specialize the definition of a Capacity. Capacity specialization is supported
 by the inheritance feature of SARL, which has the same semantics as the inheritance mechanism of the Java
@@ -138,7 +138,7 @@ This is similar to the implementation of interfaces in the Java language.</veryi
 }
 </code></pre>
 
-<p>###1.3. Extending Multiple Capacities</p>
+<h3 id="13-extending-multiple-capacities">1.3. Extending Multiple Capacities</h3>
 
 <p>In some situations, it is useful to define a Capacity by extending more than one Capacity.
 Below, the <code>Cap3</code> Capacity is defined as an extension of the Capacities <code>Cap1</code> and <code>Cap2</code>.</p>
@@ -154,7 +154,7 @@ capacity Cap3 extends Cap1, Cap2 {
 }
 </code></pre>
 
-<p>###1.4. Modifiers</p>
+<h3 id="14-modifiers">1.4. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for Capacity.
 The modifiers are usually written before the keyword defining the Capacity.</p>
@@ -201,7 +201,7 @@ package capacity Example2 {
 public def example1
 </code></pre>
 
-<p>##2. Built-in Capacities</p>
+<h2 id="2-built-in-capacities">2. Built-in Capacities</h2>
 
 <p>Several Capacities are defined and reserved by the SARL Core Specification.
 They compose the minimal set of Capacities that a runtime environment must support to run a SARL program.</p>
@@ -211,7 +211,7 @@ of the reserved Capacities.</veryimportantnote>
 
 <p>The built-in Capacities are defined in the <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
 
-<p>##3. Use of the Capacities</p>
+<h2 id="3-use-of-the-capacities">3. Use of the Capacities</h2>
 
 <p>The use of a Capacity is related to the associated <a href="./Skill.html">Skills</a>.
 A Capacity cannot be called by itself since it does not provide an implementation: this is the role of the Skill.</p>
@@ -230,7 +230,7 @@ A Capacity cannot be called by itself since it does not provide an implementatio
   <li><a href="./Behavior.html">Behavior</a></li>
 </ul>
 
-<p>##4. Associating a default skill to a capacity</p>
+<h2 id="4-associating-a-default-skill-to-a-capacity">4. Associating a default skill to a capacity</h2>
 
 <p>As described within the previous section, when a capacity’s function is invoked, the function’s implementation is retreived from
 the <a href="./Skill.html">skill</a> that was associated to the capacity.</p>
@@ -262,17 +262,17 @@ skill MySkill implements MyCapacity {
 }
 </code></pre>
 
-<p>##5. Legal Notice</p>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -281,7 +281,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

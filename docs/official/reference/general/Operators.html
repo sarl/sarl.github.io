@@ -90,7 +90,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>SARL supports a collection of operators. Most of them are infix operators, and several are postfix operators.</p>
 
-<p>##1. Assignments</p>
+<h2 id="1-assignments">1. Assignments</h2>
 
 <p>The assignment operators are listed below. Local variables and fields can be assigned using the <code>=</code> operator.
 Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, and <code>%=</code>) can be used as a shorthand for the assignment
@@ -134,7 +134,7 @@ of a binary expression. They work automatically when the corresponding infix ope
 <note>The assignment operator is the only one operator that cannot be overridden yet.
 See the [operator overloading section](#11-operator-overloading) for details.</note>
 
-<p>##2. Arithmetic operators</p>
+<h2 id="2-arithmetic-operators">2. Arithmetic operators</h2>
 
 <p>The arithmetic operators are listed below and take numbers as operands. 
 There are either unary (one operand) or binary (two operands).</p>
@@ -201,9 +201,9 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#11-operator-overloading">operator overloading section</a>.</p>
 
-<p>##3. Comparison operators</p>
+<h2 id="3-comparison-operators">3. Comparison operators</h2>
 
-<p>###3.1. Comparison operators on primitive types</p>
+<h3 id="31-comparison-operators-on-primitive-types">3.1. Comparison operators on primitive types</h3>
 
 <p>The comparison operators on primitive types are listed below.</p>
 
@@ -269,7 +269,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 operator overloading section](#operator-overloading).</p>
 
-<p>###3.2. Comparison operators on objects</p>
+<h3 id="32-comparison-operators-on-objects">3.2. Comparison operators on objects</h3>
 
 <p>The comparison operators on objects are listed below.</p>
 
@@ -335,7 +335,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the
 operator overloading section](#operator-overloading).</p>
 
-<p>##4. Boolean Operators</p>
+<h2 id="4-boolean-operators">4. Boolean Operators</h2>
 
 <p>The boolean operators are listed below. Each operator takes one or two boolean values as operands, and
 replies the boolean value resulting from the operational semantic of the operator.</p>
@@ -372,7 +372,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#11-operator-overloading">operator overloading section</a>.</p>
 
-<p>##5. Bitwise Operators</p>
+<h2 id="5-bitwise-operators">5. Bitwise Operators</h2>
 
 <p>The bit operators are listed below. The bit operators apply operations on the bits that represent
 a numeric value.</p>
@@ -443,7 +443,7 @@ operator. This function can be redefined as explained in the
   </tbody>
 </table>
 
-<p>##6. String Operators</p>
+<h2 id="6-string-operators">6. String Operators</h2>
 
 <p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
 
@@ -469,7 +469,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#11-operator-overloading">operator overloading section</a>.</p>
 
-<p>##7. Number Range operators</p>
+<h2 id="7-number-range-operators">7. Number Range operators</h2>
 
 <p>This section presents a collection of operators that define ranges of values.</p>
 
@@ -505,7 +505,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#11-operator-overloading">operator overloading section</a>.</p>
 
-<p>##8. Collection Operators</p>
+<h2 id="8-collection-operators">8. Collection Operators</h2>
 
 <p>The collection operators are listed below. These operators are dedicated to the collections (lists, sets, maps…)
 Most of the time, the first operand is the collection on which the operator must be applied.</p>
@@ -557,7 +557,7 @@ the concrete implementation of the operational semantic of the
 operator. This function can be redefined as explained in the 
 <a href="#11-operator-overloading">operator overloading section</a>.</p>
 
-<p>##9. Other operators</p>
+<h2 id="9-other-operators">9. Other operators</h2>
 
 <p>This section presents a collection of operators that are not related to the categories in the previous sections.</p>
 
@@ -609,7 +609,7 @@ lambda expression. Inside this expression, the new Person instance is accessible
 reserved pseudo-variable, which does not need to be typed out since it is the default object in
 lambda expression. The lambda expression replies the value of <code>it</code>.</p>
 
-<p>##10. Operator Precedence</p>
+<h2 id="10-operator-precedence">10. Operator Precedence</h2>
 
 <p>The following table lists the precedence and associativity of SARL operators. Operators are listed top to bottom,
 in ascending precedence, i.e. from the lower priority to the higher priority.</p>
@@ -722,7 +722,7 @@ Note that the associativity is meaningful for member access operators, even thou
 unary postfix operators: <code>a.b++</code> is parsed <code>(a.b)++</code> and not <code>a.(b++)</code>.
 Operator precedence is unaffected by operator overloading.</p>
 
-<p>##11. Operator Overloading</p>
+<h2 id="11-operator-overloading">11. Operator Overloading</h2>
 
 <p>In SARL, it is easy to overload or re-define an existing operator.</p>
 
@@ -759,23 +759,23 @@ def example {
 <p>In addition to the overloading of the operators that are described on this page, it 
 is possible to overload the casting operator. See <a href="./Cast.html">details</a>.</p>
 
-<p>##12. Acknowledgements</p>
+<h2 id="12-acknowledgements">12. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##13. Legal Notice</p>
+<h2 id="13-legal-notice">13. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -784,7 +784,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

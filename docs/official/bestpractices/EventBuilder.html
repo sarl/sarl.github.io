@@ -90,7 +90,7 @@ The best way for creating events with unique identifiers is to apply the
   <li>the use of the event builder.</li>
 </ul>
 
-<p>##1. Definition of the event</p>
+<h2 id="1-definition-of-the-event">1. Definition of the event</h2>
 
 <p>The purpose of this document is to create an event, which has a unique identifier.
 This identifier is an integer number that should be incremented each time an
@@ -108,7 +108,7 @@ Consequently, a constructor is defined with the identifier value as parameter.</
 }
 </code></pre>
 
-<p>##2. Definition of the event builder</p>
+<h2 id="2-definition-of-the-event-builder">2. Definition of the event builder</h2>
 
 <p>For creating the event instances, we apply the
 <a href="https://en.wikipedia.org/wiki/Software_design_pattern">builder design pattern</a></p>
@@ -131,7 +131,7 @@ gets the next available global identifier to give it to the event instance, and 
 the next available global identifier for the next call to <code>newInstance</code>.
 Finally, the <code>newInstance</code> function create the event instance with the appropriate identifier.</p>
 
-<p>##3. Use of the event builder</p>
+<h2 id="3-use-of-the-event-builder">3. Use of the event builder</h2>
 
 <p>For using the event builder, you have simply to create an instance of the <code>MyEventBuilderUser</code>
 class, and use it as follow (two events are created in the example):</p>
@@ -141,17 +141,17 @@ var event1 = builder.newInstance
 var event2 = builder.newInstance
 </code></pre>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -160,7 +160,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

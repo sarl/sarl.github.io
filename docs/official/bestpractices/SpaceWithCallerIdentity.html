@@ -90,7 +90,7 @@ The question was regarding the identity parameter, since CArtAgO allows to deter
 <p>In this document, a space is defined with caller identity as parameter. An a capacity/skill is defined for invoking
 the operation on the space.</p>
 
-<p>##1. Capacity Definition</p>
+<h2 id="1-capacity-definition">1. Capacity Definition</h2>
 
 <p>The first step is the <a href="../reference/Capacity.html">definition of a capacity</a> that enables an agent to access to
 the operations of the space.</p>
@@ -104,7 +104,7 @@ the operations of the space.</p>
 }
 </code></pre>
 
-<p>##2. Space Definition</p>
+<h2 id="2-space-definition">2. Space Definition</h2>
 
 <p>Currently, the definition of a space into SARL with specific keywords is not yet supported.
 You must define a space with the definition of a class that extends the <code>Space</code> type.
@@ -119,7 +119,7 @@ In the following example, the <code>MySpace</code> space is declared:</p>
     def getSpaceID : SpaceID {
     	this.id
     }
-    def getParticipants : SynchronizedSet&lt;UUID&gt; {
+    def getParticipants : ConcurrentSkipListSet&lt;UUID&gt; {
     	null
     }
 }
@@ -142,7 +142,7 @@ Back to the example, the code becomes:</p>
     def getSpaceID : SpaceID {
     	this.id
     }
-    def getParticipants : SynchronizedSet&lt;UUID&gt; {
+    def getParticipants : ConcurrentSkipListSet&lt;UUID&gt; {
     	null
     }
 }
@@ -157,7 +157,7 @@ Back to the example, the code becomes:</p>
 }
 </code></pre>
 
-<p>##3. Skill Definition</p>
+<h2 id="3-skill-definition">3. Skill Definition</h2>
 
 <p>In order to do a bridge between the defined capacity and the space, a skill must be defined.
 The main role of this skill is to determine the identity of the operation’s caller for giving
@@ -179,7 +179,7 @@ the skill : <code>def install() : void</code></p>
 <p>The definition of the functionAccessibleToTheAgent name is based on the delegation design pattern : the skill calls the similar space’s function.
 The difference is that the skill’s call include the identifier of the function’s caller, i.e. the agent’s identifier.</p>
 
-<p>##4. Accessing to the function caller instance</p>
+<h2 id="4-accessing-to-the-function-caller-instance">4. Accessing to the function caller instance</h2>
 
 <p>Sometimes, it is useful to obtain the instance of the object, which has called the skill’s function.
 The caller may be the agent itself or one of its behaviors.
@@ -203,17 +203,17 @@ to give the instance of the caller to the space. The code of the skill becomes:<
 }
 </code></pre>
 
-<p>##5. Legal Notice</p>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -222,7 +222,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -93,7 +93,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>These two ways are explained below.</p>
 
-<p>##1. Create a SARL Project without Maven</p>
+<h2 id="1-create-a-sarl-project-without-maven">1. Create a SARL Project without Maven</h2>
 
 <p>For creating a project, you should open your Eclipse and click on <strong>File &gt; New &gt; Projects</strong>, and select <em>SARL Project</em> in
 the SARL category.</p>
@@ -102,7 +102,7 @@ the SARL category.</p>
 
 <p>After clicking on <strong>Next</strong>, the wizard is displaying the first page for creating a SARL project.</p>
 
-<p>###1.1. Step 1: Entering the project information</p>
+<h3 id="11-step-1-entering-the-project-information">1.1. Step 1: Entering the project information</h3>
 
 <p>You must enter the name of your project. You could change the standard SARL and Java environment configurations as well.</p>
 
@@ -113,7 +113,7 @@ the SARL category.</p>
 
 <p>The rest of this section is devoted to the edition of the additional properties for the SARL project.</p>
 
-<p>###1.2. Step 2: Configuration of the source folders”</p>
+<h3 id="12-step-2-configuration-of-the-source-folders">1.2. Step 2: Configuration of the source folders”</h3>
 
 <p>The second page of the wizard contains the building settings. Two tabs are really interesting: the <em>Source</em> and the <em>Libraries</em>.</p>
 
@@ -134,25 +134,25 @@ be able to turn the Maven nature on your SARL project on/off.</note>
 
 <p><img src="./new_sarl_project_screen_3.png" alt="Source Code Folders" /></p>
 
-<p>##2. Create a SARL Project with Maven</p>
+<h2 id="2-create-a-sarl-project-with-maven">2. Create a SARL Project with Maven</h2>
 
 <p>For creating a project with both the Maven and SARL natures, you should open your Eclipse and click on
 <strong>File &gt; New &gt; Others &gt; Maven &gt; Maven Project</strong>.</p>
 
 <p>Follow the steps of the project creation wizard, and finally click on the <strong>Finish</strong> button.</p>
 
-<p>###2.1. Edit the Maven configuration</p>
+<h3 id="21-edit-the-maven-configuration">2.1. Edit the Maven configuration</h3>
 
 <p>Open the file <code>pom.xml</code>, and edit it for obtaining a content similar to the configuration below.</p>
 
-<p>Replace the version number <code>0.10.0</code> of SARL with the one you want to use. You could search on the
+<p>Replace the version number <code>0.11.0-SNAPSHOT</code> of SARL with the one you want to use. You could search on the
 <a href="http://search.maven.org/">Maven Central Repository</a> for the last available version.</p>
 
 <pre><code class="language-xml"> &lt;project&gt;
     ...
     &lt;properties&gt;
        ...
-       &lt;sarl.version&gt;0.10.0&lt;/sarl.version&gt;
+       &lt;sarl.version&gt;0.11.0-SNAPSHOT&lt;/sarl.version&gt;
 	   &lt;jdk.version&gt;1.8&lt;/jdk.version&gt;
 	   &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
     &lt;/properties&gt;
@@ -204,7 +204,7 @@ the Java files. Details about the <code>sarl-maven-plugin</code> may be found on
 will not able to be integrated in the Maven life-cycle. The consequence will be that only the Java compiler will be
 invoked.</important>
 
-<p>###2.2. Configuration of a runtime environment (optional)</p>
+<h3 id="22-configuration-of-a-runtime-environment-optional">2.2. Configuration of a runtime environment (optional)</h3>
 
 <p>For executing your SARL program, a <a href="http://www.sarl.io/runtime/index.html">run-time environment</a> should be used.
 By default, the SARL development environment replaces any reference to the SARL libraries by the run-time environment’s libraries
@@ -219,14 +219,14 @@ recommended approach by the SARL core developers.</caution>
 
 <p>The runtime environment that is recommended by the developers of SARL is <a href="http://www.janusproject.io">Janus</a>.</p>
 
-<p>Replace the version number (<code>2.0.10.0</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use.
+<p>Replace the version number (<code>3.0.11.0-SNAPSHOT</code>) of the <a href="http://www.janusproject.io">Janus platform</a> with the one you want to use.
 You could search on the <a href="http://search.maven.org/">Maven Central Repository</a> for the last available version.</p>
 
 <pre><code class="language-xml"> &lt;project&gt;
    ...
     &lt;properties&gt;
        ...
-       &lt;janus.version&gt;2.0.10.0&lt;/janus.version&gt;
+       &lt;janus.version&gt;3.0.11.0-SNAPSHOT&lt;/janus.version&gt;
     &lt;/properties&gt;
     ...
     &lt;build&gt;
@@ -264,23 +264,23 @@ POM file, you must be sure that the imported version of the Google Guava library
 platform. For ensuring this, you must specify the version of the Guava library by defining it in the "dependencyManagement"
 section of your pom file.</important>
 
-<p>##3. What’s next?</p>
+<h2 id="3-whats-next">3. What’s next?</h2>
 
 <p>In the next section, we will learn how to create our first agent.</p>
 
 <p><a href="./AgentIntroduction.html">Next&gt;</a></p>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -289,7 +289,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

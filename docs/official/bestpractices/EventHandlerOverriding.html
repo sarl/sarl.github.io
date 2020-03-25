@@ -87,7 +87,7 @@ So, <strong>how to override the behavior of an inherited <code>on</code> stateme
 <p>In this document, the operational semantic of the event handlers is reminded. Then, the best practice for overriding
 the event handler behavior is explained.</p>
 
-<p>##1. Operational semantic of the event handlers</p>
+<h2 id="1-operational-semantic-of-the-event-handlers">1. Operational semantic of the event handlers</h2>
 
 <p>The operational semantics of the event handler is the following:
 when an event is received by an agent (or a behavior), all the event handlers matching the
@@ -114,7 +114,7 @@ agent MyAgent extends MySuperAgent {
 }
 </code></pre>
 
-<p>##2. Defining the super behavior in a function</p>
+<h2 id="2-defining-the-super-behavior-in-a-function">2. Defining the super behavior in a function</h2>
 
 <p>For overriding the behavior associated to an event handler, it is mandatory to use the function overriding mechanism
 that is provided by the SARL language.</p>
@@ -136,7 +136,7 @@ agent MySuperAgent {
 }
 </code></pre>
 
-<p>##3. Overriding the super function</p>
+<h2 id="3-overriding-the-super-function">3. Overriding the super function</h2>
 
 <p>For overriding the behavior, the function <code>myEventBehavior</code> could be overridden in the sub-type.
 With the example below, the message “hello world” is no more printed out because of the function overriding.</p>
@@ -148,17 +148,17 @@ With the example below, the message “hello world” is no more printed out bec
 }
 </code></pre>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -167,7 +167,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

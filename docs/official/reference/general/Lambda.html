@@ -93,7 +93,7 @@ in an object to pass it around. As a Java developer it is best to
 think of a lambda expression as an anonymous class with a single 
 method.</p>
 
-<p>##1. Basic Definition</p>
+<h2 id="1-basic-definition">1. Basic Definition</h2>
 
 <p>A lambda expression is code surrounded by square brackets (inspired from Smalltalk).
 Like a method declaration, a lambda expression may declare parameters.</p>
@@ -106,7 +106,7 @@ Like a method declaration, a lambda expression may declare parameters.</p>
 <p>The lambda above has one parameter called <code>e</code> which is of type <code>ActionEvent</code>.
 The code after the <code>|</code> operator is the internal code of the lambda expression.</p>
 
-<p>##2. Inferred Parameter Type</p>
+<h2 id="2-inferred-parameter-type">2. Inferred Parameter Type</h2>
 
 <p>You do not have to specify the type explicitly because it can be inferred from the context.
 For example, when using inferred type, the code in the previous section becomes:</p>
@@ -118,9 +118,9 @@ For example, when using inferred type, the code in the previous section becomes:
 
 <p>The type of <code>e</code> is inferred according to its usage.</p>
 
-<p>##3. Implicit Parameters</p>
+<h2 id="3-implicit-parameters">3. Implicit Parameters</h2>
 
-<p>###3.1. Case of a single parameter: it</p>
+<h3 id="31-case-of-a-single-parameter-it">3.1. Case of a single parameter: it</h3>
 
 <p>As lambdas with one parameter are a common case, there  a special short hand notation
 for these parameters, which is to leave the declaration including the vertical bar out.</p>
@@ -132,7 +132,7 @@ for these parameters, which is to leave the declaration including the vertical b
 ]
 </code></pre>
 
-<p>###3.2. Case of multiple parameters</p>
+<h3 id="32-case-of-multiple-parameters">3.2. Case of multiple parameters</h3>
 
 <p>When a lambda has multiple parameters, and no name is provided by the SARL developer, 
 the compiler generates default names for each of the formal parameters.
@@ -171,7 +171,7 @@ has four parameters with implicit the following implicit names: <code>$0</code>,
 ]
 </code></pre>
 
-<p>##4. Empty List of Parameters</p>
+<h2 id="4-empty-list-of-parameters">4. Empty List of Parameters</h2>
 
 <p>A lambda expression with zero arguments is written with a bar after the opening bracket:</p>
 
@@ -180,7 +180,7 @@ has four parameters with implicit the following implicit names: <code>$0</code>,
 ]
 </code></pre>
 
-<p>##5. Short notation of a Lambda Expression</p>
+<h2 id="5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</h2>
 
 <p>When the lamda expression is passed to a single-parameter function, the brackets that are enclosing the lambda
 declaration could be missed. It specific syntax is called the short notation of a lambda expression.</p>
@@ -203,7 +203,7 @@ declaration could be missed. It specific syntax is called the short notation of 
 
 <p>As for the standard notation, the parameter and the bar could be missed when their is no formal parameter.</p>
 
-<p>##6. Lambda as the Last Parameter of a Method</p>
+<h2 id="6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</h2>
 
 <p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
 
@@ -222,9 +222,9 @@ Collections.sort(t, [ a, b | a.length - b.length ])
 Collections.sort(t) [ a, b | a.length - b.length ]
 </code></pre>
 
-<p>##7. Type of a Lambda Expression</p>
+<h2 id="7-type-of-a-lambda-expression">7. Type of a Lambda Expression</h2>
 
-<p>###7.1. Pure SARL Notation</p>
+<h3 id="71-pure-sarl-notation">7.1. Pure SARL Notation</h3>
 
 <p>Because SARL is a strongly typed programming language, each lambda expression has a type.
 The syntax for specifying the type of a lambda is: <code>(parameter types) =&gt; return type</code></p>
@@ -237,7 +237,7 @@ returning a value of <code>Boolean</code>.</p>
 
 <p>If the lambda is a procedure, i.e. it has no return type, then the return type to specify must be <code>void</code>.</p>
 
-<p>###7.2. Java-like Notation</p>
+<h3 id="72-java-like-notation">7.2. Java-like Notation</h3>
 
 <p>The SARL lambda expressions are mapped to the Java types defined in <code>Functions</code> or <code>Procedures</code>.</p>
 
@@ -254,23 +254,23 @@ var f2 : Functions.Function1&lt;? super String,? extends Boolean&gt;
 and returning a value of type equals to the second generic parameter.
 Depending of the number of parameters, you may use <code>Function0</code> to <code>Function5</code>, or <code>Procedure0</code> to <code>Procedure6</code>.</p>
 
-<p>##8. Acknowledgements</p>
+<h2 id="8-acknowledgements">8. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##9. Legal Notice</p>
+<h2 id="9-legal-notice">9. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -279,7 +279,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

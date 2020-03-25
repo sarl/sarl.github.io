@@ -84,7 +84,7 @@ parallel execution of the agent’s components may be used at different places.
 Nevertheless, according the SARL language’s specifications, several features are assumed to be run in parallel.
 They are briefly explained below.</p>
 
-<p>##1. Event Firing, Dispatching and Handling</p>
+<h2 id="1-event-firing-dispatching-and-handling">1. Event Firing, Dispatching and Handling</h2>
 
 <p>In SARL, event-based communication is the interaction mechanism that is provided by default.
 Firing an event is done within an interaction space by calling one of the dedicated function that are defined within
@@ -125,7 +125,7 @@ is run in a dedicated thread.</p>
 <caution>In the previous example, there is no warranty about the order of printing of the two messages. Because of the parallel execution
 of the threads, the `"Agent was spawned"` message may be displayed before the `"Spawn query called"` message.</caution>
 
-<p>##2. Agent Spawning</p>
+<h2 id="2-agent-spawning">2. Agent Spawning</h2>
 
 <p>Agent spawning is the action to create and start an agent from another agent.
 The spawning function is provided by the 
@@ -174,7 +174,7 @@ it may be logged at any time. Consequently, the possible output cases are:</p>
   <li><code>"Do initialization"</code>, <code>"Agent was spawned"</code>, <code>"Spawn query called"</code></li>
 </ul>
 
-<p>##3. Agent Killing</p>
+<h2 id="3-agent-killing">3. Agent Killing</h2>
 
 <p>Agent killing is the action to stop and destroy an agent.
 The killing function is provided by the 
@@ -210,17 +210,17 @@ Steps 2 to 4 are run within an internal thread of the SRE.</p>
 <p>The <code>"Agent was killed"</code> message is always logged after the <code>"Do destruction"</code> message because the executed code corresponds to
 steps 4 and 3, respectively. These steps are run on the same thread.</p>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -229,7 +229,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

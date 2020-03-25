@@ -86,7 +86,7 @@ Depending on the meaning of the active annotation, the generated Java code could
 <p>SARL comes with ready-to-use active annotations for common code patterns.
 The following sections describe there annotations.</p>
 
-<p>##1. @Accessors</p>
+<h2 id="1-accessors">1. @Accessors</h2>
 
 <p>If you want to add getter and or setter methods for your fields, <code>@Accessors</code> is your friend.
 This annotation can be applied to either object-oriented types and several agent-oriented types.
@@ -164,7 +164,7 @@ as parameters to the annotation: <code>PUBLIC_GETTER</code>, <code>PROTECTED_GET
 }
 </code></pre>
 
-<p>##2.  @Data</p>
+<h2 id="2-data">2.  @Data</h2>
 
 <p>The annotation <code>@Data</code> will turn an annotated class into a value object class. A class annotated with
 [:dataannon] is processed according to the following rules:</p>
@@ -192,7 +192,7 @@ as parameters to the annotation: <code>PUBLIC_GETTER</code>, <code>PROTECTED_GET
 }
 </code></pre>
 
-<p>##3.  @Delegate</p>
+<h2 id="3-delegate">3.  @Delegate</h2>
 
 <p>The <code>@Delegate</code> annotation automatically generates delegate methods for all interfaces shared between the delegate
 and the currently implemented class. You can optionally restrict it to explicitly stated interfaces.
@@ -281,7 +281,7 @@ create the delegate object or use a different one each time.</p>
 }
 </code></pre>
 
-<p>##4. @NoEqualityTestFunctionsGeneration</p>
+<h2 id="4-noequalitytestfunctionsgeneration">4. @NoEqualityTestFunctionsGeneration</h2>
 
 <p>The <code>@NoEqualityTestFunctionsGeneration</code> annotation disables the generation the equality test functions, i.e. <code>equals()</code> and <code>hashCode()</code> from
 the field declarations.</p>
@@ -312,7 +312,7 @@ by the <code>hashCode()</code> function does not include the hash code of the <c
 }
 </code></pre>
 
-<p>##5. @ToString</p>
+<h2 id="5-tostring">5. @ToString</h2>
 
 <p>The <code>@ToString</code> annotation enables to generate the function that replies the string representation
 of an object, a.k.a. as the <code>toString()</code> function in a Java program.
@@ -345,23 +345,23 @@ class MyClass {
 
 <p>For brevity there are options to the annotation to hide field names, skip fields with null values and print everything on one line.</p>
 
-<p>##6. Acknowledgements</p>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##7. Legal Notice</p>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -370,7 +370,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

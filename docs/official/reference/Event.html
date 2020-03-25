@@ -99,7 +99,7 @@ inside a given <a href="./Space.html">Space</a>.</p>
   <li>a collection of name-value pairs, i.e. the attributes of the event.</li>
 </ul>
 
-<p>##1. Event vs. Message</p>
+<h2 id="1-event-vs-message">1. Event vs. Message</h2>
 
 <p>In computer-science literature, there are two main approaches 
 for communicating between entities: (1) an event and (2) a message.</p>
@@ -123,9 +123,9 @@ Reference</a>.</p>
 
 <note>There is no message concept in SARL. All communication is done by using an `Event`.</note>
 
-<p>##2. Defining an Event</p>
+<h2 id="2-defining-an-event">2. Defining an Event</h2>
 
-<p>###2.1. Define an empty event</p>
+<h3 id="21-define-an-empty-event">2.1. Define an empty event</h3>
 
 <p>An event is defined with the <code>event</code> keyword followed by the name of the event (without the qualified name of its package,
 which is inferred from the <code>package</code> keyword, if present).</p>
@@ -141,7 +141,7 @@ The second event is defined with the “nothing” syntax.</p>
 event Event2
 </code></pre>
 
-<p>###2.2. Define an event with attributes</p>
+<h3 id="22-define-an-event-with-attributes">2.2. Define an event with attributes</h3>
 
 <p>An Event may can carry additional information beyond its name (or type).
 This information is described by a set of attributes (or typed 
@@ -168,7 +168,7 @@ Each declaration of the attributes illustrates one possible syntax for defining 
 }
 </code></pre>
 
-<p>###2.3. Define an event with value attributes</p>
+<h3 id="23-define-an-event-with-value-attributes">2.3. Define an event with value attributes</h3>
 
 <p>Events in SARL will carry data that is unmodifiable 
 when an attribute is defined using the <code>val</code> keyword.</p>
@@ -199,7 +199,7 @@ Implicit constructors has the same prototypes as the constructors of the super t
 Details on implicit constructors are given in the reference documentation related to the
 <a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
 
-<p>###2.4. Extending Events</p>
+<h3 id="24-extending-events">2.4. Extending Events</h3>
 
 <p>In some use cases, it is useful to specialize the definition
 of an event. This mechanism is supported by the inheritance
@@ -241,7 +241,7 @@ e2.string = "abc"
 e2.number = 345
 </code></pre>
 
-<p>###2.5. Modifiers</p>
+<h3 id="25-modifiers">2.5. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the event.
@@ -291,7 +291,7 @@ final event Example3 {
 <pre><code class="language-sarl">public var example1 : Object
 </code></pre>
 
-<p>##3. Reserved Events</p>
+<h2 id="3-reserved-events">3. Reserved Events</h2>
 
 <p>Several events are defined and reserved by the SARL Core Specification.
 They describe the minimal set of events that a runtime environment must support to run a SARL program.</p>
@@ -306,17 +306,17 @@ events.</veryimportantnote>
   <li>the events supported by the <a href="./BIC.html">Built-in Capacities</a>.</li>
 </ul>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -325,7 +325,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

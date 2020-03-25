@@ -139,17 +139,17 @@ complete support of the OOP, you should use a dedicated language, such as Java,
 
 <note>The SARL Eclipse product includes the tools for programming with the Java and Xtend languages.</note>
 
-<p>##1. Comparison between SARL and Other Languages</p>
+<h2 id="1-comparison-between-sarl-and-other-languages">1. Comparison between SARL and Other Languages</h2>
 
 <p>A comparison between SARL and other programming languages could be found <a href="./LanguageComparison.html">here</a>.</p>
 
-<p>##2. Class</p>
+<h2 id="2-class">2. Class</h2>
 
 <p>Objects are structures that contain both data and procedures. Classes are definitions for the data format and
 available procedures for a given type or class of objects. They may also contain data and
 procedures (known as class methods) themselves.</p>
 
-<p>###2.1. Define a Class</p>
+<h3 id="21-define-a-class">2.1. Define a Class</h3>
 
 <p>For defining a class, you could use the <code>class</code> keyword. The following example defines the class <code>MyClass</code>.</p>
 
@@ -159,7 +159,7 @@ following the class declaration.</p>
 <pre><code class="language-sarl">class MyClass {  }
 </code></pre>
 
-<p>###2.2. Class Inheritance</p>
+<h3 id="22-class-inheritance">2.2. Class Inheritance</h3>
 
 <p>Languages that support classes almost always support inheritance. This allows classes to be arranged in a
 hierarchy that represents “is-a-type-of” relationships.</p>
@@ -191,7 +191,7 @@ class Employee extends Person {
 }
 </code></pre>
 
-<p>###2.3. Define a Generic Class</p>
+<h3 id="23-define-a-generic-class">2.3. Define a Generic Class</h3>
 
 <p>A generic class declaration looks like a non-generic class declaration, except that the class name
 is followed by a type parameter section.</p>
@@ -241,7 +241,7 @@ class Vector&lt;T extends Number&gt; {
 }
 </code></pre>
 
-<p>###2.4. Constructor Definition</p>
+<h3 id="24-constructor-definition">2.4. Constructor Definition</h3>
 
 <p>An SARL class can define any number of constructors. Unlike Java, you do not have to repeat the name of the
 class over and over again, but use the keyword <code>new</code> to declare a constructor.</p>
@@ -267,7 +267,7 @@ Implicit constructors has the same prototypes as the constructors of the super t
 Details on implicit constructors are given in the reference documentation related to the
 <a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
 
-<p>###2.5. Static Constructor Definition</p>
+<h3 id="25-static-constructor-definition">2.5. Static Constructor Definition</h3>
 
 <p>A static constructor is used to initialize any static data, or to perform a particular action that needs to
 be performed once only. It is called automatically before the first instance is created or any static members are referenced.
@@ -297,7 +297,7 @@ The code block of the static constructor contains an assignment that is initiali
   <li>A static constructor cannot throw an exception, except an <em>unchecked exception</em> (instance of <code>RuntimeException</code> or <code>Error</code>).</li>
 </ul>
 
-<p>###2.6. Field Definition</p>
+<h3 id="26-field-definition">2.6. Field Definition</h3>
 
 <p>A field could be declared into a class following the <a href="./general/VarDecls.html">variable declaration syntax</a>.</p>
 
@@ -305,7 +305,7 @@ The code block of the static constructor contains an assignment that is initiali
 A static field is a variable defined in a class of which a single copy exists, regardless of how many instances of the class exist.
 A static field is not an instance variable. It is a special type of class attribute (or class property, field, or data member).</p>
 
-<p>###2.7. Method Definition</p>
+<h3 id="27-method-definition">2.7. Method Definition</h3>
 
 <p>A method could be declared into a class following the <a href="./general/FuncDecls.html">function declaration syntax</a>.
 The overriding of an inhertited method is explained in section <a href="#2-9-method-overriding">“Method Overriding”</a>.</p>
@@ -313,7 +313,7 @@ The overriding of an inhertited method is explained in section <a href="#2-9-met
 <p>A method may be declared with the <code>static</code> modifier. In this case, it becomes a static method, or class method.
 A static method is a function that is not associated to a specific instance of the class.</p>
 
-<p>###2.8. Modifiers</p>
+<h3 id="28-modifiers">2.8. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the class.
 The modifiers are usually written before the keyword for defining the class.</p>
@@ -487,7 +487,7 @@ package new(p : char) { }
 private new(p : boolean) { }
 </code></pre>
 
-<p>###2.9. Method Overriding</p>
+<h3 id="29-method-overriding">2.9. Method Overriding</h3>
 
 <p>Method overriding is a language feature that allows a subclass or child class
 to provide a specific implementation of a method that is already provided by
@@ -528,7 +528,7 @@ the method (as in Java).</p>
 }
 </code></pre>
 
-<p>###2.10. Accessing Local Variables of the Enclosing Scope</p>
+<h3 id="210-accessing-local-variables-of-the-enclosing-scope">2.10. Accessing Local Variables of the Enclosing Scope</h3>
 
 <p>Local classes (or nested classes, i.e. classes defined inside an other type) have
 the <code>static</code> modifier. It means that a nested class cannot have access to the
@@ -555,7 +555,7 @@ fields and methods of the instance of the enclosing type. Only accesses to stati
 <pre><code>}
 </code></pre>
 
-<p>##3. Interface</p>
+<h2 id="3-interface">3. Interface</h2>
 
 <p>An interface is a description of the actions that an object can do.
 For example when you flip a light switch, the light goes on, you don’t
@@ -567,7 +567,7 @@ in order to be an “X”.</p>
 properties, and to know that an object of type T (whatever the interface
 is) must have functions called X,Y,Z, etc.</p>
 
-<p>###3.1. Define an Interface</p>
+<h3 id="31-define-an-interface">3.1. Define an Interface</h3>
 
 <p>In the following example, the <code>Light</code> interface is defined with the two methods <code>turnOn</code> and <code>turnOff</code>.</p>
 
@@ -577,7 +577,7 @@ is) must have functions called X,Y,Z, etc.</p>
 }
 </code></pre>
 
-<p>###3.2. Interface Inheritance</p>
+<h3 id="32-interface-inheritance">3.2. Interface Inheritance</h3>
 
 <p>It is possible to specialize the definition of an interface. In the following example, the <code>VariableIntensityLight</code>
 interface that is refining the previous <code>Light</code> interface and add specific functions.</p>
@@ -588,7 +588,7 @@ interface that is refining the previous <code>Light</code> interface and add spe
 }
 </code></pre>
 
-<p>###3.3. Define a Generic Interface</p>
+<h3 id="33-define-a-generic-interface">3.3. Define a Generic Interface</h3>
 
 <p>A generic interface declaration looks like a non-generic interface declaration, except that the interface name
 is followed by a type parameter section.</p>
@@ -620,7 +620,7 @@ interface Vector&lt;T extends Number&gt; {
 }
 </code></pre>
 
-<p>###3.4. Interface Implementation</p>
+<h3 id="34-interface-implementation">3.4. Interface Implementation</h3>
 
 <p>A class is able to implement an interface. The <code>implements</code> keyword is used for defining
 the implementation relationship between a class and an interface.
@@ -639,7 +639,7 @@ functions of the interface.</p>
 }
 </code></pre>
 
-<p>###3.5. Default Implementation of Interface Functions</p>
+<h3 id="35-default-implementation-of-interface-functions">3.5. Default Implementation of Interface Functions</h3>
 
 <p>As in Java 8, interface types could provide default function implementation if the implementation class is
 not providing one. This feature is known as the default method mechanism.</p>
@@ -664,7 +664,7 @@ class TheLight implements Light {
 }
 </code></pre>
 
-<p>###3.6. Modifiers</p>
+<h3 id="36-modifiers">3.6. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the interface.
 The modifiers are usually written before the keyword for defining the interface.</p>
@@ -778,14 +778,14 @@ static val e : Object;
 abstract def fct5
 </code></pre>
 
-<p>##4. Enumeration</p>
+<h2 id="4-enumeration">4. Enumeration</h2>
 
 <p>An enumeration specifies a list of constant values assigned to a type.</p>
 
 <p>The SARL enumeration is not object-oriented unlike the enumeration in the Java programming language. It means
 that you cannot define methods nor attributes in the enumeration.</p>
 
-<p>###4.1. Define an Enumeration</p>
+<h3 id="41-define-an-enumeration">4.1. Define an Enumeration</h3>
 
 <p>For defining an enumeration, you could use the <code>enum</code> keyword.
 The following example defines the enumeration <code>MyEnum</code> with two constants:</p>
@@ -796,7 +796,7 @@ The following example defines the enumeration <code>MyEnum</code> with two const
 }
 </code></pre>
 
-<p>###4.2. Modifiers</p>
+<h3 id="42-modifiers">4.2. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members. This section introduces the modifiers for the enumeration.
 The modifiers are usually written before the keyword for defining the enumeration.</p>
@@ -866,13 +866,13 @@ Non-static nested enumerations are called <i>inner enumerations</i>.</note>
 }
 </code></pre>
 
-<p>##5. Annotation Type</p>
+<h2 id="5-annotation-type">5. Annotation Type</h2>
 
 <p>An annotation is a form of syntactic metadata that can be added to SARL source code.
 Annotations can be reflective in that they can be embedded in binary files generated by the
 SARL compiler, and may be retained by the Virtual Machine to be made retrievable at run-time.</p>
 
-<p>###5.1. Define an Annotation</p>
+<h3 id="51-define-an-annotation">5.1. Define an Annotation</h3>
 
 <p>For defining an annotation, you could use the <code>annotation</code> keyword.</p>
 
@@ -894,7 +894,7 @@ This annotation defines three parameters:</p>
 }
 </code></pre>
 
-<p>###5.2. Modifiers</p>
+<h3 id="52-modifiers">5.2. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the annotation types.
@@ -984,13 +984,13 @@ Non-static nested annotation types are called <i>inner annotation types</i>.</no
 static val val2 : int
 </code></pre>
 
-<p>##6. Anonymous Class</p>
+<h2 id="6-anonymous-class">6. Anonymous Class</h2>
 
 <p>Anonymous classes enable you to make your code more concise. They enable you to declare and instantiate a
 class at the same time. They are like local classes except that they do not have a name. Use them if you
 need to use a local class only once.</p>
 
-<p>###6.1. Declaring Anonymous Classes</p>
+<h3 id="61-declaring-anonymous-classes">6.1. Declaring Anonymous Classes</h3>
 
 <p>While local classes are class declarations, anonymous classes are expressions, which means that you define
 the class in another expression.</p>
@@ -1024,7 +1024,7 @@ class HelloWorldAnonymousClasses {
 }
 </code></pre>
 
-<p>###6.2. Syntax of Anonymous Classes</p>
+<h3 id="62-syntax-of-anonymous-classes">6.2. Syntax of Anonymous Classes</h3>
 
 <p>As mentioned previously, an anonymous class is an expression.
 The syntax of an anonymous class expression is like the invocation of a constructor,
@@ -1054,7 +1054,7 @@ the <code>frenchGreeting</code> object.</p>
 }
 </code></pre>
 
-<p>###6.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</p>
+<h3 id="63-accessing-local-variables-of-the-enclosing-scope-and-declaring-and-accessing-members-of-the-anonymous-class">6.3. Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class</h3>
 
 <p>Anonymous classes can capture variables; they have the same access to
 local variables of the enclosing scope:</p>
@@ -1089,11 +1089,11 @@ local classes. However, you cannot declare constructors in an anonymous class.</
 }
 </code></pre>
 
-<p>##7. Definition of all the supported modifiers</p>
+<h2 id="7-definition-of-all-the-supported-modifiers">7. Definition of all the supported modifiers</h2>
 
 <p>In this section, the semantic of the different modifiers is explained.</p>
 
-<p>###7.1. abstract Modifier</p>
+<h3 id="71-abstract-modifier">7.1. abstract Modifier</h3>
 
 <p>An abstract type is a type that is declared <code>abstract</code> (it may or may not include abstract methods).
 Abstract types cannot be instantiated, but they can be derived.</p>
@@ -1117,7 +1117,7 @@ Abstract types cannot be instantiated, but they can be derived.</p>
 abstract methods in its parent type. However, if it does not, then the subtype must also be
 declared abstract.</p>
 
-<p>###7.2. Access Modifiers: public, protected, package, private</p>
+<h3 id="72-access-modifiers-public-protected-package-private">7.2. Access Modifiers: public, protected, package, private</h3>
 
 <p>Access level modifiers determine whether other types can use a particular field or invoke
 a particular method. There are two levels of access control:</p>
@@ -1220,7 +1220,7 @@ class C3 {
 }
 </code></pre>
 
-<p>###7.3. dispatch Modifier</p>
+<h3 id="73-dispatch-modifier">7.3. dispatch Modifier</h3>
 
 <p>Generally, method resolution and binding is done statically at compile time.
 Method calls are bound based on the static types of arguments.</p>
@@ -1250,7 +1250,7 @@ def clientCode {
 }
 </code></pre>
 
-<p>###7.4. extension Modifier</p>
+<h3 id="74-extension-modifier">7.4. extension Modifier</h3>
 
 <p>This modifier enables to mark a field, a formal parameter, or a local variable as
 an <a href="./general/Extension.html">extension provider</a>.</p>
@@ -1307,7 +1307,7 @@ extension providers.</p>
 }
 </code></pre>
 
-<p>###7.5. final Modifier</p>
+<h3 id="75-final-modifier">7.5. final Modifier</h3>
 
 <p>The <code>final</code> keyword is used in several different contexts to define an entity which may only be
 assigned once.</p>
@@ -1349,7 +1349,7 @@ final class B {
 }
 </code></pre>
 
-<p>###7.6. native Modifier</p>
+<h3 id="76-native-modifier">7.6. native Modifier</h3>
 
 <p>The <code>native</code> keyword is applied to a method to indicate that the method is implemented in
 native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
@@ -1363,7 +1363,7 @@ a higher-level API in place of.</note>
 }
 </code></pre>
 
-<p>###7.7. static Modifier</p>
+<h3 id="77-static-modifier">7.7. static Modifier</h3>
 
 <p>The <code>static</code> keyword is used for creating fields and methods that belong to the type, rather than to an
 instance of the type.</p>
@@ -1397,7 +1397,7 @@ type name, without the need for creating an instance of the type.</p>
 }
 </code></pre>
 
-<p>###7.8. strictfp Modifier</p>
+<h3 id="78-strictfp-modifier">7.8. strictfp Modifier</h3>
 
 <p>The <code>strictfp</code> modifier is a keyword that restricts floating-point calculations to ensure portability.
 The <code>strictfp</code> command was originally introduced into Java with the Java virtual machine (JVM) version 1.2
@@ -1445,7 +1445,7 @@ double precision, as occurred in earlier versions of the JVM.</p>
 }
 </code></pre>
 
-<p>###7.9. synchronized Modifier</p>
+<h3 id="79-synchronized-modifier">7.9. synchronized Modifier</h3>
 
 <p>The SARL programming language provides two basic synchronization idioms: synchronized methods and synchronized
 statements.
@@ -1480,7 +1480,7 @@ This strategy is effective, but can present problems with liveness.</p>
 }
 </code></pre>
 
-<p>###7.10. transient Modifier</p>
+<h3 id="710-transient-modifier">7.10. transient Modifier</h3>
 
 <p>Java and SARL provide a mechanism, called object serialization where an object can be represented as
 a sequence of bytes that includes the object’s data as well as information about the object’s type and
@@ -1495,7 +1495,7 @@ is serialized.</p>
 }
 </code></pre>
 
-<p>###7.11. volatile Modifier</p>
+<h3 id="711-volatile-modifier">7.11. volatile Modifier</h3>
 
 <p>While the <code>volatile</code> modifier itself comes from the C programming language, it has a completely
 different meaning in Java, and then in SARL. This may not help in growing an understanding of it, 
@@ -1526,7 +1526,7 @@ in place of volatile variables.</note>
 }
 </code></pre>
 
-<p>##8. References</p>
+<h2 id="8-references">8. References</h2>
 
 <p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
 Thank you to the contributors to these documents.</p>
@@ -1537,17 +1537,17 @@ Thank you to the contributors to these documents.</p>
   <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
 </ul>
 
-<p>##9. Legal Notice</p>
+<h2 id="9-legal-notice">9. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -1556,7 +1556,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

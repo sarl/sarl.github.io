@@ -106,12 +106,12 @@ and the <a href="./Agent.html">Agent Reference</a>.</p>
 <p>A Behavior is the specification of a collection of behavior units.
 This Behavior may be used by an agent for building its global behavior.</p>
 
-<p>##1. Defining a Behavior</p>
+<h2 id="1-defining-a-behavior">1. Defining a Behavior</h2>
 
 <p>A behavior is declared with the <code>behavior</code> keyword. In the behavior’s body block, we can declare Mental States
 (in the form of attributes), Actions and Behaviors.</p>
 
-<p>###1.1. Defining an empty behavior</p>
+<h3 id="11-defining-an-empty-behavior">1.1. Defining an empty behavior</h3>
 
 <p>The following code illustrates the definition of a behavior named [:behaviortype1], and that is empty.</p>
 
@@ -121,7 +121,7 @@ This Behavior may be used by an agent for building its global behavior.</p>
 }
 </code></pre>
 
-<p>###1.2. Behavior Attributes</p>
+<h3 id="12-behavior-attributes">1.2. Behavior Attributes</h3>
 
 <p>The mental state of an agent is composed by the data in the knowledge of the agent. A behavior may contain
 a part of this mental state. Most of the time, it is implemented as a collection of attributes.</p>
@@ -138,7 +138,7 @@ modifiable (when declared with the <code>var</code> keyword), or unmodifiable (w
 }
 </code></pre>
 
-<p>###1.3. Behavior Actions</p>
+<h3 id="13-behavior-actions">1.3. Behavior Actions</h3>
 
 <p>It is allowed to define actions (methods) in the behavior. The syntax described in the
 <a href="./GeneralSyntax.html">General Syntax Reference</a> is used.</p>
@@ -158,7 +158,7 @@ modifiable (when declared with the <code>var</code> keyword), or unmodifiable (w
 }
 </code></pre>
 
-<p>###1.4. Extending a Behavior</p>
+<h3 id="14-extending-a-behavior">1.4. Extending a Behavior</h3>
 
 <p>In some use cases, it is useful to specialize the definition of a behavior. This mechanism is supported
 by the inheritance feature of SARL, which has the same semantic as the inheritance
@@ -184,7 +184,7 @@ behavior MySubBehavior extends MyBehavior {
 }
 </code></pre>
 
-<p>###1.5. Instancing and Use of a Behavior</p>
+<h3 id="15-instancing-and-use-of-a-behavior">1.5. Instancing and Use of a Behavior</h3>
 
 <p>A behavior is always owned by an agent. Consequently, it is mandatory to pass the agent as parameter
 of the behavior’s constructor.</p>
@@ -206,7 +206,7 @@ the events in the behavior.</p>
 }
 </code></pre>
 
-<p>###1.6. Modifiers</p>
+<h3 id="16-modifiers">1.6. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the behavior. The modifiers are usually
@@ -302,7 +302,7 @@ dispatch def example7(p : Integer) { }
 dispatch def example7(p : Float) { }
 </code></pre>
 
-<p>##2. Behavior Units of a Behavior</p>
+<h2 id="2-behavior-units-of-a-behavior">2. Behavior Units of a Behavior</h2>
 
 <p>The behaviors of an agent correspond to the units that are executed by the agent for exhibiting
 its general behavior.</p>
@@ -334,7 +334,7 @@ The statements are executed only if an event with the given name is received, <e
 the occurrence. This instance is represented by the <code>occurrence</code> keyword. It is an implicit
 variable as the keywords <code>this</code> and <code>it</code>.</p>
 
-<p>###2.1. Initialization Handler</p>
+<h3 id="21-initialization-handler">2.1. Initialization Handler</h3>
 
 <p>When a behavior is ready to be executed by the runtime environment, usually when it
 is registered in its owning agent, it receives the <code>Initialize</code> event.
@@ -354,7 +354,7 @@ This event is defined as:</p>
 }
 </code></pre>
 
-<p>###2.2. Guarded Initialization Handler</p>
+<h3 id="22-guarded-initialization-handler">2.2. Guarded Initialization Handler</h3>
 
 <p>Because <code>Initialize</code> is an event, the handler in the behavior could use a guard. This feature enables
 the developer to write different initialization blocks depending on the guards of the handlers.</p>
@@ -373,7 +373,7 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<p>###2.3. Destruction Handler</p>
+<h3 id="23-destruction-handler">2.3. Destruction Handler</h3>
 
 <p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
 
@@ -391,7 +391,7 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<p>###2.4. Guarded Destruction Handler</p>
+<h3 id="24-guarded-destruction-handler">2.4. Guarded Destruction Handler</h3>
 
 <p>As for <code>Initialize</code>, the handlers of the <code>Destroy</code> event could be guarded.</p>
 
@@ -411,7 +411,7 @@ when there is no resource.</p>
 }
 </code></pre>
 
-<p>###2.5. Reactive Behavior Units</p>
+<h3 id="25-reactive-behavior-units">2.5. Reactive Behavior Units</h3>
 
 <p>The reactive behavior is specified with a collection of event handlers. The principle of a reactive behavior
 is to execute a part of the behavior when something has happening in the behavior, the agent or in its environment.</p>
@@ -428,7 +428,7 @@ is to execute a part of the behavior when something has happening in the behavio
 }
 </code></pre>
 
-<p>###2.6. Parallel Execution of the Reactive Behavior Units</p>
+<h3 id="26-parallel-execution-of-the-reactive-behavior-units">2.6. Parallel Execution of the Reactive Behavior Units</h3>
 
 <p>When an event is received and the guard of the corresponding handler is true, the event handler is said to be triggered.</p>
 
@@ -446,7 +446,7 @@ In the following example, the two handlers for the <code>SomethingChanged</code>
 }
 </code></pre>
 
-<p>###2.7. Pro-active Behavior Units</p>
+<h3 id="27-pro-active-behavior-units">2.7. Pro-active Behavior Units</h3>
 
 <p>A proactive behavior is a part of the global behavior of an agent that the
 agent is deciding to execute by itself.
@@ -469,7 +469,7 @@ In the following example, the agent execute its proactive behavior every second.
 }
 </code></pre>
 
-<p>##3. Capacities and Skills</p>
+<h2 id="3-capacities-and-skills">3. Capacities and Skills</h2>
 
 <p>An agent is an autonomous entity having a set of skills to realize the capacities it exhibits.
 An agent has a set of built-in capacities considered essential to respect the commonly accepted
@@ -477,7 +477,7 @@ competencies of agents, such autonomy, reactivity, pro-activity and social capac
 
 <p>Consequently, a behavior associated to an agent is able to use the skills of this agent.</p>
 
-<p>###3.1. Defining a Capacity and a Skill</p>
+<h3 id="31-defining-a-capacity-and-a-skill">3.1. Defining a Capacity and a Skill</h3>
 
 <p>The definition of a capacity or a skill is out of the scope of this reference document. For details, please read
 the <a href="./Capacity.html">Capacity Reference</a>, and the <a href="./Skill.html">Skill Reference</a>.</p>
@@ -496,12 +496,33 @@ skill Ski implements Cap {
 }
 </code></pre>
 
-<p>###3.2. Giving a Skill to the Associated Agent</p>
+<h3 id="32-giving-a-skill-to-the-associated-agent">3.2. Giving a Skill to the Associated Agent</h3>
 
 <p>When a behavior must use a capacity, its agent must own an implementation of this capacity: a skill.
 It is possible for a behavior to assign a skill to its agent.</p>
 
-<p>###3.3. Using a Capacity with the Getters</p>
+<pre><code class="language-sarl">behavior MyBehavior {
+	new (owner : Agent) {
+		super(owner)
+		var theSkill = new Ski
+		setSkill( theSkill, Cap )
+	}
+}
+</code></pre>
+
+<p>If some cases, you may want to set the skill if one was not set up before. The specific behavior
+is supported by <code>setSkillIfAbsent(Skill, Class&lt;? extends Capacity&gt;*)</code>.</p>
+
+<pre><code class="language-sarl">behavior MyBehavior {
+	new (owner : Agent) {
+		super(owner)
+		var theSkill = new Ski
+		setSkillIfAbsent( theSkill, Cap )
+	}
+}
+</code></pre>
+
+<h3 id="33-using-a-capacity-with-the-getters">3.3. Using a Capacity with the Getters</h3>
 
 <p>For invoking a function implemented by a skill, the two following steps must be done:</p>
 
@@ -523,7 +544,7 @@ You should prefer the use of the extension methods (see below).</note>
 }
 </code></pre>
 
-<p>###3.4. Using a Capacity with the Extension Methods</p>
+<h3 id="34-using-a-capacity-with-the-extension-methods">3.4. Using a Capacity with the Extension Methods</h3>
 
 <p>Invoking a capacity/skill with the getter method is not user-friendly. Since the
 <a href="./GeneralSyntax.html">General Syntax Reference</a> describes the “extension method”
@@ -545,17 +566,17 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
 }
 </code></pre>
 
-<p>##4. Legal Notice</p>
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -564,7 +585,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

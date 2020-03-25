@@ -70,7 +70,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 If an assertion evaluates to false at run time, an assertion failure results, which typically causes
 the program to crash, or to throw an assertion exception.</p>
 
-<p>##1. Assert Statement</p>
+<h2 id="1-assert-statement">1. Assert Statement</h2>
 
 <p>SARL supports assertions in the source code by the <code>assert</code> keyword.</p>
 
@@ -88,7 +88,7 @@ assert x &gt; 1
 assert x &lt;= 1
 </code></pre>
 
-<p>##2. Error Message</p>
+<h2 id="2-error-message">2. Error Message</h2>
 
 <p>Sometimes, it is useful to give an explanation about the failure.
 The <code>assert</code> keyword accepts a string of character that is the message given when the program has crashed.
@@ -108,7 +108,7 @@ constraints.</p>
 <p>For enabling and disabling the assertions, you must change the launch configuration within the SARL product,
 or use an option that is provided by the SARL run-time environment.</p>
 
-<p>##3. Inside the SARL Development Environment</p>
+<h2 id="3-inside-the-sarl-development-environment">3. Inside the SARL Development Environment</h2>
 
 <p>Within the SARL development environment, you must define a launch configuration for running a SARL application.
 Two launch configurations are available:</p>
@@ -124,13 +124,13 @@ If the first (resp. second) box is checked, assertions will be enabled when you 
 
 <p><img src="./enableassertions.png" alt="Screenshot of the dialog box of a SARL launch configuration" /></p>
 
-<p>##4. Launching the Janus framework</p>
+<h2 id="4-launching-the-janus-framework">4. Launching the Janus framework</h2>
 
 <p>The Janus framework is one implementation of a SARL run-time environment. You have to use one of its command-line
 options for enabling assertions. All the command-line options are detailed on a <a href="../../tools/Janus.html">dedicated page</a>.
 Usually, the option for enabling the assertions is the same as the one of the Java virtual machine: -ea.</p>
 
-<p>##5. Launching the Java virtual machine</p>
+<h2 id="5-launching-the-java-virtual-machine">5. Launching the Java virtual machine</h2>
 
 <p>If you want to run your SARL application by launching the Java virtual machine, you could use the standard command
 line options <code>-enableassertions</code> and <code>-ea</code> that are provided by this virtual machine:</p>
@@ -138,23 +138,23 @@ line options <code>-enableassertions</code> and <code>-ea</code> that are provid
 <pre><code>	java [ -enableassertions | -ea  ] &lt;class name&gt;
 </code></pre>
 
-<p>##6. Acknowledgements</p>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##7. Legal Notice</p>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -163,7 +163,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

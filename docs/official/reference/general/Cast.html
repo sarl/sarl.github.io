@@ -93,7 +93,7 @@ explicit and implicit conversions between custom types that do not have a base c
 For more information, see <a href="#4-conversion-operators">Conversion Operators</a>.</li>
 </ul>
 
-<p>##1. Implicit Conversions</p>
+<h2 id="1-implicit-conversions">1. Implicit Conversions</h2>
 
 <p>For built-in types, e.g. numeric types, an implicit conversion can be made when the value to be stored can fit into
 the variable without being truncated or rounded off. For example, a variable of type long (64-bit integer) 
@@ -193,7 +193,7 @@ var bigNum : long = num
   </tbody>
 </table>
 
-<p>##2. Explicit Conversions</p>
+<h2 id="2-explicit-conversions">2. Explicit Conversions</h2>
 
 <p>However, if a conversion cannot be made without a risk of losing information, the compiler requires that you perform
 an explicit conversion, which is called a cast. A cast is a way of explicitly informing the compiler that you
@@ -287,7 +287,7 @@ SARL.</p>
   </tbody>
 </table>
 
-<p>##3. Type Conversion Exceptions at Run Time</p>
+<h2 id="3-type-conversion-exceptions-at-run-time">3. Type Conversion Exceptions at Run Time</h2>
 
 <p>In some reference type conversions, the compiler cannot determine whether a cast will be valid. It is possible for
 a casting operation that compiles correctly to fail at run time. As shown in the following example, a type cast
@@ -325,7 +325,7 @@ type to which the result of <code>expr</code> is to be converted. The <code>inst
 <code>expr</code> is non-null and the object that results from evaluating the expression can be converted to
 <code>type</code>; otherwise, it returns <code>false</code>.</p>
 
-<p>##4. Conversion Operators</p>
+<h2 id="4-conversion-operators">4. Conversion Operators</h2>
 
 <p>SARL enables programmers to declare conversions on classes or basic types so that classes or basic types can
 be converted to and/or from other classes or basic types. Conversions are associated to the <code>as</code>
@@ -406,23 +406,23 @@ class Test {
 }
 </code></pre>
 
-<p>##5. Acknowledgements</p>
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##6. Legal Notice</p>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -431,7 +431,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -94,7 +94,7 @@ a method with zero argument since empty parentheses are optional.</p>
 
 <p>The rest of this section describes particular mechanisms for calling the object members.</p>
 
-<p>##1. Property Syntax</p>
+<h2 id="1-property-syntax">1. Property Syntax</h2>
 
 <p>The SARL language provides a very powerfull mecanism for calling members of an object as
 properties of this object.</p>
@@ -105,7 +105,7 @@ corresponding Java-Bean getter method if available.
 The getter method must have a name starting with one of the strings of
 characters <code>get</code>, <code>is</code>, <code>has</code>, followed by the given name.</p>
 
-<p>###1.1. Definition of the Properties and the Accessors</p>
+<h3 id="11-definition-of-the-properties-and-the-accessors">1.1. Definition of the Properties and the Accessors</h3>
 
 <p>In the following example, two fields are defined: <code>prop1</code> and <code>prop2</code>.
 As usual, these properties have a private scope, and the getter and setter functions must
@@ -124,7 +124,7 @@ In the example, only the getter and setter functions for <code>prop2</code> are 
 }
 </code></pre>
 
-<p>###1.2. Read Accesses</p>
+<h3 id="12-read-accesses">1.2. Read Accesses</h3>
 
 <p>Four cases for accessing a property are possible:</p>
 
@@ -168,7 +168,7 @@ In the example, only the getter and setter functions for <code>prop2</code> are 
 <p>The two first cases have the same effect: the getter function is called.
 But, the second case uses the “property-access” syntax, and it is assumed to be easier to be read in the code.</p>
 
-<p>###1.3. Write Accesses</p>
+<h3 id="13-write-accesses">1.3. Write Accesses</h3>
 
 <p>Four cases for writing a property are possible:</p>
 
@@ -213,7 +213,7 @@ But, the second case uses the “property-access” syntax, and it is assumed to
 But, the second case uses the “property-access” syntax, and it is assumed to be easier to be read in the code.
 Note that for this latest case, the “variable assignment” syntax is used.</p>
 
-<p>##2. Static Access to Members</p>
+<h2 id="2-static-access-to-members">2. Static Access to Members</h2>
 
 <p>To access a static field or method you can use the recommended Java syntax or the more explicit double colon <code>::</code>.
 That means, the following expressions are pairwise equivalent:</p>
@@ -222,7 +222,7 @@ That means, the following expressions are pairwise equivalent:</p>
 var b = Integer.TYPE
 </code></pre>
 
-<p>##3. Null-Safe Feature Call</p>
+<h2 id="3-null-safe-feature-call">3. Null-Safe Feature Call</h2>
 
 <p>Checking for null references can make code very unreadable. 
 The variable <code>myRef</code> is assumed to be declared.</p>
@@ -236,7 +236,7 @@ SARL includes the safe navigation operator <code>?.</code>. to do the null-check
 <pre><code class="language-sarl">myRef?.length()
 </code></pre>
 
-<p>##4. Call to an Inherited Method</p>
+<h2 id="4-call-to-an-inherited-method">4. Call to an Inherited Method</h2>
 
 <p>When it is possible to extend an existing type, the methods can be overridden.
 In this case, the <code>super</code> keyword invoks the inherited implementation of the method
@@ -248,11 +248,11 @@ from the overriding method.</p>
 }
 </code></pre>
 
-<p>##5. Call to a Constructor</p>
+<h2 id="5-call-to-a-constructor">5. Call to a Constructor</h2>
 
 <p>Constructor calls correspond to the calls of a constructor function for an object.</p>
 
-<p>###5.1. Instance Creation</p>
+<h3 id="51-instance-creation">5.1. Instance Creation</h3>
 
 <p>Constructor calls have the same syntax as in Java. The only difference is that empty parentheses are optional.
 If type arguments are omitted, they will be inferred from the current context similar to Java’s
@@ -263,7 +263,7 @@ var b = new ArrayList&lt;Integer&gt;()
 var c = new ArrayList&lt;Integer&gt;
 </code></pre>
 
-<p>###5.2. Inherited Constructor</p>
+<h3 id="52-inherited-constructor">5.2. Inherited Constructor</h3>
 
 <p>In the implementation of a constructor, it is possible to call one of the inherited constructors.
 The syntax is similar to Java: the (:super:] keyword is used to represent the inherited constructor.</p>
@@ -280,23 +280,23 @@ new (param : Address) {
 }
 </code></pre>
 
-<p>##6. Acknowledgements</p>
+<h2 id="6-acknowledgements">6. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##7. Legal Notice</p>
+<h2 id="7-legal-notice">7. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -305,7 +305,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -87,7 +87,7 @@ variable (see below for details), its name, and optionally its type and its init
 
 <p>Shadowing variables from outer scopes is not allowed, the only exception is the implicit variable <code>it</code>.</p>
 
-<p>##1. Variable vs. Value Declaration</p>
+<h2 id="1-variable-vs-value-declaration">1. Variable vs. Value Declaration</h2>
 
 <p>A variable declaration starting with the keyword <code>val</code> denotes a value, which is essentially a final, unsettable variable.</p>
 
@@ -99,7 +99,7 @@ lambda expressions.</p>
 <p>Fields declared outside a lambda expression using the <code>var</code> keyword or the <code>val</code> keyword are
 accessible from within the lambda expressions.</p>
 
-<p>##2. Typing</p>
+<h2 id="2-typing">2. Typing</h2>
 
 <p>The type of the variable itself can either be explicitly declared or it can be inferred from the initializer expression.</p>
 
@@ -113,7 +113,7 @@ accessible from within the lambda expressions.</p>
 <pre><code class="language-sarl">var a = "abc"
 </code></pre>
 
-<p>##3. Implicit Variables: this and it</p>
+<h2 id="3-implicit-variables-this-and-it">3. Implicit Variables: this and it</h2>
 
 <p>Like in Java the current object is bound to the keyword <code>this</code>. This allows for implicit field access or method invocations.</p>
 
@@ -124,23 +124,23 @@ expressions.</p>
 <p>When you type a name that doesn’t resolve to a variable in the local scope, the compiler tries to find a field
 with the same name on the <code>it</code> object, then in the <code>this</code> object.</p>
 
-<p>##4. Acknowledgements</p>
+<h2 id="4-acknowledgements">4. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##5. Legal Notice</p>
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -149,7 +149,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 

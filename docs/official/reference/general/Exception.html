@@ -71,7 +71,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>For a description of the exceptions that may be thrown by a function,
 please see <a href="./FuncDecls.html#declare-exceptions-in-the-function-prototype">how to declare exceptions in a function prototype</a>.</p>
 
-<p>##1. Throwing Exceptions</p>
+<h2 id="1-throwing-exceptions">1. Throwing Exceptions</h2>
 
 <p>Throwing objects of type <code>Throwable</code> and the <code>throw</code> keyword have the same semantics and syntax as in Java; see
 <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-14.html#jls-14.18">Java Language Specification</a>.</p>
@@ -79,7 +79,7 @@ please see <a href="./FuncDecls.html#declare-exceptions-in-the-function-prototyp
 <pre><code class="language-sarl">throw new IllegalArgumentException("explanation")
 </code></pre>
 
-<p>##2. Try, Catch, Finally</p>
+<h2 id="2-try-catch-finally">2. Try, Catch, Finally</h2>
 
 <p>The try-catch-finally expression is used to handle exceptional situations. 
 Checked exceptions are treated like runtime exceptions and only optionally 
@@ -97,7 +97,7 @@ validated. You can, but do not have to, catch them as they will be silently thro
 }
 </code></pre>
 
-<p>##3. Try-Catch as an Expression</p>
+<h2 id="3-try-catch-as-an-expression">3. Try-Catch as an Expression</h2>
 
 <p>For try-catch, the argument is an expression. Consequently, you can
 write code like the following and do not have to rely on
@@ -114,7 +114,7 @@ def example {
 }
 </code></pre>
 
-<p>##4. The try-with-resources Statement</p>
+<h2 id="4-the-try-with-resources-statement">4. The try-with-resources Statement</h2>
 
 <p>The try-with-resources statement is a try statement that declares one or more resources. A resource
 is an object that must be closed after the program is finished with it. The try-with-resources
@@ -140,23 +140,23 @@ Because the <code>BufferedReader</code> instance is declared in a try-with-resou
 closed regardless of whether the try statement completes normally or abruptly (as a result of the method
 <code>BufferedReader.readLine</code> throwing an <code>IOException</code>).</p>
 
-<p>##5. Acknowledgements</p>
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<p>##6. Legal Notice</p>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.10</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2019-10-26</li>
+  <li>Version: 0.11</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-03-25</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2019 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
@@ -165,7 +165,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.10.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
