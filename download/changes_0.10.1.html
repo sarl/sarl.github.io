@@ -9,15 +9,15 @@ SARL aims at providing the fundamental abstractions for dealing with concurrency
 Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
 ">
     <meta name="author" content="SARL Team">
-    <link rel="icon" href="../../images/favicon.ico" />
-    <link rel="shortcut icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
 
-    <title>Janus Agent and Holonic Platform</title>
+    <title>Changes in 0.10.1</title>
 
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/pygments.css">
-    <link rel="stylesheet" href="../../css/custom.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,14 +43,14 @@ Considering the variety of existing approaches and meta-models in the field of a
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../../docs/index.html">Documentation</a></li>
-        <li><a href="../../download/index.html">Download</a></li>
-        <li><a href="../../runtime/index.html">Run-time</a></li>
-        <li><a href="../../community/index.html">Community</a></li>
-        <li><a href="../../news/index.html">News &amp; Events</a></li>
-        <li><a href="../../publications/index.html">Publications &amp; Presentations</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -64,67 +64,21 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="janus-agent-and-holonic-platform">Janus Agent and Holonic Platform</h1>
+      <h1 id="changes-in-0101">Changes in 0.10.1</h1>
 
-<p><img src="../..//images/janus.png" alt="Janus Logo" /></p>
+<p>Release date: 2020-05-28.</p>
 
-<p>Janus is an open-source multi-agent platform fully implemented in Java 1.8. 
-Janus enables developers to quickly create web, enterprise and desktop multiagent-based applications. 
-It provides a comprehensive set of features to develop, run, display and monitor multiagent-based applications. 
-Janus-based applications can be distributed across a network. 
-Janus could be used as an agent-oriented platform, an organizational platform, and/or an holonic platform. 
-It also natively manages the concept of recursive agents and holons.</p>
+<h2 id="1-major-changes">1. Major Changes</h2>
 
-<p>Janus platform was initially published during the 2007-2008 period. Since 2014, Janus is fully reimplemented to
-support the SARL Agent-Oriented Programming Language.</p>
+<ul>
+  <li>Fixing the invalid building of the classpath URL on Windows operating systems (<a href="http://github.com/sarl/sarl/commit/814788b81629cff3fb453f7433cb1eef4307c596">details</a>).</li>
+</ul>
 
-<h2 id="about-the-version-number-of-janus">About the Version Number of Janus</h2>
+<h2 id="2-changes-in-the-previous-versions">2. Changes in the Previous Versions</h2>
 
-<p>The version number of Janus follows a specific convention for its definition. This convention will permits you
-to select the appropriate version of the Janus runtime environment for the targeted SARL specification.</p>
-
-<p><strong>The version number is composed of 4 numbers, optionally followed by the <code>-SNASPHOT</code> flag.</strong>
-The semantic of these components is:</p>
-
-<ol>
-  <li>the major version number of the Janus platform;</li>
-  <li>the major version number of the SARL specification;</li>
-  <li>the minor version number of the SARL specification; and</li>
-  <li>the revision number of the Janus platform.</li>
-</ol>
-
-<p>The <code>-SNAPSHOT</code> postfix indicates a “under-development” version, i.e. it is not yet released.</p>
-
-<h2 id="downloading-janus">Downloading Janus</h2>
-
-<p>The Janus platform may be directly download, even if it is recommend to use it through Maven (see below).
-For downloading the platform, please go to the <a href="../..//download/index.html#download_janus">download page</a>.</p>
-
-<h2 id="using-janus-with-maven">Using Janus with Maven</h2>
-
-<p>Janus is available as a Maven artifact. The artifact is available on the <a href="http://search.maven.org">Maven Central Repository</a>. For using Janus in your Maven project, add the following dependency into your POM dependencies:</p>
-
-<pre><code>&lt;dependency&gt;
-  &lt;groupId&gt;io.janusproject&lt;/groupId&gt;
-  &lt;artifactId&gt;io.janusproject.kernel&lt;/artifactId&gt;
-  &lt;version&gt;2.0.10.1&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<p>You should change the version number 2.0.10.1 according to the version of your choice. All of the available version numbers could be found on the <a href="http://search.maven.org">Maven Central Repository</a>.</p>
-
-<p><img src="https://img.shields.io/maven-central/v/io.janusproject/io.janusproject.kernel.svg?label=Available%20on%20Maven%20Central" alt="Janus on Maven Central" /></p>
-
-<h2 id="documentation">Documentation</h2>
-
-<h3 id="java-api-documentation">Java API Documentation</h3>
-
-<p>The API documentation related to the Janus platform is included into the <a href="http://www.sarl.io/docs/api">documentation of SARL</a>.</p>
-
-<h3 id="frequently-asked-questions">Frequently Asked Questions</h3>
-
-<p>The frequently asked questions related to the Janus platform are hosted by the SARL programming language website.
-See the <a href="../..//docs/official/faq/RuntimeEnvironmentFAQ.html">Frequently Asked Questions</a>.</p>
+<ul>
+  <li><a href="./changes_0.10.0.html">Changes in the version 0.10.0</a></li>
+</ul>
 
 
     </div> <!-- /default layout container -->
@@ -140,8 +94,8 @@ See the <a href="../..//docs/official/faq/RuntimeEnvironmentFAQ.html">Frequently
       <center>
       <h2>SARL</h2>
       <div>Agent-Oriented Programming Language</div>
-      <img src="../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
-      <small><a href="../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../images/SARL-logo.svg">svg</a></small>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
       </center>
     </div>
     </div>
@@ -150,22 +104,22 @@ See the <a href="../..//docs/official/faq/RuntimeEnvironmentFAQ.html">Frequently
       <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
       <ul class="fa-ul">
 		  <li>
-			<a href="../../news/index.html">
+			<a href="../news/index.html">
 			  <i class="fa-li fa fa-feed"></i> News
 			</a>
 		  </li>
 		  <li>
-			<a href="../../about/index.html">
+			<a href="../about/index.html">
 			  <i class="fa-li fa fa-info"></i> About
 			</a>
 		  </li>
 		  <li>
-			<a href="../../about/index.html#license">
+			<a href="../about/index.html#license">
 			  <i class="fa-li fa fa-legal"></i> License
 			</a>
 		  </li>
 		  <li>
-			<a href="../../supports/index.html">
+			<a href="../supports/index.html">
 			  <i class="fa-li fa fa-asterisk"></i> Supports
 			</a>
 		  </li>
@@ -177,7 +131,7 @@ See the <a href="../..//docs/official/faq/RuntimeEnvironmentFAQ.html">Frequently
       <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
       <ul class="fa-ul">
 		  <li>
-			<a href="../../community/forums.html">
+			<a href="../community/forums.html">
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
@@ -232,10 +186,10 @@ See the <a href="../..//docs/official/faq/RuntimeEnvironmentFAQ.html">Frequently
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../js/jquery.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/run_prettify.js"></script>
-	<script src="../../js/lang-sarl.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
 
 
 	<!-- Google analystics -->
