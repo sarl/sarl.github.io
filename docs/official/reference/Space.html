@@ -73,7 +73,6 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#1-1-space">1.1. Space</a></li>
   <li><a href="#1-2-event-space">1.2. Event Space</a></li>
   <li><a href="#1-3-open-event-space">1.3. Open Event Space</a></li>
-  <li><a href="#1-4-restricted-access-event-space">1.4. Restricted Access Event Space</a></li>
 </ul>
 <li><a href="#2-defining-a-space">2. Defining a Space</a></li>
 <ul>
@@ -140,7 +139,9 @@ The most basic scope is represented by a collection of addresses.</p>
 
 <pre><code class="language-sarl">interface Space {
 	def forEachStrongParticipant((Object) =&gt; void)
+	def forEachWeakParticipant((Object) =&gt; void)
 	def getNumberOfStrongParticipants : int
+	def getNumberOfWeakParticipants : int
 	def getSpaceID : SpaceID
 	def isPseudoEmpty : boolean
 	def isPseudoEmpty(UUID) : boolean
@@ -189,19 +190,6 @@ The <code>emit</code> functions permits fire of an event in the space.</p>
 <p>The functions <code>register</code> and <code>unregister</code> permit an agent to be involved or not.
 The function <code>register</code> fires the event <code>ParticipantJoined</code>.
 And, the function <code>unregister</code> fires the event <code>ParticipantLeft</code>.</p>
-
-<h3 id="14-restricted-access-event-space">1.4. Restricted Access Event Space</h3>
-
-<p>When an event space needs to control the registration access, it should be a “restricted access event space”:</p>
-
-<pre><code class="language-sarl">interface RestrictedAccessEventSpace {
-	def register(EventListener, Principal) : Address
-	def register(Object) : Address
-	def unregister(EventListener) : Address
-}
-</code></pre>
-
-<p>The functions given by this type of space permits implementing a space with restricted access, based on the standard Java API.</p>
 
 <h2 id="2-defining-a-space">2. Defining a Space</h2>
 
@@ -253,23 +241,6 @@ that you will be notified about any major changes on this part of the API.</caut
 <pre><code class="language-sarl">class PhysicSpaceImpl extends AbstractEventSpace implements PhysicSpace {
 	val entities = &lt;UUID, PhysicObject&gt;newHashMap
 	
-	val strongRepository = new ConcurrentHashMap&lt;UUID, Participant&gt;
-	var weakRepository : ConcurrentHashMap&lt;UUID, Participant&gt;
-	override getInternalStrongParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
-		this.strongRepository 
-	}
-
-	override getInternalWeakParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
-		this.weakRepository
-	}
-	override ensureInternalWeakParticipantStructure : ConcurrentHashMap&lt;UUID, Participant&gt; {
-		var r = this.weakRepository
-		if (r === null) {
-			this.weakRepository = new ConcurrentHashMap
-			r = this.weakRepository
-		}
-		return this.weakRepository
-	}
 	def moveObject(identifier : UUID, x : float, y : float, z : float) {
 		synchronized (this.entities) {
 			var o = this.entities.get(identifier)
@@ -365,8 +336,8 @@ b. annotated with <code>@DefaultSpace</code>.</li>
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.11</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2020-03-25</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2020-06-02</li>
 </ul>
 
 <blockquote>
@@ -379,7 +350,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0.</small></p>
 
     </div> <!-- /default layout container -->
 
