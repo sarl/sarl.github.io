@@ -72,16 +72,23 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-declare-exceptions-in-the-function-prototype">2. Declare exceptions in the function prototype</a></li>
 <li><a href="#3-generic-function">3. Generic Function</a></li>
 <ul>
-  <li><a href="#3-1-definition-with-with-keyword">3.1. Definition with "with" keyword</a></li>
-  <li><a href="#3-2-definition-with-brackets">3.2. Definition with brackets</a></li>
-  <li><a href="#3-3-bounded-type-parameters">3.3. Bounded Type Parameters</a></li>
+  <li><a href="#31-definition-with-with-keyword">3.1. Definition with "with" keyword</a></li>
+  <li><a href="#32-definition-with-brackets">3.2. Definition with brackets</a></li>
+  <li><a href="#33-bounded-type-parameters">3.3. Bounded Type Parameters</a></li>
 </ul>
 <li><a href="#4-variadic-function">4. Variadic Function</a></li>
 <li><a href="#5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</a></li>
 <li><a href="#6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</a></li>
 <li><a href="#7-dispatch-function">7. Dispatch Function</a></li>
-<li><a href="#8-acknowledgements">8. Acknowledgements</a></li>
-<li><a href="#9-legal-notice">9. Legal Notice</a></li>
+<li><a href="#8-purity-of-the-functions">8. Purity of the Functions</a></li>
+<ul>
+  <li><a href="#81-general-definition">8.1. General Definition</a></li>
+  <li><a href="#82-i-o-in-pure-functions">8.2. I/O in Pure Functions</a></li>
+  <li><a href="#83-automatic-determination-of-the-function-purity-in-sarl">8.3. Automatic Determination of the Function Purity in SARL</a></li>
+  <li><a href="#84-manually-tagging-of-pure-functions">8.4. Manually Tagging of Pure Functions</a></li>
+</ul>
+<li><a href="#9-acknowledgements">9. Acknowledgements</a></li>
+<li><a href="#10-legal-notice">10. Legal Notice</a></li>
 
 </ul>
 
@@ -380,19 +387,161 @@ it's an int
 it's a string
 </code></pre>
 
-<h2 id="8-acknowledgements">8. Acknowledgements</h2>
+<h2 id="8-purity-of-the-functions">8. Purity of the Functions</h2>
+
+<h3 id="81-general-definition">8.1. General Definition</h3>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Pure_function">pure function</a> is a function that has the following properties:</p>
+
+<ol>
+  <li>Its return value is the same for the same arguments (no variation with local static variables, non-local variables, 
+mutable reference arguments or input streams from I/O devices).</li>
+  <li>Its evaluation has no side effects (no mutation of local static variables, non-local variables, mutable
+reference arguments or I/O streams).</li>
+</ol>
+
+<p>Most of the time, a pure function is a computational analogue of a mathematical function. Some authors, particularly from the
+imperative language community, use the term “pure” for all functions that just have the above property.</p>
+
+<p>In SARL, a pure function is a function that has no side-effect on the state of the invoked object,  the static state, and
+I/O targets. The following examples of SARL functions are pure:</p>
+
+<pre><code class="language-sarl">def floor(value : double) : double {
+	val fvalue = value as int
+	return fvalue
+}
+def max(a : double, b : double) : double {
+	if (a &gt;= b) a
+	else b
+}
+def f : void {
+	var x = 0
+	x++
+}
+</code></pre>
+
+<p>The following examples of SARL functions are impure:</p>
+
+<pre><code class="language-sarl">class MyClass {
+	var ifield : int
+	static var sfield : int
+	def incrementField : void {
+		this.ifield ++
+	}
+	def incrementGlobalField : void {
+		sfield ++
+	}
+	static def incrementGlobalField2 : void {
+		sfield ++
+	}
+}
+</code></pre>
+
+<h3 id="82-io-in-pure-functions">8.2. I/O in Pure Functions</h3>
+
+<p>I/O is inherently impure: input operations undermine
+<a href="https://en.wikipedia.org/wiki/Referential_transparency">referential transparency</a>,
+and output operations create side effects.
+Nevertheless, there is a sense in which function can perform input or output and still be pure, if the sequence of
+operations on the relevant I/O devices is modeled explicitly as both an argument and a result, and I/O operations are
+taken to fail when the input sequence does not describe the operations actually taken since the program began execution.</p>
+
+<p>The second point ensures that the only sequence usable as an argument must change with each I/O action; the first allows
+different calls to an I/O-performing function to return different results on account of the sequence arguments having changed.</p>
+
+<h3 id="83-automatic-determination-of-the-function-purity-in-sarl">8.3. Automatic Determination of the Function Purity in SARL</h3>
+
+<p>SARL compiler tries to figure out if the functions have side-effect. 
+It does some clever analysis of the name of the method (e.g., getters) and also tries to check if the
+body has any method that is impure, i.e., that may have side-effects.</p>
+
+<p>SARL compiler considers the following cases for determining if a function must be tagged as pure or not:</p>
+
+<ol>
+  <li>The function name follows one of the regular expression pattern that corresponds to functions that are
+usually pure:
+    <ul>
+      <li>For getter functions:
+        <ul>
+          <li>
+            <p>name starts with <code>get</code>, <code>has</code> or <code>is</code></p>
+          </li>
+          <li>
+            <p>name equals to <code>length</code></p>
+          </li>
+        </ul>
+      </li>
+      <li>For comparison functions:
+        <ul>
+          <li>name equals to <code>equals</code>, <code>hashCode</code>, <code>compare</code> or <code>compareTo</code>.</li>
+        </ul>
+      </li>
+      <li>For container functions:
+        <ul>
+          <li>
+            <p>name equals to <code>size</code></p>
+          </li>
+          <li>
+            <p>name starts with <code>contains</code>, optionally followed by characters according to the
+<a href="https://en.wikipedia.org/wiki/Camel_case">camel-case standard</a></p>
+          </li>
+        </ul>
+      </li>
+      <li>For iteration:
+        <ul>
+          <li>name equals to <code>iterator</code></li>
+        </ul>
+      </li>
+      <li>For cloning:
+        <ul>
+          <li>name equals to <code>clone</code></li>
+        </ul>
+      </li>
+      <li>For data conversion:
+        <ul>
+          <li>name starts with <code>to</code> following the <a href="https://en.wikipedia.org/wiki/Camel_case">camel-case standard</a></li>
+        </ul>
+      </li>
+      <li>For well-known pure functions:
+        <ul>
+          <li>name equals to one of <code>abs</code>, <code>acos</code>, <code>asin</code>, <code>atan</code>, <code>atan2</code>, <code>cbrt</code>, <code>ceil</code>, <code>cos</code>, <code>cosh</code>, <code>exp</code>, <code>floor</code>,
+<code>hypot</code>, <code>log</code>, <code>log10</code>, <code>log1p</code>, <code>max</code>, <code>min</code>, <code>pow</code>, <code>random</code>, <code>rint</code>, <code>round</code>, <code>scalb</code>, <code>signum</code>, <code>sin</code>,
+<code>sinh</code>, <code>sqrt</code>, <code>tan</code>, <code>tanh</code>, <code>ulp</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The code of the function, <em>if it is written in SARL</em>, is analyzed in order to determine if it contains no
+call to a side-effect (impure) features.</li>
+</ol>
+
+<p>If none of the cases above is matching the current definition of a function, then the function is assumed to be impure.</p>
+
+<h3 id="84-manually-tagging-of-pure-functions">8.4. Manually Tagging of Pure Functions</h3>
+
+<p>In the case the SARL compiler is not able to automatically determine the purity of a function, but you are sure that the function
+is pure, it is possible to mark the function as pure manually.</p>
+
+<pre><code class="language-sarl">@Pure
+def myFunction() : int {
+	// Do something complex
+	return 0
+}
+</code></pre>
+
+<h2 id="9-acknowledgements">9. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="9-legal-notice">9. Legal Notice</h2>
+<h2 id="10-legal-notice">10. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.11</li>
-  <li>Status: Stable Release</li>
-  <li>Release: 2020-06-02</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-06-17</li>
 </ul>
 
 <blockquote>
@@ -405,7 +554,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.11.0.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
