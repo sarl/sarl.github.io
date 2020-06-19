@@ -137,135 +137,148 @@ occur because of one of the used library. In these errors are not necessary docu
 on <a href="https://gitter.im/sarl/Lobby">Gitter</a> or <a href="http://www.sarl.io/community/forums.html">Google Group</a> with the
 SARL community.</p>
 
-<p>The code column gives the internal code of the issue.
+<p>The “N.” column provides a number that could be used in order to make easier your discussions with the SARL developers on the forums.</p>
+
+<p>The column “Message and Description” contains information and details on each issue.
 The <strong>message</strong> gives a template of typical message that is given by the compiler.
-The <strong>cause</strong> describes the source of the issue.
-The <strong>solving</strong> provides guidelines to fix the issue when it is possible.
-The level column indicates the expected level of the issue (error or warning).</p>
+The <strong>cause</strong> describes the source of the issue, and provides a short explanation of the cause of the issue.
+The <strong>solving</strong> provides guidelines to fix the issue when it is possible.</p>
+
+<p>The “Level” column indicates the level of importance for the issue.
+It may be:</p>
+<ul>
+  <li>“error”: the issue makes Janus failing and stopping.</li>
+  <li>“warning”: the issue is an important message that may have implication on the quality of your program.</li>
+  <li>“info”: the issue is a simple information message from the compiler. The impact on the quality of your program is low.</li>
+</ul>
+
+<p>The code of the issue, which is appended at the end of the messages, corresponds to the content of the “Code” column below.
+This code may have a short format (e.g., the one shown in the column), or a long format (e.g., if you move your mouse pointer on the code, you should see the long format of the code into a pop-up window).
+The long code is provided by the SARL compiler at the end of the issue messages.</p>
 
 <table>
   <thead>
     <tr>
       <th>N.</th>
-      <th>Code</th>
       <th>Message and Description</th>
       <th>Level</th>
+      <th>Code</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1</td>
-      <td>agent_task_already_launched</td>
       <td><strong>Message:</strong> Already launched task<br /><strong>Cause:</strong> A task was launched two times. This error denotes of a problem of design of the agent software<br /><strong>Solving:</strong> Review your code to avoid the task to be launched too times</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.agent_task_already_launched">agent_task_already_launched</a></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>cannot_emit_in_space</td>
       <td><strong>Message:</strong> Cannot emit the event ‘<em>event-type</em>’ with the scope ‘<em>scope</em>’: <em>error</em><br /><strong>Cause:</strong> The given event cannot be emitted into a space because of an internal error</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.cannot_emit_in_space">cannot_emit_in_space</a></td>
     </tr>
     <tr>
       <td>3a</td>
-      <td>cli_argument_list_size</td>
       <td><strong>Message:</strong> Not enough arguments. You have to provide the qualified name of the agent to be launched<br /><strong>Cause:</strong> This error is generated when the number of commend-line arguments that are passed to Janus is too small, in the case that Janus is supposed to launch an agent. The missed argument is the fully-qualified name of the agent to be launched<br /><strong>Solving:</strong> Add to the command-line the fully-qualified name of the agent to be launched</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.cli_argument_list_size">cli_argument_list_size</a></td>
     </tr>
     <tr>
       <td>3b</td>
-      <td>cli_argument_list_size</td>
       <td><strong>Message:</strong> Too many arguments. You must not provide arguments<br /><strong>Cause:</strong> This error is generated when the number of commend-line arguments that are passed to Janus is too big, in the case that Janus is not supposed to launch an agent.<br /><strong>Solving:</strong> Remove all the command-line arguments</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.cli_argument_list_size">cli_argument_list_size</a></td>
     </tr>
     <tr>
       <td>4</td>
-      <td>disabled_spawn</td>
       <td><strong>Message:</strong> The spawning of the agents is disabled. The spawning of <em>agent-type</em> inside <em>context</em> is skipped<br /><strong>Cause:</strong> An agent spawn query was received, but rejected because the agent life-cycle service has disabled its spawning service. It is usually due to the fact that Janus has already started to shutdown<br /><strong>Solving:</strong> Review you code in order to avoid to spawn an agent after all the exisiting agents have been killed</td>
       <td>Warning</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.disabled_spawn">disabled_spawn</a></td>
     </tr>
     <tr>
       <td>5a</td>
-      <td>event_guard_error</td>
       <td><strong>Message:</strong> Event guard evaluator method becomes inaccessible: {1}<br /><strong>Cause:</strong> Event guards are evaluated into dedicated Java functions by Janus. This error message is generated when the guard evaluation function cannot be called due to access restrictions. This error should never occur because it means that the Janus code itself is broken</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.event_guard_error">event_guard_error</a></td>
     </tr>
     <tr>
       <td>5b</td>
-      <td>event_guard_error</td>
       <td><strong>Message:</strong> Invalid argument for the event guard evaluator method: {1}<br /><strong>Cause:</strong> Event guards are evaluated into dedicated Java functions by Janus. This error message is generated when one of the arguments of the guard evaluation function is invalid. Usually, it is because the event cannot be passed to the function</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.event_guard_error">event_guard_error</a></td>
     </tr>
     <tr>
       <td>6</td>
-      <td>invalid_sarl_specification</td>
       <td><strong>Message:</strong> The SARL specification version that was used for generating the type <em>name</em> is not compatible with the specification version supported by Janus<br /><strong>Cause:</strong> Internally, Janus checks if the provided class of an agent to be launched was generated with a version of the SARL compiler that is supported by the current version of Janus. This error message is generated when the class to be loaded is not compatible<br /><strong>Solving:</strong> Get agent’s binary files that are compiled with the compatible SARL compiler</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.invalid_sarl_specification">invalid_sarl_specification</a></td>
     </tr>
     <tr>
       <td>7</td>
-      <td>not_alive_error</td>
       <td><strong>Message:</strong> Cannot kill agent <em>id</em> because it is not alive<br /><strong>Cause:</strong> The agent with the given <em>id</em> cannot be killed because it is already dead<br /><strong>Solving:</strong> Review your code to avoid the call to <code>killMe</code> too many times</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.not_alive_error">not_alive_error</a></td>
     </tr>
     <tr>
       <td>8</td>
-      <td>not_killable_error</td>
       <td><strong>Message:</strong> Cannot kill agent <em>id</em> because it is considered as not killable<br /><strong>Cause:</strong> The agent with the given <em>id</em> cannot be killed. Usually, it is because it is a holon that contains sub-holons<br /><strong>Solving:</strong> Review your code to avoid the killing of the sub-holon when it is not empty</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.not_killable_error">not_killable_error</a></td>
     </tr>
     <tr>
       <td>9</td>
-      <td>null_agent_task</td>
       <td><strong>Message:</strong> Agent task is null<br /><strong>Cause:</strong> The reference to an agent task is lost. This avoid the task to be run. This error should never occur</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.null_agent_task">null_agent_task</a></td>
     </tr>
     <tr>
       <td>10</td>
-      <td>service_manager_error</td>
       <td><strong>Message:</strong> Failure in service <em>name</em><br /><strong>Cause:</strong> An internal error into the Janus service manager has occurred. The error is related to the service with the given <em>name</em></td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.service_manager_error">service_manager_error</a></td>
     </tr>
     <tr>
       <td>11</td>
-      <td>spawn_error</td>
       <td><strong>Message:</strong> Cannot instantiate an agent of type <em>type-name</em> due to the following: <em>error</em><br /><strong>Cause:</strong> An internal error avoid an agent of the given <em>type-name</em> to be created and launched<br /><strong>Solving:</strong> Review the given <em>error</em> and fix your agent software accordingly</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.spawn_error">spawn_error</a></td>
     </tr>
     <tr>
       <td>12</td>
-      <td>task_cancel</td>
       <td><strong>Message:</strong> Task with the id ‘<em>id</em>’ and the name ‘<em>name</em>’ was cancelled<br /><strong>Cause:</strong> A task was detected as cancelled by the thread execution service. This error should never occur, except if you have manually cancelled an agent task during its execution</td>
       <td>Warning</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.task_cancel">task_cancel</a></td>
     </tr>
     <tr>
       <td>13</td>
-      <td>task_error</td>
       <td><strong>Message:</strong> Uncaught exception: <em>error</em><br />in thread #<em>task-id</em> ‘<em>task-name’<br /><strong>Cause:</strong> This error message is displayed when an agent task has encountered an *error</em>.</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.task_error">task_error</a></td>
     </tr>
     <tr>
       <td>14</td>
-      <td>task_interrupt</td>
       <td><strong>Message:</strong> Task with the id ‘<em>id</em>’ and the name ‘<em>name</em>’ was interrupted<br /><strong>Cause:</strong> A task was detected as interrupted by the thread execution service. This error should never occur, except if the thread associated to the agent task was interrupted programmatically</td>
       <td>Warning</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.task_interrupt">task_interrupt</a></td>
     </tr>
     <tr>
       <td>15</td>
-      <td>task_reject</td>
       <td><strong>Message:</strong> Rejected task due to lack of resources or service shutdown: <em>task</em><br /><strong>Cause:</strong> This warning message is generated when an agent task is rejected by the internal thread execution service. Most of the time, the reason of the rejection is because there is not more space in the queue of tasks to be run. By default, when a task is rejected to be executed into a thread, Janus assumes that the tasks could be run into the current thread, and it is running the task. Consequently, this warning should be considered in order to detect internal bugs in your software<br /><strong>Solving:</strong> x</td>
       <td>Warning</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.task_reject">task_reject</a></td>
     </tr>
     <tr>
       <td>16a</td>
-      <td>universe_creation</td>
       <td><strong>Message:</strong> Cannot create the universe context<br /><strong>Cause:</strong> Something avoid the Janus framework to be started and create the root context of the application. The cause of the error is unknown</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.universe_creation">universe_creation</a></td>
     </tr>
     <tr>
       <td>16b</td>
-      <td>universe_creation</td>
       <td><strong>Message:</strong> Cannot create the universe context: <em>cause</em><br /><strong>Cause:</strong> Something avoid the Janus framework to be started and create the root context of the application. The cause of the error is provided</td>
       <td>Error</td>
+      <td><a href=":" title="io.sarl.sre.IssueCodes.universe_creation">universe_creation</a></td>
     </tr>
   </tbody>
 </table>
@@ -276,7 +289,7 @@ The level column indicates the expected level of the issue (error or warning).</
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-06-17</li>
+  <li>Release: 2020-06-19</li>
 </ul>
 
 <blockquote>
