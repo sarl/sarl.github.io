@@ -91,12 +91,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#4-behaviors-of-an-agent">4. Behaviors of an Agent</a></li>
 <ul>
   <li><a href="#41-initialization-handler">4.1. Initialization Handler</a></li>
-  <li><a href="#42-guarded-initialization-handler">4.2. Guarded Initialization Handler</a></li>
-  <li><a href="#43-destruction-handler">4.3. Destruction Handler</a></li>
-  <li><a href="#44-guarded-destruction-handler">4.4. Guarded Destruction Handler</a></li>
-  <li><a href="#45-reactive-behaviors">4.5. Reactive Behaviors</a></li>
-  <li><a href="#46-parallel-execution-of-the-reactive-behaviors">4.6. Parallel Execution of the Reactive Behaviors</a></li>
-  <li><a href="#47-pro-active-behaviors">4.7. Pro-active Behaviors</a></li>
+  <li><a href="#42-destruction-handler">4.2. Destruction Handler</a></li>
+  <li><a href="#43-reactive-behaviors">4.3. Reactive Behaviors</a></li>
+  <li><a href="#44-parallel-execution-of-the-reactive-behaviors">4.4. Parallel Execution of the Reactive Behaviors</a></li>
+  <li><a href="#45-pro-active-behaviors">4.5. Pro-active Behaviors</a></li>
 </ul>
 <li><a href="#5-capacities-and-skills">5. Capacities and Skills</a></li>
 <ul>
@@ -449,6 +447,8 @@ variable as the keywords <code>this</code> and <code>it</code>.</p>
 
 <h3 id="41-initialization-handler">4.1. Initialization Handler</h3>
 
+<h4 id="general-description">General Description</h4>
+
 <p>When an agent is ready to be executed by the runtime environment, it receives the <code>Initialize</code> event.
 This event is defined as:</p>
 
@@ -470,7 +470,7 @@ This event is defined as:</p>
 }
 </code></pre>
 
-<h3 id="42-guarded-initialization-handler">4.2. Guarded Initialization Handler</h3>
+<h4 id="guarded-initialization-handler">Guarded Initialization Handler</h4>
 
 <p>Because <code>Initialize</code> is an event, the handler in the agent could use a guard. This feature enables
 the developer to write different initialization blocks depending on the guards of the handlers.</p>
@@ -490,7 +490,121 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<h3 id="43-destruction-handler">4.3. Destruction Handler</h3>
+<h4 id="execution-of-the-initialization-handler">Execution of the Initialization Handler</h4>
+
+<p>The <code>on Initialize</code> event handler in agents is a bit special, as it is the code run when an agent is born.
+As such, its execution is more “synchronous” than other on-behavior rules. In particular:</p>
+
+<ol>
+  <li>Any event emitted within an <code>on Initialize</code>, will not be processed until that
+<code>on Initialize</code> code finishes. So, your agent initialization should not depend
+(and wait) on any fired event being processed, as they won’t!</li>
+  <li>When spawning an agent in <code>on Initialize</code>, the spawn instructions will return only
+after the agent has been created. However, creation of the agent (i.e., of the
+corresponding object) does not include initialization of the agent via its 
+<code>on Initialize</code> handler. Said so, the Java thread manager may process those
+initialization processes of the new agent before continuing with the execution
+of the spawning agent (and this seems to be the case in many Linux boxes
+where the executor service of Java tends to have the same behavior during
+all the runs). If you change computer, it may be different. In the following
+example, the thread executor service of Java seems to give the priority to
+the <code>on Initialize</code> of <code>Agent2</code> instead of continuing the run of the
+spawn function.</li>
+</ol>
+
+<pre><code class="language-sarl">agent Agent1 {
+    uses Logging, Lifecycle
+    var agent_name = "agent1"
+    on Initialize {
+        info(agent_name + " spawned")
+        info(agent_name + " spawning Agent2")
+        spawn(Agent2)
+        info(agent_name + " end")
+    }
+}
+agent Agent2 {
+    uses Logging
+    var agent_name = "agent2"
+    on Initialize {
+        info(agent_name + " spawned")
+        info(agent_name + " sleeping")
+        Thread::sleep(5000)
+        info(agent_name + " woke up")
+        info(agent_name + " end")
+    }
+    on Initialize {
+        info(agent_name + " init2")
+        info(agent_name + " init2 end")
+    }
+}
+</code></pre>
+
+<p>The output has been:</p>
+
+<pre><code>Launching the agent: Agent1
+agent1 spawned
+agent1 spawning Agent2
+agent2 spawned
+agent2 init2
+agent2 sleeping
+agent2 init2 end
+agent2 woke up
+agent2 end
+agent1 end
+</code></pre>
+
+<p>Here it appears as the <code>on Initialize</code> behaviors have been run all before
+the execution resumes after the <code>spawn()</code> statement, but this is just one way
+and one should not rely on that behavior being guaranteed: once the spawned
+agent is created, the <code>spawn()</code> commands returns.</p>
+
+<h4 id="multiple-initialization-handlers">Multiple Initialization Handlers</h4>
+
+<p>It is allowed to declare multiple initialization handlers into a single agent type, as illustrated by:</p>
+
+<pre><code class="language-sarl">agent Agent3 {
+	uses Logging
+    on Initialize {
+        info("1")
+    }
+    on Initialize {
+        info("2")
+    }
+    on Initialize {
+        info("3")
+    }
+}
+</code></pre>
+
+<p>According to the SARL operational semantic, the three event handlers for <code>Initialize</code> are run in parallel.
+The initialization event handlers are not constructors (as defined in object-oriented programming paradigm),
+they are reacting to the receiving of an <code>Initialize</code> occurrence.
+Consequently, we could say that there is a single <code>Initialize</code> occurrence during the whole life of an agent;
+But, it may have multiple handlers to react to the receiving of this event.</p>
+
+<h4 id="initialization-handler-within-the-inheritance-hierarchy">Initialization Handler within the Inheritance Hierarchy</h4>
+
+<p>The example in the previous section could be extended in order to illustrate how the initialization handlers
+are run when the type of the agent (here <code>Agent4</code>) is declared within a inheritance hierarchy.</p>
+
+<pre><code class="language-sarl">agent Agent4 extends Agent3 {
+	uses Logging
+    on Initialize {
+        info("4")
+    }
+    on Initialize {
+        info("5")
+    }
+}
+</code></pre>
+
+<p>According to the SARL operational semantic, all the initialization handlers are run in parallel.
+In the previous example, five event handlers will be run: three are defined into <code>Agent3</code>, and
+two are defined into <code>Agent4</code>. This mechanism is generalized to all the events within an agent.</p>
+
+<h3 id="42-destruction-handler">4.2. Destruction Handler</h3>
+
+<h4 id="general-description-1">General Description</h4>
 
 <p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
 
@@ -508,7 +622,7 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<h3 id="44-guarded-destruction-handler">4.4. Guarded Destruction Handler</h3>
+<h4 id="guarded-destruction-handler">Guarded Destruction Handler</h4>
 
 <p>As for <code>Initialize</code>, the handlers of the <code>Destroy</code> event could be guarded.</p>
 
@@ -528,7 +642,7 @@ is executed when there is no resource.</p>
 }
 </code></pre>
 
-<h3 id="45-reactive-behaviors">4.5. Reactive Behaviors</h3>
+<h3 id="43-reactive-behaviors">4.3. Reactive Behaviors</h3>
 
 <p>The reactive behavior of an agent is specified with a collection
 of event handlers. The principle of a reactive behavior is to execute a part of the global
@@ -546,7 +660,7 @@ agent behavior when something has happening in the agent, or in its environment.
 }
 </code></pre>
 
-<h3 id="46-parallel-execution-of-the-reactive-behaviors">4.6. Parallel Execution of the Reactive Behaviors</h3>
+<h3 id="44-parallel-execution-of-the-reactive-behaviors">4.4. Parallel Execution of the Reactive Behaviors</h3>
 
 <p>When an event is received and the guard of the corresponding handler is true, the event
 handler is said to be triggered.</p>
@@ -565,7 +679,7 @@ In the following example, the two handlers for the <code>SomethingChanged</code>
 }
 </code></pre>
 
-<h3 id="47-pro-active-behaviors">4.7. Pro-active Behaviors</h3>
+<h3 id="45-pro-active-behaviors">4.5. Pro-active Behaviors</h3>
 
 <p>A proactive behavior is a part of the global behavior of an agent that the
 agent is deciding to execute by itself.
@@ -740,7 +854,7 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-06-19</li>
+  <li>Release: 2020-06-28</li>
 </ul>
 
 <blockquote>

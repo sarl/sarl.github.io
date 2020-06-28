@@ -80,12 +80,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-behavior-units-of-a-behavior">2. Behavior Units of a Behavior</a></li>
 <ul>
   <li><a href="#21-initialization-handler">2.1. Initialization Handler</a></li>
-  <li><a href="#22-guarded-initialization-handler">2.2. Guarded Initialization Handler</a></li>
-  <li><a href="#23-destruction-handler">2.3. Destruction Handler</a></li>
-  <li><a href="#24-guarded-destruction-handler">2.4. Guarded Destruction Handler</a></li>
-  <li><a href="#25-reactive-behavior-units">2.5. Reactive Behavior Units</a></li>
-  <li><a href="#26-parallel-execution-of-the-reactive-behavior-units">2.6. Parallel Execution of the Reactive Behavior Units</a></li>
-  <li><a href="#27-pro-active-behavior-units">2.7. Pro-active Behavior Units</a></li>
+  <li><a href="#22-destruction-handler">2.2. Destruction Handler</a></li>
+  <li><a href="#23-reactive-behavior-units">2.3. Reactive Behavior Units</a></li>
+  <li><a href="#24-parallel-execution-of-the-reactive-behavior-units">2.4. Parallel Execution of the Reactive Behavior Units</a></li>
+  <li><a href="#25-pro-active-behavior-units">2.5. Pro-active Behavior Units</a></li>
 </ul>
 <li><a href="#3-capacities-and-skills">3. Capacities and Skills</a></li>
 <ul>
@@ -336,6 +334,8 @@ variable as the keywords <code>this</code> and <code>it</code>.</p>
 
 <h3 id="21-initialization-handler">2.1. Initialization Handler</h3>
 
+<h4 id="general-description">General Description</h4>
+
 <p>When a behavior is ready to be executed by the runtime environment, usually when it
 is registered in its owning agent, it receives the <code>Initialize</code> event.
 This event is defined as:</p>
@@ -354,7 +354,7 @@ This event is defined as:</p>
 }
 </code></pre>
 
-<h3 id="22-guarded-initialization-handler">2.2. Guarded Initialization Handler</h3>
+<h4 id="guarded-initialization-handler">Guarded Initialization Handler</h4>
 
 <p>Because <code>Initialize</code> is an event, the handler in the behavior could use a guard. This feature enables
 the developer to write different initialization blocks depending on the guards of the handlers.</p>
@@ -373,7 +373,70 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<h3 id="23-destruction-handler">2.3. Destruction Handler</h3>
+<h4 id="execution-of-the-initialization-handler">Execution of the Initialization Handler</h4>
+
+<p>The <code>on Initialize</code> event handler in behaviors is a bit special, as it is the code run when a behavior is attached to its agent.
+As such, its execution is more “synchronous” than other on-behavior rules. In particular:</p>
+
+<ol>
+  <li>Any event emitted within an <code>on Initialize</code>, will not be processed until that
+<code>on Initialize</code> code finishes. So, your behavior initialization should not depend
+(and wait) on any fired event being processed, as they won’t!</li>
+  <li>When spawning an agent in <code>on Initialize</code>, the spawn instructions will return only
+after the agent has been created. However, creation of the agent (i.e., of the
+corresponding object) does not include initialization of the agent via its 
+<code>on Initialize</code> handler. Said so, the Java thread manager may process those
+initialization processes of the new agent before continuing with the execution
+of the spawning agent (and this seems to be the case in many Linux boxes
+where the executor service of Java tends to have the same behavior during
+all the runs). If you change computer, it may be different.</li>
+</ol>
+
+<h4 id="multiple-initialization-handlers">Multiple Initialization Handlers</h4>
+
+<p>It is allowed to declare multiple initialization handlers into a single behavior type, as illustrated by:</p>
+
+<pre><code class="language-sarl">behavior Beh1 {
+	uses Logging
+    on Initialize {
+        info("1")
+    }
+    on Initialize {
+        info("2")
+    }
+    on Initialize {
+        info("3")
+    }
+}
+</code></pre>
+
+<p>According to the SARL operational semantic, the three event handlers for <code>Initialize</code> are run in parallel.
+The initialization event handlers are not constructors (as defined in object-oriented programming paradigm),
+they are reacting to the receiving of an <code>Initialize</code> occurrence.</p>
+
+<h4 id="initialization-handler-within-the-inheritance-hierarchy">Initialization Handler within the Inheritance Hierarchy</h4>
+
+<p>The example in the previous section could be extended in order to illustrate how the initialization handlers
+are run when the type of the behavior (here <code>Beh2</code>) is declared within a inheritance hierarchy.</p>
+
+<pre><code class="language-sarl">behavior Beh2 extends Beh1 {
+	uses Logging
+    on Initialize {
+        info("4")
+    }
+    on Initialize {
+        info("5")
+    }
+}
+</code></pre>
+
+<p>According to the SARL operational semantic, all the initialization handlers are run in parallel.
+In the previous example, five event handlers will be run: three are defined into <code>Beh1</code>, and
+two are defined into <code>Beh2</code>. This mechanism is generalized to all the events within a behavior.</p>
+
+<h3 id="22-destruction-handler">2.2. Destruction Handler</h3>
+
+<h4 id="general-description-1">General Description</h4>
 
 <p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
 
@@ -391,7 +454,7 @@ no parameter. The second event handler is executed when the event has at least o
 }
 </code></pre>
 
-<h3 id="24-guarded-destruction-handler">2.4. Guarded Destruction Handler</h3>
+<h4 id="guarded-destruction-handler">Guarded Destruction Handler</h4>
 
 <p>As for <code>Initialize</code>, the handlers of the <code>Destroy</code> event could be guarded.</p>
 
@@ -411,7 +474,7 @@ when there is no resource.</p>
 }
 </code></pre>
 
-<h3 id="25-reactive-behavior-units">2.5. Reactive Behavior Units</h3>
+<h3 id="23-reactive-behavior-units">2.3. Reactive Behavior Units</h3>
 
 <p>The reactive behavior is specified with a collection of event handlers. The principle of a reactive behavior
 is to execute a part of the behavior when something has happening in the behavior, the agent or in its environment.</p>
@@ -428,7 +491,7 @@ is to execute a part of the behavior when something has happening in the behavio
 }
 </code></pre>
 
-<h3 id="26-parallel-execution-of-the-reactive-behavior-units">2.6. Parallel Execution of the Reactive Behavior Units</h3>
+<h3 id="24-parallel-execution-of-the-reactive-behavior-units">2.4. Parallel Execution of the Reactive Behavior Units</h3>
 
 <p>When an event is received and the guard of the corresponding handler is true, the event handler is said to be triggered.</p>
 
@@ -446,7 +509,7 @@ In the following example, the two handlers for the <code>SomethingChanged</code>
 }
 </code></pre>
 
-<h3 id="27-pro-active-behavior-units">2.7. Pro-active Behavior Units</h3>
+<h3 id="25-pro-active-behavior-units">2.5. Pro-active Behavior Units</h3>
 
 <p>A proactive behavior is a part of the global behavior of an agent that the
 agent is deciding to execute by itself.
@@ -572,7 +635,7 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-06-19</li>
+  <li>Release: 2020-06-28</li>
 </ul>
 
 <blockquote>
