@@ -197,7 +197,8 @@ For this purpose, the <code>uninstall</code> function should be defined, as illu
 
 <p>Two constructors are defined in the abstract <code>Skill</code> class:</p>
 
-<pre><code class="language-sarl">interface Skill extends AgentTrait {
+<pre><code class="language-sarl">interface Skill extends AgentTrait
+		implements IBehaviorGuardEvaluatorReceiver {
 	def getReferenceCount : int
 }
 </code></pre>
@@ -384,7 +385,7 @@ The built-in Skills are described in the <a href="./BIC.html">Built-in Capacity 
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-06-28</li>
+  <li>Release: 2020-07-18</li>
 </ul>
 
 <blockquote>
