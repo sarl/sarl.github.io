@@ -51,6 +51,7 @@ Considering the variety of existing approaches and meta-models in the field of a
         <li><a href="../../../news/index.html">News &amp; Events</a></li>
         <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
         <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -115,16 +116,116 @@ the classpath of your application, more options may become available.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>-c yaml_location</code>, <code>--config=yaml_location</code></td>
+      <td>–agent-spawns-per-thread=number</td>
+      <td>Specify the maximal number of agent spawns that must be supported by a single thread into the life-cycle service; Default is 128.</td>
+    </tr>
+    <tr>
+      <td>–async-probe-update={true|false}</td>
+      <td>Specify if the probe service should update asynchronously the probed values, or not; Default is true.</td>
+    </tr>
+    <tr>
+      <td>-b method<br />–boot-type=method</td>
+      <td>Specify the method for selecting the identifier of the default context; The possible values are default, random, boot_agent_name; Default is ‘default’.</td>
+    </tr>
+    <tr>
+      <td>–classpath=path</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SRE_CLASSPATH environment variable. If neither SRE_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>–config=yaml_location</td>
       <td>Specifies YAML config location, which can be a file path or a URL.</td>
     </tr>
     <tr>
-      <td><code>-h</code>, <code>--help</code></td>
+      <td>–cp=path</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SRE_CLASSPATH environment variable. If neither SRE_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>-d uuid<br />–default-space-id=uuid</td>
+      <td>Specify the identifier (UUID) of the default space into the root context; Default is 7ba8885d-545b-445a-a0e9-b655bc15ebe0.</td>
+    </tr>
+    <tr>
+      <td>-e {reflect, polymorphic}<br />–event-bus={reflect, polymorphic}</td>
+      <td>Specify the type of event bus to create for each agent; Default is reflect.</td>
+    </tr>
+    <tr>
+      <td>-g<br />–generatemarkdownhelp</td>
+      <td>Prints the list of the command-line options using a Markdown table.</td>
+    </tr>
+    <tr>
+      <td>-h<br />–help</td>
       <td>Prints this message.</td>
     </tr>
     <tr>
-      <td><code>-H</code>, <code>--help-config</code></td>
+      <td>-H<br />–help-config</td>
       <td>Prints information about application modules and their configuration options.</td>
+    </tr>
+    <tr>
+      <td>–inject-agents={true|false}</td>
+      <td>Specify if the agents should be injected with field values by the SRE; Default is false.</td>
+    </tr>
+    <tr>
+      <td>–internal-error-log-level=level</td>
+      <td>Specify the logging level for the internal errors within the parallel executors; Default is: all.</td>
+    </tr>
+    <tr>
+      <td>-j<br />–json</td>
+      <td>When present, the output of the configuration has the Json format.</td>
+    </tr>
+    <tr>
+      <td>-k duration<br />–keep-alive=duration</td>
+      <td>Specify the duration in seconds during which a thread is staying alive even if there is not task to be run; After this duration, iddle threads are destroyed by the SRE; Default value is 60.</td>
+    </tr>
+    <tr>
+      <td>-l level<br />–log=level</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the LOG_LEVEL environment variable. If neither LOG_LEVEL, –log nor –{2} is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>–max-threads=number</td>
+      <td>Specify the maximal number of threads that could be created by the SRE; Default is 512.</td>
+    </tr>
+    <tr>
+      <td>–min-threads=number</td>
+      <td>Specify the minimal number of threads that should be created by the SRE; Default is 0.</td>
+    </tr>
+    <tr>
+      <td>–name=name</td>
+      <td>Specify the name of the program that is shown into the logs for example; Default is ‘SARL Run-time Environment’.</td>
+    </tr>
+    <tr>
+      <td>–no-agent</td>
+      <td>Start the SRE without agent at boot time. In this case, the fully qualified name that may be provided on the command line is simply ignored. Agents should be spawned later by calling the programmatic API of the SRE.</td>
+    </tr>
+    <tr>
+      <td>-C<br />–printconfig</td>
+      <td>Print the current configuration. The output format is Yaml by default. See –json for a Json output, and –xml for a XML output.</td>
+    </tr>
+    <tr>
+      <td>-r uuid<br />–root-context-id=uuid</td>
+      <td>Specify the identifier (UUID) of the root context; Default is 2c38fb7f-f363-4f6e-877b-110b1f07cc77.</td>
+    </tr>
+    <tr>
+      <td>–service-start-timeout=timeout</td>
+      <td>Specify the timeout for waiting a service to be started (in milliseconds); A value equal to zero means that the SRE waits for ever; Default is 0.</td>
+    </tr>
+    <tr>
+      <td>–service-stop-timeout=timeout</td>
+      <td>Specify the timeout for waiting a service to be stopped (in milliseconds); A value equal to zero means that the SRE waits for ever; Default is 10 000.</td>
+    </tr>
+    <tr>
+      <td>–thread-purge={true|false}</td>
+      <td>Specify if the executor service is periodically purging the thread pools; Default is: true.</td>
+    </tr>
+    <tr>
+      <td>–thread-timeout=timeout</td>
+      <td>Specify the numbers of seconds that the SRE is waiting for thread terminations before timeout; Default is: 30.</td>
+    </tr>
+    <tr>
+      <td>-v<br />–version</td>
+      <td>Prints release information.</td>
+    </tr>
+    <tr>
+      <td>-x<br />–xml</td>
+      <td>When present, the output of the configuration has the XML format.</td>
     </tr>
   </tbody>
 </table>
@@ -289,7 +390,7 @@ The long code is provided by the SARL compiler at the end of the issue messages.
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-07-18</li>
+  <li>Release: 2020-08-01</li>
 </ul>
 
 <blockquote>
@@ -326,6 +427,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
       <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
 		  <li>
 			<a href="../../../news/index.html">
 			  <i class="fa-li fa fa-feed"></i> News

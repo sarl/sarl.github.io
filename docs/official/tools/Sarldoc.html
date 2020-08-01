@@ -51,6 +51,7 @@ Considering the variety of existing approaches and meta-models in the field of a
         <li><a href="../../../news/index.html">News &amp; Events</a></li>
         <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
         <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -120,8 +121,180 @@ For obtaining a list of the options, type:</p>
   </thead>
   <tbody>
     <tr>
-      <td> </td>
-      <td> </td>
+      <td>-a [true|false]<br />–authortag[=true|false]</td>
+      <td>Specify if the @author tag should be supported by Sarldoc; default value is true.</td>
+    </tr>
+    <tr>
+      <td>-b path<br />–boot-classpath=path</td>
+      <td>Cross-compiles against the specified set of boot classes. As with the user class path, boot class path entries are separated by colons (:) and can be directories, JAR archives, or ZIP archives.</td>
+    </tr>
+    <tr>
+      <td>–classpath=path</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARLC_CLASSPATH environment variable. If neither SARLC_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>–compiler</td>
+      <td>Run sarlc.</td>
+    </tr>
+    <tr>
+      <td>–config=yaml_location</td>
+      <td>Specifies YAML config location, which can be a file path or a URL.</td>
+    </tr>
+    <tr>
+      <td>–cp=path</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARLC_CLASSPATH environment variable. If neither SARLC_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>–deprecatedtag[=true|false]</td>
+      <td>Specify if the @deprecated tag should be supported by Sarldoc; default value is true.</td>
+    </tr>
+    <tr>
+      <td>–directory=directory_name</td>
+      <td>Sets the destination directory for Java source files that are generated from the SARL files. The directory must already exist because sarlc does not create it. If a SARL declaration is part of a package, then sarlc puts the Java source file in a subdirectory that reflects the package name and creates directories as needed. If the –directory option is not specified, then sarlc assumes src/main/generated-sources/sarl.</td>
+    </tr>
+    <tr>
+      <td>–docdirectory=directory</td>
+      <td>Specify the output folder into which the generated HTML documentation will be copied. If it is not specified, the default folder is : target/site/apidocs.</td>
+    </tr>
+    <tr>
+      <td>–doctitle=text</td>
+      <td>Specify the title of the documentation.</td>
+    </tr>
+    <tr>
+      <td>-e [encoding]<br />–encoding[=encoding]</td>
+      <td>Sets the source file encoding name, such as EUC-JP and UTF-8. If the –encoding option is not specified, then the platform default converter is used.</td>
+    </tr>
+    <tr>
+      <td>-f<br />–fake</td>
+      <td>Run sarldoc.</td>
+    </tr>
+    <tr>
+      <td>–generate-clones[=true|false]</td>
+      <td>Specifies if the clone functions should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–generate-equality-tests[=true|false]</td>
+      <td>Specifies if the equality tests should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–generate-inlines[=true|false]</td>
+      <td>Specifies if the @Inline annotations should be generated; default is false.</td>
+    </tr>
+    <tr>
+      <td>–generate-pures[=true|false]</td>
+      <td>Specifies if the @Pure annotations should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–generate-serials[=true|false]</td>
+      <td>Specifies if the serial identifiers should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–generate-tostring[=true|false]</td>
+      <td>Specifies if the toString functions should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–generatemarkdownhelp</td>
+      <td>Prints the list of the command-line options using a Markdown table.</td>
+    </tr>
+    <tr>
+      <td>–generator=identifiers</td>
+      <td>Enables extra-language generators. The parameter is a list of identifiers of the generators to turn on, separated by ‘:’. See the option -G for printing out the list of the available generators.</td>
+    </tr>
+    <tr>
+      <td>-h<br />–help</td>
+      <td>Prints this message.</td>
+    </tr>
+    <tr>
+      <td>-H<br />–help-config</td>
+      <td>Prints information about application modules and their configuration options.</td>
+    </tr>
+    <tr>
+      <td>–java-compiler[=none|ecj|javac]</td>
+      <td>Specifies the Java compiler to be run; default is ecj.</td>
+    </tr>
+    <tr>
+      <td>–java-source[=version]</td>
+      <td>Specifies the Java version of the Java source code that is accepted, and of the Java class files for targeting a specific release of the Java virtual machine. Java class files will run on the specified target and on later releases, but not on earlier releases of the Java virtual machine. Provided version must be greater than or equal to 1.8, and strictly lower than 12.</td>
+    </tr>
+    <tr>
+      <td>–javadoc=file</td>
+      <td>Specify the path to the executable of Javadoc. If it is not specified, the value will be inferred from the current installation of the Java environment.</td>
+    </tr>
+    <tr>
+      <td>–json</td>
+      <td>When present, the output of the configuration has the Json format.</td>
+    </tr>
+    <tr>
+      <td>–locale=locale_code</td>
+      <td>Specify the locale that should be used into the documentation; default value is en_US.</td>
+    </tr>
+    <tr>
+      <td>–log=level</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the LOG_LEVEL environment variable. If neither LOG_LEVEL, –log nor –{2} is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+    </tr>
+    <tr>
+      <td>-o directory_name<br />–outputdir=directory_name</td>
+      <td>Sets the destination directory for class files. The directory must already exist because sarlc does not create it. If a class is part of a package, then sarlc puts the class file in a subdirectory that reflects the package name and creates directories as needed. If the –outputdir option is not specified, then sarlc assumes target/classes.</td>
+    </tr>
+    <tr>
+      <td>-G<br />–print-generators</td>
+      <td>Prints the list of the available extra-language generators.</td>
+    </tr>
+    <tr>
+      <td>-C<br />–printconfig</td>
+      <td>Print the current configuration. The output format is Yaml by default. See –json for a Json output, and –xml for a XML output.</td>
+    </tr>
+    <tr>
+      <td>-p [val]<br />–progress[=val]</td>
+      <td>Prints the progress bar on the console.</td>
+    </tr>
+    <tr>
+      <td>-s [true|false]<br />–sincetag[=true|false]</td>
+      <td>Specify if the @since tag should be supported by Sarldoc; default value is true.</td>
+    </tr>
+    <tr>
+      <td>–tags=name:placements:header(:name:placements:header)*</td>
+      <td>Specify the custom tags with the given names, placements and heading texts. The ‘placements’ must be a list of characters in: X (disable: disable tag), a (all: in all pages), o (overview: into the overview page), p (packages: into the packages’’ documentations), t (types: into the types’’ documentations), c (constructors: into constructors’’ documentations), m (methods: into the methods’’ documentations), f (fields: into the fields’’ documentations).</td>
+    </tr>
+    <tr>
+      <td>–tempdir=directory_name</td>
+      <td>Directory in which the temporary files will be generated during the compilation process.</td>
+    </tr>
+    <tr>
+      <td>–version</td>
+      <td>Prints release information.</td>
+    </tr>
+    <tr>
+      <td>–versiontag[=true|false]</td>
+      <td>Specify if the @version tag should be supported by Sarldoc; default value is true.</td>
+    </tr>
+    <tr>
+      <td>–visibility[=public|protected|package|private]</td>
+      <td>Specify if the minimum visibility of the documented values; possible values are: public, protected, package, private; default value is protected.</td>
+    </tr>
+    <tr>
+      <td>–wall</td>
+      <td>Specifies if all the warnings are printed out.</td>
+    </tr>
+    <tr>
+      <td>–werror</td>
+      <td>Terminates compilation when warnings occur.</td>
+    </tr>
+    <tr>
+      <td>–wnone</td>
+      <td>Specifies if all the warnings are ignored.</td>
+    </tr>
+    <tr>
+      <td>–write-storages[=true|false]</td>
+      <td>Specifies if the storage files should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>–write-traces[=true|false]</td>
+      <td>Specifies if the trace files should be generated; default is true.</td>
+    </tr>
+    <tr>
+      <td>-x<br />–xml</td>
+      <td>When present, the output of the configuration has the XML format.</td>
     </tr>
   </tbody>
 </table>
@@ -354,7 +527,7 @@ enclosed within braces: <code>{@tag}</code>.</li>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-07-18</li>
+  <li>Release: 2020-08-01</li>
 </ul>
 
 <blockquote>
@@ -391,6 +564,11 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
       <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
 		  <li>
 			<a href="../../../news/index.html">
 			  <i class="fa-li fa fa-feed"></i> News

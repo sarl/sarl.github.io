@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Run-time Behavior of SARL Programs</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="run-time-behavior-of-sarl-programs">Run-time Behavior of SARL Programs</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-definition-sarl-run-time-environment-sre">1. Definition: SARL Run-time Environment (SRE)</a></li>
+<li><a href="#2-sequential-vs-parallel-execution">2. Sequential vs. Parallel Execution</a></li>
+<li><a href="#3-general-principles-related-to-the-parallel-execution-within-agents">3. General Principles Related to the Parallel Execution within Agents</a></li>
+<li><a href="#4-event-handling-run-time-sequence">4. Event Handling Run-time Sequence</a></li>
+<ul>
+  <li><a href="#41-event-handling-in-agent">4.1. Event Handling in Agent</a></li>
+  <li><a href="#42-event-handling-in-behavior">4.2. Event Handling in Behavior</a></li>
+</ul>
+<li><a href="#5-code-synchronization-in-sarl">5. Code Synchronization in SARL</a></li>
+<ul>
+  <li><a href="#51-why-synchronization">5.1. Why Synchronization?</a></li>
+  <li><a href="#52-the-synchronized-keyword">5.2. The Synchronized Keyword</a></li>
+</ul>
+<li><a href="#6-event-sending-run-time-sequence">6. Event Sending Run-time Sequence</a></li>
+<li><a href="#7-agent-spawning-run-time-sequence">7. Agent Spawning Run-time Sequence</a></li>
+<li><a href="#8-agent-killing-run-time-sequence">8. Agent Killing Run-time Sequence</a></li>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li>
+
+</ul>
+
+<p>This page provides the key elements for understanding the operational semantic of the SARL programs.</p>
+
+<h2 id="1-definition-sarl-run-time-environment-sre">1. Definition: SARL Run-time Environment (SRE)</h2>
+
+<p>The SARL Run-time Environment (SRE) is part of the <a href="../compilation/Basics.html">SARL toolchain</a>.
+An SRE is a collection of tools that enables the run of an agent-based application written with SARL.
+Such an SRE must implement each service and feature that are assumed to be provided by the run-time
+environment for running a SARL program.</p>
+
+<p><img src="../compilation/compilation_process.png" alt="SARL Tool Chain" /></p>
+
+<p>When the target platform is Java-based, the SRE is composed by a standard Java Runtime Environment (JRE),
+and the <a href="../tools/Janus.html">Janus Java library</a>, which provides the base classes for running  agents written
+with SARL. In this latest example, a command-line tool is provided for launching the Janus platform:
+  <a href="../tools/Janus.html">janus</a>.</p>
+
+<h2 id="2-sequential-vs-parallel-execution">2. Sequential vs. Parallel Execution</h2>
+
+<p>Except for the cases that are explained on this page, all the instructions and statements of a SARL program are run sequentially,
+as for most of the other programming languages such as Java.
+Consequently, the expressions such as <code>while</code>, <code>if</code>, <code>switch</code>, run sequentially. There should be no difference with
+your knowledge in procedural programming or object-oriented programming.</p>
+
+<p>The elements that are run asynchronously, i.e. in parallel are explained in the rest of this page.</p>
+
+<h2 id="3-general-principles-related-to-the-parallel-execution-within-agents">3. General Principles Related to the Parallel Execution within Agents</h2>
+
+<p>Let an <em>agent entry point</em> be a part of the agent behavior that is reacting to a stimulus from the outside of the agent.
+In SARL, the entry points are by default the behavior event handlers, a.k.a. behavior units, specified with the <code>on</code> keyword,
+as illustrated below:</p>
+
+<pre><code class="language-sarl">agent AgentExample {
+	on MyEvent {
+		// Do something
+	}
+	on MyEvent {
+		// Do another thing
+	}
+}
+</code></pre>
+
+<p>To implement bio-inspired behaviors, agents may react in parallel to multiple external stimuli.
+SARL encourages a massively parallel execution of agents and behaviors by <strong>associating each of these entry points to a separate execution
+resource, a.k.a. thread</strong>.</p>
+
+<p>Parallel execution of the pro-active behaviors of an agent is supported by the tasks that are launched with the <a href="./bic/Schedules.html">Schedules</a>
+built-in capacity.</p>
+
+<p>In most of the agent frameworks, e.g. <a href="https://jade.tilab.com/">Jade</a> and <a href="../tools/Janus.html">Janus</a> (before its adaptation to SARL),
+each agent runs on a separate thread.
+This design choice enables each agent managing its own execution resource, and
+participating to its autonomy. On several other platforms, e.g. <a href="http://www.arakhne.org/tinymas">TinyMAS</a>, the agents are executed
+in turn in a loop. The parallel execution of the agents is therefore simulated.</p>
+
+<p>Whatever the agent execution mechanism that is implemented within the SRE (thread-based or loop-based), a SARL developer always assumes
+that the agent’s entry points are executed in parallel when she/he is writing the event handlers.</p>
+
+<h2 id="4-event-handling-run-time-sequence">4. Event Handling Run-time Sequence</h2>
+
+<p>According to the general principles of parallel execution that are explained into the previous section, each time an event is received
+by an agent, this event must be treated in a parallel process.
+The rest of this section describes the run-time behavior that is applied when handling the events within a SARL program.</p>
+
+<h3 id="41-event-handling-in-agent">4.1. Event Handling in Agent</h3>
+
+<p>In order to illustrate the run-time behavior of a SARL agent when handling an event, two illustrative examples are explained as well as
+the implemented general algorithm.</p>
+
+<h4 id="single-event-handler">Single Event Handler</h4>
+
+<p>Let consider the following agent definition:</p>
+
+<pre><code class="language-sarl">agent Agent1 {
+	on MyEvent {
+        println("A")
+	}
+	on MyEvent2 {
+	}
+}
+event MyEvent
+event MyEvent2
+</code></pre>
+
+<p>This agent definition contains two event handlers: one for events of type <code>MyEvent</code>, and one for events of type <code>MyEvent2</code>.
+The sequence diagram that corresponds to the sending and receiving of an occurrence of type <code>MyEvent</code> by <code>Agent1</code> is provided below.</p>
+
+<p><img src="./Agent1SeqDiag.png" alt="Sequence Diagram when Agent1 receives an event of type MyEvent" /></p>
+
+<p>The different steps of the process are (please note that this process is not the really implemented into the SRE; See below for the implemented general process):</p>
+
+<ol>
+  <li>An agent (that may be the <code>Agent1</code> or not) emits an event of type <code>MyEvent</code> by calling an <code>emit()</code> function within
+an event space (this part of the API is not detailed in this section).</li>
+  <li>The event space retrieves all the participants (either marked as strong or weak) and loop on each of them (named <code>p</code>). Each participant is an object of type <code>EventListener</code>.</li>
+  <li>For each participant, the event delivering function <code>receiveEvent()</code> is invoked:
+    <ol>
+      <li>The event listener retrieves the event bus of <code>Agent1</code>. The event bus is an internal object that is in charge of routing the events to the different objects that were registered as waiting events within the agent (at least the agent itself).</li>
+      <li>The event is dispatched asynchronously by the event bus.
+        <ul>
+          <li>Because there is only one event handler for events of type <code>MyEvent</code>, only one thread is created for running the associated block of code.</li>
+          <li>The thread is in charge of running the block of code on the current event occurrence.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h4 id="double-event-handlers">Double Event Handlers</h4>
+
+<p>It is also possible to define multiple event handlers into an agent definition, as illustrated by the following SARL code:</p>
+
+<pre><code class="language-sarl">agent Agent2 {
+	on MyEvent {
+        println("A")
+	}
+	on MyEvent {
+        println("B")
+	}
+	on MyEvent2 {
+	}
+}
+</code></pre>
+
+<p>This agent definition contains three event handlers: two for events of type <code>MyEvent</code>, and one for events of type <code>MyEvent2</code>.
+The sequence diagram that corresponds to the receiving of an occurrence of type <code>MyEvent</code>  by <code>Agent2</code> is provided below:</p>
+
+<p><img src="./Agent2SeqDiag.png" alt="Sequence Diagram when Agent2 receives an event of type MyEvent" /></p>
+
+<p>The process is similar to the process that is described above for the single event handler example.
+The difference is related to the number of threads that are created: one for each event handler defined into <code>Agent2</code>.</p>
+
+<h4 id="inheritance-of-event-handlers">Inheritance of Event Handlers</h4>
+
+<p>When the agent definition extends another agent definition, as illustrated by the following SARL code, the event handlers are inherited.</p>
+
+<pre><code class="language-sarl">agent SubAgent2 extends Agent2 {
+	on MyEvent {
+        println("C")
+	}
+	on MyEvent {
+        println("D")
+	}
+}
+</code></pre>
+
+<p>In the previous code, two event handlers are added into the definition of <code>SubAgent2</code>.
+These two event handlers are added to the list of available event handlers for the event <code>MyEvent</code>.
+Therefore, the agent <code>SubAgent2</code> displays <code>A</code> and <code>B</code> from the inherited definition of <code>Agent2</code>, and <code>C</code>
+and <code>D</code> from the <code>SubAgent2</code> definition.
+And, because of the parallel execution of the four event handlers, there is no fixed order for displaying <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>.</p>
+
+<caution>Event handlers are inherited, but there is no overriding of event handler. In other words, you cannot replace/override
+the code of an event handler that is inherited.</caution>
+
+<h4 id="general-process-for-event-handling">General Process for Event Handling</h4>
+
+<p>Finally, the general process for event handling must supports any number of event handlers.
+Additionally, it is possible to specify a guard for each event handler. This guard is evaluated when the occurrence of the event is received
+in order to determine if the associated block of code should be executed, or not.
+The sequence diagram bellow illustrates the algorithm for general event handling into the agents.</p>
+
+<p><img src="./GenSeqDiag.png" alt="Sequence Diagram for event handling in agents" /></p>
+
+<p>It is similar to the two examples that are presented above.
+It is interesting to note that the function <code>asyncDispatch()</code> of the event bus is run asynchronously, i.e. in a separate thread.
+In this way, the agent that is sending the event is not blocked by the event dispatching process.</p>
+
+<p>Let n be the number of participants within an event space, and m be the average number of event handlers per participant.
+The number of threads that is created by the SRE is: n * (1 + m)</p>
+
+<h3 id="42-event-handling-in-behavior">4.2. Event Handling in Behavior</h3>
+
+<p>A <a href="./Behavior.html">Behavior</a> is the specification of a collection of behavior units (or event handlers).
+An agent may create and register multiple behaviors that should be used/executed in parallel to the agent itself.
+The question arising is: how the registered behaviors are receiving the events’ occurrences?</p>
+
+<p>Since a behavior must be registered as explained in the <a href="./bic/Behaviors.html">Behaviors built-in capacity</a>, the agent is managing internally
+a collection of behaviors.</p>
+
+<p>In the sequence diagram below, you could see that a behavior is created and then registered through the <a href="./bic/Behaviors.html">Behaviors built-in capacity</a>.
+The skill implementing the capacity is registering the created behavior as a event listener on the agent’s event bus.</p>
+
+<p><img src="./BehaviorHandlers.png" alt="Sequence Diagram for event handling in behaviors" /></p>
+
+<h2 id="5-code-synchronization-in-sarl">5. Code Synchronization in SARL</h2>
+
+<h3 id="51-why-synchronization">5.1. Why Synchronization?</h3>
+
+<p>Let’s consider a typical race condition where we calculate the sum, and multiple event handlers (i.e. threads) execute the
+<code>Calculate</code> event:</p>
+
+<pre><code class="language-sarl">agent AgentExample {
+    var sum = 0
+	def getSum : int {
+		this.sum
+	}
+	def setSum(v : int) {
+		this.sum = v
+	}
+	on Calculate {
+        setSum(getSum + 1)
+	}
+}
+</code></pre>
+
+<p>Since the event handler is executed in parallel (see previous section), if multiple occurrences of <code>Calculate</code> are fired, then a multi-threading issues
+for accessing to the <code>sum</code> may occur.</p>
+
+<p>Let the firing of <code>1000</code> events. If we would execute this serially, the expected output would be <code>1000</code>, but our multi-threaded
+execution fails almost every time with an inconsistent actual output e.g.: <code>965</code>. This result is of course unexpected.</p>
+
+<p>A simple way to avoid the race condition is to make the operation thread-safe by using the <code>synchronized</code> keyword.</p>
+
+<caution>If a field is assessed from a function called from an event handler, then the synchronization issue still may occur, if neither
+the function is synchronized nor the event handler.</caution>
+
+<h3 id="52-the-synchronized-keyword">5.2. The Synchronized Keyword</h3>
+
+<p>The <code>synchronized</code> keyword is included into the SARL language in order to let you control how your program is synchronizing the
+accesses to shared data.
+This keyword is formally defined in a dedicated <a href="./general/Synchronization.html">reference page</a>.</p>
+
+<caution>The SARL compiler does not apply automatic synchronization to your code yet (it is planned for a future release).
+You have to manage the `synchronized` keyword manually by yourself.</caution>
+
+<h2 id="6-event-sending-run-time-sequence">6. Event Sending Run-time Sequence</h2>
+
+<p>One of the key features of a SARL program is related to the exchange of events.
+In the previous sections, we have discussed the run-time behavior when receiving of the events.
+Regarding the sending of the events, SARL provides <a href="./BIC.html">built-in capacities</a> that assume the sending is done asynchronously.
+In other words, as soon as an agent is invoking the event sending function, the SRE starts a task in parallel for delivering the event.</p>
+
+<p>In the sequence diagram of the general event dispatching process, above, you could see that the call to the <code>emit()</code> function is
+limit to the strictly necessary code for initiating the event dispatching into all the participants of an event space.
+Therefore, a thread is creating as soon as possible for proceeding the concrete dispatching.</p>
+
+<h2 id="7-agent-spawning-run-time-sequence">7. Agent Spawning Run-time Sequence</h2>
+
+<p>Agent spawning is the action for creating instances of agents into the SRE.
+The spawning is supported by the <a href="./bic/Lifecycle.html">Lifecycle built-in capacity</a> that provides a collection of <code>spawn</code> functions.
+The sequence diagram below illustrates the standard agent spawning process.</p>
+
+<p><img src="./AgentSpawning.png" alt="Sequence Diagram for agent spawning" /></p>
+
+<p>It is important to note that the initial <code>spawn()</code> function returns quickly, and most of the time, before the agent is really created and
+added into the SRE.
+It is due to the thread that is created by the SRE’s life-cycle service for supporting the agent creation and initialization process.</p>
+
+<p>You have also to note that the initialization event handler, i.e. <code>on Initialize</code>, into the created agent is executed synchronously.
+In this way, it is sure the new agent is totally initialized when the <code>AgentSpawned</code> events are fired for notifying the other agents about
+the agent creation.</p>
+
+<h2 id="8-agent-killing-run-time-sequence">8. Agent Killing Run-time Sequence</h2>
+
+<p>Agent killing is the action that initiated by an agent for committing a suicide.
+This action is supported by the <a href="./bic/Lifecycle.html">Lifecycle built-in capacity</a> that the <code>killMe</code> function.
+The sequence diagram below illustrates the standard agent killing process.</p>
+
+<p><img src="./AgentKilling.png" alt="Sequence Diagram for agent killing" /></p>
+
+<p>Because the <code>killMe</code> function never returns from its call, it is not necessary to created a separate thread for not-blocking the <code>killMe</code>
+caller. That’s why in the sequence diagram above, there is no creation of a thread.</p>
+
+<h2 id="9-legal-notice">9. Legal Notice</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-08-01</li>
+</ul>
+
+<blockquote>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+  <p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
