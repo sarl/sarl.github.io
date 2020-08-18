@@ -72,8 +72,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#1-primitive-types">1. Primitive Types</a></li>
 <li><a href="#2-string-of-characters">2. String of Characters</a></li>
 <li><a href="#3-default-values-of-primitive-types">3. Default Values of Primitive Types</a></li>
-<li><a href="#4-acknowledgements">4. Acknowledgements</a></li>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+<li><a href="#4-immutable-types">4. Immutable Types</a></li>
+<li><a href="#5-acknowledgements">5. Acknowledgements</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
 </ul>
 
@@ -210,19 +211,181 @@ depending on the data type. Relying on such default values, however, is generall
   </tbody>
 </table>
 
-<h2 id="4-acknowledgements">4. Acknowledgements</h2>
+<h2 id="4-immutable-types">4. Immutable Types</h2>
+
+<p>All objects in SARL has an internal state (composed of the values of the different attributes, transitively).
+As SARL is a strongly-typed language, each object is of a given type.
+This type is said to be immutable when the internal state of a object of this type remains constant after it has been entirely created.
+In other words, the values of the object’s attributes cannot be changed after the object’s construction.</p>
+
+<p>Several types are always immutable in SARL (mostly from the Java API itself):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Immutable Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>io.sarl.lang.core.Event</td>
+    </tr>
+    <tr>
+      <td>java.io.File</td>
+    </tr>
+    <tr>
+      <td>java.lang.Boolean</td>
+    </tr>
+    <tr>
+      <td>java.lang.Byte</td>
+    </tr>
+    <tr>
+      <td>java.lang.Character</td>
+    </tr>
+    <tr>
+      <td>java.lang.Double</td>
+    </tr>
+    <tr>
+      <td>java.lang.Enum</td>
+    </tr>
+    <tr>
+      <td>java.lang.Float</td>
+    </tr>
+    <tr>
+      <td>java.lang.Integer</td>
+    </tr>
+    <tr>
+      <td>java.lang.Long</td>
+    </tr>
+    <tr>
+      <td>java.lang.Short</td>
+    </tr>
+    <tr>
+      <td>java.lang.StackTraceElement</td>
+    </tr>
+    <tr>
+      <td>java.lang.String</td>
+    </tr>
+    <tr>
+      <td>java.lang.annotation.Annotation</td>
+    </tr>
+    <tr>
+      <td>java.net.InetAddress</td>
+    </tr>
+    <tr>
+      <td>java.net.URI</td>
+    </tr>
+    <tr>
+      <td>java.net.URL</td>
+    </tr>
+    <tr>
+      <td>java.security.Permission</td>
+    </tr>
+    <tr>
+      <td>java.time.Clock</td>
+    </tr>
+    <tr>
+      <td>java.time.Duration</td>
+    </tr>
+    <tr>
+      <td>java.time.Instant</td>
+    </tr>
+    <tr>
+      <td>java.time.LocalDate</td>
+    </tr>
+    <tr>
+      <td>java.time.LocalDateTime</td>
+    </tr>
+    <tr>
+      <td>java.time.LocalTime</td>
+    </tr>
+    <tr>
+      <td>java.time.MonthDay</td>
+    </tr>
+    <tr>
+      <td>java.time.OffsetDateTime</td>
+    </tr>
+    <tr>
+      <td>java.time.OffsetTime</td>
+    </tr>
+    <tr>
+      <td>java.time.Period</td>
+    </tr>
+    <tr>
+      <td>java.time.Year</td>
+    </tr>
+    <tr>
+      <td>java.time.YearMonth</td>
+    </tr>
+    <tr>
+      <td>java.time.ZoneId</td>
+    </tr>
+    <tr>
+      <td>java.time.ZoneOffset</td>
+    </tr>
+    <tr>
+      <td>java.time.ZonedDateTime</td>
+    </tr>
+    <tr>
+      <td>java.util.Date</td>
+    </tr>
+    <tr>
+      <td>java.util.Locale</td>
+    </tr>
+    <tr>
+      <td>java.util.UUID</td>
+    </tr>
+    <tr>
+      <td>org.eclipse.xtext.util.Pair</td>
+    </tr>
+    <tr>
+      <td>org.eclipse.xtext.xbase.lib.Pair</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Additionally, you could define your own data type that is assumed to be immutable.
+This definition is based on the usage of a specific annotation that is attached to your type.
+The complete list of annotations that mark the types as immutable is:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Annotations for Immutable Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>org.eclipse.xtend.lib.Data</td>
+    </tr>
+    <tr>
+      <td>org.eclipse.xtend.lib.annotations.Data</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For illustration, the <code>@Data</code> annotation, that is described in the <a href="./ActiveAnnotations.html#2-data">active annotation documentation</a>,
+could be used as below:</p>
+
+<pre><code class="language-sarl">@Data class Person {
+  val firstName : String
+  val lastName : String
+}
+</code></pre>
+
+<h2 id="5-acknowledgements">5. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-01</li>
+  <li>Release: 2020-08-18</li>
 </ul>
 
 <blockquote>
