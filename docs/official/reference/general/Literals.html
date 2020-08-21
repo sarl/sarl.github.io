@@ -259,29 +259,29 @@ In the following example, the fields declared in the <code>String</code> class a
 <p>It is easy to create instances of collections since the methods in <code>CollectionLiterals</code> are automatically imported.
 They permit you to create instances of collections from the JDK.</p>
 
-<pre><code class="language-sarl">interface CollectionLiterals {
-	def emptyList : List&lt;Object&gt;
-	def emptyMap : Map&lt;Object, Object&gt;
-	def emptySet : Set&lt;Object&gt;
-	def newArrayList : ArrayList&lt;Object&gt;
-	def newArrayList(Object[]*) : ArrayList&lt;Object&gt;
-	def newHashMap : HashMap&lt;Object, Object&gt;
-	def newHashMap(Pair&lt;Object, Object&gt;[]*) : HashMap&lt;Object, Object&gt;
-	def newHashSet : HashSet&lt;Object&gt;
-	def newHashSet(Object[]*) : HashSet&lt;Object&gt;
-	def newImmutableList(Object[]*) : List&lt;Object&gt;
-	def newImmutableMap(Pair&lt;Object, Object&gt;[]*) : Map&lt;Object, Object&gt;
-	def newImmutableSet(Object[]*) : Set&lt;Object&gt;
-	def newLinkedHashMap : LinkedHashMap&lt;Object, Object&gt;
-	def newLinkedHashMap(Pair&lt;Object, Object&gt;[]*) : LinkedHashMap&lt;Object, Object&gt;
-	def newLinkedHashSet : LinkedHashSet&lt;Object&gt;
-	def newLinkedHashSet(Object[]*) : LinkedHashSet&lt;Object&gt;
-	def newLinkedList : LinkedList&lt;Object&gt;
-	def newLinkedList(Object[]*) : LinkedList&lt;Object&gt;
-	def newTreeMap(Comparator&lt;Object&gt;) : TreeMap&lt;Object, Object&gt;
-	def newTreeMap(Comparator&lt;Object&gt;, Pair&lt;Object, Object&gt;[]) : TreeMap&lt;Object, Object&gt;
-	def newTreeSet(Comparator&lt;Object&gt;) : TreeSet&lt;Object&gt;
-	def newTreeSet(Comparator&lt;Object&gt;, Object[]) : TreeSet&lt;Object&gt;
+<pre><code class="language-sarl">class CollectionLiterals {
+	def emptyList : List&lt;T&gt; with T
+	def emptyMap : Map&lt;K, V&gt; with K, V
+	def emptySet : Set&lt;T&gt; with T
+	def newArrayList : ArrayList&lt;T&gt; with T
+	def newArrayList(T[]*) : ArrayList&lt;T&gt; with T
+	def newHashMap : HashMap&lt;K, V&gt; with K, V
+	def newHashMap(Pair&lt;K, V&gt;[]*) : HashMap&lt;K, V&gt; with K, V
+	def newHashSet : HashSet&lt;T&gt; with T
+	def newHashSet(T[]*) : HashSet&lt;T&gt; with T
+	def newImmutableList(T[]*) : List&lt;T&gt; with T
+	def newImmutableMap(Pair&lt;K, V&gt;[]*) : Map&lt;K, V&gt; with K, V
+	def newImmutableSet(T[]*) : Set&lt;T&gt; with T
+	def newLinkedHashMap : LinkedHashMap&lt;K, V&gt; with K, V
+	def newLinkedHashMap(Pair&lt;K, V&gt;[]*) : LinkedHashMap&lt;K, V&gt; with K, V
+	def newLinkedHashSet : LinkedHashSet&lt;T&gt; with T
+	def newLinkedHashSet(T[]*) : LinkedHashSet&lt;T&gt; with T
+	def newLinkedList : LinkedList&lt;T&gt; with T
+	def newLinkedList(T[]*) : LinkedList&lt;T&gt; with T
+	def newTreeMap(Comparator&lt;Object&gt;) : TreeMap&lt;K, V&gt; with K, V
+	def newTreeMap(Comparator&lt;Object&gt;, Pair&lt;K, V&gt;[]) : TreeMap&lt;K, V&gt; with K, V
+	def newTreeSet(Comparator&lt;Object&gt;) : TreeSet&lt;T&gt; with T
+	def newTreeSet(Comparator&lt;Object&gt;, T[]) : TreeSet&lt;T&gt; with T
 }
 </code></pre>
 
@@ -299,9 +299,9 @@ var myMap = newLinkedHashMap('a' -&gt; 1, 'b' -&gt; 2)
 
 <p>The methods from <code>ArrayLiterals</code> are automatically included.</p>
 
-<pre><code class="language-sarl">interface ArrayLiterals {
-	def newArrayOfSize(int) : Object[]
-	def newArrayOfSize(int, int) : Object[][]
+<pre><code class="language-sarl">class ArrayLiterals {
+	def newArrayOfSize(int) : T[] with T
+	def newArrayOfSize(int, int) : T[][] with T
 	def newBooleanArrayOfSize(int) : boolean[]
 	def newBooleanArrayOfSize(int, int) : boolean[][]
 	def newByteArrayOfSize(int) : byte[]
@@ -401,7 +401,7 @@ the values are pairs, using the <code>-&gt;</code>.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-18</li>
+  <li>Release: 2020-08-21</li>
 </ul>
 
 <blockquote>

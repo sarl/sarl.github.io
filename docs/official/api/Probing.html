@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>SRE Observing and Probes</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="sre-observing-and-probes">SRE Observing and Probes</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-what-is-observable">1. What is Observable?</a></li>
+<li><a href="#2-probe-generic-observer-implementation">2. Probe: generic observer implementation</a></li>
+<ul>
+  <li><a href="#21-general-principles">2.1. General Principles</a></li>
+  <li><a href="#22-concrete-definition">2.2. Concrete Definition</a></li>
+  <li><a href="#23-observe-the-probe">2.3. Observe the Probe</a></li>
+</ul>
+<li><a href="#3-probing-service">3. Probing Service</a></li>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li>
+
+</ul>
+
+<p>The multi-agent system is composed of multiple elements, including agents, behaviors, contexts and spaces, but not limited to.
+Organizational models in multi-agent systems usually position agents as actors-observers within environments shared
+by multiple agents and organizational structures at different levels of granularity.
+Then, the agents may have the capacity to observe the environment and the other agents, without directly interacting
+with them. The observing agent is able to extract information from another agent or from a society of agents, that could be opaque
+according to a possible holonic architecture of the system.</p>
+
+<p>Observation means that data or information could be extracted from the observed object without filtering from this latter.
+The observer is not intrusive from the agent point of view. In other words, the observed agent has no knowledge about the fact it
+is observed or not. In this case, it cannot adapt its behavior on its observation status.</p>
+
+<p>Because an agent is defined as an autonomous entity, the agent is supposed to be enabled to specify if a part of itself
+is observable or not, i.e. to specify the access rights.</p>
+
+<caution>The right access management is not yet supported by the SARL API</caution>
+
+<h2 id="1-what-is-observable">1. What is Observable?</h2>
+
+<p>The first question arising when considering the concept of observable multi-agent system is: what is observable?</p>
+
+<p>Any object within the multi-agent system that could be referred with a name is possibly subject of an observation.
+The objects are referred according to a <a href="./Naming.html">specific naming convention</a>.</p>
+
+<p>Because observation is related to data extraction, only fields could be observed at the concrete level.
+Consequently, the observable objects a the fields declared within an:</p>
+<ul>
+  <li>agent</li>
+  <li>behavior</li>
+  <li>skill</li>
+  <li>agent context</li>
+  <li>space</li>
+  <li>service</li>
+  <li>artifact (if the SRE supports this concept)</li>
+</ul>
+
+<h2 id="2-probe-generic-observer-implementation">2. Probe: generic observer implementation</h2>
+
+<h3 id="21-general-principles">2.1. General Principles</h3>
+
+<p>A probe is an implementation of the proxy and observer software design patterns for observable multi-agent system.
+It is a software tool that extracts the data from the observed object and provide the data to the observer.
+Since a probe is a proxy, it filters the interaction from the observer to the observed object by enabling the first
+only to get the data (no other function declared into the observed object is accessible).
+The implementation of a probe ensures that it is not intrusive to the observed object.</p>
+
+<p>The observer has to create a probe on a field of the observable object (agent, behavior, etc.).
+Then, the probe could be read to obtain the data, or the observer could be notified each time the data has changed
+(according to the observer software design pattern).</p>
+
+<h3 id="22-concrete-definition">2.2. Concrete Definition</h3>
+
+<p>A probe is defined as:</p>
+
+<pre><code class="language-sarl">interface Probe&lt;T&gt; {
+	def addProbeListener(IProbeListener)
+	def addProbeReleaseListener(IProbeReleaseListener)
+	def getName : String
+	def getType : Class&lt;T&gt;
+	def getUri : URI
+	def getValue : T
+	def isActive : boolean
+	def isInvalid : boolean
+	def release
+	def removeProbeListener(IProbeListener)
+	def removeProbeReleaseListener(IProbeReleaseListener)
+	def setValue(T)
+	def sync(boolean)
+}
+</code></pre>
+
+<p>The functions are:</p>
+<ul>
+  <li><code>getName</code>: Reply the name of the probe, that is constant.</li>
+  <li><code>getUri</code>: Reply the URI of the observed object.</li>
+  <li><code>getValue</code> : Reply the observed value.</li>
+  <li><code>getType</code> : Reply the type of the observed value.</li>
+  <li><code>sync</code>: Force the synchronization of the observed value.</li>
+  <li><code>release</code>: Release any resource associated to the probe.</li>
+  <li><code>isActive</code>: Reply if this probe is active. When a probe is active, it could be synchronized to the observed object.</li>
+  <li><code>isInvalid</code>: Reply if this probe is invalid. When a probe is invalid, the value replied by <code>getValue</code> may not corresponds to the observed element’s value.</li>
+</ul>
+
+<p>The following function is provided for convenience, but it should be used with caution:</p>
+<ul>
+  <li><code>setValue</code>: Force the observed field to have a specific value (brokes the agent’s autonomy)</li>
+</ul>
+
+<h3 id="23-observe-the-probe">2.3. Observe the Probe</h3>
+
+<p>The observer software design pattern that enables to be notified when the observed value changed in implemented into the probe.
+According to the standard implementation best practices of the Java programming language, an observer (in this design pattern)
+is named a listener, and it is defined by an interface. Two types of observers are defined on probes: <code>IProbeListener</code>
+and <code>IProbeReleaseListener</code>.</p>
+
+<p><code>IProbeListener</code> is defined as:</p>
+
+<pre><code class="language-sarl">interface IProbeListener {
+	def probeValueChanged(Probe&lt;Object&gt;)
+}
+</code></pre>
+
+<p>It corresponds to the observer on value changes.</p>
+
+<p><code>IProbeReleaseListener</code> is defined as:</p>
+
+<pre><code class="language-sarl">interface IProbeReleaseListener {
+	def onProbeReleasedProbe(Probe&lt;Object&gt;)
+}
+</code></pre>
+
+<p>It corresponds to the observer on the release of a probe.</p>
+
+<p>The functions <code>addProbeListener</code>, <code>addProbeReleaseListener</code>, <code>removeProbeListener</code> and <code>removeProbeReleaseListener</code> enable to (un)register an event listener on the probe.</p>
+
+<h2 id="3-probing-service">3. Probing Service</h2>
+
+<p>In order to manage and run the different probes, the SRE must implement a dedicated service: the <code>ProbeService</code>.
+It is defined as:</p>
+
+<pre><code class="language-sarl">interface ProbeService {
+	def getProbes : Collection&lt;Probe&lt;Object&gt;&gt;
+	def probe(SarlName, Class&lt;T&gt;, String) : Probe&lt;T&gt; with T
+	def probe(String, Class&lt;T&gt;, String) : Probe&lt;T&gt; with T
+	def probe(URI, Class&lt;T&gt;, String) : Probe&lt;T&gt; with T
+	def releaseAllProbes
+	def sync
+}
+</code></pre>
+
+<p>Creating a probe is done by calling the <code>probe</code> function. Basically, you need to specify the <a href="./Naming.html">name</a> of the
+observed field, the expected type of the value, and optionally the name of the probe.</p>
+
+<p>Through the probe service, you could force the synchronization of all the managed probes by calling the <code>sync</code> function.
+This function forces all the probes to write the new values into the observed fields and to read the lastest values
+of these fields.</p>
+
+<p>Finally, two functions are provided:</p>
+<ul>
+  <li><code>getProbes</code> for retrieving the list of the managed probes</li>
+  <li><code>releaseAllProbes</code> releasing all the probes such that they become inactive.</li>
+</ul>
+
+<p>To use the probe service, you have to get it from the SRE, as illustrated below:</p>
+
+<pre><code class="language-sarl">var bootstrap = SRE::getBootstrap
+var probeService = bootstrap.getService(typeof(ProbeService))
+</code></pre>
+
+<p>Then, an probe is attached to the field named <code>emergency</code> of type <code>Integer</code> that is defined within the agent <code>a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code>.
+The name <code>My Probe</code> is given to the probe. 
+The example loops for displaying the observed value (of course it is not the most efficient usage of a probe).</p>
+
+<pre><code class="language-sarl">var probe = probeService.probe("agent:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c#emergency", typeof(Integer), "My Probe")
+</code></pre>
+
+<p>Then, you could use the value that is extracted by the probe. The example below loops for displaying the observed
+value (of course it is not the most efficient usage of a probe).</p>
+
+<pre><code class="language-sarl">while (true) {
+	println("Probe: " + probe.value)
+}
+</code></pre>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-08-21</li>
+</ul>
+
+<blockquote>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+  <p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

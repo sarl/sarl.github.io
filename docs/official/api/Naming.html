@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Naming and Namespaces in SARL</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="naming-and-namespaces-in-sarl">Naming and Namespaces in SARL</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-naming-of-the-sarl-components">1. Naming of the SARL components</a></li>
+<ul>
+  <li><a href="#11-background-on-uris">1.1. Background on URIs</a></li>
+  <li><a href="#12-naming-for-agents">1.2. Naming for Agents</a></li>
+  <li><a href="#13-naming-for-behaviors">1.3. Naming for Behaviors</a></li>
+  <li><a href="#14-naming-for-skills">1.4. Naming for Skills</a></li>
+  <li><a href="#15-naming-for-context">1.5. Naming for Context</a></li>
+  <li><a href="#16-naming-for-space">1.6. Naming for Space</a></li>
+  <li><a href="#17-naming-for-service">1.7. Naming for Service</a></li>
+  <li><a href="#18-naming-for-artifact">1.8. Naming for Artifact</a></li>
+</ul>
+<li><a href="#2-namespace-service">2. Namespace Service</a></li>
+<ul>
+  <li><a href="#21-general-principles">2.1. General Principles</a></li>
+  <li><a href="#22-field-accessor">2.2. Field Accessor</a></li>
+</ul>
+<li><a href="#3-observable-and-not-observable-fields">3. Observable and Not Observable Fields</a></li>
+<ul>
+  <li><a href="#31-obsersable-annotation">3.1. @Obsersable Annotation</a></li>
+  <li><a href="#32-capacity-to-manage-the-access-rights">3.2. Capacity to Manage the Access Rights</a></li>
+</ul>
+<li><a href="#4-legal-notice">4. Legal Notice</a></li>
+
+</ul>
+
+<p>In a SARL system, multiple elements are created at run-time, e.g. agents, behaviors, skills, spaces, contexts, etc.
+Each of these elements is identified by an unique universal identifier (UUID).
+This ensures that the identifiers are unique all the time.</p>
+
+<p>Having access to the SARL elements above in a almost generic way is sometimes needed. For example, if you would like
+to observe the values of the fields of an agent, you need first to refer to the agent itself.</p>
+
+<p>In order to help the SARL developers to do this referring, a generic and common API is defined for naming the SARL elements.
+This naming API is used by the namespace service in order to retrieve and reply the instances of the referred elements.</p>
+
+<h2 id="1-naming-of-the-sarl-components">1. Naming of the SARL components</h2>
+
+<p>Basically the naming of the SARL element following the international standards of the
+<a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Universal Resource Identifiers</a>, or URI in short.</p>
+
+<h3 id="11-background-on-uris">1.1. Background on URIs</h3>
+
+<p>An URI is a string of characters that unambiguously identifies a particular resource. To guarantee uniformity, all URIs follow a predefined set of syntax rules.
+Such identification enables interaction with representations of the resource over a system or a network (typically the World Wide Web), using specific schemes.</p>
+
+<p>Each URI following the general following format (where parts between brackets are optional):</p>
+
+<pre><code>	scheme:[//authority]path[?query][#fragment]
+</code></pre>
+
+<p>The URI generic syntax consists of a hierarchical sequence of five components:</p>
+<ul>
+  <li>Scheme: A non-empty scheme component followed by a colon (<code>:</code>), consisting of a sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code>+</code>), period (<code>.</code>), or hyphen (<code>-</code>). The scheme name refers to a specification for assigning identifiers within that scheme.</li>
+  <li>Authority: An optional authority component preceded by two slashes (<code>//</code>) that specifies the user information to use to be connected to the referred resource.</li>
+  <li>Path: A path component, consisting of a sequence of path segments separated by a slash (<code>/</code>). A path is always defined for a URI, though the defined path may be empty (zero length). A segment may also be empty, resulting in two consecutive slashes (<code>//</code>) in the path component.</li>
+  <li>Query: An optional query component preceded by a question mark (<code>?</code>), containing a query string of non-hierarchical data. Its syntax is not well defined, but by convention is most often a sequence of attribute–value pairs separated by a delimiter.</li>
+  <li>Fragment: An optional fragment component preceded by a hash (<code>#</code>). The fragment contains a fragment identifier providing direction to a secondary resource, such as a section heading in an article identified by the remainder of the URI.</li>
+</ul>
+
+<p>This general URI syntax is refined in order to refer the SARL components.</p>
+
+<h3 id="12-naming-for-agents">1.2. Naming for Agents</h3>
+
+<p>Each agent may be referred by an URI-based name in which the scheme is always <code>agent</code>. There is neither authority nor query part in the agent name.</p>
+
+<p>The path of the agent name specifies the identification of the agent. You could refer an agent in three ways:</p>
+
+<ul>
+  <li>Referring an agent whatever the context and spaces in which it is living. In this case, you have to specify only the agent identifier, e.g. <code>agent:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code>.</li>
+  <li>Referring an agent only if it is living into a specific context. In this case, you have to specify the context identifier followed by the agent identifier, e.g. <code>agent:b9e6dcbc-d878-441d-afa1-35715950e22d/a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code>.</li>
+  <li>Referring an agent only if it is living into a specific context and member of a specific space. In this case, you have to specify the context identifier followed by the space and agent identifiers, e.g. <code>agent:b9e6dcbc-d878-441d-afa1-35715950e22d/0bec6efd-12b1-4394-8e34-1b56e6b99c5c/a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code>.</li>
+</ul>
+
+<p>Where, <code>b9e6dcbc-d878-441d-afa1-35715950e22d</code> is the context identifier, <code>0bec6efd-12b1-4394-8e34-1b56e6b99c5c</code> is the space identifier, and
+<code>a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code> is the agent identifier.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred agent. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the agent names is defined by the following BNF grammar:</p>
+
+<pre><code>	AGENT_NAME = "agent:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; &lt;FRG&gt;
+	ODSL = "/" OSL | &lt;empty&gt;
+	OSL = "/" | &lt;empty&gt;
+	CTX = &lt;UUID&gt; "/" SPC | &lt;empty&gt;
+	SPC = &lt;UUID&gt; "/" | &lt;empty&gt;
+	FRG = "#" &lt;ID&gt; | &lt;empty&gt;
+</code></pre>
+
+<h3 id="13-naming-for-behaviors">1.3. Naming for Behaviors</h3>
+
+<p>Each behavior of an agent may be referred by an URI-based name in which the scheme is always <code>behavior</code>. There is neither authority nor query part in the behavior name.</p>
+
+<p>The path of the behavior name specifies the identification of the behavior. A behavior is always attached to an agent. That’s why, the agent identifier is
+mandatory in all cases. Consequently, for each of the three cases for referring an agent, two cases are defined for referring a behavior of those agent:</p>
+
+<ul>
+  <li>Referring behavior from its fully qualified type name. In this case, you have to specify only the agent identifier followed by the fully qualified name of the behavior type, e.g. <code>behavior:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c/mypackage.MyBehavior</code>. If the agent has multiple instance of the behavior, the first one is considered.</li>
+  <li>Referring behavior from its fully qualified type name and its index. This case enables to refer a specific behavior instance when the agent has multiple instances of the same behavior type. You have to specify the agent identifier followed by the fully qualified name of the behavior type and the index of the behavior instance (starting at zero), e.g. <code>behavior:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c/mypackage.MyBehavior/1</code>.</li>
+</ul>
+
+<p>Where, <code>a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code> is the agent identifier.
+<code>mypackage.MyBehavior</code> is the fully qualified name of the behavior type to refer. It must be a sub-type of the <code>io.sarl.lang.core.Behavior</code> type that is defined into the SARL API.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred behavior. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the behavior names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code>	BEHAVIOR_NAME = "behavior:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;IDX&gt; &lt;FRG&gt;
+	IDX = "/" &lt;INTEGER&gt; | &lt;empty&gt;
+</code></pre>
+
+<h3 id="14-naming-for-skills">1.4. Naming for Skills</h3>
+
+<p>Each skill of an agent may be referred by an URI-based name in which the scheme is always <code>skill</code>. There is neither authority nor query part in the skill name.</p>
+
+<p>The path of the skill name specifies the identification of the skill. A skill is always attached to an agent. That’s why, the agent identifier is
+mandatory in all cases. Moreover, a capacity must be implemented by only one skill within an agent. But a skill may implement multiple caapcities.
+Consequently, for each of the three cases for referring an agent, one case is defined for referring a skill of those agent:</p>
+
+<ul>
+  <li>Referring skill from the name of the capacity it is implementing. In this case, you have to specify only the agent identifier followed by the fully qualified name of the implemented capacity type, e.g. <code>skill:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c/mypackage.MyCapacity</code>.</li>
+</ul>
+
+<p>Where, <code>a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c</code> is the agent identifier.
+<code>mypackage.MyCapacity</code> is the fully qualified name of the capacity type that is implemented by the skill to refer. It must be a sub-type of the <code>io.sarl.lang.core.Capacity</code> type that is defined into the SARL API.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred skill. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the skill names is defined by the following BNF grammar (BNF rules in the previous sections are re-used):</p>
+
+<pre><code>	SKILL_NAME = "skill:" &lt;ODSL&gt; &lt;CTX&gt; &lt;SPC&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;FRG&gt;
+</code></pre>
+
+<h3 id="15-naming-for-context">1.5. Naming for Context</h3>
+
+<p>Each agent context may be referred by an URI-based name in which the scheme is always <code>context</code>. There is neither authority nor query part in the context name.</p>
+
+<p>The path of the context name specifies the identification of the context. You could refer a context as:</p>
+
+<ul>
+  <li>Referring a context from its identifier. In this case, you have to specify only the context identifier, e.g. <code>context:b9e6dcbc-d878-441d-afa1-35715950e22d</code>.</li>
+</ul>
+
+<p>Where, <code>b9e6dcbc-d878-441d-afa1-35715950e22d</code> is the context identifier.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred context. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the agent names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code>	CONTEXT_NAME = "context:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
+</code></pre>
+
+<h3 id="16-naming-for-space">1.6. Naming for Space</h3>
+
+<p>Each space within a context may be referred by an URI-based name in which the scheme is always <code>space</code>. There is neither authority nor query part in the space name.</p>
+
+<p>The path of the space name specifies the identification of the space. A space is always defined into a context. That’s why, the context identifier is
+mandatory in all cases. Consequently, for each of the cases for referring a context, you could refer a space as:</p>
+
+<ul>
+  <li>Referring space from its identifier. In this case, you have to specify only the context identifier followed by the space identifier, e.g. <code>space:b9e6dcbc-d878-441d-afa1-35715950e22d/0bec6efd-12b1-4394-8e34-1b56e6b99c5c</code>.</li>
+</ul>
+
+<p>Where, <code>b9e6dcbc-d878-441d-afa1-35715950e22d</code> is the context identifier, and <code>0bec6efd-12b1-4394-8e34-1b56e6b99c5c</code> is the space identifier.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred space. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the space names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code>	SPACE_NAME = "space:" &lt;ODSL&gt; &lt;UUID&gt; "/" &lt;UUID&gt; &lt;FRG&gt;
+</code></pre>
+
+<h3 id="17-naming-for-service">1.7. Naming for Service</h3>
+
+<p>A SRE may implement services. Each service may be referred by an URI-based name in which the scheme is always <code>service</code>.
+There is neither authority nor query part in the service name.</p>
+
+<p>The path of the service name specifies the identification of the service, i.e. its fully qualified name. You could refer a service with:</p>
+
+<ul>
+  <li>Referring a service from its identifier. In this case, you have to specify only the service’s fully qualitied name, e.g. <code>service:mypackage.MyService</code>.</li>
+</ul>
+
+<p>Where, <code>mypackage.MyService</code> is the fully qualified name of the object interface that describes the service.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred service. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the service names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code>	SERVICE_NAME = "service:" &lt;ODSL&gt; &lt;ID&gt; &lt;FRG&gt;
+</code></pre>
+
+<h3 id="18-naming-for-artifact">1.8. Naming for Artifact</h3>
+
+<p>According to the Agent&amp;Artifact metamodel, an artifact in a multi-agent system is a component of the agent environment
+Each artifact may be referred by an URI-based name in which the scheme is always <code>artifact</code>.
+There is neither authority nor query part in the service name.
+Please note that because the concept of artifact is not related to the agent society directly, the underlying SRE may
+not provide a support for it.</p>
+
+<p>The path of the artifact name specifies the identification of the artifact, i.e. its identifier. You could refer a artifact with:</p>
+
+<ul>
+  <li>Referring an artifact from its identifier. In this case, you have to specify only the artifact’s identifier, e.g. <code>artifact:37b13185-a9d5-43e5-9d7b-da2fa3ba3d54</code>.</li>
+</ul>
+
+<p>Where, <code>37b13185-a9d5-43e5-9d7b-da2fa3ba3d54</code> is the identifier of the artifact.</p>
+
+<p>The fragment part is the name of an attribute/field that is declared into the referred artifact. If the fragment part is specified, then the URI refers to the field itself.</p>
+
+<p>The general syntax of the service names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code>	ARTIFACT_NAME = "artifact:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
+</code></pre>
+
+<h2 id="2-namespace-service">2. Namespace Service</h2>
+
+<h3 id="21-general-principles">2.1. General Principles</h3>
+
+<p>According to the <a href="./SRE.html">public API of the SRE</a>, it is possible to retrieve a service that is implemented and executed by the SRE.
+A service dedicated to finding SARL elements into the SRE environment based on their names is defined into the SARL API. It is named the Namespace service.</p>
+
+<p>The role of the Namespace service is to search for a SARL element based on a given name (as defined above).
+This service explores the entire content of the SRE in order to find the requested element.
+If an object that is corresponding to the given name is found, then the Namespace service replies the found object, or an accessor to its field if a fragment part was specified into the given name.</p>
+
+<p>The Namespace service is defined as:</p>
+
+<pre><code class="language-sarl">interface NamespaceService {
+	def findObject(SarlName) : Object
+	def findObject(SarlName, Class&lt;T&gt;) : T with T
+	def findObject(String) : Object
+	def findObject(String, Class&lt;T&gt;) : T with T
+	def findObject(URI) : Object
+	def findObject(URI, Class&lt;T&gt;) : T with T
+	def getFieldAccessValidator : IFieldAccessValidator
+	def getNameParser : INameParser
+}
+</code></pre>
+
+<p>The functions <code>findObject</code> search for an object based on the given name (whatever it is an object of type
+<code>SarlName</code> representing the super-type of all the names, an URI, or a string representation of an URI).</p>
+
+<p>To use this service, you have to get it from the SRE, as illustrated below:</p>
+
+<pre><code class="language-sarl">var bootstrap = SRE::getBootstrap
+var namingService = bootstrap.getService(typeof(NamespaceService))
+var theAgent = namingService.findObject("agent:a7fbd4cc-9e1a-48c3-8ee8-3a7974ccb05c")
+</code></pre>
+
+<h3 id="22-field-accessor">2.2. Field Accessor</h3>
+
+<p>In the case the given name targets a field (when it has a fragment part), the Namespace service create
+a specific proxy of type <code>FieldAccess</code> in order to have access to the field.
+This type is defined as:</p>
+
+<pre><code class="language-sarl">class FieldAccess {
+	def get : Object
+	def getField : Field
+	def getInstance : Object
+	def getName : SarlName
+	def isWritable : boolean
+	def set(Object) : Object
+	def toString : String
+}
+</code></pre>
+
+<p>This accessor type enables to have access to the object instance and to the field value.
+However, the instance of <code>FieldAccess</code> is provided only if the field is observable.</p>
+
+<h2 id="3-observable-and-not-observable-fields">3. Observable and Not Observable Fields</h2>
+
+<p>Observation means that data or information could be extracted from the observed object.
+Because an agent is defined as an autonomous entity, the agent should be able to enable or disable the
+access to one of its fields.</p>
+
+<p>In the standard SRE, this observability flag could be defined statically by annotating the obsevable field,
+or one of its enclosing type, with the <code>@Observable</code> annotation.
+A second standard method is to implement a dedicated agent skill implementing the capacity <code>FieldAccessValidationCapacity</code>
+that enables the agent to manage the access rights to its fields dynamically.</p>
+
+<p>By default, into the SRE, the algorithm for checking the field access from an invoking entity is:</p>
+<ul>
+  <li>if the field is marked as observable with an <code>@Observable</code> annotation then
+    <ul>
+      <li>The access to the field is granted to the invoking entity (read-only or writable, depending on the annotation’s specification)</li>
+    </ul>
+  </li>
+  <li>else
+    <ul>
+      <li>if the field is located into an agent element then
+        <ul>
+          <li>if the agent is equiped with a <code>FieldAccessValidationCapacity</code> skill then
+            <ul>
+              <li>if the agent’s skill grants the access
+                <ul>
+                  <li>The access to the field is granted to the invoking entity (read-only or writable)</li>
+                </ul>
+              </li>
+              <li>else
+                <ul>
+                  <li>The access to the field is denied to the invoking entity. It will be notified that the field was not found.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>else
+            <ul>
+              <li>The access to the field is denied to the invoking entity. It will be notified that the field was not found.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>else
+        <ul>
+          <li>The access to the field is denied to the invoking entity. It will be notified that the field was not found.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="31-obsersable-annotation">3.1. @Obsersable Annotation</h3>
+
+<p>In the following example, two fields are defined for the agent <code>MyAgent</code>.
+The first field is named <code>observableField</code> and it is marked as observable because it is annotated with <code>@Observable</code>.
+The second field is named <code>notObservableField</code> and it is not observable.</p>
+
+<pre><code class="language-sarl">agent MyAgent {
+	@Observable
+	var observableField : int
+	var notObservableField : int
+}
+</code></pre>
+
+<p>Consequently, even if the field <code>notObservableField</code> is declared, it will never be found by the Namespace space because it is hidden.</p>
+
+<p>As described above, the <code>@Observable</code> annotation could be attached to one of the enclosing type in order to mark all the
+declared fields within a type as observable.
+In the following example, the two fields <code>observableField1</code> and <code>observableField2</code> are observable because the type <code>MyAgent2</code>
+is marked with the <code>@Observable</code> annotation.</p>
+
+<pre><code class="language-sarl">@Observable
+agent MyAgent2 {
+	var observableField1 : int
+	var observableField2 : int
+}
+</code></pre>
+
+<h3 id="32-capacity-to-manage-the-access-rights">3.2. Capacity to Manage the Access Rights</h3>
+
+<p>In order to enable an agent to manage the accesses to its own fields, you could equip this agent with a skill that implements
+the <code>FieldAccessValidationCapacity</code> capacity:</p>
+
+<pre><code class="language-sarl">interface FieldAccessValidationCapacity {
+	def getFieldAccessRight(Field) : FieldAccessRight
+}
+</code></pre>
+
+<p>When an agent owns a skill implementing <code>FieldAccessValidationCapacity</code>, this skill is included into the right checking for accessing to
+the fields of the agent, its behaviors and its skills.</p>
+
+<p>Let the agent implementation below:</p>
+
+<pre><code class="language-sarl">agent MyAgent {
+	var field1 : int
+	var field2 : int
+	on Initialize {
+		setSkill(new AccessRightSkill)
+	}
+}
+</code></pre>
+
+<p>In this agent, two fields are defined and named <code>field1</code> and <code>field2</code>.
+We equip the agent with the <code>AccessRightSkill</code> skill that implements the <code>FieldAccessValidationCapacity</code> capacity:</p>
+
+<pre><code class="language-sarl">skill AccessRightSkill implements FieldAccessValidationCapacity {
+	def getFieldAccessRight(field : Field) : FieldAccessRight {
+		if (field.name == "field1") {
+			return FieldAccessRight::READ
+		}
+		if (field.name == "field2") {
+			return FieldAccessRight::WRITE
+		}
+		return FieldAccessRight::NONE
+	}
+}
+</code></pre>
+
+<p>This skill gives the reading access to the field <code>field1</code>, and the reading/writing accesses to the field <code>field2</code>.
+Any other field cannot be observed.</p>
+
+<p>Three levels of obersavility are defined into the enumeration <code>FieldAccessRight</code>:</p>
+<ul>
+  <li><code>NONE</code> The field cannot be observed.</li>
+  <li><code>READ</code> The field’s value could be read, but never changed from the outside of the agent.</li>
+  <li><code>WRITE</code> The field’s value could be read and/or write from the outside of the agent.</li>
+</ul>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-08-21</li>
+</ul>
+
+<blockquote>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+  <p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
+        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
