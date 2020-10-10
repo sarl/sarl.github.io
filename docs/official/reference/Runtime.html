@@ -240,8 +240,10 @@ Therefore, the agent <code>SubAgent2</code> displays <code>A</code> and <code>B<
 and <code>D</code> from the <code>SubAgent2</code> definition.
 And, because of the parallel execution of the four event handlers, there is no fixed order for displaying <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>.</p>
 
-<caution>Event handlers are inherited, but there is no overriding of event handler. In other words, you cannot replace/override
-the code of an event handler that is inherited.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> Event handlers are inherited, but there is no overriding of event handler. In other words, you cannot replace/override
+the code of an event handler that is inherited.</p>
+</blockquote>
 
 <h4 id="general-process-for-event-handling">General Process for Event Handling</h4>
 
@@ -302,8 +304,10 @@ execution fails almost every time with an inconsistent actual output e.g.: <code
 
 <p>A simple way to avoid the race condition is to make the operation thread-safe by using the <code>synchronized</code> keyword.</p>
 
-<caution>If a field is assessed from a function called from an event handler, then the synchronization issue still may occur, if neither
-the function is synchronized nor the event handler.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> If a field is assessed from a function called from an event handler, then the synchronization issue
+still may occur, if neither the function is synchronized nor the event handler.</p>
+</blockquote>
 
 <h3 id="52-the-synchronized-keyword">5.2. The Synchronized Keyword</h3>
 
@@ -311,8 +315,10 @@ the function is synchronized nor the event handler.</caution>
 accesses to shared data.
 This keyword is formally defined in a dedicated <a href="./general/Synchronization.html">reference page</a>.</p>
 
-<caution>The SARL compiler does not apply automatic synchronization to your code yet (it is planned for a future release).
-You have to manage the `synchronized` keyword manually by yourself.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> The SARL compiler does not apply automatic synchronization to your code yet (it is planned for a future release).
+You have to manage the <code>synchronized</code> keyword manually by yourself.</p>
+</blockquote>
 
 <h2 id="6-event-sending-run-time-sequence">6. Event Sending Run-time Sequence</h2>
 
@@ -358,7 +364,7 @@ caller. That’s why in the sequence diagram above, there is no creation of a th
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -468,9 +474,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

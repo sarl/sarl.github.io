@@ -127,8 +127,13 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 </ul>
 
-<p>SARL enables to declare objects with an object-oriented programming approach.
-This document describes the basic support of object-oriented programming provided by SARL.
+<p>SARL enables to declare objects with an object-oriented programming approach for convenience to develop complex programs, i.e.
+the SARL developer must not learn another language such as Java for programming the objects that are used within the
+SARL program.
+Because of this convenience, the support of object-oriented programming may be less complete than in main stream object programming
+languages.</p>
+
+<p>This document describes the basic support of object-oriented programming provided by SARL.
 Before reading this document, we recommend that you read
 the <a href="./GeneralSyntax.html">General Syntax Reference</a>.</p>
 
@@ -138,7 +143,9 @@ The basics of OOP are enabled in the SARL scripts. If you need more complex or m
 complete support of the OOP, you should use a dedicated language, such as Java,
 <a href="https://eclipse.org/xtend/">Xtend</a>, or <a href="http://www.scala-lang.org/">Scala</a>.</p>
 
-<note>The SARL Eclipse product includes the tools for programming with the Java and Xtend languages.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The SARL Eclipse product includes the tools for programming with the Java and Xtend languages.</p>
+</blockquote>
 
 <h2 id="1-comparison-between-sarl-and-other-languages">1. Comparison between SARL and Other Languages</h2>
 
@@ -370,14 +377,19 @@ strictfp class TopClass5 {
   <li><code>strictfp</code>: avoid the methods of the class to use intermediate floating number formats.</li>
 </ul>
 
-<note>Terminology: Nested classes are divided into two categories: static and non-static.
-Nested classes that are declared static are called <i>static nested classes</i>.
-Non-static nested classes are called <i>inner classes</i>.</note>
+<blockquote>
+  <p><strong><em>Terminology::</em></strong> Nested classes are divided into two categories: static and non-static.
+Nested classes that are declared static are called <strong>static nested classes</strong>.
+Non-static nested classes are called <strong>inner classes</strong>.</p>
+</blockquote>
 
-<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</p>
+</blockquote>
 
-<caution>Until now, all the nested classes must be declared as static. This restriction may be removed in later
-versions.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> Until now, all the nested classes must be declared as static. This restriction may be removed in later versions.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class EnclosingClass {
 	public static class NestedClass1 {
@@ -512,9 +524,11 @@ Since the first name and last name are already sequenced in the function
 its behavior. The <code>override</code> keyword is specified for clearly marking this
 implementation of <code>getFullName</code> as an override of the parent’s implementation.</p>
 
-<note>The return type of the `getFullName` method (called with the name `fullName`,
-according to the [property access syntax](./general/MemberAccess.html#property-syntax))
-is not specified in the overriding prototype since it could be inferred by the SARL compiler.</note>
+<blockquote>
+  <p><strong><em>Nnote:</em></strong> The return type of the <code>getFullName</code> method (called with the name <code>fullName</code>,
+according to the <a href="./general/MemberAccess.html#property-syntax">property access syntax</a>)
+is not specified in the overriding prototype since it could be inferred by the SARL compiler.</p>
+</blockquote>
 
 <p>For preventing a function to be overridden, you should add the <code>final</code> modifier in the signature of
 the method (as in Java).</p>
@@ -551,9 +565,6 @@ fields and methods of the instance of the enclosing type. Only accesses to stati
 		}
 	}
 }
-</code></pre>
-
-<pre><code>}
 </code></pre>
 
 <h2 id="3-interface">3. Interface</h2>
@@ -717,11 +728,15 @@ strictfp interface TopInterface4 {
   <li><code>strictfp</code>: avoid the methods of the interface to use intermediate floating number formats.</li>
 </ul>
 
-<note>Terminology: Nested interfaces are divided into two categories: static and non-static.
-Nested interfaces that are declared static are called <i>static nested interfaces</i>.
-Non-static nested interfaces are called <i>inner interfaces</i>.</note>
+<blockquote>
+  <p><strong><em>Terminology::</em></strong> Nested interfaces are divided into two categories: static and non-static.
+Nested interfaces that are declared static are called <strong>static nested interfaces</strong>.
+Non-static nested interfaces are called <strong>inner interfaces</strong>.</p>
+</blockquote>
 
-<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class EnclosingClass {
 	public interface NestedInterface1 {
@@ -754,7 +769,9 @@ Non-static nested interfaces are called <i>inner interfaces</i>.</note>
   <li><code>static</code>: the field is a class field, not an instance field (default).</li>
 </ul>
 
-<caution>Only fields defined with `val` can be put in an interface.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> Only fields defined with <code>val</code> can be put in an interface.</p>
+</blockquote>
 
 <pre><code class="language-sarl">public val a : Object;
 static val e : Object;
@@ -842,11 +859,15 @@ package enum TopEnumeration2 {
   <li><code>static</code>: the inner enumeration do not have access to the non-static members of the enclosing type.</li>
 </ul>
 
-<note>Terminology: Nested enumerations are divided into two categories: static and non-static.
-Nested enumerations that are declared static are called <i>static nested enumerations</i>.
-Non-static nested enumerations are called <i>inner enumerations</i>.</note>
+<blockquote>
+  <p><strong><em>Terminology::</em></strong>  Nested enumerations are divided into two categories: static and non-static.
+Nested enumerations that are declared static are called <strong>static nested enumerations</strong>.
+Non-static nested enumerations are called <strong>inner enumerations</strong>.</p>
+</blockquote>
 
-<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class EnclosingClass {
 	public enum NestedClass1 {
@@ -944,11 +965,15 @@ abstract annotation TopAnnotationType3 {
   <li><code>static</code>: the inner annotation type do not have access to the non-static members of the enclosing type.</li>
 </ul>
 
-<note>Terminology: Nested annotation types are divided into two categories: static and non-static.
-Nested annotation types that are declared static are called <i>static nested annotation types</i>.
-Non-static nested annotation types are called <i>inner annotation types</i>.</note>
+<blockquote>
+  <p><strong><em>Terminology::</em></strong> Nested annotation types are divided into two categories: static and non-static.
+Nested annotation types that are declared static are called <strong>static nested annotation types</strong>.
+Non-static nested annotation types are called<strong>inner annotation types</strong>.</p>
+</blockquote>
 
-<note>The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The modifiers may differ from the previously described, depending on the enclosing type, e.g. agent.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class EnclosingClass {
 	public annotation NestedAnnotationType1 {
@@ -1073,9 +1098,11 @@ local variables of the enclosing scope:</p>
   <li>An anonymous class can have static members provided that they are constant variables.</li>
 </ul>
 
-<note>You can declare the following in anonymous classes: fields, extra methods
+<blockquote>
+  <p><strong><em>Note:</em></strong> You can declare the following in anonymous classes: fields, extra methods
 (even if they do not implement any methods of the supertype), instance initializers, 
-local classes. However, you cannot declare constructors in an anonymous class.</note>
+local classes. However, you cannot declare constructors in an anonymous class.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class HelloWorldAnonymousClasses {
 	var name : String
@@ -1317,9 +1344,11 @@ assigned once.</p>
 holds a reference to an object, then the state of the object may be changed by operations on the
 object, but the variable will always refer to the same object.</p>
 
-<caution>The SARL compiler complains if you write the `final` modifer in conjonction with the `var`
-or `val` modifiers. Indeed, the `val` modifier defines a final variable; and the
-`var` modifier defines a no-final variable.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> The SARL compiler complains if you write the <code>final</code> modifer in conjonction with the <code>var</code>
+or <code>val</code> modifiers. Indeed, the <code>val</code> modifier defines a final variable; and the
+<code>var</code> modifier defines a no-final variable.</p>
+</blockquote>
 
 <p>This applies also to arrays, because arrays are objects; if a final variable holds a reference to
 an array, then the components of the array may be changed by operations on the array, but the variable
@@ -1355,9 +1384,11 @@ final class B {
 <p>The <code>native</code> keyword is applied to a method to indicate that the method is implemented in
 native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
 
-<note>This modifier is provided for enabling agents to access to low-level resources that
+<blockquote>
+  <p><strong><em>Note:</em></strong> This modifier is provided for enabling agents to access to low-level resources that
 are not supported by the Java API. You should not use this modifier if you can use
-a higher-level API in place of.</note>
+a higher-level API in place of.</p>
+</blockquote>
 
 <pre><code class="language-sarl">class A {
 	native def fct
@@ -1376,7 +1407,9 @@ rather than with any instance. Every instance of the type shares a static field,
 fixed location in memory. Any instance can change the value of a static variable, but static variables
 can also be manipulated without creating an instance of the type.</p>
 
-<note>Constants are usually defined as final static fields</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> Constants are usually defined as final static fields.</p>
+</blockquote>
 
 <p>Static methods, which have the <code>static</code> modifier in their declarations, should be invoked with the
 type name, without the need for creating an instance of the type.</p>
@@ -1518,10 +1551,6 @@ as reordering memory operations and caching the variable in a CPU register. Usin
 instructs the compiler not to apply these optimizations. This guarantees that a reading thread
 always reads the variable from memory (or from a shared cache), never from a local cache.</p>
 
-<note>From now, it is better to use
-[atomic references](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html)
-in place of volatile variables.</note>
-
 <pre><code class="language-sarl">class A {
 	volatile var field : int = 4
 }
@@ -1544,7 +1573,7 @@ Thank you to the contributors to these documents.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -1654,9 +1683,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

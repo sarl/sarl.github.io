@@ -130,8 +130,10 @@ composed of four source folders:</p>
 
 <p>The default output folder is <code>target/classes</code>.</p>
 
-<note>The names of these folders are following the conventions of a Maven-based project (described below). In this way, you will
-be able to turn the Maven nature on your SARL project on/off.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The names of these folders are following the conventions of a Maven-based project (described below). In this way, you will
+be able to turn the Maven nature on your SARL project on/off.</p>
+</blockquote>
 
 <p><img src="./new_sarl_project_screen_3.png" alt="Source Code Folders" /></p>
 
@@ -201,9 +203,11 @@ be able to turn the Maven nature on your SARL project on/off.</note>
 <p>The Maven configuration is based on the use of <code>sarl-maven-plugin</code>. This plugin is in charge of compiling the SARL and
 the Java files. Details about the <code>sarl-maven-plugin</code> may be found on <a href="../tools/MavenSarlPlugin.html">this page</a>.</p>
 
-<important>You must set the `extensions` tag to true for the `sarl-maven-plugin` plugin. If you missed to set it, the plugin
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> You must set the <code>extensions</code> tag to true for the <code>sarl-maven-plugin</code> plugin. If you missed to set it, the plugin
 will not able to be integrated in the Maven life-cycle. The consequence will be that only the Java compiler will be
-invoked.</important>
+invoked.</p>
+</blockquote>
 
 <h3 id="22-configuration-of-a-runtime-environment-optional">2.2. Configuration of a runtime environment (optional)</h3>
 
@@ -215,8 +219,10 @@ when the SARL program is launched within the SARL environment or when a runnable
 this case, you could replace the Maven dependency to the SARL sdk (as defined in the previous section) by a Maven dependency
 to the runtime environment library.</p>
 
-<caution>Replacing the SARL sdk library by the run-time environment library within the Maven dependencies is not the
-recommended approach by the SARL core developers.</caution>
+<blockquote>
+  <p><strong><em>Caution:</em></strong> Replacing the SARL sdk library by the run-time environment library within the Maven dependencies is not the
+recommended approach by the SARL core developers.</p>
+</blockquote>
 
 <p>The runtime environment that is recommended by the developers of SARL is <a href="http://www.janusproject.io">Janus</a>.</p>
 
@@ -260,10 +266,12 @@ You could search on the <a href="http://search.maven.org/">Maven Central Reposit
  &lt;/project&gt;
 </code></pre>
 
-<important>If you want to have the dependencies to both `io.sarl.maven.sdk` and `io.janusproject.kernel` in your
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> If you want to have the dependencies to both <code>io.sarl.maven.sdk</code> and <code>io.janusproject.kernel</code> in your
 POM file, you must be sure that the imported version of the Google Guava library is the one provided by the Janus
-platform. For ensuring this, you must specify the version of the Guava library by defining it in the "dependencyManagement"
-section of your pom file.</important>
+platform. For ensuring this, you must specify the version of the Guava library by defining it in the “dependencyManagement”
+section of your pom file.</p>
+</blockquote>
 
 <h2 id="3-whats-next">3. What’s next?</h2>
 
@@ -277,7 +285,7 @@ section of your pom file.</important>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -387,9 +395,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

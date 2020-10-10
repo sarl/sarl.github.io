@@ -122,7 +122,9 @@ the event in a <a href="./Space.html">Space</a>.
 The sending API is detailed in the <a href="./BIC.html">Built-in Capacity
 Reference</a>.</p>
 
-<note>There is no message concept in SARL. All communication is done by using an `Event`.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> There is no message concept in SARL. All communication is done by using an <code>Event</code>.</p>
+</blockquote>
 
 <h2 id="2-defining-an-event">2. Defining an Event</h2>
 
@@ -160,7 +162,9 @@ Each declaration of the attributes illustrates one possible syntax for defining 
 
 <p>According to the type inference mechanism used by SARL, the attribute <code>something</code> will have the type <code>Object</code>.</p>
 
-<note> Because of the use of the `var` keyword, the values of these attributes can be modified.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> Because of the use of the <code>var</code> keyword, the values of these attributes can be modified.</p>
+</blockquote>
 
 <pre><code class="language-sarl">event MyEvent {
 	var number : Integer
@@ -174,11 +178,13 @@ Each declaration of the attributes illustrates one possible syntax for defining 
 <p>Events in SARL will carry data that is unmodifiable 
 when an attribute is defined using the <code>val</code> keyword.</p>
 
-<importantnote> The `val` keyword has the same semantics as the `final` modifier in
-the Java language. It means that an element defined with `val` can be initialized only once. It
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> The <code>val</code> keyword has the same semantics as the <code>final</code> modifier in
+the Java language. It means that an element defined with <code>val</code> can be initialized only once. It
 also means that the element is read-only.
 But if the element is a reference to an object, then the referenced object
-is not read-only (only the initial reference is).</importantnote>
+is not read-only (only the initial reference is).</p>
+</blockquote>
 
 <p>Because the <code>val</code> keyword defines a single-initialization
 variable, there should be a way to specify the initial value.
@@ -209,8 +215,10 @@ mechanism as the Java object-oriented language.</p>
 
 <p>The extended event is specified just after the <code>extends</code> keyword.</p>
 
-<veryimportantnote> An event type can extend __only one__ other event type.  This is similar to the
-model for class extensions in the Java language.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> An event type can extend <strong>only one</strong> other event type.  This is similar to the
+model for class extensions in the Java language.</p>
+</blockquote>
 
 <h4 id="declaration">Declaration</h4>
 
@@ -297,8 +305,10 @@ final event Example3 {
 <p>Several events are defined and reserved by the SARL Core Specification.
 They describe the minimal set of events that a runtime environment must support to run a SARL program.</p>
 
-<veryimportantnote> You must not define an event with a fully qualified name equals to one of the reserved
-events.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> You must not define an event with a fully qualified name equals to one of the reserved
+events.</p>
+</blockquote>
 
 <p>Two types of reserved events exist:</p>
 
@@ -313,7 +323,7 @@ events.</veryimportantnote>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -423,9 +433,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

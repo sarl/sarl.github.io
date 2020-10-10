@@ -107,9 +107,11 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.^agent</code>.
 The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
 
-<importantnote>The package keyword defines the package for all elements in the same SARL file (see the
-[General Syntax Reference](../reference/GeneralSyntax.html) for details).
-Therefore FirstAgent and SecondAgent belong to the same package, i.e. `io.sarl.docs.gettingstarted.^agent`.</importantnote>
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> The package keyword defines the package for all elements in the same SARL file
+(see the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a> for details).
+Therefore FirstAgent and SecondAgent belong to the same package, i.e. <code>io.sarl.docs.gettingstarted.^agent</code>.</p>
+</blockquote>
 
 <h2 id="3-agent-perceptions">3. Agent Perceptions</h2>
 
@@ -128,8 +130,9 @@ Therefore FirstAgent and SecondAgent belong to the same package, i.e. `io.sarl.d
 
 <p>To define this event handler, we must use the <code>on</code> keyword, and provide the associated code block.</p>
 
-<note>The `println` function is provided by the `Logging` capacity. It permits printing a message
-on the log output.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The <code>println</code> function is provided by the <code>Logging</code> capacity. It permits printing a message on the log output.</p>
+</blockquote>
 
 <pre><code class="language-sarl">import io.sarl.core.Logging
 agent MyAgent {
@@ -202,8 +205,10 @@ agent MyAgent {
 <p>Now, we will want our agent to send data to other agents. The data are embedded into events. The definition of an
 event is described above.</p>
 
-<note>In this document, we limit our explanation to the sending of the events in the default space of the default context
-of the agent.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> In this document, we limit our explanation to the sending of the events in the default space of the default context
+of the agent.</p>
+</blockquote>
 
 <p>For sending an event in the default space, the <code>DefaultContextInteractions</code> built-in capacity should be used.</p>
 
@@ -243,7 +248,7 @@ call <code>emit(e)</code>.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -353,9 +358,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

@@ -136,14 +136,18 @@ The details are discussed below.</p>
 <p><strong>A Context defines the boundary of a sub-system, and gathers a collection of spaces</strong>.
 A Space is the support of the interaction between agents respecting the rules defined in the spaces’ specification.</p>
 
-<importantnote>In each context, there is at least one particular space called _Default Space_ to which
-all agents in this context belong.</importantnote>
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> In each context, there is at least one particular space called <em>Default Space</em> to which
+all agents in this context belong.</p>
+</blockquote>
 
 <p>It ensures the existence of a common shared space to all agents in the same context. Each agent can then create
 specific public or private spaces to achieve its personal goals (the blue space on the figure above).</p>
 
-<importantnote> Since their creation, agents are incorporated into a context called the __Default Context__.
-It is important to notice that the _Default Context_ is not necessarily the same for every agent.</importantnote>
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> Since their creation, agents are incorporated into a context called the <strong>Default Context</strong>.
+It is important to notice that the <em>Default Context</em> is not necessarily the same for every agent.</p>
+</blockquote>
 
 <p>An agent has an identifier for each space it is involved in. For the case of event-based interaction
 spaces, this identifier is  called “address”.</p>
@@ -153,8 +157,10 @@ spaces, this identifier is  called “address”.</p>
 <p>During its lifetime, an agent may join and participate in other contexts that are not the default context.
 They are called the external contexts of the agent.</p>
 
-<note> There is no restriction about the number of contexts in which an agent is belonging to, except
-that it is always in its default context.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> There is no restriction about the number of contexts in which an agent is belonging to, except
+that it is always in its default context.</p>
+</blockquote>
 
 <p>For joining or leaving a context, the agent must use the <code>ExternalContextAccess</code> built-in capacity. It is detailed in the
 <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
@@ -179,19 +185,25 @@ In many cases, we find the idea of <em>agents composed of other agents</em>.</p>
 <p>More recently, the importance of holonic multi-agent systems has been
 recognized by different methodologies such as <a href="http://www.aspecs.org/Home">ASPECS</a> or O-MASE.</p>
 
-<note>In SARL, we recognize that agents can be composed of other agents. Therefore, SARL agents
+<blockquote>
+  <p><strong><em>Note:</em></strong> In SARL, we recognize that agents can be composed of other agents. Therefore, SARL agents
 are in fact holons that can compose each other to define hierarchical
-or recursive multi-agent system, called holarchies.</note>
+or recursive multi-agent system, called holarchies.</p>
+</blockquote>
 
 <p>In order to achieve this, SARL agents are self-similar structures that 
 compose each other via their contexts. Each agent defines its own context, called <strong>Inner Context</strong>.
 Because this inner context may be joined by other agents, or agents may
 be spawn inside this inner context, it is possible to build a holarchy.</p>
 
-<veryimportantnote> An agent is always a participant of the default space of its inner space.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> An agent is always a participant of the default space of its inner space.</p>
+</blockquote>
 
-<importantnote label="Note"> The unique identifier (usually a Unique Universal Identifier) of
-the inner context is equal to the unique identifier of its owning agent.</importantnote>
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> The unique identifier (usually a Unique Universal Identifier) of
+the inner context is equal to the unique identifier of its owning agent.</p>
+</blockquote>
 
 <h3 id="14-universe-agent-and-universe-context">1.4. Universe Agent and Universe Context</h3>
 
@@ -289,8 +301,10 @@ mechanism as the Java object-oriented language.</p>
 
 <p>The extended agent is specified just after the <code>extends</code> keyword.</p>
 
-<veryimportantnote> An agent type can extend __only one__ other agent type. This is close
-to the constraint on the extension of classes in the Java language.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> An agent type can extend <strong>only one</strong> other agent type. This is close
+to the constraint on the extension of classes in the Java language.</p>
+</blockquote>
 
 <p>In the following code, a first agent is defined with the name
 <code>MyAgent</code> and an attribute named <code>attr</code>.
@@ -542,7 +556,7 @@ agent Agent2 {
 
 <p>The output has been:</p>
 
-<pre><code>Launching the agent: Agent1
+<pre><code class="language-text">Launching the agent: Agent1
 agent1 spawned
 agent1 spawning Agent2
 agent2 spawned
@@ -777,8 +791,10 @@ changing the implementation of a built-in capacity.</p>
   <li>Invoke the capacity’s action on the retrieved skill.</li>
 </ul>
 
-<note>This method of invocation is not recommended by the SARL developers. You should
-prefer the use of the extension methods (see below).</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> This method of invocation is not recommended by the SARL developers. You should
+prefer the use of the extension methods (see below).</p>
+</blockquote>
 
 <pre><code class="language-sarl">agent MyAgent {
 	on Initialize {
@@ -855,7 +871,7 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -965,9 +981,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

@@ -100,7 +100,6 @@ the behaviors and the skills.</p>
 </code></pre>
 
 <p>It is compiled to the code:</p>
-
 <pre><code class="language-sarl">private var name : String
  
 public def getName : String {
@@ -132,7 +131,6 @@ as parameters to the annotation: <code>PUBLIC_GETTER</code>, <code>PROTECTED_GET
 </code></pre>
 
 <p>It is compiled to the code:</p>
-
 <pre><code class="language-sarl">class Person {
   private var name : String
   private var firstName : String
@@ -181,11 +179,9 @@ as parameters to the annotation: <code>PUBLIC_GETTER</code>, <code>PROTECTED_GET
 <p>This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">@Data class Person {
   val firstName : String
   val lastName : String
-
   static def main(args : String*) {
     val p = new Person(args.get(0), args.get(1))
     println(p.getFirstName + ' ' + p.lastName)
@@ -200,7 +196,6 @@ and the currently implemented class. You can optionally restrict it to explicitl
 This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
 
 <p>Let’s start with a basic example:</p>
-
 <pre><code class="language-sarl">interface SomeInterface {
 	def function(param : String) : int
 }
@@ -216,7 +211,6 @@ class MyClass implements SomeInterface {
 </code></pre>
 
 <p>The previous code is equivalent to:</p>
-
 <pre><code class="language-sarl">class MyClass implements SomeInterface {			 
   var myDelegate : SubTypeOfSomeInterface
   
@@ -237,7 +231,6 @@ create the delegate object or use a different one each time.</p>
 </code></pre>
 
 <p>The previous code is equivalent to:</p>
-
 <pre><code class="language-sarl">class MyClass implements SomeInterface {
 	def function(param : String) : int {
 		return provideDelegate().function(param)
@@ -358,7 +351,7 @@ class MyClass {
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -468,9 +461,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

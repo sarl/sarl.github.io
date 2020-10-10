@@ -116,7 +116,7 @@ Such identification enables interaction with representations of the resource ove
 
 <p>Each URI following the general following format (where parts between brackets are optional):</p>
 
-<pre><code>	scheme:[//authority]path[?query][#fragment]
+<pre><code class="language-text">scheme:[//authority]path[?query][#fragment]
 </code></pre>
 
 <p>The URI generic syntax consists of a hierarchical sequence of five components:</p>
@@ -149,12 +149,12 @@ Such identification enables interaction with representations of the resource ove
 
 <p>The general syntax of the agent names is defined by the following BNF grammar:</p>
 
-<pre><code>	AGENT_NAME = "agent:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; &lt;FRG&gt;
-	ODSL = "/" OSL | &lt;empty&gt;
-	OSL = "/" | &lt;empty&gt;
-	CTX = &lt;UUID&gt; "/" SPC | &lt;empty&gt;
-	SPC = &lt;UUID&gt; "/" | &lt;empty&gt;
-	FRG = "#" &lt;ID&gt; | &lt;empty&gt;
+<pre><code class="language-text">AGENT_NAME = "agent:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; &lt;FRG&gt;
+ODSL = "/" OSL | &lt;empty&gt;
+OSL = "/" | &lt;empty&gt;
+CTX = &lt;UUID&gt; "/" SPC | &lt;empty&gt;
+SPC = &lt;UUID&gt; "/" | &lt;empty&gt;
+FRG = "#" &lt;ID&gt; | &lt;empty&gt;
 </code></pre>
 
 <h3 id="13-naming-for-behaviors">1.3. Naming for Behaviors</h3>
@@ -176,8 +176,8 @@ mandatory in all cases. Consequently, for each of the three cases for referring 
 
 <p>The general syntax of the behavior names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
 
-<pre><code>	BEHAVIOR_NAME = "behavior:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;IDX&gt; &lt;FRG&gt;
-	IDX = "/" &lt;INTEGER&gt; | &lt;empty&gt;
+<pre><code class="language-text">BEHAVIOR_NAME = "behavior:" &lt;ODSL&gt; &lt;CTX&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;IDX&gt; &lt;FRG&gt;
+IDX = "/" &lt;INTEGER&gt; | &lt;empty&gt;
 </code></pre>
 
 <h3 id="14-naming-for-skills">1.4. Naming for Skills</h3>
@@ -199,7 +199,7 @@ Consequently, for each of the three cases for referring an agent, one case is de
 
 <p>The general syntax of the skill names is defined by the following BNF grammar (BNF rules in the previous sections are re-used):</p>
 
-<pre><code>	SKILL_NAME = "skill:" &lt;ODSL&gt; &lt;CTX&gt; &lt;SPC&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;FRG&gt;
+<pre><code class="language-text">SKILL_NAME = "skill:" &lt;ODSL&gt; &lt;CTX&gt; &lt;SPC&gt; &lt;UUID&gt; "/" &lt;ID&gt; &lt;FRG&gt;
 </code></pre>
 
 <h3 id="15-naming-for-context">1.5. Naming for Context</h3>
@@ -218,7 +218,7 @@ Consequently, for each of the three cases for referring an agent, one case is de
 
 <p>The general syntax of the agent names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
 
-<pre><code>	CONTEXT_NAME = "context:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
+<pre><code class="language-text">CONTEXT_NAME = "context:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
 </code></pre>
 
 <h3 id="16-naming-for-space">1.6. Naming for Space</h3>
@@ -238,7 +238,7 @@ mandatory in all cases. Consequently, for each of the cases for referring a cont
 
 <p>The general syntax of the space names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
 
-<pre><code>	SPACE_NAME = "space:" &lt;ODSL&gt; &lt;UUID&gt; "/" &lt;UUID&gt; &lt;FRG&gt;
+<pre><code class="language-text">SPACE_NAME = "space:" &lt;ODSL&gt; &lt;UUID&gt; "/" &lt;UUID&gt; &lt;FRG&gt;
 </code></pre>
 
 <h3 id="17-naming-for-service">1.7. Naming for Service</h3>
@@ -258,7 +258,7 @@ There is neither authority nor query part in the service name.</p>
 
 <p>The general syntax of the service names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
 
-<pre><code>	SERVICE_NAME = "service:" &lt;ODSL&gt; &lt;ID&gt; &lt;FRG&gt;
+<pre><code class="language-text">SERVICE_NAME = "service:" &lt;ODSL&gt; &lt;ID&gt; &lt;FRG&gt;
 </code></pre>
 
 <h3 id="18-naming-for-artifact">1.8. Naming for Artifact</h3>
@@ -281,7 +281,7 @@ not provide a support for it.</p>
 
 <p>The general syntax of the service names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
 
-<pre><code>	ARTIFACT_NAME = "artifact:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
+<pre><code class="language-text">ARTIFACT_NAME = "artifact:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
 </code></pre>
 
 <h2 id="2-namespace-service">2. Namespace Service</h2>
@@ -474,7 +474,7 @@ Any other field cannot be observed.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -584,9 +584,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

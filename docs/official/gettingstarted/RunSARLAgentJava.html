@@ -100,21 +100,21 @@ application classpath.</p>
 <p>In order to help you to use the bootstrap functions, the SARL API provides a static utility type, named <code>SRE</code>.
 In the following Java code, the <code>SRE</code> utility type is used for retrieving the bootstrap.</p>
 
-<pre><code>	public class MyProgram {
-	
-		public static void main(String[] arguments) {
-			SREBootstrap bootstrap = SRE.getBootstrap();
-		}
-	
+<pre><code class="language-java">public class MyProgram {
+
+	public static void main(String[] arguments) {
+		SREBootstrap bootstrap = SRE.getBootstrap();
 	}
+
+}
 </code></pre>
 
 <p>Then, it is possible to use the bootstrap for launching an agent. In the following example, a agent of type
 <code>MyAgent</code> is launched. Please note that you must not create an instance of an agent by yourself.
 It is the role of the SARL run-time environment to create this instance for you, with the proper initialization.</p>
 
-<pre><code>	SREBootstrap bootstrap = SRE.getBootstrap();
-	bootstrap.startAgent(MyAgent.class)
+<pre><code class="language-java">SREBootstrap bootstrap = SRE.getBootstrap();
+bootstrap.startAgent(MyAgent.class)
 </code></pre>
 
 <p>In the case you want to launch more than one agent programmatically,
@@ -137,51 +137,51 @@ to launch.</p>
 <p>The second parameter of the <code>startAgent</code> function is the list of parameters to
 pass with the <code>Initialize</code> event to the launched agent.</p>
 
-<importantnode>The Janus platform enables to launch a single agent at start-up.
-If you want to launch more agents, please read the next section.&lt;/importantnote&gt;
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> The Janus platform enables to launch a single agent at start-up.
+If you want to launch more agents, please read the next section.</p>
+</blockquote>
 
+<pre><code class="language-java">import io.sarl.sre.boot.Boot;
+import myprogram.MyAgent;
+public class MyProgram {
+ 	public static void main(String[] args) {
+		Boot.createMainObject.startAgent(MyAgent.class, args);
+	}
+}
+</code></pre>
 
-		import io.sarl.sre.boot.Boot;
-		import myprogram.MyAgent;
-		public class MyProgram {
-		 	public static void main(String[] args) {
-				Boot.createMainObject.startAgent(MyAgent.class, args);
-			}
-		}
+<p>In  the case you want to launch more than one agent programmatically,
+you could use the <code>SreMain</code> instance provided by Janus.
+This instance is replied by the <code>getKernel</code> function of the <code>Boot</code> class.</p>
 
+<h2 id="4-whats-next">4. What’s next?</h2>
 
-In  the case you want to launch more than one agent programmatically,
-you could use the `SreMain` instance provided by Janus.
-This instance is replied by the `getKernel` function of the `Boot` class.
+<p>Now, you are ready for developing agents with the SARL language.
+Please read the rest of the documentation for obtaining more details.</p>
 
+<p><a href="../index.html">Next&gt;</a></p>
 
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-10-10</li>
+</ul>
 
-## 4. What's next?
+<blockquote>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
-Now, you are ready for developing agents with the SARL language.
-Please read the rest of the documentation for obtaining more details.
+  <p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
 
-[Next&gt;](../index.html)
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
 
-
-## 5. Legal Notice
-
-* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
-* Version: 0.12
-* Status: Draft Release
-* Release: 2020-08-21
-
-&gt; Copyright &copy; 2014-2020 [the original authors or authors](http://www.sarl.io/about/index.html).
-&gt;
-&gt; Licensed under the Apache License, Version 2.0;
-&gt; you may not use this file except in compliance with the License.
-&gt; You may obtain a copy of the [License](http://www.apache.org/licenses/LICENSE-2.0).
-&gt;
-&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
-
-<small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small>
-</importantnode>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
 
     </div> <!-- /default layout container -->
 
@@ -278,9 +278,9 @@ Please read the rest of the documentation for obtaining more details.
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

@@ -110,7 +110,9 @@ a Capacity: no attribute or field is allowed, and no body (code) for the Action 
 <p>The definition of a Capacity is done with the <code>capacity</code> keyword. Below, a Capacity that permits logging messages
 is defined. This Capacity enables an Agent to log information and debugging messages.</p>
 
-<note>Defining a Capacity without Actions is a symptom of a design problem.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> Defining a Capacity without Actions is a symptom of a design problem.</p>
+</blockquote>
 
 <pre><code class="language-sarl">capacity Logging {
 	// Log an information message
@@ -128,8 +130,10 @@ object-oriented language.</p>
 
 <p>The extended Capacity is specified just after the <code>extends</code> keyword.</p>
 
-<veryimportantnote> A Capacity type can extend __zero-to-many__ other Capacity types.
-This is similar to the implementation of interfaces in the Java language.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> A Capacity type can extend <strong>zero-to-many</strong> other Capacity types.
+This is similar to the implementation of interfaces in the Java language.</p>
+</blockquote>
 
 <p>In the following code, the <code>Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
 
@@ -207,8 +211,10 @@ public def example1
 <p>Several Capacities are defined and reserved by the SARL Core Specification.
 They compose the minimal set of Capacities that a runtime environment must support to run a SARL program.</p>
 
-<veryimportantnote> You must not define a Capacity with a fully qualified name equals to one
-of the reserved Capacities.</veryimportantnote>
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> You must not define a Capacity with a fully qualified name equals to one
+of the reserved Capacities.</p>
+</blockquote>
 
 <p>The built-in Capacities are defined in the <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
 
@@ -269,7 +275,7 @@ skill MySkill implements MyCapacity {
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -379,9 +385,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

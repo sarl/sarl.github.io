@@ -95,7 +95,6 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The replied task may be used for future execution, or controlling the execution.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules
 
@@ -110,12 +109,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h2 id="2-changing-the-name-of-a-task">2. Changing the name of a task</h2>
 
 <p>A task has a name that serves as its identifier. You could change the task name by calling the following function:</p>
-
 <pre><code class="language-sarl">def setName(task : AgentTask, name : String)
 </code></pre>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules
 
@@ -134,7 +131,6 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h2 id="3-launching-a-task-for-a-single-run">3. Launching a Task for a single run</h2>
 
 <p>For running a task once time, the following function is provided:</p>
-
 <pre><code class="language-sarl">def execute(task : AgentTask = null, procedure : (Agent) =&gt; void) : AgentTask
 </code></pre>
 
@@ -148,7 +144,6 @@ agent task as parameter. This task will attach to the given procedure. The repli
 the task given as parameter.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules, Logging
 
@@ -169,7 +164,6 @@ the task given as parameter.</p>
 <h2 id="4-launching-a-delayed-task">4. Launching a Delayed Task</h2>
 
 <p>For running a task in a given delay, the following function is provided:</p>
-
 <pre><code class="language-sarl">def in(task : AgentTask = null, delay : long, procedure : (Agent) =&gt; void) : AgentTask
 </code></pre>
 
@@ -183,7 +177,6 @@ accepts an agent task as parameter. This task will attach to the given procedure
 is the same as the task given as parameter.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules, Logging
 	var t1 : AgentTask
@@ -203,7 +196,6 @@ is the same as the task given as parameter.</p>
 <h2 id="5-launching-a-task-at-a-specific-time">5. Launching a Task at a Specific Time</h2>
 
 <p>For running a task at a specific time, the following function is provided:</p>
-
 <pre><code class="language-sarl">def at(task : AgentTask = null, time : long, procedure : (Agent) =&gt; void) : AgentTask
 </code></pre>
 
@@ -218,7 +210,6 @@ accepts an agent task as parameter. This task will attach to the given procedure
 is the same as the task given as parameter.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules, Logging
 	var t1 : AgentTask
@@ -238,7 +229,6 @@ is the same as the task given as parameter.</p>
 <h2 id="6-launching-a-periodic-task-at-a-fixed-rate">6. Launching a Periodic Task at a Fixed Rate</h2>
 
 <p>For running a periodic task with a fixed starting rate, the following function is provided:</p>
-
 <pre><code class="language-sarl">def every(task : AgentTask = null, delay : long, procedure : (Agent) =&gt; void) : AgentTask
 </code></pre>
 
@@ -470,7 +460,6 @@ whether the thread executing this task should be interrupted in an attempt to st
 <p>The <code>isCanceled</code> function enables to test if a task was canceled or not.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">agent A {
 	uses Schedules
 	
@@ -517,17 +506,21 @@ def unless(condition : (Agent) =&gt; boolean) : AgentTask
 The <code>unless</code> function sets the guard of the task to the negation of the given condition. It replies
 the current task.</p>
 
-<caution>The `ifTrue` and `unless` functions should not be used on the result of the scheduling functions.
-Indeed, if you call these two function on the value replied by `execute` for example, the execution platform
-could have launched the task before the guard is set. Consider the following code
+<blockquote>
+  <p><strong><em>Caution:</em></strong> The <code>ifTrue</code> and <code>unless</code> functions should not be used on the result of the scheduling functions.
+Indeed, if you call these two function on the value replied by <code>execute</code> for example, the execution platform
+could have launched the task before the guard is set. Consider the following code</p>
 
-```sarl
-execute [ doSomething ].unless [ myVar &gt; 5 ]
-```
+  <pre><code class="language-sarl">			execute [ doSomething ].unless [ myVar &gt; 5 ]
 
+</code></pre>
+</blockquote>
 
-The call to `execute` is done before the call to `unless`. It means that the execution platform could have
-already checked if a guard is assosiated and `true`, before the `unless` function sets the guard.</caution>
+<blockquote>
+
+  <p>The call to <code>execute</code> is done before the call to <code>unless</code>. It means that the execution platform could have
+already checked if a guard is assosiated and <code>true</code>, before the <code>unless</code> function sets the guard.</p>
+</blockquote>
 
 <p>The best practice for setting the task guards is to create a task, set the guard, and execute the task:</p>
 
@@ -549,7 +542,6 @@ myTask.execute [ doSomething ]
 <p>The replied collection is unmodifiable and contains the names of the active tasks.</p>
 
 <p>Example:</p>
-
 <pre><code class="language-sarl">for (taskName : getActiveTasks) {
 	info("Active task: " + taskName)
 }
@@ -561,7 +553,7 @@ myTask.execute [ doSomething ]
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -671,9 +663,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

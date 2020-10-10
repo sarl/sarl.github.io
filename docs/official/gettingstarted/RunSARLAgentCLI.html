@@ -117,17 +117,17 @@ This document explains how to launch an agent on the
 <p>For launching an agent, you must launch the command-line tool with the fully-qualified
 name of the agent as parameter, <code>myapp.MyAgent</code> in the following example.</p>
 
-<pre><code>janus myapp.MyAgent
+<pre><code class="language-text">janus myapp.MyAgent
 </code></pre>
 
 <p>The janus command-line tool provides options that will enable you to tune the launching configuration:</p>
 
-<pre><code>janus --help
+<pre><code class="language-text">janus --help
 </code></pre>
 
 <p>One of the command-line options that is usually mandatory is the –jar option, which enables you to specify the jar files that contains your application:</p>
 
-<pre><code>janus --jar path/to/myapp.jar myapp.MyAgent
+<pre><code class="language-text">janus --jar path/to/myapp.jar myapp.MyAgent
 </code></pre>
 
 <p>If the <code>janus</code> script indicates to you an error “agent not found”, most of the time it is because your application’s jar file is not on the class path.
@@ -142,7 +142,7 @@ boot class in a Java Virtual Machine.</p>
 
 <p>The typical command line is:</p>
 
-<pre><code>java -cp app.jar io.sarl.sre.boot.Boot
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.boot.Boot
 </code></pre>
 
 <p>The option <code>-cp</code> specifies the Jar file that contains
@@ -155,15 +155,18 @@ The last argument is the fully qualified name of the booting class of Janus: <co
 <p>The example given in the previous section causes an error. Indeed, it is mandatory to
 specify the fully qualified name of the agent to launch:</p>
 
-<pre><code>java -cp app.jar io.sarl.sre.boot.Boot myapp.MyAgent
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.boot.Boot myapp.MyAgent
 </code></pre>
 
-<veryimportant>The Janus platform allows to start only one agent from the command line.
-If you want to start a collection of agents, you must select one of the following approaches:
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> The Janus platform allows to start only one agent from the command line.
+If you want to start a collection of agents, you must select one of the following approaches:</p>
 
-* launch a separate Janus platform instance for each agent, or
-* launch an agent that is spawning the other agents.
-</veryimportant>
+  <ul>
+    <li>launch a separate Janus platform instance for each agent, or</li>
+    <li>launch an agent that is spawning the other agents.</li>
+  </ul>
+</blockquote>
 
 <h3 id="23-what-is-appjar">2.3. What is app.jar?</h3>
 
@@ -174,7 +177,7 @@ contained into the <code>app.jar</code> file.</p>
 that is containing all the jar files required for running your application, including
 the Janus jar file(s):</p>
 
-<pre><code>java -cp /path/to/myapplication.jar:/path/to/io.janusproject.kernel-&lt;version&gt;-with-dependencies.jar io.sarl.sre.boot.Boot myapp.MyAgent
+<pre><code class="language-text">java -cp /path/to/myapplication.jar:/path/to/io.janusproject.kernel-&lt;version&gt;-with-dependencies.jar io.sarl.sre.boot.Boot myapp.MyAgent
 </code></pre>
 
 <p>The <code>io.janusproject.kernel-&lt;version&gt;-with-dependencies.jar</code> file may be dowloaded from the <a href="http://www.janusproject.io/">Janus website</a></p>
@@ -186,7 +189,7 @@ the Janus jar file(s):</p>
 <p>The Janus platform provides a collection of command line options.
 For obtaining the list of these options, you should type:</p>
 
-<pre><code>java -cp app.jar io.sarl.sre.boot.Boot --help
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.boot.Boot --help
 </code></pre>
 
 <h2 id="3-use-maven-execution-plugin">3. Use Maven Execution Plugin</h2>
@@ -201,7 +204,7 @@ you may use the Maven execution plugin for classing this booting class.</p>
 
 <p>The typical command line is:</p>
 
-<pre><code>mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot"
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot"
 </code></pre>
 
 <p>The option <code>-Dexec.executable</code> specifies the Java executable.</p>
@@ -216,23 +219,26 @@ replaced by the Maven plugin.</p>
 Indeed, it is mandatory to specify the fully qualified name
 of the agent to launch:</p>
 
-<pre><code>mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot &lt;qualified_name_of_the_agent&gt;"
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot &lt;qualified_name_of_the_agent&gt;"
 </code></pre>
 
-<veryimportant>The Janus platform allows to start only one agent from the command line.
+<blockquote>
+  <p><strong><em>Very Important Note:</em></strong> The Janus platform allows to start only one agent from the command line.
 If you want to start a collection of agents, you must select
-one of the following approaches:
+one of the following approaches:</p>
 
-* launch a separate Janus platform instance for each agent, or
-* launch an agent that is spawning the other agents.
-</veryimportant>
+  <ul>
+    <li>launch a separate Janus platform instance for each agent, or</li>
+    <li>launch an agent that is spawning the other agents.</li>
+  </ul>
+</blockquote>
 
 <h3 id="33-janus-command-line-options">3.3. Janus Command Line Options</h3>
 
 <p>The Janus platform provides a collection of command line options.
 For obtaining the list of these options, you should type:</p>
 
-<pre><code>mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot --help"
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.boot.Boot --help"
 </code></pre>
 
 <h2 id="4-whats-next">4. What’s next?</h2>
@@ -247,7 +253,7 @@ For obtaining the list of these options, you should type:</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -357,9 +363,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

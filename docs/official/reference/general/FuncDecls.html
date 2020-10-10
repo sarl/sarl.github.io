@@ -102,10 +102,12 @@ in top-level features, such as <code>agent</code>.</p>
 
 <p>The standard function declaration follows the following syntax:</p>
 
-<pre><code>def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
+<pre><code class="language-text">def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
 </code></pre>
 
-<note>The parameters are implicitly declared with the keyword `val` so are read-only.</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> The parameters are implicitly declared with the keyword <code>val</code> so are read-only.</p>
+</blockquote>
 
 <p>The following code gives examples of function declarations:</p>
 
@@ -154,9 +156,11 @@ it is better to let a method further down the call stack handle the exception.</
 <p>If a function doesn’t catch the checked exceptions that can occur within
 it, the function may specify that it can throw these exceptions.</p>
 
-<note>This specification is optional since the SARL compiler determines the
+<blockquote>
+  <p><strong><em>Note:</em></strong> This specification is optional since the SARL compiler determines the
 exceptions that are not catched, and assumes that they are implicitly
-thrown outside the function.</note>
+thrown outside the function.</p>
+</blockquote>
 
 <p>The declaration of the thrown exceptions is done with the 
 <code>throws</code> keyword, followed by a list of thrown exception types.
@@ -191,7 +195,9 @@ generic functions:</p>
 
 <p>A generic method’s body is declared like that of any other method.</p>
 
-<note>Type parameters can represent only reference types, not primitive types (like `int`, `double` and `char`).</note>
+<blockquote>
+  <p><strong><em>Note:</em></strong> Type parameters can represent only reference types, not primitive types (like <code>int</code>, <code>double</code> and <code>char</code>).</p>
+</blockquote>
 
 <p>Two syntaxes are allowed for defining the type parameters of the actions: the <code>with</code> syntax, and the bracket syntax.</p>
 
@@ -290,9 +296,11 @@ the action can skip passing a value for the corresponding argument.
 And, when the function is called, the default value is given to the
 skipped argument.</p>
 
-<importantnote> In SARL, if a formal parameter has a default value, the following formal
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> In SARL, if a formal parameter has a default value, the following formal
 parameters do not need to have default values as well. This is a major
-difference with the default values in other languages, such as C++.</importantnote>
+difference with the default values in other languages, such as C++.</p>
+</blockquote>
 
 <pre><code class="language-sarl">// Function with one parameter with a default value.
 def action1(v : int = 5) {
@@ -383,7 +391,7 @@ Client code always binds to the synthesized dispatcher method.</p>
 
 <p>In the example, the calls to the <code>getType</code> functions produces the output:</p>
 
-<pre><code>it's a number
+<pre><code class="language-text">it's a number
 it's an int
 it's a string
 </code></pre>
@@ -542,7 +550,7 @@ def myFunction() : int {
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -652,9 +660,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>

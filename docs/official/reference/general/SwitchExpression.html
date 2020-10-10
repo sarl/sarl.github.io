@@ -86,10 +86,12 @@ to change the control flow of program execution via a multiway branch.</p>
 and an unstructured switch, as in C, which functions as a type of goto.
 ** The SARL language uses structured switchs. **</p>
 
-<importantnote>The switch expression is very different from Java's switch statement. The use of switch is
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> The switch expression is very different from Java’s switch statement. The use of switch is
 not limited to certain values, but can be used for any object reference.
-The operator `==` or its Java-equivalent `Object.equals(Object)` are
-used to compare the value in the case with the one you are switching over.</importantnote>
+The operator <code>==</code> or its Java-equivalent <code>Object.equals(Object)</code> are
+used to compare the value in the case with the one you are switching over.</p>
+</blockquote>
 
 <h2 id="1-switch-cases">1. Switch Cases</h2>
 
@@ -115,8 +117,10 @@ statement in SARL.</p>
 <p>The main expression, i.e. the parameter of <code>switch</code> can also be a computed value instead 
 of a field or variable.</p>
 
-<importantnote>A case must contains an expression. If you want to do nothing
-for a given case, put an empty block after the colon character.</importantnote>
+<blockquote>
+  <p><strong><em>Important Note:</em></strong> A case must contains an expression. If you want to do nothing
+for a given case, put an empty block after the colon character.</p>
+</blockquote>
 
 <h2 id="2-default-case">2. Default Case</h2>
 
@@ -168,7 +172,7 @@ String : "a string."
 have all of them share the same then part.</p>
 
 <p>In the following example, the value <code>a string</code> is replied if one of the two first cases matches.
-Otherwisen, the value associated to the default case is used.</p>
+Otherwise, the value associated to the default case is used.</p>
 
 <pre><code class="language-sarl">switch myString {
 case myString.length==5,
@@ -189,7 +193,7 @@ default: "Default"
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-08-21</li>
+  <li>Release: 2020-10-10</li>
 </ul>
 
 <blockquote>
@@ -299,9 +303,9 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <div class="well well-sm">
       <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
       <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
         <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
-        <li><a href="http://www.gitia.org" target="_blank"><i class="fa-li fa fa-university"></i>GITIA - FRT - UTN</a></li>
-        <li><a href="http://www.multiagent.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - LE2I - UBFC</a></li>
       </ul>
       </div> 
     </div>
