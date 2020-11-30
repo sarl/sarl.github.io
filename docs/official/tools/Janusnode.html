@@ -12,7 +12,7 @@ Considering the variety of existing approaches and meta-models in the field of a
     <link rel="icon" href="../../../images/favicon.ico" />
     <link rel="shortcut icon" href="../../../images/favicon.ico">
 
-    <title>SARL Command-line Compiler</title>
+    <title>Janus Command-line Launcher with Network Support</title>
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
@@ -65,37 +65,74 @@ Considering the variety of existing approaches and meta-models in the field of a
 			alt="Fork me on GitHub"
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 		
-      <h1 id="sarl-command-line-compiler">SARL Command-line Compiler</h1>
+      <h1 id="janus-command-line-launcher-with-network-support">Janus Command-line Launcher with Network Support</h1>
 
 <ul class="page_outline" id="page_outline">
 
-<li><a href="#1-usage">1. Usage</a></li>
-<li><a href="#2-command-line-options">2. Command-Line Options</a></li>
-<li><a href="#3-legal-notice">3. Legal Notice</a></li>
+<li><a href="#1-basics-of-the-networking-feature">1. Basics of the Networking Feature</a></li>
+<li><a href="#2-usage">2. Usage</a></li>
+<li><a href="#3-command-line-options">3. Command-Line Options</a></li>
+<li><a href="#4-list-of-errors-and-warnings">4. List of Errors and Warnings</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
 
 </ul>
 
-<p>A command-line compiler is a tool that could be invoked from the command-line shell in order to compiler a language source file.
-<code>sarlc</code> is the command-line compiler for the SARL language.</p>
+<p><a href="http://www.janusproject.io">Janus</a> is the default SARL Run-time Environment (SRE).
+Its role is to provide all the libraries and plugins that are needed for running SARL agents.</p>
 
-<h2 id="1-usage">1. Usage</h2>
+<p>The <a href="./Janus.html"><code>janus</code></a> tool is the base command-line tool for launching the SRE.
+But, it does not provide a support for exchaning events over a computer
+network. If you would like to have benefit of this feature, you should use one of the following
+methods:</p>
 
-<p>The <code>sarlc</code> tool takes arguments:</p>
+<ol>
+  <li>Add on the classpath of the <code>janus</code> command a library that includes the networking feature to the SRE; or</li>
+  <li>Use the version of the SRE that already includes the standard network feature: <code>janusnode</code>.</li>
+</ol>
 
-<pre><code class="language-text">sarlc [OPTIONS] &lt;source folder&gt;...
+<p>The <code>janusnode</code> is explained on this page.</p>
+
+<h2 id="1-basics-of-the-networking-feature">1. Basics of the Networking Feature</h2>
+
+<p>Basically, the networking feature of the SRE enables you to launch instances of the Janus kernel on different
+computers, and exchange events between these instances.</p>
+
+<p>In order to implement this feature, the <a href="http://www.hazelcast.com">Hazelcast</a> library is used.
+Hazelcast is an open source in-memory data grid based on Java. In a Hazelcast grid, data is
+evenly distributed among the nodes of a computer cluster, allowing for horizontal scaling of
+processing and available storage. Backups are also distributed among nodes to protect against
+failure of any single node.</p>
+
+<p>In addition to the data-sharing and efficient communication means, Hazelcast provides the ability
+to build the node network automatically. Each Hazelcast node that is associated to a given cluster
+name is <em>connected automatically</em> to the other nodes in the same cluster on the local network.
+It means that you do not need to provide a network configuration to the <code>janusnode</code> tool.</p>
+
+<h2 id="2-usage">2. Usage</h2>
+
+<p>The <code>janusnode</code> tool takes arguments:</p>
+
+<pre><code class="language-text">janusnode [OPTIONS] &lt;agent_fully_qualified_name&gt;
 </code></pre>
 
-<p>The <code>sarlc</code> tool takes at least one <code>source folder</code> from which the SARL files are read.</p>
+<p>The <code>agent_fully_qualified_name</code> is the name of the agent to launch. This name is equal to the
+fully qualified name of the agent’s type.</p>
 
-<p>You could change the behavior of the <code>sarlc</code> compiler with the command-line options.
+<p><span class="label label-info">Note</span> Janus enables to launch only one agent from the command-line shell. If you want to launch more than one agent, you should launch a first agent, which will create the other agents.</p>
+
+<p>You could change the behavior of the <code>janusnode</code> tool with the command-line options.
 For obtaining a list of the options, type:</p>
 
-<pre><code class="language-text">sarlc -h
+<pre><code class="language-texts">janusnode -help
 </code></pre>
 
-<h2 id="2-command-line-options">2. Command-Line Options</h2>
+<h2 id="3-command-line-options">3. Command-Line Options</h2>
 
-<p>The complete list of the options is:</p>
+<p>The Janus framework provides options on the command-line.
+The list of the options is displayed below. This list includes
+all the standard modules of Janus, and the networking features.
+If you add an extra module into the classpath of your application,
+more options may become available.</p>
 
 <table>
   <thead>
@@ -106,12 +143,20 @@ For obtaining a list of the options, type:</p>
   </thead>
   <tbody>
     <tr>
-      <td>-b path<br />–boot-classpath=path</td>
-      <td>Cross-compiles against the specified set of boot classes. As with the user class path, boot class path entries are separated by colons (:) and can be directories, JAR archives, or ZIP archives.</td>
+      <td>–agent-spawns-per-thread=number</td>
+      <td>Specify the maximal number of agent spawns that must be supported by a single thread into the life-cycle service; Default is 128.</td>
+    </tr>
+    <tr>
+      <td>–async-probe-update={true|false}</td>
+      <td>Specify if the probe service should update asynchronously the probed values, or not; Default is true.</td>
+    </tr>
+    <tr>
+      <td>-b method<br />–boot-type=method</td>
+      <td>Specify the method for selecting the identifier of the default context; The possible values are default, random, boot_agent_name; Default is ‘default’.</td>
     </tr>
     <tr>
       <td>–classpath=path</td>
-      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARLC_CLASSPATH environment variable. If neither SARLC_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SRE_CLASSPATH environment variable. If neither SRE_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
     </tr>
     <tr>
       <td>–config=yaml_location</td>
@@ -119,47 +164,19 @@ For obtaining a list of the options, type:</p>
     </tr>
     <tr>
       <td>–cp=path</td>
-      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SARLC_CLASSPATH environment variable. If neither SARLC_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the SRE_CLASSPATH environment variable. If neither SRE_CLASSPATH, –cp nor –classpath is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
     </tr>
     <tr>
-      <td>-d directory_name<br />–directory=directory_name</td>
-      <td>Sets the destination directory for Java source files that are generated from the SARL files. The directory must already exist because sarlc does not create it. If a SARL declaration is part of a package, then sarlc puts the Java source file in a subdirectory that reflects the package name and creates directories as needed. If the –directory option is not specified, then sarlc assumes src/main/generated-sources/sarl.</td>
+      <td>-d uuid<br />–default-space-id=uuid</td>
+      <td>Specify the identifier (UUID) of the default space into the root context; Default is 7ba8885d-545b-445a-a0e9-b655bc15ebe0.</td>
     </tr>
     <tr>
-      <td>-e [encoding]<br />–encoding[=encoding]</td>
-      <td>Sets the source file encoding name, such as EUC-JP and UTF-8. If the –encoding option is not specified, then the platform default converter is used.</td>
+      <td>-e {reflect, polymorphic}<br />–event-bus={reflect, polymorphic}</td>
+      <td>Specify the type of event bus to create for each agent; Default is reflect.</td>
     </tr>
     <tr>
-      <td>–generate-clones[=true|false]</td>
-      <td>Specifies if the clone functions should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–generate-equality-tests[=true|false]</td>
-      <td>Specifies if the equality tests should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–generate-inlines[=true|false]</td>
-      <td>Specifies if the @Inline annotations should be generated; default is false.</td>
-    </tr>
-    <tr>
-      <td>–generate-pures[=true|false]</td>
-      <td>Specifies if the @Pure annotations should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–generate-serials[=true|false]</td>
-      <td>Specifies if the serial identifiers should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–generate-tostring[=true|false]</td>
-      <td>Specifies if the toString functions should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–generatemarkdownhelp</td>
+      <td>-g<br />–generatemarkdownhelp</td>
       <td>Prints the list of the command-line options using a Markdown table.</td>
-    </tr>
-    <tr>
-      <td>–generator=identifiers</td>
-      <td>Enables extra-language generators. The parameter is a list of identifiers of the generators to turn on, separated by ‘:’. See the option -G for printing out the list of the available generators.</td>
     </tr>
     <tr>
       <td>-h<br />–help</td>
@@ -170,72 +187,72 @@ For obtaining a list of the options, type:</p>
       <td>Prints information about application modules and their configuration options.</td>
     </tr>
     <tr>
-      <td>–java-compiler[=none|ecj|javac]</td>
-      <td>Specifies the Java compiler to be run; default is ecj.</td>
+      <td>–inject-agents={true|false}</td>
+      <td>Specify if the agents should be injected with field values by the SRE; Default is false.</td>
     </tr>
     <tr>
-      <td>–java-source[=version]</td>
-      <td>Specifies the Java version of the Java source code that is accepted, and of the Java class files for targeting a specific release of the Java virtual machine. Java class files will run on the specified target and on later releases, but not on earlier releases of the Java virtual machine. Provided version must be greater than or equal to 1.8, and strictly lower than 15.</td>
+      <td>–internal-error-log-level=level</td>
+      <td>Specify the logging level for the internal errors within the parallel executors; Default is: all.</td>
     </tr>
     <tr>
-      <td>–json</td>
+      <td>-j<br />–json</td>
       <td>When present, the output of the configuration has the Json format.</td>
+    </tr>
+    <tr>
+      <td>-k duration<br />–keep-alive=duration</td>
+      <td>Specify the duration in seconds during which a thread is staying alive even if there is not task to be run; After this duration, iddle threads are destroyed by the SRE; Default value is 60.</td>
     </tr>
     <tr>
       <td>-l level<br />–log=level</td>
       <td>Specifies the level of logging of the application. This log level could be also controlled by setting the environment variable LOG_LEVEL. If neither LOG_LEVEL nor –log is specified, then the default log level set to info is used. The accepted values are: off, error/critical/severe, warning, info, config, fine, debug/finer, finest, all.</td>
     </tr>
     <tr>
-      <td>-m path<br />–modulepath=path</td>
-      <td>Specifies where to find module class files, and source files. This module path overrides the user module path in the SARLC_MODULEPATH environment variable. If neither SARLC_MODULEPATH, –p nor –modulepath is specified, then the user module path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user module path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>–max-threads=number</td>
+      <td>Specify the maximal number of threads that could be created by the SRE; Default is 512.</td>
     </tr>
     <tr>
-      <td>-o directory_name<br />–outputdir=directory_name</td>
-      <td>Sets the destination directory for class files. The directory must already exist because sarlc does not create it. If a class is part of a package, then sarlc puts the class file in a subdirectory that reflects the package name and creates directories as needed. If the –outputdir option is not specified, then sarlc assumes target/classes.</td>
+      <td>–min-threads=number</td>
+      <td>Specify the minimal number of threads that should be created by the SRE; Default is 0.</td>
     </tr>
     <tr>
-      <td>-p path</td>
-      <td>Specifies where to find module class files, and source files. This module path overrides the user module path in the SARLC_MODULEPATH environment variable. If neither SARLC_MODULEPATH, –p nor –modulepath is specified, then the user module path is built upon the source folders, the generated file folders, and the standard SARL libraries. If a user module path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>–name=name</td>
+      <td>Specify the name of the program that is shown into the logs for example; Default is ‘SARL Run-time Environment’.</td>
     </tr>
     <tr>
-      <td>-G<br />–print-generators</td>
-      <td>Prints the list of the available extra-language generators.</td>
+      <td>–network=true|false</td>
+      <td>Specifies if the networking features of the SRE are enabled or disabled. If the given value is “true”, the features are enable. If the given value is “false”, the features are disable. The value could also be changed with the SRE_NETWORK_ENABLE environment variable. The default value for the enabling flag is true.</td>
+    </tr>
+    <tr>
+      <td>–no-agent</td>
+      <td>Start the SRE without agent at boot time. In this case, the fully qualified name that may be provided on the command line is simply ignored. Agents should be spawned later by calling the programmatic API of the SRE.</td>
     </tr>
     <tr>
       <td>-C<br />–printconfig</td>
       <td>Print the current configuration. The output format is Yaml by default. See –json for a Json output, and –xml for a XML output.</td>
     </tr>
     <tr>
-      <td>–progress[=val]</td>
-      <td>Prints the progress bar on the console.</td>
+      <td>-r uuid<br />–root-context-id=uuid</td>
+      <td>Specify the identifier (UUID) of the root context; Default is 2c38fb7f-f363-4f6e-877b-110b1f07cc77.</td>
     </tr>
     <tr>
-      <td>-t directory_name<br />–tempdir=directory_name</td>
-      <td>Directory in which the temporary files will be generated during the compilation process.</td>
+      <td>–service-start-timeout=timeout</td>
+      <td>Specify the timeout for waiting a service to be started (in milliseconds); A value equal to zero means that the SRE waits for ever; Default is 0.</td>
+    </tr>
+    <tr>
+      <td>–service-stop-timeout=timeout</td>
+      <td>Specify the timeout for waiting a service to be stopped (in milliseconds); A value equal to zero means that the SRE waits for ever; Default is 10 000.</td>
+    </tr>
+    <tr>
+      <td>–thread-purge={true|false}</td>
+      <td>Specify if the executor service is periodically purging the thread pools; Default is: true.</td>
+    </tr>
+    <tr>
+      <td>–thread-timeout=timeout</td>
+      <td>Specify the numbers of seconds that the SRE is waiting for thread terminations before timeout; Default is: 30.</td>
     </tr>
     <tr>
       <td>-v<br />–version</td>
       <td>Prints release information.</td>
-    </tr>
-    <tr>
-      <td>–wall</td>
-      <td>Specifies if all the warnings are printed out.</td>
-    </tr>
-    <tr>
-      <td>–werror</td>
-      <td>Terminates compilation when warnings occur.</td>
-    </tr>
-    <tr>
-      <td>–wnone</td>
-      <td>Specifies if all the warnings are ignored.</td>
-    </tr>
-    <tr>
-      <td>–write-storages[=true|false]</td>
-      <td>Specifies if the storage files should be generated; default is true.</td>
-    </tr>
-    <tr>
-      <td>–write-traces[=true|false]</td>
-      <td>Specifies if the trace files should be generated; default is true.</td>
     </tr>
     <tr>
       <td>-x<br />–xml</td>
@@ -244,7 +261,12 @@ For obtaining a list of the options, type:</p>
   </tbody>
 </table>
 
-<h2 id="3-legal-notice">3. Legal Notice</h2>
+<h2 id="4-list-of-errors-and-warnings">4. List of Errors and Warnings</h2>
+
+<p>The list of error and warning messages that may be generated by Janus are provided on the
+help page of the <a href="./Janus.html">main command-line tool</a>.</p>
+
+<h2 id="5-legal-notice">5. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>

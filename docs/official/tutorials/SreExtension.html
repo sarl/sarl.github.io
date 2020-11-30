@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Creating an extension for the Janus SRE</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="creating-an-extension-for-the-janus-sre">Creating an extension for the Janus SRE</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-janus-framework">1. Janus Framework</a></li>
+<li><a href="#2-bootique">2. Bootique</a></li>
+<li><a href="#3-creating-an-extension-step-by-step">3. Creating an extension step-by-step</a></li>
+<ul>
+  <li><a href="#31-select-the-modules-from-janus">3.1. Select the modules from Janus</a></li>
+  <li><a href="#32-write-the-extension-code">3.2. Write the extension code</a></li>
+  <li><a href="#33-determine-the-injection-module">3.3. Determine the injection module</a></li>
+  <li><a href="#34-write-a-module-for-the-new-injection">3.4. Write a module for the new injection</a></li>
+  <li><a href="#35-write-a-bootique-module-provider">3.5. Write a Bootique module provider</a></li>
+  <li><a href="#36-define-the-bootique-module-provider-as-java-service">3.6. Define the Bootique module provider as Java service</a></li>
+  <li><a href="#37-add-the-library-in-the-classpath">3.7. Add the library in the classpath</a></li>
+</ul>
+<li><a href="#4-adding-configuration">4. Adding configuration</a></li>
+<ul>
+  <li><a href="#41-bootique-configuration-in-short">4.1. Bootique configuration in short</a></li>
+  <li><a href="#42-create-a-configuration-object">4.2. Create a configuration object</a></li>
+  <li><a href="#43-injecting-a-configuration-on-demand">4.3. Injecting a configuration on demand</a></li>
+</ul>
+<li><a href="#5-mapping-a-configuration-attribute-to-an-environment-variable">5. Mapping a configuration attribute to an environment variable</a></li>
+<li><a href="#6-mapping-a-configuration-attribute-to-a-command-line-option">6. Mapping a configuration attribute to a command-line option</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+
+</ul>
+
+<p>This document describes the basics of the extension of the Janus run-time environment (SRE).
+Before reading this document, it is recommended reading
+the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a>.</p>
+
+<p><span class="label label-danger">Caution</span> This tutorial will use the syntax of the SARL programming language for illustration. However, you could define your extension with any programming language that is compatible with Java, e.g. <a href="http://www.scala-lang.org/">Scala</a> or <a href="https://kotlinlang.org/">Kotlin</a>.</p>
+
+<h2 id="1-janus-framework">1. Janus Framework</h2>
+
+<p><a href="http://www.sarl.io/runtime/janus/index.html">Janus</a> is an open-source multi-agent platform fully implemented in SARL. 
+Janus could be used as an agent-oriented platform, an organizational platform, and/or an holonic platform. 
+It also natively manages the concept of recursive agents and holons.
+Janus platform was initially published during the 2007-2008 period as a pure Java framework. Since 2014, Janus is fully reimplemented to
+support the SARL Agent-Oriented Programming Language. And since 2020, it is fully re-implemented using the SARL language.</p>
+
+<p>Janus implementation follows the standards of software engineering as much as possible. Basically, the key
+implementation choices of Janus that are under interest in this tutorial are:</p>
+<ol>
+  <li><a href="http://www.fipa.org/repository/standardspecs.html"><em>Microkernel architecture</em></a>: Janus implementation is based on a microkernel that provides the key features of an agent framework, and that could be easily extended. The key features are implemented as services.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Service-oriented_architecture"><em>Service-based architecture</em></a>: The main features of the Janus framework are implemented as services, e.g. context management, agent lifecycle, logging, etc.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Dependency_injection"><em>Dependency Injection</em></a>: Modules (and services) are injected into the using objects with <a href="https://github.com/google/guice">Google Guice</a>. It provides support for dependency injection using annotations to configure Java objects. Dependency injection is a design pattern whose core principle is to separate behavior from dependency resolution.</li>
+</ol>
+
+<p>Before starting to create an extension for Janus, you have to be sure you have understood these key implementation choices.</p>
+
+<h2 id="2-bootique">2. Bootique</h2>
+
+<p><a href="http://bootique.io">Bootique</a> is a platform for building container-less runnable Java applications.
+It is designed for microservices (but not limited to), as it allows you to create a fully-functional application with minimal-to-no setup.
+Unlike traditional container-based applications, Bootique allows you to control your <code>main()</code> method and create Java applications that behave
+like simple executable commands. Each Bootique application can be started with a (YAML) configuration, or configured with shell
+variables and is ideally suited for Docker and cloud deployments.</p>
+
+<p>Compared to other products, Bootique has a focus on modularity and clean pluggable architecture.
+It is built on top of a <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection container</a>
+(<a href="https://github.com/google/guice">Google Guice</a>), and pretty much anything in Bootique can be customized/overridden.</p>
+
+<p><em>Why is Bootique used into Janus?</em>
+As described above, the features of bootique enables the define and <em>override</em> injected modules with less effort.
+Moreover, the Bootique enables to define complex (almost complete) configuration parameters that could be
+changed from a YAML file, Java properties, environment variables and command-line options.
+Finally, Bootique helps to define specific commands that could be started from the command-line
+For all these reasons, Bootique was included into Janus.</p>
+
+<h2 id="3-creating-an-extension-step-by-step">3. Creating an extension step-by-step</h2>
+
+<p>This section explains how to create step-by-step an extension to Janus.
+In order to create an Janus extension, the following steps could be followed.</p>
+
+<h3 id="31-select-the-modules-from-janus">3.1. Select the modules from Janus</h3>
+
+<p>For creating a Janus extension, even more complex than the one explained in this tutorial, you should study and understood
+the implementation of Janus in order to select the best module to override for your purpose.</p>
+
+<p>For matter of simplicity in this tutorial, the logging service of Janus is chosen for illustrating the extension.
+The type that is defined in Janus for representing the logging service is <code>LoggingService</code>.</p>
+
+<h3 id="32-write-the-extension-code">3.2. Write the extension code</h3>
+
+<p>After selecting the modules to be extended, you should write your code:</p>
+
+<pre><code class="language-sarl">package mypackage
+import io.sarl.sre.services.logging.LoggingService
+import com.google.common.util.concurrent.AbstractService
+
+class MyLoggingService extends AbstractService implements LoggingService {
+	val platformLogger = new MyLogger
+	var kernelLogger : MyLogger
+	override getPlatformLogger : Logger {
+		this.platformLogger
+	}
+	override getKernelLogger : Logger {
+		if (this.kernelLogger === null) {
+			this.kernelLogger = new MyLogger(this.platformLogger)
+		}
+		return this.kernelLogger
+	}
+	override getKernelModuleLogger(moduleName : String) : Logger {
+		return new MyLogger(moduleName, getKernelLogger)
+	}
+	override createAgentLogger(name : String, initialLevel : Level) : Logger {
+		val log = new MyLogger(name, this.platformLogger)
+		if (initialLevel !== null) {
+			log.level = initialLevel
+		}
+		return log
+	}
+	
+	override doStart {
+	}
+	override doStop {
+	}
+}
+</code></pre>
+
+<p>In the previous code, the type <code>MyLogger</code> is defined as an implementation of the JUL logger.
+The contruction takes as optional argument the name of the logger, and as mandatory argument the parent logger.</p>
+
+<p>Three functions must be defined in your own implementation of the logging system, namely <code>MyLoggingService</code>:</p>
+
+<ul>
+  <li><code>getPlatformLogger</code>: replies the root logger of all the loggers of the SRE.</li>
+  <li><code>getKernelLogger</code>: replies the logger that is dedicated to the SRE kernel.</li>
+  <li><code>getKernelModuleLogger</code>: replies the logger that is dedicated to a module of the SRE kernel. The argument of the function is the kernel module’s name to be used when displaying the messages.</li>
+  <li><code>createAgentLogger</code>: create the logger for the agent with the given name. The second parameter permits to control the verbosity of the logger.</li>
+</ul>
+
+<p><span class="label label-info">Note</span> In the previous code, the interface <code>LoggingService</code> is directly implemented. It is also possible to extend a class that is defined into the Janus code and implemeting this interface in order to have benefit of existing code.</p>
+
+<h3 id="33-determine-the-injection-module">3.3. Determine the injection module</h3>
+
+<p>According to the architecture of Janus, the modules are injected into the Java objects that depend on these modules.</p>
+
+<p>It is then mandatory to determine:</p>
+
+<ol>
+  <li>where the injection is defined, i.e. in which injection module, and</li>
+  <li>how the injection is defined, i.e. the binded types.</li>
+</ol>
+
+<p>In Janus, the modules are defined into the package <code>io.sarl.sre.boot.internal</code>, or one of its sub-packages.
+The module that corresponds to the logging system is defined in the class <code>io.sarl.sre.boot.internal.services.LoggingServiceModule</code>.
+The definition of this module is close to:</p>
+
+<pre><code class="language-sarl">package mypackage
+import com.google.inject.AbstractModule
+import io.sarl.sre.services.logging.LoggingService
+
+class LoggingServiceModule extends AbstractModule {
+	override configure {
+		typeof(LoggingService).bind.to(typeof(JanusLoggingService)).asEagerSingleton
+	}
+}
+</code></pre>
+
+<p>The key principle of the injection definition is the type binding: each time a type A needs to be injected, the injector creates an instance of the binded type B, e.g. with the code <code>A.bind(B)</code>.
+In the previous code, the type <code>LoggingService</code> that should be injected is binded to an instance of type <code>JanusLoggingService</code>, that is a Janus-internal definition of the logging service.
+The function <code>asEagerSingleton</code> forces the injection engine to create the single instance, and no more.</p>
+
+<h3 id="34-write-a-module-for-the-new-injection">3.4. Write a module for the new injection</h3>
+
+<p>Now you have determined the original injection module and definition, you could define your own module and injection for your extension.
+The following code is the definition of the injection module that binds the <code>LoggingService</code> to the new implementation of the logging service.</p>
+
+<pre><code class="language-sarl">package mypackage
+import com.google.inject.AbstractModule
+import io.sarl.sre.services.logging.LoggingService
+
+class MyLoggingServiceModule extends AbstractModule {
+	override configure {
+		typeof(LoggingService).bind.to(typeof(MyLoggingService)).asEagerSingleton
+	}
+}
+</code></pre>
+
+<h3 id="35-write-a-bootique-module-provider">3.5. Write a Bootique module provider</h3>
+
+<p>As explained previously, the Bootique library is used for enabling the overriding of the injection definitions.
+The API of this library imposes to define a specific provider for the module in your extension. This provider has the role to:</p>
+
+<ol>
+  <li>Define name and the documentation of the extension.</li>
+  <li>Create the configuration binding.</li>
+  <li>Define the overriding of the module.</li>
+  <li>Create the associated injection module on demand.</li>
+</ol>
+
+<p>This provider has a central role into the Bootique architecture. Without this provider, it is impossible to
+include an extension into your application.</p>
+
+<p>Therefore, the code of the Bootique provider is:</p>
+
+<pre><code class="language-sarl">package mypackage
+import io.sarl.sre.services.logging.LoggingService
+import io.bootique.BQModuleProvider
+import io.bootique.BQModule
+import com.google.inject.Module
+
+class MyLoggingServiceModuleProvider implements BQModuleProvider {
+	override moduleBuilder : BQModule.Builder {
+		BQModule::builder(module)
+			.providerName(name)
+			.description("This is my extension")
+			.overrides(overrides)
+	}
+	override module : Module {
+		new MyLoggingServiceModule
+	}
+	override overrides : Collection&lt;Class&lt;? extends Module&gt;&gt; {
+		#[JanusLoggingService]
+	}
+}
+</code></pre>
+
+<p>The function <code>moduleBuilder</code> is the first of the mandatory functions to be defined into the provider.
+It replies a factory for the Bootique module. This factory is built with the function <code>builder</code>
+that takes the injection module instance (replied by the second function to be defined).
+Then, it is possible to specify more attributes for the Bootique module, such as:</p>
+
+<ul>
+  <li>The name of the provider with the function <code>providerName</code> that takes the name of the module as argument. The function <code>name</code> replies this name. It already defined into the super type.</li>
+  <li>A description for the extension that is shown up into the help page of the application.</li>
+  <li>The specification of the overridden modules. The function <code>overrides</code> replies the list of the injection module typenames that are overridden by your extension. By default, this function replies an empty list.</li>
+</ul>
+
+<p>The function <code>module</code> must be defined for creating the instance of the injection module.</p>
+
+<p>The function <code>overrides</code> must reply the list of the module types that are overridden by the extension.</p>
+
+<p>To conclude this section, the builder that is created this class is used by the Bootique framework in order to create and include your extension into the application.</p>
+
+<h3 id="36-define-the-bootique-module-provider-as-java-service">3.6. Define the Bootique module provider as Java service</h3>
+
+<p>Defining the Bootique injection module provider, as in the previous section is not enough to enable Bootique to use your extension.
+Indeed, the Bootique must find your library dynamically on the application classpath.
+Java framework defines a standard for discovering new features on the classpath: the Java services.</p>
+
+<p><span class="label label-danger">Caution</span> the Java services are different than the SRE services. The first services are defined in order to extend your application dynamically (similar to plugins). The second services are designed to run the agents.</p>
+
+<p>It is almost easy to provide your Bootique module provider to the Bootique framework.
+Indeed a Bootique module provider is assimilated to a Java service, and could be declared according to this Java standard.</p>
+
+<p>There is two methods for declared a Java service: one for Java 8 and one for Java 9 and higher.</p>
+
+<p><strong>For Java 8:</strong> You must create a file into the folder <code>META-INF/services</code> with the name <code>io.bootique.BQModuleProvider</code> (that is the fully
+qualified name of the Bootique module provider class). Each line of this file contains the fully qualified name of an implementation of
+a Bootique module provider to be added to the application classpath. Therefore, you could add your own Bootique module provider in this file.
+The content of the file <code>META-INF/services/io.bootique.BQModuleProvider</code> becomes:</p>
+
+<pre><code>mypackage.MyLoggingServiceModuleProvider
+</code></pre>
+
+<p><strong>For Java 9 and higher:</strong> Since the introduction of the modules into the Java standards, you must declare the provided Java services
+in the file <code>module-info.java</code>:</p>
+
+<pre><code class="language-java">module mypackage.myextension {
+  requires bootique;
+  provides io.bootique.BQModuleProvider with mypackage.MyLoggingServiceModuleProvider;
+}
+</code></pre>
+
+<h3 id="37-add-the-library-in-the-classpath">3.7. Add the library in the classpath</h3>
+
+<p>Once you have written and compiled your extension in order to obtain the library file <code>myextension.jar</code>.
+For including your extension into the application, you have only to add the jar file in the classpath (or the module path).</p>
+
+<p>For example, running the Janus framework with your extension may be done with the following command line:</p>
+<pre><code>janus -cp myextension.jar myagent
+</code></pre>
+
+<h2 id="4-adding-configuration">4. Adding configuration</h2>
+
+<p>One of the interesting features of Bootique is its ability to define and manage configuration attributes.</p>
+
+<h3 id="41-bootique-configuration-in-short">4.1. Bootique configuration in short</h3>
+
+<p>Bootique modules obtain their configuration in a form of “factory objects”. The Bootique application configuration is multi-layered
+and roughly follows the sequence of “code - config files (contributed) - config files (CLI) - overrides”.
+“Code” is the default values that are provided in constructors of factory objects.
+Config files overlay those defaults with their own values. Config files can be either contributed in the code,
+or specified on the command line. Files is where the bulk of configuration usually stored. Finally config values may be
+further overridden via Java properties and/or environment variables.</p>
+
+<p>Format of configuration file can be either JSON or YAML. For simplicity we’ll focus on YAML format, but the two are
+interchangeable. Here is an example config file:</p>
+
+<pre><code class="language-yaml">log:
+  level: warn
+  appenders:
+    - type: file
+      logFormat: '%c{20}: %m%n'
+      file: target/logback/debug.log
+
+jetty:
+  context: /myapp
+  connectors:
+    - port: 12009
+</code></pre>
+
+<p>While not strictly required, as a rule the top-level keys in the file belong to configuration objects of individual modules.
+In the example above <code>log</code> subtree configures bootique-logback module, while <code>jetty</code> subtree configures bootique-jetty.</p>
+
+<h3 id="42-create-a-configuration-object">4.2. Create a configuration object</h3>
+
+<p>Bootique allows each module to read its specific configuration subtree as an object of the type defined in the module code.
+Very often such an object is written with a bunch of setters for configuration properties, and a factory method to produce
+create the root instance of the configuration tree.
+Here is an example configuration object:</p>
+
+<pre><code class="language-sarl">package mypackage
+
+class MyConfiguration {
+	/** 
+	 * Prefix for the configuration entries of the modules.
+	 */
+	public static val PREFIX = "myextension"
+	/** 
+	 * Name of a configuration property (with prefix).
+	 */
+	public static val PROP1_NAME = PREFIX + ".prop1"
+	/** 
+	 * Default value for the property.
+	 */
+	public static val DEFAULT_PROP1_VALUE = "default-value"
+	@Accessors(PUBLIC_GETTER)
+	var prop1 : String = DEFAULT_PROP1_VALUE
+	/** Change the value of prop1.
+	 */
+	@BQConfigProperty("Explanation on the meaning of prop1.")
+	def setProp1(value : String) {
+		this.prop1 = value
+	}
+	/** Replies the configuration tree.
+	 */
+	static def getConfiguration(configFactory : ConfigurationFactory) : MyConfiguration {
+		configFactory.config(typeof(MyConfiguration), PREFIX)
+	}
+}
+</code></pre>
+
+<p>The previous code provides the best pratices for written a Bootique-based configuration.</p>
+
+<p>Each property of the configuration has a qualified name, which starts with the prefix of the configuration.
+That’s why a global variable named <code>PREFIX</code> is defined for this prefix.</p>
+
+<p>For each property in the configuration, you must:</p>
+
+<ol>
+  <li>Choose the type of the property, e.g. <code>String</code>.</li>
+  <li>Define the qualitied name of the property,as illustrated by the declaration of the global variable <code>PROP1_NAME</code>.</li>
+  <li>Define a default value for the property, as illustrated by the declaration of <code>DEFAULT_PROP1_VALUE</code>.</li>
+  <li>Define the property attribute, e.g. <code>prop1</code>, with the selected property type, and the assignment of the default value. In the example, the active annotation <code>Accessors</code> generates the public getter function for the attribute.</li>
+  <li>Define the setter function <code>setProp1</code> that is in charge of changing the value of the property.</li>
+  <li>Annotate the function <code>setProp1</code> with the annotation <code>BQConfigProperty</code> that contains a text to be shown up in the help page of the application.</li>
+</ol>
+
+<p>Finally, you must define a static factory function for creating the configuration object instance from the Bootique tool of type <code>ConfigurationFactory</code>.
+The code of this factory function invokes the function <code>config</code> that takes the type of the configuration to be created and the associated
+property prefix. This function replies the instance of the configuration, already filled with the values read from the configuration source (file,
+property, environment variable, command-line option).</p>
+
+<p><span class="label label-info">Note</span> Each of the property in a configuration is automatically mapped to a Java property with the name <code>bq.&lt;fqn&gt;</code>, where <code>&lt;fqn&gt;</code> is the fully qualified name of the property, e.g. <code>bq.myextension.prop1</code>. Therefore, it is possible to change the value of the property by specifying the property, e.g. on the command-line with <code>-Dbq.myextension.prop1="value"</code>.</p>
+
+<h3 id="43-injecting-a-configuration-on-demand">4.3. Injecting a configuration on demand</h3>
+
+<p>Now, it is important to define the injection of the extension’s configuration.
+A simple approach is to update the injection module by adding the function XXX.</p>
+
+<pre><code class="language-sarl">package mypackage
+import com.google.inject.AbstractModule
+import io.sarl.sre.services.logging.LoggingService
+import io.bootique.config.ConfigurationFactory
+import com.google.inject.Injector
+
+class MyLoggingServiceModule extends AbstractModule {
+	override configure {
+		typeof(LoggingService).bind.to(typeof(MyLoggingService)).asEagerSingleton
+	}
+	@Provides
+	@Singleton
+	def provideConfig(configFactory : ConfigurationFactory, injector : Injector) : MyConfiguration  {
+		val config = MyConfiguration::getConfiguration(configFactory)
+		injector.injectMembers(config)
+		return config
+	}
+}
+</code></pre>
+
+<p>The function <code>provideConfig</code> is added into the configuration module in order to create the configuration instance when
+it should be injected.</p>
+
+<h2 id="5-mapping-a-configuration-attribute-to-an-environment-variable">5. Mapping a configuration attribute to an environment variable</h2>
+
+<p>As explained previously, each configuration property is automatically mapped to a Java property.
+However, it may be interesting to map the configuration property to an environment variable.</p>
+
+<p>Since, it is a little complicated to use the Bootique API, we propose to use the class <code>VariableDecls</code>
+that provides tools for binding the bootique property to its environment variable.
+The name of the environment variable is based on the name of the property, but upper-cased and by replacing
+all the not alphanumeric characters by the underscore character.</p>
+
+<p>The use of the class <code>VariableDecls</code> must be done into the injection module:</p>
+
+<pre><code class="language-sarl">package mypackage
+import com.google.inject.AbstractModule
+import io.sarl.sre.services.logging.LoggingService
+import io.bootique.config.ConfigurationFactory
+import com.google.inject.Injector
+import org.arakhne.afc.bootique.variables.VariableDecls
+
+class MyLoggingServiceModule extends AbstractModule {
+	override configure {
+		typeof(LoggingService).bind.to(typeof(MyLoggingService)).asEagerSingleton
+		VariableDecls::extend(binder).declareVar(MyConfiguration::PROP1_NAME)
+	}
+	@Provides
+	@Singleton
+	def provideConfig(configFactory : ConfigurationFactory, injector : Injector) : MyConfiguration  {
+		val config = MyConfiguration::getConfiguration(configFactory)
+		injector.injectMembers(config)
+		return config
+	}
+}
+</code></pre>
+
+<h2 id="6-mapping-a-configuration-attribute-to-a-command-line-option">6. Mapping a configuration attribute to a command-line option</h2>
+
+<p>As for the environment variables, it is possible to map a configuration attribute to a command-line option.
+This mapping is declared into the injection module:</p>
+
+<pre><code class="language-sarl">package mypackage
+import com.google.inject.AbstractModule
+import io.sarl.sre.services.logging.LoggingService
+import io.bootique.config.ConfigurationFactory
+import com.google.inject.Injector
+import org.arakhne.afc.bootique.variables.VariableDecls
+import io.bootique.meta.application.OptionMetadata
+import static extension io.bootique.BQCoreModule.extend
+
+class MyLoggingServiceModule extends AbstractModule {
+	override configure {
+		typeof(LoggingService).bind.to(typeof(MyLoggingService)).asEagerSingleton
+		VariableDecls::extend(binder).declareVar(MyConfiguration::PROP1_NAME)
+		binder.extend.addOption(OptionMetadata::builder("opt", "This is the option to set prop1")
+				.valueRequired("value")
+				.build)
+				.mapConfigPath("opt", MyConfiguration::PROP1_NAME)
+	}
+	@Provides
+	@Singleton
+	def provideConfig(configFactory : ConfigurationFactory, injector : Injector) : MyConfiguration  {
+		val config = MyConfiguration::getConfiguration(configFactory)
+		injector.injectMembers(config)
+		return config
+	}
+}
+</code></pre>
+
+<p>The Bootique API provides tools for declaring the command-line option, e.g. <code>--opt</code>.
+In the previous example, this command-line option added with <code>addOption</code> takes a mandatory value, that is named <code>value</code> in the help pages of the application.
+The function <code>OptionMetadata::builder</code> enables to create a description of the command-line option, with its name, descripton and its value description.</p>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.12</li>
+  <li>Status: Draft Release</li>
+  <li>Release: 2020-11-25</li>
+</ul>
+
+<blockquote>
+  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+
+  <p>Licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

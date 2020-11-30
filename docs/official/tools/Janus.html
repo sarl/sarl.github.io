@@ -81,6 +81,8 @@ Its role is to provide all the libraries and plugins that are needed for running
 
 <p>For launching the Janus platform from a command-line shell, you could use the <code>janus</code> tool.</p>
 
+<p><span class="label label-danger">Caution</span> The <code>janus</code> does not provide a support for exchaning events over a computer network. If you would like to have benefit of this feature, you should use one of the following methods: 1. Add a library on the classpath that includes the networking feature to the SRE; or 2. Use the version of the SRE that includes the standard network feature: <a href="./Janusnode.html">janusnode</a>.</p>
+
 <h2 id="1-usage">1. Usage</h2>
 
 <p>The <code>janus</code> tool takes arguments:</p>
@@ -91,10 +93,7 @@ Its role is to provide all the libraries and plugins that are needed for running
 <p>The <code>agent_fully_qualified_name</code> is the name of the agent to launch. This name is equal to the
 fully qualified name of the agent’s type.</p>
 
-<blockquote>
-  <p><strong><em>Note::</em></strong> Janus enables to launch only one agent from the command-line shell. If you want to launch
-more than one agent, you should launch a first agent, which will create the other agents.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> Janus enables to launch only one agent from the command-line shell. If you want to launch more than one agent, you should launch a first agent, which will create the other agents.</p>
 
 <p>You could change the behavior of the <code>janus</code> tool with the command-line options.
 For obtaining a list of the options, type:</p>
@@ -179,7 +178,7 @@ the classpath of your application, more options may become available.</p>
     </tr>
     <tr>
       <td>-l level<br />–log=level</td>
-      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the LOG_LEVEL environment variable. If neither LOG_LEVEL, –log nor –{2} is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>Specifies the level of logging of the application. This log level could be also controlled by setting the environment variable LOG_LEVEL. If neither LOG_LEVEL nor –log is specified, then the default log level set to info is used. The accepted values are: off, error/critical/severe, warning, info, config, fine, debug/finer, finest, all.</td>
     </tr>
     <tr>
       <td>–max-threads=number</td>
@@ -392,7 +391,7 @@ The long code is provided by the SARL compiler at the end of the issue messages.
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

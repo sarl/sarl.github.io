@@ -110,9 +110,7 @@ a Capacity: no attribute or field is allowed, and no body (code) for the Action 
 <p>The definition of a Capacity is done with the <code>capacity</code> keyword. Below, a Capacity that permits logging messages
 is defined. This Capacity enables an Agent to log information and debugging messages.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> Defining a Capacity without Actions is a symptom of a design problem.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> Defining a Capacity without Actions is a symptom of a design problem.</p>
 
 <pre><code class="language-sarl">capacity Logging {
 	// Log an information message
@@ -130,10 +128,7 @@ object-oriented language.</p>
 
 <p>The extended Capacity is specified just after the <code>extends</code> keyword.</p>
 
-<blockquote>
-  <p><strong><em>Very Important Note:</em></strong> A Capacity type can extend <strong>zero-to-many</strong> other Capacity types.
-This is similar to the implementation of interfaces in the Java language.</p>
-</blockquote>
+<p><span class="label label-danger">Very Important Note</span> A Capacity type can extend <strong>zero-to-many</strong> other Capacity types. This is similar to the implementation of interfaces in the Java language.</p>
 
 <p>In the following code, the <code>Logging</code> Capacity (defined above) is extended to enabling the output of error messages.</p>
 
@@ -211,10 +206,7 @@ public def example1
 <p>Several Capacities are defined and reserved by the SARL Core Specification.
 They compose the minimal set of Capacities that a runtime environment must support to run a SARL program.</p>
 
-<blockquote>
-  <p><strong><em>Very Important Note:</em></strong> You must not define a Capacity with a fully qualified name equals to one
-of the reserved Capacities.</p>
-</blockquote>
+<p><span class="label label-danger">Very Important Note</span> You must not define a Capacity with a fully qualified name equals to one of the reserved Capacities.</p>
 
 <p>The built-in Capacities are defined in the <a href="./BIC.html">Built-in Capacity Reference</a>.</p>
 
@@ -275,7 +267,7 @@ skill MySkill implements MyCapacity {
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

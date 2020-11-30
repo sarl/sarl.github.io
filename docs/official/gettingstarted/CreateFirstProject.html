@@ -130,10 +130,7 @@ composed of four source folders:</p>
 
 <p>The default output folder is <code>target/classes</code>.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> The names of these folders are following the conventions of a Maven-based project (described below). In this way, you will
-be able to turn the Maven nature on your SARL project on/off.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> The names of these folders are following the conventions of a Maven-based project (described below). In this way, you will be able to turn the Maven nature on your SARL project on/off.</p>
 
 <p><img src="./new_sarl_project_screen_3.png" alt="Source Code Folders" /></p>
 
@@ -203,11 +200,7 @@ be able to turn the Maven nature on your SARL project on/off.</p>
 <p>The Maven configuration is based on the use of <code>sarl-maven-plugin</code>. This plugin is in charge of compiling the SARL and
 the Java files. Details about the <code>sarl-maven-plugin</code> may be found on <a href="../tools/MavenSarlPlugin.html">this page</a>.</p>
 
-<blockquote>
-  <p><strong><em>Important Note:</em></strong> You must set the <code>extensions</code> tag to true for the <code>sarl-maven-plugin</code> plugin. If you missed to set it, the plugin
-will not able to be integrated in the Maven life-cycle. The consequence will be that only the Java compiler will be
-invoked.</p>
-</blockquote>
+<p><span class="label label-warning">Important Note</span> You must set the <code>extensions</code> tag to true for the <code>sarl-maven-plugin</code> plugin. If you missed to set it, the plugin will not able to be integrated in the Maven life-cycle. The consequence will be that only the Java compiler will be invoked.</p>
 
 <h3 id="22-configuration-of-a-runtime-environment-optional">2.2. Configuration of a runtime environment (optional)</h3>
 
@@ -219,10 +212,9 @@ when the SARL program is launched within the SARL environment or when a runnable
 this case, you could replace the Maven dependency to the SARL sdk (as defined in the previous section) by a Maven dependency
 to the runtime environment library.</p>
 
-<blockquote>
-  <p><strong><em>Caution:</em></strong> Replacing the SARL sdk library by the run-time environment library within the Maven dependencies is not the
-recommended approach by the SARL core developers.</p>
-</blockquote>
+<p><span class="label label-danger">Caution</span> Replacing the SARL sdk library by the run-time environment library within the Maven dependencies is not the recommended approach by the SARL core developers.</p>
+
+<h4 id="janus-as-maven-dependency">Janus as maven dependency</h4>
 
 <p>The runtime environment that is recommended by the developers of SARL is <a href="http://www.janusproject.io">Janus</a>.</p>
 
@@ -266,12 +258,49 @@ You could search on the <a href="http://search.maven.org/">Maven Central Reposit
  &lt;/project&gt;
 </code></pre>
 
-<blockquote>
-  <p><strong><em>Important Note:</em></strong> If you want to have the dependencies to both <code>io.sarl.maven.sdk</code> and <code>io.janusproject.kernel</code> in your
-POM file, you must be sure that the imported version of the Google Guava library is the one provided by the Janus
-platform. For ensuring this, you must specify the version of the Guava library by defining it in the “dependencyManagement”
-section of your pom file.</p>
-</blockquote>
+<p><span class="label label-warning">Important Note</span> If you want to have the dependencies to both <code>io.sarl.maven.sdk</code> and <code>io.janusproject.kernel</code> in your POM file, you must be sure that the imported version of the Google Guava library is the one provided by the Janus platform. For ensuring this, you must specify the version of the Guava library by defining it in the “dependencyManagement” section of your pom file.</p>
+
+<h4 id="janus-with-networking-feature-as-maven-dependency">Janus with networking feature as maven dependency</h4>
+
+<p>By default, the Janus framework does not activate its network feature. If you would like to build a project with this feature,
+you have to use another Maven dependency: <code>io.janusproject.kernel.network</code>.</p>
+
+<pre><code class="language-xml"> &lt;project&gt;
+   ...
+    &lt;properties&gt;
+       ...
+       &lt;janus.version&gt;3.0.12.0-SNAPSHOT&lt;/janus.version&gt;
+    &lt;/properties&gt;
+    ...
+    &lt;build&gt;
+       &lt;plugins&gt;
+          ...
+          &lt;plugin&gt;
+             &lt;groupId&gt;io.sarl.maven&lt;/groupId&gt;
+             &lt;artifactId&gt;sarl-maven-plugin&lt;/artifactId&gt;
+             &lt;version&gt;${sarl.version}&lt;/version&gt;
+             &lt;extensions&gt;true&lt;/extensions&gt;
+             &lt;configuration&gt;
+                &lt;source&gt;${jdk.version}&lt;/source&gt;
+                &lt;target&gt;${jdk.version}&lt;/target&gt;
+                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+             &lt;/configuration&gt;
+          &lt;/plugin&gt;
+       &lt;/plugins&gt;
+    &lt;/build&gt;
+    ...
+    &lt;dependencies&gt;
+       ...
+       &lt;dependency&gt;
+          &lt;groupId&gt;io.janusproject&lt;/groupId&gt;
+          &lt;artifactId&gt;io.janusproject.kernel.network&lt;/artifactId&gt;
+          &lt;version&gt;${janus.version}&lt;/version&gt;
+       &lt;/dependency&gt;
+       ...
+    &lt;/dependencies&gt;
+    ...
+ &lt;/project&gt;
+</code></pre>
 
 <h2 id="3-whats-next">3. What’s next?</h2>
 
@@ -285,7 +314,7 @@ section of your pom file.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

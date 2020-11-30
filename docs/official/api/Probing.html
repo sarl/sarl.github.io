@@ -95,9 +95,7 @@ is observed or not. In this case, it cannot adapt its behavior on its observatio
 <p>Because an agent is defined as an autonomous entity, the agent is supposed to be enabled to specify if a part of itself
 is observable or not, i.e. to specify the access rights.</p>
 
-<blockquote>
-  <p><strong><em>Caution:</em></strong> The right access management is not yet supported by the SARL API.</p>
-</blockquote>
+<p><span class="label label-danger">Caution</span> The right access management is not yet supported by the SARL API.</p>
 
 <h2 id="1-what-is-observable">1. What is Observable?</h2>
 
@@ -149,7 +147,7 @@ Then, the probe could be read to obtain the data, or the observer could be notif
 	def removeProbeListener(IProbeListener)
 	def removeProbeReleaseListener(IProbeReleaseListener)
 	def setValue(T)
-	def sync(boolean)
+	def sync(boolean, boolean)
 }
 </code></pre>
 
@@ -180,7 +178,7 @@ and <code>IProbeReleaseListener</code>.</p>
 <p><code>IProbeListener</code> is defined as:</p>
 
 <pre><code class="language-sarl">interface IProbeListener {
-	def probeValueChanged(Probe&lt;Object&gt;)
+	def probeValueChanged(Probe&lt;Object&gt;, boolean)
 }
 </code></pre>
 
@@ -252,7 +250,7 @@ value (of course it is not the most efficient usage of a probe).</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

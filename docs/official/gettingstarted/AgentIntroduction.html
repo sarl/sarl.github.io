@@ -107,11 +107,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 <p>The following code will define an agent with a fully qualified name of <code>io.sarl.docs.gettingstarted.^agent</code>.
 The character <code>^</code> in the package name permits to use a SARL keyword into a package name.</p>
 
-<blockquote>
-  <p><strong><em>Important Note:</em></strong> The package keyword defines the package for all elements in the same SARL file
-(see the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a> for details).
-Therefore FirstAgent and SecondAgent belong to the same package, i.e. <code>io.sarl.docs.gettingstarted.^agent</code>.</p>
-</blockquote>
+<p><span class="label label-warning">Important Note</span> The package keyword defines the package for all elements in the same SARL file (see the <a href="../reference/GeneralSyntax.html">General Syntax Reference</a> for details). Therefore FirstAgent and SecondAgent belong to the same package, i.e. <code>io.sarl.docs.gettingstarted.^agent</code>.</p>
 
 <h2 id="3-agent-perceptions">3. Agent Perceptions</h2>
 
@@ -130,9 +126,7 @@ Therefore FirstAgent and SecondAgent belong to the same package, i.e. <code>io.s
 
 <p>To define this event handler, we must use the <code>on</code> keyword, and provide the associated code block.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> The <code>println</code> function is provided by the <code>Logging</code> capacity. It permits printing a message on the log output.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> The <code>println</code> function is provided by the <code>Logging</code> capacity. It permits printing a message on the log output.</p>
 
 <pre><code class="language-sarl">import io.sarl.core.Logging
 agent MyAgent {
@@ -205,10 +199,7 @@ agent MyAgent {
 <p>Now, we will want our agent to send data to other agents. The data are embedded into events. The definition of an
 event is described above.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> In this document, we limit our explanation to the sending of the events in the default space of the default context
-of the agent.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> In this document, we limit our explanation to the sending of the events in the default space of the default context of the agent.</p>
 
 <p>For sending an event in the default space, the <code>DefaultContextInteractions</code> built-in capacity should be used.</p>
 
@@ -248,7 +239,7 @@ call <code>emit(e)</code>.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

@@ -506,21 +506,14 @@ def unless(condition : (Agent) =&gt; boolean) : AgentTask
 The <code>unless</code> function sets the guard of the task to the negation of the given condition. It replies
 the current task.</p>
 
-<blockquote>
-  <p><strong><em>Caution:</em></strong> The <code>ifTrue</code> and <code>unless</code> functions should not be used on the result of the scheduling functions.
-Indeed, if you call these two function on the value replied by <code>execute</code> for example, the execution platform
-could have launched the task before the guard is set. Consider the following code</p>
+<p><span class="label label-danger">Caution</span> The <code>ifTrue</code> and <code>unless</code> functions should not be used on the result of the scheduling functions. Indeed, if you call these two function on the value replied by <code>execute</code> for example, the execution platform could have launched the task before the guard is set.</p>
 
-  <pre><code class="language-sarl">			execute [ doSomething ].unless [ myVar &gt; 5 ]
-
+<p>Consider the following code:</p>
+<pre><code class="language-sarl">execute [ doSomething ].unless [ myVar &gt; 5 ]
 </code></pre>
-</blockquote>
 
-<blockquote>
-
-  <p>The call to <code>execute</code> is done before the call to <code>unless</code>. It means that the execution platform could have
+<p>The call to <code>execute</code> is done before the call to <code>unless</code>. It means that the execution platform could have
 already checked if a guard is assosiated and <code>true</code>, before the <code>unless</code> function sets the guard.</p>
-</blockquote>
 
 <p>The best practice for setting the task guards is to create a task, set the guard, and execute the task:</p>
 
@@ -553,7 +546,7 @@ myTask.execute [ doSomething ]
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

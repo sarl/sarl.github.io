@@ -214,7 +214,7 @@ For obtaining a list of the options, type:</p>
     </tr>
     <tr>
       <td>–java-source[=version]</td>
-      <td>Specifies the Java version of the Java source code that is accepted, and of the Java class files for targeting a specific release of the Java virtual machine. Java class files will run on the specified target and on later releases, but not on earlier releases of the Java virtual machine. Provided version must be greater than or equal to 1.8, and strictly lower than 12.</td>
+      <td>Specifies the Java version of the Java source code that is accepted, and of the Java class files for targeting a specific release of the Java virtual machine. Java class files will run on the specified target and on later releases, but not on earlier releases of the Java virtual machine. Provided version must be greater than or equal to 1.8, and strictly lower than 15.</td>
     </tr>
     <tr>
       <td>–javadoc=file</td>
@@ -230,7 +230,7 @@ For obtaining a list of the options, type:</p>
     </tr>
     <tr>
       <td>–log=level</td>
-      <td>Specifies where to find user class files, and source files. This class path overrides the user class path in the LOG_LEVEL environment variable. If neither LOG_LEVEL, –log nor –{2} is specified, then the user class path is built upon the current folder. If a user class path is specified, it must contains the the user libraries and the standard SARL libraries.</td>
+      <td>Specifies the level of logging of the application. This log level could be also controlled by setting the environment variable LOG_LEVEL. If neither LOG_LEVEL nor –log is specified, then the default log level set to info is used. The accepted values are: off, error/critical/severe, warning, info, config, fine, debug/finer, finest, all.</td>
     </tr>
     <tr>
       <td>-m path<br />–modulepath=path</td>
@@ -405,10 +405,7 @@ the top of the HTML page.</p>
 <p>The <code>sarldoc</code> command allows method comment inheritance in type declarations to fill in missing text or to explicitly
 inherit method comments. Constructors, fields, and nested types do not inherit documentation comments.</p>
 
-<blockquote>
-  <p><strong><em>Caution:</em></strong> The source file for an inherited method must be on the path for the documentation comment to be available to
-copy. Neither the class nor its package needs to be passed in on the command line.</p>
-</blockquote>
+<p><span class="label label-danger">Caution</span> The source file for an inherited method must be on the path for the documentation comment to be available to copy. Neither the class nor its package needs to be passed in on the command line.</p>
 
 <p>When a main description, or <code>@return</code>, <code>@param</code>, or <code>@throws</code> tag is missing from a method comment, the <code>sarldoc</code> command
 copies the corresponding main description or tag comment from the method it overrides or implements (if any).
@@ -537,7 +534,7 @@ enclosed within braces: <code>{@tag}</code>.</li>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>

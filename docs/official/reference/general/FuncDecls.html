@@ -105,9 +105,7 @@ in top-level features, such as <code>agent</code>.</p>
 <pre><code class="language-text">def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
 </code></pre>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> The parameters are implicitly declared with the keyword <code>val</code> so are read-only.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> The parameters are implicitly declared with the keyword <code>val</code> so are read-only.</p>
 
 <p>The following code gives examples of function declarations:</p>
 
@@ -156,11 +154,7 @@ it is better to let a method further down the call stack handle the exception.</
 <p>If a function doesn’t catch the checked exceptions that can occur within
 it, the function may specify that it can throw these exceptions.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> This specification is optional since the SARL compiler determines the
-exceptions that are not catched, and assumes that they are implicitly
-thrown outside the function.</p>
-</blockquote>
+<p><span class="label label-info">Note</span> This specification is optional since the SARL compiler determines the exceptions that are not catched, and assumes that they are implicitly thrown outside the function.</p>
 
 <p>The declaration of the thrown exceptions is done with the 
 <code>throws</code> keyword, followed by a list of thrown exception types.
@@ -195,9 +189,7 @@ generic functions:</p>
 
 <p>A generic method’s body is declared like that of any other method.</p>
 
-<blockquote>
-  <p><strong><em>Note:</em></strong> Type parameters can represent only reference types, not primitive types (like <code>int</code>, <code>double</code> and <code>char</code>).</p>
-</blockquote>
+<p><span class="label label-info">Note</span> Type parameters can represent only reference types, not primitive types (like <code>int</code>, <code>double</code> and <code>char</code>).</p>
 
 <p>Two syntaxes are allowed for defining the type parameters of the actions: the <code>with</code> syntax, and the bracket syntax.</p>
 
@@ -296,11 +288,7 @@ the action can skip passing a value for the corresponding argument.
 And, when the function is called, the default value is given to the
 skipped argument.</p>
 
-<blockquote>
-  <p><strong><em>Important Note:</em></strong> In SARL, if a formal parameter has a default value, the following formal
-parameters do not need to have default values as well. This is a major
-difference with the default values in other languages, such as C++.</p>
-</blockquote>
+<p><span class="label label-warning">Important Note</span> In SARL, if a formal parameter has a default value, the following formal parameters do not need to have default values as well. This is a major difference with the default values in other languages, such as C++.</p>
 
 <pre><code class="language-sarl">// Function with one parameter with a default value.
 def action1(v : int = 5) {
@@ -550,7 +538,7 @@ def myFunction() : int {
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-10-10</li>
+  <li>Release: 2020-11-25</li>
 </ul>
 
 <blockquote>
