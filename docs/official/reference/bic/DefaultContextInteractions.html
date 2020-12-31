@@ -77,8 +77,14 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#32-creation-of-scopes-with-lambda-expressions">3.2. Creation of scopes with Lambda expressions</a></li>
   <li><a href="#33-inverted-syntax-for-emitting-an-event">3.3. Inverted syntax for emitting an event.</a></li>
 </ul>
-<li><a href="#4-testing-if-an-element-is-related-to-the-default-context">4. Testing if an element is related to the default context</a></li>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+<li><a href="#4-interaction-with-the-parent-agent">4. Interaction with the parent agent</a></li>
+<ul>
+  <li><a href="#41-getting-the-identifier-of-the-parent-agent">4.1. Getting the identifier of the parent agent</a></li>
+  <li><a href="#42-getting-the-event-scope-of-the-parent-agent">4.2. Getting the event scope of the parent agent</a></li>
+  <li><a href="#43-emit-an-event-to-the-parent-agent">4.3. Emit an event to the parent agent</a></li>
+</ul>
+<li><a href="#5-testing-if-an-element-is-related-to-the-default-context">5. Testing if an element is related to the default context</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
 </ul>
 
@@ -174,7 +180,7 @@ not the other agents.</p>
 <p>Another way to scope is based on the test of the agent identifiers of <code>UUID</code> type.
 In the following example,</p>
 
-<pre><code class="language-sarl">emit(new MyEvent) [ it.UUID == id1 || it.UUID == id2 ]
+<pre><code class="language-sarl">emit(new MyEvent) [ it.ID == id1 || it.ID == id2 ]
 </code></pre>
 
 <h3 id="33-inverted-syntax-for-emitting-an-event">3.3. Inverted syntax for emitting an event.</h3>
@@ -188,7 +194,7 @@ example becomes:</p>
 
 	def myaction(receiverId : UUID) {
 		var ^event : Event = new MyEvent
-		^event.emit [ it.UUID == receiverId ] 
+		^event.emit [ it.ID == receiverId ] 
 	}
 }
 </code></pre>
@@ -196,7 +202,38 @@ example becomes:</p>
 <p>In the previous code, the receiver of the event is given by the formal parameter <code>receiverId</code>.
 The scope restricts the receiver according to this identifier.</p>
 
-<h2 id="4-testing-if-an-element-is-related-to-the-default-context">4. Testing if an element is related to the default context</h2>
+<h2 id="4-interaction-with-the-parent-agent">4. Interaction with the parent agent</h2>
+
+<p>Each agent is member of a context that is the default context. According to the SARL metamodel, each context
+is own by an agent. This agent is named the “default parent agent”.</p>
+
+<h3 id="41-getting-the-identifier-of-the-parent-agent">4.1. Getting the identifier of the parent agent</h3>
+
+<p>The <code>DefaultContextInteractions</code> capacity provides the function <code>getDefaultParentID</code> function for obtaining
+the identifier of the parent agent.</p>
+
+<pre><code class="language-sarl">def getDefaultParentID : UUID
+</code></pre>
+
+<h3 id="42-getting-the-event-scope-of-the-parent-agent">4.2. Getting the event scope of the parent agent</h3>
+
+<p>The <code>DefaultContextInteractions</code> capacity provides the function <code>getDefaultParentScope</code> function for obtaining
+a scope that matches the parent agent.</p>
+
+<pre><code class="language-sarl">def getDefaultParentScope : Scope&lt;Address&gt;
+</code></pre>
+
+<p>This scope could be used to emit the events.</p>
+
+<h3 id="43-emit-an-event-to-the-parent-agent">4.3. Emit an event to the parent agent</h3>
+
+<p>The <code>DefaultContextInteractions</code> capacity provides the function <code>emitToParent</code> function for
+sending an event to the parent agent only.</p>
+
+<pre><code class="language-sarl">def emitToParent(^event : Event)
+</code></pre>
+
+<h2 id="5-testing-if-an-element-is-related-to-the-default-context">5. Testing if an element is related to the default context</h2>
 
 <p>The <code>DefaultContextInteractions</code> provides a collection of utility functions that test if
 their parameters are related to the default context or the default space.</p>
@@ -247,13 +284,13 @@ was emitted in the default space.</p>
 }
 </code></pre>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>

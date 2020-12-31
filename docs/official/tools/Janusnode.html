@@ -73,29 +73,43 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-usage">2. Usage</a></li>
 <li><a href="#3-command-line-options">3. Command-Line Options</a></li>
 <li><a href="#4-list-of-errors-and-warnings">4. List of Errors and Warnings</a></li>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+<li><a href="#5-configuration-of-the-networking-feature">5. Configuration of the networking feature</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
 </ul>
 
-<p><a href="http://www.janusproject.io">Janus</a> is the default SARL Run-time Environment (SRE).
-Its role is to provide all the libraries and plugins that are needed for running SARL agents.</p>
+<p><a href="http://www.sarl.io/runtime/janus/index.html">Janus</a> is an open-source multi-agent platform fully implemented in SARL. 
+Janus could be used as an agent-oriented platform, an organizational platform, and/or an holonic platform. 
+It also natively manages the concept of recursive agents and holons.
+Janus platform was initially published during the 2007-2008 period as a pure Java framework. Since 2014, Janus is fully reimplemented to
+support the SARL Agent-Oriented Programming Language. And since 2020, it is fully re-implemented using the SARL language.</p>
+
+<p>Janus implementation follows the standards of software engineering as much as possible. Basically, the key
+implementation choices of Janus that are under interest in this tutorial are:</p>
+<ol>
+  <li><a href="http://www.fipa.org/repository/standardspecs.html"><em>Microkernel architecture</em></a>: Janus implementation is based on a microkernel that provides the key features of an agent framework, and that could be easily extended. The key features are implemented as services.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Service-oriented_architecture"><em>Service-based architecture</em></a>: The main features of the Janus framework are implemented as services, e.g. context management, agent lifecycle, logging, etc.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Dependency_injection"><em>Dependency Injection</em></a>: Modules (and services) are injected into the using objects with <a href="https://github.com/google/guice">Google Guice</a>. It provides support for dependency injection using annotations to configure Java objects. Dependency injection is a design pattern whose core principle is to separate behavior from dependency resolution.</li>
+</ol>
 
 <p>The <a href="./Janus.html"><code>janus</code></a> tool is the base command-line tool for launching the SRE.
-But, it does not provide a support for exchaning events over a computer
+But, it does not provide a support for exchanging events over a computer
 network. If you would like to have benefit of this feature, you should use one of the following
 methods:</p>
 
 <ol>
-  <li>Add on the classpath of the <code>janus</code> command a library that includes the networking feature to the SRE; or</li>
-  <li>Use the version of the SRE that already includes the standard network feature: <code>janusnode</code>.</li>
+  <li>Add on the classpath of the <code>janus</code> command the <a href="./JanusNetworkExtension.html">library that includes the networking feature</a> to the SRE; or</li>
+  <li>Use the version of the SRE that already includes the <a href="./JanusNetworkExtension.html">standard network feature</a>: <code>janusnode</code>.</li>
 </ol>
 
 <p>The <code>janusnode</code> is explained on this page.</p>
 
 <h2 id="1-basics-of-the-networking-feature">1. Basics of the Networking Feature</h2>
 
-<p>Basically, the networking feature of the SRE enables you to launch instances of the Janus kernel on different
+<p>Basically, the networking feature of the Janus SRE enables you to launch instances of the Janus kernel on different
 computers, and exchange events between these instances.</p>
+
+<p><img src="./janusnetworkextension.png" alt="General Networking Architecture" /></p>
 
 <p>In order to implement this feature, the <a href="http://www.hazelcast.com">Hazelcast</a> library is used.
 Hazelcast is an open source in-memory data grid based on Java. In a Hazelcast grid, data is
@@ -106,7 +120,7 @@ failure of any single node.</p>
 <p>In addition to the data-sharing and efficient communication means, Hazelcast provides the ability
 to build the node network automatically. Each Hazelcast node that is associated to a given cluster
 name is <em>connected automatically</em> to the other nodes in the same cluster on the local network.
-It means that you do not need to provide a network configuration to the <code>janusnode</code> tool.</p>
+It means that you do not need to provide a network configuration to the Janus SRE.</p>
 
 <h2 id="2-usage">2. Usage</h2>
 
@@ -175,7 +189,11 @@ more options may become available.</p>
       <td>Specify the type of event bus to create for each agent; Default is reflect.</td>
     </tr>
     <tr>
-      <td>-g<br />–generatemarkdownhelp</td>
+      <td>–generatemarkdownconfighelp</td>
+      <td>Prints the configuration parameters using a Markdown table.</td>
+    </tr>
+    <tr>
+      <td>–generatemarkdownhelp</td>
       <td>Prints the list of the command-line options using a Markdown table.</td>
     </tr>
     <tr>
@@ -220,7 +238,7 @@ more options may become available.</p>
     </tr>
     <tr>
       <td>–network=true|false</td>
-      <td>Specifies if the networking features of the SRE are enabled or disabled. If the given value is “true”, the features are enable. If the given value is “false”, the features are disable. The value could also be changed with the SRE_NETWORK_ENABLE environment variable. The default value for the enabling flag is true.</td>
+      <td>Specifies if the networking features of the SRE are enabled or disabled. If the given value is “true”, the features are enable. If the given value is “false”, the features are disable. The value could also be changed with the SRENETWORK_ENABLE environment variable. The default value for the enabling flag is false.</td>
     </tr>
     <tr>
       <td>–no-agent</td>
@@ -266,13 +284,17 @@ more options may become available.</p>
 <p>The list of error and warning messages that may be generated by Janus are provided on the
 help page of the <a href="./Janus.html">main command-line tool</a>.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="5-configuration-of-the-networking-feature">5. Configuration of the networking feature</h2>
+
+<p>The configuration of the networking feature is explained on this <a href="./JanusNetworkExtension.html">page</a>.</p>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>

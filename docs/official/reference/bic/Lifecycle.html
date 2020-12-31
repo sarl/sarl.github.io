@@ -88,7 +88,7 @@ this query.</p>
 
 <p>The <code>Lifecycle</code> capacity provides the following function for committing a suicide:</p>
 
-<pre><code class="language-sarl">def killMe
+<pre><code class="language-sarl">def killMe(abnormalTerminationCause : Throwable = null)
 </code></pre>
 
 <p>This action automatically unregisters the calling agent from the default context, and therefore all its
@@ -111,6 +111,11 @@ spaces including the default space.</p>
 	}
 }
 </code></pre>
+
+<p>The optional argument of the <code>killMe</code> function enables to provide the cause of an abnormal termination of the agent.
+This cause must be a throwable object, e.g. an exception.
+If the argument <code>abnormalTerminationCause</code> is provided, its value is put into the field <code>abnormalTerminationCause</code> of the fired <code>AgentKilled</code>
+event.</p>
 
 <h2 id="2-spawning-in-the-default-context">2. Spawning in the default context</h2>
 
@@ -240,7 +245,7 @@ The parameters are passed to the spawned agent inside the <code>Initialize</code
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>

@@ -87,17 +87,19 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#54-sarl-development-toolkit-sdk-and-programming-interface-api">5.4. SARL Development Toolkit (SDK) and Programming Interface (API)</a></li>
 </ul>
 <li><a href="#6-compilation-and-generation-infrastructure">6. Compilation and Generation Infrastructure</a></li>
+<li><a href="#7-execution-and-run-time-environment">7. Execution and Run-Time Environment</a></li>
 <ul>
-  <li><a href="#61-run-time-behavior-of-sarl-programs">6.1. Run-time Behavior of SARL Programs</a></li>
+  <li><a href="#71-run-time-behavior-of-sarl-programs">7.1. Run-time Behavior of SARL Programs</a></li>
+  <li><a href="#72-janus-sre">7.2. Janus SRE</a></li>
 </ul>
-<li><a href="#7-other-tools">7. Other Tools</a></li>
+<li><a href="#8-other-tools">8. Other Tools</a></li>
 <ul>
-  <li><a href="#71-syntax-highlightning">7.1. Syntax Highlightning</a></li>
-  <li><a href="#72-apache-maven">7.2. Apache Maven</a></li>
-  <li><a href="#73-command-line-tools">7.3. Command Line Tools</a></li>
+  <li><a href="#81-syntax-highlightning">8.1. Syntax Highlightning</a></li>
+  <li><a href="#82-apache-maven">8.2. Apache Maven</a></li>
+  <li><a href="#83-command-line-tools">8.3. Command Line Tools</a></li>
 </ul>
-<li><a href="#8-documentation-format">8. Documentation Format</a></li>
-<li><a href="#9-legal-notice">9. Legal Notice</a></li>
+<li><a href="#9-documentation-format">9. Documentation Format</a></li>
+<li><a href="#10-legal-notice">10. Legal Notice</a></li>
 
 </ul>
 
@@ -125,8 +127,9 @@ Considering the variety of existing approaches and meta-models in the field of a
 <h3 id="31-event-communication">3.1. Event Communication</h3>
 
 <ul>
-  <li><a href="./tutorials/PingPong.html">Agent Communication with the Ping Pong Agents</a></li>
-  <li><a href="./tutorials/PingPongSpace.html">Agent Communication in Sub-Space with the Ping Pong Agents</a></li>
+  <li><a href="./tutorials/PingPong.html">Agent Communication with the ping-pong agents</a></li>
+  <li><a href="./tutorials/PingPongSpace.html">Agent Communication in sub-space with the ping-pong agents</a></li>
+  <li><a href="./tutorials/EventBusOverrideWithCapacity.html">Override the agent event bus with the Behaviors capacity</a></li>
 </ul>
 
 <h3 id="32-parallel-execution">3.2. Parallel Execution</h3>
@@ -223,6 +226,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="./reference/Behavior.html">Behavior Reference</a></li>
   <li><a href="./reference/BIC.html">Built-in Capacity Reference</a></li>
   <li><a href="./reference/Space.html">Space Reference</a></li>
+  <li><a href="./reference/Failures.html">Management of the Failures and Validation Errors</a></li>
   <li><a href="./reference/CompilerErrors.html">Compiler Errors</a></li>
 </ul>
 
@@ -250,48 +254,66 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="./compilation/PythonGeneration.html">Generation to the Python Language</a></li>
 </ul>
 
-<h3 id="61-run-time-behavior-of-sarl-programs">6.1. Run-time Behavior of SARL Programs</h3>
+<h2 id="7-execution-and-run-time-environment">7. Execution and Run-Time Environment</h2>
+
+<h3 id="71-run-time-behavior-of-sarl-programs">7.1. Run-time Behavior of SARL Programs</h3>
 
 <ul>
   <li><a href="./reference/Runtime.html">Run-time Behavior of SARL Programs</a></li>
 </ul>
 
-<h2 id="7-other-tools">7. Other Tools</h2>
+<h3 id="72-janus-sre">7.2. Janus SRE</h3>
 
-<h3 id="71-syntax-highlightning">7.1. Syntax Highlightning</h3>
+<ul>
+  <li><a href="http://www.sarl.io/runtime/janus/index.html">Janus SRE Official Page</a></li>
+  <li><a href="./tutorials/SreExtension.html">Creating extensions for Janus</a></li>
+  <li>Official Janus Extensions:
+    <ul>
+      <li><a href="./tools/JanusNetworkExtension.html">Connecting Janus nodes over a computer network</a></li>
+    </ul>
+  </li>
+  <li>Command-line Tools:
+    <ul>
+      <li><a href="./tools/Janus.html">janus</a>: launching SARL agents with the Janus platform.</li>
+      <li><a href="./tools/Janusnode.html">janusnode</a>: launching SARL agents with the Janus platform over a computer network.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="8-other-tools">8. Other Tools</h2>
+
+<h3 id="81-syntax-highlightning">8.1. Syntax Highlightning</h3>
 
 <ul>
   <li><a href="./tools/SyntaxHighlightning.html">Syntax highlighting styles for SARL inside other tools</a></li>
 </ul>
 
-<h3 id="72-apache-maven">7.2. Apache Maven</h3>
+<h3 id="82-apache-maven">8.2. Apache Maven</h3>
 
 <ul>
   <li><a href="./tools/MavenSarlPlugin.html">maven-sarl-plugin</a>: the Maven plugin for the SARL compiler.</li>
 </ul>
 
-<h3 id="73-command-line-tools">7.3. Command Line Tools</h3>
+<h3 id="83-command-line-tools">8.3. Command Line Tools</h3>
 
 <ul>
   <li><a href="./tools/Sarlc.html">sarlc</a>: command-line SARL compiler.</li>
   <li><a href="./tools/Sarldoc.html">sarldoc</a>: command-line SARL documentation generator.</li>
-  <li><a href="./tools/Janus.html">janus</a>: launching SARL agents with the Janus platform.</li>
-  <li><a href="./tools/Janusnode.html">janusnode</a>: launching SARL agents with the Janus platform over a computer network.</li>
 </ul>
 
-<h2 id="8-documentation-format">8. Documentation Format</h2>
+<h2 id="9-documentation-format">9. Documentation Format</h2>
 
 <ul>
   <li><a href="./DocumentationContribution.html">Specific Markdown format for the documentation</a></li>
 </ul>
 
-<h2 id="9-legal-notice">9. Legal Notice</h2>
+<h2 id="10-legal-notice">10. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>

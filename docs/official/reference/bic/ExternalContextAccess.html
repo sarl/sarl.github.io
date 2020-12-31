@@ -126,7 +126,7 @@ For retrieving this particular context, this built-in capacity provides the foll
 
 <p>Agents must be able to join a new parent context. The following function gives this capability to them:</p>
 
-<pre><code class="language-sarl">def join(contextID : UUID, expectedDefaultSpaceID : UUID)
+<pre><code class="language-sarl">def join(contextID : UUID, expectedDefaultSpaceID : UUID) : AgentContext
 </code></pre>
 
 <p>This action registers the agent in the default space of the context.</p>
@@ -136,6 +136,8 @@ The parameter <code>expectedDefaultSpaceID</code> is only used to check if the c
 knows the ID of the default space in the context to be involved in. 
 If the given <code>expectedDefaultSpaceID</code> does not match the ID of the default space in the context
 <code>contextID</code>, then the access to the context is forbidden.</p>
+
+<p>The <code>join</code> function replies the reference to the joined context.</p>
 
 <p><span class="label label-warning">Important Note</span> The context must already exist, and the default space inside this context must have the same ID as <code>expectedDefaultSpaceID</code>.</p>
 
@@ -149,8 +151,8 @@ If the given <code>expectedDefaultSpaceID</code> does not match the ID of the de
 <p>Example:</p>
 <pre><code class="language-sarl">agent A {
 	uses ExternalContextAccess
-		var idc : UUID
-		var ids : UUID
+	var idc : UUID
+	var ids : UUID
 	def myaction {
 		idc = UUID::randomUUID
 		ids = UUID::randomUUID
@@ -259,7 +261,7 @@ the extension method syntax: the first argument to the function is written prior
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>

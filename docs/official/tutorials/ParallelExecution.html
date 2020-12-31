@@ -182,10 +182,10 @@ The killing function is provided by the
 
 <p>The agent killing process is divided into several steps:</p>
 <ol>
-  <li>Call of the killing function;</li>
+  <li>Call of the killing function (possibly with the abnormal termination cause);</li>
   <li>Synchronous execution of the [:destroyblock] of the agent;</li>
-  <li>SRE-specific destruction of the agent;</li>
-  <li>Firing of the AgentKilled event.</li>
+  <li>Destruction of the agent within the SRE;</li>
+  <li>Firing of the AgentKilled event (possibly with the abnormal termination cause).</li>
 </ol>
 
 <p>Step 1 is run within the thread of the caller.
@@ -216,7 +216,7 @@ steps 4 and 3, respectively. These steps are run on the same thread.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-11-25</li>
+  <li>Release: 2020-12-31</li>
 </ul>
 
 <blockquote>
