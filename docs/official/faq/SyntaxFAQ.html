@@ -115,7 +115,8 @@ Considering the variety of existing approaches and meta-models in the field of a
 </ul>
 <li><a href="#11-agent-capacities">11. Agent Capacities</a></li>
 <ul>
-  <li><a href="#111-how-do-i-control-the-log-level-of-the-logging-built-in-capacity">11.1. How do I control the log-level of the Logging built-in capacity?</a></li>
+  <li><a href="#111-how-to-restrict-the-list-of-agents-that-will-receive-an-event">11.1. How to restrict the list of agents that will receive an event?</a></li>
+  <li><a href="#112-how-do-i-control-the-log-level-of-the-logging-built-in-capacity">11.2. How do I control the log-level of the Logging built-in capacity?</a></li>
 </ul>
 <li><a href="#12-documentation">12. Documentation</a></li>
 <ul>
@@ -403,7 +404,41 @@ def MT_getEntityState(param : E_MoveRandomly) : int {
 
 <h2 id="11-agent-capacities">11. Agent Capacities</h2>
 
-<h3 id="111-how-do-i-control-the-log-level-of-the-logging-built-in-capacity">11.1. How do I control the log-level of the Logging built-in capacity?</h3>
+<h3 id="111-how-to-restrict-the-list-of-agents-that-will-receive-an-event">11.1. How to restrict the list of agents that will receive an event?</h3>
+
+<p>The functions for emitting an event are named <code>emit</code> (for emitting a specific context) and
+<code>wake</code> (for emitting into the internal context only).
+These functions are provided by the agent capacities <code>DefaultContextInteractions</code>,
+<code>ExternalContextAccess</code> or <code>Behaviors</code>
+These two functions have an optional last argument that is the scoping expression:</p>
+
+<pre><code class="language-sarl">def emit(e : Event, scope : (Address) =&gt; boolean = null)
+def wake(e : Event, scope : (Address) =&gt; boolean = null)
+</code></pre>
+
+<p>This scoping expression is a lambda expression that takes the agent’s address of a candidate for receiving the event,
+and returns <code>true</code> if the agent with the given address should receive the event.</p>
+
+<p>Let a local variable named [:selectedagentidfield] of type <code>UUID</code> that contains the identifier of an agent
+that is expected to receive an event of type <code>MyEvent</code>.
+The following code provides the call to the <code>emit</code> for sending the event only to this selected agent.</p>
+
+<pre><code class="language-sarl">emit(new MyEvent) [
+	it.ID == selectedAgentID
+]
+</code></pre>
+
+<p>The first argument of the <code>emit</code> is the occurrence of the event to send to the other agents.
+The second argument is the lambda expression for scoping the receivers. This argument is written
+according to the externalized form of the lambda expression (between brackets).
+The lambda expression expression has an argument, named <code>it</code> by default, of type <code>Address</code>.
+This address is the one of a agent candidate for receiving the event.
+Then, the expression in the lanmda expression tests if the identifier of the candidate is equal
+to the identifier of the selected agent, namely <code>selectedAgentID</code></p>
+
+<p>By adding the scoping lambda expression, only the selected agent will receive the agent.</p>
+
+<h3 id="112-how-do-i-control-the-log-level-of-the-logging-built-in-capacity">11.2. How do I control the log-level of the Logging built-in capacity?</h3>
 
 <p>Use <code>setLogLevel()</code> of the <code>Logging</code> capacity, as explained here in the
 <a href="http://www.sarl.io/docs/official/reference/bic/Logging.html">API documentation</a>.</p>
@@ -430,11 +465,11 @@ that follows the SARL syntax, instead of the Java syntax.</p>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2020-12-31</li>
+  <li>Release: 2021-01-13</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2020 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2021 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
 
   <p>Licensed under the Apache License, Version 2.0;
 you may not use this file except in compliance with the License.
