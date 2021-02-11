@@ -321,17 +321,50 @@ or use the 32-bit version of the SARL Eclipse product.</p>
 Plenty of reasons may be the cause of the failure. As usually, it is always better to
 read the “.log” file for determining this cause.</p>
 
-<p>Nevertheless, the two most reported causes of avoidance of the SARL Eclipse launch are:</p>
+<p>Nevertheless, the three most reported causes of avoidance of the SARL Eclipse launch are:</p>
+
+<h4 id="a-the-java-virtual-machine-jvm-is-not-valid-for-running-sarl-eclipse">a) The Java virtual machine (JVM) is not valid for running SARL Eclipse</h4>
+
+<p>To solve this problem:</p>
+<ul>
+  <li>Install the JDK 1.8, and configuring your operating system to use it by default;</li>
+  <li>Force the SARL product to use the JDK 1.8 by editing the <code>eclipse-sarl.ini</code> file as follows.</li>
+</ul>
+
+<p>The editing of the <code>eclipse-sarl.ini</code> could be done by following the steps:</p>
 
 <ol>
-  <li>The Java virtual machine (JVM) is not valid for running SARL Eclipse. To solve this problem:
-    <ul>
-      <li>install the JDK 1.8, and configuring your operating system to use it by default; or</li>
-      <li>force the SARL product to use the JDK 1.8 by editing the <code>eclipse-sarl.ini</code> file into the folder of the SARL IDE. Add the following parameter on a new line: <code>-vm path</code>, where <code>path</code> is the path to the binary file <code>javaw</code> or <code>java</code> of at least the JDK 1.8.</li>
-    </ul>
+  <li>Locate the folder in which your JVM (not the standard Mac JRE) is installed, e.g. <code>/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin</code>. The previous folder must contains the tools <code>javac</code> and <code>java</code>.</li>
+  <li>Open the folder in which the SARL <code>Eclipse.app</code> was copied</li>
+  <li>Right-click on <code>Eclipse.app</code> and select <code>Show Package Contents</code></li>
+  <li>Move to <code>Contents/Eclipse</code></li>
+  <li>Open <code>eclipse-sarl.ini</code> with a text editor</li>
+  <li>Add the following lines into the file or update the lines if they exist (there is a line break that must be inside the file content):
+    <pre><code>-vm
+/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin
+</code></pre>
   </li>
-  <li>The Gatekeeper of MacOS X blocks the launch of the SARL Eclipse, because Gatekeeper considers SARL Eclipse as unstable. You could confirm this problem by looking into your <code>system.log</code> file and searching for a message that looks like:</li>
+  <li>Save and start the SARL IDE.</li>
 </ol>
+
+<p>An complete example of the eclipse-sarl.ini file is:</p>
+
+<pre><code>-startup
+../Eclipse/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar
+--launcher.library
+../Eclipse/plugins/org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.1.1100.v20190907-0426
+-vm
+/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin
+-vmargs
+-Xms256m
+-Xmx1g
+-XstartOnFirstThread
+-Dorg.eclipse.swt.internal.carbon.smallFonts
+</code></pre>
+
+<h4 id="b-the-gatekeeper-of-macos-x-blocks-the-launch-of-the-sarl-eclipse">b) The Gatekeeper of MacOS X blocks the launch of the SARL Eclipse</h4>
+
+<p>Because Gatekeeper considers SARL Eclipse as unstable. You could confirm this problem by looking into your <code>system.log</code> file and searching for a message that looks like:</p>
 
 <pre><code>(application.io.sarl.lang.product.72020573.72020798[78958]): removing service since it exited with consistent failure - OS_REASON_EXEC | Gatekeeper policy blocked execution
 </code></pre>
@@ -341,6 +374,11 @@ read the “.log” file for determining this cause.</p>
 </code></pre>
 
 <p>Where <code>Eclipse.app</code> is the name of the SARL Eclipse application on MacOS X.</p>
+
+<h4 id="c-the-eclipseapp-application-is-damaged">c) The Eclipse.app application is damaged</h4>
+
+<p>This error message is shown up on a dialog box, and you have the choices to move the application to the bin or to cancel the launch.
+This error message has the same cause as the Gatekeeper error that is described into the previous section.</p>
 
 <h3 id="26-why-does-the-sarl-product-launch-but-not-contain-any-features-related-to-sarl">2.6. Why does the SARL product launch but not contain any features related to SARL?</h3>
 
@@ -542,7 +580,7 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
   <li>Status: Draft Release</li>
-  <li>Release: 2021-01-13</li>
+  <li>Release: 2021-02-11</li>
 </ul>
 
 <blockquote>
