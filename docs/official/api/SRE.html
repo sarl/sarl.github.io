@@ -112,6 +112,7 @@ application classpath.</p>
 	def isRunning : boolean
 	def removeSREListener(SREListener)
 	def setBootAgentTypeContextUUID
+	def setCommandLineArguments(String[])
 	def setRandomContextUUID
 	def setSpecificContextUUID
 	def setUniverseContextUUID(UUID)
@@ -124,6 +125,7 @@ application classpath.</p>
 	def startAgent(int, Class&lt;Agent&gt;, Object[])
 	def startAgentWithID(Class&lt;Agent&gt;, UUID, Object[])
 	def startWithoutAgent : AgentContext
+	def startWithoutAgent(boolean) : AgentContext
 }
 </code></pre>
 
@@ -431,8 +433,8 @@ But, if you register the listener when the SRE is already launched, when the SRE
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -445,7 +447,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

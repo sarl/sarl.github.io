@@ -190,7 +190,7 @@ capacity.</p>
 <pre><code class="language-sarl">override hasRegisteredBehavior : boolean {
 	this.behaviorDelegate.hasRegisteredBehavior
 }
-override getRegisteredBehaviors : ConcurrentLinkedDeque&lt;Behavior&gt; {
+override getRegisteredBehaviors : ConcurrentCollection&lt;Behavior&gt; {
 	this.behaviorDelegate.getRegisteredBehaviors
 }
 override registerBehavior(attitude : Behavior, filter : (Event) =&gt; boolean, initializationParameters : Object*) : Behavior {
@@ -201,6 +201,12 @@ override unregisterBehavior(attitude : Behavior) : Behavior {
 }
 override wake(^event : Event, scope : Scope&lt;Address&gt;) {
 	this.behaviorDelegate.wake(^event, scope)
+}
+override wake(beh : Behavior, ^event : Event) {
+	this.behaviorDelegate.wake(beh, ^event)
+}
+override wake(behs : Iterable&lt;Behavior&gt;, ^event : Event) {
+	this.behaviorDelegate.wake(behs, ^event)
 }
 </code></pre>
 
@@ -234,8 +240,8 @@ one type of event accepted by the agents of type <code>FilteringEventAgent</code
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -248,7 +254,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

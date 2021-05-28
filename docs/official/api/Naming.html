@@ -88,7 +88,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 </ul>
 <li><a href="#3-observable-and-not-observable-fields">3. Observable and Not Observable Fields</a></li>
 <ul>
-  <li><a href="#31-obsersable-annotation">3.1. @Obsersable Annotation</a></li>
+  <li><a href="#31-observable-annotation">3.1. @Observable Annotation</a></li>
   <li><a href="#32-capacity-to-manage-the-access-rights">3.2. Capacity to Manage the Access Rights</a></li>
 </ul>
 <li><a href="#4-legal-notice">4. Legal Notice</a></li>
@@ -392,7 +392,7 @@ that enables the agent to manage the access rights to its fields dynamically.</p
   </li>
 </ul>
 
-<h3 id="31-obsersable-annotation">3.1. @Obsersable Annotation</h3>
+<h3 id="31-observable-annotation">3.1. @Observable Annotation</h3>
 
 <p>In the following example, two fields are defined for the agent <code>MyAgent</code>.
 The first field is named <code>observableField</code> and it is marked as observable because it is annotated with <code>@Observable</code>.
@@ -424,7 +424,7 @@ agent MyAgent2 {
 <p>In order to enable an agent to manage the accesses to its own fields, you could equip this agent with a skill that implements
 the <code>FieldAccessValidationCapacity</code> capacity:</p>
 
-<pre><code class="language-sarl">interface FieldAccessValidationCapacity {
+<pre><code class="language-sarl">capacity FieldAccessValidationCapacity {
 	def getFieldAccessRight(Field) : FieldAccessRight
 }
 </code></pre>
@@ -474,8 +474,8 @@ Any other field cannot be observed.</p>
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -488,7 +488,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

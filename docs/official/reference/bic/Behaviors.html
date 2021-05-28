@@ -74,6 +74,11 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#2-unregistering-a-behavior">2. Unregistering a Behavior</a></li>
 <li><a href="#3-registering-a-behavior-with-an-event-filter">3. Registering a Behavior with an event filter</a></li>
 <li><a href="#4-executing-a-behavior">4. Executing a Behavior</a></li>
+<ul>
+  <li><a href="#41-awaking-all-behaviors-and-sub-agents">4.1. Awaking all behaviors and sub-agents</a></li>
+  <li><a href="#42-awaking-a-specific-behavior">4.2. Awaking a specific behavior</a></li>
+  <li><a href="#43-awaking-multiple-specific-behaviors">4.3. Awaking multiple specific behaviors</a></li>
+</ul>
 <li><a href="#5-creating-an-event-listener">5. Creating an Event Listener</a></li>
 <li><a href="#6-accessing-to-the-collection-of-the-registered-behaviors">6. Accessing to the collection of the registered behaviors</a></li>
 <li><a href="#7-legal-notice">7. Legal Notice</a></li>
@@ -168,7 +173,14 @@ beh.registerBehavior [^event | ^event instanceof MyEvent]
 <h2 id="4-executing-a-behavior">4. Executing a Behavior</h2>
 
 <p>A behavior is executed through its event handlers. Consequently, for running a behavior, it is mandatory
-to wake it with an event. This particular feature is supported by:</p>
+to wake it with an event. 
+This section describes the functions for awaking
+the behaviors with an event occurrence.</p>
+
+<h3 id="41-awaking-all-behaviors-and-sub-agents">4.1. Awaking all behaviors and sub-agents</h3>
+
+<p>The regular way for awaking agent behaviors is to fire an event into all the registered behaviors.
+This particular feature is supported by:</p>
 
 <pre><code class="language-sarl">def wake(evt : Event, scope : Scope&lt;Address&gt; = null)
 </code></pre>
@@ -188,6 +200,30 @@ wake(e, null)
 var scope : Scope&lt;Address&gt; = [ it.ID !== null ]
 wake(e, scope)
 </code></pre>
+
+<h3 id="42-awaking-a-specific-behavior">4.2. Awaking a specific behavior</h3>
+
+<p>In some specific cases, you may want to wake up a single specific behavior with an event, such that, the other
+behaviors of the agents and its sub-agents are not receiving the event occurrence.
+This particular feature is supported by:</p>
+
+<pre><code class="language-sarl">def wake(beh : Behavior, evt : Event)
+</code></pre>
+
+<p>This function emits the given event into the given behavior, and neither in the inner space of the agent nor the other
+registered behaviors of the agent.</p>
+
+<h3 id="43-awaking-multiple-specific-behaviors">4.3. Awaking multiple specific behaviors</h3>
+
+<p>As an extension of the <code>wake</code> function that is presented into the previous section, you could wake up multiple
+behaviors with a single event occurrence, assuming that the list of the behaviors to wake up is known and provided.
+This feature is implemented by:</p>
+
+<pre><code class="language-sarl">def wake(behs : Iterable&lt;Behavior&gt;, evt : Event)
+</code></pre>
+
+<p>This function emits the given event into each of the given behaviors, and neither in the inner space of the agent nor the other
+registered behaviors of the agent that are not specified into the <code>behs</code> argument.</p>
 
 <h2 id="5-creating-an-event-listener">5. Creating an Event Listener</h2>
 
@@ -210,7 +246,7 @@ l = asEventListener
 <p>Two functions are provided for accessing to the collection of the registered behaviors:</p>
 
 <pre><code class="language-sarl">def hasRegisteredBehavior : boolean
-def getRegisteredBehaviors : ConcurrentLinkedDeque&lt;Behavior&gt;
+def getRegisteredBehaviors : ConcurrentCollection&lt;Behavior&gt;
 </code></pre>
 
 <p>The hasRegisteredBehavior replies a boolean value, which is indicating if
@@ -218,7 +254,7 @@ a behavior is registered.
 The getRegisteredBehaviors replies an unmodifiable collection of the registered behaviors.</p>
 
 <pre><code class="language-sarl">var b : boolean = hasRegisteredBehavior
-var c : ConcurrentLinkedDeque&lt;Behavior&gt; = getRegisteredBehaviors
+var c : ConcurrentCollection&lt;Behavior&gt; = getRegisteredBehaviors
 </code></pre>
 
 <h2 id="7-legal-notice">7. Legal Notice</h2>
@@ -226,8 +262,8 @@ var c : ConcurrentLinkedDeque&lt;Behavior&gt; = getRegisteredBehaviors
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -240,7 +276,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -447,7 +447,9 @@ variable as the keywords <code>this</code> and <code>it</code>.</p>
 <p>When an agent is ready to be executed by the runtime environment, it receives the <code>Initialize</code> event.
 This event is defined as:</p>
 
-<pre><code class="language-sarl">class Initialize extends Event {
+<pre><code class="language-sarl">event Initialize {
+	val parameters : Object[]
+	val spawner : UUID
 }
 </code></pre>
 
@@ -603,7 +605,7 @@ two are defined into <code>Agent4</code>. This mechanism is generalized to all t
 
 <p>The counterpart of <code>Initialize</code> is the event <code>Destroy</code>. This event is defined as:</p>
 
-<pre><code class="language-sarl">class Destroy extends Event {
+<pre><code class="language-sarl">event Destroy {
 }
 </code></pre>
 
@@ -847,8 +849,8 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -861,7 +863,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

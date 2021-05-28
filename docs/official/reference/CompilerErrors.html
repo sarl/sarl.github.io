@@ -547,37 +547,43 @@ the long code as argument to <code>@SuppressWarnings</code> too.</p>
     </tr>
     <tr>
       <td>48b</td>
-      <td><strong>Message:</strong> Forbidden annotation in a SARL program<br /><strong>Cause:</strong> An annotation is used into the code. But this annotation is forbidden because it is reserved for internal usage, or it is not supported by the SARL compiler<br /><strong>Solving:</strong> Remove the annotation</td>
+      <td><strong>Message:</strong> Default value’s expression cannot reference the not-pure operation: <em>name</em><br /><strong>Cause:</strong> This error message is generated when a reference to a non-pure function is detected into the expression of the default value for a formal parameter. Only pure functions could be used for building a default value expression in order to avoid unexpected side-effects<br /><strong>Solving:</strong> Remove the reference to the not-pure function</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
     </tr>
     <tr>
       <td>48c</td>
-      <td><strong>Message:</strong> Forbidden annotation to the agent-oriented feature of type <em>type-name</em><br /><strong>Cause:</strong> An active annotation, i.e. an annotation that causes a specific generation of code by the SARL compiler, is attached to an agent-oriented type, e.g. <code>agent</code>, <code>behavior</code>, etc. But, it is forbidden to attached the active annotation to an agent-oriented type<br /><strong>Solving:</strong> Remove the active annotation</td>
+      <td><strong>Message:</strong> Forbidden annotation in a SARL program<br /><strong>Cause:</strong> An annotation is used into the code. But this annotation is forbidden because it is reserved for internal usage, or it is not supported by the SARL compiler<br /><strong>Solving:</strong> Remove the annotation</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
     </tr>
     <tr>
       <td>48d</td>
-      <td><strong>Message:</strong> Forbidden annotation to the object-oriented feature of type <em>type-name</em><br /><strong>Cause:</strong> An active annotation, i.e. an annotation that causes a specific generation of code by the SARL compiler, is attached to an object-oriented type, e.g. <code>class</code>, <code>interface</code>, etc. But, it is forbidden to attached the active annotation to an object-oriented type<br /><strong>Solving:</strong> Remove the active annotation</td>
+      <td><strong>Message:</strong> Forbidden annotation to the agent-oriented feature of type <em>type-name</em><br /><strong>Cause:</strong> An active annotation, i.e. an annotation that causes a specific generation of code by the SARL compiler, is attached to an agent-oriented type, e.g. <code>agent</code>, <code>behavior</code>, etc. But, it is forbidden to attached the active annotation to an agent-oriented type<br /><strong>Solving:</strong> Remove the active annotation</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
     </tr>
     <tr>
       <td>48e</td>
-      <td><strong>Message:</strong> Forbidden feature call: <em>feature</em><br /><strong>Cause:</strong> This error is generated when a forbidden feature call is detected. The forbidden features to call are: <code>System::exit</code> when it is inde an agent-oriented type, e.g. <code>agent</code>; with a name containing the forbidden character $.; or the feature is part of a private API and the caller is not part of the private API<br /><strong>Solving:</strong> Remove the call</td>
+      <td><strong>Message:</strong> Forbidden annotation to the object-oriented feature of type <em>type-name</em><br /><strong>Cause:</strong> An active annotation, i.e. an annotation that causes a specific generation of code by the SARL compiler, is attached to an object-oriented type, e.g. <code>class</code>, <code>interface</code>, etc. But, it is forbidden to attached the active annotation to an object-oriented type<br /><strong>Solving:</strong> Remove the active annotation</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
     </tr>
     <tr>
       <td>48f</td>
-      <td><strong>Message:</strong> Forbidden reference to not final field <em>name</em> from a default value expression<br /><strong>Cause:</strong> This error message is generated when a reference to a non-final field is detected into the expression of the default value for a formal parameter. Only unmodifiable and side-effect free features could be used for building a default value expression<br /><strong>Solving:</strong> Remove the reference to the invalid field</td>
+      <td><strong>Message:</strong> Forbidden feature call: <em>feature</em><br /><strong>Cause:</strong> This error is generated when a forbidden feature call is detected. The forbidden features to call are: <code>System::exit</code> when it is inde an agent-oriented type, e.g. <code>agent</code>; with a name containing the forbidden character $.; or the feature is part of a private API and the caller is not part of the private API<br /><strong>Solving:</strong> Remove the call</td>
+      <td>Error</td>
+      <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
+    </tr>
+    <tr>
+      <td>48g</td>
+      <td><strong>Message:</strong> Forbidden reference to not final field {0} from a constructor’s default value expression<br /><strong>Cause:</strong> This error message is generated when a reference to a not-final field is detected into the expression of the default value for a constructor’s formal parameter. Only final fields could be used for building a default value expression of a constructor in order to avoid unexpected side-effects<br /><strong>Solving:</strong> Remove the reference to the not final field</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.forbidden_reference">forbidden_reference</a></td>
     </tr>
     <tr>
       <td>49</td>
-      <td><strong>Message:</strong> The generic type parameter ‘<em>name</em>’ is hiding the generic type parameter of ‘<em>type-name</em>‘<br /><strong>Cause:</strong> This error is generated you declared a generic type parameter for an action that has the same name as another generic type parameter that is declared into the enclosing type (class, or interface)<br /><strong>Solving:</strong> Change the <em>name</em></td>
+      <td><strong>Message:</strong> The generic type parameter ‘<em>name</em>’ is hiding the generic type parameter of ‘<em>type-name</em>‘<br /><strong>Cause:</strong> This error is generated when you declared a generic type parameter for an action that has the same name as another generic type parameter that is declared into the enclosing type (class, or interface)<br /><strong>Solving:</strong> Change the <em>name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.generic_type_name_shadowing">generic_type_name_shadowing</a></td>
     </tr>
@@ -625,1482 +631,1494 @@ the long code as argument to <code>@SuppressWarnings</code> too.</p>
     </tr>
     <tr>
       <td>52</td>
+      <td><strong>Message:</strong> Illegal redefinition of the default value for the formal parameter <em>name</em>. Inherited value is: <em>original value</em>. While the current value is: <em>redefined value</em>.<br /><strong>Cause:</strong> This error message is generated when you declared a default value for a formal parameter that is different from the corresponding default value that was declared into the super types. You cannot change the default value of a formal parameter because it may cause unexpected side-effects for the callers of the function<br /><strong>Solving:</strong> Remove the redundant declaration fo the default value</td>
+      <td>Error</td>
+      <td><a href=":" title="io.sarl.lang.validation.IssueCodes.illegal_parameter_default_value_redefinition">illegal_parameter_default_value_redefinition</a></td>
+    </tr>
+    <tr>
+      <td>53</td>
       <td><strong>Message:</strong> Implicit return<br /><strong>Cause:</strong> By default, it is not necessary to specify an explicit <code>return</code> statement inside the code block of a function. The SARL compilier assumes that the last executed instruction gives the value to be returned by the function. This issue message is generated when an implicit return is used within a function<br /><strong>Solving:</strong> Add an explicit <code>return</code></td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.implicit_return">implicit_return</a></td>
     </tr>
     <tr>
-      <td>53</td>
+      <td>54</td>
       <td><strong>Message:</strong> The import ‘<em>package-1</em>.<em>name</em>’ collides with the import ‘<em>package-2</em>.<em>name</em>‘<br /><strong>Cause:</strong> This error is generated when you define into the list of <code>import</code> two types with the same simple name. In this case, it is impossible to determine if an occurrence of <em>name</em> into the code refers to the type in the package <em>package-1</em> or in the package <em>package-2</em><br /><strong>Solving:</strong> Remove one of the <code>import</code></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.import_collision">import_collision</a></td>
     </tr>
     <tr>
-      <td>54</td>
+      <td>55</td>
       <td><strong>Message:</strong> The import ‘<em>package</em>.<em>name</em>’ conflicts with a type defined in the same file<br /><strong>Cause:</strong> You are importing a type with the given <em>name</em> into the given <em>package</em>. But, you have also defined a local type with the <em>name</em>. In this case, it is impossible to determine if an occurrence of <em>name</em> into the code refers to the local type or the imported type<br /><strong>Solving:</strong> Rename the local type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.import_conflict">import_conflict</a></td>
     </tr>
     <tr>
-      <td>55</td>
+      <td>56</td>
       <td><strong>Message:</strong> The import <em>name</em> cannot be resolved<br /><strong>Cause:</strong> The <em>name</em> that is provided after an <code>import</code> cannot be found<br /><strong>Solving:</strong> Remove the <code>import</code> statement</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.import_unresolved">import_unresolved</a></td>
     </tr>
     <tr>
-      <td>56</td>
+      <td>57</td>
       <td><strong>Message:</strong> The import ‘<em>name</em>’ is never used<br /><strong>Cause:</strong> This issue message is generated when an <code>import</code> statement does not provide features that are used into the current file<br /><strong>Solving:</strong> Remove <code>import</code> statement</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.import_unsued">import_unsued</a></td>
     </tr>
     <tr>
-      <td>57</td>
+      <td>58</td>
       <td><strong>Message:</strong> The use of wildcard imports is deprecated<br /><strong>Cause:</strong> You are importing all the types that are defined into a package with <code>import pkg.*</code>. This instruction has two major drawbacks. Firstly, the really used types within the current are not explicit because of the wildcard. Second, the SARL compiler loads in memory too much type definitions for compiling the current file<br /><strong>Solving:</strong> Replace the wildcard by the really used types</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.import_wildcard_deprecated">import_wildcard_deprecated</a></td>
     </tr>
     <tr>
-      <td>58</td>
+      <td>59</td>
       <td><strong>Message:</strong> The declared exception <em>exception-type</em> is not compatible with throws clause in <em>exception-list</em><br /><strong>Cause:</strong> According the inheritance definition, that is common to SARL and the object-oriented programming languages, overridable functions as associated to a contract with their callers. This contract indicates that the prototype of the function will never changed, and the function will have the same thrown exceptions always. This contract must be fullfil by the overriding functions. This error message is generated when your overriding function has a list of exceptions after the <code>thrown</code> keyword that is not compatible with the list defined into the inherited function. An exception of type “a” in the overriding function must be also a “b”, where “a” is equals to “b” or a sub-type of “b”<br /><strong>Solving:</strong> Change the list of exceptions after <code>throws</code> keyword to the appropriate exception types</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.incompatible_throws_clause">incompatible_throws_clause</a></td>
     </tr>
     <tr>
-      <td>59a</td>
+      <td>60a</td>
       <td><strong>Message:</strong> Incompatible types. Expected <em>expected-type</em> but was <em>actual-type</em><br /><strong>Cause:</strong> The value that is specified after a <code>return</code> statement has a type that is incompatible with the return type of the enclosing function<br /><strong>Solving:</strong> Rewrite the return’s expression in order to have a compatible type; or change the return type of the function to be compatible with those of the return expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.incompatible_types">incompatible_types</a></td>
     </tr>
     <tr>
-      <td>59b</td>
+      <td>60b</td>
       <td><strong>Message:</strong> No exception of type <em>type-name</em> can be thrown; an exception type must be a subclass of Throwable<br /><strong>Cause:</strong> Inside a <code>catch</code> statement, you have specified a <em>type-name</em> that does not correspond to a sub-type of <code>Throwable</code>. The parameter of the <code>catch</code> statement must be a throwable type, or a collection of throwable types<br /><strong>Solving:</strong> Rewrite <em>type-name</em> by an appropriate throwable type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.incompatible_types">incompatible_types</a></td>
     </tr>
     <tr>
-      <td>60a</td>
+      <td>61a</td>
       <td><strong>Message:</strong> The enum constant <em>name</em> needs a corresponding case label in this enum switch on <em>type-name</em><br /><strong>Cause:</strong> You have specified an enumerated value to a <code>switch</code> condition. The enumeration constant with the given <em>name</em> has not a corresponding <code>case</code> into the <code>switch</code>. It means that all the possible cases are not explicitly covered; It is preferrable they are all covered<br /><strong>Solving:</strong> Add a <code>case</code> for the missed constant <em>name</em></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.incomplete_cases_on_enum">incomplete_cases_on_enum</a></td>
     </tr>
     <tr>
-      <td>60b</td>
+      <td>61b</td>
       <td><strong>Message:</strong> The enum constants <em>list-of-names</em> need a corresponding case label in this enum switch on <em>type-name</em><br /><strong>Cause:</strong> You have specified an enumerated value to a <code>switch</code> condition. The enumeration constants with the given names have not corresponding <code>case</code> into the <code>switch</code>. It means that all the possible cases are not explicitly covered; It is preferrable they are all covered<br /><strong>Solving:</strong> Add a <code>case</code> for each missed constant name</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.incomplete_cases_on_enum">incomplete_cases_on_enum</a></td>
     </tr>
     <tr>
-      <td>61</td>
+      <td>62</td>
       <td><strong>Message:</strong> The return type is incompatible with <em>func-prototype</em><br /><strong>Cause:</strong> This error message is generated when an overriding function has a specified return type that is incompatible with the return type defined into the super-type<br /><strong>Solving:</strong> Replace the return type with a compatible type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.incomptible_return_type">incomptible_return_type</a></td>
     </tr>
     <tr>
-      <td>62</td>
+      <td>63</td>
       <td><strong>Message:</strong> The static <em>feature-type</em> <em>feature-name</em> should be accessed in a static way<br /><strong>Cause:</strong> For a instance function, you try to access to a static feature using a non-static syntax, e.g. <code>obj.StaticFeature</code>. It is preferable to use the static call syntax, e.g. <code>MyType::StaticFeature</code>, where <code>MyType</code> is the type of the object <code>obj</code> from the previous example<br /><strong>Solving:</strong> Replace the non-static syntax by the static syntax<br /><strong>Delegated to:</strong> org.eclipse.jdt.core.compiler.problem.staticAccessReceiver</td>
       <td>Delegated; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.instance_access_to_static_member">instance_access_to_static_member</a></td>
     </tr>
     <tr>
-      <td>63a</td>
+      <td>64a</td>
       <td><strong>Message:</strong> Extended interface must be an interface<br /><strong>Cause:</strong> According to the syntax of SARL, an interface extends another interface. This error message indicates to you that the type after <code>extends</code> is not an interface<br /><strong>Solving:</strong> Remove the <code>extends</code> statement; or replace the invalid type by the appropriate class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.interface_expected">interface_expected</a></td>
     </tr>
     <tr>
-      <td>63b</td>
+      <td>64b</td>
       <td><strong>Message:</strong> Implemented interface must be an interface<br /><strong>Cause:</strong> According to the syntax of SARL, a class implements interfaces. This error message indicates to you that one type after <code>implements</code> is not an interface<br /><strong>Solving:</strong> Remove the <code>extends</code> statement; or replace the invalid type by the appropriate class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.interface_expected">interface_expected</a></td>
     </tr>
     <tr>
-      <td>63c</td>
+      <td>64c</td>
       <td><strong>Message:</strong> Invalid supertype. Expecting an interface<br /><strong>Cause:</strong> According to the syntax of SARL, a type (interface, capacity, etc.) extends another type. This error message indicates to you that the type after <code>extends</code> is not a type implemented with a Java interface, when it is expected to have one<br /><strong>Solving:</strong> Remove the <code>extends</code> statement; or replace the invalid type by the appropriate interface type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.interface_expected">interface_expected</a></td>
     </tr>
     <tr>
-      <td>64</td>
+      <td>65</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> This error is generated when the SARL compiler has encountered an internal error</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.internal_error">internal_error</a></td>
     </tr>
     <tr>
-      <td>65</td>
+      <td>66</td>
       <td><strong>Message:</strong> Invalid type: ‘<em>type-name</em>’. Only capacities can be used after the keyword ‘uses’<br /><strong>Cause:</strong> The keyword <code>uses</code> enables to uses and import capacities within the scope of the entity (agent, behavior, etc.) in which the <code>uses</code> is specified. This error is generated when the type named <em>type-name</em> that is specified after an <code>uses</code> is not a sub-type of <code>Capacity</code>, i.e. it is not a capacity type<br /><strong>Solving:</strong> Remove the <em>type-name</em> after the keyword <code>uses</code>; or replace <em>type-name</em> by the name of an appropriate capacity</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_capacity_type">invalid_capacity_type</a></td>
     </tr>
     <tr>
-      <td>66a</td>
+      <td>67a</td>
       <td><strong>Message:</strong> Cannot cast from <em>type-name-1</em> to <em>type-name-2</em><br /><strong>Cause:</strong> The operands of the cast operator <code>as</code> have not compatible types. SARL compiler has found no way to convert a value of the type with name <em>type-name-1</em>, which is the type of the left operand of the <code>as</code> operator, to a value of the type with name <em>type-name-2</em>, which is the right operand of the <code>as</code> operator<br /><strong>Solving:</strong> Change the left expression in order to be of a compatible type with the right operand; or Replace <em>type-name-2</em> by an appropriate type name; or Define a “to<em>type-name-2</em>()” function if <em>type-name-2</em> is a class; or Define a “<em>type-name-2Value()” function if *type-name-2</em> is a primitive type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_cast">invalid_cast</a></td>
     </tr>
     <tr>
-      <td>66b</td>
+      <td>67b</td>
       <td><strong>Message:</strong> Cannot cast from void to <em>type-name-2</em><br /><strong>Cause:</strong> Since <code>void</code> represents the fact that there is not value, it is impossible to convert “nothing” to a value, whatever its type<br /><strong>Solving:</strong> Remove <code>as</code> operator</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_cast">invalid_cast</a></td>
     </tr>
     <tr>
-      <td>67a</td>
+      <td>68a</td>
       <td><strong>Message:</strong> Cannot refer to an instance field <em>field-name</em> while explicitly invoking a constructor<br /><strong>Cause:</strong> According to the standards of object-oriented programming, nothing could append into an object before it was constructed. It means that when you are calling a constructor from inside a constructor’s block of code, the object is not yet built. Consequently, you cannot have access to the object’s fields (not static)<br /><strong>Solving:</strong> Rewrite the arguments to avoid the access to the object’s field</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_constructor_argument">invalid_constructor_argument</a></td>
     </tr>
     <tr>
-      <td>67b</td>
+      <td>68b</td>
       <td><strong>Message:</strong> Cannot refer to an instance method while explicitly invoking a constructor<br /><strong>Cause:</strong> According to the standards of object-oriented programming, nothing could append into an object before it was constructed. It means that when you are calling a constructor from inside a constructor’s block of code, the object is not yet built. Consequently, you cannot have access to the object’s method (not static)<br /><strong>Solving:</strong> Rewrite the arguments to avoid the access to the object’s method</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_constructor_argument">invalid_constructor_argument</a></td>
     </tr>
     <tr>
-      <td>68</td>
+      <td>69</td>
       <td><strong>Message:</strong> Constructor call must be the first expression in a constructor<br /><strong>Cause:</strong> According to the standards of object-oriented programming, nothing could append into an object before it was constructed. It means that the first possible instruction within any constructor’s code is a call to another constructor. This call may be explicit or implicit. This error is generated by your constructor’s code starts with statements that are not a constructor calls, followed by a constructor call<br /><strong>Solving:</strong> Move the constructor call first</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_constructor_invocation">invalid_constructor_invocation</a></td>
     </tr>
     <tr>
-      <td>69a</td>
+      <td>70a</td>
       <td><strong>Message:</strong> Invalid annotation value. <em>skill-name</em> is not an implementation of <em>capacity-name</em><br /><strong>Cause:</strong> The <code>@DefaultSkill</code> annotation enables to specify programmatically the skill that may be used by default by an agent for implementing a capacity. The parameter named <em>skill-name</em> of the <code>@DefaultSill</code> must be a skill that implements the capacity <em>capacity-name</em><br /><strong>Solving:</strong> Remove the <code>@DefaultSkill</code>; or replace <em>skill-name</em> by an appropriate skill type name</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_default_skill_annotation">invalid_default_skill_annotation</a></td>
     </tr>
     <tr>
-      <td>69b</td>
+      <td>70b</td>
       <td><strong>Message:</strong> Invalid annotation value. It must be a type literal to a skill<br /><strong>Cause:</strong> The <code>@DefaultSkill</code> annotation enables to specify programmatically the skill that may be used by default by an agent for implementing a capacity. The parameter of the annotation must be the type name of a skill<br /><strong>Solving:</strong> Remove the <code>@DefaultSkill</code>; or replace <em>skill-name</em> by an appropriate skill type name</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_default_skill_annotation">invalid_default_skill_annotation</a></td>
     </tr>
     <tr>
-      <td>70a</td>
+      <td>71a</td>
       <td><strong>Message:</strong> A return expression is not allowed in this context<br /><strong>Cause:</strong> This error message is generated when a <code>return</code> statement is defined in a context that cannot allow a return<br /><strong>Solving:</strong> Remove the <code>return</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_early_exit">invalid_early_exit</a></td>
     </tr>
     <tr>
-      <td>70b</td>
+      <td>71b</td>
       <td><strong>Message:</strong> A throw expression is not allowed in this context<br /><strong>Cause:</strong> This error message is generated when a <code>throw</code> statement is defined in a context that cannot allow to throw exceptions<br /><strong>Solving:</strong> Remove the <code>throw</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_early_exit">invalid_early_exit</a></td>
     </tr>
     <tr>
-      <td>71a</td>
+      <td>72a</td>
       <td><strong>Message:</strong> Supertype must be a subtype of ‘<em>type-name</em>‘<br /><strong>Cause:</strong> This error message is generated when the provided type after the <code>extends</code> statement is invalid; because it is not a sub-type of <em>type-name</em> strictly (i.e., not <em>type-name</em> itself)<br /><strong>Solving:</strong> Remove the type after <code>extends</code>; or replace it by the appropriate name of a sub-type of <em>type-name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_extended_type">invalid_extended_type</a></td>
     </tr>
     <tr>
-      <td>71b</td>
+      <td>72b</td>
       <td><strong>Message:</strong> Supertype must be of type ‘<em>type-name</em>‘<br /><strong>Cause:</strong> This error message is generated when the provided type after the <code>extends</code> statement is invalid; because it is neither equals to <em>type-name</em> nor a sub-type of <em>type-name</em><br /><strong>Solving:</strong> Remove the type after <code>extends</code>; or replace it by the appropriate name of a sub-type of <em>type-name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_extended_type">invalid_extended_type</a></td>
     </tr>
     <tr>
-      <td>72</td>
+      <td>73</td>
       <td><strong>Message:</strong> The primitive type <em>name</em> is not a valid extension<br /><strong>Cause:</strong> <a href="./general/Extension.html">Extension on fields</a> is supported by SARL syntax. The purpose is to call the member of an object or a type that is marked by <code>extension</code>. A primitive type has no member. Consequently, using the <code>extension</code> on a variable of primitive type is impossile<br /><strong>Solving:</strong> Remove <code>extension</code>; or replace the primitive type by its object-oriented equivalent</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_extension_type">invalid_extension_type</a></td>
     </tr>
     <tr>
-      <td>73</td>
+      <td>74</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> Extra-language generator is an extension module of the SARL compiler. It has the role to generate source code in a specific programming language, e.g., Python, that is not supported by the core generator of the SARL compiler, i.e., Java. When the extra-language generator encounters an issue (error, warning or information), it is notified with is issue code</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_extra_language_generation">invalid_extra_language_generation</a></td>
     </tr>
     <tr>
-      <td>74</td>
+      <td>75</td>
       <td><strong>Message:</strong> Invalid type: ‘<em>type-name</em>’. Only events can be used after the keyword ‘fires’<br /><strong>Cause:</strong> The keyword <code>fires</code> specifies the events that could be fired by a function. This error is generated when the type named <em>type-name</em> that is specified after an <code>fires</code> is not a sub-type of <code>Capacity</code>, i.e. it is not a capacity type<br /><strong>Solving:</strong> Remove the <em>type-name</em> after the keyword <code>fires</code>; or replace <em>type-name</em> by the name of an appropriate capacity</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_firing_event_type">invalid_firing_event_type</a></td>
     </tr>
     <tr>
-      <td>75</td>
+      <td>76</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> This error message is generated when you pass an invalid type to a generic parameter type. <em>Caution: this issue seems not to have a message template from the Xtext/Xbase source code</em><br /><strong>Solving:</strong> Change the type argument</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_generic_argument_types">invalid_generic_argument_types</a></td>
     </tr>
     <tr>
-      <td>76</td>
+      <td>77</td>
       <td><strong>Message:</strong> ‘<em>name</em>’ is not a valid identifier<br /><strong>Cause:</strong> This error is generated when you are using an identifier that is corresponding to a keyword of the Java programming language. Since the SARL compiler create Java source file, in order to make the generated files compilable, any variable with a name equals to a JAva keyword must be avoided<br /><strong>Solving:</strong> Change the <em>name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_identifier">invalid_identifier</a></td>
     </tr>
     <tr>
-      <td>77a</td>
+      <td>78a</td>
       <td><strong>Message:</strong> Invalid implemented type: ‘<em>type-name</em>’. Only subtypes of ‘<em>expected-name</em>’ are allowed for ‘<em>element-name</em>‘<br /><strong>Cause:</strong> This error message is generated when the provided type named <em>type-name</em> is invalid when it is specified for an <code>implements</code> statement; because it is not a sub-type of <em>expected-name</em> strictly (i.e., not <em>expected-name</em> itself). When it is used for the definition of <em>element-name</em>, an implemented type must fullfil the previous typing constraint<br /><strong>Solving:</strong> Remove <em>type-name</em>; or replace it by the appropriate name of a sub-type of <em>expected-name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_implemented_type">invalid_implemented_type</a></td>
     </tr>
     <tr>
-      <td>77b</td>
+      <td>78b</td>
       <td><strong>Message:</strong> Invalid implemented type: ‘<em>type-name</em>’. Only the type ‘<em>expected-name</em>’ and one of its subtypes are allowed for ‘<em>element-name</em>‘<br /><strong>Cause:</strong> This error message is generated when the provided type named <em>type-name</em> is invalid when it is specified for an <code>implements</code> statement; because it is neither equals to <em>expected-name</em> nor a sub-type of <em>expected-name</em>. When it is used for the definition of <em>element-name</em>, an implemented type must fullfil the previous typing constraint<br /><strong>Solving:</strong> Remove <em>type-name</em>; or replace it by the appropriate name of a sub-type of <em>expected-name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_implemented_type">invalid_implemented_type</a></td>
     </tr>
     <tr>
-      <td>78a</td>
+      <td>79a</td>
       <td><strong>Message:</strong> Expression with side effect is not allowed in guards<br /><strong>Cause:</strong> The guard that is specified for a behavior unit may have side effect, i.e. it may modify the state of the current agent/behavior/skill, or of another object. According to the SARL specification, the behavior units’ guards must not have any side-effect because the guard’s expression could be evaluated in parallel for different behavior units on the same event. In order to be consistent between the different evaluations of the guard, the guard expression cannot change the state of any object<br /><strong>Solving:</strong> Rewrite the guard expression to avoid the uses of side-effect expressions</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_inner_expression">invalid_inner_expression</a></td>
     </tr>
     <tr>
-      <td>78b</td>
+      <td>79b</td>
       <td><strong>Message:</strong> This expression is not allowed in this context, since it doesn’t cause any side effects<br /><strong>Cause:</strong> This error is generated when you write an expression without side effect, where one is expected. For example, the following code generates this error:<br /><code>def fct : void {<br />&nbsp;&nbsp;var x = 1<br />}</code><br />In this case, the variable declaration has not side effect; and should not be used in this context<br /><strong>Solving:</strong> Remove the expression without side-effect</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_inner_expression">invalid_inner_expression</a></td>
     </tr>
     <tr>
-      <td>79a</td>
+      <td>80a</td>
       <td><strong>Message:</strong> Cannot perform instanceof check against parameterized type <em>type-name</em><br /><strong>Cause:</strong> You have written a <code>instanceof</code> operator with a right operand containing a generic type parameter, e.g. <code>x instanceof MyType&lt;T&gt;</code>. It is impossible for now to the SARL compiler to consider the generic type parameter, e.g. <code>T</code><br /><strong>Solving:</strong> Remove the generic type parameter from the right operand’s expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_instanceof">invalid_instanceof</a></td>
     </tr>
     <tr>
-      <td>79b</td>
+      <td>80b</td>
       <td><strong>Message:</strong> Cannot perform instanceof check against primitive type <em>type-name</em><br /><strong>Cause:</strong> You have written a primitive type as right operand of the <code>instanceof</code> operator. Since a primitive type is not object-oriented, it is impossible to test if an object is of a primitive type using the <code>instanceof</code> operator<br /><strong>Solving:</strong> Remove <code>instanceof</code> operator; or Replace the primitive type by its object-oriented equivalent type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_instanceof">invalid_instanceof</a></td>
     </tr>
     <tr>
-      <td>79c</td>
+      <td>80c</td>
       <td><strong>Message:</strong> Incompatible conditional operand types <em>type-name-1</em> and <em>type-name-2</em><br /><strong>Cause:</strong> When you are testing expression typing with <code>instanceof</code>, the types of the operands are not compatible. It means that the values of the operands cannot be compared. Therefore, the <code>instanceof</code> operator becomes useless<br /><strong>Solving:</strong> Remove the <code>instanceof</code> operator; or Rewrite the <code>instanceof</code> expression to have compatible types for both operands</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_instanceof">invalid_instanceof</a></td>
     </tr>
     <tr>
-      <td>80a</td>
+      <td>81a</td>
       <td><strong>Message:</strong> ‘it’ and ‘this’ are not allowed as member names<br /><strong>Cause:</strong> Names <code>it</code> and <code>this</code> are reserved by the SARL compiler. They cannot be used for naming your type members<br /><strong>Solving:</strong> Change the name of your type member</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_member_name">invalid_member_name</a></td>
     </tr>
     <tr>
-      <td>80b</td>
+      <td>81b</td>
       <td><strong>Message:</strong> Invalid action name ‘<em>name</em>’. You must not give to an action a name with reserved characters<br /><strong>Cause:</strong> You have defined an name for an action/function/method that contains forbidden characters. The major forbidden character is $. It is not allowed to use it inside a name, even if it is allowed into the Java specification<br /><strong>Solving:</strong> Rename your action</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_member_name">invalid_member_name</a></td>
     </tr>
     <tr>
-      <td>80c</td>
+      <td>81c</td>
       <td><strong>Message:</strong> The nested type <em>type-name</em> cannot hide an enclosing type<br /><strong>Cause:</strong> You have define an inner type with a <em>name</em>. One of the enclosing types has also the same <em>name</em>. It is forbidden because it hides the features of the enclosing type from the inner type<br /><strong>Solving:</strong> Rename your inner type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_member_name">invalid_member_name</a></td>
     </tr>
     <tr>
-      <td>81a</td>
+      <td>82a</td>
       <td><strong>Message:</strong> Abstract method <em>member-name</em> cannot be final<br /><strong>Cause:</strong> It is forbidden to declare a function abstract and final at the same time. Indeed, a <code>final</code> function disables the function overriding, and an <code>abstract</code> function must be always overridden<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81b</td>
+      <td>82b</td>
       <td><strong>Message:</strong> Abstract method <em>member-name</em> cannot be private<br /><strong>Cause:</strong> It is forbidden to declare a function abstract and private at the same time. Indeed, a <code>private</code> function cannot be overridden because it is not visible, and an <code>abstract</code> function must be always overridden<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81c</td>
+      <td>82c</td>
       <td><strong>Message:</strong> Abstract method <em>member-name</em> cannot be static<br /><strong>Cause:</strong> It is forbidden to declare a function abstract and static at the same time. Indeed, a <code>static</code> function cannot be overridden, and an <code>abstract</code> function must be always overridden<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81d</td>
+      <td>82d</td>
       <td><strong>Message:</strong> Duplicate modifier for the <em>name</em><br /><strong>Cause:</strong> Duplicate modifiers are not allowed<br /><strong>Solving:</strong> Remove the duplicate modifier</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81e</td>
+      <td>82e</td>
       <td><strong>Message:</strong> Illegal modifier for the ; only <em>list-of-modifiers</em> are permitted<br /><strong>Cause:</strong> You have used a modifier that is not allowed. The <em>list-of-modifiers</em> shows you the valid modifiers at the place of the issue<br /><strong>Solving:</strong> Remove the modifier</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81f</td>
+      <td>82f</td>
       <td><strong>Message:</strong> Method <em>member-name</em> with a body cannot be abstract<br /><strong>Cause:</strong> An abstract function is by definition a function without a body<br /><strong>Solving:</strong> Remove the <code>abstract</code> modifier; or remove the block of code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81g</td>
+      <td>82g</td>
       <td><strong>Message:</strong> Native methods do not specify a body<br /><strong>Cause:</strong> A native function is always implemented by a very-low level library, usually written in C programming language. You cannot provide a block of code for a native function<br /><strong>Solving:</strong> Remove the <code>native</code> modifier; or remove the block of code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81h</td>
+      <td>82h</td>
       <td><strong>Message:</strong> The <em>member-name</em> can either be abstract or final, not both<br /><strong>Cause:</strong> It is forbidden to declare a function abstract and final at the same time. Indeed, a <code>final</code> function disables the function overriding, and an <code>abstract</code> function must be always overridden<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81i</td>
+      <td>82i</td>
       <td><strong>Message:</strong> The <em>member-name</em> can either be abstract or static, not both<br /><strong>Cause:</strong> It is forbidden to declare a function abstract and static at the same time. Indeed, a <code>static</code> function cannot be overridden, and an <code>abstract</code> function must be always overridden<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81j</td>
+      <td>82j</td>
       <td><strong>Message:</strong> The <em>member-name</em> can either be var or val / final, not both<br /><strong>Cause:</strong> <code>var</code> modifier is for declared a modifiable variable. <code>val</code> modifier (or <code>final val</code>) is for declaring a unmodifiable variable. You cannot use <code>var</code> and <code>val</code> at the same time<br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81k</td>
+      <td>82k</td>
       <td><strong>Message:</strong> The <em>member-name</em> can only set one of public / package / protected / private<br /><strong>Cause:</strong> You cannot specify more than one visibility modifier at a time<br /><strong>Solving:</strong> Select and use one of the visibility modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>81l</td>
+      <td>82l</td>
       <td><strong>Message:</strong> The field <em>name</em> can be either final or volatile, not both<br /><strong>Cause:</strong> It is forbidden to declare a field with the both modifiers at the same time. A <code>final</code> field does not need synchronization, that is provided by <code>volatile</code><br /><strong>Solving:</strong> Remove one of the two modifiers</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_modifier">invalid_modifier</a></td>
     </tr>
     <tr>
-      <td>82a</td>
+      <td>83a</td>
       <td><strong>Message:</strong> The <em>type-name-1</em> is already covered by the caught <em>type-name-2</em><br /><strong>Cause:</strong> You have specified multiple types, including <em>type-name-1</em> and <em>type-name-2</em>, into a multi-<code>catch</code> statement. The <em>type-name-1</em> is redundant because it is a sub-type of <em>type-name-2</em><br /><strong>Solving:</strong> Remove <em>type-name</em>-1</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_multitype_part">invalid_multitype_part</a></td>
     </tr>
     <tr>
-      <td>82b</td>
+      <td>83b</td>
       <td><strong>Message:</strong> The caught <em>type-name</em> is redundant<br /><strong>Cause:</strong> You have specified multiple types, including <em>type-name</em>, into a multi-<code>catch</code> statement. The <em>type-name</em> is specified more than one time. You must not specify a type more than one time<br /><strong>Solving:</strong> Remove one occurrence of <em>type-name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_multitype_part">invalid_multitype_part</a></td>
     </tr>
     <tr>
-      <td>83</td>
+      <td>84</td>
       <td><strong>Message:</strong> Cannot <em>expression</em> refer to the non-final variable <em>var-name</em> inside a lambda expression<br /><strong>Cause:</strong> You have written an expression inside a closure/lambda expression that is referring a variable that is not marked as final. In this case, the state of the variable becomes unpredictable for the internal class that is supporting the lambda expression implementation (due to the targeting to Java). That’s why only final (or quasi-final) variables could be used in lambda expressions<br /><strong>Solving:</strong> Replace <code>var</code> definition of the variable by a <code>var</code> definition; or Use another final variable from the lambda expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_mutable_variable_access">invalid_mutable_variable_access</a></td>
     </tr>
     <tr>
-      <td>84a</td>
+      <td>85a</td>
       <td><strong>Message:</strong> Nested agents are not allowed inside <em>enclosing-type</em><br /><strong>Cause:</strong> It is not allowed by the SARL language’s syntax to define an <code>agent</code> inside another type declaration, named <em>enclosing-type</em><br /><strong>Solving:</strong> Move the agent definition outside the enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_nested_definition">invalid_nested_definition</a></td>
     </tr>
     <tr>
-      <td>84b</td>
+      <td>85b</td>
       <td><strong>Message:</strong> Nested behaviors are not allowed inside <em>enclosing-type</em><br /><strong>Cause:</strong> It is not allowed by the SARL language’s syntax to define a <code>behavior</code> inside another type declaration, named <em>enclosing-type</em><br /><strong>Solving:</strong> Move the behavior definition outside the enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_nested_definition">invalid_nested_definition</a></td>
     </tr>
     <tr>
-      <td>84c</td>
+      <td>85c</td>
       <td><strong>Message:</strong> Nested capacities are not allowed inside <em>enclosing-type</em><br /><strong>Cause:</strong> It is not allowed by the SARL language’s syntax to define a <code>capacity</code> inside another type declaration, named <em>enclosing-type</em><br /><strong>Solving:</strong> Move the capacity definition outside the enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_nested_definition">invalid_nested_definition</a></td>
     </tr>
     <tr>
-      <td>84d</td>
+      <td>85d</td>
       <td><strong>Message:</strong> Nested events are not allowed inside <em>enclosing-type</em><br /><strong>Cause:</strong> It is not allowed by the SARL language’s syntax to define an <code>event</code> inside another type declaration, named <em>enclosing-type</em><br /><strong>Solving:</strong> Move the event definition outside the enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_nested_definition">invalid_nested_definition</a></td>
     </tr>
     <tr>
-      <td>84e</td>
+      <td>85e</td>
       <td><strong>Message:</strong> Nested skills are not allowed inside <em>enclosing-type</em><br /><strong>Cause:</strong> It is not allowed by the SARL language’s syntax to define a <code>skill</code> inside another type declaration, named <em>enclosing-type</em><br /><strong>Solving:</strong> Move the capacity definition outside the enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_nested_definition">invalid_nested_definition</a></td>
     </tr>
     <tr>
-      <td>85a</td>
+      <td>86a</td>
       <td><strong>Message:</strong> Invalid number of arguments. The <em>feature-type</em> <em>feature-prototype</em> is not applicable for the arguments <em>list-of-arguments</em><br /><strong>Cause:</strong> You are calling a feature (method or constructor) with a <em>list-of-arguments</em>. But, the called feature required a different number of arguments<br /><strong>Solving:</strong> Call the feature with the correct number of arguments</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_number_of_arguments">invalid_number_of_arguments</a></td>
     </tr>
     <tr>
-      <td>85b</td>
+      <td>86b</td>
       <td><strong>Message:</strong> Invalid number of arguments. The <em>feature-type</em> <em>feature-prototype</em> is not applicable without arguments<br /><strong>Cause:</strong> You are calling a feature (method or constructor) without arguments. But, the called feature required to have arguments<br /><strong>Solving:</strong> Add arguments into your calling expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_number_of_arguments">invalid_number_of_arguments</a></td>
     </tr>
     <tr>
-      <td>86a</td>
+      <td>87a</td>
       <td><strong>Message:</strong> Incorrect number of arguments for type <em>type-name</em> ; it cannot be parameterized with arguments <em>type-arguments</em><br /><strong>Cause:</strong> You are referencing a type with a list of generic type arguments (<em>list-arguments</em>). But, the referenced type required a different number of generic type arguments<br /><strong>Solving:</strong> Reference the type with the correct number of arguments</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_number_of_type_arguments">invalid_number_of_type_arguments</a></td>
     </tr>
     <tr>
-      <td>86b</td>
+      <td>87b</td>
       <td><strong>Message:</strong> Invalid number of type arguments. The <em>feature-type</em> <em>feature-name</em> is not applicable for the type arguments <em>type-arguments</em><br /><strong>Cause:</strong> You are calling a feature (method or constructor) with a list of generic type arguments (<em>list-arguments</em>). But, the feature required a different number of generic type arguments<br /><strong>Solving:</strong> Call the feature with the correct number of arguments</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_number_of_type_arguments">invalid_number_of_type_arguments</a></td>
     </tr>
     <tr>
-      <td>87a</td>
+      <td>88a</td>
       <td><strong>Message:</strong> Invalid use of the unmodifiable feature ‘occurrence’. You cannot use ‘occurrence’ as the operand of a postfix operator because it causes a side effect<br /><strong>Cause:</strong> The keyword <code>occurrence</code> represents the current instance of the just-received event within a behavior unit. It is assumed within the SARL operational semantics that <code>occurrence</code> instance is an unmodifiable event in order to ensure consistency between the different behavior units that handle the <code>occurrence</code>. This error message is generated when you try to change the value of <code>occurrence</code> with a postfix operator, e.g., <code>++</code>, that is forbidden</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_occurrence_readonly_use">invalid_occurrence_readonly_use</a></td>
     </tr>
     <tr>
-      <td>87b</td>
+      <td>88b</td>
       <td><strong>Message:</strong> Invalid use of the unmodifiable feature ‘occurrence’. You cannot use ‘occurrence’ at the left-side of an assignment operator<br /><strong>Cause:</strong> The keyword <code>occurrence</code> represents the current instance of the just-received event within a behavior unit. It is assumed within the SARL operational semantics that <code>occurrence</code> instance is an unmodifiable event in order to ensure consistency between the different behavior units that handle the <code>occurrence</code>. This error message is generated when you try to assign a value to an <code>occurrence</code>, that is forbidden</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_occurrence_readonly_use">invalid_occurrence_readonly_use</a></td>
     </tr>
     <tr>
-      <td>88</td>
+      <td>89</td>
       <td><strong>Message:</strong> Incompatible operand types <em>left</em> and <em>right</em><br /><strong>Cause:</strong> When you are testing expression equality with <code>===</code>, the types of the operands are not compatible. It means that the values of the operands cannot be compared<br /><strong>Solving:</strong> Rewrite your code in order to have compatible types for both operands</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_operand_types">invalid_operand_types</a></td>
     </tr>
     <tr>
-      <td>89a</td>
+      <td>90a</td>
       <td><strong>Message:</strong> The binary operator ‘<em>name</em>’ allows at most two arguments<br /><strong>Cause:</strong> You try to use the operator <em>name</em> with zero or one operand; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89b</td>
+      <td>90b</td>
       <td><strong>Message:</strong> The binary operator ‘<em>name</em>’ requires at least one argument<br /><strong>Cause:</strong> You try to use the operator <em>name</em> with zero operand; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89c</td>
+      <td>90c</td>
       <td><strong>Message:</strong> The operator ‘<em>name</em>’ allows at most two arguments<br /><strong>Cause:</strong> You try to use the operator <em>name</em> with more than two operands; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89d</td>
+      <td>90d</td>
       <td><strong>Message:</strong> The static binary operator ‘<em>name’ requires exactly two arguments<br /><strong>Cause:</strong> You try to use the operator *name</em> with zero or one operand; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89e</td>
+      <td>90e</td>
       <td><strong>Message:</strong> The static operator ‘<em>name</em>’ allows at most two arguments<br /><strong>Cause:</strong> You try to use the operator <em>name</em> without operand, when it requires at least one<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89f</td>
+      <td>90f</td>
       <td><strong>Message:</strong> The static operator ‘<em>name</em>’ requires at least one argument<br /><strong>Cause:</strong> You try to use the operator <em>name</em> without argument, when it requires at least one<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89g</td>
+      <td>90g</td>
       <td><strong>Message:</strong> The static unary operator ‘<em>name</em>’ requires exactly one argument<br /><strong>Cause:</strong> You try to use the operator <em>name</em> with a number of operand that is not equal to 1; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>89h</td>
+      <td>90h</td>
       <td><strong>Message:</strong> The unary operator ‘<em>name</em>’ allows at most one argument<br /><strong>Cause:</strong> You try to use the operator <em>name</em> with more than 1 operand; that is not allowed<br /><strong>Solving:</strong> Rewrite the expression with the failing operator</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_operator_signature">invalid_operator_signature</a></td>
     </tr>
     <tr>
-      <td>90a</td>
+      <td>91a</td>
       <td><strong>Message:</strong> Invalid return inside throw<br /><strong>Cause:</strong> It is forbidden to specify a <code>return</code> statement into a <code>throw</code> expression because the outer early-exit point (<code>throw</code>) could be never reached due to the execution of the inner early-exit point (<code>return</code>). It is inconsistent to do a regular return for a function inside the expression of an exceptional exit from the same function<br /><strong>Solving:</strong> Remove <code>return</code> from the <code>throw</code> expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_return">invalid_return</a></td>
     </tr>
     <tr>
-      <td>90b</td>
+      <td>91b</td>
       <td><strong>Message:</strong> Invalid return’s expression<br /><strong>Cause:</strong> SARL compiler infers that the type of the expression after a <code>return</code> statement is of type <code>void</code>. It is impossible to return “nothing” when a value is expected<br /><strong>Solving:</strong> Change the return expression in order to compute a value of the appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_return">invalid_return</a></td>
     </tr>
     <tr>
-      <td>90c</td>
+      <td>91c</td>
       <td><strong>Message:</strong> Return cannot be nested<br /><strong>Cause:</strong> It is forbidden to specify a <code>return</code> statement into another <code>return</code> expression because the outer early-exit point could be never reached due to the execution of the inner early-exit point. It is inconsistent to do a return for a function inside the expression that computes another value to be returned from the same function<br /><strong>Solving:</strong> Remove the inner <code>return</code> from the outer <code>return</code> expression</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_return">invalid_return</a></td>
     </tr>
     <tr>
-      <td>90d</td>
+      <td>91d</td>
       <td><strong>Message:</strong> The function must return a result of type <em>type-name</em><br /><strong>Cause:</strong> An incompatibility between the type of the expression after a <code>return</code> statement and those of the return value of the enclosing function is detected. Both types must be compatible, i.e., the type of the expression after the <code>return</code> statement must be equal to or a sub-type of the function’s return type<br /><strong>Solving:</strong> Update the expression of the <code>return</code> statement to have an appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_return">invalid_return</a></td>
     </tr>
     <tr>
-      <td>90e</td>
+      <td>91e</td>
       <td><strong>Message:</strong> Void functions cannot return a value<br /><strong>Cause:</strong> You are specifying a <code>return</code> statement with an expression inside a procedure, i.e. a function returning “nothing”. Is it inconsistent to compute a value to be returned while the function does not return it<br /><strong>Solving:</strong> Remove the expression from the <code>return</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_return">invalid_return</a></td>
     </tr>
     <tr>
-      <td>91</td>
+      <td>92</td>
       <td><strong>Message:</strong> JUnit method <em>func-name</em> must be void but is <em>type-name</em><br /><strong>Cause:</strong> By specification, the functions that are dedicated to JUnit must return void. This issue is generated when an function with a JUnit annotation does not return <code>void</code>. The supported versions of Junit are 4 and 5<br /><strong>Solving:</strong> Replace the return type by <code>void</code></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_return_type_in_case_of_junit_annotation">invalid_return_type_in_case_of_junit_annotation</a></td>
     </tr>
     <tr>
-      <td>92</td>
+      <td>93</td>
       <td><strong>Message:</strong> Incompatible SARL library on the classpath. Actual: <em>actual-version</em>. Expected: <em>expected-version</em><br /><strong>Cause:</strong> The SARL library found on the classpath (<em>actual-version</em>) is not compatible with the compiler’s version (<em>expected-version</em>)<br /><strong>Solving:</strong> Reconfigure your project to have the SARL libraries with <em>expected-version</em> into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_sarl_lib_on_classpath">invalid_sarl_lib_on_classpath</a></td>
     </tr>
     <tr>
-      <td>93</td>
+      <td>94</td>
       <td><strong>Message:</strong> Cannot call super of an anonymous class from a lambda expression<br /><strong>Cause:</strong> A closure/lambda expression is implemented by an anonymous class at the background, i.e. Java. You try to use the <code>super</code> statement that represents the instance viewed as the super-type of the associated anonymous class. However, it is forbidden to use <code>super</code> because the closure/lambda expression hides the background implementation, inclusing <code>super</code><br /><strong>Solving:</strong> Remove <code>super</code></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_super_call">invalid_super_call</a></td>
     </tr>
     <tr>
-      <td>94</td>
+      <td>95</td>
       <td><strong>Message:</strong> The resource ‘<em>var-name</em>’ of type <em>type-name</em> does not implement java.lang.AutoCloseable<br /><strong>Cause:</strong> The try-with-resource statement enables you to automatically close an opened resource (file, socket, etc.). The given resource, named <em>var-named</em> must implement the interface <code>AutoCloseable</code> in order to be able to be automatically closed. This constraint comes from the Java underground API<br /><strong>Solving:</strong> Change the resource by using one that is auto-closeable</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_try_resource_type">invalid_try_resource_type</a></td>
     </tr>
     <tr>
-      <td>95a</td>
+      <td>96a</td>
       <td><strong>Message:</strong> ‘void[]’ is not a valid type<br /><strong>Cause:</strong> This error is generated when you are specifying a type literal representing an array of <code>void</code>, e.g. <code>void[]</code> or <code>void[][]</code>. An array of void cannot be created in memory. It is therefore impossible to specify this type with a type literal<br /><strong>Solving:</strong> Replace <code>void</code> by and appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type">invalid_type</a></td>
     </tr>
     <tr>
-      <td>95b</td>
+      <td>96b</td>
       <td><strong>Message:</strong> Undefined type for the default value of the formal parameter <em>name</em><br /><strong>Cause:</strong> The type of the default for the formal parameter with the given <em>name</em> cannot be infered by the SARL compiler<br /><strong>Solving:</strong> Change the default value’s expression in order to make its type inferable</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type">invalid_type</a></td>
     </tr>
     <tr>
-      <td>95c</td>
+      <td>96c</td>
       <td><strong>Message:</strong> Undefined type for the formal parameter <em>name</em><br /><strong>Cause:</strong> A type specification is missed for the formal parameter with the given <em>name</em><br /><strong>Solving:</strong> Add a type to the formal parameter</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type">invalid_type</a></td>
     </tr>
     <tr>
-      <td>96a</td>
+      <td>97a</td>
       <td><strong>Message:</strong> Invalid type argument. Type arguments cannot be applied to the type literal <em>name</em><br /><strong>Cause:</strong> You have specified a generic type argument into a type literal such as <code>typeof</code>; that is invalid. For example, <code>typeof(Collection)</code> is valid; but <code>typeof(Collection&lt;String&gt;)</code> is not<br /><strong>Solving:</strong> Remove the generic type argument</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type_arguments_on_type_literal">invalid_type_arguments_on_type_literal</a></td>
     </tr>
     <tr>
-      <td>96b</td>
+      <td>97b</td>
       <td><strong>Message:</strong> Invalid type arguments. Type arguments cannot be applied to the type literal <em>name</em><br /><strong>Cause:</strong> You have specified generic type arguments into a type literal such as <code>typeof</code>; that is invalid. For example, <code>typeof(Collection)</code> is valid; but <code>typeof(Collection&lt;String, Integer&gt;)</code> is not<br /><strong>Solving:</strong> x</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type_arguments_on_type_literal">invalid_type_arguments_on_type_literal</a></td>
     </tr>
     <tr>
-      <td>97a</td>
+      <td>98a</td>
       <td><strong>Message:</strong> The array type <em>type-name</em> cannot be used as a type parameter bound<br /><strong>Cause:</strong> It is forbidden to use an array type into the generic type bounds, e.g. <code>&lt;? extends Integer[]&gt;</code><br /><strong>Solving:</strong> Replace the array into the generic bounds by an appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type_parameter_bounds">invalid_type_parameter_bounds</a></td>
     </tr>
     <tr>
-      <td>97b</td>
+      <td>98b</td>
       <td><strong>Message:</strong> The type parameter %name% cannot be used as a type parameter bound with additional bounds<br /><strong>Cause:</strong> If you put a generic type paramater as bounds of another generic type parameter, it is forbidden to add more bounding constraints. For example, <code>&lt;A, B extends A&gt;</code> is valid. But, <code>&lt;A, B extends A &amp; Cloneable&gt;</code> is invalid<br /><strong>Solving:</strong> Remove the additional bounding constraint</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_type_parameter_bounds">invalid_type_parameter_bounds</a></td>
     </tr>
     <tr>
-      <td>98a</td>
+      <td>99a</td>
       <td><strong>Message:</strong> Invalid use of the break keyword. It could only be used inside loops<br /><strong>Cause:</strong> <code>break</code> statement enables to stop the execution of a loop step by continuing the execution after the loop itself. The <code>break</code> keyword is not supposed to be used outside a loop expression<br /><strong>Solving:</strong> Remove the <code>break</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_use_of_loop_breaking_keyword">invalid_use_of_loop_breaking_keyword</a></td>
     </tr>
     <tr>
-      <td>98b</td>
+      <td>99b</td>
       <td><strong>Message:</strong> Invalid use of the continue keyword. It could only be used inside loops<br /><strong>Cause:</strong> <code>continue</code> statement enables to stop the execution of a loop step by continuing the execution at the next loop step. The <code>continue</code> keyword is not supposed to be used outside a loop expression<br /><strong>Solving:</strong> Remove the <code>break</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.invalid_use_of_loop_breaking_keyword">invalid_use_of_loop_breaking_keyword</a></td>
     </tr>
     <tr>
-      <td>99a</td>
+      <td>100a</td>
       <td><strong>Message:</strong> Create methods can not be static<br /><strong>Cause:</strong> Creation method is inspired from the <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">factory-method design pattern</a>. It cannot be defined with the <code>static</code> modifier<br /><strong>Solving:</strong> Remove the <code>static</code> modifier</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_use_of_static">invalid_use_of_static</a></td>
     </tr>
     <tr>
-      <td>99b</td>
+      <td>100b</td>
       <td><strong>Message:</strong> Create methods can not have type parameters<br /><strong>Cause:</strong> Creation method is inspired from the <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">factory-method design pattern</a>. It cannot have generic type parameters<br /><strong>Solving:</strong> Remove the generic type parameters</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_use_of_static">invalid_use_of_static</a></td>
     </tr>
     <tr>
-      <td>100a</td>
+      <td>101a</td>
       <td><strong>Message:</strong> Cannot perform instanceof check against type parameter <em>name</em>. Use its erasure <em>erasure-name</em> instead since further generic type information will be erased at runtime<br /><strong>Cause:</strong> You specify a generic type parameter as the right operand of an <code>instanceof</code>, e.g. <code>x instanceof T</code>. Since there is no keept information about the generic types at runtime, the <code>instanceof</code> operator cannot proceed. The <em>erasure-name</em> is the base definition of <em>name</em> related to its bounds<br /><strong>Solving:</strong> Replace <em>name</em> by <em>erasure-name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_type_parameter">invalid_use_of_type_parameter</a></td>
     </tr>
     <tr>
-      <td>100b</td>
+      <td>101b</td>
       <td><strong>Message:</strong> Cannot perform type switch against type parameter <em>name</em>. Use its erasure Object instead since further generic type information will be erased at runtime<br /><strong>Cause:</strong> You specify a generic type parameter as the type guard of a <code>case</code>, e.g. <code>T case 1</code>. Since there is no keept information about the generic types at runtime, the <code>case</code> statement cannot filter according to the type of the value. It is therefore recommended to use <code>Object</code> as the type guard<br /><strong>Solving:</strong> Remove the type guard</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_type_parameter">invalid_use_of_type_parameter</a></td>
     </tr>
     <tr>
-      <td>100c</td>
+      <td>101c</td>
       <td><strong>Message:</strong> Illegal class literal for the type parameter <em>name</em><br /><strong>Cause:</strong> You specify a generic type parameter as a type literal, e.g. <code>typeof(T)</code>. Since there is no keept information about the generic types at runtime, the <code>typeof</code> operator cannot reply the class at runtime<br /><strong>Solving:</strong> Replace <em>name</em> by an appropriate type from the erasure of <em>name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_type_parameter">invalid_use_of_type_parameter</a></td>
     </tr>
     <tr>
-      <td>101a</td>
+      <td>102a</td>
       <td><strong>Message:</strong> A vararg may not be an extension<br /><strong>Cause:</strong> By definition a variadic parameter, e.g., <code>a : int*</code> is a kind of list of argument values. Since the extension mechanism is associated to a single instance of object, and the variadic parameter may contains more than one, there is an incompatibility between the variadic parameter and the extension mechanism<br /><strong>Solving:</strong> Remove the keyword <code>extension</code> to the variadic parameter</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_use_of_varArg">invalid_use_of_varArg</a></td>
     </tr>
     <tr>
-      <td>101b</td>
+      <td>102b</td>
       <td><strong>Message:</strong> A vararg must be the last parameter<br /><strong>Cause:</strong> By definition a variadic parameter, e.g., <code>a : int*</code>, must be the last formal parameter of a function<br /><strong>Solving:</strong> Move the variadic parameter at the last position in the list of the formal parameters</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.invalid_use_of_varArg">invalid_use_of_varArg</a></td>
     </tr>
     <tr>
-      <td>102a</td>
+      <td>103a</td>
       <td><strong>Message:</strong> Primitive void cannot be used here<br /><strong>Cause:</strong> This message is generated in to cases.<br />a) Generic type argument: it is forbidden to put primitive <code>void</code> as generic type arguments, e.g. <code>Collection&lt;void&gt;</code>.<br />b) Guard type into a switch case: it is forbidden to put primitive <code>void</code> as guard type, e.g. <code>void case 1</code><br /><strong>Solving:</strong> Replace <code>void</code> by its appropriate equivalent class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102b</td>
+      <td>103b</td>
       <td><strong>Message:</strong> Primitives are not allowed as type guards<br /><strong>Cause:</strong> It is forbidden to put primitive type as guard type, e.g. <code>int case 1</code><br /><strong>Solving:</strong> Replace the primitive type by its appropriate equivalent class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102c</td>
+      <td>103c</td>
       <td><strong>Message:</strong> Primitives cannot be used as type arguments<br /><strong>Cause:</strong> It is forbidden to put primitive types as generic type arguments, e.g. <code>Collection&lt;int&gt;</code>. You must use only classes as generic type arguments, e.g. <code>Collection&lt;Integer&gt;</code><br /><strong>Solving:</strong> Replace the primitive type by its appropriate equivalent class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102d</td>
+      <td>103d</td>
       <td><strong>Message:</strong> Primitives cannot be used as type arguments<br /><strong>Cause:</strong> It is forbidden to put primitive types as generic type arguments, e.g. <code>Collection&lt;int&gt;</code>. You must use only classes as generic type arguments, e.g. <code>Collection&lt;Integer&gt;</code><br /><strong>Solving:</strong> Replace the primitive type by its appropriate equivalent class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102e</td>
+      <td>103e</td>
       <td><strong>Message:</strong> The primitive ‘void’ cannot be the type of a function parameter<br /><strong>Cause:</strong> This error is generated when a reference to a function, a.k.a. as pointer to a function, is specified with a <code>void</code> type. A function has parameters and returns values. It is not <code>void</code><br /><strong>Solving:</strong> Replace <code>void</code> by an appropriate pointer to a function</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102f</td>
+      <td>103f</td>
       <td><strong>Message:</strong> The primitive ‘void’ cannot be the type of a parameter<br /><strong>Cause:</strong> A formal parameter must have a type. Consequently, <code>void</code> cannot be specified as the type of a formal parameter<br /><strong>Solving:</strong> Replace <code>void</code> by an appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102g</td>
+      <td>103g</td>
       <td><strong>Message:</strong> The primitive type cannot be a type argument<br /><strong>Cause:</strong> It is forbidden to put primitive types as generic type parameters, e.g. <code>Collection&lt;int&gt;</code>. You must use only classes as generic type parameters, e.g. <code>Collection&lt;Integer&gt;</code><br /><strong>Solving:</strong> Replace the primitive type by its appropriate equivalent class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>102h</td>
+      <td>103h</td>
       <td><strong>Message:</strong> void is an invalid type for the variable <em>name</em><br /><strong>Cause:</strong> Since a variable is supposed to contain a value, it is important to specify the size of memory that is occupied bythe variable. This specification is done by giving a type to the variable. <code>void</code> is not a valid type in this context<br /><strong>Solving:</strong> Replace <code>void</code> by an appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_void">invalid_use_of_void</a></td>
     </tr>
     <tr>
-      <td>103</td>
+      <td>104</td>
       <td><strong>Message:</strong> Wildcard types are not allowed in this context<br /><strong>Cause:</strong> It is forbidden to put wildcard as generic type parameters, e.g. <code>Collection&lt;?&gt;</code>. You must use only classes as generic type parameters, e.g. <code>Collection&lt;Integer&gt;</code><br /><strong>Solving:</strong> Replace the wildcard by an appropriate class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_use_of_wild_card">invalid_use_of_wild_card</a></td>
     </tr>
     <tr>
-      <td>104a</td>
+      <td>105a</td>
       <td><strong>Message:</strong> Invalid type constraint. Cannot use multiple lower bounds in wildcards<br /><strong>Cause:</strong> Inside a type reference, you have specified a type constraints with too much lower bounds, e.g. <code>new MyType&lt;? super Number &amp;amp; CharSequence&gt;</code>. Currently, SARL does not support multiple lower bounds into the generic type references<br /><strong>Solving:</strong> Modify the bounds to have maximum one lower bound</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_wildcard_constraints">invalid_wildcard_constraints</a></td>
     </tr>
     <tr>
-      <td>104b</td>
+      <td>105b</td>
       <td><strong>Message:</strong> Invalid type constraint. Cannot use multiple upper bounds in wildcards<br /><strong>Cause:</strong> Inside a type reference, you have specified a type constraints with too much upper bounds, e.g. <code>new MyType&lt;? extends Number &amp;amp; CharSequence&gt;</code>. Currently, SARL does not support multiple upper bounds into the generic type references<br /><strong>Solving:</strong> Modify the bounds to have maximum one upper bound</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalid_wildcard_constraints">invalid_wildcard_constraints</a></td>
     </tr>
     <tr>
-      <td>105</td>
+      <td>106</td>
       <td><strong>Message:</strong> Invalid number format: <em>explaination</em><br /><strong>Cause:</strong> A number literal has not a valid syntax<br /><strong>Solving:</strong> Change the number literal to fullfil the number syntax</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invalidNumberFormat">invalidNumberFormat</a></td>
     </tr>
     <tr>
-      <td>106a</td>
+      <td>107a</td>
       <td><strong>Message:</strong> Cannot access the private <em>feature</em> in a subclass context<br /><strong>Cause:</strong> You try to access to a field that is declared as <code>private</code> into the super-type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invisible_feature">invisible_feature</a></td>
     </tr>
     <tr>
-      <td>106b</td>
+      <td>107b</td>
       <td><strong>Message:</strong> The field <em>feature</em> is not visible<br /><strong>Cause:</strong> You try to access to a field that is declared as <code>private</code> into its enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invisible_feature">invisible_feature</a></td>
     </tr>
     <tr>
-      <td>106c</td>
+      <td>107c</td>
       <td><strong>Message:</strong> The method <em>feature</em> is not visible<br /><strong>Cause:</strong> You try to access to a method that is declared as <code>private</code> into its enclosing type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.invisible_feature">invisible_feature</a></td>
     </tr>
     <tr>
-      <td>107</td>
+      <td>108</td>
       <td><strong>Message:</strong> javaDoc: <em>type-ref</em> cannot be resolved to a type<br /><strong>Cause:</strong> A hyperlink to a type into the Javadoc points to an unknown type named <em>type-ref</em><br /><strong>Solving:</strong> Change the <em>type-name</em><br /><strong>Delegated to:</strong> org.eclipse.jdt.core.compiler.problem.invalidJavadoc</td>
       <td>Delegated; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.java_doc_linking">java_doc_linking</a></td>
     </tr>
     <tr>
-      <td>108</td>
+      <td>109</td>
       <td><strong>Message:</strong> Use ‘as’ keyword for type casting<br /><strong>Cause:</strong> SARL has detected possible improper usage of the parentheses, i.e., a type reference enclosed by parentheses is found. This syntax is well known is other programming languages such as Java or C++, as the casting operator. However, the casting operator in SARL is <code>as</code>. For example, this error is detected when you starts a code block with the improper syntax, e.g. <code>{(Integer) 1}</code><br /><strong>Solving:</strong> Replace the Java-like casting operator by <code>as</code></td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.java_style_type_cast">java_style_type_cast</a></td>
     </tr>
     <tr>
-      <td>109a</td>
+      <td>110a</td>
       <td><strong>Message:</strong> Couldn’t find a valid version of the JDK in the classpath. The generator configuration specifies the version <em>current-version</em>. Please change the configuration in order to use a version greater than or equal to <em>min-version</em> AND strictly lower than <em>max-version</em><br /><strong>Cause:</strong> SARL needs a specific version of the Java Development Kit (JDK) in order to be executed. The <em>current-version</em> of the JDK that is used for compiling your SARL project is not compatible with SARL. It is recommended to use a JDK version between <em>min-version</em> (inclusive) and <em>max-version</em> (exclusive)<br /><strong>Solving:</strong> Change the configuration of your SARL project for using an appropriate JDK version</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.jdk_not_on_classpath">jdk_not_on_classpath</a></td>
     </tr>
     <tr>
-      <td>109b</td>
+      <td>110b</td>
       <td><strong>Message:</strong> SARL compiler couldn’t be executed on the JDK version <em>current-version</em>. Please use the JDK greater than or equal to <em>min-version</em> AND strictly lower than <em>max-version</em><br /><strong>Cause:</strong> SARL needs a specific version of the Java Development Kit (JDK) in order to be executed. The <em>current-version</em> of the JDK is not compatible with SARL. It is recommended to use a JDK version between <em>min-version</em> (inclusive) and <em>max-version</em> (exclusive)<br /><strong>Solving:</strong> Run SARL with an appropriate JDK version</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.jdk_not_on_classpath">jdk_not_on_classpath</a></td>
     </tr>
     <tr>
-      <td>110</td>
+      <td>111</td>
       <td><strong>Message:</strong> Left-hand side of an assignment must be an variable<br /><strong>Cause:</strong> The left operand of the assignment operator <code>=</code> must be a variable (local, field, or indirect)</td>
       <td>Error</td>
       <td><a href=":" title="left_hand_side_must_be_variable">left_hand_side_must_be_variable</a></td>
     </tr>
     <tr>
-      <td>111a</td>
+      <td>112a</td>
       <td><strong>Message:</strong> <em>name</em> cannot be resolved to a type<br /><strong>Cause:</strong> You have specified a type <em>name</em> into your code, e.g. <code>typeof(MyType)</code>. But, no type declaration was found for <em>name</em> into the current compilation scope<br /><strong>Solving:</strong> Replace <em>name</em> by an appropriate type name; or Add the type <em>name</em> into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>111b</td>
+      <td>112b</td>
       <td><strong>Message:</strong> Couldn’t resolve reference to <em>name</em><br /><strong>Cause:</strong> You have written a reference to a feature that cannot be found from the current compilation scope. Since, it cannot be found, SARL compiler cannot determine the concrete type of the feature<br /><strong>Solving:</strong> Replace <em>name</em> by an appropriate feature; or Add the feature into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>111c</td>
+      <td>112c</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> is undefined<br /><strong>Cause:</strong> You have specified a function call to <em>func-prototype</em> into your code, e.g. <code>myfct()</code>. But, no method declaration was found for <em>func-prototype</em> into the current compilation scope<br /><strong>Solving:</strong> Replace <em>func-prototype</em> by an appropriate function call; or Add the method into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>111d</td>
+      <td>112d</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> is undefined for the type <em>type-name</em><br /><strong>Cause:</strong> You have specified a function call to <em>func-prototype</em> into your code, e.g. <code>myfct()</code>. But, no method declaration was found for <em>func-prototype</em> into the current compilation scope<br /><strong>Solving:</strong> Replace <em>func-prototype</em> by an appropriate function call; or Add the method into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>111e</td>
+      <td>112e</td>
       <td><strong>Message:</strong> The method or field <em>name</em> is undefined<br /><strong>Cause:</strong> You have specified a function call to <em>name</em>, or a reference to the field <em>name</em>, into your code. But, neither a method declaration nor a field declaration was found into the current compilation scope<br /><strong>Solving:</strong> Replace <em>name</em> by an appropriate function call or field reference; or Add the method/field into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>111f</td>
+      <td>112f</td>
       <td><strong>Message:</strong> The method or field <em>name</em> is undefined for the type <em>type-name</em><br /><strong>Cause:</strong> You have specified a function call to <em>name</em>, or a reference to the field <em>name</em>, into your code. But, neither a method declaration nor a field declaration was found into the current compilation scope<br /><strong>Solving:</strong> Replace <em>name</em> by an appropriate function call or field reference; or Add the method/field into the compilation scope, by using an <code>import</code> statement for example</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Linking">Linking</a></td>
     </tr>
     <tr>
-      <td>112</td>
+      <td>113</td>
       <td><strong>Message:</strong> Cannot access the <em>type-name</em> <em>feature-name</em> with parentheses<br /><strong>Cause:</strong> This error is generated when you try to access to a local variable with parentheses. Let be the local variable <code>x</code> defined. The code <code>x()</code> causes this error because <code>x</code> is a variable, not a method<br /><strong>Solving:</strong> Remove the parentheses</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.local_var_access_with_parentheses">local_var_access_with_parentheses</a></td>
     </tr>
     <tr>
-      <td>113</td>
+      <td>114</td>
       <td><strong>Message:</strong> Discouraged manual definition of an inline expression. Inline expression definition is reserved for advanced usage<br /><strong>Cause:</strong> The <code>@Inline</code> annotation enables the SARL compiler to replace the call to the annotated function by the expression specified inside the annotation. It may be useful for making faster the generated Java code. However, the expression inside <code>@Inline</code> must be written in valid Java and following strict inlining rules. That’s why, the explicit usage of <code>@Inline</code> is not recommended, except to advanced SARL developers<br /><strong>Solving:</strong> Remove the <code>@Inline</code> annotation</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.manual_inline_definition">manual_inline_definition</a></td>
     </tr>
     <tr>
-      <td>114a</td>
+      <td>115a</td>
       <td><strong>Message:</strong> The abstract method <em>func-name</em> in type <em>type-name</em> can only be defined by an abstract class<br /><strong>Cause:</strong> An abstract method/function is a function without block of code. The keyword <code>abstract</code> could be missed on a function only if the enclosing type is defined as abstract too<br /><strong>Solving:</strong> Add the modifier <code>abstract</code> into the prototype of <em>func-name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_abstract">missing_abstract</a></td>
     </tr>
     <tr>
-      <td>114b</td>
+      <td>115b</td>
       <td><strong>Message:</strong> The method <em>func-name</em> in type <em>type-name</em> should be declared abstract<br /><strong>Cause:</strong> An abstract method/function is a function without block of code. The keyword <code>abstract</code> could be missed but it is a good practice to specify it explicitle. This warning is generated to notify you that an <code>abstract</code> is missed and may be added to the function prototype<br /><strong>Solving:</strong> Add the modifier <code>abstract</code> into the prototype of <em>func-name</em></td>
       <td>Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_abstract">missing_abstract</a></td>
     </tr>
     <tr>
-      <td>115</td>
+      <td>116</td>
       <td><strong>Message:</strong> The abstract method <em>func-prototype</em> in type <em>type-name</em> can only be defined by an abstract class<br /><strong>Cause:</strong> It is forbidden to define an abstract function into an anonymous class<br /><strong>Solving:</strong> Add block of code for the function with prototype <em>func-prototype</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_abstract_in_anonymous">missing_abstract_in_anonymous</a></td>
     </tr>
     <tr>
-      <td>116</td>
+      <td>117</td>
       <td><strong>Message:</strong> The class <em>name</em> is not declared abstract<br /><strong>Cause:</strong> The name of the class starts with the word <code>Abstract</code>, and the class has not the <code>abstract</code> modifier. Because the term “abstract” is part of the name of the class, it is a good practice to declare the class as abstract<br /><strong>Solving:</strong> Add <code>abstract</code> modifier to the class; or remove “Abstract” from <em>name</em></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_abstract_modifier">missing_abstract_modifier</a></td>
     </tr>
     <tr>
-      <td>117</td>
+      <td>118</td>
       <td><strong>Message:</strong> The annotation must define the attribute ‘<em>name</em>‘<br /><strong>Cause:</strong> An annotation needs to have a specified value. This error message is generated when no value is specified into the annotation<br /><strong>Solving:</strong> Add a value to the annotation</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.missing_attribute_definition">missing_attribute_definition</a></td>
     </tr>
     <tr>
-      <td>118</td>
+      <td>119</td>
       <td><strong>Message:</strong> Missing code for a static constructor<br /><strong>Cause:</strong> A static constructor could be defined for initializing the static fields of a type. It is forbidden to define a static constructor without a block of code<br /><strong>Solving:</strong> Add a block of code to the static constructor</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.missing_body">missing_body</a></td>
     </tr>
     <tr>
-      <td>119</td>
+      <td>120</td>
       <td><strong>Message:</strong> No default constructor in super type <em>other-type</em>. <em>type-name</em> must define an explicit constructor<br /><strong>Cause:</strong> You have define a type named <em>type-name</em> with a default constructor. But, the super-class does not have a default constructor. It is then impossible for your implicit default constructor to invoke a default constructor from the super-class. You must define explicitly your own constructor. <em>This issue should never occur because the constructors from the super type are inherited when there is no explicit constructor defined</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_constructor">missing_constructor</a></td>
     </tr>
     <tr>
-      <td>120</td>
+      <td>121</td>
       <td><strong>Message:</strong> Value must be initialized<br /><strong>Cause:</strong> Final variables, a.k.a. value, could be declared with <code>val</code>, and must be initialized when they are declared. You have declared a final variable that is never initialized<br /><strong>Solving:</strong> Add initialization value to the final variable</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.missing_initialization">missing_initialization</a></td>
     </tr>
     <tr>
-      <td>121</td>
+      <td>122</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> of type <em>type-name</em> must use override keyword since it actually overrides a supertype method<br /><strong>Cause:</strong> A function with the prototype <em>func-prototype</em> is defined into the type <em>type-name</em>. The same function prototype is defined into and inherited from a super-type. A good practice is to replace the <code>def</code> keyword by <code>override</code> in order to make explicit the fact that the function into <em>type-name</em> overrides another function</td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_override">missing_override</a></td>
     </tr>
     <tr>
-      <td>122</td>
+      <td>123</td>
       <td><strong>Message:</strong> Nested classes must be static<br /><strong>Cause:</strong> SARL specification forces to have static inner classes due to implementation of Xtext/Xtend<br /><strong>Solving:</strong> Add <code>static</code> modifier to the nested class</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_static_modifier">missing_static_modifier</a></td>
     </tr>
     <tr>
-      <td>123</td>
+      <td>124</td>
       <td><strong>Message:</strong> The overridden method is synchronized, the current one is not synchronized<br /><strong>Cause:</strong> According the inheritance definition, that is common to SARL and the object-oriented programming languages, overridable functions as associated to a contract with their callers. This contract indicates that the prototype of the function will never changed, and the function will have the same modifiers always. This contract must be fullfil by the overriding functions. This warning message is generated when your overriding function has not the <code>synchronized</code> modifier, and the inherited function has the <code>synchronized</code> modifier. It is a good practice to exhibit the same modifiers as the inherited function<br /><strong>Solving:</strong> Add <code>synchronized</code> modifier to your function</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.missing_synchronized">missing_synchronized</a></td>
     </tr>
     <tr>
-      <td>124a</td>
+      <td>125a</td>
       <td><strong>Message:</strong> Missing implemented type ‘<em>type-name-1</em>’ for ‘<em>type-name-2</em>‘<br /><strong>Cause:</strong> SARL detects for the declaration of the type named <em>type-name-2</em> that an implementation specification after <code>implements</code> is missed. The expected implementation must be a type that is equal to or a sub-type of the type named <em>type-named-1</em><br /><strong>Solving:</strong> Add an appropriate implemented type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.missing_type">missing_type</a></td>
     </tr>
     <tr>
-      <td>124b</td>
+      <td>125b</td>
       <td><strong>Message:</strong> Type cannot be derived<br /><strong>Cause:</strong> Within a variable declaration with <code>var</code> or <code>val</code>, no type was specified. SARL was failed to infer the type of the variable, notably because an initialization expression is missed for the variable. Because a variable must have a type, it is forbidden to let the variable type free<br /><strong>Solving:</strong> Add an explicit type to the variable, or Add an initialization expression for the variable</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.missing_type">missing_type</a></td>
     </tr>
     <tr>
-      <td>125</td>
+      <td>126</td>
       <td><strong>Message:</strong> Multiple annotations of non-repeatable type @<em>name</em>. Only annotation types marked @Repeatable can be used multiple times at one target<br /><strong>Cause:</strong> By definition, an annotation could be attached multiple times to an element only if it is declared as repeatable with the <code>@Repeatable</code> annotation. This issue message is generated when the annotation with the given <em>name</em> is attached multiple times to an element, and the annotation <code>@Repeatable</code> is not attached to the declaration of the annotation with the given <em>name</em></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.multiple_annotations_used">multiple_annotations_used</a></td>
     </tr>
     <tr>
-      <td>126</td>
+      <td>127</td>
       <td><strong>Message:</strong> No default constructor in super type <em>type-name</em>. Another constructor must be invoked explicitly<br /><strong>Cause:</strong> You have define a type extending the type <em>type-name</em> and with an explicit constructor. Inside the code of this explicit constructor, you call the default constructor (implicitly or explicitly). But, the super-type does not have a default constructor<br /><strong>Solving:</strong> Update you constructor code in order to invoke a constructor of the super-type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.must_invoke_super_constructor">must_invoke_super_constructor</a></td>
     </tr>
     <tr>
-      <td>127</td>
+      <td>128</td>
       <td><strong>Message:</strong> The attribute value is undefined for the annotation type <em>name</em><br /><strong>Cause:</strong> You are trying to provide a value to an annotation, but the field <code>value</code> is not defined into the annotation.<br />This error may occur when you write <code>@MyAnnotion("value")</code> with a definition of <code>MyAnnotation</code> without a field named <code>value</code>. In this example, assuming that the declared field is named <code>myfield</code>, the correct notation is <code>@MyAnnotation(myfield = "value")</code>.<br />As for other languages as Java, SARL assumes that if the name of the attribute is not provided, the default attribute name is <code>value</code><br /><strong>Solving:</strong> Add the name of the attribute before the value</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.no_attribute_value">no_attribute_value</a></td>
     </tr>
     <tr>
-      <td>128a</td>
+      <td>129a</td>
       <td><strong>Message:</strong> No enclosing instance of the type <em>name</em> is accessible in scope<br /><strong>Cause:</strong> You are referencing a feature within the type <em>type</em> that is defined non-statically. But, these is no accessible instance of the type <em>name</em> within the enclosing types. The following example is a typical example for this error:<br /><code>class A {<br />&nbsp;&nbsp;def f : void {}<br />&nbsp;&nbsp;static class B {<br />&nbsp;&nbsp;&nbsp;&nbsp;def g : void {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;}<br />}</code><br />The reference to <code>f</code> causes this error because the instance of <code>A</code> is inaccessible from <code>B</code> due to its <code>static</code> declaration</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.no_enclosing_instance_available">no_enclosing_instance_available</a></td>
     </tr>
     <tr>
-      <td>128b</td>
+      <td>129b</td>
       <td><strong>Message:</strong> The enclosing type does not extend or implement the interface <em>name</em><br /><strong>Cause:</strong> Your are calling a feature (method or field) from the super-type by using the syntax <code>super.feature</code>. The super-type does not implement the interface <em>name</em> that is required to access to the specified feature</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.no_enclosing_instance_available">no_enclosing_instance_available</a></td>
     </tr>
     <tr>
-      <td>129</td>
+      <td>130</td>
       <td><strong>Message:</strong> The value for an annotation attribute must be a constant expression<br /><strong>Cause:</strong> It is forbidden to give a value to an annotation that is not a constant expression, i.e., an expression without variable reference, function calls, etc<br /><strong>Solving:</strong> Rewrite the value expression to have only constant features inside</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.no_illegal_value">no_illegal_value</a></td>
     </tr>
     <tr>
-      <td>130</td>
+      <td>131</td>
       <td><strong>Message:</strong> Cannot use null-safe feature call on primitive receiver<br /><strong>Cause:</strong> Null-safe call of an method, e.g. <code>obj?.feature</code>, enables you to test the nullity of an object before calling a feature on it. But, you have applied the null-safe call on a primitive type variable, i.e. <code>obj</code> is of primitive type. This is impossible because a primitive variable does not contain an object<br /><strong>Solving:</strong> Remove the null-safe operator</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.null_safe_feature_call_on_primitive">null_safe_feature_call_on_primitive</a></td>
     </tr>
     <tr>
-      <td>131</td>
+      <td>132</td>
       <td><strong>Message:</strong> Null-safe call of primitive-valued feature <em>feature-name</em>, default value <em>value</em> will be used<br /><strong>Cause:</strong> This issue message is generated when a null-safe test is used for computing a primitive-type value. For example, the code <code>list?.isEmpty</code> explicitly replies the value of <code>isEmpty</code> if the <code>list</code> is not null. But when <code>list</code> is null, nothing indicates what could be the boolean value to give. SARL compiler assumes the default value for the primitive type, e.g. <code>false</code> for boolean.<br />This issue message is also generated when your are using an incomplete if-then statement, e.g. <code>var b = if (condition) true</code>. There is no <code>else</code>, so that the default value for the primitive type is assumed if the condition is evaluated to false<br /><strong>Solving:</strong> Update your code to have a complete coverage of the cases</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.null_safe_feature_call_on_primitive_valued_feature">null_safe_feature_call_on_primitive_valued_feature</a></td>
     </tr>
     <tr>
-      <td>132</td>
+      <td>133</td>
       <td><strong>Message:</strong> Superfluous @Override annotation<br /><strong>Cause:</strong> From JAva language API, the annotation <code>@Override</code> is defined in order to mark a function as a function that is overridding another function. The usage of this annotation is not recommended, even it is still possible. This warning message is generated when the function is already defined with the <code>override</code> keyword, and annotated with <code>@Override</code>. In this case, the annotation is superfluous<br /><strong>Solving:</strong> Remove <code>@Override</code></td>
       <td>Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.obsolete_annotation_override">obsolete_annotation_override</a></td>
     </tr>
     <tr>
-      <td>133</td>
+      <td>134</td>
       <td><strong>Message:</strong> Unnecessary cast from <em>type-name-1</em> to <em>type-name-2</em><br /><strong>Cause:</strong> You are using a cast operator <code>as</code>. But, the type of the left-operand expression is already compatible with the specified type as right operand. In other words, it is not necessary to cast explicitly the left expression to the right type<br /><strong>Solving:</strong> Remove <code>as</code> operator<br /><strong>Delegated to:</strong> org.eclipse.jdt.core.compiler.problem.unnecessaryTypeCheck</td>
       <td>Delegated; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.obsolete_cast">obsolete_cast</a></td>
     </tr>
     <tr>
-      <td>134</td>
+      <td>135</td>
       <td><strong>Message:</strong> The expression of type <em>type-name-1</em> is already of type <em>type-name-2</em><br /><strong>Cause:</strong> You are using <code>instanceof</code>. But, the type of the left-operand expression is already compatible with the specified type as right operand. In other words, it is not necessary to test the type of the expression again the type; or the <code>instanceof</code> operator is always evaluated to true<br /><strong>Solving:</strong> Remove <code>instanceof</code> operator, and any “else” statement that is associated with the operator<br /><strong>Delegated to:</strong> org.eclipse.jdt.core.compiler.problem.unnecessaryTypeCheck</td>
       <td>Delegated; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.obsolete_instanceof">obsolete_instanceof</a></td>
     </tr>
     <tr>
-      <td>135</td>
+      <td>136</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> of type <em>type-name</em> shadows the method <em>other-prototype</em> of type <em>other-type</em>, but does not override it<br /><strong>Cause:</strong> You have used the keyword <code>override</code> for declaring the function with prototype <em>func-prototype</em>. Since the function in <em>type-name</em> is not overriding a function from <em>other-type</em> with the same erasure, but with differences into the prototype such that your function is hidding the function of <em>other-type</em>. You function should be defined with <code>def</code> instead of <code>overrride</code><br /><strong>Solving:</strong> Replace <code>override</code> by <code>def</code></td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.obsolete_override">obsolete_override</a></td>
     </tr>
     <tr>
-      <td>136a</td>
+      <td>137a</td>
       <td><strong>Message:</strong> Constructor call without parentheses<br /><strong>Cause:</strong> This error message is generated when a constructor is defined without a formal parameter, e.g. <code>new ()</code>, and this constructor is called without parentheses, e.g. <code>this</code>. In several programming standards, it is considered as a good practice to write the parentheses for each constructor call, even if there is no argument to pass to<br /><strong>Solving:</strong> Add <code>()</code></td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.operation_without_parentheses">operation_without_parentheses</a></td>
     </tr>
     <tr>
-      <td>136b</td>
+      <td>137b</td>
       <td><strong>Message:</strong> Method call without parentheses<br /><strong>Cause:</strong> This error message is generated when a function is defined without a formal parameter, e.g. <code>def fct()</code>, and this function is called without parentheses, e.g. <code>fct</code>. In several programming standards, it is considered as a good practice to write the parentheses for each method call, even if there is no argument to pass to<br /><strong>Solving:</strong> Add <code>()</code></td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.operation_without_parentheses">operation_without_parentheses</a></td>
     </tr>
     <tr>
-      <td>137a</td>
+      <td>138a</td>
       <td><strong>Message:</strong> Attempt to override final class<br /><strong>Cause:</strong> You define a class that is extending another class. But, the super class was defined as not extendable, with the <code>final</code> modifier. You cannot extend a class that is not extendable<br /><strong>Solving:</strong> Change the super-type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.overridden_final">overridden_final</a></td>
     </tr>
     <tr>
-      <td>137b</td>
+      <td>138b</td>
       <td><strong>Message:</strong> Attempt to override final method <em>func-prototype</em><br /><strong>Cause:</strong> You define a function with the given prototype <em>func-prototype</em> that is overriding an inherited function. But, the inherited function was defined as not overridable, with the <code>final</code> modifier. You cannot override a function that is not overridable<br /><strong>Solving:</strong> Remove your function</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.overridden_final">overridden_final</a></td>
     </tr>
     <tr>
-      <td>138</td>
+      <td>139</td>
       <td><strong>Message:</strong> Cannot reduce the visibility of the overridden method <em>func-prototype</em><br /><strong>Cause:</strong> According the inheritance definition, that is common to SARL and the object-oriented programming languages, overridable functions as associated to a contract with their callers. This contract indicates that the prototype of the function will never changed, and the function will have the same accessibility/visibility always. This contract must be fullfil by the overriding functions. This error message is generated when your overriding function has a visibility lower than the visibility of the inherited function<br /><strong>Solving:</strong> Change the visibility of your function by moving up at least to the same visibility as the inherited function</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.override_reduces_visibility">override_reduces_visibility</a></td>
     </tr>
     <tr>
-      <td>139</td>
+      <td>140</td>
+      <td><strong>Message:</strong> Redundant definition of the default value for the formal parameter <em>name</em><br /><strong>Cause:</strong> This warning message is generated when you declared a default value for a formal parameter that has already a default value declared into one of the super types. It is not necessary to redefine the same default value for the formal parameter<br /><strong>Solving:</strong> Remove the redundant declaration fo the default value</td>
+      <td>Configurable; Default is: Warning</td>
+      <td><a href=":" title="io.sarl.lang.validation.IssueCodes.parameter_default_value_redefinition">parameter_default_value_redefinition</a></td>
+    </tr>
+    <tr>
+      <td>141</td>
       <td><strong>Message:</strong> The field <em>field-name</em> should be synchronized for avoiding value inconsistency due to parallel execution<br /><strong>Cause:</strong> Within the SARL operational semantic, a SARL program is executed in parallel, i.e., all the behavior units and the individual agent tasks are executed in different threaded tasks. Due to this run-time principle, the access to the fields within the scope of an agent (agent, behavior, skill) must be considered carefully. This issue code is generated by the compiler in order to notify the SARL developer that a synchronization issue may occur on the field named <em>field-name</em>. In this case, the SARL compiler cannot infer a default synchronization policy, it is recommended to the SARL developer to implement explicitly a synchronization method<br /><strong>Solving:</strong> Put the field access into a synchronization block</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.potential_field_synchronization_problem">potential_field_synchronization_problem</a></td>
     </tr>
     <tr>
-      <td>140a</td>
+      <td>142a</td>
       <td><strong>Message:</strong> Potential inefficient value conversion. This operation is based on a call to the function ‘<em>func-name</em>’, which generates a value of type ‘<em>origin-type</em>’ that is converted on-the-fly to ‘<em>target-type</em>‘<br /><strong>Cause:</strong> When the <code>as</code> casting operator is used, SARL compiler infers the best method to convert the origin expression of type <em>origin-type</em> to the target <em>target-type</em>. The possible methods are:<br />1) Direct low-level cast that is natively supported by the virtual machine.<br />2) If <em>target-type</em> is a primitive type, find a function named “<em>target-type</em>Value()” within the current scope.<br />3) If <em>target-type</em> is not a primitive type, find a function named “to<em>target-type</em>()” within the current scope.<br />If none of these cases fits, an cast error is generated. However, the cases 2 and 3 means that a cast operator will be supported by a call to <em>func-name</em> function. Depending on the implementation of <em>func-name</em>, the call may be inefficient at run-time</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.potential_inefficient_value_conversion">potential_inefficient_value_conversion</a></td>
     </tr>
     <tr>
-      <td>140b</td>
+      <td>142b</td>
       <td><strong>Message:</strong> Potential inefficient value conversion. This operation is based on a call to the function ‘<em>func-name</em>’, which may cause inefficient code execution<br /><strong>Cause:</strong> When the <code>as</code> casting operator is used, SARL compiler infers the best method to convert the origin expression to a target type. The possible methods are:<br />1) Direct low-level cast that is natively supported by the virtual machine.<br />2) If the target type is a primitive type, find a function named “<em>type-name</em>Value()” within the current scope.<br />3) If the target type is not a primitive type, find a function named “to<em>type-name</em>()” within the current scope.<br />If none of these cases fits, an cast error is generated. However, the cases 2 and 3 means that a cast operator will be supported by a call to a function. Depending on the implementation of the called function, the call may be inefficient at run-time</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.potential_inefficient_value_conversion">potential_inefficient_value_conversion</a></td>
     </tr>
     <tr>
-      <td>141a</td>
+      <td>143a</td>
       <td><strong>Message:</strong> The operator ‘<em>name</em>’ is undefined for the argument types <em>type-name</em> and null<br /><strong>Cause:</strong> This error message is generated when an (in)equality test operator, i.e., <code>==</code>, <code>===</code>, <code>!=</code> or <code>!==</code>, is invoked with the null literal as right operand, e.g. <code>x == null</code>, and the left operand being of primitive type. The problem is due to the usage of the keyword <code>null</code> that is not corresponding to a specific type. In this case, the SARL compiler cannot determine the best operator implementation<br /><strong>Solving:</strong> Initialize to <code>null</code> a local variable with the expected type for the right operand, and use this local variable as right operand</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.primitive_compared_to_null">primitive_compared_to_null</a></td>
     </tr>
     <tr>
-      <td>141b</td>
+      <td>143b</td>
       <td><strong>Message:</strong> The operator ‘<em>name</em>’ is undefined for the argument types null and <em>type-name</em><br /><strong>Cause:</strong> This error message is generated when an (in)equality test operator, i.e., <code>==</code>, <code>===</code>, <code>!=</code> or <code>!==</code>, is invoked with the null literal as left operand, e.g. <code>null == x</code>, and the right operand being of primitive type. The problem is due to the usage of the keyword <code>null</code> that is not corresponding to a specific type. In this case, the SARL compiler cannot determine the best operator implementation<br /><strong>Solving:</strong> Initialize to <code>null</code> a local variable with the expected type for the left operand, and use this local variable as left operand</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.primitive_compared_to_null">primitive_compared_to_null</a></td>
     </tr>
     <tr>
-      <td>141c</td>
+      <td>143c</td>
       <td><strong>Message:</strong> The operator ‘?:’ is undefined for arguments of type <em>type-name</em><br /><strong>Cause:</strong> This error message may be generated when your are using the elvis operator, with a primitive type value as left operand and the <code>null</code> literal as right operand, e.g. <code>x ?: null</code>. The problem is due to the usage of the keyword <code>null</code> that is not corresponding to a specific type. In this case, the SARL compiler cannot determine the best operator implementation<br /><strong>Solving:</strong> Initialize to <code>null</code> a local variable with the expected type for the right operand, and use this local variable as right operand</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.primitive_compared_to_null">primitive_compared_to_null</a></td>
     </tr>
     <tr>
-      <td>142</td>
+      <td>144</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> It is possible to generate issue messages when a feature is used or invoked from the SARL code. The specification of the issue message is done by using one of the annotations <code>@ErrorOnCall</code>, <code>@WarningOnCall</code> or <code>@InfoOnCall</code> that takes an message (<em>any-message</em>). This annotation is attached to the feature for which a call must generate the issue</td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.programmatic_issue_annotation">programmatic_issue_annotation</a></td>
     </tr>
     <tr>
-      <td>143a</td>
+      <td>145a</td>
       <td><strong>Message:</strong> <em>expression</em> uses the raw type <em>name</em>. References to generic type <em>name</em> should be parameterized<br /><strong>Cause:</strong> The given <em>expression</em> is referencing a generic type with the given <em>name</em> without specifying its generic type arguments<br /><strong>Solving:</strong> Add the missed generic type arguments</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.raw_type">raw_type</a></td>
     </tr>
     <tr>
-      <td>143b</td>
+      <td>145b</td>
       <td><strong>Message:</strong> <em>name</em> is a raw type. References to generic type <em>name</em> should be parameterized<br /><strong>Cause:</strong> You are referencing a generic type with the given <em>name</em> without specifying its generic type arguments<br /><strong>Solving:</strong> Add the missed generic type arguments</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.raw_type">raw_type</a></td>
     </tr>
     <tr>
-      <td>144</td>
+      <td>146</td>
       <td><strong>Message:</strong> Redundant use of the capacity ‘<em>capacity-name</em>‘<br /><strong>Cause:</strong> The capacity named <em>capacity-name</em> is specified more than one time after a <code>uses</code> statement. It is not necessary to specify a capacity name multiple name, since the compiler has already activated the access to the capacity’s functions with the first occurrence of <em>capacity-name</em><br /><strong>Solving:</strong> Remove the redundant <em>capacity-name</em> from the <code>uses</code> statement</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.redundant_capacity_use">redundant_capacity_use</a></td>
     </tr>
     <tr>
-      <td>145a</td>
+      <td>147a</td>
       <td><strong>Message:</strong> Redundant case<br /><strong>Cause:</strong> You have written a case without block of code that falls through the default case. It may be a piece of code like:<br /><code>switch (v) {<br />&nbsp;&nbsp;case 1,<br />}</code><br />It is clear that <code>case 1</code> falls through a case that is not given. In this case, it is considered as an error because the fall-through cannot be implemented<br /><strong>Solving:</strong> Remove the fall-through case; or add a block of code to the redundant case</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.redundant_case">redundant_case</a></td>
     </tr>
     <tr>
-      <td>145b</td>
+      <td>147b</td>
       <td><strong>Message:</strong> Redundant case<br /><strong>Cause:</strong> You have written a case without block of code that falls through the default case. It may be a piece of code like:<br /><code>switch (v) {<br />&nbsp;&nbsp;case 1,<br />&nbsp;&nbsp;default: {}<br />}</code><br />It is clear that <code>case 1</code> is redundant with <code>default</code> since this last is covering the <code>1</code> value<br /><strong>Solving:</strong> Remove the redundant case</td>
       <td>Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.redundant_case">redundant_case</a></td>
     </tr>
     <tr>
-      <td>146a</td>
+      <td>148a</td>
       <td><strong>Message:</strong> Duplicate implemented feature ‘<em>interface-name</em>‘<br /><strong>Cause:</strong> An interface, named <em>interface-name</em>, is implemented by a class. But, the interface with name <em>interface-name</em> is already implemented by the same class. It is not allowed by the SARL compiler to implement two time the same interface into a single class<br /><strong>Solving:</strong> Remove the redundant <em>interface-name</em></td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.redundant_interface_implementation">redundant_interface_implementation</a></td>
     </tr>
     <tr>
-      <td>146b</td>
+      <td>148b</td>
       <td><strong>Message:</strong> The feature ‘<em>interface-name</em>’ is already implemented by the super-type ‘<em>type-name</em>‘<br /><strong>Cause:</strong> This error may occur in two cases.<br />First, the interface named <em>interface-name</em> is implemented by the current class. But, it is also implemented by one of the super classes, named <em>type-name</em>, or it is a super-interface, named <em>type-name</em>, of another implemented interface by the class. The current specification of the interface implementation becomes redundant and unnecessary.<br />Second, the interface named <em>interface-name</em> is extended by the current interface. But, it is also defined as a super-interface for the super-interface named <em>type-name</em>. The current specification of the interface implementation becomes redundant and unnecessary<br /><strong>Solving:</strong> Remove the redundant <em>interface-name</em></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.redundant_interface_implementation">redundant_interface_implementation</a></td>
     </tr>
     <tr>
-      <td>147a</td>
+      <td>149a</td>
       <td><strong>Message:</strong> The constructor <em>constructor-prototype</em> has an argument of void type<br /><strong>Cause:</strong> One of the generic type arguments that is implicitly associated to the given constructor is specified as to be <code>void</code> or non-found into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>147b</td>
+      <td>149b</td>
       <td><strong>Message:</strong> The constructor <em>constructor-prototype</em> refers to the missing type <em>name</em><br /><strong>Cause:</strong> The given constructor is associated to a type that was not found into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>147c</td>
+      <td>149c</td>
       <td><strong>Message:</strong> The field <em>field-name</em> has an illegal argument type<br /><strong>Cause:</strong> One of the generic type arguments that is implicitly associated to the field <em>field-name</em> is specified as to be <code>void</code> or non-found into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>147d</td>
+      <td>149d</td>
       <td><strong>Message:</strong> The field <em>field-name</em> refers to the missing type <em>name</em><br /><strong>Cause:</strong> The given field is associated to a type that was not found into the classpath. The non-found type may be the raw type of the field, or one of the generic type parameters</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>147e</td>
+      <td>149e</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> from the type <em>type-name</em> has an illegal argument type<br /><strong>Cause:</strong> One of the generic type arguments that is implicitly associated to the given method is specified as to be <code>void</code> or non-found into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>147f</td>
+      <td>149f</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> from the type <em>type-name</em> refers to the missing type <em>name</em><br /><strong>Cause:</strong> The given method is associated to a type that was not found into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.refer_invalid_types">refer_invalid_types</a></td>
     </tr>
     <tr>
-      <td>148</td>
+      <td>150</td>
       <td><strong>Message:</strong> Expecting the return type <em>type-name</em>. It is recommended to write the return type, even if it is inferred from the overridden function<br /><strong>Cause:</strong> SARL compiler is able to infer the type of the return values of a function according to the inherited prototype for the same function. In this case, it is not mandatory to specify explitly the return type into the overiding prototypes. Nevertheless, it is considered as a good practice to specify the return type. This issue message informs the developer of this recommendation<br /><strong>Solving:</strong> Add the return type into the overriding function prototype</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.return_type_specification_is_recommended">return_type_specification_is_recommended</a></td>
     </tr>
     <tr>
-      <td>149</td>
+      <td>151</td>
       <td><strong>Message:</strong> SARL library not found on the classpath. Error code: <em>code</em>; Resources on classpath are:<br /><em>classpath</em><br />Declared fields in SARLVersion class:<br /><em>sarl-verison</em><br /><strong>Cause:</strong> The SARL library is not on the <em>classpath</em>. The cause of the error is specified by the given <em>code</em> that is one of NO_SARL_VERSION_CLASS (SARL version class not found), NO_SARL_VERSION_DECLARED_TYPE (SARL version class is not a Xtext declared type), NO_SARL_VERSION_FIELD (SARL version field not found), NO_SARL_VERSION_VALUE (SARL version value not found), or INVALID_SARL_VERSION_BYTECODE (the byte code (the class) of <code>SARLVersion</code> does not contains the expected field)<br /><strong>Solving:</strong> Reconfigure your project to have the SARL libraries into the classpath</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.sarl_lib_not_on_classpath">sarl_lib_not_on_classpath</a></td>
     </tr>
     <tr>
-      <td>150</td>
+      <td>152</td>
       <td><strong>Message:</strong> Single dispatch method<br /><strong>Cause:</strong> A dispatch function is a function to which multiple blocks of code are attached to. Each block of code is invoked according to a specific type of the first formal parameter of the dispatch function. If you define a single block of code for a dispatch function, dispatch function syntax is not the best choice for performance reason. Indeed defining the same function as a not-dispatching function has the same operational effects, and faster</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.single_case_function">single_case_function</a></td>
     </tr>
     <tr>
-      <td>151a</td>
+      <td>153a</td>
       <td><strong>Message:</strong> Cannot make a static reference to the non-static <em>feature-type</em> <em>feature-name</em><br /><strong>Cause:</strong> You are making a reference to a non-static feature (function call or field reference) from a static context. Accessing to a non-static feature needs to provide the instance of the object to access to; that is missed from a static context<br /><strong>Solving:</strong> Add the missed object reference</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>151b</td>
+      <td>153b</td>
       <td><strong>Message:</strong> Cannot make a static reference to the non-static <em>feature-type</em> <em>feature-name</em> from the type <em>type-name</em><br /><strong>Cause:</strong> You are making a reference to a non-static feature (function call or field reference) from a static context within the type <em>type-name</em>. Accessing to a non-static feature needs to provide the instance of the object to access to; that is missed from a static context<br /><strong>Solving:</strong> Add the missed object reference</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>151c</td>
+      <td>153c</td>
       <td><strong>Message:</strong> Cannot make a static reference to the non-static type <em>name</em><br /><strong>Cause:</strong> When you are defining the generic type arguments, you have to specify types as arguments, e.g. <code>Collection&lt;MyType&gt;</code>. Generic type arguments could only refer to statically declared types<br /><strong>Solving:</strong> Replace the non-static type reference by an appropriate static type reference</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>151d</td>
+      <td>153d</td>
       <td><strong>Message:</strong> Cannot make an implicit reference to this from a static context<br /><strong>Cause:</strong> You are making an implicit reference to the current object <code>this</code> from a static context. Since it is a static context, <code>this</code> does not exist or is not accessible from it<br /><strong>Solving:</strong> Add the missed object reference</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>151e</td>
+      <td>153e</td>
       <td><strong>Message:</strong> Cannot make an implicit static reference to the non-static extension <em>name</em><br /><strong>Cause:</strong> You have defined a non-static extension in the enclosing code. And , you are making a reference to a non-static extension feature (function call usually) from a static context. Accessing to a non-static feature needs to provide the instance of the object to access to; that is missed from a static context<br /><strong>Solving:</strong> Replace implicit reference by explicit reference to the right object</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>151f</td>
+      <td>153f</td>
       <td><strong>Message:</strong> Cannot use <em>name</em> in a static context<br /><strong>Cause:</strong> You cannot reference a type with <em>name</em> from a static context when the type <em>name</em> is not statically defined<br /><strong>Solving:</strong> Replace the non-static type reference by an appropriate static type reference</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.static_access_to_instance_member">static_access_to_instance_member</a></td>
     </tr>
     <tr>
-      <td>152</td>
+      <td>154</td>
       <td><strong>Message:</strong> Suspiciously overloaded method. The <em>feature-type</em> <em>list-of-features</em> overloads the <em>feature-type</em> <em>list-of-rejected-features</em><br /><strong>Cause:</strong> You are calling a feature (method, field, etc.). The target feature that is find by the SARL compiler seems to overload another feature, but not direct through an overriding. Indeed, with the extension method mechanism, candidates for being the target feature may be defined in the current type (regular linking), or imported from static types or from objects (extension linking). The selected target feature seems to hide another feature outside the inheritance mechanism between the types<br /><strong>Solving:</strong> Rewrite your code to remove the suspicious call</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.suspiciously_overloaded_feature">suspiciously_overloaded_feature</a></td>
     </tr>
     <tr>
-      <td>153</td>
+      <td>155</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> This error is generated when your SARL code has an improper syntax, and cannot be parsed by the SARL compiler. The error message provides the detail of the invalid syntax</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Syntax">Syntax</a></td>
     </tr>
     <tr>
-      <td>154</td>
+      <td>156</td>
       <td><strong>Message:</strong> <em>any-message</em><br /><strong>Cause:</strong> This error is generated when your SARL code has an improper syntax, and cannot be parsed by the SARL compiler. The error message provides the detail of the invalid syntax and the position into your source code that is under failure</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.diagnostics.Diagnostic.Syntax.Range">Syntax.Range</a></td>
     </tr>
     <tr>
-      <td>155</td>
+      <td>157</td>
       <td><strong>Message:</strong> The ternary operator is not allowed. Use a normal if-expression<br /><strong>Cause:</strong> The ternary operator is the inline if-then-else expression. In some best programming practices, the inline if-then-else are considered as a bad practice. This issue message is generated when an ternary operator is used in your code<br /><strong>Solving:</strong> Replace the ternary operator by the equivalent if-then-else statement</td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.ternary_if_operator_is_not_allowed">ternary_if_operator_is_not_allowed</a></td>
     </tr>
     <tr>
-      <td>156a</td>
+      <td>158a</td>
       <td><strong>Message:</strong> Cannot infer type<br /><strong>Cause:</strong> It is too complex for the SARL compiler to infer the type of the marked feature<br /><strong>Solving:</strong> Define explicitly the type of the feature</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.too_little_type_information">too_little_type_information</a></td>
     </tr>
     <tr>
-      <td>156b</td>
+      <td>158b</td>
       <td><strong>Message:</strong> Cannot infer type from recursive usage. Type ‘Object’ is used<br /><strong>Cause:</strong> You code has a type-free feature, e.g. a local variable. SARL cannot infer the type of the feature because a cycle is detected regarding the type definitions<br /><strong>Solving:</strong> Define explicitly the type of the feature</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.too_little_type_information">too_little_type_information</a></td>
     </tr>
     <tr>
-      <td>156c</td>
+      <td>158c</td>
       <td><strong>Message:</strong> There is no context to infer the closure’s argument types from. Consider typing the arguments or put the closures into a typed context<br /><strong>Cause:</strong> This error is generated when the SARL compiler cannot infer the type of a formal parameter of a closure/lambda expression from the usage context<br /><strong>Solving:</strong> Define explicitly the formal parameters within the closure; or Make more explicit within the enclosing context the type of the closure’s formal parameter</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.too_little_type_information">too_little_type_information</a></td>
     </tr>
     <tr>
-      <td>156d</td>
+      <td>158d</td>
       <td><strong>Message:</strong> There is no context to infer the closure’s argument types from. Consider typing the arguments or use the closures in a more specific context<br /><strong>Cause:</strong> This error is generated when the SARL compiler cannot infer the type of the first formal parameter of a closure/lambda expression from the usage context<br /><strong>Solving:</strong> Define explicitly the formal parameters within the closure; or Make more explicit within the enclosing context the type of the closure’s first formal parameter</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.too_little_type_information">too_little_type_information</a></td>
     </tr>
     <tr>
-      <td>157</td>
+      <td>159</td>
       <td><strong>Message:</strong> The maximum number of parameters for a closure is six<br /><strong>Cause:</strong> A constrain given by the underground Java API is the maximum number of formal parameters that could be defined for a closure/lambda expression<br /><strong>Solving:</strong> Reduce the number of formal parameters of your closure</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.too_many_params_in_closure">too_many_params_in_closure</a></td>
     </tr>
     <tr>
-      <td>158</td>
+      <td>160</td>
       <td><strong>Message:</strong> The type <em>type-name</em> is not generic; it cannot be parameterized with arguments <em>type-arguments</em><br /><strong>Cause:</strong> You have specified generic type parameters to a type that does not accept generic type parameters, e.g. <code>Object&lt;String&gt;</code>, <code>int&lt;String&gt;</code>, <code>MyEnum&lt;String&gt;</code>, <code>MyAnnotation&lt;String&gt;</code><br /><strong>Solving:</strong> Remove the generic type parameters</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.type_argument_on_non_generic_type">type_argument_on_non_generic_type</a></td>
     </tr>
     <tr>
-      <td>159a</td>
+      <td>161a</td>
       <td><strong>Message:</strong> Bounds mismatch: The type argument <em>type-argument</em> is not a valid substitute for the bounded type parameter <em>parameter</em> of the <em>feature-type</em> <em>feature-signature</em><br /><strong>Cause:</strong> The generic <em>type-argument</em> does not match the type bounding constraints of the corresponding generic type parameter of the specified feature. If the bounding constraint is <code>extends</code>, then the <em>type-argument</em> is not a sub-type of the one specified into the constraint. If the bounding constraint is <code>super</code>, then the <em>type-argument</em> is not a super-type of the one specified into the constraint<br /><strong>Solving:</strong> Replace <em>type-argument</em> by an appropriate type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.type_bounds_missmatch">type_bounds_missmatch</a></td>
     </tr>
     <tr>
-      <td>159b</td>
+      <td>161b</td>
       <td><strong>Message:</strong> Bounds mismatch: The type arguments <em>type-arguments</em> are not a valid substitute for the bounded type parameters <em>parameters</em> of the <em>feature-type</em> <em>feature-signature</em><br /><strong>Cause:</strong> The type that is specified after a <code>on</code> statement is not a SARL event, i.e. a sub-type of the type <code>Event</code><br /><strong>Solving:</strong> Replace <em>type</em> by an appropriate event type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.type_bounds_missmatch">type_bounds_missmatch</a></td>
     </tr>
     <tr>
-      <td>159c</td>
+      <td>161c</td>
       <td><strong>Message:</strong> Invalid type: ‘<em>type</em>’. Only events can be used after the keyword ‘on’<br /><strong>Cause:</strong> The type that is specified after a <code>on</code> statement is not a SARL event, i.e. a sub-type of the type <code>Event</code><br /><strong>Solving:</strong> Replace <em>type</em> by an appropriate event type</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.type_bounds_missmatch">type_bounds_missmatch</a></td>
     </tr>
     <tr>
-      <td>160</td>
+      <td>162</td>
       <td><strong>Message:</strong> Illegal forward reference to type parameter <em>name</em><br /><strong>Cause:</strong> Since Java 5, forward references in type parameters are not allowed. Let define a list of generic type parameters <code>&lt;A, B extends C, C extends A&gt;</code>. In the previous example, <code>C</code> has a backward reference to <code>A</code>; and <code>B</code> has a forward reference to <code>C</code>. Then, <code>extends C</code> causes the generation of this error message. In other words, a local generic type parameters msut be declared before its usage into the bounds of another generic type parameter<br /><strong>Solving:</strong> Change the order of the generic type parameters</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.type_parameter_forward_reference">type_parameter_forward_reference</a></td>
     </tr>
     <tr>
-      <td>161</td>
+      <td>163</td>
       <td><strong>Message:</strong> Unexpected exception to a static constructor<br /><strong>Cause:</strong> A static constructor could be defined for initializing the static fields of a type. It is forbidden to define a list of thrown exceptions for a static constructor because they cannot be catched<br /><strong>Solving:</strong> Remove the <code>thrown</code> definition</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.unexpected_exception_throw">unexpected_exception_throw</a></td>
     </tr>
     <tr>
-      <td>162</td>
+      <td>164</td>
       <td><strong>Message:</strong> Unexpected formal parameter to a static constructor<br /><strong>Cause:</strong> A static constructor could be defined for initializing the static fields of a type. It is forbidden to define a formal parameter for a static constructor because their is no way to assign values to the corresponding arguments<br /><strong>Solving:</strong> Remove the formal parameter(s) from static constructor</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.unexpected_formal_parameter">unexpected_formal_parameter</a></td>
     </tr>
     <tr>
-      <td>163</td>
+      <td>165</td>
       <td><strong>Message:</strong> The syntax for type literals is typeof(<em>name</em>) or <em>name<br /><strong>Cause:</strong> The type literal, i.e. the name of the type, with *name</em> must follow a string syntax, that is explained in the error message<br /><strong>Solving:</strong> Use the correct syntax</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unexpected_invocation_on_type_literal">unexpected_invocation_on_type_literal</a></td>
     </tr>
     <tr>
-      <td>164a</td>
+      <td>166a</td>
       <td><strong>Message:</strong> Unhandled exception type <em>type-name</em><br /><strong>Cause:</strong> Exception <em>type-name</em> has been declared to be throwable by instructions within the code block of an method or a constructor. But, the method or the constructor has no declaration of <em>type-name</em> with <code>throws</code>. This is not an error stricly because SARL compiler is able to propagate the definition of the exceptions to the enclosing function or constructor<br /><strong>Solving:</strong> Add <em>type-name</em> to <code>throws</code></td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unhandled_exception">unhandled_exception</a></td>
     </tr>
     <tr>
-      <td>164b</td>
+      <td>166b</td>
       <td><strong>Message:</strong> Unhandled exception type <em>type-name</em> thrown by automatic close() invocation on <em>feature</em><br /><strong>Cause:</strong> An exception is declared to be throwable by the <code>close()</code> function, which is automatically/implicitly invoked. This exception is not catched. This is not an error stricly because SARL compiler is able to propagate the definition of the exceptions to the enclosing function or constructor<br /><strong>Solving:</strong> Add <code>catch</code> statement</td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unhandled_exception">unhandled_exception</a></td>
     </tr>
     <tr>
-      <td>164c</td>
+      <td>166c</td>
       <td><strong>Message:</strong> Unhandled exception types <em>type-name-1</em> and <em>type-name-2</em><br /><strong>Cause:</strong> Exceptions have been declared to be throwable by instructions within the code block of an method or a constructor. But, the method or the constructor has no declaration of <em>type-name-1</em> and <em>typename-2</em> with <code>throws</code>. This is not an error stricly because SARL compiler is able to propagate the definition of the exceptions to the enclosing function or constructor<br /><strong>Solving:</strong> Add <em>type-name-1</em> and <em>type-name-2</em> to <code>throws</code></td>
       <td>Configurable; Default is: Ignored</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unhandled_exception">unhandled_exception</a></td>
     </tr>
     <tr>
-      <td>165a</td>
+      <td>167a</td>
       <td><strong>Message:</strong> The def modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> Usually, this issue is generated when the <code>def</code> modifier is redundant with another modifer like <code>override</code><br /><strong>Solving:</strong> Remove the <code>def</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>165b</td>
+      <td>167b</td>
       <td><strong>Message:</strong> The final modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> Usually, this issue is generated when the <code>final</code> modifier is redundant with another modifer like <code>val</code><br /><strong>Solving:</strong> Remove the <code>final</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>165c</td>
+      <td>167c</td>
       <td><strong>Message:</strong> The package modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> This issue message is generated when the modifier <code>package</code> is specified on a member that has a default visibility equals to <code>package</code> also<br /><strong>Solving:</strong> Remove the <code>package</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>165d</td>
+      <td>167d</td>
       <td><strong>Message:</strong> The private modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> This issue message is generated when the modifier <code>private</code> is specified on a member that has a default visibility equals to <code>private</code> also<br /><strong>Solving:</strong> Remove the <code>private</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>165e</td>
+      <td>167e</td>
       <td><strong>Message:</strong> The protected modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> This issue message is generated when the modifier <code>protected</code> is specified on a member that has a default visibility equals to <code>protected</code> also<br /><strong>Solving:</strong> Remove the <code>protected</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>165f</td>
+      <td>167f</td>
       <td><strong>Message:</strong> The public modifier is unnecessary on <em>member-name</em><br /><strong>Cause:</strong> This issue message is generated when the modifier <code>public</code> is specified on a member that has a default visibility equals to <code>public</code> also<br /><strong>Solving:</strong> Remove the <code>public</code> modifier</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unnecessary_modifier">unnecessary_modifier</a></td>
     </tr>
     <tr>
-      <td>166</td>
+      <td>168</td>
       <td><strong>Message:</strong> Unqualified super reference is not allowed in interface context<br /><strong>Cause:</strong> You try to use the <code>super</code> statement from an interface. Because an interface has no associated instance of object and consequently not super-type instance, you cannot call <code>super</code><br /><strong>Solving:</strong> Remove <code>super</code></td>
       <td>Configurable; Default is: Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unqualified_super_call">unqualified_super_call</a></td>
     </tr>
     <tr>
-      <td>167</td>
+      <td>169</td>
       <td><strong>Message:</strong> Dead code. The guard is always false<br /><strong>Cause:</strong> The guard that is specified for a behavior unit is evaluated by the compiler to be always false. In this case, the code of the behavior unit has absolutely no change to be executed. It may denote a problem is the design of the entity in which the behavior unit is defined, e.g. an agent<br /><strong>Solving:</strong> Change the guard condition; or remove the entier behavior unit</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.unreachable_behavior_unit">unreachable_behavior_unit</a></td>
     </tr>
     <tr>
-      <td>168</td>
+      <td>170</td>
       <td><strong>Message:</strong> Unreachable code: The case can never match. It is already handled by a previous condition<br /><strong>Cause:</strong> You have specified a <code>case</code> that is already handled by another <code>case</code> before. It means that this <code>case</code> will never match because the previous one will do<br /><strong>Solving:</strong> Remove <code>case</code></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_case">unreachable_case</a></td>
     </tr>
     <tr>
-      <td>169</td>
+      <td>171</td>
       <td><strong>Message:</strong> Unreachable code: The catch block can never match. It is already handled by a previous condition<br /><strong>Cause:</strong> You have specified a <code>catch</code> that is already handled by another <code>catch</code> before. It means that this <code>catch</code> will never match because the previous one will do<br /><strong>Solving:</strong> Remove <code>catch</code></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_catch_block">unreachable_catch_block</a></td>
     </tr>
     <tr>
-      <td>170a</td>
+      <td>172a</td>
       <td><strong>Message:</strong> Dead code: The variable <em>name</em> will never be assigned<br /><strong>Cause:</strong> This error message is generated when a line of code cannot be reached in all the case. For example a loop with a <code>true</code> condition should never exit from looping. Then, all the statements after the loop becomes unreachable<br /><strong>Solving:</strong> Remove the dead code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>170b</td>
+      <td>172b</td>
       <td><strong>Message:</strong> Unreachable code<br /><strong>Cause:</strong> This error message is generated when a line of code cannot be reached in all the case. For example a loop with a <code>true</code> condition should never exit from looping. Then, all the statements after the loop becomes unreachable<br /><strong>Solving:</strong> Remove the dead code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>170c</td>
+      <td>172c</td>
       <td><strong>Message:</strong> Unreachable code<br /><strong>Cause:</strong> This error message is generated when a line of code cannot be reached in all the case. For example a loop with a <code>true</code> condition should never exit from looping. Then, all the statements after the loop becomes unreachable<br /><strong>Solving:</strong> Remove the dead code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>170d</td>
+      <td>172d</td>
       <td><strong>Message:</strong> Unreachable code. The last argument expression does not complete normally<br /><strong>Cause:</strong> This error message is generated when the evaluation of the last argument causes a stop of the execution sequence that avoid to call the method/constructor for switch the argument is computed<br /><strong>Solving:</strong> Remove the unreachable code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>170e</td>
+      <td>172e</td>
       <td><strong>Message:</strong> Unreachable code. The right argument expression does not complete normally<br /><strong>Cause:</strong> This error message is generated when the evaluation of the right argument causes a stop of the execution sequence that avoid to call the operator for switch the argument is computed<br /><strong>Solving:</strong> Remove the unreachable code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>170f</td>
+      <td>172f</td>
       <td><strong>Message:</strong> Unreachable expression<br /><strong>Cause:</strong> This error message is generated when a line of code cannot be reached in all the case. For example a loop with a <code>true</code> condition should never exit from looping. Then, all the statements after the loop becomes unreachable<br /><strong>Solving:</strong> Remove the unreachable code</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_code">unreachable_code</a></td>
     </tr>
     <tr>
-      <td>171</td>
+      <td>173</td>
       <td><strong>Message:</strong> Unreachable code: The if condition can never match. It is already handled by a previous condition<br /><strong>Cause:</strong> Inside a condition of <code>if</code> statement, you have specified multiple tests with <code>instanceof</code>. Since all the boolean conditions are evaluated from left to right, an <code>instanceof</code> test never matches because a left-most <code>instanceof</code> already matches the same scope of types<br /><strong>Solving:</strong> Remove the unmatchable <code>instanceof</code></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unreachable_instance_of">unreachable_instance_of</a></td>
     </tr>
     <tr>
-      <td>172a</td>
+      <td>174a</td>
       <td><strong>Message:</strong> The capacity ‘<em>capacity-name</em>’ is not used<br /><strong>Cause:</strong> This issue is generated when <em>capacity-name</em> is specified after a <code>uses</code> statement, but none of the capacity’s functions is invoked from the current entity (agent, etc.)<br /><strong>Solving:</strong> Remove <em>capacity-name</em> from the <code>uses</code> statement</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.unused_agent_capacity">unused_agent_capacity</a></td>
     </tr>
     <tr>
-      <td>172b</td>
+      <td>174b</td>
       <td><strong>Message:</strong> Unnecessary use of the capacity ‘<em>capacity-name</em>’ because it is implemented by the current skill<br /><strong>Cause:</strong> This issue is generated when the capacity named <em>capacity-name</em> is specified after a <code>uses</code> keyword; and it is at the same time an implemented capacity by the skill in which the <code>uses</code> statement is specified. The <code>uses</code> specification is redundant, because the functions that are defined into the capacity <em>capacity-name</em> are already accessible due to their local implementation<br /><strong>Solving:</strong> Remove <em>capacity-name</em> from the <code>uses</code> statement</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.unused_agent_capacity">unused_agent_capacity</a></td>
     </tr>
     <tr>
-      <td>173</td>
+      <td>175</td>
       <td><strong>Message:</strong> The value of the local variable <em>name</em> is not used<br /><strong>Cause:</strong> You have declared a local variable with the given <em>name</em>, but never use it somewhere<br /><strong>Solving:</strong> Remove the variable declaration; or Use the variable</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.unused_local_variable">unused_local_variable</a></td>
     </tr>
     <tr>
-      <td>174</td>
+      <td>176</td>
       <td><strong>Message:</strong> The method <em>func-prototype</em> from the type <em>type-name</em> is never used locally<br /><strong>Cause:</strong> This warning is generated because you have defined a private function that is never called. This is not a problem for running your program. But, it makes your binary executable file larger than stricly necessary<br /><strong>Solving:</strong> Remove the private function<br /><strong>Delegated to:</strong> org.eclipse.jdt.core.compiler.problem.unusedPrivateMember</td>
       <td>Delegated; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.unused_private_member">unused_private_member</a></td>
     </tr>
     <tr>
-      <td>175</td>
+      <td>177</td>
       <td><strong>Message:</strong> Discouraged use of reserved annotation. @<em>name</em> is an annotation that is reserved for the compiler usage<br /><strong>Cause:</strong> SARL core library defines a collection of SARL annotations that are dedicated to the internal usage of the SARL compiler. They are supposed to never be in the SARL code directly. This issue message is generated when one of these SARL annotations is explicitly specified into the code<br /><strong>Solving:</strong> Remove the SARL annotation from your code</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="io.sarl.lang.validation.IssueCodes.use_reserved_sarl_annotation">use_reserved_sarl_annotation</a></td>
     </tr>
     <tr>
-      <td>176a</td>
+      <td>178a</td>
       <td><strong>Message:</strong> ‘<em>name</em>’ is a reserved keyword which is not allowed as identifier. Please choose another word<br /><strong>Cause:</strong> You defined the name of a feature by using a <em>name</em> that is equal to a SARL keyword. As in all programming languages, it is forbidden to use a language keyword as identifier<br /><strong>Solving:</strong> Change <em>name</em> to another identifier that is not a SARL keyword</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.parser.SyntaxIssueCodes.used_reserved_keyword">used_reserved_keyword</a></td>
     </tr>
     <tr>
-      <td>176b</td>
+      <td>178b</td>
       <td><strong>Message:</strong> ‘<em>name</em>’ is a reserved keyword which is not allowed as identifier. Please choose another word or alternatively confuse your co-workers by escaping it like this: <em>simple-solution</em><br /><strong>Cause:</strong> You defined the name of a feature by using a <em>name</em> that is equal to a SARL keyword. As in all programming languages, it is forbidden to use a language keyword as identifier. This error message problem to you a <em>simple-solution</em><br /><strong>Solving:</strong> Apply <em>name</em> to <em>simple-solution</em> or to another name that is not a SARL keyword</td>
       <td>Error</td>
       <td><a href=":" title="io.sarl.lang.parser.SyntaxIssueCodes.used_reserved_keyword">used_reserved_keyword</a></td>
     </tr>
     <tr>
-      <td>177a</td>
+      <td>179a</td>
       <td><strong>Message:</strong> ‘<em>name</em>’ is not a valid name<br /><strong>Cause:</strong> This is the general error for notifying you that the name of an element is invalid. Most of the time, it is due to the use of a forbidden character into the <em>name</em>. The major forbidden character is $. It is not allowed to use it inside a name, even if it is allowed into the Java specification<br /><strong>Solving:</strong> Rename the element</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_disallowed">variable_name_disallowed</a></td>
     </tr>
     <tr>
-      <td>177b</td>
+      <td>179b</td>
       <td><strong>Message:</strong> Invalid name ‘<em>name</em>’. You must not give to a field a name with reserved characters<br /><strong>Cause:</strong> You have defined an name for a field that contains forbidden characters. The major forbidden character is $. It is not allowed to use it inside a name, even if it is allowed into the Java specification<br /><strong>Solving:</strong> Rename your field</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_disallowed">variable_name_disallowed</a></td>
     </tr>
     <tr>
-      <td>177c</td>
+      <td>179c</td>
       <td><strong>Message:</strong> Invalid name ‘<em>name</em>’. You must not give to an field the same name as a reserved keyword<br /><strong>Cause:</strong> You have defined an name for a field that is equal to a reserved keyword<br /><strong>Solving:</strong> Rename your field</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_disallowed">variable_name_disallowed</a></td>
     </tr>
     <tr>
-      <td>178a</td>
+      <td>180a</td>
       <td><strong>Message:</strong> ‘<em>name</em>’ is a discouraged name<br /><strong>Cause:</strong> This is the general message for notifying you that the name of an element is discouraged. Most of the time, it is due to the fact it may cause ambiguity with SARL language keywords, e.g. <code>self</code><br /><strong>Solving:</strong> Rename the element</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_discouraged">variable_name_discouraged</a></td>
     </tr>
     <tr>
-      <td>178b</td>
+      <td>180b</td>
       <td><strong>Message:</strong> ‘self’ is a discouraged name<br /><strong>Cause:</strong> <code>self</code> is a name that is used in several other programming languages as a synonym of <code>this</code>. In order to avoid ambiguity, <code>self</code> is a discouraged name<br /><strong>Solving:</strong> Rename the element</td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_discouraged">variable_name_discouraged</a></td>
     </tr>
     <tr>
-      <td>179a</td>
+      <td>181a</td>
       <td><strong>Message:</strong> Duplicate local variable <em>name</em><br /><strong>Cause:</strong> You have declared two different variables in the same scope but with exactly the same name. It is simply forbidden to hide local variables<br /><strong>Solving:</strong> Rename one of the local variables</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_shadowing">variable_name_shadowing</a></td>
     </tr>
     <tr>
-      <td>179b</td>
+      <td>181b</td>
       <td><strong>Message:</strong> The field ‘<em>field-name</em>’ in ‘<em>type-name</em>’ is hidding the inherited field ‘<em>super-field-name</em>‘<br /><strong>Cause:</strong> You have declared a field with the name <em>field-name</em> into the current type; but an accessible field with the same name is also declared into a super-type. It means that the value of the field into the super-type will not be accessible directly from the current type<br /><strong>Solving:</strong> Rename field <em>field-name</em></td>
       <td>Configurable; Default is: Warning</td>
       <td><a href=":" title="org.eclipse.xtext.xbase.validation.IssueCodes.variable_name_shadowing">variable_name_shadowing</a></td>
     </tr>
     <tr>
-      <td>180</td>
+      <td>182</td>
       <td><strong>Message:</strong> The type <em>type-name</em> cannot extend or implement <em>other-type</em>. A supertype may not specify any wildcard<br /><strong>Cause:</strong> The super-type named <em>other-type</em> is defined with wildcard into its generic type parameters. It is forbidden to extends or implement a super-type with a wildcard</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.wildcard_in_supertype">wildcard_in_supertype</a></td>
     </tr>
     <tr>
-      <td>181a</td>
+      <td>183a</td>
       <td><strong>Message:</strong> The annotation @<em>name</em> is disallowed for this location<br /><strong>Cause:</strong> An annotation is defined in order to be attached to a specific type of element (type, field, method, etc.). This error is generated when an annotation with the given <em>name</em> is attached to a wrong type of element</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.wrong_annotation_target">wrong_annotation_target</a></td>
     </tr>
     <tr>
-      <td>181b</td>
+      <td>183b</td>
       <td><strong>Message:</strong> Unexpected annotation to a static constructor<br /><strong>Cause:</strong> A static constructor cannot have an annotation attached to it. This issue message is generated when a static constructor is annotated</td>
       <td>Error</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.wrong_annotation_target">wrong_annotation_target</a></td>
     </tr>
     <tr>
-      <td>182a</td>
+      <td>184a</td>
       <td><strong>Message:</strong> The declared package ‘<em>actual-name</em>’ does not match the expected package ‘<em>expected-name</em>‘<br /><strong>Cause:</strong> SARL enables to create groups of types that are named packages in order to increase the modularity of your software. The different types are written into SARL files that are located in folders. Usually the name of the package reflects the structure of the underlying folders, i.e., the sequence of folders’ names corresponds to the sequence of package name’s atoms. In the Java language this mapping is mandatory. In SARL language, this mapping is optional, but considered as a good practice. The SARL compiler notifies you that the <em>expected-name</em> may be preferred to the <em>actual-name</em><br /><strong>Solving:</strong> Replace <em>actual-name</em> by <em>expected-name</em></td>
       <td>Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.wrong_package">wrong_package</a></td>
     </tr>
     <tr>
-      <td>182b</td>
+      <td>184b</td>
       <td><strong>Message:</strong> Unexpecting package definition<br /><strong>Cause:</strong> SARL enables to create groups of types that are named packages in order to increase the modularity of your software. The different types are written into SARL files that are located in folders. Usually the name of the package reflects the structure of the underlying folders, i.e., the sequence of folders’ names corresponds to the sequence of package name’s atoms. In the Java language this mapping is mandatory. In SARL language, this mapping is optional, but considered as a good practice. The SARL compiler notifies you that no name is expected for the package<br /><strong>Solving:</strong> Remove the package definition</td>
       <td>Warning</td>
       <td><a href=":" title="org.eclipse.xtend.core.validation.IssueCodes.wrong_package">wrong_package</a></td>
@@ -2113,8 +2131,8 @@ the long code as argument to <code>@SuppressWarnings</code> too.</p>
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -2127,7 +2145,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -100,33 +100,7 @@ Each time an agent needs to be notified about a fault (into its agent tasks for 
 <p>The definition of these new types of events following the general rules for the <a href="./Event.html">event definition</a>.
 As for all the SARL events, they must be fired into a <a href="./Space.html">space</a> for being processed by an agent.</p>
 
-<h3 id="12-parallel-task-failures">1.2. Parallel Task Failures</h3>
-
-<p>As soon as an agent starts <a href="./bic/Schedules.html">parallel tasks</a>, these tasks may fail.
-The SARL API provides a specific failure event sub-type that is describing the cause of a failing task: <code>io.sarl.core.TaskFailure</code>.</p>
-
-<p>This event is fired each time an exception is thrown into a parallel task.
-In addition to the field <code>cause</code>, the <code>TaskFailure</code> event contains the reference to the failing task, accessible with the <code>task</code> field.</p>
-
-<p>The following code shows an example of the submission of a failing parallel task, and the catching of this failure with a <code>TaskFailure</code> event handler.</p>
-
-<pre><code class="language-sarl">agent MyAgent {
-	uses Logging, Schedules
-	on Initialize {
-		in(1.seconds) [
-			throw new MyError
-		]
-	}
-	on TaskFailure {
-		var reason : Object = occurrence.cause
-		var task : AgentTask = occurrence.task
-		info("Task failed:" + task
-			+ " because of: " + reason)
-	}
-}
-</code></pre>
-
-<h3 id="13-over-types-of-failures">1.3. Over Types of Failures</h3>
+<h3 id="12-user-specific-failures">1.2. User-Specific Failures</h3>
 
 <p>It is still possible for you to define your own failure events. You only need to define a sub-type of <code>Failure</code>.
 For example, the following code define the <code>MyFailure</code> event:</p>
@@ -154,7 +128,7 @@ agent MyAgent {
 }
 </code></pre>
 
-<h3 id="14-abnormal-agent-killing">1.4. Abnormal Agent Killing</h3>
+<h3 id="13-killing-agent-with-abnormal-termination-cause">1.3. Killing Agent with Abnormal Termination Cause</h3>
 
 <p>An agent may be destroyed due to an internal fault. However, according to the SARL metamodel and the implementation choices of the SARL Run-time Environment, if a failure or an error occured into the agent, only the associated failing task is broken. The agent is still alive and may react to over events.</p>
 
@@ -239,13 +213,97 @@ You must use the standard API for emitting the events into <a href="./Space.html
 }
 </code></pre>
 
-<h2 id="3-legal-notice">3. Legal Notice</h2>
+<h2 id="3-system-specific-failures">3. System-Specific Failures</h2>
+
+<p>This section describes several specific failures that are already defined into the SARL API.</p>
+
+<h3 id="31-parallel-task-failures">3.1. Parallel Task Failures</h3>
+
+<p>As soon as an agent starts <a href="./bic/Schedules.html">parallel tasks</a>, these tasks may fail.
+The SARL API provides a specific failure event sub-type that is describing the cause of a failing task: <code>io.sarl.core.TaskFailure</code>.</p>
+
+<p>This event is fired each time an exception is thrown into a parallel task.
+In addition to the field <code>cause</code>, the <code>TaskFailure</code> event contains the reference to the failing task, accessible with the <code>task</code> field.</p>
+
+<p>The following code shows an example of the submission of a failing parallel task, and the catching of this failure with a <code>TaskFailure</code> event handler.</p>
+
+<pre><code class="language-sarl">agent MyAgent {
+	uses Logging, Schedules
+	on Initialize {
+		in(1.seconds) [
+			throw new MyError
+		]
+	}
+	on TaskFailure {
+		var reason : Object = occurrence.cause
+		var task : AgentTask = occurrence.task
+		info("Task failed:" + task
+			+ " because of: " + reason)
+	}
+}
+</code></pre>
+
+<h3 id="32-failure-of-agent-spawn">3.2. Failure of Agent Spawn</h3>
+
+<p>In some cases, the spawning of an agent cannot be executed, for example, when an error occured
+into the agent initialization event handler.</p>
+
+<p>In order to be notified of the failure of an agent spawn, the spawning agent receives an
+occurrence of <code>AgentSpawnFailure</code>.
+The following code shows up an event handler that outputs an error message when the
+agent spawn action has failed.</p>
+
+<pre><code class="language-sarl">agent MyAgent {
+	uses Lifecycle, Logging
+	def aFunction {
+		typeof(MyOtherAgent).spawn
+	}
+	on AgentSpawnFailure {
+		error("Agent spawning of type " + occurrence.agentType + " has failed with the cause: " + occurrence.cause)
+	}
+}
+</code></pre>
+
+<p>The <code>AgentSpawnFailure</code> event provides the following attributes:</p>
+
+<ul>
+  <li><code>agentType</code>: the type of the agent for which a spawn has failed,</li>
+  <li><code>cause</code>: the cause of the agent spawn failure.</li>
+</ul>
+
+<h3 id="33-failure-of-agent-killing">3.3. Failure of Agent Killing</h3>
+
+<p>As explained in the previous sections, the agent could stop its execution by calling the
+<code>killMe</code> function.</p>
+
+<p>In some cases, the killing of the agent is canceled. For example, an agent cannot kill
+itself if its contains sub-agents in its inner context.</p>
+
+<p>In order to be notified of the cancelation of its killing, the agent receives an
+occurrence of <code>AgentKillFailure</code>.
+The following code shows up an event handler that outputs an error message when the
+agent killing action has failed.</p>
+
+<pre><code class="language-sarl">agent MyAgent {
+	uses Lifecycle, Logging
+	def aFunction {
+		killMe
+	}
+	on AgentKillFailure {
+		error("Agent killing has failed with the cause: " + occurrence.cause)
+	}
+}
+</code></pre>
+
+<p>The cause of the agent kill failure is provided by the <code>cause</code> attribute.</p>
+
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -258,7 +316,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

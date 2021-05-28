@@ -125,7 +125,7 @@ It means that you do not need to provide a network configuration to the Janus SR
    ...
     &lt;properties&gt;
        ...
-       &lt;janus.version&gt;3.0.12.0-SNAPSHOT&lt;/janus.version&gt;
+       &lt;janus.version&gt;3.0.12.0&lt;/janus.version&gt;
     &lt;/properties&gt;
     ...
     &lt;dependencies&gt;
@@ -163,13 +163,7 @@ More details could be obtain by calling your Janus-based software with the comma
       <td>srenetwork</td>
       <td> </td>
       <td> </td>
-      <td>Configuration for the SRE networking feature</td>
-    </tr>
-    <tr>
       <td> </td>
-      <td>clusterName</td>
-      <td>string</td>
-      <td>Name of the Hazelcast cluster. By default, this name is based on the identifier of the agent root context.</td>
     </tr>
     <tr>
       <td> </td>
@@ -179,9 +173,21 @@ More details could be obtain by calling your Janus-based software with the comma
     </tr>
     <tr>
       <td> </td>
+      <td>localHazelcastInstance</td>
+      <td>boolean</td>
+      <td>Enable or disable the local Hazelcast instance.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>clusterMemberIPs</td>
       <td>string</td>
       <td>Specify the list of the IP adresses for the members that are allowed to be in the cluster. This configuration is used only if the join method is configured to TCP/IP.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>clusterName</td>
+      <td>string</td>
+      <td>Name of the Hazelcast cluster. By default, this name is based on the identifier of the agent root context.</td>
     </tr>
     <tr>
       <td> </td>
@@ -209,8 +215,8 @@ More details could be obtain by calling your Janus-based software with the comma
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -223,7 +229,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -133,7 +133,7 @@ one space of the inner context.</p>
 </code></pre>
 
 <p>The third function replies all the member agents in the inner context:</p>
-<pre><code class="language-sarl">def getMemberAgents : ConcurrentSkipListSet&lt;UUID&gt;
+<pre><code class="language-sarl">def getMemberAgents : ConcurrentSet&lt;UUID&gt;
 </code></pre>
 
 <p>Examples:</p>
@@ -141,7 +141,7 @@ one space of the inner context.</p>
 	uses InnerContextAccess
 	var b : boolean
 	var n : int
-	var m : ConcurrentSkipListSet&lt;UUID&gt;
+	var m : ConcurrentSet&lt;UUID&gt;
 	def myaction {
 		b = hasMemberAgent
 		n = getMemberAgentCount
@@ -198,8 +198,8 @@ of type <code>AnEvent</code> was emitted in the default space of the inner conte
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.12</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2021-02-14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2021-05-27</li>
 </ul>
 
 <blockquote>
@@ -212,7 +212,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
 
     </div> <!-- /default layout container -->
 
