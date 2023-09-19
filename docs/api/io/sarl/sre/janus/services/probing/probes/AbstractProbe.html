@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>AbstractProbe</title>
+  <link rel="stylesheet" href="../../../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../../../css/index.css">
+  <script src="../../../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractFieldProbe.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/BigDecimalFieldProbe.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/package-summary.html" class="doclet-header-packagename">io.sarl.sre.janus.services.probing.probes</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class AbstractProbe&lt;T&gt;
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html" class="doclet-inheritancetree-type">AbstractProbe</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-typeparameterlist">
+     <dt class="doclet-typeparameterlist">
+      Type Parameters:
+     </dt>
+     <dd class="doclet-typeparameterlist">
+      T - the type of the probed value.
+     </dd>
+    </dl>
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../../../io/sarl/api/probing/Probe.html" class="doclet-superinterfacelist">Probe</a>&lt;T&gt;
+     </dd>
+    </dl>
+    <dl class="doclet-directsubtypelist">
+     <dt class="doclet-directsubtypelist">
+      All Known Subclasses:
+     </dt>
+     <dd class="doclet-directsubtypelist">
+      <a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractFieldProbe.html" class="doclet-directsubtypelist">AbstractFieldProbe</a>&lt;T&gt;
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     abstract class <span class="doclet-typesignature-typename">AbstractProbe&lt;T&gt;</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <a href="../../../../../../../io/sarl/api/probing/Probe.html" class="doclet-typesignature">Probe</a>&lt;T&gt;
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Abstract probe implementation. A probe is thread-safe.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Parameters:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      &lt;T&gt; - <span class="doclet-tags-param-comment">the type of the probed value.</span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sre.janus</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">janus.kernel</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.10</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3821 active" onclick="openTabElement(this,'ID9379', 'doclet-tabs-button-instance-3821', 'doclet-tabs-content-instance-3821')">Properties</button>
+    </div>
+    <div id="ID9379" class="doclet-tabs-content doclet-tabs-content-instance-3821 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getName()">name</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Class</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getType()">type</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.net.URI</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getUri()">uri</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../../io/sarl/api/probing/Probe.html#getValue()">value</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3824 active" onclick="openTabElement(this,'ID9386', 'doclet-tabs-button-instance-3824', 'doclet-tabs-content-instance-3824')">Constructors</button>
+    </div>
+    <div id="ID9386" class="doclet-tabs-content doclet-tabs-content-instance-3824 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#<init>(io.sarl.api.probing.IProbeReleaseListener,java.lang.String,java.net.URI,java.lang.Class<T>,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>)">new(IProbeReleaseListener,String,URI,Class&lt;T&gt;,Provider&lt;T&gt;)</a></span><br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3825 active" onclick="openTabElement(this,'ID9387', 'doclet-tabs-button-instance-3825', 'doclet-tabs-content-instance-3825')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3825" onclick="openTabElement(this,'ID9390', 'doclet-tabs-button-instance-3825', 'doclet-tabs-content-instance-3825')">Instance actions</button>
+    </div>
+    <div id="ID9387" class="doclet-tabs-content doclet-tabs-content-instance-3825 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#addProbeListener(io.sarl.api.probing.IProbeListener)">addProbeListener(IProbeListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#addProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">addProbeReleaseListener(IProbeReleaseListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#fireRelease()">fireRelease</a></span><br>
+         Notify the listener that the probe has been released.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#fireValueChanged(boolean)">fireValueChanged(boolean)</a></span><br>
+         Notify the listener that the probe's value has changed.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getName()">getName</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Class</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getType()">getType</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.net.URI</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getUri()">getUri</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#isActive()">isActive</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#release()">release</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#removeProbeListener(io.sarl.api.probing.IProbeListener)">removeProbeListener(IProbeListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#removeProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">removeProbeReleaseListener(IProbeReleaseListener)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID9390" class="doclet-tabs-content doclet-tabs-content-instance-3825 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#addProbeListener(io.sarl.api.probing.IProbeListener)">addProbeListener(IProbeListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#addProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">addProbeReleaseListener(IProbeReleaseListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#fireRelease()">fireRelease</a></span><br>
+         Notify the listener that the probe has been released.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#fireValueChanged(boolean)">fireValueChanged(boolean)</a></span><br>
+         Notify the listener that the probe's value has changed.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getName()">getName</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Class</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getType()">getType</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.net.URI</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getUri()">getUri</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#isActive()">isActive</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#release()">release</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#removeProbeListener(io.sarl.api.probing.IProbeListener)">removeProbeListener(IProbeListener)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#removeProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">removeProbeReleaseListener(IProbeReleaseListener)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../../io/sarl/api/probing/Probe.html#getValue()">getValue</a>, <a href="../../../../../../../io/sarl/api/probing/Probe.html#isInvalid()">isInvalid</a>, <a href="../../../../../../../io/sarl/api/probing/Probe.html#setValue(T)">setValue(T)</a>, <a href="../../../../../../../io/sarl/api/probing/Probe.html#sync(boolean,boolean)">sync([boolean],[boolean])</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      name
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> name : <span>java.lang.String</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getName()">getName</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      type
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> type : <span>java.lang.Class</span>&lt;T&gt;</pre>
+      <p>This property is an alias for the action: <a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getType()">getType</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      uri
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> uri : <span>java.net.URI</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractProbe.html#getUri()">getUri</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(io.sarl.api.probing.IProbeReleaseListener,java.lang.String,java.net.URI,java.lang.Class<T>,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>)">
+      new(IProbeReleaseListener,String,URI,Class&lt;T&gt;,Provider&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">new</span>(IProbeReleaseListener,String,URI,Class&lt;T&gt;,Provider&lt;T&gt;)</pre>
+      <div>
+       Constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        manager - <span class="doclet-tags-param-comment">the creator of this probe, and its manager.</span>
+        <br>
+        name - <span class="doclet-tags-param-comment">the name of the probe</span>
+        <br>
+        uri - <span class="doclet-tags-param-comment">the UI of the field.</span>
+        <br>
+        type - <span class="doclet-tags-param-comment">the expected type of the probed value.</span>
+        <br>
+        factories - <span class="doclet-tags-param-comment">the provider of factories tool.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="addProbeListener(io.sarl.api.probing.IProbeListener)">
+      addProbeListener(IProbeListener)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addProbeListener(IProbeListener)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="addProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">
+      addProbeReleaseListener(IProbeReleaseListener)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addProbeReleaseListener(IProbeReleaseListener)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="fireRelease()">
+      fireRelease
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> fireRelease</pre>
+      <div>
+       Notify the listener that the probe has been released.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="fireValueChanged(boolean)">
+      fireValueChanged(boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> fireValueChanged(boolean)</pre>
+      <div>
+       Notify the listener that the probe's value has changed.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        isInit - <span class="doclet-tags-param-comment">indicates if the change is due to initialization.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getName()">
+      getName
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getName : <span>java.lang.String</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getType()">
+      getType
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getType : <span>java.lang.Class</span>&lt;T&gt;</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getUri()">
+      getUri
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getUri : <span>java.net.URI</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="isActive()">
+      isActive
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> isActive : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="release()">
+      release
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> release</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="removeProbeListener(io.sarl.api.probing.IProbeListener)">
+      removeProbeListener(IProbeListener)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> removeProbeListener(IProbeListener)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="removeProbeReleaseListener(io.sarl.api.probing.IProbeReleaseListener)">
+      removeProbeReleaseListener(IProbeReleaseListener)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> removeProbeReleaseListener(IProbeReleaseListener)</pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/AbstractFieldProbe.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../../io/sarl/sre/janus/services/probing/probes/BigDecimalFieldProbe.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

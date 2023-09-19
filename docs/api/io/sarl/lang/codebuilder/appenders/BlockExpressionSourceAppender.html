@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>BlockExpressionSourceAppender</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/appenders/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/appenders/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender/AppenderSerializer.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/appenders/ExpressionSourceAppender.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/codebuilder/appenders/package-summary.html" class="doclet-header-packagename">io.sarl.lang.codebuilder.appenders</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class BlockExpressionSourceAppender
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html" class="doclet-inheritancetree-type">AbstractSourceAppender</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html" class="doclet-inheritancetree-type">BlockExpressionSourceAppender</a></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/codebuilder/builders/IBlockExpressionBuilder.html" class="doclet-superinterfacelist">IBlockExpressionBuilder</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">BlockExpressionSourceAppender</span>
+     <br>
+     extends <a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html" class="doclet-typesignature">AbstractSourceAppender</a>
+     <br>
+     implements <a href="../../../../../io/sarl/lang/codebuilder/builders/IBlockExpressionBuilder.html" class="doclet-typesignature">IBlockExpressionBuilder</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Appender of a Sarl XBlockExpression.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo"></dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2117 active" onclick="openTabElement(this,'ID5239', 'doclet-tabs-button-instance-2117', 'doclet-tabs-content-instance-2117')">Properties</button>
+    </div>
+    <div id="ID5239" class="doclet-tabs-content doclet-tabs-content-instance-2117 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString()">autoGeneratedActionString</a></span><br>
+         Replies the string for "auto-generated" comments.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.access.IJvmTypeProvider</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getTypeResolutionContext()">typeResolutionContext</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.XBlockExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getXBlockExpression()">xBlockExpression</a></span><br>
+         An empty block expression.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">
+     Field Summary
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html#OVERRIDEN_TYPE_SCOPE_PROVIDER_NAME">OVERRIDEN_TYPE_SCOPE_PROVIDER_NAME</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2120 active" onclick="openTabElement(this,'ID5246', 'doclet-tabs-button-instance-2120', 'doclet-tabs-content-instance-2120')">Constructors</button>
+    </div>
+    <div id="ID5246" class="doclet-tabs-content doclet-tabs-content-instance-2120 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#<init>(io.sarl.lang.codebuilder.builders.IBlockExpressionBuilder)">new(IBlockExpressionBuilder)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2121 active" onclick="openTabElement(this,'ID5247', 'doclet-tabs-button-instance-2121', 'doclet-tabs-content-instance-2121')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2121" onclick="openTabElement(this,'ID5250', 'doclet-tabs-button-instance-2121', 'doclet-tabs-content-instance-2121')">Instance actions</button>
+    </div>
+    <div id="ID5247" class="doclet-tabs-content doclet-tabs-content-instance-2121 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/IExpressionBuilder.html">IExpressionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#addExpression()">addExpression</a></span><br>
+         Add an expression inside the block.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#build(org.eclipse.xtext.xbase.compiler.ISourceAppender)">build(ISourceAppender)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#dispose()">dispose</a></span><br>
+         Dispose the resource.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#eInit(org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(IJvmTypeProvider)</a></span><br>
+         Create the XBlockExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#eResource()">eResource</a></span><br>
+         Replies the resource to which the XBlockExpression is attached.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString()">getAutoGeneratedActionString</a></span><br>
+         Replies the string for "auto-generated" comments.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString(org.eclipse.emf.ecore.resource.Resource)">getAutoGeneratedActionString(Resource)</a></span><br>
+         Replies the string for "auto-generated" comments.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.access.IJvmTypeProvider</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getTypeResolutionContext()">getTypeResolutionContext</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.XBlockExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getXBlockExpression()">getXBlockExpression</a></span><br>
+         An empty block expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#newTypeRef(java.lang.String)">newTypeRef(String)</a></span><br>
+         Find the reference to the type with the given name.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#newTypeRef(org.eclipse.emf.common.notify.Notifier,java.lang.String)">newTypeRef(Notifier,String)</a></span><br>
+         Find the reference to the type with the given name.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#setDefaultAutoGeneratedContent(java.lang.String)">setDefaultAutoGeneratedContent(String)</a></span><br>
+         Fill the block with the standard "auto-generated" content.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#setInnerDocumentation(java.lang.String)">setInnerDocumentation(String)</a></span><br>
+         Change the documentation of the element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#toString()">toString</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5250" class="doclet-tabs-content doclet-tabs-content-instance-2121 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/IExpressionBuilder.html">IExpressionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#addExpression()">addExpression</a></span><br>
+         Add an expression inside the block.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#build(org.eclipse.xtext.xbase.compiler.ISourceAppender)">build(ISourceAppender)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#dispose()">dispose</a></span><br>
+         Dispose the resource.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#eInit(org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(IJvmTypeProvider)</a></span><br>
+         Create the XBlockExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#eResource()">eResource</a></span><br>
+         Replies the resource to which the XBlockExpression is attached.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString()">getAutoGeneratedActionString</a></span><br>
+         Replies the string for "auto-generated" comments.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString(org.eclipse.emf.ecore.resource.Resource)">getAutoGeneratedActionString(Resource)</a></span><br>
+         Replies the string for "auto-generated" comments.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.access.IJvmTypeProvider</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getTypeResolutionContext()">getTypeResolutionContext</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.XBlockExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getXBlockExpression()">getXBlockExpression</a></span><br>
+         An empty block expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#newTypeRef(java.lang.String)">newTypeRef(String)</a></span><br>
+         Find the reference to the type with the given name.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#newTypeRef(org.eclipse.emf.common.notify.Notifier,java.lang.String)">newTypeRef(Notifier,String)</a></span><br>
+         Find the reference to the type with the given name.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#setDefaultAutoGeneratedContent(java.lang.String)">setDefaultAutoGeneratedContent(String)</a></span><br>
+         Fill the block with the standard "auto-generated" content.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#setInnerDocumentation(java.lang.String)">setInnerDocumentation(String)</a></span><br>
+         Change the documentation of the element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#toString()">toString</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html#build(org.eclipse.emf.ecore.EObject,org.eclipse.xtext.xbase.compiler.ISourceAppender)">build(EObject,ISourceAppender)</a>, <a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html#isFormatting()">isFormatting</a>, <a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender.html#setFormatting(boolean)">setFormatting(boolean)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      autoGeneratedActionString
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> autoGeneratedActionString : <span>java.lang.String</span></pre>
+      <div>
+       Replies the string for "auto-generated" comments.
+      </div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getAutoGeneratedActionString()">getAutoGeneratedActionString</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comment text.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox">
+      typeResolutionContext
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> typeResolutionContext : <span>org.eclipse.xtext.common.types.access.IJvmTypeProvider</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getTypeResolutionContext()">getTypeResolutionContext</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      xBlockExpression
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> xBlockExpression : <span>org.eclipse.xtext.xbase.XBlockExpression</span></pre>
+      <div>
+       An empty block expression.
+      </div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/codebuilder/appenders/BlockExpressionSourceAppender.html#getXBlockExpression()">getXBlockExpression</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the block expression.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(io.sarl.lang.codebuilder.builders.IBlockExpressionBuilder)">
+      new(IBlockExpressionBuilder)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(IBlockExpressionBuilder)</pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="addExpression()">
+      addExpression
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addExpression : <a href="../../../../../io/sarl/lang/codebuilder/builders/IExpressionBuilder.html">IExpressionBuilder</a></pre>
+      <div>
+       Add an expression inside the block.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the expression builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="build(org.eclipse.xtext.xbase.compiler.ISourceAppender)">
+      build(ISourceAppender)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> build(ISourceAppender)<p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>java.io.IOException</span></p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="dispose()">
+      dispose
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> dispose</pre>
+      <div>
+       Dispose the resource.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="eInit(org.eclipse.xtext.common.types.access.IJvmTypeProvider)">
+      eInit(IJvmTypeProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> eInit(IJvmTypeProvider)</pre>
+      <div>
+       Create the XBlockExpression.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="eResource()">
+      eResource
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> eResource : <span>org.eclipse.emf.ecore.resource.Resource</span></pre>
+      <div>
+       Replies the resource to which the XBlockExpression is attached.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="getAutoGeneratedActionString()">
+      getAutoGeneratedActionString
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getAutoGeneratedActionString : <span>java.lang.String</span></pre>
+      <div>
+       Replies the string for "auto-generated" comments.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comment text.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getAutoGeneratedActionString(org.eclipse.emf.ecore.resource.Resource)">
+      getAutoGeneratedActionString(Resource)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getAutoGeneratedActionString(Resource) : <span>java.lang.String</span></pre>
+      <div>
+       Replies the string for "auto-generated" comments.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        resource - <span class="doclet-tags-param-comment">the resource for which the comment must be determined.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comment text.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getTypeResolutionContext()">
+      getTypeResolutionContext
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getTypeResolutionContext : <span>org.eclipse.xtext.common.types.access.IJvmTypeProvider</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getXBlockExpression()">
+      getXBlockExpression
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getXBlockExpression : <span>org.eclipse.xtext.xbase.XBlockExpression</span></pre>
+      <div>
+       An empty block expression.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the block expression.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="newTypeRef(java.lang.String)">
+      newTypeRef(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> newTypeRef(String) : <span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></pre>
+      <div>
+       Find the reference to the type with the given name.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        typeName - <span class="doclet-tags-param-comment">the fully qualified name of the type</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the type reference.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="newTypeRef(org.eclipse.emf.common.notify.Notifier,java.lang.String)">
+      newTypeRef(Notifier,String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> newTypeRef(Notifier,String) : <span>org.eclipse.xtext.common.types.JvmParameterizedTypeReference</span></pre>
+      <div>
+       Find the reference to the type with the given name.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context for the type reference use</span>
+        <br>
+        typeName - <span class="doclet-tags-param-comment">the fully qualified name of the type</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the type reference.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setDefaultAutoGeneratedContent(java.lang.String)">
+      setDefaultAutoGeneratedContent(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setDefaultAutoGeneratedContent(String)</pre>
+      <div>
+       Fill the block with the standard "auto-generated" content. 
+       <p></p>Any previously added content is removed.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the expected type of the block (the last instruction), or <code class="doclet-tags-param-comment">null</code> for no type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setInnerDocumentation(java.lang.String)">
+      setInnerDocumentation(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setInnerDocumentation(String)</pre>
+      <div>
+       Change the documentation of the element. 
+       <p></p>getXBlockExpression()
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        doc - <span class="doclet-tags-param-comment">the documentation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="toString()">
+      toString
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> toString : <span>java.lang.String</span></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/appenders/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/appenders/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/appenders/AbstractSourceAppender/AppenderSerializer.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/appenders/ExpressionSourceAppender.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

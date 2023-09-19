@@ -1,0 +1,2400 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SARLJvmModelInferrer</title>
+  <link rel="stylesheet" href="../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../css/index.css">
+  <script src="../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/jvmmodel/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/jvmmodel/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/jvmmodel/SarlJvmModelAssociations/Impl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/jvmmodel/SARLReadAndWriteTracking.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../io/sarl/lang/jvmmodel/package-summary.html" class="doclet-header-packagename">io.sarl.lang.jvmmodel</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class SARLJvmModelInferrer
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html" class="doclet-inheritancetree-type">SARLJvmModelInferrer</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <span class="doclet-superinterfacelist">org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer</span>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">javax.inject.Singleton</span><br></span>class <span class="doclet-typesignature-typename">SARLJvmModelInferrer</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Infers a JVM model from the source model. 
+      <p></p>The JVM model should contain all elements that would appear in the Java code which is generated from the source model. Other models link against the JVM model rather than the source model. 
+      <p></p>The roles of the different generation tools are:
+      <ul>
+       <li><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html" class="doclet-typedescription-main">io.sarl.lang.jvmmodel.SARLJvmModelInferrer</a>: Generating the expected Java Ecore model from the SARL Ecore model.</li>
+      </ul>
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1079 active" onclick="openTabElement(this,'ID2644', 'doclet-tabs-button-instance-1079', 'doclet-tabs-content-instance-1079')">Constructors</button>
+    </div>
+    <div id="ID2644" class="doclet-tabs-content doclet-tabs-content-instance-1079 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1080 active" onclick="openTabElement(this,'ID2645', 'doclet-tabs-button-instance-1080', 'doclet-tabs-content-instance-1080')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1080" onclick="openTabElement(this,'ID2648', 'doclet-tabs-button-instance-1080', 'doclet-tabs-content-instance-1080')">Instance actions</button>
+    </div>
+    <div id="ID2645" class="doclet-tabs-content doclet-tabs-content-instance-1080 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#addDefaultConstructor(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">addDefaultConstructor(XtendClass,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendAOPMembers(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">appendAOPMembers(JvmGenericType,XtendTypeDeclaration,GenerationContext)</a></span><br>
+         Generate the code for the given SARL members in a agent-oriented container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCapacityContextAwareWrapper(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">appendCapacityContextAwareWrapper(SarlCapacity,JvmGenericType)</a></span><br>
+         Initialize the SARL capacity context-aware wrapper.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunction(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunction(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the clone function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunctionIfCloneable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the clone function only if the type is a subtype of <span>Cloneable</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendComparisonFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendComparisonFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Create the functions that permits to compare the object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span><br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</a></span><br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedImplements(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">appendConstrainedImplements(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span><br>
+         Generate the implemented types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendDefaultConstructors(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendDefaultConstructors(XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Add the default constructors.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluatorForReflectMethod(org.eclipse.xtext.xbase.lib.Pair<io.sarl.lang.sarl.SarlBehaviorUnit,java.util.Collection<org.eclipse.xtext.xbase.lib.Procedures.Procedure1<? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>>>,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">appendEventGuardEvaluatorForReflectMethod(Pair&lt;K,V&gt;,JvmGenericType,GenerationContext)</a></span><br>
+         Append the guard evaluators for the reflection-based method.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluators(org.eclipse.xtext.common.types.JvmGenericType)">appendEventGuardEvaluators(JvmGenericType)</a></span><br>
+         Append the guard evaluators.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluatorsForPolymorphicMethod(java.util.Map<org.eclipse.xtext.common.types.JvmTypeReference,java.util.Set<java.lang.String>>,boolean,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">appendEventGuardEvaluatorsForPolymorphicMethod(Map&lt;K,V&gt;,boolean,JvmGenericType,GenerationContext)</a></span><br>
+         Append the guard evaluators for the polymorphic method.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendFunctionalInterfaceAnnotation(org.eclipse.xtext.common.types.JvmGenericType)">appendFunctionalInterfaceAnnotation(JvmGenericType)</a></span><br>
+         Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext)">appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext)</a></span><br>
+         Add the @Generated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext,java.lang.String)">appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext,String)</a></span><br>
+         Add the @Generated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendInjectableAnnotationIfInjectable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">appendInjectableAnnotationIfInjectable(JvmDeclaredType,GenerationContext)</a></span><br>
+         Append the injectable annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSARLElementType(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLElementType(XtendTypeDeclaration,JvmDeclaredType)</a></span><br>
+         Append the SARL element type as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLSpecificationVersion(GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</a></span><br>
+         Append the SARL specification version as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumber(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumber(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the serial number field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumberIfSerializable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the serial number field if and only if the container type is serializable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSyntheticDefaultValuedParameterMethods(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">appendSyntheticDefaultValuedParameterMethods(XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</a></span><br>
+         Generate the missed operations that are the results from the generation of actions with default value parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendToStringFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendToStringFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Create the functions that are related to the <code>toString</code> function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithProxiesFromOtherResource(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmOperation)">cloneWithProxiesFromOtherResource(JvmTypeReference,JvmOperation)</a></span><br>
+         Clone the given type reference that is associated to another Xtext resource.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable)">cloneWithTypeParametersAndProxies(JvmTypeReference,JvmExecutable)</a></span><br>
+         Clone the given type reference that for being link to the given executable component.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#closeContext(io.sarl.lang.jvmmodel.GenerationContext)">closeContext(GenerationContext)</a></span><br>
+         Close a generation context.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyAndCleanDocumentationTo(org.eclipse.xtend.core.xtend.XtendExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(XtendExecutable,JvmExecutable)</a></span><br>
+         Copy and clean the given documentation by removing any unecessary <code>@param</code>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyAndCleanDocumentationTo(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(JvmExecutable,JvmExecutable)</a></span><br>
+         Copy and clean the given documentation by removing any unnecessary <code>@param</code>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyNonStaticPublicJvmOperations(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionPrototype>,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">copyNonStaticPublicJvmOperations(JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</a></span><br>
+         Copy the JVM operations from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyTypeParametersFromJvmOperation(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">copyTypeParametersFromJvmOperation(JvmOperation,JvmOperation)</a></span><br>
+         Copy the type parameters from a JvmOperation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyVisibleJvmConstructors(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionParameterTypes>,org.eclipse.xtext.common.types.JvmVisibility)">copyVisibleJvmConstructors(GenerationContext,JvmGenericType,JvmGenericType,XtendTypeDeclaration,Set&lt;E&gt;,JvmVisibility)</a></span><br>
+         Copy the JVM constructors from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmOperation</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#deriveGenericDispatchOperationSignature(java.lang.Iterable<org.eclipse.xtext.common.types.JvmOperation>,org.eclipse.xtext.common.types.JvmGenericType)">deriveGenericDispatchOperationSignature(Iterable&lt;T&gt;,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmDeclaredType</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#doInferTypeSceleton(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor,boolean,org.eclipse.xtend.core.xtend.XtendFile,java.util.List<java.lang.Runnable>)">doInferTypeSceleton(XtendTypeDeclaration,IJvmDeclaredTypeAcceptor,boolean,XtendFile,List&lt;E&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;<span>io.sarl.lang.jvmmodel.GenerationContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#getContext(org.eclipse.xtext.common.types.JvmIdentifiableElement)">getContext(JvmIdentifiableElement)</a></span><br>
+         Replies the SARL-specific generation context.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#getTypeParametersFor(org.eclipse.xtend.core.xtend.XtendTypeDeclaration)">getTypeParametersFor(XtendTypeDeclaration)</a></span><br>
+         Replies the type parameters for the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferFunctionReturnType(org.eclipse.xtext.xbase.XExpression)">inferFunctionReturnType(XExpression)</a></span><br>
+         Infer the function's return type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferFunctionReturnType(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">inferFunctionReturnType(XtendFunction,JvmOperation,JvmOperation)</a></span><br>
+         Infer the return type for the given source function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferLocalClass(org.eclipse.xtend.core.xtend.AnonymousClass,java.lang.String,org.eclipse.xtext.common.types.JvmFeature)">inferLocalClass(AnonymousClass,String,JvmFeature)</a></span><br>
+         .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlAgent,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlAgent,JvmGenericType)</a></span><br>
+         Initialize the SARL agent type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlArtifact,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlArtifact,JvmGenericType)</a></span><br>
+         Initialize the SARL artifact type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlBehavior,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlBehavior,JvmGenericType)</a></span><br>
+         Initialize the SARL behavior type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlCapacity,JvmGenericType)</a></span><br>
+         Initialize the SARL capacity type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlEvent,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlEvent,JvmGenericType)</a></span><br>
+         Initialize the SARL event type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlSkill,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlSkill,JvmGenericType)</a></span><br>
+         Initialize the SARL skill type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlSpace,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlSpace,JvmGenericType)</a></span><br>
+         Initialize the SARL space type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendAnnotationType,org.eclipse.xtext.common.types.JvmAnnotationType)">initialize(XtendAnnotationType,JvmAnnotationType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">initialize(XtendClass,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendEnum,org.eclipse.xtext.common.types.JvmEnumerationType)">initialize(XtendEnum,JvmEnumerationType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendInterface,org.eclipse.xtext.common.types.JvmGenericType)">initialize(XtendInterface,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initializeLocalTypes(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmFeature,org.eclipse.xtext.xbase.XExpression)">initializeLocalTypes(GenerationContext,JvmFeature,XExpression)</a></span><br>
+         Initialize the local class to the given expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#isAccessibleTypeAccordingToJavaSpecifications(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmDeclaredType)">isAccessibleTypeAccordingToJavaSpecifications(GenerationContext,JvmDeclaredType)</a></span><br>
+         Replies if the given type is accessible according to the Java specifications.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#logInternalError(java.lang.String)">logInternalError(String)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#logInternalError(java.lang.Throwable)">logInternalError(Throwable)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;<span>io.sarl.lang.jvmmodel.GenerationContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#openContext(org.eclipse.emf.ecore.EObject,org.eclipse.xtext.common.types.JvmDeclaredType,java.lang.Iterable<java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendMember>>)">openContext(EObject,JvmDeclaredType,Iterable&lt;T&gt;)</a></span><br>
+         Open the context for the generation of a SARL-specific element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtend2.lib.StringConcatenationClient)">setBody(JvmExecutable,StringConcatenationClient)</a></span><br>
+         Set the body of the executable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.lib.Procedures.Procedure1<org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">setBody(JvmExecutable,Procedure1&lt;Param&gt;)</a></span><br>
+         Set the body of the executable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.XExpression)">setBody(JvmExecutable,XExpression)</a></span><br>
+         .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#skipTypeParameters(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.emf.common.notify.Notifier)">skipTypeParameters(JvmTypeReference,Notifier)</a></span><br>
+         Remove the type parameters from the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlBehaviorUnit,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlBehaviorUnit,JvmGenericType)</a></span><br>
+         Transform the given behavior unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlCapacityUses,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlCapacityUses,JvmGenericType)</a></span><br>
+         Transform the uses of SARL capacities.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlRequiredCapacity,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlRequiredCapacity,JvmGenericType)</a></span><br>
+         Transform the requirements of SARL capacities.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendConstructor,org.eclipse.xtext.common.types.JvmGenericType)">transform(XtendConstructor,JvmGenericType)</a></span><br>
+         Transform the constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendField,org.eclipse.xtext.common.types.JvmGenericType)">transform(XtendField,JvmGenericType)</a></span><br>
+         Transform the field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmGenericType,boolean)">transform(XtendFunction,JvmGenericType,boolean)</a></span><br>
+         Transform the function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendMember,org.eclipse.xtext.common.types.JvmGenericType,boolean)">transform(XtendMember,JvmGenericType,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateAnnotationsTo(java.util.List<org.eclipse.xtext.common.types.JvmAnnotationReference>,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<?>[])">translateAnnotationsTo(List&lt;E&gt;,JvmAnnotationTarget,Class&lt;T&gt;*)</a></span><br>
+         Copy the annotations, except the ones given as parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParameters(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendParameter>,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>,boolean)">translateSarlFormalParameters(GenerationContext,JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;,boolean,List&lt;E&gt;,boolean)</a></span><br>
+         Generate a list of formal parameters with annotations for the default values.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParametersForLocalHiddenDefaultValues(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmOperation)">translateSarlFormalParametersForLocalHiddenDefaultValues(GenerationContext,JvmOperation)</a></span><br>
+         Generate the local default values.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParametersForSyntheticOperation(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>)">translateSarlFormalParametersForSyntheticOperation(JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;)</a></span><br>
+         Generate a list arguments from the formal parameters in order to be used for a call into a synthetic operation, such as default-valued parameter function.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2648" class="doclet-tabs-content doclet-tabs-content-instance-1080 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#addDefaultConstructor(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">addDefaultConstructor(XtendClass,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendAOPMembers(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">appendAOPMembers(JvmGenericType,XtendTypeDeclaration,GenerationContext)</a></span><br>
+         Generate the code for the given SARL members in a agent-oriented container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCapacityContextAwareWrapper(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">appendCapacityContextAwareWrapper(SarlCapacity,JvmGenericType)</a></span><br>
+         Initialize the SARL capacity context-aware wrapper.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunction(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunction(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the clone function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunctionIfCloneable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the clone function only if the type is a subtype of <span>Cloneable</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendComparisonFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendComparisonFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Create the functions that permits to compare the object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span><br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</a></span><br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendConstrainedImplements(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">appendConstrainedImplements(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span><br>
+         Generate the implemented types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendDefaultConstructors(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendDefaultConstructors(XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Add the default constructors.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluatorForReflectMethod(org.eclipse.xtext.xbase.lib.Pair<io.sarl.lang.sarl.SarlBehaviorUnit,java.util.Collection<org.eclipse.xtext.xbase.lib.Procedures.Procedure1<? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>>>,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">appendEventGuardEvaluatorForReflectMethod(Pair&lt;K,V&gt;,JvmGenericType,GenerationContext)</a></span><br>
+         Append the guard evaluators for the reflection-based method.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluators(org.eclipse.xtext.common.types.JvmGenericType)">appendEventGuardEvaluators(JvmGenericType)</a></span><br>
+         Append the guard evaluators.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendEventGuardEvaluatorsForPolymorphicMethod(java.util.Map<org.eclipse.xtext.common.types.JvmTypeReference,java.util.Set<java.lang.String>>,boolean,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">appendEventGuardEvaluatorsForPolymorphicMethod(Map&lt;K,V&gt;,boolean,JvmGenericType,GenerationContext)</a></span><br>
+         Append the guard evaluators for the polymorphic method.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendFunctionalInterfaceAnnotation(org.eclipse.xtext.common.types.JvmGenericType)">appendFunctionalInterfaceAnnotation(JvmGenericType)</a></span><br>
+         Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext)">appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext)</a></span><br>
+         Add the @Generated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext,java.lang.String)">appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext,String)</a></span><br>
+         Add the @Generated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendInjectableAnnotationIfInjectable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">appendInjectableAnnotationIfInjectable(JvmDeclaredType,GenerationContext)</a></span><br>
+         Append the injectable annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSARLElementType(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLElementType(XtendTypeDeclaration,JvmDeclaredType)</a></span><br>
+         Append the SARL element type as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLSpecificationVersion(GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</a></span><br>
+         Append the SARL specification version as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumber(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumber(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the serial number field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumberIfSerializable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Append the serial number field if and only if the container type is serializable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSyntheticDefaultValuedParameterMethods(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">appendSyntheticDefaultValuedParameterMethods(XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</a></span><br>
+         Generate the missed operations that are the results from the generation of actions with default value parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendToStringFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendToStringFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span><br>
+         Create the functions that are related to the <code>toString</code> function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithProxiesFromOtherResource(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmOperation)">cloneWithProxiesFromOtherResource(JvmTypeReference,JvmOperation)</a></span><br>
+         Clone the given type reference that is associated to another Xtext resource.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable)">cloneWithTypeParametersAndProxies(JvmTypeReference,JvmExecutable)</a></span><br>
+         Clone the given type reference that for being link to the given executable component.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#closeContext(io.sarl.lang.jvmmodel.GenerationContext)">closeContext(GenerationContext)</a></span><br>
+         Close a generation context.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyAndCleanDocumentationTo(org.eclipse.xtend.core.xtend.XtendExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(XtendExecutable,JvmExecutable)</a></span><br>
+         Copy and clean the given documentation by removing any unecessary <code>@param</code>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyAndCleanDocumentationTo(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(JvmExecutable,JvmExecutable)</a></span><br>
+         Copy and clean the given documentation by removing any unnecessary <code>@param</code>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyNonStaticPublicJvmOperations(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionPrototype>,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">copyNonStaticPublicJvmOperations(JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</a></span><br>
+         Copy the JVM operations from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyTypeParametersFromJvmOperation(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">copyTypeParametersFromJvmOperation(JvmOperation,JvmOperation)</a></span><br>
+         Copy the type parameters from a JvmOperation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyVisibleJvmConstructors(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionParameterTypes>,org.eclipse.xtext.common.types.JvmVisibility)">copyVisibleJvmConstructors(GenerationContext,JvmGenericType,JvmGenericType,XtendTypeDeclaration,Set&lt;E&gt;,JvmVisibility)</a></span><br>
+         Copy the JVM constructors from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmOperation</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#deriveGenericDispatchOperationSignature(java.lang.Iterable<org.eclipse.xtext.common.types.JvmOperation>,org.eclipse.xtext.common.types.JvmGenericType)">deriveGenericDispatchOperationSignature(Iterable&lt;T&gt;,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmDeclaredType</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#doInferTypeSceleton(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor,boolean,org.eclipse.xtend.core.xtend.XtendFile,java.util.List<java.lang.Runnable>)">doInferTypeSceleton(XtendTypeDeclaration,IJvmDeclaredTypeAcceptor,boolean,XtendFile,List&lt;E&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;<span>io.sarl.lang.jvmmodel.GenerationContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#getContext(org.eclipse.xtext.common.types.JvmIdentifiableElement)">getContext(JvmIdentifiableElement)</a></span><br>
+         Replies the SARL-specific generation context.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#getTypeParametersFor(org.eclipse.xtend.core.xtend.XtendTypeDeclaration)">getTypeParametersFor(XtendTypeDeclaration)</a></span><br>
+         Replies the type parameters for the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferFunctionReturnType(org.eclipse.xtext.xbase.XExpression)">inferFunctionReturnType(XExpression)</a></span><br>
+         Infer the function's return type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferFunctionReturnType(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">inferFunctionReturnType(XtendFunction,JvmOperation,JvmOperation)</a></span><br>
+         Infer the return type for the given source function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#inferLocalClass(org.eclipse.xtend.core.xtend.AnonymousClass,java.lang.String,org.eclipse.xtext.common.types.JvmFeature)">inferLocalClass(AnonymousClass,String,JvmFeature)</a></span><br>
+         .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlAgent,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlAgent,JvmGenericType)</a></span><br>
+         Initialize the SARL agent type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlArtifact,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlArtifact,JvmGenericType)</a></span><br>
+         Initialize the SARL artifact type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlBehavior,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlBehavior,JvmGenericType)</a></span><br>
+         Initialize the SARL behavior type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlCapacity,JvmGenericType)</a></span><br>
+         Initialize the SARL capacity type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlEvent,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlEvent,JvmGenericType)</a></span><br>
+         Initialize the SARL event type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlSkill,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlSkill,JvmGenericType)</a></span><br>
+         Initialize the SARL skill type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(io.sarl.lang.sarl.SarlSpace,org.eclipse.xtext.common.types.JvmGenericType)">initialize(SarlSpace,JvmGenericType)</a></span><br>
+         Initialize the SARL space type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendAnnotationType,org.eclipse.xtext.common.types.JvmAnnotationType)">initialize(XtendAnnotationType,JvmAnnotationType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">initialize(XtendClass,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendEnum,org.eclipse.xtext.common.types.JvmEnumerationType)">initialize(XtendEnum,JvmEnumerationType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initialize(org.eclipse.xtend.core.xtend.XtendInterface,org.eclipse.xtext.common.types.JvmGenericType)">initialize(XtendInterface,JvmGenericType)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#initializeLocalTypes(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmFeature,org.eclipse.xtext.xbase.XExpression)">initializeLocalTypes(GenerationContext,JvmFeature,XExpression)</a></span><br>
+         Initialize the local class to the given expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#isAccessibleTypeAccordingToJavaSpecifications(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmDeclaredType)">isAccessibleTypeAccordingToJavaSpecifications(GenerationContext,JvmDeclaredType)</a></span><br>
+         Replies if the given type is accessible according to the Java specifications.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#logInternalError(java.lang.String)">logInternalError(String)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#logInternalError(java.lang.Throwable)">logInternalError(Throwable)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected final&nbsp;<span>io.sarl.lang.jvmmodel.GenerationContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#openContext(org.eclipse.emf.ecore.EObject,org.eclipse.xtext.common.types.JvmDeclaredType,java.lang.Iterable<java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendMember>>)">openContext(EObject,JvmDeclaredType,Iterable&lt;T&gt;)</a></span><br>
+         Open the context for the generation of a SARL-specific element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtend2.lib.StringConcatenationClient)">setBody(JvmExecutable,StringConcatenationClient)</a></span><br>
+         Set the body of the executable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.lib.Procedures.Procedure1<org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">setBody(JvmExecutable,Procedure1&lt;Param&gt;)</a></span><br>
+         Set the body of the executable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.XExpression)">setBody(JvmExecutable,XExpression)</a></span><br>
+         .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#skipTypeParameters(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.emf.common.notify.Notifier)">skipTypeParameters(JvmTypeReference,Notifier)</a></span><br>
+         Remove the type parameters from the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlBehaviorUnit,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlBehaviorUnit,JvmGenericType)</a></span><br>
+         Transform the given behavior unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlCapacityUses,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlCapacityUses,JvmGenericType)</a></span><br>
+         Transform the uses of SARL capacities.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(io.sarl.lang.sarl.SarlRequiredCapacity,org.eclipse.xtext.common.types.JvmGenericType)">transform(SarlRequiredCapacity,JvmGenericType)</a></span><br>
+         Transform the requirements of SARL capacities.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendConstructor,org.eclipse.xtext.common.types.JvmGenericType)">transform(XtendConstructor,JvmGenericType)</a></span><br>
+         Transform the constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendField,org.eclipse.xtext.common.types.JvmGenericType)">transform(XtendField,JvmGenericType)</a></span><br>
+         Transform the field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmGenericType,boolean)">transform(XtendFunction,JvmGenericType,boolean)</a></span><br>
+         Transform the function.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#transform(org.eclipse.xtend.core.xtend.XtendMember,org.eclipse.xtext.common.types.JvmGenericType,boolean)">transform(XtendMember,JvmGenericType,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateAnnotationsTo(java.util.List<org.eclipse.xtext.common.types.JvmAnnotationReference>,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<?>[])">translateAnnotationsTo(List&lt;E&gt;,JvmAnnotationTarget,Class&lt;T&gt;*)</a></span><br>
+         Copy the annotations, except the ones given as parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParameters(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendParameter>,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>,boolean)">translateSarlFormalParameters(GenerationContext,JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;,boolean,List&lt;E&gt;,boolean)</a></span><br>
+         Generate a list of formal parameters with annotations for the default values.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParametersForLocalHiddenDefaultValues(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmOperation)">translateSarlFormalParametersForLocalHiddenDefaultValues(GenerationContext,JvmOperation)</a></span><br>
+         Generate the local default values.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#translateSarlFormalParametersForSyntheticOperation(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>)">translateSarlFormalParametersForSyntheticOperation(JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;)</a></span><br>
+         Generate a list arguments from the formal parameters in order to be used for a call into a synthetic operation, such as default-valued parameter function.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="addDefaultConstructor(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">
+      addDefaultConstructor(XtendClass,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> addDefaultConstructor(XtendClass,JvmGenericType)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="appendAOPMembers(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendAOPMembers(JvmGenericType,XtendTypeDeclaration,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendAOPMembers(JvmGenericType,XtendTypeDeclaration,GenerationContext)</pre>
+      <div>
+       Generate the code for the given SARL members in a agent-oriented container.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        featureContainerType - <span class="doclet-tags-param-comment">the feature container.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the SARL container.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">description of the generation context in which the members must be considered.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendCapacityContextAwareWrapper(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendCapacityContextAwareWrapper(SarlCapacity,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendCapacityContextAwareWrapper(SarlCapacity,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL capacity context-aware wrapper.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendCloneFunction(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendCloneFunction(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendCloneFunction(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the clone function. 
+       <p></p>The clone function replies a value of the current type, not <code>Object</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendCloneFunctionIfCloneable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendCloneFunctionIfCloneable(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendCloneFunctionIfCloneable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the clone function only if the type is a subtype of <span>Cloneable</span>. 
+       <p></p>The clone function replies a value of the current type, not <code>Object</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendCloneFunction(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendCloneFunction(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendComparisonFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendComparisonFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendComparisonFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Create the functions that permits to compare the object. The comparaison functions are <span>equals(Object)</span> and <span>hashCode()</span>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">
+      appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</pre>
+      <div>
+       Generate the extended types for the given SARL statement.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default Sarl type.</span>
+        <br>
+        supertypes - <span class="doclet-tags-param-comment">the supertypes.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedExtends(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">
+      appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedExtends(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</pre>
+      <div>
+       Generate the extended types for the given SARL statement.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default SARL type.</span>
+        <br>
+        supertype - <span class="doclet-tags-param-comment">the supertype.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedImplements(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class<?>,java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration>,java.util.List<? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference>)">
+      appendConstrainedImplements(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedImplements(GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</pre>
+      <div>
+       Generate the implemented types for the given SARL statement.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default SARL type.</span>
+        <br>
+        implementedtypes - <span class="doclet-tags-param-comment">the implemented types.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendDefaultConstructors(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendDefaultConstructors(XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendDefaultConstructors(XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Add the default constructors. 
+       <p></p>The default constructors have the same signature as the constructors of the super class. 
+       <p></p>This function adds the default constructors if no constructor was already added. This condition is determined with a call to <span>hasConstructor()</span>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the SARL element in which no constructor was specified. This SARL element should be associated to the <code class="doclet-tags-param-comment">target</code> element.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the JVM type that is receiving the default constructor.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><span class="doclet-tags-see-comment">hasConstructor</span> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendEventGuardEvaluatorForReflectMethod(org.eclipse.xtext.xbase.lib.Pair<io.sarl.lang.sarl.SarlBehaviorUnit,java.util.Collection<org.eclipse.xtext.xbase.lib.Procedures.Procedure1<? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>>>,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendEventGuardEvaluatorForReflectMethod(Pair&lt;K,V&gt;,JvmGenericType,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendEventGuardEvaluatorForReflectMethod(Pair&lt;K,V&gt;,JvmGenericType,GenerationContext) : <span>java.lang.String</span></pre>
+      <div>
+       Append the guard evaluators for the reflection-based method.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        evaluators - <span class="doclet-tags-param-comment">the guard evaluators to generate.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the receiver of the generated components.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the name of the generated function.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendEventGuardEvaluators(org.eclipse.xtext.common.types.JvmGenericType)">
+      appendEventGuardEvaluators(JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendEventGuardEvaluators(JvmGenericType)</pre>
+      <div>
+       Append the guard evaluators.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        container - <span class="doclet-tags-param-comment">the container type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendEventGuardEvaluatorsForPolymorphicMethod(java.util.Map<org.eclipse.xtext.common.types.JvmTypeReference,java.util.Set<java.lang.String>>,boolean,org.eclipse.xtext.common.types.JvmGenericType,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendEventGuardEvaluatorsForPolymorphicMethod(Map&lt;K,V&gt;,boolean,JvmGenericType,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendEventGuardEvaluatorsForPolymorphicMethod(Map&lt;K,V&gt;,boolean,JvmGenericType,GenerationContext)</pre>
+      <div>
+       Append the guard evaluators for the polymorphic method.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        guardDefs - <span class="doclet-tags-param-comment">the definition of the guards.</span>
+        <br>
+        isRootType - <span class="doclet-tags-param-comment">indicates if the containing type is considered as a root type from the polymorphic method point of view.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the receiver of the generated components.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendFunctionalInterfaceAnnotation(org.eclipse.xtext.common.types.JvmGenericType)">
+      appendFunctionalInterfaceAnnotation(JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendFunctionalInterfaceAnnotation(JvmGenericType)</pre>
+      <div>
+       Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the type to update.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext)</pre>
+      <div>
+       Add the @Generated annotation to the given target. The annotation will not have any generated SARL code associated to it.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        target - <span class="doclet-tags-param-comment">the target of the annotation.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendGeneratedAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext,java.lang.String)">
+      appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext,String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendGeneratedAnnotation(JvmAnnotationTarget,GenerationContext,String)</pre>
+      <div>
+       Add the @Generated annotation to the given target.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        target - <span class="doclet-tags-param-comment">the target of the annotation.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        sarlCode - <span class="doclet-tags-param-comment">the code that is the cause of the generation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendInjectableAnnotationIfInjectable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendInjectableAnnotationIfInjectable(JvmDeclaredType,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendInjectableAnnotationIfInjectable(JvmDeclaredType,GenerationContext)</pre>
+      <div>
+       Append the injectable annotation to the given container.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSARLElementType(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">
+      appendSARLElementType(XtendTypeDeclaration,JvmDeclaredType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSARLElementType(XtendTypeDeclaration,JvmDeclaredType)</pre>
+      <div>
+       Append the SARL element type as an annotation to the given container. 
+       <p></p>The added annotation may be used by any underground platform for determining what is the type of the SARL element without invoking the costly "instanceof" operations.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">
+      appendSARLSpecificationVersion(GenerationContext,XtendTypeDeclaration,JvmDeclaredType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSARLSpecificationVersion(GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</pre>
+      <div>
+       Append the SARL specification version as an annotation to the given container. 
+       <p></p>The added annotation may be used by any underground platform for determining what is the version of the SARL specification that was used for generating the container.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSerialNumber(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendSerialNumber(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSerialNumber(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the serial number field. 
+       <p></p>The serial number field is computed from the given context and from the generated fields. The field is added if no field with name "serialVersionUID" was defined. 
+       <p></p>This function does not test if the field container is serializable.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendSerialNumberIfSerializable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendSerialNumberIfSerializable(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSerialNumberIfSerializable(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the serial number field if and only if the container type is serializable. 
+       <p></p>The serial number field is computed from the given context and from the generated fields.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#appendSerialNumber(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendSerialNumber(GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSyntheticDefaultValuedParameterMethods(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">
+      appendSyntheticDefaultValuedParameterMethods(XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSyntheticDefaultValuedParameterMethods(XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</pre>
+      <div>
+       Generate the missed operations that are the results from the generation of actions with default value parameters.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the SARL container.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the JVM feature container.</span>
+        <br>
+        ignoreOverridableOperations - <span class="doclet-tags-param-comment">indicates if the operations must not be added if they are marked has overridable.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">description of the generation context in which the members must be considered.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendToStringFunctions(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">
+      appendToStringFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendToStringFunctions(GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Create the functions that are related to the <code>toString</code> function.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="cloneWithProxiesFromOtherResource(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmOperation)">
+      cloneWithProxiesFromOtherResource(JvmTypeReference,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> cloneWithProxiesFromOtherResource(JvmTypeReference,JvmOperation) : <span>org.eclipse.xtext.common.types.JvmTypeReference</span></pre>
+      <div>
+       Clone the given type reference that is associated to another Xtext resource. 
+       <p></p>This function ensures that the resource of the reference clone is not pointing to the resource of the original reference. 
+       <p></p>This function calls <span>cloneWithProxies(JvmTypeReference)</span> or <a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable)">cloneWithTypeParametersAndProxies(JvmTypeReference, JvmExecutable)</a> if the <code>target</code> is <code>null</code> for the first, and not <code>null</code> for the second.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the source type.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the operation for which the type is clone, or <code class="doclet-tags-param-comment">null</code> if not relevant.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the result type, i.e. a copy of the source type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable)">
+      cloneWithTypeParametersAndProxies(JvmTypeReference,JvmExecutable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> cloneWithTypeParametersAndProxies(JvmTypeReference,JvmExecutable) : <span>org.eclipse.xtext.common.types.JvmTypeReference</span></pre>
+      <div>
+       Clone the given type reference that for being link to the given executable component. 
+       <p></p>The proxies are not resolved, and the type parameters are clone when they are related to the type parameter of the executable or the type container.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the source type.</span>
+        <br>
+        forExecutable - <span class="doclet-tags-param-comment">the executable component that will contain the result type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the result type, i.e. a copy of the source type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="closeContext(io.sarl.lang.jvmmodel.GenerationContext)">
+      closeContext(GenerationContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> closeContext(GenerationContext)</pre>
+      <div>
+       Close a generation context.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context to be closed.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyAndCleanDocumentationTo(org.eclipse.xtend.core.xtend.XtendExecutable,org.eclipse.xtext.common.types.JvmExecutable)">
+      copyAndCleanDocumentationTo(XtendExecutable,JvmExecutable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyAndCleanDocumentationTo(XtendExecutable,JvmExecutable) : boolean</pre>
+      <div>
+       Copy and clean the given documentation by removing any unecessary <code>@param</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        sourceOperation - <span class="doclet-tags-param-comment">the source for the documentation.</span>
+        <br>
+        targetOperation - <span class="doclet-tags-param-comment">the target for the documentation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if a documentation was added.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyAndCleanDocumentationTo(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmExecutable)">
+      copyAndCleanDocumentationTo(JvmExecutable,JvmExecutable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyAndCleanDocumentationTo(JvmExecutable,JvmExecutable) : boolean</pre>
+      <div>
+       Copy and clean the given documentation by removing any unnecessary <code>@param</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        sourceOperation - <span class="doclet-tags-param-comment">the source for the documentation.</span>
+        <br>
+        targetOperation - <span class="doclet-tags-param-comment">the target for the documentation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if a documentation was added.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyNonStaticPublicJvmOperations(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionPrototype>,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">
+      copyNonStaticPublicJvmOperations(JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyNonStaticPublicJvmOperations(JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</pre>
+      <div>
+       Copy the JVM operations from the source to the destination.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the destination.</span>
+        <br>
+        createdActions - <span class="doclet-tags-param-comment">the set of actions that are created before (input) or during (output) the invocation.</span>
+        <br>
+        copyHiddenNames - <span class="doclet-tags-param-comment">indicates if the operations with hidden name are copied.</span>
+        <br>
+        bodyBuilder - <span class="doclet-tags-param-comment">the builder of the target's operations.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyTypeParametersFromJvmOperation(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">
+      copyTypeParametersFromJvmOperation(JvmOperation,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyTypeParametersFromJvmOperation(JvmOperation,JvmOperation)</pre>
+      <div>
+       Copy the type parameters from a JvmOperation. 
+       <p></p>This function differs from <span>copyAndFixTypeParameters(List, org.eclipse.xtext.common.types.JvmTypeParameterDeclarator)</span> and <span>copyTypeParameters(List, org.eclipse.xtext.common.types.JvmTypeParameterDeclarator)</span> in the fact that the type parameters were already generated and fixed. The current function supper generic types by clone the types references with <a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable)">cloneWithTypeParametersAndProxies(JvmTypeReference, JvmExecutable)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        fromOperation - <span class="doclet-tags-param-comment">the operation from which the type parameters are copied.</span>
+        <br>
+        toOperation - <span class="doclet-tags-param-comment">the operation that will receives the new type parameters.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyVisibleJvmConstructors(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.util.Set<io.sarl.lang.sarl.actionprototype.ActionParameterTypes>,org.eclipse.xtext.common.types.JvmVisibility)">
+      copyVisibleJvmConstructors(GenerationContext,JvmGenericType,JvmGenericType,XtendTypeDeclaration,Set&lt;E&gt;,JvmVisibility)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyVisibleJvmConstructors(GenerationContext,JvmGenericType,JvmGenericType,XtendTypeDeclaration,Set&lt;E&gt;,JvmVisibility)</pre>
+      <div>
+       Copy the JVM constructors from the source to the destination.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the destination.</span>
+        <br>
+        sarlSource - <span class="doclet-tags-param-comment">the SARL source element. If <code class="doclet-tags-param-comment">null</code>, the generated constructors will not be associated to the SARL element.</span>
+        <br>
+        createdConstructors - <span class="doclet-tags-param-comment">the set of constructors that are created before (input) or during (output) the invocation.</span>
+        <br>
+        minimalVisibility - <span class="doclet-tags-param-comment">the minimal visibility to apply to the created constructors.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.10</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="deriveGenericDispatchOperationSignature(java.lang.Iterable<org.eclipse.xtext.common.types.JvmOperation>,org.eclipse.xtext.common.types.JvmGenericType)">
+      deriveGenericDispatchOperationSignature(Iterable&lt;T&gt;,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> deriveGenericDispatchOperationSignature(Iterable&lt;T&gt;,JvmGenericType) : <span>org.eclipse.xtext.common.types.JvmOperation</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="doInferTypeSceleton(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor,boolean,org.eclipse.xtend.core.xtend.XtendFile,java.util.List<java.lang.Runnable>)">
+      doInferTypeSceleton(XtendTypeDeclaration,IJvmDeclaredTypeAcceptor,boolean,XtendFile,List&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> doInferTypeSceleton(XtendTypeDeclaration,IJvmDeclaredTypeAcceptor,boolean,XtendFile,List&lt;E&gt;) : <span>org.eclipse.xtext.common.types.JvmDeclaredType</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getContext(org.eclipse.xtext.common.types.JvmIdentifiableElement)">
+      getContext(JvmIdentifiableElement)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getContext(JvmIdentifiableElement) : <span>io.sarl.lang.jvmmodel.GenerationContext</span></pre>
+      <div>
+       Replies the SARL-specific generation context.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the generated type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the SARL-specific generation context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getTypeParametersFor(org.eclipse.xtend.core.xtend.XtendTypeDeclaration)">
+      getTypeParametersFor(XtendTypeDeclaration)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getTypeParametersFor(XtendTypeDeclaration) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Replies the type parameters for the given type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the type parameters for the given type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="inferFunctionReturnType(org.eclipse.xtext.xbase.XExpression)">
+      inferFunctionReturnType(XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> inferFunctionReturnType(XExpression) : <span>org.eclipse.xtext.common.types.JvmTypeReference</span></pre>
+      <div>
+       Infer the function's return type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        body - <span class="doclet-tags-param-comment">the body of the function.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the return type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="inferFunctionReturnType(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">
+      inferFunctionReturnType(XtendFunction,JvmOperation,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> inferFunctionReturnType(XtendFunction,JvmOperation,JvmOperation) : <span>org.eclipse.xtext.common.types.JvmTypeReference</span></pre>
+      <div>
+       Infer the return type for the given source function.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source function.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the target operation.</span>
+        <br>
+        overriddenOperation - <span class="doclet-tags-param-comment">reference to the overridden operation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the inferred return type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.7</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="inferLocalClass(org.eclipse.xtend.core.xtend.AnonymousClass,java.lang.String,org.eclipse.xtext.common.types.JvmFeature)">
+      inferLocalClass(AnonymousClass,String,JvmFeature)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> inferLocalClass(AnonymousClass,String,JvmFeature)</pre>
+      <div>
+       . 
+       <p></p>The function is overridden in order to interleave the instructions from Xtend and the ones needed for SARL.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlAgent,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlAgent,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlAgent,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL agent type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlArtifact,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlArtifact,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlArtifact,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL artifact type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlBehavior,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlBehavior,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlBehavior,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL behavior type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlCapacity,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlCapacity,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlCapacity,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL capacity type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlEvent,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlEvent,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlEvent,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL event type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlSkill,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlSkill,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlSkill,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL skill type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(io.sarl.lang.sarl.SarlSpace,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(SarlSpace,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(SarlSpace,JvmGenericType)</pre>
+      <div>
+       Initialize the SARL space type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        inferredJvmType - <span class="doclet-tags-param-comment">the JVM type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(org.eclipse.xtend.core.xtend.XtendAnnotationType,org.eclipse.xtext.common.types.JvmAnnotationType)">
+      initialize(XtendAnnotationType,JvmAnnotationType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(XtendAnnotationType,JvmAnnotationType)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(org.eclipse.xtend.core.xtend.XtendClass,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(XtendClass,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(XtendClass,JvmGenericType)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(org.eclipse.xtend.core.xtend.XtendEnum,org.eclipse.xtext.common.types.JvmEnumerationType)">
+      initialize(XtendEnum,JvmEnumerationType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(XtendEnum,JvmEnumerationType)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="initialize(org.eclipse.xtend.core.xtend.XtendInterface,org.eclipse.xtext.common.types.JvmGenericType)">
+      initialize(XtendInterface,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initialize(XtendInterface,JvmGenericType)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="initializeLocalTypes(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmFeature,org.eclipse.xtext.xbase.XExpression)">
+      initializeLocalTypes(GenerationContext,JvmFeature,XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initializeLocalTypes(GenerationContext,JvmFeature,XExpression)</pre>
+      <div>
+       Initialize the local class to the given expression.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        feature - <span class="doclet-tags-param-comment">the feature which contains the expression.</span>
+        <br>
+        expression - <span class="doclet-tags-param-comment">the expression which contains the local class.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isAccessibleTypeAccordingToJavaSpecifications(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmDeclaredType)">
+      isAccessibleTypeAccordingToJavaSpecifications(GenerationContext,JvmDeclaredType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isAccessibleTypeAccordingToJavaSpecifications(GenerationContext,JvmDeclaredType) : boolean</pre>
+      <div>
+       Replies if the given type is accessible according to the Java specifications. Indeed, since Java11, several types, e.g. <code>HotSpotIntrinsicCandidate</code> annotation, are inaccessible because they are in private modules.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        type - <span class="doclet-tags-param-comment">the type to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the type is accessible.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="logInternalError(java.lang.String)">
+      logInternalError(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> logInternalError(String)</pre>
+      <div>
+       Log an internal error but do not fail.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        message - <span class="doclet-tags-param-comment">the internal message.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="logInternalError(java.lang.Throwable)">
+      logInternalError(Throwable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> logInternalError(Throwable)</pre>
+      <div>
+       Log an internal error but do not fail.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        exception - <span class="doclet-tags-param-comment">the exception to log.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="openContext(org.eclipse.emf.ecore.EObject,org.eclipse.xtext.common.types.JvmDeclaredType,java.lang.Iterable<java.lang.Class<? extends org.eclipse.xtend.core.xtend.XtendMember>>)">
+      openContext(EObject,JvmDeclaredType,Iterable&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> openContext(EObject,JvmDeclaredType,Iterable&lt;T&gt;) : <span>io.sarl.lang.jvmmodel.GenerationContext</span></pre>
+      <div>
+       Open the context for the generation of a SARL-specific element.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        sarlObject - <span class="doclet-tags-param-comment">the SARL object that is the cause of the generation.</span>
+        <br>
+        type - <span class="doclet-tags-param-comment">the generated type.</span>
+        <br>
+        supportedMemberTypes - <span class="doclet-tags-param-comment">the types of the supported members.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the created context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtend2.lib.StringConcatenationClient)">
+      setBody(JvmExecutable,StringConcatenationClient)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> setBody(JvmExecutable,StringConcatenationClient)</pre>
+      <div>
+       Set the body of the executable.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        executable - <span class="doclet-tags-param-comment">the executable.</span>
+        <br>
+        expression - <span class="doclet-tags-param-comment">the body definition.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.lib.Procedures.Procedure1<org.eclipse.xtext.xbase.compiler.output.ITreeAppendable>)">
+      setBody(JvmExecutable,Procedure1&lt;Param&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> setBody(JvmExecutable,Procedure1&lt;Param&gt;)</pre>
+      <div>
+       Set the body of the executable.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        executable - <span class="doclet-tags-param-comment">the executable.</span>
+        <br>
+        expression - <span class="doclet-tags-param-comment">the body definition.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.XExpression)">
+      setBody(JvmExecutable,XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> setBody(JvmExecutable,XExpression)</pre>
+      <div>
+       . 
+       <p></p>Overridden for: removing the existing associated body, and delaying the local type inference.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="skipTypeParameters(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.emf.common.notify.Notifier)">
+      skipTypeParameters(JvmTypeReference,Notifier)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> skipTypeParameters(JvmTypeReference,Notifier) : <span>org.eclipse.xtext.common.types.JvmTypeReference</span></pre>
+      <div>
+       Remove the type parameters from the given type. 
+       <p></p>
+       <table>
+        <caption>
+         Criteria for removal
+        </caption>
+        <thead>
+         <tr>
+          <th>Referenced type</th>
+          <th>Input</th>
+          <th>Replied referenced type</th>
+          <th>Output</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>Type with generic type parameter</td>
+          <td><code>T&lt;G&gt;</code></td>
+          <td>the type itself</td>
+          <td><code>T</code></td>
+         </tr>
+         <tr>
+          <td>Type without generic type parameter</td>
+          <td><code>T</code></td>
+          <td>the type itself</td>
+          <td><code>T</code></td>
+         </tr>
+         <tr>
+          <td>Type parameter without bound</td>
+          <td><code>&lt;S&gt;</code></td>
+          <td><code>Object</code></td>
+          <td><code>Object</code></td>
+         </tr>
+         <tr>
+          <td>Type parameter with lower bound</td>
+          <td><code>&lt;S super B&gt;</code></td>
+          <td><code>Object</code></td>
+          <td><code>Object</code></td>
+         </tr>
+         <tr>
+          <td>Type parameter with upper bound</td>
+          <td><code>&lt;S extends B&gt;</code></td>
+          <td>the bound type</td>
+          <td><code>B</code></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the type.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context in which the reference is located.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the same type without the type parameters.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(io.sarl.lang.sarl.SarlBehaviorUnit,org.eclipse.xtext.common.types.JvmGenericType)">
+      transform(SarlBehaviorUnit,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(SarlBehaviorUnit,JvmGenericType)</pre>
+      <div>
+       Transform the given behavior unit.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(io.sarl.lang.sarl.SarlCapacityUses,org.eclipse.xtext.common.types.JvmGenericType)">
+      transform(SarlCapacityUses,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(SarlCapacityUses,JvmGenericType)</pre>
+      <div>
+       Transform the uses of SARL capacities. 
+       <p></p>Resolving the calls to the capacities' functions is done in <a href="../../../../io/sarl/lang/typesystem/SARLReentrantTypeResolver.html">io.sarl.lang.typesystem.SARLReentrantTypeResolver</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(io.sarl.lang.sarl.SarlRequiredCapacity,org.eclipse.xtext.common.types.JvmGenericType)">
+      transform(SarlRequiredCapacity,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(SarlRequiredCapacity,JvmGenericType)</pre>
+      <div>
+       Transform the requirements of SARL capacities.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(org.eclipse.xtend.core.xtend.XtendConstructor,org.eclipse.xtext.common.types.JvmGenericType)">
+      transform(XtendConstructor,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(XtendConstructor,JvmGenericType)</pre>
+      <div>
+       Transform the constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(org.eclipse.xtend.core.xtend.XtendField,org.eclipse.xtext.common.types.JvmGenericType)">
+      transform(XtendField,JvmGenericType)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(XtendField,JvmGenericType)</pre>
+      <div>
+       Transform the field.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(org.eclipse.xtend.core.xtend.XtendFunction,org.eclipse.xtext.common.types.JvmGenericType,boolean)">
+      transform(XtendFunction,JvmGenericType,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(XtendFunction,JvmGenericType,boolean)</pre>
+      <div>
+       Transform the function.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        source - <span class="doclet-tags-param-comment">the feature to transform.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the target container of the transformation result.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="transform(org.eclipse.xtend.core.xtend.XtendMember,org.eclipse.xtext.common.types.JvmGenericType,boolean)">
+      transform(XtendMember,JvmGenericType,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> transform(XtendMember,JvmGenericType,boolean)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="translateAnnotationsTo(java.util.List<org.eclipse.xtext.common.types.JvmAnnotationReference>,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<?>[])">
+      translateAnnotationsTo(List&lt;E&gt;,JvmAnnotationTarget,Class&lt;T&gt;*)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> translateAnnotationsTo(List&lt;E&gt;,JvmAnnotationTarget,Class&lt;T&gt;*)</pre>
+      <div>
+       Copy the annotations, except the ones given as parameters.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        annotations - <span class="doclet-tags-param-comment">the annotations to copy.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the target.</span>
+        <br>
+        exceptions - <span class="doclet-tags-param-comment">the annotations to skip.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="translateSarlFormalParameters(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendParameter>,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>,boolean)">
+      translateSarlFormalParameters(GenerationContext,JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;,boolean,List&lt;E&gt;,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> translateSarlFormalParameters(GenerationContext,JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;,boolean,List&lt;E&gt;,boolean)</pre>
+      <div>
+       Generate a list of formal parameters with annotations for the default values.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        actionContainer - <span class="doclet-tags-param-comment">the container of the action.</span>
+        <br>
+        varargs - <span class="doclet-tags-param-comment">indicates if the signature has variadic parameter.</span>
+        <br>
+        params - <span class="doclet-tags-param-comment">the parameters.</span>
+        <br>
+        isForInterface - <span class="doclet-tags-param-comment">indicates if the formal parameters are for an interface (<code class="doclet-tags-param-comment">true</code>) or a class (<code class="doclet-tags-param-comment">false</code>).</span>
+        <br>
+        paramSpec - <span class="doclet-tags-param-comment">the specification of the parameter as computed by a <a href="../../../../io/sarl/lang/sarl/actionprototype/IActionPrototypeProvider.html" class="doclet-tags-param-comment">IActionPrototypeProvider</a>.</span>
+        <br>
+        ignoreOverridableOperations - <span class="doclet-tags-param-comment">indicates if the operations are ignored if it is marked as overridable.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="translateSarlFormalParametersForLocalHiddenDefaultValues(io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmOperation)">
+      translateSarlFormalParametersForLocalHiddenDefaultValues(GenerationContext,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> translateSarlFormalParametersForLocalHiddenDefaultValues(GenerationContext,JvmOperation)</pre>
+      <div>
+       Generate the local default values.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        inheritedOperation - <span class="doclet-tags-param-comment">the reference to the inherited operation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="translateSarlFormalParametersForSyntheticOperation(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmGenericType,boolean,java.util.List<io.sarl.lang.sarl.actionprototype.InferredStandardParameter>)">
+      translateSarlFormalParametersForSyntheticOperation(JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> translateSarlFormalParametersForSyntheticOperation(JvmExecutable,JvmGenericType,boolean,List&lt;E&gt;) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Generate a list arguments from the formal parameters in order to be used for a call into a synthetic operation, such as default-valued parameter function.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        actionContainer - <span class="doclet-tags-param-comment">the container of the action.</span>
+        <br>
+        varargs - <span class="doclet-tags-param-comment">indicates if the signature has variadic parameter.</span>
+        <br>
+        signature - <span class="doclet-tags-param-comment">the description of the parameters.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the arguments to pass to the original function.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/jvmmodel/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/jvmmodel/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/jvmmodel/SarlJvmModelAssociations/Impl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/jvmmodel/SARLReadAndWriteTracking.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

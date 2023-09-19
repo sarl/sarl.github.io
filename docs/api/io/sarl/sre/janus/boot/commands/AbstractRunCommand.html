@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>AbstractRunCommand</title>
+  <link rel="stylesheet" href="../../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../../css/index.css">
+  <script src="../../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/boot/commands/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/boot/commands/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/boot/commands/RunSingleAgentCommand.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../../io/sarl/sre/janus/boot/commands/package-summary.html" class="doclet-header-packagename">io.sarl.sre.janus.boot.commands</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class AbstractRunCommand
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html" class="doclet-inheritancetree-type">AbstractRunCommand</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <span class="doclet-superinterfacelist">io.bootique.command.Command</span>
+     </dd>
+    </dl>
+    <dl class="doclet-directsubtypelist">
+     <dt class="doclet-directsubtypelist">
+      All Known Subclasses:
+     </dt>
+     <dd class="doclet-directsubtypelist">
+      <a href="../../../../../../io/sarl/sre/janus/boot/commands/RunSingleAgentCommand.html" class="doclet-directsubtypelist">RunSingleAgentCommand</a>, <a href="../../../../../../io/sarl/sre/janus/boot/commands/RunWithoutAgentCommand.html" class="doclet-directsubtypelist">RunWithoutAgentCommand</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     abstract class <span class="doclet-typesignature-typename">AbstractRunCommand</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Abstract command for running the SRE without agent at boot time. 
+      <p></p>This abstract command provides helping tools for implementing a launching command.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sre.janus</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">janus.kernel</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.9</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3731 active" onclick="openTabElement(this,'ID9163', 'doclet-tabs-button-instance-3731', 'doclet-tabs-content-instance-3731')">Properties</button>
+    </div>
+    <div id="ID9163" class="doclet-tabs-content doclet-tabs-content-instance-3731 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../../io/sarl/lang/core/SREBootstrap.html">SREBootstrap</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#getSREBootstrap()">sREBootstrap</a></span><br>
+         Replies the SRE bootstrap.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">
+     Field Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3733 active" onclick="openTabElement(this,'ID9165', 'doclet-tabs-button-instance-3733', 'doclet-tabs-content-instance-3733')">All fields</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3733" onclick="openTabElement(this,'ID9169', 'doclet-tabs-button-instance-3733', 'doclet-tabs-content-instance-3733')">Instance values</button>
+    </div>
+    <div id="ID9165" class="doclet-tabs-content doclet-tabs-content-instance-3733 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected val&nbsp;<span>javax.inject.Provider</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#configuration">configuration</a></span><br>
+         Launching configuration.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID9169" class="doclet-tabs-content doclet-tabs-content-instance-3733 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected val&nbsp;<span>javax.inject.Provider</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#configuration">configuration</a></span><br>
+         Launching configuration.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3734 active" onclick="openTabElement(this,'ID9170', 'doclet-tabs-button-instance-3734', 'doclet-tabs-content-instance-3734')">Constructors</button>
+    </div>
+    <div id="ID9170" class="doclet-tabs-content doclet-tabs-content-instance-3734 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#<init>(javax.inject.Provider<io.sarl.sre.janus.boot.configs.SreConfig>,io.bootique.meta.application.CommandMetadata.Builder)">new(Provider&lt;T&gt;,Builder)</a></span><br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3735 active" onclick="openTabElement(this,'ID9171', 'doclet-tabs-button-instance-3735', 'doclet-tabs-content-instance-3735')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3735" onclick="openTabElement(this,'ID9174', 'doclet-tabs-button-instance-3735', 'doclet-tabs-content-instance-3735')">Instance actions</button>
+    </div>
+    <div id="ID9171" class="doclet-tabs-content doclet-tabs-content-instance-3735 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../../io/sarl/lang/core/SREBootstrap.html">SREBootstrap</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#getSREBootstrap()">getSREBootstrap</a></span><br>
+         Replies the SRE bootstrap.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#isAgentType(java.lang.String)">isAgentType(String)</a></span><br>
+         Replies if the given value is the fully qualified name of an agent's type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#startAgentsFromConfig(io.sarl.lang.core.SREBootstrap,io.sarl.sre.janus.boot.configs.subconfigs.BootConfig)">startAgentsFromConfig(SREBootstrap,BootConfig)</a></span><br>
+         Start all the boot agents that are defined into the configuration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../../io/sarl/sre/janus/boot/configs/subconfigs/BootConfig.html">BootConfig</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#synchronizeCliWithBootConfig(io.bootique.cli.Cli,int)">synchronizeCliWithBootConfig(Cli,int)</a></span><br>
+         Synchronizes the command-line arguments and the SRE configuration.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID9174" class="doclet-tabs-content doclet-tabs-content-instance-3735 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../../io/sarl/lang/core/SREBootstrap.html">SREBootstrap</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#getSREBootstrap()">getSREBootstrap</a></span><br>
+         Replies the SRE bootstrap.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#isAgentType(java.lang.String)">isAgentType(String)</a></span><br>
+         Replies if the given value is the fully qualified name of an agent's type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#startAgentsFromConfig(io.sarl.lang.core.SREBootstrap,io.sarl.sre.janus.boot.configs.subconfigs.BootConfig)">startAgentsFromConfig(SREBootstrap,BootConfig)</a></span><br>
+         Start all the boot agents that are defined into the configuration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../../io/sarl/sre/janus/boot/configs/subconfigs/BootConfig.html">BootConfig</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#synchronizeCliWithBootConfig(io.bootique.cli.Cli,int)">synchronizeCliWithBootConfig(Cli,int)</a></span><br>
+         Synchronizes the command-line arguments and the SRE configuration.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      sREBootstrap
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> sREBootstrap : <a href="../../../../../../io/sarl/lang/core/SREBootstrap.html">SREBootstrap</a></pre>
+      <div>
+       Replies the SRE bootstrap.
+      </div>
+      <p>This property is an alias for the action: <a href="../../../../../../io/sarl/sre/janus/boot/commands/AbstractRunCommand.html#getSREBootstrap()">getSREBootstrap</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the SRE bootstrap.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="fields.details.box">
+    <div class="doclet-detailbox-title">
+     Field Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="configuration">
+      configuration
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected val</span> configuration : <span>javax.inject.Provider</span>&lt;T&gt;</pre>
+      <div>
+       Launching configuration.
+      </div>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(javax.inject.Provider<io.sarl.sre.janus.boot.configs.SreConfig>,io.bootique.meta.application.CommandMetadata.Builder)">
+      new(Provider&lt;T&gt;,Builder)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(Provider&lt;T&gt;,Builder)</pre>
+      <div>
+       Constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        configuration - <span class="doclet-tags-param-comment">the configuration of the tool.</span>
+        <br>
+        commandBuilder - <span class="doclet-tags-param-comment">the builder of the command.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="getSREBootstrap()">
+      getSREBootstrap
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getSREBootstrap : <a href="../../../../../../io/sarl/lang/core/SREBootstrap.html">SREBootstrap</a></pre>
+      <div>
+       Replies the SRE bootstrap.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the SRE bootstrap.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isAgentType(java.lang.String)">
+      isAgentType(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isAgentType(String) : boolean</pre>
+      <div>
+       Replies if the given value is the fully qualified name of an agent's type. An agent's type is a <code>Class</code> that extends the <code>Agent</code> type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        value - <span class="doclet-tags-param-comment">the value to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the given value is the fully qualified name of an agent's type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="startAgentsFromConfig(io.sarl.lang.core.SREBootstrap,io.sarl.sre.janus.boot.configs.subconfigs.BootConfig)">
+      startAgentsFromConfig(SREBootstrap,BootConfig)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> startAgentsFromConfig(SREBootstrap,BootConfig)</pre>
+      <div>
+       Start all the boot agents that are defined into the configuration.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        bootstrap - <span class="doclet-tags-param-comment">the SRE bootstrap.</span>
+        <br>
+        config - <span class="doclet-tags-param-comment">the configuration to use.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="synchronizeCliWithBootConfig(io.bootique.cli.Cli,int)">
+      synchronizeCliWithBootConfig(Cli,int)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> synchronizeCliWithBootConfig(Cli,int) : <a href="../../../../../../io/sarl/sre/janus/boot/configs/subconfigs/BootConfig.html">BootConfig</a></pre>
+      <div>
+       Synchronizes the command-line arguments and the SRE configuration. This function gets the arguments from the given <code>Cli</code> and updates the <code>SreConfig</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        args - <span class="doclet-tags-param-comment">the definition of the command line arguments</span>
+        <br>
+        maxNbAgents - <span class="doclet-tags-param-comment">is the maximum number of agents to be launched.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the boot configuration.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/boot/commands/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/boot/commands/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/boot/commands/RunSingleAgentCommand.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

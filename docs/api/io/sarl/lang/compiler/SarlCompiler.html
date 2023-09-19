@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SarlCompiler</title>
+  <link rel="stylesheet" href="../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../css/index.css">
+  <script src="../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/compiler/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/compiler/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/compiler/JavaInlineExpressionCompiler/InlineAnnotationTreeAppendable.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/compiler/SARLGeneratorConfigProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../io/sarl/lang/compiler/package-summary.html" class="doclet-header-packagename">io.sarl.lang.compiler</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class SarlCompiler
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html" class="doclet-inheritancetree-type">SarlCompiler</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">SarlCompiler</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      The compiler from SARL to the target language. 
+      <p></p>This compiler provide a specific support for inline annotations. Indeed, the Xbase inline evaluation does not support variadic parameters. This SARL compiler provides a support for variadic feature calls. 
+      <p></p>Additionally, this compiler supports the Inline annotation for non-static calls, by skipping the left operand of a member feature call when the inline expression is constant. See https://github.com/eclipse/xtext-extras/pull/62. 
+      <p></p>This compiler supports also the "$0" parameter in inline expression. This parameter represents the current receiver, e.g. "this.". 
+      <p></p>The compiler supports the SARL keywords: break. 
+      <p></p>This compiler catches exceptions when generating statements for expressions in order to let the compiler to generate as much as possible. 
+      <p></p>The compiler adds a return statement when the early exit statement in SARL is not an early exist statement in Java. In this case a Java "return" statement must be added implicitly. 
+      <p></p>The roles of the different generation tools are:
+      <ul>
+       <li><a href="../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html" class="doclet-typedescription-main">io.sarl.lang.jvmmodel.SARLJvmModelInferrer</a>: Generating the expected Java Ecore model from the SARL Ecore model.</li>
+      </ul>
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.4</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1295 active" onclick="openTabElement(this,'ID3175', 'doclet-tabs-button-instance-1295', 'doclet-tabs-content-instance-1295')">Constructors</button>
+    </div>
+    <div id="ID3175" class="doclet-tabs-content doclet-tabs-content-instance-1295 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1296 active" onclick="openTabElement(this,'ID3176', 'doclet-tabs-button-instance-1296', 'doclet-tabs-content-instance-1296')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1296" onclick="openTabElement(this,'ID3179', 'doclet-tabs-button-instance-1296', 'doclet-tabs-content-instance-1296')">Instance actions</button>
+    </div>
+    <div id="ID3176" class="doclet-tabs-content doclet-tabs-content-instance-1296 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlAssertExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the assert keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlBreakExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlContinueExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the continue keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(XCastedExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlAssertExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code to the preparation statements for the assert keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlBreakExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code related to the preparation statements for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlContinueExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code related to the preparation statements for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(XCastedExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(XClosure,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#appendInlineFeatureCall(org.eclipse.xtext.xbase.XAbstractFeatureCall,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">appendInlineFeatureCall(XAbstractFeatureCall,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#canBeNotStaticAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">canBeNotStaticAnonymousClass(XClosure,LightweightTypeReference,JvmOperation)</a></span><br>
+         Replies if the given closure could be represented by an not static anonymous class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#canCompileToJavaLambda(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">canCompileToJavaLambda(XClosure,LightweightTypeReference,JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#compile(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,java.util.Set<org.eclipse.xtext.common.types.JvmTypeReference>)">compile(XExpression,ITreeAppendable,LightweightTypeReference,Set&lt;E&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#doConversion(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.Later)">doConversion(LightweightTypeReference,LightweightTypeReference,ITreeAppendable,XExpression,Later)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#doInternalToJavaStatement(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">doInternalToJavaStatement(XExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#getReferencedLocalVariable(org.eclipse.xtext.xbase.XExpression,boolean)">getReferencedLocalVariable(XExpression,boolean)</a></span><br>
+         Replies all the variables that are referenced into the given expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#internalCanCompileToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">internalCanCompileToJavaExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#internalToConvertedExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">internalToConvertedExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isAtLeastJava8(org.eclipse.emf.ecore.EObject)">isAtLeastJava8(EObject)</a></span><br>
+         Replies if the generation is for Java version 8 at least.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isEarlyExit(org.eclipse.xtext.xbase.XExpression)">isEarlyExit(XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isReferenceToIt(org.eclipse.xtext.xbase.XFeatureCall)">isReferenceToIt(XFeatureCall)</a></span><br>
+         Replies if the given feature call has an implicit reference to the <code>it</code> variable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isVariableDeclarationRequired(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">isVariableDeclarationRequired(XExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#jvmOperationCallToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.XExpression,java.util.List<org.eclipse.xtext.xbase.XExpression>,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">jvmOperationCallToJavaExpression(XExpression,JvmOperation,XExpression,List&lt;E&gt;,ITreeAppendable)</a></span><br>
+         Generate the Java expression for the given JVM operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#logInternalError(java.lang.Throwable)">logInternalError(Throwable)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#prepareExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">prepareExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#toAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">toAnonymousClass(XClosure,ITreeAppendable,LightweightTypeReference,JvmOperation)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID3179" class="doclet-tabs-content doclet-tabs-content-instance-1296 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlAssertExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the assert keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlBreakExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(SarlContinueExpression,ITreeAppendable)</a></span><br>
+         Generate the Java code related to the expression for the continue keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaExpression(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">_toJavaExpression(XCastedExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlAssertExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code to the preparation statements for the assert keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlBreakExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code related to the preparation statements for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(SarlContinueExpression,ITreeAppendable,boolean)</a></span><br>
+         Generate the Java code related to the preparation statements for the break keyword.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(XCastedExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#_toJavaStatement(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">_toJavaStatement(XClosure,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#appendInlineFeatureCall(org.eclipse.xtext.xbase.XAbstractFeatureCall,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">appendInlineFeatureCall(XAbstractFeatureCall,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#canBeNotStaticAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">canBeNotStaticAnonymousClass(XClosure,LightweightTypeReference,JvmOperation)</a></span><br>
+         Replies if the given closure could be represented by an not static anonymous class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#canCompileToJavaLambda(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">canCompileToJavaLambda(XClosure,LightweightTypeReference,JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#compile(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,java.util.Set<org.eclipse.xtext.common.types.JvmTypeReference>)">compile(XExpression,ITreeAppendable,LightweightTypeReference,Set&lt;E&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#doConversion(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.Later)">doConversion(LightweightTypeReference,LightweightTypeReference,ITreeAppendable,XExpression,Later)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#doInternalToJavaStatement(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">doInternalToJavaStatement(XExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#getReferencedLocalVariable(org.eclipse.xtext.xbase.XExpression,boolean)">getReferencedLocalVariable(XExpression,boolean)</a></span><br>
+         Replies all the variables that are referenced into the given expression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#internalCanCompileToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">internalCanCompileToJavaExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#internalToConvertedExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">internalToConvertedExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isAtLeastJava8(org.eclipse.emf.ecore.EObject)">isAtLeastJava8(EObject)</a></span><br>
+         Replies if the generation is for Java version 8 at least.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isEarlyExit(org.eclipse.xtext.xbase.XExpression)">isEarlyExit(XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isReferenceToIt(org.eclipse.xtext.xbase.XFeatureCall)">isReferenceToIt(XFeatureCall)</a></span><br>
+         Replies if the given feature call has an implicit reference to the <code>it</code> variable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#isVariableDeclarationRequired(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">isVariableDeclarationRequired(XExpression,ITreeAppendable,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#jvmOperationCallToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.XExpression,java.util.List<org.eclipse.xtext.xbase.XExpression>,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">jvmOperationCallToJavaExpression(XExpression,JvmOperation,XExpression,List&lt;E&gt;,ITreeAppendable)</a></span><br>
+         Generate the Java expression for the given JVM operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#logInternalError(java.lang.Throwable)">logInternalError(Throwable)</a></span><br>
+         Log an internal error but do not fail.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#prepareExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">prepareExpression(XExpression,ITreeAppendable)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/compiler/SarlCompiler.html#toAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">toAnonymousClass(XClosure,ITreeAppendable,LightweightTypeReference,JvmOperation)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="_toJavaExpression(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      _toJavaExpression(SarlAssertExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaExpression(SarlAssertExpression,ITreeAppendable)</pre>
+      <div>
+       Generate the Java code related to the expression for the assert keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        assertExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaExpression(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      _toJavaExpression(SarlBreakExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaExpression(SarlBreakExpression,ITreeAppendable)</pre>
+      <div>
+       Generate the Java code related to the expression for the break keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        breakExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaExpression(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      _toJavaExpression(SarlContinueExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaExpression(SarlContinueExpression,ITreeAppendable)</pre>
+      <div>
+       Generate the Java code related to the expression for the continue keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        breakExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.7</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaExpression(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      _toJavaExpression(XCastedExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaExpression(XCastedExpression,ITreeAppendable)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaStatement(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      _toJavaStatement(SarlAssertExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaStatement(SarlAssertExpression,ITreeAppendable,boolean)</pre>
+      <div>
+       Generate the Java code to the preparation statements for the assert keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        assertExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        isReferenced - <span class="doclet-tags-param-comment">indicates if the expression is referenced.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaStatement(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      _toJavaStatement(SarlBreakExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaStatement(SarlBreakExpression,ITreeAppendable,boolean)</pre>
+      <div>
+       Generate the Java code related to the preparation statements for the break keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        breakExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        isReferenced - <span class="doclet-tags-param-comment">indicates if the expression is referenced.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaStatement(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      _toJavaStatement(SarlContinueExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaStatement(SarlContinueExpression,ITreeAppendable,boolean)</pre>
+      <div>
+       Generate the Java code related to the preparation statements for the break keyword.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        breakExpression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        isReferenced - <span class="doclet-tags-param-comment">indicates if the expression is referenced.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.7</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaStatement(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      _toJavaStatement(XCastedExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaStatement(XCastedExpression,ITreeAppendable,boolean)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="_toJavaStatement(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      _toJavaStatement(XClosure,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _toJavaStatement(XClosure,ITreeAppendable,boolean)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="appendInlineFeatureCall(org.eclipse.xtext.xbase.XAbstractFeatureCall,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      appendInlineFeatureCall(XAbstractFeatureCall,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendInlineFeatureCall(XAbstractFeatureCall,ITreeAppendable)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="canBeNotStaticAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">
+      canBeNotStaticAnonymousClass(XClosure,LightweightTypeReference,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> canBeNotStaticAnonymousClass(XClosure,LightweightTypeReference,JvmOperation) : boolean</pre>
+      <div>
+       Replies if the given closure could be represented by an not static anonymous class.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        closure - <span class="doclet-tags-param-comment">the closure.</span>
+        <br>
+        typeRef - <span class="doclet-tags-param-comment">the type of the closure.</span>
+        <br>
+        operation - <span class="doclet-tags-param-comment">the operation to implement.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the given closure could be represented by a not-static anonymous class.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.8.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="canCompileToJavaLambda(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">
+      canCompileToJavaLambda(XClosure,LightweightTypeReference,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> canCompileToJavaLambda(XClosure,LightweightTypeReference,JvmOperation) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="compile(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,java.util.Set<org.eclipse.xtext.common.types.JvmTypeReference>)">
+      compile(XExpression,ITreeAppendable,LightweightTypeReference,Set&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> compile(XExpression,ITreeAppendable,LightweightTypeReference,Set&lt;E&gt;) : <span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="doConversion(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.Later)">
+      doConversion(LightweightTypeReference,LightweightTypeReference,ITreeAppendable,XExpression,Later)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> doConversion(LightweightTypeReference,LightweightTypeReference,ITreeAppendable,XExpression,Later)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="doInternalToJavaStatement(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      doInternalToJavaStatement(XExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> doInternalToJavaStatement(XExpression,ITreeAppendable,boolean)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getReferencedLocalVariable(org.eclipse.xtext.xbase.XExpression,boolean)">
+      getReferencedLocalVariable(XExpression,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getReferencedLocalVariable(XExpression,boolean) : <span>java.util.Map</span>&lt;K,V&gt;</pre>
+      <div>
+       Replies all the variables that are referenced into the given expression.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        onlyWritable - <span class="doclet-tags-param-comment">if <code class="doclet-tags-param-comment">true</code> only the writable variables are replied. Otherwise, all variables are replied.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the referenced variables.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="internalCanCompileToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      internalCanCompileToJavaExpression(XExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> internalCanCompileToJavaExpression(XExpression,ITreeAppendable) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="internalToConvertedExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      internalToConvertedExpression(XExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> internalToConvertedExpression(XExpression,ITreeAppendable)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="isAtLeastJava8(org.eclipse.emf.ecore.EObject)">
+      isAtLeastJava8(EObject)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isAtLeastJava8(EObject) : boolean</pre>
+      <div>
+       Replies if the generation is for Java version 8 at least.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if Java 8 or newer.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isEarlyExit(org.eclipse.xtext.xbase.XExpression)">
+      isEarlyExit(XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isEarlyExit(XExpression) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="isReferenceToIt(org.eclipse.xtext.xbase.XFeatureCall)">
+      isReferenceToIt(XFeatureCall)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isReferenceToIt(XFeatureCall) : boolean</pre>
+      <div>
+       Replies if the given feature call has an implicit reference to the <code>it</code> variable.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        featureCall - <span class="doclet-tags-param-comment">the feature call to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the given feature call has an implicit reference to the  <code class="doclet-tags-return-comment">it</code>  variable.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.9</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isVariableDeclarationRequired(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,boolean)">
+      isVariableDeclarationRequired(XExpression,ITreeAppendable,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isVariableDeclarationRequired(XExpression,ITreeAppendable,boolean) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="jvmOperationCallToJavaExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.XExpression,java.util.List<org.eclipse.xtext.xbase.XExpression>,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      jvmOperationCallToJavaExpression(XExpression,JvmOperation,XExpression,List&lt;E&gt;,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> jvmOperationCallToJavaExpression(XExpression,JvmOperation,XExpression,List&lt;E&gt;,ITreeAppendable)</pre>
+      <div>
+       Generate the Java expression for the given JVM operation.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        sourceObject - <span class="doclet-tags-param-comment">the object into the source tree that is the source for the call.</span>
+        <br>
+        operation - <span class="doclet-tags-param-comment">the JVM operation to call.</span>
+        <br>
+        receiver - <span class="doclet-tags-param-comment">the receiver of the call.</span>
+        <br>
+        arguments - <span class="doclet-tags-param-comment">the arguments to pass to the called operation.</span>
+        <br>
+        appendable - <span class="doclet-tags-param-comment">the receiver of the Java code.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="logInternalError(java.lang.Throwable)">
+      logInternalError(Throwable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> logInternalError(Throwable)</pre>
+      <div>
+       Log an internal error but do not fail.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        exception - <span class="doclet-tags-param-comment">the exception to log.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="prepareExpression(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable)">
+      prepareExpression(XExpression,ITreeAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> prepareExpression(XExpression,ITreeAppendable)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="toAnonymousClass(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.output.ITreeAppendable,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.common.types.JvmOperation)">
+      toAnonymousClass(XClosure,ITreeAppendable,LightweightTypeReference,JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> toAnonymousClass(XClosure,ITreeAppendable,LightweightTypeReference,JvmOperation) : <span>org.eclipse.xtext.xbase.compiler.output.ITreeAppendable</span></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/compiler/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/compiler/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/compiler/JavaInlineExpressionCompiler/InlineAnnotationTreeAppendable.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/compiler/SARLGeneratorConfigProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

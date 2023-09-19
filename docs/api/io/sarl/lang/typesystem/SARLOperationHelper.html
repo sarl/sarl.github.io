@@ -1,0 +1,1566 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SARLOperationHelper</title>
+  <link rel="stylesheet" href="../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../css/index.css">
+  <script src="../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLExpressionHelper.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper/AnnotationJavaGenerationAdapter.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../io/sarl/lang/typesystem/package-summary.html" class="doclet-header-packagename">io.sarl.lang.typesystem</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class SARLOperationHelper
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html" class="doclet-inheritancetree-type">SARLOperationHelper</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../io/sarl/lang/typesystem/IOperationHelper.html" class="doclet-superinterfacelist">IOperationHelper</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">javax.inject.Singleton</span><br></span>class <span class="doclet-typesignature-typename">SARLOperationHelper</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <a href="../../../../io/sarl/lang/typesystem/IOperationHelper.html" class="doclet-typesignature">IOperationHelper</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Helper on operations. 
+      <p></p>This implementation extends the Xtend expression helper by assuming that any function with a name starting with "get", "is", "has" is a pure function. It also assumes that "equals", "hashCode", "clone" and "toString" are also pure functions.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.6</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="nested.classes.summary.box">
+    <div class="doclet-summarybox-title">
+     Nested Type Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1114 active" onclick="openTabElement(this,'ID2731', 'doclet-tabs-button-instance-1114', 'doclet-tabs-content-instance-1114')">Nested Types</button>
+    </div>
+    <div id="ID2731" class="doclet-tabs-content doclet-tabs-content-instance-1114 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Type and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper/AnnotationJavaGenerationAdapter.html">SARLOperationHelper.AnnotationJavaGenerationAdapter</a></span><br>
+         Adapter that enables to adda annotation when generating the Java code.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper/SideEffectContext.html">SARLOperationHelper.SideEffectContext</a></span><br>
+         Context for the side effect.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1116 active" onclick="openTabElement(this,'ID2737', 'doclet-tabs-button-instance-1116', 'doclet-tabs-content-instance-1116')">Constructors</button>
+    </div>
+    <div id="ID2737" class="doclet-tabs-content doclet-tabs-content-instance-1116 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#<init>()">new</a></span><br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1117 active" onclick="openTabElement(this,'ID2738', 'doclet-tabs-button-instance-1117', 'doclet-tabs-content-instance-1117')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1117" onclick="openTabElement(this,'ID2741', 'doclet-tabs-button-instance-1117', 'doclet-tabs-content-instance-1117')">Instance actions</button>
+    </div>
+    <div id="ID2738" class="doclet-tabs-content doclet-tabs-content-instance-1117 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlAssertExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlAssertExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlBreakExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlBreakExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlContinueExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlContinueExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XAbstractWhileExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XAbstractWhileExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XAssignment,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XAssignment,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBasicForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBasicForLoopExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBinaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBinaryOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBlockExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBlockExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XCastedExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XCastedExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XCollectionLiteral,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XCollectionLiteral,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XConstructorCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XConstructorCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XFeatureCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XForLoopExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XIfExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XIfExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XMemberFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XMemberFeatureCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XPostfixOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XPostfixOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XReturnExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XReturnExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XSwitchExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XSwitchExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XSynchronizedExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XSynchronizedExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XThrowExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XThrowExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XTryCatchFinallyExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XUnaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XUnaryOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XVariableDeclaration,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XVariableDeclaration,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#attachPureAnnotationAdapter(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.lib.Functions.Function2<? super org.eclipse.xtext.common.types.JvmOperation,? super io.sarl.lang.typesystem.IOperationHelper,? extends java.lang.Boolean>)">attachPureAnnotationAdapter(JvmOperation,Function2&lt;P1,P2,Result&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#evaluatePureAnnotationAdapters(org.eclipse.xtext.common.types.JvmOperation)">evaluatePureAnnotationAdapters(JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtend.core.xtend.XtendConstructor)">getInferredPrototype(XtendConstructor)</a></span><br>
+         Replies the inferred prototype of the given constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtend.core.xtend.XtendFunction)">getInferredPrototype(XtendFunction)</a></span><br>
+         Replies the inferred prototype of the given operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtext.common.types.JvmConstructor)">getInferredPrototype(JvmConstructor)</a></span><br>
+         Replies the inferred prototype of the given constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtext.common.types.JvmOperation)">getInferredPrototype(JvmOperation)</a></span><br>
+         Replies the inferred prototype of the given operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Iterable</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getSideEffectExpressions(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">getSideEffectExpressions(InferredPrototype,XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">hasSideEffects(InferredPrototype,XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">hasSideEffects(XExpression,ISideEffectContext)</a></span><br>
+         Determine if the given expression has a side effect.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">hasSideEffects(InferredPrototype,XExpression,ISideEffectContext)</a></span><br>
+         Determine if the given expression has a side effect.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPurableOperation(org.eclipse.xtend.core.xtend.XtendFunction)">isPurableOperation(XtendFunction)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureOperation(org.eclipse.xtext.common.types.JvmOperation)">isPureOperation(JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureOperation(org.eclipse.xtext.common.types.JvmOperation,io.sarl.lang.typesystem.ISideEffectContext)">isPureOperation(JvmOperation,ISideEffectContext)</a></span><br>
+         Check if the given operation is annoted with <span>@Pure</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureStateAmbiguous(org.eclipse.xtend.core.xtend.XtendFunction)">isPureStateAmbiguous(XtendFunction)</a></span><br>
+         Replies if it is impossible to determine the pure state of the given function .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureStateForbidden(org.eclipse.xtend.core.xtend.XtendFunction)">isPureStateForbidden(XtendFunction)</a></span><br>
+         Replies if the given function is purable according to its modifiers and prototype.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isReassignmentOperator(org.eclipse.xtext.xbase.XBinaryOperation)">isReassignmentOperator(XBinaryOperation)</a></span><br>
+         Replies if the given operator is a reassignment operator.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2741" class="doclet-tabs-content doclet-tabs-content-instance-1117 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlAssertExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlAssertExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlBreakExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlBreakExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(io.sarl.lang.sarl.SarlContinueExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(SarlContinueExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XAbstractWhileExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XAbstractWhileExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XAssignment,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XAssignment,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBasicForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBasicForLoopExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBinaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBinaryOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XBlockExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XBlockExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XCastedExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XCastedExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XCollectionLiteral,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XCollectionLiteral,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XConstructorCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XConstructorCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XFeatureCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XForLoopExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XIfExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XIfExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XMemberFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XMemberFeatureCall,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XPostfixOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XPostfixOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XReturnExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XReturnExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XSwitchExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XSwitchExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XSynchronizedExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XSynchronizedExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XThrowExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XThrowExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XTryCatchFinallyExpression,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XUnaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XUnaryOperation,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#_hasSideEffects(org.eclipse.xtext.xbase.XVariableDeclaration,io.sarl.lang.typesystem.ISideEffectContext)">_hasSideEffects(XVariableDeclaration,ISideEffectContext)</a></span><br>
+         Test if the given expression has side effects.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#attachPureAnnotationAdapter(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.lib.Functions.Function2<? super org.eclipse.xtext.common.types.JvmOperation,? super io.sarl.lang.typesystem.IOperationHelper,? extends java.lang.Boolean>)">attachPureAnnotationAdapter(JvmOperation,Function2&lt;P1,P2,Result&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#evaluatePureAnnotationAdapters(org.eclipse.xtext.common.types.JvmOperation)">evaluatePureAnnotationAdapters(JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtend.core.xtend.XtendConstructor)">getInferredPrototype(XtendConstructor)</a></span><br>
+         Replies the inferred prototype of the given constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtend.core.xtend.XtendFunction)">getInferredPrototype(XtendFunction)</a></span><br>
+         Replies the inferred prototype of the given operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtext.common.types.JvmConstructor)">getInferredPrototype(JvmConstructor)</a></span><br>
+         Replies the inferred prototype of the given constructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getInferredPrototype(org.eclipse.xtext.common.types.JvmOperation)">getInferredPrototype(JvmOperation)</a></span><br>
+         Replies the inferred prototype of the given operation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Iterable</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#getSideEffectExpressions(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">getSideEffectExpressions(InferredPrototype,XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">hasSideEffects(InferredPrototype,XExpression)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">hasSideEffects(XExpression,ISideEffectContext)</a></span><br>
+         Determine if the given expression has a side effect.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">hasSideEffects(InferredPrototype,XExpression,ISideEffectContext)</a></span><br>
+         Determine if the given expression has a side effect.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPurableOperation(org.eclipse.xtend.core.xtend.XtendFunction)">isPurableOperation(XtendFunction)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureOperation(org.eclipse.xtext.common.types.JvmOperation)">isPureOperation(JvmOperation)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureOperation(org.eclipse.xtext.common.types.JvmOperation,io.sarl.lang.typesystem.ISideEffectContext)">isPureOperation(JvmOperation,ISideEffectContext)</a></span><br>
+         Check if the given operation is annoted with <span>@Pure</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureStateAmbiguous(org.eclipse.xtend.core.xtend.XtendFunction)">isPureStateAmbiguous(XtendFunction)</a></span><br>
+         Replies if it is impossible to determine the pure state of the given function .</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isPureStateForbidden(org.eclipse.xtend.core.xtend.XtendFunction)">isPureStateForbidden(XtendFunction)</a></span><br>
+         Replies if the given function is purable according to its modifiers and prototype.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper.html#isReassignmentOperator(org.eclipse.xtext.xbase.XBinaryOperation)">isReassignmentOperator(XBinaryOperation)</a></span><br>
+         Replies if the given operator is a reassignment operator.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+      <div>
+       Constructor.
+      </div>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="_hasSideEffects(io.sarl.lang.sarl.SarlAssertExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(SarlAssertExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(SarlAssertExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(io.sarl.lang.sarl.SarlBreakExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(SarlBreakExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(SarlBreakExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(io.sarl.lang.sarl.SarlContinueExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(SarlContinueExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(SarlContinueExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.7</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XAbstractWhileExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XAbstractWhileExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XAbstractWhileExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XAssignment,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XAssignment,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XAssignment,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XBasicForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XBasicForLoopExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XBasicForLoopExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XBinaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XBinaryOperation,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XBinaryOperation,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XBlockExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XBlockExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XBlockExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XCastedExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XCastedExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XCastedExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XCollectionLiteral,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XCollectionLiteral,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XCollectionLiteral,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XConstructorCall,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XConstructorCall,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XConstructorCall,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XFeatureCall,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XFeatureCall,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XForLoopExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XForLoopExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XForLoopExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XIfExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XIfExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XIfExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XMemberFeatureCall,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XMemberFeatureCall,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XMemberFeatureCall,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XPostfixOperation,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XPostfixOperation,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XPostfixOperation,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XReturnExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XReturnExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XReturnExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XSwitchExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XSwitchExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XSwitchExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XSynchronizedExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XSynchronizedExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XSynchronizedExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XThrowExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XThrowExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XThrowExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XTryCatchFinallyExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XTryCatchFinallyExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XUnaryOperation,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XUnaryOperation,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XUnaryOperation,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_hasSideEffects(org.eclipse.xtext.xbase.XVariableDeclaration,io.sarl.lang.typesystem.ISideEffectContext)">
+      _hasSideEffects(XVariableDeclaration,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _hasSideEffects(XVariableDeclaration,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Test if the given expression has side effects.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expression - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the list of context expressions.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has side effects.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="attachPureAnnotationAdapter(org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.xbase.lib.Functions.Function2<? super org.eclipse.xtext.common.types.JvmOperation,? super io.sarl.lang.typesystem.IOperationHelper,? extends java.lang.Boolean>)">
+      attachPureAnnotationAdapter(JvmOperation,Function2&lt;P1,P2,Result&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> attachPureAnnotationAdapter(JvmOperation,Function2&lt;P1,P2,Result&gt;)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="evaluatePureAnnotationAdapters(org.eclipse.xtext.common.types.JvmOperation)">
+      evaluatePureAnnotationAdapters(JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> evaluatePureAnnotationAdapters(JvmOperation) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getInferredPrototype(org.eclipse.xtend.core.xtend.XtendConstructor)">
+      getInferredPrototype(XtendConstructor)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getInferredPrototype(XtendConstructor) : <a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></pre>
+      <div>
+       Replies the inferred prototype of the given constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        constructor - <span class="doclet-tags-param-comment">the constructor.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the inferred prototype.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getInferredPrototype(org.eclipse.xtend.core.xtend.XtendFunction)">
+      getInferredPrototype(XtendFunction)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getInferredPrototype(XtendFunction) : <a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></pre>
+      <div>
+       Replies the inferred prototype of the given operation.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the operation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the inferred prototype.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getInferredPrototype(org.eclipse.xtext.common.types.JvmConstructor)">
+      getInferredPrototype(JvmConstructor)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getInferredPrototype(JvmConstructor) : <a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></pre>
+      <div>
+       Replies the inferred prototype of the given constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        constructor - <span class="doclet-tags-param-comment">the constructor.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the inferred prototype.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getInferredPrototype(org.eclipse.xtext.common.types.JvmOperation)">
+      getInferredPrototype(JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getInferredPrototype(JvmOperation) : <a href="../../../../io/sarl/lang/sarl/actionprototype/InferredPrototype.html">InferredPrototype</a></pre>
+      <div>
+       Replies the inferred prototype of the given operation.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the operation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the inferred prototype.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getSideEffectExpressions(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">
+      getSideEffectExpressions(InferredPrototype,XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getSideEffectExpressions(InferredPrototype,XExpression) : <span>java.lang.Iterable</span>&lt;T&gt;</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression)">
+      hasSideEffects(InferredPrototype,XExpression)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> hasSideEffects(InferredPrototype,XExpression) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="hasSideEffects(org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      hasSideEffects(XExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> hasSideEffects(XExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Determine if the given expression has a side effect.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        expr - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has a side effect.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="hasSideEffects(io.sarl.lang.sarl.actionprototype.InferredPrototype,org.eclipse.xtext.xbase.XExpression,io.sarl.lang.typesystem.ISideEffectContext)">
+      hasSideEffects(InferredPrototype,XExpression,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> hasSideEffects(InferredPrototype,XExpression,ISideEffectContext) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Determine if the given expression has a side effect.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        calledOperation - <span class="doclet-tags-param-comment">the called operation, not yet in the call stack.</span>
+        <br>
+        expr - <span class="doclet-tags-param-comment">the expression.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the expression has a side effect.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isPurableOperation(org.eclipse.xtend.core.xtend.XtendFunction)">
+      isPurableOperation(XtendFunction)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> isPurableOperation(XtendFunction) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="isPureOperation(org.eclipse.xtext.common.types.JvmOperation)">
+      isPureOperation(JvmOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> isPureOperation(JvmOperation) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="isPureOperation(org.eclipse.xtext.common.types.JvmOperation,io.sarl.lang.typesystem.ISideEffectContext)">
+      isPureOperation(JvmOperation,ISideEffectContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> isPureOperation(JvmOperation,ISideEffectContext) : boolean</pre>
+      <div>
+       Check if the given operation is annoted with <span>@Pure</span>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the operation to test.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context of the purity evaluation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the operation is marked as pure; otherwise  <code class="doclet-tags-return-comment">false</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.13</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><span class="doclet-tags-see-comment">org.eclipse.xtext.xbase.lib.Pure</span> , <span class="doclet-tags-see-comment">isPurableOperation(XtendFunction,ISideEffectContext)</span> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isPureStateAmbiguous(org.eclipse.xtend.core.xtend.XtendFunction)">
+      isPureStateAmbiguous(XtendFunction)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isPureStateAmbiguous(XtendFunction) : boolean</pre>
+      <div>
+       Replies if it is impossible to determine the pure state of the given function .
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the operation to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the pure state of the operation cannot be determined.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.10</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isPureStateForbidden(org.eclipse.xtend.core.xtend.XtendFunction)">
+      isPureStateForbidden(XtendFunction)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isPureStateForbidden(XtendFunction) : boolean</pre>
+      <div>
+       Replies if the given function is purable according to its modifiers and prototype. 
+       <p></p>Basically, an operation cannot be pure if:
+       <ul>
+        <li>native,</li>
+        <li>the return type is void.</li>
+       </ul>
+       <p></p>This function is called usually before testing the pattern of the function's name.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the operation to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the operation is not pure according to the prototype.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.10</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isReassignmentOperator(org.eclipse.xtext.xbase.XBinaryOperation)">
+      isReassignmentOperator(XBinaryOperation)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isReassignmentOperator(XBinaryOperation) : boolean</pre>
+      <div>
+       Replies if the given operator is a reassignment operator. A reassignment operator changes its left operand.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operator - <span class="doclet-tags-param-comment">the operator.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the operator changes its left operand.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLExpressionHelper.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLOperationHelper/AnnotationJavaGenerationAdapter.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

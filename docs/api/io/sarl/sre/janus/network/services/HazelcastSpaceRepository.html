@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>HazelcastSpaceRepository</title>
+  <link rel="stylesheet" href="../../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../../css/index.css">
+  <script src="../../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/network/services/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/network/services/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastEventTransportService/TopicNameListener.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph">Next Type</span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../../io/sarl/sre/janus/network/services/package-summary.html" class="doclet-header-packagename">io.sarl.sre.janus.network.services</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class HazelcastSpaceRepository
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html" class="doclet-inheritancetree-type">SpaceRepository</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html" class="doclet-inheritancetree-type">LocalSpaceRepository</a>
+          <ul class="doclet-inheritancetree-tree">
+           <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html" class="doclet-inheritancetree-type">HazelcastSpaceRepository</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../../io/sarl/sre/janus/spaces/SpaceListener.html" class="doclet-superinterfacelist">SpaceListener</a>, <span class="doclet-superinterfacelist">java.util.EventListener</span>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">HazelcastSpaceRepository</span>
+     <br>
+     extends <a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html" class="doclet-typesignature">LocalSpaceRepository</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Implementation of a space repository that is connected to remote SRE with Hazelcast framework.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sre.janus</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">janus.network</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.12</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4164 active" onclick="openTabElement(this,'ID10219', 'doclet-tabs-button-instance-4164', 'doclet-tabs-content-instance-4164')">Properties</button>
+    </div>
+    <div id="ID10219" class="doclet-tabs-content doclet-tabs-content-instance-4164 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>com.hazelcast.core.HazelcastInstance</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#getHazelcastInstance()">hazelcastInstance</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getLock()">lock</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html#getSharedStructure()">sharedStructure</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getSpaces()">spaces</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">
+     Field Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4166 active" onclick="openTabElement(this,'ID10221', 'doclet-tabs-button-instance-4166', 'doclet-tabs-content-instance-4166')">All fields</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4166" onclick="openTabElement(this,'ID10224', 'doclet-tabs-button-instance-4166', 'doclet-tabs-content-instance-4166')">Static values</button>
+    </div>
+    <div id="ID10221" class="doclet-tabs-content doclet-tabs-content-instance-4166 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#HAZELCAST_SPACE_ID_MAP_NAME">HAZELCAST_SPACE_ID_MAP_NAME</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID10224" class="doclet-tabs-content doclet-tabs-content-instance-4166 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#HAZELCAST_SPACE_ID_MAP_NAME">HAZELCAST_SPACE_ID_MAP_NAME</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#logger">logger</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4167 active" onclick="openTabElement(this,'ID10226', 'doclet-tabs-button-instance-4167', 'doclet-tabs-content-instance-4167')">Constructors</button>
+    </div>
+    <div id="ID10226" class="doclet-tabs-content doclet-tabs-content-instance-4167 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#<init>(io.bootique.di.Injector,io.sarl.sre.janus.services.executor.ExecutorService,io.sarl.sre.janus.services.logging.LoggingService,io.sarl.sre.janus.boot.configs.SreConfig,io.sarl.sre.janus.spaces.SreSpaceSpecificationFactory,io.sarl.sre.janus.services.context.ContextService,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>,com.hazelcast.core.HazelcastInstance,java.util.Map<java.util.UUID,io.sarl.sre.janus.services.context.SpaceRepository.SpaceDescription>,com.hazelcast.map.IMap<io.sarl.lang.core.SpaceID,java.lang.Object[]>)">new(Injector,ExecutorService,LoggingService,SreConfig,SreSpaceSpecificationFactory,ContextService,Provider&lt;T&gt;,HazelcastInstance,[Map&lt;K,V&gt;],[IMap&lt;K,V&gt;])</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4168 active" onclick="openTabElement(this,'ID10227', 'doclet-tabs-button-instance-4168', 'doclet-tabs-content-instance-4168')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4168" onclick="openTabElement(this,'ID10230', 'doclet-tabs-button-instance-4168', 'doclet-tabs-content-instance-4168')">Instance actions</button>
+    </div>
+    <div id="ID10227" class="doclet-tabs-content doclet-tabs-content-instance-4168 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.logging.Logger</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#createLogger(io.sarl.sre.janus.services.logging.LoggingService)">createLogger(LoggingService)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;S</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#createSpaceFirstInstance(java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,io.sarl.lang.core.SpaceID,java.lang.Object[])">createSpaceFirstInstance(Class&lt;T&gt;,SpaceID,Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#destroyThreadUnsafe()">destroyThreadUnsafe</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;S</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#ensureLocalSpaceDefinition(io.sarl.lang.core.SpaceID,java.lang.Object[])">ensureLocalSpaceDefinition(SpaceID,Object)</a></span><br>
+         Add the existing, but not yet known, spaces into this repository.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>com.hazelcast.core.HazelcastInstance</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#getHazelcastInstance()">getHazelcastInstance</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#removeLocalSpaceDefinition(io.sarl.lang.core.SpaceID,boolean)">removeLocalSpaceDefinition(SpaceID,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#removeLocalSpaceDefinitions()">removeLocalSpaceDefinitions</a></span><br>
+         Remove all the local/remote spaces.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID10230" class="doclet-tabs-content doclet-tabs-content-instance-4168 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.logging.Logger</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#createLogger(io.sarl.sre.janus.services.logging.LoggingService)">createLogger(LoggingService)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;S</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#createSpaceFirstInstance(java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,io.sarl.lang.core.SpaceID,java.lang.Object[])">createSpaceFirstInstance(Class&lt;T&gt;,SpaceID,Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#destroyThreadUnsafe()">destroyThreadUnsafe</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;S</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#ensureLocalSpaceDefinition(io.sarl.lang.core.SpaceID,java.lang.Object[])">ensureLocalSpaceDefinition(SpaceID,Object)</a></span><br>
+         Add the existing, but not yet known, spaces into this repository.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>com.hazelcast.core.HazelcastInstance</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#getHazelcastInstance()">getHazelcastInstance</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#removeLocalSpaceDefinition(io.sarl.lang.core.SpaceID,boolean)">removeLocalSpaceDefinition(SpaceID,boolean)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#removeLocalSpaceDefinitions()">removeLocalSpaceDefinitions</a></span><br>
+         Remove all the local/remote spaces.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#addSpaceRepositoryListener(io.sarl.sre.janus.services.context.SpaceRepositoryListener)">addSpaceRepositoryListener(SpaceRepositoryListener)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#createDefaultSpace(io.sarl.lang.core.SpaceID)">createDefaultSpace(SpaceID)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#createSpace(io.sarl.lang.core.SpaceID,java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,java.lang.Object[])">createSpace(SpaceID,Class&lt;T&gt;,Object*)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#createSpaceDescription(io.sarl.lang.core.SpaceID,io.sarl.lang.core.Space)">createSpaceDescription(SpaceID,Space)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#destroy()">destroy</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#destroyableSpace(io.sarl.lang.core.Space)">destroyableSpace(Space)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#fireSpaceAdded(io.sarl.lang.core.Space,boolean)">fireSpaceAdded(Space,boolean)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#fireSpaceRemoved(io.sarl.lang.core.Space,boolean)">fireSpaceRemoved(Space,boolean)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getLock()">getLock</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getOrCreateSpaceWithID(io.sarl.lang.core.SpaceID,java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,java.lang.Object[])">getOrCreateSpaceWithID(SpaceID,Class&lt;T&gt;,Object*)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getOrCreateSpaceWithSpec(io.sarl.lang.core.SpaceID,java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,java.lang.Object[])">getOrCreateSpaceWithSpec(SpaceID,Class&lt;T&gt;,Object*)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html#getSharedStructure()">getSharedStructure</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getSpace(io.sarl.lang.core.SpaceID)">getSpace(SpaceID)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getSpaces(java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>)">getSpaces(Class&lt;T&gt;)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#getSpaces()">getSpaces</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#hasSpace(java.util.UUID)">hasSpace(UUID)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#life(io.sarl.lang.core.Space,io.sarl.sre.janus.services.context.SpaceRepository.SpaceDescription)">life(Space,SpaceDescription)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#life(io.sarl.lang.core.SpaceID,io.sarl.sre.janus.services.context.SpaceRepository.SpaceDescription)">life(SpaceID,SpaceDescription)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#refreshInternalStructures()">refreshInternalStructures</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#removeEmptySpaces()">removeEmptySpaces</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#removeSpace(io.sarl.lang.core.Space)">removeSpace(Space)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#removeSpaceIfEmpty(io.sarl.lang.core.Space)">removeSpaceIfEmpty(Space)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#removeSpaceIfEmpty(java.util.UUID)">removeSpaceIfEmpty(UUID)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html#removeSpaceRepositoryListener(io.sarl.sre.janus.services.context.SpaceRepositoryListener)">removeSpaceRepositoryListener(SpaceRepositoryListener)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      hazelcastInstance
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> hazelcastInstance : <span>com.hazelcast.core.HazelcastInstance</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastSpaceRepository.html#getHazelcastInstance()">getHazelcastInstance</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="fields.details.box">
+    <div class="doclet-detailbox-title">
+     Field Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="HAZELCAST_SPACE_ID_MAP_NAME">
+      HAZELCAST_SPACE_ID_MAP_NAME
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">public static val</span> HAZELCAST_SPACE_ID_MAP_NAME : <span>java.lang.String</span> = "io.sarl.network.distributedSpaceIDMapName"</pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(io.bootique.di.Injector,io.sarl.sre.janus.services.executor.ExecutorService,io.sarl.sre.janus.services.logging.LoggingService,io.sarl.sre.janus.boot.configs.SreConfig,io.sarl.sre.janus.spaces.SreSpaceSpecificationFactory,io.sarl.sre.janus.services.context.ContextService,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>,com.hazelcast.core.HazelcastInstance,java.util.Map<java.util.UUID,io.sarl.sre.janus.services.context.SpaceRepository.SpaceDescription>,com.hazelcast.map.IMap<io.sarl.lang.core.SpaceID,java.lang.Object[]>)">
+      new(Injector,ExecutorService,LoggingService,SreConfig,SreSpaceSpecificationFactory,ContextService,Provider&lt;T&gt;,HazelcastInstance,[Map&lt;K,V&gt;],[IMap&lt;K,V&gt;])
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(Injector,ExecutorService,LoggingService,SreConfig,SreSpaceSpecificationFactory,ContextService,Provider&lt;T&gt;,HazelcastInstance,[Map&lt;K,V&gt;],[IMap&lt;K,V&gt;])</pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="createLogger(io.sarl.sre.janus.services.logging.LoggingService)">
+      createLogger(LoggingService)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> createLogger(LoggingService) : <span>java.util.logging.Logger</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="createSpaceFirstInstance(java.lang.Class<? extends io.sarl.lang.core.SpaceSpecification<S>>,io.sarl.lang.core.SpaceID,java.lang.Object[])">
+      createSpaceFirstInstance(Class&lt;T&gt;,SpaceID,Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> createSpaceFirstInstance(Class&lt;T&gt;,SpaceID,Object) : S<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> S <span class="doclet-keyword">extends</span> <a href="../../../../../../io/sarl/lang/core/Space.html">Space</a></p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="destroyThreadUnsafe()">
+      destroyThreadUnsafe
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> destroyThreadUnsafe</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="ensureLocalSpaceDefinition(io.sarl.lang.core.SpaceID,java.lang.Object[])">
+      ensureLocalSpaceDefinition(SpaceID,Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> ensureLocalSpaceDefinition(SpaceID,Object) : S<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> S <span class="doclet-keyword">extends</span> <a href="../../../../../../io/sarl/lang/core/Space.html">Space</a></p></pre>
+      <div>
+       Add the existing, but not yet known, spaces into this repository.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        id - <span class="doclet-tags-param-comment">identifier of the space</span>
+        <br>
+        initializationParameters - <span class="doclet-tags-param-comment">parameters for initialization.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getHazelcastInstance()">
+      getHazelcastInstance
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getHazelcastInstance : <span>com.hazelcast.core.HazelcastInstance</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="removeLocalSpaceDefinition(io.sarl.lang.core.SpaceID,boolean)">
+      removeLocalSpaceDefinition(SpaceID,boolean)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> removeLocalSpaceDefinition(SpaceID,boolean)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="removeLocalSpaceDefinitions()">
+      removeLocalSpaceDefinitions
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> removeLocalSpaceDefinitions</pre>
+      <div>
+       Remove all the local/remote spaces.
+      </div>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/network/services/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/network/services/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastEventTransportService/TopicNameListener.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph">Next Type</span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

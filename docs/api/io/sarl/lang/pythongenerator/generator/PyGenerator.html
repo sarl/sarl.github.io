@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>PyGenerator</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGeneratorProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html" class="doclet-header-packagename">io.sarl.lang.pythongenerator.generator</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class PyGenerator
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html" class="doclet-inheritancetree-type">AbstractExtraLanguageGenerator</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html" class="doclet-inheritancetree-type">PyGenerator</a></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html" class="doclet-superinterfacelist">IRootGenerator</a>, <span class="doclet-superinterfacelist">org.eclipse.xtext.generator.IGenerator2</span>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">PyGenerator</span>
+     <br>
+     extends <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html" class="doclet-typesignature">AbstractExtraLanguageGenerator</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      The generator from SARL to the Python language.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">pythongenerator</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.6</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2227 active" onclick="openTabElement(this,'ID5503', 'doclet-tabs-button-instance-2227', 'doclet-tabs-content-instance-2227')">Properties</button>
+    </div>
+    <div id="ID5503" class="doclet-tabs-content doclet-tabs-content-instance-2227 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html">PyExpressionGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getExpressionGenerator()">expressionGenerator</a></span><br>
+         Replies the generator of XExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getFilenameExtension()">filenameExtension</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getOutputConfigurationName()">outputConfigurationName</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getPreferenceID()">preferenceID</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getActionPrototypeProvider()">actionPrototypeProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getEarlyExitComputer()">earlyExitComputer</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getInjector()">injector</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getJvmModelAssociations()">jvmModelAssociations</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getQualifiedNameConverter()">qualifiedNameConverter</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getQualifiedNameProvider()">qualifiedNameProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeBuilder()">typeBuilder</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeExtensions()">typeExtensions</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeReferences()">typeReferences</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeResolver()">typeResolver</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">
+     Field Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2229 active" onclick="openTabElement(this,'ID5505', 'doclet-tabs-button-instance-2229', 'doclet-tabs-content-instance-2229')">All fields</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2229" onclick="openTabElement(this,'ID5508', 'doclet-tabs-button-instance-2229', 'doclet-tabs-content-instance-2229')">Static values</button>
+    </div>
+    <div id="ID5505" class="doclet-tabs-content doclet-tabs-content-instance-2229 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#PYTHON_FILE_HEADER">PYTHON_FILE_HEADER</a></span><br>
+         Header for a Python file.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5508" class="doclet-tabs-content doclet-tabs-content-instance-2229 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#PYTHON_FILE_HEADER">PYTHON_FILE_HEADER</a></span><br>
+         Header for a Python file.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2230 active" onclick="openTabElement(this,'ID5510', 'doclet-tabs-button-instance-2230', 'doclet-tabs-content-instance-2230')">Constructors</button>
+    </div>
+    <div id="ID5510" class="doclet-tabs-content doclet-tabs-content-instance-2230 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2231 active" onclick="openTabElement(this,'ID5511', 'doclet-tabs-button-instance-2231', 'doclet-tabs-content-instance-2231')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2231" onclick="openTabElement(this,'ID5512', 'doclet-tabs-button-instance-2231', 'doclet-tabs-content-instance-2231')">Static actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2231" onclick="openTabElement(this,'ID5514', 'doclet-tabs-button-instance-2231', 'doclet-tabs-content-instance-2231')">Instance actions</button>
+    </div>
+    <div id="ID5511" class="doclet-tabs-content doclet-tabs-content-instance-2231 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_before(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_before(SarlCapacityUses,IExtraLanguageGeneratorContext)</a></span><br>
+         Mark the functions of the used capacities in order to have a valid feature call within the code.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAgent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAgent,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAnnotationType,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlBehavior,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBehavior,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlCapacity,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlCapacity,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlClass,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEnumeration,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEvent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEvent,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlInterface,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlSkill,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlSkill,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAction,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAction,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAnnotationType,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlBehaviorUnit,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBehaviorUnit,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlCapacityUses,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlClass,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlConstructor,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlConstructor,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlInterface,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/pythongenerator/generator/PyAppendable.html">PyAppendable</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#createAppendable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">createAppendable(JvmDeclaredType,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateBlockComment(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">generateBlockComment(String,PyAppendable)</a></span><br>
+         Generate a Python block comment with the given comment.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateDocString(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">generateDocString(String,PyAppendable)</a></span><br>
+         Generate a Python docstring with the given comment.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateEnumerationDeclaration(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateEnumerationDeclaration(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given enumeration declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateExecutable(java.lang.String,org.eclipse.xtend.core.xtend.XtendExecutable,boolean,boolean,org.eclipse.xtext.common.types.JvmTypeReference,java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateExecutable(String,XtendExecutable,boolean,boolean,JvmTypeReference,String,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the Python code for an executable statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateFileHeader(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateFileHeader(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateGuardEvaluators(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateGuardEvaluators(String,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the memorized guard evaluators.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateImportStatement(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateImportStatement(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonClassDeclaration(java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonClassDeclaration(String,boolean,List&lt;E&gt;,String,boolean,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the type declaration for a Python class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonConstructors(java.lang.String,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonConstructors(String,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the constructors for a Python class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonField(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonField(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Create a field declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateTypeDeclaration(java.lang.String,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super io.sarl.lang.pythongenerator.generator.PyAppendable,? super io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext>)">generateTypeDeclaration(String,String,boolean,List&lt;E&gt;,String,boolean,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext,Procedure2&lt;P1,P2&gt;)</a></span><br>
+         Generate the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html">PyExpressionGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getExpressionGenerator()">getExpressionGenerator</a></span><br>
+         Replies the generator of XExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getFilenameExtension()">getFilenameExtension</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getGenerationComment(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getGenerationComment(IExtraLanguageGeneratorContext)</a></span><br>
+         Replies a string representing a comment with the generation information.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getOutputConfigurationName()">getOutputConfigurationName</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getPreferenceID()">getPreferenceID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#initializeContext(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">initializeContext(IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmType</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#newType(java.lang.String)">newType(String)</a></span><br>
+         Create a JvmType for a Python type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#setExpressionGenerator(io.sarl.lang.pythongenerator.generator.PyExpressionGenerator)">setExpressionGenerator(PyExpressionGenerator)</a></span><br>
+         Change the generator of XExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#setPyGeneratorConfigurationProvider(io.sarl.lang.pythongenerator.configuration.IPyGeneratorConfigurationProvider)">setPyGeneratorConfigurationProvider(IPyGeneratorConfigurationProvider)</a></span><br>
+         Change the provider of the generator's configuration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#writeFile(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">writeFile(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#writePackageFiles(org.eclipse.xtext.naming.QualifiedName,java.lang.String,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">writePackageFiles(QualifiedName,String,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the Python package files.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5512" class="doclet-tabs-content doclet-tabs-content-instance-2231 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateBlockComment(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">generateBlockComment(String,PyAppendable)</a></span><br>
+         Generate a Python block comment with the given comment.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateDocString(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">generateDocString(String,PyAppendable)</a></span><br>
+         Generate a Python docstring with the given comment.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5514" class="doclet-tabs-content doclet-tabs-content-instance-2231 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_before(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_before(SarlCapacityUses,IExtraLanguageGeneratorContext)</a></span><br>
+         Mark the functions of the used capacities in order to have a valid feature call within the code.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAgent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAgent,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAnnotationType,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlBehavior,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBehavior,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlCapacity,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlCapacity,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlClass,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEnumeration,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEvent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEvent,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlInterface,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlSkill,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlSkill,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAction,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAction,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAnnotationType,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlBehaviorUnit,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBehaviorUnit,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlCapacityUses,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlClass,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlConstructor,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlConstructor,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlInterface,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/pythongenerator/generator/PyAppendable.html">PyAppendable</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#createAppendable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">createAppendable(JvmDeclaredType,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateEnumerationDeclaration(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateEnumerationDeclaration(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given enumeration declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateExecutable(java.lang.String,org.eclipse.xtend.core.xtend.XtendExecutable,boolean,boolean,org.eclipse.xtext.common.types.JvmTypeReference,java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateExecutable(String,XtendExecutable,boolean,boolean,JvmTypeReference,String,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the Python code for an executable statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateFileHeader(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateFileHeader(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateGuardEvaluators(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateGuardEvaluators(String,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the memorized guard evaluators.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateImportStatement(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateImportStatement(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonClassDeclaration(java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonClassDeclaration(String,boolean,List&lt;E&gt;,String,boolean,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the type declaration for a Python class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonConstructors(java.lang.String,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonConstructors(String,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the constructors for a Python class.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generatePythonField(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generatePythonField(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Create a field declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#generateTypeDeclaration(java.lang.String,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super io.sarl.lang.pythongenerator.generator.PyAppendable,? super io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext>)">generateTypeDeclaration(String,String,boolean,List&lt;E&gt;,String,boolean,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext,Procedure2&lt;P1,P2&gt;)</a></span><br>
+         Generate the given type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html">PyExpressionGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getExpressionGenerator()">getExpressionGenerator</a></span><br>
+         Replies the generator of XExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getFilenameExtension()">getFilenameExtension</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getGenerationComment(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getGenerationComment(IExtraLanguageGeneratorContext)</a></span><br>
+         Replies a string representing a comment with the generation information.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getOutputConfigurationName()">getOutputConfigurationName</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getPreferenceID()">getPreferenceID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#initializeContext(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">initializeContext(IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.common.types.JvmType</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#newType(java.lang.String)">newType(String)</a></span><br>
+         Create a JvmType for a Python type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#setExpressionGenerator(io.sarl.lang.pythongenerator.generator.PyExpressionGenerator)">setExpressionGenerator(PyExpressionGenerator)</a></span><br>
+         Change the generator of XExpression.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#setPyGeneratorConfigurationProvider(io.sarl.lang.pythongenerator.configuration.IPyGeneratorConfigurationProvider)">setPyGeneratorConfigurationProvider(IPyGeneratorConfigurationProvider)</a></span><br>
+         Change the provider of the generator's configuration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#writeFile(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">writeFile(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#writePackageFiles(org.eclipse.xtext.naming.QualifiedName,java.lang.String,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">writePackageFiles(QualifiedName,String,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the Python package files.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#_generate(io.sarl.lang.sarl.SarlScript,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlScript,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#after(org.eclipse.emf.ecore.EObject,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">after(EObject,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#afterGenerate(org.eclipse.emf.ecore.resource.Resource,org.eclipse.xtext.generator.IFileSystemAccess2,org.eclipse.xtext.generator.IGeneratorContext)">afterGenerate(Resource,IFileSystemAccess2,IGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#before(org.eclipse.emf.ecore.EObject,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">before(EObject,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#beforeGenerate(org.eclipse.emf.ecore.resource.Resource,org.eclipse.xtext.generator.IFileSystemAccess2,org.eclipse.xtext.generator.IGeneratorContext)">beforeGenerate(Resource,IFileSystemAccess2,IGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#canGenerateFor(org.eclipse.emf.ecore.EObject)">canGenerateFor(EObject)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#createGeneratorContext(org.eclipse.xtext.generator.IFileSystemAccess2,org.eclipse.xtext.generator.IGeneratorContext,org.eclipse.emf.ecore.resource.Resource)">createGeneratorContext(IFileSystemAccess2,IGeneratorContext,Resource)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#doGenerate(org.eclipse.emf.ecore.EObject,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">doGenerate(EObject,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#doGenerate(org.eclipse.emf.ecore.resource.Resource,org.eclipse.xtext.generator.IFileSystemAccess2,org.eclipse.xtext.generator.IGeneratorContext)">doGenerate(Resource,IFileSystemAccess2,IGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#generate(org.eclipse.emf.ecore.EObject,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generate(EObject,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#generate(org.eclipse.emf.ecore.EObject,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generate(EObject,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#generate(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generate(XExpression,LightweightTypeReference,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#generateJvmMembers(java.util.List<? extends org.eclipse.xtext.common.types.JvmMember>,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateJvmMembers(List&lt;E&gt;,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#generateSarlMembers(java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateSarlMembers(List&lt;E&gt;,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getActionPrototypeProvider()">getActionPrototypeProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getAssociatedExpression(org.eclipse.xtext.common.types.JvmMember)">getAssociatedExpression(JvmMember)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getEarlyExitComputer()">getEarlyExitComputer</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getExpectedType(org.eclipse.xtext.xbase.XExpression)">getExpectedType(XExpression)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getExpectedType(org.eclipse.xtend.core.xtend.XtendExecutable,org.eclipse.xtext.common.types.JvmTypeReference)">getExpectedType(XtendExecutable,JvmTypeReference)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getFeatureNameConverter(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getFeatureNameConverter(IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getInjector()">getInjector</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getJvmModelAssociations()">getJvmModelAssociations</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getQualifiedNameConverter()">getQualifiedNameConverter</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getQualifiedNameProvider()">getQualifiedNameProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getSuperTypes(org.eclipse.xtext.common.types.JvmTypeReference,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>)">getSuperTypes(JvmTypeReference,List&lt;E&gt;)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeBuilder()">getTypeBuilder</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeConverter(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getTypeConverter(IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeExtensions()">getTypeExtensions</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeReferences()">getTypeReferences</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#getTypeResolver()">getTypeResolver</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#loadPropertyFile(java.lang.String,org.eclipse.core.runtime.Plugin,java.lang.Class<?>,org.eclipse.xtext.xbase.lib.Functions.Function1<java.io.IOException,org.eclipse.core.runtime.IStatus>)">loadPropertyFile(String,Plugin,Class&lt;T&gt;,Function1&lt;Param,Result&gt;)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setActionPrototypeProvider(io.sarl.lang.sarl.actionprototype.IActionPrototypeProvider)">setActionPrototypeProvider(IActionPrototypeProvider)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setCommonTypeComputationServices(org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices)">setCommonTypeComputationServices(CommonTypeComputationServices)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setEarlyExitComputer(org.eclipse.xtext.xbase.controlflow.IEarlyExitComputer)">setEarlyExitComputer(IEarlyExitComputer)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setInjector(com.google.inject.Injector)">setInjector(Injector)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setJvmModelAssociations(io.sarl.lang.jvmmodel.SarlJvmModelAssociations)">setJvmModelAssociations(SarlJvmModelAssociations)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setLogicalContainerProvider(io.sarl.lang.sarl.actionprototype.IActionPrototypeProvider)">setLogicalContainerProvider(IActionPrototypeProvider)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setQualifiedNameConverter(org.eclipse.xtext.naming.IQualifiedNameConverter)">setQualifiedNameConverter(IQualifiedNameConverter)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setQualifiedNameProvider(org.eclipse.xtext.naming.IQualifiedNameProvider)">setQualifiedNameProvider(IQualifiedNameProvider)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setTypeBuilder(org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder)">setTypeBuilder(JvmTypesBuilder)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setTypeExtensions(org.eclipse.xtext.xbase.jvmmodel.JvmTypeExtensions)">setTypeExtensions(JvmTypeExtensions)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setTypeReferences(org.eclipse.xtext.common.types.util.TypeReferences)">setTypeReferences(TypeReferences)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#setTypeResolver(org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver)">setTypeResolver(IBatchTypeResolver)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#toFilename(org.eclipse.xtext.naming.QualifiedName)">toFilename(QualifiedName)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExtraLanguageGenerator.html#toFilename(org.eclipse.xtext.naming.QualifiedName,java.lang.String)">toFilename(QualifiedName,String)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      expressionGenerator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">var</span> expressionGenerator : <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html">PyExpressionGenerator</a></pre>
+      <div>
+       Replies the generator of XExpression.
+      </div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getExpressionGenerator()">getExpressionGenerator</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the generator.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox">
+      filenameExtension
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> filenameExtension : <span>java.lang.String</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getFilenameExtension()">getFilenameExtension</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      outputConfigurationName
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> outputConfigurationName : <span>java.lang.String</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getOutputConfigurationName()">getOutputConfigurationName</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      preferenceID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> preferenceID : <span>java.lang.String</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#getPreferenceID()">getPreferenceID</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="fields.details.box">
+    <div class="doclet-detailbox-title">
+     Field Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="PYTHON_FILE_HEADER">
+      PYTHON_FILE_HEADER
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">public static val</span> PYTHON_FILE_HEADER : <span>java.lang.String</span> = "#!/usr/bin/env python3"</pre>
+      <div>
+       Header for a Python file.
+      </div>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="_before(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _before(SarlCapacityUses,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _before(SarlCapacityUses,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Mark the functions of the used capacities in order to have a valid feature call within the code.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        uses - <span class="doclet-tags-param-comment">the capacity uses.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlAgent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlAgent,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlAgent,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        agent - <span class="doclet-tags-param-comment">the agent.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlAnnotationType,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlAnnotationType,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        annotation - <span class="doclet-tags-param-comment">the annotation.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlBehavior,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlBehavior,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlBehavior,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        behavior - <span class="doclet-tags-param-comment">the behavior.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlCapacity,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlCapacity,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlCapacity,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        capacity - <span class="doclet-tags-param-comment">the capacity.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlClass,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlClass,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        clazz - <span class="doclet-tags-param-comment">the class.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlEnumeration,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlEnumeration,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        enumeration - <span class="doclet-tags-param-comment">the enumeration.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlEvent,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlEvent,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlEvent,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        event - <span class="doclet-tags-param-comment">the event.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlInterface,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlInterface,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        interf - <span class="doclet-tags-param-comment">the interface.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlSkill,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlSkill,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlSkill,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        skill - <span class="doclet-tags-param-comment">the skill.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlAction,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlAction,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlAction,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        action - <span class="doclet-tags-param-comment">the action.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlAnnotationType,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlAnnotationType,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlAnnotationType,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        annotation - <span class="doclet-tags-param-comment">the annotation.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlBehaviorUnit,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlBehaviorUnit,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlBehaviorUnit,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        handler - <span class="doclet-tags-param-comment">the behavior unit.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlCapacityUses,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlCapacityUses,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        uses - <span class="doclet-tags-param-comment">the capacity uses.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><span class="doclet-tags-see-comment">computeCapacityFunctionMarkers(JvmDeclaredType)</span> , <span class="doclet-tags-see-comment">markCapacityFunctions(PyAppendable)</span> , <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#_before(io.sarl.lang.sarl.SarlCapacityUses,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)" class="doclet-tags-see-comment">_before(SarlCapacityUses,IExtraLanguageGeneratorContext)</a> , <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGenerator.html#createAppendable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)" class="doclet-tags-see-comment">createAppendable(JvmDeclaredType,IExtraLanguageGeneratorContext)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlClass,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlClass,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlClass,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        clazz - <span class="doclet-tags-param-comment">the class.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlConstructor,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlConstructor,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlConstructor,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        constructor - <span class="doclet-tags-param-comment">the constructor.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        enumeration - <span class="doclet-tags-param-comment">the enumeration.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlField,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        field - <span class="doclet-tags-param-comment">the fields.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlInterface,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlInterface,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlInterface,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        interf - <span class="doclet-tags-param-comment">the interface.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="createAppendable(org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      createAppendable(JvmDeclaredType,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> createAppendable(JvmDeclaredType,IExtraLanguageGeneratorContext) : <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyAppendable.html">PyAppendable</a></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="generateBlockComment(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">
+      generateBlockComment(String,PyAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateBlockComment(String,PyAppendable) : boolean</pre>
+      <div>
+       Generate a Python block comment with the given comment.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        comment - <span class="doclet-tags-param-comment">the comment.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the receiver of the block comment.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the block comment is added,  <code class="doclet-tags-return-comment">false</code>  otherwise.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateDocString(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable)">
+      generateDocString(String,PyAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateDocString(String,PyAppendable) : boolean</pre>
+      <div>
+       Generate a Python docstring with the given comment.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        comment - <span class="doclet-tags-param-comment">the comment.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the receiver of the docstring.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the docstring is added,  <code class="doclet-tags-return-comment">false</code>  otherwise.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateEnumerationDeclaration(io.sarl.lang.sarl.SarlEnumeration,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateEnumerationDeclaration(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateEnumerationDeclaration(SarlEnumeration,PyAppendable,IExtraLanguageGeneratorContext) : boolean</pre>
+      <div>
+       Generate the given enumeration declaration.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        enumeration - <span class="doclet-tags-param-comment">the enumeration.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the receiver of the generated code.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if a declaration was generated.  <code class="doclet-tags-return-comment">false</code>  if no enumeration was generated.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.8</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateExecutable(java.lang.String,org.eclipse.xtend.core.xtend.XtendExecutable,boolean,boolean,org.eclipse.xtext.common.types.JvmTypeReference,java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateExecutable(String,XtendExecutable,boolean,boolean,JvmTypeReference,String,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateExecutable(String,XtendExecutable,boolean,boolean,JvmTypeReference,String,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the Python code for an executable statement.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the executable.</span>
+        <br>
+        executable - <span class="doclet-tags-param-comment">the executable statement.</span>
+        <br>
+        appendSelf - <span class="doclet-tags-param-comment">indicates if the "self" parameter should be added.</span>
+        <br>
+        isAbstract - <span class="doclet-tags-param-comment">indicates if the executable is abstract.</span>
+        <br>
+        returnType - <span class="doclet-tags-param-comment">the type of the value to be returned, or <code class="doclet-tags-param-comment">null</code> if void.</span>
+        <br>
+        comment - <span class="doclet-tags-param-comment">the comment associated to the function.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateFileHeader(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateFileHeader(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateFileHeader(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="generateGuardEvaluators(java.lang.String,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateGuardEvaluators(String,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateGuardEvaluators(String,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the memorized guard evaluators.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        container - <span class="doclet-tags-param-comment">the fully qualified name of the container of the guards.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateImportStatement(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateImportStatement(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateImportStatement(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="generatePythonClassDeclaration(java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generatePythonClassDeclaration(String,boolean,List&lt;E&gt;,String,boolean,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generatePythonClassDeclaration(String,boolean,List&lt;E&gt;,String,boolean,PyAppendable,IExtraLanguageGeneratorContext) : boolean</pre>
+      <div>
+       Generate the type declaration for a Python class.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        typeName - <span class="doclet-tags-param-comment">name of the type.</span>
+        <br>
+        isAbstract - <span class="doclet-tags-param-comment">indicates if the type is abstract (interface included).</span>
+        <br>
+        superTypes - <span class="doclet-tags-param-comment">the super types.</span>
+        <br>
+        comment - <span class="doclet-tags-param-comment">the type declaration's comment.</span>
+        <br>
+        ignoreObjectType - <span class="doclet-tags-param-comment">ignores the "Object" type if the super types.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the declaration was generated.  <code class="doclet-tags-return-comment">false</code>  if the declaration was not generated.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generatePythonConstructors(java.lang.String,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generatePythonConstructors(String,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generatePythonConstructors(String,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext) : boolean</pre>
+      <div>
+       Generate the constructors for a Python class.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        container - <span class="doclet-tags-param-comment">the fully qualified name of the container.</span>
+        <br>
+        members - <span class="doclet-tags-param-comment">the members to be added.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if a constructor was generated.  <code class="doclet-tags-return-comment">false</code>  if no constructor was generated.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generatePythonField(io.sarl.lang.sarl.SarlField,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generatePythonField(SarlField,PyAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generatePythonField(SarlField,PyAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Create a field declaration.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        field - <span class="doclet-tags-param-comment">the field to generate.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the output</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateTypeDeclaration(java.lang.String,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtext.common.types.JvmTypeReference>,java.lang.String,boolean,java.util.List<? extends org.eclipse.xtend.core.xtend.XtendMember>,io.sarl.lang.pythongenerator.generator.PyAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.lib.Procedures.Procedure2<? super io.sarl.lang.pythongenerator.generator.PyAppendable,? super io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext>)">
+      generateTypeDeclaration(String,String,boolean,List&lt;E&gt;,String,boolean,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext,Procedure2&lt;P1,P2&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateTypeDeclaration(String,String,boolean,List&lt;E&gt;,String,boolean,List&lt;E&gt;,PyAppendable,IExtraLanguageGeneratorContext,Procedure2&lt;P1,P2&gt;) : boolean</pre>
+      <div>
+       Generate the given type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        fullyQualifiedName - <span class="doclet-tags-param-comment">the fully qualified name of the type.</span>
+        <br>
+        name - <span class="doclet-tags-param-comment">the name of the type.</span>
+        <br>
+        isAbstract - <span class="doclet-tags-param-comment">indicates if the type is abstract.</span>
+        <br>
+        superTypes - <span class="doclet-tags-param-comment">the super types.</span>
+        <br>
+        comment - <span class="doclet-tags-param-comment">the comment.</span>
+        <br>
+        ignoreObjectType - <span class="doclet-tags-param-comment">ignores the "Object" type if the super types.</span>
+        <br>
+        members - <span class="doclet-tags-param-comment">the members.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the output.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+        <br>
+        memberGenerator - <span class="doclet-tags-param-comment">the generator of members.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the type declaration was generated.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getExpressionGenerator()">
+      getExpressionGenerator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getExpressionGenerator : <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html">PyExpressionGenerator</a></pre>
+      <div>
+       Replies the generator of XExpression.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the generator.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getFilenameExtension()">
+      getFilenameExtension
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getFilenameExtension : <span>java.lang.String</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getGenerationComment(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      getGenerationComment(IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getGenerationComment(IExtraLanguageGeneratorContext) : <span>java.lang.String</span></pre>
+      <div>
+       Replies a string representing a comment with the generation information.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comment text.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getOutputConfigurationName()">
+      getOutputConfigurationName
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getOutputConfigurationName : <span>java.lang.String</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getPreferenceID()">
+      getPreferenceID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getPreferenceID : <span>java.lang.String</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="initializeContext(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      initializeContext(IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> initializeContext(IExtraLanguageGeneratorContext)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="newType(java.lang.String)">
+      newType(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> newType(String) : <span>org.eclipse.xtext.common.types.JvmType</span></pre>
+      <div>
+       Create a JvmType for a Python type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        pythonName - <span class="doclet-tags-param-comment">the python type name.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setExpressionGenerator(io.sarl.lang.pythongenerator.generator.PyExpressionGenerator)">
+      setExpressionGenerator(PyExpressionGenerator)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setExpressionGenerator(PyExpressionGenerator)</pre>
+      <div>
+       Change the generator of XExpression.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        generator - <span class="doclet-tags-param-comment">the generator.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setPyGeneratorConfigurationProvider(io.sarl.lang.pythongenerator.configuration.IPyGeneratorConfigurationProvider)">
+      setPyGeneratorConfigurationProvider(IPyGeneratorConfigurationProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setPyGeneratorConfigurationProvider(IPyGeneratorConfigurationProvider)</pre>
+      <div>
+       Change the provider of the generator's configuration.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        provider - <span class="doclet-tags-param-comment">the provider.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="writeFile(org.eclipse.xtext.naming.QualifiedName,io.sarl.lang.extralanguage.compiler.ExtraLanguageAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      writeFile(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> writeFile(QualifiedName,ExtraLanguageAppendable,IExtraLanguageGeneratorContext) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="writePackageFiles(org.eclipse.xtext.naming.QualifiedName,java.lang.String,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      writePackageFiles(QualifiedName,String,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> writePackageFiles(QualifiedName,String,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the Python package files. 
+       <p></p>This function generates the "__init__.py" files for all the packages.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the generated type.</span>
+        <br>
+        lineSeparator - <span class="doclet-tags-param-comment">the line separator.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyGeneratorProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

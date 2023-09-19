@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>ExtraLanguageGeneratorContext</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/extralanguage/compiler/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/extralanguage/compiler/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageFeatureNameConverter.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorSupport.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/extralanguage/compiler/package-summary.html" class="doclet-header-packagename">io.sarl.lang.extralanguage.compiler</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class ExtraLanguageGeneratorContext
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html" class="doclet-inheritancetree-type">ExtraLanguageGeneratorContext</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageGeneratorContext.html" class="doclet-superinterfacelist">IExtraLanguageGeneratorContext</a>, <span class="doclet-superinterfacelist">org.eclipse.xtext.generator.IGeneratorContext</span>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">ExtraLanguageGeneratorContext</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageGeneratorContext.html" class="doclet-typesignature">IExtraLanguageGeneratorContext</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      The generator from SARL to the Python language.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.6</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1432 active" onclick="openTabElement(this,'ID3518', 'doclet-tabs-button-instance-1432', 'doclet-tabs-content-instance-1432')">Properties</button>
+    </div>
+    <div id="ID3518" class="doclet-tabs-content doclet-tabs-content-instance-1432 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.util.CancelIndicator</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getCancelIndicator()">cancelIndicator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IGeneratorContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getDelegate()">delegate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getExpectedExpressionType()">expectedExpressionType</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IFileSystemAccess2</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getFileSystemAccess()">fileSystemAccess</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Date</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationDate()">generationDate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.UUID</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationID()">generationID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getPreferenceID()">preferenceID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getResource()">resource</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html">IRootGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getRootGenerator()">rootGenerator</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1435 active" onclick="openTabElement(this,'ID3525', 'doclet-tabs-button-instance-1435', 'doclet-tabs-content-instance-1435')">Constructors</button>
+    </div>
+    <div id="ID3525" class="doclet-tabs-content doclet-tabs-content-instance-1435 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#<init>(org.eclipse.xtext.generator.IGeneratorContext,org.eclipse.xtext.generator.IFileSystemAccess2,io.sarl.lang.extralanguage.compiler.IRootGenerator,org.eclipse.emf.ecore.resource.Resource,java.lang.String)">new(IGeneratorContext,IFileSystemAccess2,IRootGenerator,Resource,String)</a></span><br>
+         Create the context for the given delegate.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1436 active" onclick="openTabElement(this,'ID3526', 'doclet-tabs-button-instance-1436', 'doclet-tabs-content-instance-1436')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1436" onclick="openTabElement(this,'ID3529', 'doclet-tabs-button-instance-1436', 'doclet-tabs-content-instance-1436')">Instance actions</button>
+    </div>
+    <div id="ID3526" class="doclet-tabs-content doclet-tabs-content-instance-1436 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#clearData()">clearData</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/sarl/actionprototype/IActionPrototypeContext.html">IActionPrototypeContext</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getActionPrototypeContext(io.sarl.lang.sarl.actionprototype.IActionPrototypeProvider)">getActionPrototypeContext(IActionPrototypeProvider)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.util.CancelIndicator</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getCancelIndicator()">getCancelIndicator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">T</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getData(java.lang.String,java.lang.Class<T>)">getData(String,Class&lt;T&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">T</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getData(java.lang.String,java.lang.Class<T>,T)">getData(String,Class&lt;T&gt;,T)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IGeneratorContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getDelegate()">getDelegate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getExpectedExpressionType()">getExpectedExpressionType</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IFileSystemAccess2</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getFileSystemAccess()">getFileSystemAccess</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Date</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationDate()">getGenerationDate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.UUID</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationID()">getGenerationID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getListData(java.lang.String)">getListData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMapData(java.lang.String)">getMapData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMultimapData(java.lang.String)">getMultimapData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMultimapValues(java.lang.String,K)">getMultimapValues(String,K)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getPreferenceID()">getPreferenceID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getResource()">getResource</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html">IRootGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getRootGenerator()">getRootGenerator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Set</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getSetData(java.lang.String)">getSetData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#setData(java.lang.String,java.lang.Object)">setData(String,Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#setExpectedExpressionType(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">setExpectedExpressionType(LightweightTypeReference)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID3529" class="doclet-tabs-content doclet-tabs-content-instance-1436 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#clearData()">clearData</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/sarl/actionprototype/IActionPrototypeContext.html">IActionPrototypeContext</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getActionPrototypeContext(io.sarl.lang.sarl.actionprototype.IActionPrototypeProvider)">getActionPrototypeContext(IActionPrototypeProvider)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.util.CancelIndicator</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getCancelIndicator()">getCancelIndicator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">T</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getData(java.lang.String,java.lang.Class<T>)">getData(String,Class&lt;T&gt;)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">T</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getData(java.lang.String,java.lang.Class<T>,T)">getData(String,Class&lt;T&gt;,T)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IGeneratorContext</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getDelegate()">getDelegate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getExpectedExpressionType()">getExpectedExpressionType</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.generator.IFileSystemAccess2</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getFileSystemAccess()">getFileSystemAccess</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Date</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationDate()">getGenerationDate</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.UUID</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationID()">getGenerationID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getListData(java.lang.String)">getListData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMapData(java.lang.String)">getMapData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMultimapData(java.lang.String)">getMultimapData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getMultimapValues(java.lang.String,K)">getMultimapValues(String,K)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getPreferenceID()">getPreferenceID</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getResource()">getResource</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html">IRootGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getRootGenerator()">getRootGenerator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Set</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getSetData(java.lang.String)">getSetData(String)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#setData(java.lang.String,java.lang.Object)">setData(String,Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#setExpectedExpressionType(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">setExpectedExpressionType(LightweightTypeReference)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      cancelIndicator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> cancelIndicator : <span>org.eclipse.xtext.util.CancelIndicator</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getCancelIndicator()">getCancelIndicator</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      delegate
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> delegate : <span>org.eclipse.xtext.generator.IGeneratorContext</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getDelegate()">getDelegate</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      expectedExpressionType
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> expectedExpressionType : <span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getExpectedExpressionType()">getExpectedExpressionType</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      fileSystemAccess
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> fileSystemAccess : <span>org.eclipse.xtext.generator.IFileSystemAccess2</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getFileSystemAccess()">getFileSystemAccess</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      generationDate
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> generationDate : <span>java.util.Date</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationDate()">getGenerationDate</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      generationID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> generationID : <span>java.util.UUID</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getGenerationID()">getGenerationID</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      preferenceID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> preferenceID : <span>java.lang.String</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getPreferenceID()">getPreferenceID</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      resource
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> resource : <span>org.eclipse.emf.ecore.resource.Resource</span></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getResource()">getResource</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      rootGenerator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> rootGenerator : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html">IRootGenerator</a></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorContext.html#getRootGenerator()">getRootGenerator</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(org.eclipse.xtext.generator.IGeneratorContext,org.eclipse.xtext.generator.IFileSystemAccess2,io.sarl.lang.extralanguage.compiler.IRootGenerator,org.eclipse.emf.ecore.resource.Resource,java.lang.String)">
+      new(IGeneratorContext,IFileSystemAccess2,IRootGenerator,Resource,String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(IGeneratorContext,IFileSystemAccess2,IRootGenerator,Resource,String)</pre>
+      <div>
+       Create the context for the given delegate.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        delegate - <span class="doclet-tags-param-comment">the delegate.</span>
+        <br>
+        fileSystemAccess - <span class="doclet-tags-param-comment">the file system access.</span>
+        <br>
+        generator - <span class="doclet-tags-param-comment">the root generator.</span>
+        <br>
+        resource - <span class="doclet-tags-param-comment">the resource.</span>
+        <br>
+        preferenceId - <span class="doclet-tags-param-comment">the identifier of the container of the generator's preferences.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="clearData()">
+      clearData
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> clearData</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getActionPrototypeContext(io.sarl.lang.sarl.actionprototype.IActionPrototypeProvider)">
+      getActionPrototypeContext(IActionPrototypeProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getActionPrototypeContext(IActionPrototypeProvider) : <a href="../../../../../io/sarl/lang/sarl/actionprototype/IActionPrototypeContext.html">IActionPrototypeContext</a></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getCancelIndicator()">
+      getCancelIndicator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getCancelIndicator : <span>org.eclipse.xtext.util.CancelIndicator</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getData(java.lang.String,java.lang.Class<T>)">
+      getData(String,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getData(String,Class&lt;T&gt;) : T<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> T</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getData(java.lang.String,java.lang.Class<T>,T)">
+      getData(String,Class&lt;T&gt;,T)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getData(String,Class&lt;T&gt;,T) : T<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> T</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getDelegate()">
+      getDelegate
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getDelegate : <span>org.eclipse.xtext.generator.IGeneratorContext</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getExpectedExpressionType()">
+      getExpectedExpressionType
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getExpectedExpressionType : <span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getFileSystemAccess()">
+      getFileSystemAccess
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getFileSystemAccess : <span>org.eclipse.xtext.generator.IFileSystemAccess2</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getGenerationDate()">
+      getGenerationDate
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getGenerationDate : <span>java.util.Date</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getGenerationID()">
+      getGenerationID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getGenerationID : <span>java.util.UUID</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getListData(java.lang.String)">
+      getListData(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getListData(String) : <span>java.util.List</span>&lt;E&gt;<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> T</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getMapData(java.lang.String)">
+      getMapData(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getMapData(String) : <span>java.util.Map</span>&lt;K,V&gt;<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> K, V</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getMultimapData(java.lang.String)">
+      getMultimapData(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getMultimapData(String) : <span>java.util.Map</span>&lt;K,V&gt;<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> K, V</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getMultimapValues(java.lang.String,K)">
+      getMultimapValues(String,K)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getMultimapValues(String,K) : <span>java.util.List</span>&lt;E&gt;<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> K, V</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getPreferenceID()">
+      getPreferenceID
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getPreferenceID : <span>java.lang.String</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getResource()">
+      getResource
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getResource : <span>org.eclipse.emf.ecore.resource.Resource</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getRootGenerator()">
+      getRootGenerator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getRootGenerator : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IRootGenerator.html">IRootGenerator</a></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getSetData(java.lang.String)">
+      getSetData(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getSetData(String) : <span>java.util.Set</span>&lt;E&gt;<p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> T</p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="setData(java.lang.String,java.lang.Object)">
+      setData(String,Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setData(String,Object)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="setExpectedExpressionType(org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">
+      setExpectedExpressionType(LightweightTypeReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setExpectedExpressionType(LightweightTypeReference) : <span>org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference</span></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/extralanguage/compiler/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/extralanguage/compiler/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageFeatureNameConverter.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/extralanguage/compiler/ExtraLanguageGeneratorSupport.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

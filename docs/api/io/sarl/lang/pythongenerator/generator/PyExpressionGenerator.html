@@ -1,0 +1,1742 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>PyExpressionGenerator</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyAppendable.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html" class="doclet-header-packagename">io.sarl.lang.pythongenerator.generator</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class PyExpressionGenerator
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html" class="doclet-inheritancetree-type">AbstractExpressionGenerator</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html" class="doclet-inheritancetree-type">PyExpressionGenerator</a></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExpressionGenerator.html" class="doclet-superinterfacelist">IExpressionGenerator</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">PyExpressionGenerator</span>
+     <br>
+     extends <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html" class="doclet-typesignature">AbstractExpressionGenerator</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Generator of XExpression for Python 3.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">pythongenerator</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.6</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2212 active" onclick="openTabElement(this,'ID5467', 'doclet-tabs-button-instance-2212', 'doclet-tabs-content-instance-2212')">Properties</button>
+    </div>
+    <div id="ID5467" class="doclet-tabs-content doclet-tabs-content-instance-2212 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getFeatureNameConverterInitializer()">featureNameConverterInitializer</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getTypeConverterInitializer()">typeConverterInitializer</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getExpressionHelper()">expressionHelper</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getExtraLanguageKeywordProvider()">extraLanguageKeywordProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getFeatureNameProvider()">featureNameProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getLogicalContainerProvider()">logicalContainerProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getOperatorMapping()">operatorMapping</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeBuilder()">typeBuilder</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeReferences()">typeReferences</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeResolver()">typeResolver</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="nested.classes.summary.box">
+    <div class="doclet-summarybox-title">
+     Nested Type Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2213 active" onclick="openTabElement(this,'ID5468', 'doclet-tabs-button-instance-2213', 'doclet-tabs-content-instance-2213')">Nested Types</button>
+    </div>
+    <div id="ID5468" class="doclet-tabs-content doclet-tabs-content-instance-2213 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Type and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">PyExpressionGenerator.PyFeatureCallGenerator</a></span><br>
+         Feature call generator for Python.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2215 active" onclick="openTabElement(this,'ID5474', 'doclet-tabs-button-instance-2215', 'doclet-tabs-content-instance-2215')">Constructors</button>
+    </div>
+    <div id="ID5474" class="doclet-tabs-content doclet-tabs-content-instance-2215 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#<init>(io.sarl.lang.pythongenerator.generator.PyKeywordProvider)">new(PyKeywordProvider)</a></span><br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2216 active" onclick="openTabElement(this,'ID5475', 'doclet-tabs-button-instance-2216', 'doclet-tabs-content-instance-2216')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2216" onclick="openTabElement(this,'ID5476', 'doclet-tabs-button-instance-2216', 'doclet-tabs-content-instance-2216')">Static actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2216" onclick="openTabElement(this,'ID5478', 'doclet-tabs-button-instance-2216', 'doclet-tabs-content-instance-2216')">Instance actions</button>
+    </div>
+    <div id="ID5475" class="doclet-tabs-content doclet-tabs-content-instance-2216 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAssertExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBreakExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlContinueExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XAssignment,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XAssignment,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBasicForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBasicForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBinaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBinaryOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBlockExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBlockExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBooleanLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBooleanLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XCastedExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XClosure,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XConstructorCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XConstructorCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XDoWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XDoWhileExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XFeatureCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XIfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XIfExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XInstanceOfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XInstanceOfExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XListLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XListLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XMemberFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XMemberFeatureCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XNullLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XNullLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XNumberLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XNumberLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XPostfixOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XPostfixOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XReturnExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XReturnExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSetLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSetLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XStringLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XStringLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSwitchExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSwitchExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSynchronizedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSynchronizedExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XThrowExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XThrowExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XTryCatchFinallyExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XTypeLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XTypeLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XUnaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XUnaryOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XVariableDeclaration,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XVariableDeclaration,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XWhileExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#before(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">before(XExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#generateAnonymousClassDefinition(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateAnonymousClassDefinition(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the anonymous class definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#generateClosureDefinition(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateClosureDefinition(XClosure,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the closure definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getFeatureNameConverterInitializer()">getFeatureNameConverterInitializer</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getTypeConverterInitializer()">getTypeConverterInitializer</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">PyFeatureCallGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#newFeatureCallGenerator(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.compiler.IAppendable)">newFeatureCallGenerator(IExtraLanguageGeneratorContext,IAppendable)</a></span><br>
+         Generate a feature call.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">static&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#toDefaultValue(org.eclipse.xtext.common.types.JvmTypeReference)">toDefaultValue(JvmTypeReference)</a></span><br>
+         Replies the Python default value for the given type.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5476" class="doclet-tabs-content doclet-tabs-content-instance-2216 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">static&nbsp;<span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#toDefaultValue(org.eclipse.xtext.common.types.JvmTypeReference)">toDefaultValue(JvmTypeReference)</a></span><br>
+         Replies the Python default value for the given type.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID5478" class="doclet-tabs-content doclet-tabs-content-instance-2216 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlAssertExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlBreakExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(SarlContinueExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XAssignment,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XAssignment,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBasicForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBasicForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBinaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBinaryOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBlockExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBlockExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XBooleanLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XBooleanLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XCastedExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XClosure,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XConstructorCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XConstructorCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XDoWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XDoWhileExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XFeatureCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XIfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XIfExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XInstanceOfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XInstanceOfExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XListLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XListLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XMemberFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XMemberFeatureCall,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XNullLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XNullLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XNumberLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XNumberLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XPostfixOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XPostfixOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XReturnExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XReturnExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSetLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSetLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XStringLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XStringLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSwitchExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSwitchExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XSynchronizedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XSynchronizedExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XThrowExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XThrowExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XTryCatchFinallyExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XTypeLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XTypeLiteral,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XUnaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XUnaryOperation,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XVariableDeclaration,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XVariableDeclaration,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.xtext.xbase.XExpression</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#_generate(org.eclipse.xtext.xbase.XWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">_generate(XWhileExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the given object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#before(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">before(XExpression,IAppendable,IExtraLanguageGeneratorContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#generateAnonymousClassDefinition(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateAnonymousClassDefinition(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the anonymous class definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#generateClosureDefinition(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generateClosureDefinition(XClosure,IAppendable,IExtraLanguageGeneratorContext)</a></span><br>
+         Generate the closure definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getFeatureNameConverterInitializer()">getFeatureNameConverterInitializer</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getTypeConverterInitializer()">getTypeConverterInitializer</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">PyFeatureCallGenerator</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#newFeatureCallGenerator(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.compiler.IAppendable)">newFeatureCallGenerator(IExtraLanguageGeneratorContext,IAppendable)</a></span><br>
+         Generate a feature call.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#after(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">after(XExpression,IAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#buildCallReceiver(org.eclipse.xtext.xbase.XAbstractFeatureCall,org.eclipse.xtext.xbase.lib.Functions.Function0<? extends java.lang.String>,org.eclipse.xtext.xbase.lib.Functions.Function1<? super org.eclipse.xtext.xbase.XExpression,? extends java.lang.String>,java.util.List<java.lang.Object>)">buildCallReceiver(XAbstractFeatureCall,Function0&lt;Result&gt;,Function1&lt;Param,Result&gt;,List&lt;E&gt;)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#createFeatureNameConverterInstance(io.sarl.lang.extralanguage.compiler.IExtraLanguageConversionInitializer,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">createFeatureNameConverterInstance(IExtraLanguageConversionInitializer,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#createTypeConverterInstance(io.sarl.lang.extralanguage.compiler.IExtraLanguageConversionInitializer,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">createTypeConverterInstance(IExtraLanguageConversionInitializer,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExpressionGenerator.html#generate(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generate(XExpression,IAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#generate(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">generate(XExpression,LightweightTypeReference,IAppendable,IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getCallSimpleName(org.eclipse.xtext.xbase.XAbstractFeatureCall,org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider,org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider,org.eclipse.xtext.xbase.lib.Functions.Function0<? extends java.lang.String>,org.eclipse.xtext.xbase.lib.Functions.Function0<? extends java.lang.String>,org.eclipse.xtext.xbase.lib.Functions.Function0<? extends java.lang.String>,org.eclipse.xtext.xbase.lib.Functions.Function1<? super org.eclipse.xtext.common.types.JvmIdentifiableElement,? extends java.lang.String>)">getCallSimpleName(XAbstractFeatureCall,ILogicalContainerProvider,IdentifiableSimpleNameProvider,Function0&lt;Result&gt;,Function0&lt;Result&gt;,Function0&lt;Result&gt;,Function1&lt;Param,Result&gt;)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getExpectedType(org.eclipse.xtext.xbase.XExpression)">getExpectedType(XExpression)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getExpressionHelper()">getExpressionHelper</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getExtraLanguageKeywordProvider()">getExtraLanguageKeywordProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getFeatureNameConverter(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getFeatureNameConverter(IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getFeatureNameProvider()">getFeatureNameProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getLogicalContainerProvider()">getLogicalContainerProvider</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getOperatorMapping()">getOperatorMapping</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getOperatorSymbol(org.eclipse.xtext.xbase.XAbstractFeatureCall)">getOperatorSymbol(XAbstractFeatureCall)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeBuilder()">getTypeBuilder</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeConverter(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">getTypeConverter(IExtraLanguageGeneratorContext)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeReferences()">getTypeReferences</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#getTypeResolver()">getTypeResolver</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setExpressionHelper(org.eclipse.xtext.xbase.util.XExpressionHelper)">setExpressionHelper(XExpressionHelper)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setFeatureNameProvider(org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider)">setFeatureNameProvider(IdentifiableSimpleNameProvider)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setInjector(com.google.inject.Injector)">setInjector(Injector)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setLogicalContainerProvider(org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider)">setLogicalContainerProvider(ILogicalContainerProvider)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setOperatorMapping(org.eclipse.xtext.xbase.scoping.featurecalls.OperatorMapping)">setOperatorMapping(OperatorMapping)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setTypeBuilder(org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder)">setTypeBuilder(JvmTypesBuilder)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setTypeReferences(org.eclipse.xtext.common.types.util.TypeReferences)">setTypeReferences(TypeReferences)</a>, <a href="../../../../../io/sarl/lang/extralanguage/compiler/AbstractExpressionGenerator.html#setTypeResolver(org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver)">setTypeResolver(IBatchTypeResolver)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      featureNameConverterInitializer
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> featureNameConverterInitializer : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getFeatureNameConverterInitializer()">getFeatureNameConverterInitializer</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      typeConverterInitializer
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> typeConverterInitializer : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></pre>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator.html#getTypeConverterInitializer()">getTypeConverterInitializer</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(io.sarl.lang.pythongenerator.generator.PyKeywordProvider)">
+      new(PyKeywordProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(PyKeywordProvider)</pre>
+      <div>
+       Constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        keywordProvider - <span class="doclet-tags-param-comment">the provider of Python keywords.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlAssertExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlAssertExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlAssertExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        assertStatement - <span class="doclet-tags-param-comment">the assert statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlBreakExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlBreakExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlBreakExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        breakStatement - <span class="doclet-tags-param-comment">the break statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(io.sarl.lang.sarl.SarlContinueExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(SarlContinueExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(SarlContinueExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        continueStatement - <span class="doclet-tags-param-comment">the continue statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        anonClass - <span class="doclet-tags-param-comment">the anonymous class.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the class definition.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XAssignment,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XAssignment,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XAssignment,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        assignment - <span class="doclet-tags-param-comment">the assignment operator.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the assignment.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XBasicForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XBasicForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XBasicForLoopExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        forLoop - <span class="doclet-tags-param-comment">the for-loop.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the last statement in the loop or  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XBinaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XBinaryOperation,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XBinaryOperation,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the binary operation.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the operation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XBlockExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XBlockExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XBlockExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        block - <span class="doclet-tags-param-comment">the block expression.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the last expression in the block or  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XBooleanLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XBooleanLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XBooleanLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the boolean literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XCastedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XCastedExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XCastedExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        castOperator - <span class="doclet-tags-param-comment">the cast operator.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the expression.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XClosure,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XClosure,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        closure - <span class="doclet-tags-param-comment">the closure.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the closure.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XConstructorCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XConstructorCall,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XConstructorCall,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        call - <span class="doclet-tags-param-comment">the constructor call.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the constructor call.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XDoWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XDoWhileExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XDoWhileExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        whileLoop - <span class="doclet-tags-param-comment">the while-loop.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the last statement in the loop or  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XFeatureCall,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XFeatureCall,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        call - <span class="doclet-tags-param-comment">the feature call.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the feature call.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XForLoopExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XForLoopExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XForLoopExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        forLoop - <span class="doclet-tags-param-comment">the for-loop.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XIfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XIfExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XIfExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        ifStatement - <span class="doclet-tags-param-comment">the if-then-else statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XInstanceOfExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XInstanceOfExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XInstanceOfExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operator - <span class="doclet-tags-param-comment">the instance-of operator.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the expression.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XListLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XListLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XListLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the list literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XMemberFeatureCall,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XMemberFeatureCall,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XMemberFeatureCall,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        call - <span class="doclet-tags-param-comment">the member feature call.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the feature call.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XNullLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XNullLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XNullLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the null literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XNumberLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XNumberLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XNumberLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XPostfixOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XPostfixOperation,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XPostfixOperation,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the postfix operator.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the operation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XReturnExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XReturnExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XReturnExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        returnStatement - <span class="doclet-tags-param-comment">the return statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XSetLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XSetLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XSetLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the set literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XStringLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XStringLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XStringLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XSwitchExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XSwitchExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XSwitchExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        switchStatement - <span class="doclet-tags-param-comment">the switch statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XSynchronizedExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XSynchronizedExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XSynchronizedExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        synchronizedStatement - <span class="doclet-tags-param-comment">the synchronized statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XThrowExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XThrowExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XThrowExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        throwStatement - <span class="doclet-tags-param-comment">the throw statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XTryCatchFinallyExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XTryCatchFinallyExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XTryCatchFinallyExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        tryStatement - <span class="doclet-tags-param-comment">the try-catch-finally statement.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XTypeLiteral,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XTypeLiteral,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XTypeLiteral,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        literal - <span class="doclet-tags-param-comment">the type literal.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the literal.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XUnaryOperation,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XUnaryOperation,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XUnaryOperation,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        operation - <span class="doclet-tags-param-comment">the unary operation.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the operation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XVariableDeclaration,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XVariableDeclaration,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XVariableDeclaration,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        varDeclaration - <span class="doclet-tags-param-comment">the variable declaration.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the statement.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="_generate(org.eclipse.xtext.xbase.XWhileExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      _generate(XWhileExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> _generate(XWhileExpression,IAppendable,IExtraLanguageGeneratorContext) : <span>org.eclipse.xtext.xbase.XExpression</span></pre>
+      <div>
+       Generate the given object.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        whileLoop - <span class="doclet-tags-param-comment">the while-loop.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the last statement in the loop or  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="before(org.eclipse.xtext.xbase.XExpression,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      before(XExpression,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> before(XExpression,IAppendable,IExtraLanguageGeneratorContext)</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="generateAnonymousClassDefinition(org.eclipse.xtend.core.xtend.AnonymousClass,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateAnonymousClassDefinition(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateAnonymousClassDefinition(AnonymousClass,IAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the anonymous class definition.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        anonClass - <span class="doclet-tags-param-comment">the anonymous class.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="generateClosureDefinition(org.eclipse.xtext.xbase.XClosure,org.eclipse.xtext.xbase.compiler.IAppendable,io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext)">
+      generateClosureDefinition(XClosure,IAppendable,IExtraLanguageGeneratorContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> generateClosureDefinition(XClosure,IAppendable,IExtraLanguageGeneratorContext)</pre>
+      <div>
+       Generate the closure definition.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        closure - <span class="doclet-tags-param-comment">the closure.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the target for the generated content.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getFeatureNameConverterInitializer()">
+      getFeatureNameConverterInitializer
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getFeatureNameConverterInitializer : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getTypeConverterInitializer()">
+      getTypeConverterInitializer
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getTypeConverterInitializer : <a href="../../../../../io/sarl/lang/extralanguage/compiler/IExtraLanguageConversionInitializer.html">IExtraLanguageConversionInitializer</a></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="newFeatureCallGenerator(io.sarl.lang.extralanguage.compiler.IExtraLanguageGeneratorContext,org.eclipse.xtext.xbase.compiler.IAppendable)">
+      newFeatureCallGenerator(IExtraLanguageGeneratorContext,IAppendable)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> newFeatureCallGenerator(IExtraLanguageGeneratorContext,IAppendable) : <a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">PyFeatureCallGenerator</a></pre>
+      <div>
+       Generate a feature call.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+        <br>
+        it - <span class="doclet-tags-param-comment">the code receiver.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the generator</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="toDefaultValue(org.eclipse.xtext.common.types.JvmTypeReference)">
+      toDefaultValue(JvmTypeReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> toDefaultValue(JvmTypeReference) : <span>java.lang.String</span></pre>
+      <div>
+       Replies the Python default value for the given type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the type.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the default value.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/pythongenerator/generator/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyAppendable.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/pythongenerator/generator/PyExpressionGenerator/PyFeatureCallGenerator.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

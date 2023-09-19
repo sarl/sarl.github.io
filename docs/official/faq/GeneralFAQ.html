@@ -289,9 +289,9 @@ Virtual Machine with Eclipse may be used to run SARL.</p>
 
 <h3 id="22-what-version-of-the-java-virtual-machine-is-required">2.2. What version of the Java virtual machine is required?</h3>
 
-<p>SARL requires the JDK 1.8 or higher to compile and run.
+<p>SARL requires the JDK 17 or higher to compile and run.
 Note that if you plan to create Android applications, you should
-configure your JDK to produce 1.6 class files from 1.8 Java code.</p>
+configure your JDK to produce 1.6 class files from 17 Java code.</p>
 
 <h3 id="23-why-does-sarl-display-an-error-on-startup">2.3. Why does SARL display an error on startup?</h3>
 
@@ -327,34 +327,34 @@ read the “.log” file for determining this cause.</p>
 
 <p>To solve this problem:</p>
 <ul>
-  <li>Install the JDK 1.8, and configuring your operating system to use it by default;</li>
-  <li>Force the SARL product to use the JDK 1.8 by editing the <code>eclipse-sarl.ini</code> file as follows.</li>
+  <li>Install the JDK 17, and configuring your operating system to use it by default;</li>
+  <li>Force the SARL product to use the JDK 17 by editing the <code>sarlide.ini</code> and <code>Info.plist</code> files as follows.</li>
 </ul>
 
-<p>The editing of the <code>eclipse-sarl.ini</code> could be done by following the steps:</p>
+<p>The editing of the <code>sarlide.ini</code> file could be done by following the steps:</p>
 
 <ol>
-  <li>Locate the folder in which your JVM (not the standard Mac JRE) is installed, e.g. <code>/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin</code>. The previous folder must contains the tools <code>javac</code> and <code>java</code>.</li>
+  <li>Locate the folder in which your JVM (not the standard Mac JRE) is installed, e.g. <code>/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin</code>. The previous folder must contains the tools <code>javac</code> and <code>java</code>.</li>
   <li>Open the folder in which the SARL <code>Eclipse.app</code> was copied</li>
   <li>Right-click on <code>Eclipse.app</code> and select <code>Show Package Contents</code></li>
   <li>Move to <code>Contents/Eclipse</code></li>
-  <li>Open <code>eclipse-sarl.ini</code> with a text editor</li>
+  <li>Open <code>sarlide.ini</code> with a text editor</li>
   <li>Add the following lines into the file or update the lines if they exist (there is a line break that must be inside the file content):
     <pre><code>-vm
-/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin
+/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin
 </code></pre>
   </li>
-  <li>Save and start the SARL IDE.</li>
+  <li>Save.</li>
 </ol>
 
-<p>An complete example of the eclipse-sarl.ini file is:</p>
+<p>An complete example of the <code>sarlide.ini</code> file is:</p>
 
 <pre><code>-startup
 ../Eclipse/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar
 --launcher.library
 ../Eclipse/plugins/org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.1.1100.v20190907-0426
 -vm
-/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin
+/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin
 -vmargs
 -Xms256m
 -Xmx1g
@@ -362,99 +362,157 @@ read the “.log” file for determining this cause.</p>
 -Dorg.eclipse.swt.internal.carbon.smallFonts
 </code></pre>
 
-<h4 id="b-the-gatekeeper-of-macos-x-blocks-the-launch-of-the-sarl-eclipse">b) The Gatekeeper of MacOS X blocks the launch of the SARL Eclipse</h4>
-
-<p>Because Gatekeeper considers SARL Eclipse as unstable. You could confirm this problem by looking into your <code>system.log</code> file and searching for a message that looks like:</p>
-
-<pre><code>(application.io.sarl.lang.product.72020573.72020798[78958]): removing service since it exited with consistent failure - OS_REASON_EXEC | Gatekeeper policy blocked execution
-</code></pre>
-
-<p>On order to enable Gatekeper to enable the SARL Eclipse launch, you should type on the Terminal the following command:</p>
-<pre><code>sudo xattr -rd com.apple.quarantine Eclipse.app
-</code></pre>
-
-<p>Where <code>Eclipse.app</code> is the name of the SARL Eclipse application on MacOS X.</p>
-
-<h4 id="c-the-eclipseapp-application-is-damaged">c) The Eclipse.app application is damaged</h4>
-
-<p>This error message is shown up on a dialog box, and you have the choices to move the application to the bin or to cancel the launch.
-This error message has the same cause as the Gatekeeper error that is described into the previous section.</p>
-
-<h3 id="26-why-does-the-sarl-product-launch-but-not-contain-any-features-related-to-sarl">2.6. Why does the SARL product launch but not contain any features related to SARL?</h3>
-
-<p>This is due to a problem in your configuration. SARL tools need the Eclipse
-framework to be run with a Java Development Kit 1.8 or higher.
-You are currently running the SARL product with a lower version of the JDK.</p>
-
-<p>You must run the SARL product with a valid version of the JDK.
-Two ways are available for solving this issue:</p>
+<p>The editing of the <code>Info.plist</code> file could be done by following the steps:</p>
 
 <ol>
-  <li>install the JDK 1.8, and configuring your operating system to use it by default; or</li>
-  <li>force the SARL product to use the JDK 1.8 by editing the <code>eclipse-sarl.ini</code> file into the folder of the SARL IDE. Add the following parameter on a new line: <code>-vm path</code>, where <code>path</code> is the path to the binary file <code>javaw[.exe]</code> or <code>java[.exe]</code> of at least the JDK 1.8.</li>
+  <li>Locate the folder in which your JVM (not the standard Mac JRE) is installed, e.g. <code>/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin</code>. The previous folder must contains the tools <code>javac</code> and <code>java</code>.</li>
+  <li>Open the folder in which the SARL <code>Eclipse.app</code> was copied</li>
+  <li>Right-click on <code>Eclipse.app</code> and select <code>Show Package Contents</code></li>
+  <li>Move to <code>Contents/Eclipse/Eclipse.app/Contents</code></li>
+  <li>Open <code>Info.plist</code> with a text editor</li>
+  <li>Add the following lines into the file or update the lines if they exist:
+```</li>
 </ol>
+<array>
+   <string>-vm</string>
+   <string>/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin/java</string>
+</array>
+<pre><code>7. Save and start the SARL IDE.
 
-<h3 id="27-why-does-the-content-assistant-not-propose-any-suggestion-on-macos-x">2.7. Why does the content assistant not propose any suggestion on MacOS X?</h3>
+An complete example of the `Info.plist` file is:
 
-<p>By default in the SARL product, the shortcut key for invoking the content assistant is <code>Ctrl+Space</code> or <code>Apple+Space</code>.
-But, the Spotlight tool on MacOS is also using the same shortcut key.</p>
+</code></pre>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;
+&lt;!DOCTYPE plist PUBLIC “-//Apple Computer//DTD PLIST 1.0//EN” “http://www.apple.com/DTDs/PropertyList-1.0.dtd”&gt;</p>
+<plist version="1.0">
+	<dict>
+		<key>CFBundleExecutable</key>
+		<string>eclipse</string>
+		<key>CFBundleGetInfoString</key>
+		<string>Eclipse 4.16 for Mac OS X, Copyright IBM Corp. and others 2002, 2020. All rights reserved.</string>
+		<key>CFBundleIconFile</key>
+		<string>Eclipse.icns</string>
+		<key>CFBundleIdentifier</key>
+		<string>org.eclipse.Eclipse</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>Eclipse</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>4.16</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>CFBundleVersion</key>
+		<string>4.16</string>
+		<key>NSHighResolutionCapable</key>
+		<true />
+		<key>CFBundleDevelopmentRegion</key>
+		<string>English</string>
+		<key>Eclipse</key>
+		<array>
+			<string>-vm</string>
+			<string>/Library/Java/JavaVirtualMachines/jdk17/Contents/Home/bin/java</string>
+			<string>-keyring</string>
+			<string>~/.eclipse_keyring</string>
+		</array>
+	</dict>
+</plist>
+<pre><code>
+#### b) The Gatekeeper of MacOS X blocks the launch of the SARL Eclipse
 
-<p>For enabling the SARL product content assist, we recommend to change its shortcut in the SARL product. Go to:</p>
+Because Gatekeeper considers SARL Eclipse as unstable. You could confirm this problem by looking into your `system.log` file and searching for a message that looks like:
 
-<ul>
-  <li>Window &gt; Preferences</li>
-  <li>General &gt; Keys</li>
-  <li>Content Assist</li>
-</ul>
+</code></pre>
+<p>(application.io.sarl.lang.product.72020573.72020798[78958]): removing service since it exited with consistent failure - OS_REASON_EXEC | Gatekeeper policy blocked execution</p>
+<pre><code>
+On order to enable Gatekeper to enable the SARL Eclipse launch, you should type on the Terminal the following command:
+</code></pre>
+<p>sudo xattr -rd com.apple.quarantine Eclipse.app</p>
+<pre><code>
+Where `Eclipse.app` is the name of the SARL Eclipse application on MacOS X.
 
-<p>And, change the shortcut key.</p>
 
-<p><img src="./ctrlspaceprefs.png" alt="Content assist shortcut change" /></p>
+#### c) The Eclipse.app application is damaged
 
-<h3 id="28-why-is-the-sarl-development-environment-becoming-slow-or-frozen">2.8. Why is the SARL development environment becoming slow or frozen?</h3>
+This error message is shown up on a dialog box, and you have the choices to move the application to the bin or to cancel the launch.
+This error message has the same cause as the Gatekeeper error that is described into the previous section. 
 
-<p>Sometimes the SARL product is entering into an invalid state and causes the garbage collector of its Java virtual
+
+### 2.6. Why does the SARL product launch but not contain any features related to SARL?
+
+This is due to a problem in your configuration. SARL tools need the Eclipse
+framework to be run with a Java Development Kit 17 or higher.
+You are currently running the SARL product with a lower version of the JDK.
+
+You must run the SARL product with a valid version of the JDK.
+Two ways are available for solving this issue:
+
+1. install the JDK 17, and configuring your operating system to use it by default; or
+2. force the SARL product to use the JDK 17 by editing the `sarlide.ini` file into the folder of the SARL IDE. Add the following parameter on a new line: `-vm path`, where `path` is the path to the binary file `javaw[.exe]` or `java[.exe]` of at least the JDK 17.
+
+
+
+### 2.7. Why does the content assistant not propose any suggestion on MacOS X?
+
+By default in the SARL product, the shortcut key for invoking the content assistant is `Ctrl+Space` or `Apple+Space`.
+But, the Spotlight tool on MacOS is also using the same shortcut key.
+
+For enabling the SARL product content assist, we recommend to change its shortcut in the SARL product. Go to:
+
+* Window &gt; Preferences
+* General &gt; Keys
+* Content Assist
+
+And, change the shortcut key.
+
+![Content assist shortcut change](./ctrlspaceprefs.png)
+
+
+### 2.8. Why is the SARL development environment becoming slow or frozen?
+
+Sometimes the SARL product is entering into an invalid state and causes the garbage collector of its Java virtual
 machine to be slower and slower until a quasi freeze of the SARL product.
 Most of the times, it is due to an error occurring into the code-mining feature
 of the SARL editor. This feature shows up (in gray in the editor) the hidden or implicit peaces of code.
 Before the code-mining issues are definitively fixed, you could disable the code-mining feature in order
-to have your SARL development environment running without problem.</p>
+to have your SARL development environment running without problem.
 
-<p>For disabling the code-mining feature, go to:</p>
+For disabling the code-mining feature, go to:
 
-<ul>
-  <li>Window &gt; Preferences</li>
-  <li>SARL &gt; Editors</li>
-</ul>
+* Window &gt; Preferences
+* SARL &gt; Editors
 
-<p>And, uncheck the option <code>Show implicit SARL code in the editors (codemining)</code>.</p>
+And, uncheck the option `Show implicit SARL code in the editors (codemining)`.
 
-<h2 id="3-implementation-of-sarl-applications">3. Implementation of SARL Applications</h2>
 
-<h3 id="31-is-it-possible-to-obtain-examples-of-sarl-code-for-applications">3.1. Is it possible to obtain examples of SARL code for applications?</h3>
+## 3. Implementation of SARL Applications
 
-<p><strong>Yes</strong>.</p>
+### 3.1. Is it possible to obtain examples of SARL code for applications?
 
-<p>The SARL development environment contains a collection of SARL applications that may be used for creating your own applications.
-They are called the “SARL examples”.</p>
+__Yes__.
 
-<p>In order to create a fresh project based on of these SARL examples, you have to use the menu <code>File &gt; New &gt; Example</code>.
+The SARL development environment contains a collection of SARL applications that may be used for creating your own applications.
+They are called the "SARL examples".
+
+In order to create a fresh project based on of these SARL examples, you have to use the menu `File &gt; New &gt; Example`.
 This menu opens a dialog box with a list of examples from which you may select one for creating your fresh project.
-The SARL examples have been put into several categories:</p>
+The SARL examples have been put into several categories:
 
-<ul>
-  <li>SARL Tutorials: the SARL code that is associated to one of the tutorial from the official documentation pages.</li>
-  <li>SARL Examples without user interface: a collection of fully-featured applications without graphical user interface.</li>
-  <li>SARL Examples with JavaFX: a collection of fully-featured applications with a JavaFX-based user interface.</li>
-  <li>SARL Templates of applications: a collection of templates for creating a fresh SARL application.</li>
-</ul>
+* SARL Tutorials: the SARL code that is associated to one of the tutorial from the official documentation pages.
+* SARL Examples without user interface: a collection of fully-featured applications without graphical user interface.
+* SARL Examples with JavaFX: a collection of fully-featured applications with a JavaFX-based user interface.
+* SARL Templates of applications: a collection of templates for creating a fresh SARL application.
 
-<h3 id="32-how-can-we-know-when-an-agent-has-been-created-fully-after-being-spawn">3.2. How can we know when an agent has been created fully after being spawn?</h3>
 
-<p>An event <code>AgentSpawned</code> will be emitted when an agent has been created and can
-be handled, say by a coordinator, to know the agent is now alive! For example:</p>
+### 3.2. How can we know when an agent has been created fully after being spawn?
 
-<pre><code class="language-sarl">on AgentSpawned {
+An event `AgentSpawned` will be emitted when an agent has been created and can
+be handled, say by a coordinator, to know the agent is now alive! For example:
+
+```sarl
+on AgentSpawned {
     info("Agent {0} of type {1} has been created successfully and is now alive!",
         occurrence.agentID, occurrence.agentType)
 }
@@ -532,7 +590,7 @@ agent is created, the <code>spawn()</code> commands returns.</p>
 
 <p>We provide a <a href="../reference/CompilerErrors.html">page</a> that lists all the issue messages from the SARL compiler.</p>
 
-<p>Additionally, several run-time errors from the <a href="../tools/Janus.html">Janus framework</a> are explained <a href="../tools/Janus.html#3-list-of-errors-and-warnings">here</a>.</p>
+<p>Additionally, several run-time errors from the <a href="../tools/Janus.html">Janus framework</a> are explained <a href="../tools/Janus.html#list-of-errors-and-warnings">here</a>.</p>
 
 <h3 id="35-how-can-the-warnings-given-by-the-sarl-compiler-be-avoided">3.5. How can the warnings given by the SARL compiler be avoided?</h3>
 
@@ -562,7 +620,7 @@ for a complete list of what can be suppressed.</p>
 <p>The sources for SARL are available on
 <a href="https://github.com/sarl/sarl">Github</a>.
 Details for getting the source code may be found on the
-<a href="http://www.sarl.io/download/">download page</a>.</p>
+<a href="https://www.sarl.io/download/">download page</a>.</p>
 
 <h3 id="42-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</h3>
 
@@ -578,22 +636,26 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.12</li>
+  <li>Version: 0.13</li>
   <li>Status: Stable Release</li>
-  <li>Release: 2021-05-27</li>
+  <li>Release: 2023-09-19</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2021 <a href="http://www.sarl.io/about/index.html">the original authors or authors</a>.</p>
+  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
-  <p>Licensed under the Apache License, Version 2.0;
-you may not use this file except in compliance with the License.
-You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">License</a>.</p>
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
 
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator io.sarl.maven.docs.generator 0.12.0.</small></p>
+<p><small>Generated with the translator docs.generator 0.13.0.</small></p>
 
     </div> <!-- /default layout container -->
 

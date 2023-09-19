@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SarlClassBuilderImpl</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/builders/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/builders/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlCapacityBuilderImpl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlConstructorBuilderImpl.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/codebuilder/builders/package-summary.html" class="doclet-header-packagename">io.sarl.lang.codebuilder.builders</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class SarlClassBuilderImpl
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html" class="doclet-inheritancetree-type">AbstractBuilder</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html" class="doclet-inheritancetree-type">SarlClassBuilderImpl</a></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlClassBuilder.html" class="doclet-superinterfacelist">ISarlClassBuilder</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">SarlClassBuilderImpl</span>
+     <br>
+     extends <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html" class="doclet-typesignature">AbstractBuilder</a>
+     <br>
+     implements <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlClassBuilder.html" class="doclet-typesignature">ISarlClassBuilder</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Builder of a Sarl SarlClass.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo"></dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1944 active" onclick="openTabElement(this,'ID4807', 'doclet-tabs-button-instance-1944', 'doclet-tabs-content-instance-1944')">Properties</button>
+    </div>
+    <div id="ID4807" class="doclet-tabs-content doclet-tabs-content-instance-1944 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/sarl/SarlClass.html">SarlClass</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#getSarlClass()">sarlClass</a></span><br>
+         Replies the generated SarlClass.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getImportManager()">importManager</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getImportsConfiguration()">importsConfiguration</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getPrimitiveTypes()">primitiveTypes</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getResourceFactory()">resourceFactory</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getScriptFileExtension()">scriptFileExtension</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getTypeReferences()">typeReferences</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getTypeResolutionContext()">typeResolutionContext</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1947 active" onclick="openTabElement(this,'ID4814', 'doclet-tabs-button-instance-1947', 'doclet-tabs-content-instance-1947')">Constructors</button>
+    </div>
+    <div id="ID4814" class="doclet-tabs-content doclet-tabs-content-instance-1947 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1948 active" onclick="openTabElement(this,'ID4815', 'doclet-tabs-button-instance-1948', 'doclet-tabs-content-instance-1948')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1948" onclick="openTabElement(this,'ID4818', 'doclet-tabs-button-instance-1948', 'doclet-tabs-content-instance-1948')">Instance actions</button>
+    </div>
+    <div id="ID4815" class="doclet-tabs-content doclet-tabs-content-instance-1948 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addDefSarlAction(java.lang.String)">addDefSarlAction(String)</a></span><br>
+         Create a SarlAction.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addImplements(java.lang.String)">addImplements(String)</a></span><br>
+         Add an implemented type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addModifier(java.lang.String)">addModifier(String)</a></span><br>
+         Add a modifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addOverrideSarlAction(java.lang.String)">addOverrideSarlAction(String)</a></span><br>
+         Create a SarlAction.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlAction(java.lang.String)">addSarlAction(String)</a></span><br>
+         Create a SarlAction</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlAnnotationTypeBuilder.html">ISarlAnnotationTypeBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlAnnotationType(java.lang.String)">addSarlAnnotationType(String)</a></span><br>
+         Create a SarlAnnotationType.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlClassBuilder.html">ISarlClassBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlClass(java.lang.String)">addSarlClass(String)</a></span><br>
+         Create a SarlClass.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlConstructorBuilder.html">ISarlConstructorBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlConstructor()">addSarlConstructor</a></span><br>
+         Create a SarlConstructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlEnumerationBuilder.html">ISarlEnumerationBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlEnumeration(java.lang.String)">addSarlEnumeration(String)</a></span><br>
+         Create a SarlEnumeration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlField(java.lang.String)">addSarlField(String)</a></span><br>
+         Create a SarlField</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlInterfaceBuilder.html">ISarlInterfaceBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlInterface(java.lang.String)">addSarlInterface(String)</a></span><br>
+         Create a SarlInterface.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ITypeParameterBuilder.html">ITypeParameterBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addTypeParameter(java.lang.String)">addTypeParameter(String)</a></span><br>
+         Add a type parameter.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addValSarlField(java.lang.String)">addValSarlField(String)</a></span><br>
+         Create a SarlField.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addVarSarlField(java.lang.String)">addVarSarlField(String)</a></span><br>
+         Create a SarlField.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eInit(io.sarl.lang.sarl.SarlScript,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(SarlScript,String,IJvmTypeProvider)</a></span><br>
+         Initialize the Ecore element when inside a script.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eInit(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(XtendTypeDeclaration,String,IJvmTypeProvider)</a></span><br>
+         Initialize the Ecore element when inner type declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eResource()">eResource</a></span><br>
+         Replies the resource to which the SarlClass is attached.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/sarl/SarlClass.html">SarlClass</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#getSarlClass()">getSarlClass</a></span><br>
+         Replies the generated SarlClass.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#setDocumentation(java.lang.String)">setDocumentation(String)</a></span><br>
+         Change the documentation of the element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#setExtends(java.lang.String)">setExtends(String)</a></span><br>
+         Change the super type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#toString()">toString</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID4818" class="doclet-tabs-content doclet-tabs-content-instance-1948 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addDefSarlAction(java.lang.String)">addDefSarlAction(String)</a></span><br>
+         Create a SarlAction.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addImplements(java.lang.String)">addImplements(String)</a></span><br>
+         Add an implemented type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addModifier(java.lang.String)">addModifier(String)</a></span><br>
+         Add a modifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addOverrideSarlAction(java.lang.String)">addOverrideSarlAction(String)</a></span><br>
+         Create a SarlAction.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlAction(java.lang.String)">addSarlAction(String)</a></span><br>
+         Create a SarlAction</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlAnnotationTypeBuilder.html">ISarlAnnotationTypeBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlAnnotationType(java.lang.String)">addSarlAnnotationType(String)</a></span><br>
+         Create a SarlAnnotationType.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlClassBuilder.html">ISarlClassBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlClass(java.lang.String)">addSarlClass(String)</a></span><br>
+         Create a SarlClass.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlConstructorBuilder.html">ISarlConstructorBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlConstructor()">addSarlConstructor</a></span><br>
+         Create a SarlConstructor.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlEnumerationBuilder.html">ISarlEnumerationBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlEnumeration(java.lang.String)">addSarlEnumeration(String)</a></span><br>
+         Create a SarlEnumeration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlField(java.lang.String)">addSarlField(String)</a></span><br>
+         Create a SarlField</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlInterfaceBuilder.html">ISarlInterfaceBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addSarlInterface(java.lang.String)">addSarlInterface(String)</a></span><br>
+         Create a SarlInterface.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ITypeParameterBuilder.html">ITypeParameterBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addTypeParameter(java.lang.String)">addTypeParameter(String)</a></span><br>
+         Add a type parameter.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addValSarlField(java.lang.String)">addValSarlField(String)</a></span><br>
+         Create a SarlField.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#addVarSarlField(java.lang.String)">addVarSarlField(String)</a></span><br>
+         Create a SarlField.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eInit(io.sarl.lang.sarl.SarlScript,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(SarlScript,String,IJvmTypeProvider)</a></span><br>
+         Initialize the Ecore element when inside a script.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eInit(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">eInit(XtendTypeDeclaration,String,IJvmTypeProvider)</a></span><br>
+         Initialize the Ecore element when inner type declaration.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.emf.ecore.resource.Resource</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#eResource()">eResource</a></span><br>
+         Replies the resource to which the SarlClass is attached.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/sarl/SarlClass.html">SarlClass</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#getSarlClass()">getSarlClass</a></span><br>
+         Replies the generated SarlClass.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#setDocumentation(java.lang.String)">setDocumentation(String)</a></span><br>
+         Change the documentation of the element.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#setExtends(java.lang.String)">setExtends(String)</a></span><br>
+         Change the super type.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#toString()">toString</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#computeUnusedUri(org.eclipse.emf.ecore.resource.ResourceSet)">computeUnusedUri(ResourceSet)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#dispose()">dispose</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#findType(org.eclipse.emf.common.notify.Notifier,java.lang.String)">findType(Notifier,String)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getAssociatedElement(java.lang.Class<T>,org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.resource.Resource)">getAssociatedElement(Class&lt;T&gt;,EObject,Resource)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getImportManager()">getImportManager</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getImportsConfiguration()">getImportsConfiguration</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getPrimitiveTypes()">getPrimitiveTypes</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getQualifiedName(org.eclipse.emf.ecore.EObject)">getQualifiedName(EObject)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getResourceFactory()">getResourceFactory</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getScriptFileExtension()">getScriptFileExtension</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getTypeReferences()">getTypeReferences</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#getTypeResolutionContext()">getTypeResolutionContext</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#isActionBodyAllowed(org.eclipse.xtend.core.xtend.XtendTypeDeclaration)">isActionBodyAllowed(XtendTypeDeclaration)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#isSubTypeOf(org.eclipse.emf.ecore.EObject,org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmTypeReference)">isSubTypeOf(EObject,JvmTypeReference,JvmTypeReference)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#isTypeReference(org.eclipse.xtext.common.types.JvmTypeReference)">isTypeReference(JvmTypeReference)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#newTypeRef(org.eclipse.emf.common.notify.Notifier,java.lang.String)">newTypeRef(Notifier,String)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#newTypeRef(java.lang.String)">newTypeRef(String)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#setFileExtensions(java.lang.String)">setFileExtensions(String)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#setTypeResolutionContext(org.eclipse.xtext.common.types.access.IJvmTypeProvider)">setTypeResolutionContext(IJvmTypeProvider)</a>, <a href="../../../../../io/sarl/lang/codebuilder/builders/AbstractBuilder.html#toResource(org.eclipse.emf.common.notify.Notifier)">toResource(Notifier)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      sarlClass
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> sarlClass : <a href="../../../../../io/sarl/lang/sarl/SarlClass.html">SarlClass</a></pre>
+      <div>
+       Replies the generated SarlClass.
+      </div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/lang/codebuilder/builders/SarlClassBuilderImpl.html#getSarlClass()">getSarlClass</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="addDefSarlAction(java.lang.String)">
+      addDefSarlAction(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addDefSarlAction(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></pre>
+      <div>
+       Create a SarlAction.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlAction.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addImplements(java.lang.String)">
+      addImplements(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addImplements(String)</pre>
+      <div>
+       Add an implemented type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        type - <span class="doclet-tags-param-comment">the qualified name of the implemented type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addModifier(java.lang.String)">
+      addModifier(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addModifier(String)</pre>
+      <div>
+       Add a modifier.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        modifier - <span class="doclet-tags-param-comment">the modifier to add.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addOverrideSarlAction(java.lang.String)">
+      addOverrideSarlAction(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addOverrideSarlAction(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></pre>
+      <div>
+       Create a SarlAction.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlAction.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlAction(java.lang.String)">
+      addSarlAction(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlAction(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlActionBuilder.html">ISarlActionBuilder</a></pre>
+      <div>
+       Create a SarlAction. * 
+       <p></p>This function is equivalent to #addDefSarlAction.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlAction.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlAnnotationType(java.lang.String)">
+      addSarlAnnotationType(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlAnnotationType(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlAnnotationTypeBuilder.html">ISarlAnnotationTypeBuilder</a></pre>
+      <div>
+       Create a SarlAnnotationType.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlAnnotationType.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlClass(java.lang.String)">
+      addSarlClass(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlClass(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlClassBuilder.html">ISarlClassBuilder</a></pre>
+      <div>
+       Create a SarlClass.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlClass.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlConstructor()">
+      addSarlConstructor
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlConstructor : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlConstructorBuilder.html">ISarlConstructorBuilder</a></pre>
+      <div>
+       Create a SarlConstructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlEnumeration(java.lang.String)">
+      addSarlEnumeration(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlEnumeration(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlEnumerationBuilder.html">ISarlEnumerationBuilder</a></pre>
+      <div>
+       Create a SarlEnumeration.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlEnumeration.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlField(java.lang.String)">
+      addSarlField(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlField(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></pre>
+      <div>
+       Create a SarlField. * 
+       <p></p>This function is equivalent to #addVarSarlField.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlField.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addSarlInterface(java.lang.String)">
+      addSarlInterface(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addSarlInterface(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlInterfaceBuilder.html">ISarlInterfaceBuilder</a></pre>
+      <div>
+       Create a SarlInterface.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlInterface.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addTypeParameter(java.lang.String)">
+      addTypeParameter(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addTypeParameter(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ITypeParameterBuilder.html">ITypeParameterBuilder</a></pre>
+      <div>
+       Add a type parameter.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the simple name of the type parameter.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder of type parameter.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addValSarlField(java.lang.String)">
+      addValSarlField(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addValSarlField(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></pre>
+      <div>
+       Create a SarlField.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlField.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addVarSarlField(java.lang.String)">
+      addVarSarlField(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addVarSarlField(String) : <a href="../../../../../io/sarl/lang/codebuilder/builders/ISarlFieldBuilder.html">ISarlFieldBuilder</a></pre>
+      <div>
+       Create a SarlField.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name of the SarlField.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the builder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="eInit(io.sarl.lang.sarl.SarlScript,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">
+      eInit(SarlScript,String,IJvmTypeProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> eInit(SarlScript,String,IJvmTypeProvider)</pre>
+      <div>
+       Initialize the Ecore element when inside a script.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="eInit(org.eclipse.xtend.core.xtend.XtendTypeDeclaration,java.lang.String,org.eclipse.xtext.common.types.access.IJvmTypeProvider)">
+      eInit(XtendTypeDeclaration,String,IJvmTypeProvider)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> eInit(XtendTypeDeclaration,String,IJvmTypeProvider)</pre>
+      <div>
+       Initialize the Ecore element when inner type declaration.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="eResource()">
+      eResource
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> eResource : <span>org.eclipse.emf.ecore.resource.Resource</span></pre>
+      <div>
+       Replies the resource to which the SarlClass is attached.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="getSarlClass()">
+      getSarlClass
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getSarlClass : <a href="../../../../../io/sarl/lang/sarl/SarlClass.html">SarlClass</a></pre>
+      <div>
+       Replies the generated SarlClass.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="setDocumentation(java.lang.String)">
+      setDocumentation(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setDocumentation(String)</pre>
+      <div>
+       Change the documentation of the element. 
+       <p></p>The documentation will be displayed just before the element.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        doc - <span class="doclet-tags-param-comment">the documentation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="setExtends(java.lang.String)">
+      setExtends(String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> setExtends(String)</pre>
+      <div>
+       Change the super type.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        superType - <span class="doclet-tags-param-comment">the qualified name of the super type, or <code class="doclet-tags-param-comment">null</code> if the default type.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="toString()">
+      toString
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> toString : <span>java.lang.String</span></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/builders/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/codebuilder/builders/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlCapacityBuilderImpl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/codebuilder/builders/SarlConstructorBuilderImpl.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

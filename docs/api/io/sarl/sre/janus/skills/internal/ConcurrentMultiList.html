@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>ConcurrentMultiList</title>
+  <link rel="stylesheet" href="../../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../../css/index.css">
+  <script src="../../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/skills/internal/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/skills/internal/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList/MultiIterator.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../../io/sarl/sre/janus/skills/internal/package-summary.html" class="doclet-header-packagename">io.sarl.sre.janus.skills.internal</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class ConcurrentMultiList&lt;E&gt;
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html" class="doclet-inheritancetree-type">ConcurrentMultiList</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-typeparameterlist">
+     <dt class="doclet-typeparameterlist">
+      Type Parameters:
+     </dt>
+     <dd class="doclet-typeparameterlist">
+      E - is the type of elements in the collections.
+     </dd>
+    </dl>
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <span class="doclet-superinterfacelist">java.lang.Iterable</span>&lt;T&gt;, <span class="doclet-superinterfacelist">java.util.Collection</span>&lt;E&gt;
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">ConcurrentMultiList&lt;E&gt;</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <span class="doclet-typesignature">java.util.Collection</span>&lt;E&gt;
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      A collection composed of collections. 
+      <p></p>This collection is not thread-safe. 
+      <p></p>This collection is read-only.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Parameters:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      &lt;E&gt; - <span class="doclet-tags-param-comment">is the type of elements in the collections.</span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sre.janus</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">janus.kernel</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="nested.classes.summary.box">
+    <div class="doclet-summarybox-title">
+     Nested Type Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3225 active" onclick="openTabElement(this,'ID7943', 'doclet-tabs-button-instance-3225', 'doclet-tabs-content-instance-3225')">Nested Types</button>
+    </div>
+    <div id="ID7943" class="doclet-tabs-content doclet-tabs-content-instance-3225 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Type and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList/MultiIterator.html">ConcurrentMultiList.MultiIterator</a></span><br>
+         Iterator on multicollection.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3228 active" onclick="openTabElement(this,'ID7950', 'doclet-tabs-button-instance-3228', 'doclet-tabs-content-instance-3228')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3228" onclick="openTabElement(this,'ID7953', 'doclet-tabs-button-instance-3228', 'doclet-tabs-content-instance-3228')">Instance actions</button>
+    </div>
+    <div id="ID7950" class="doclet-tabs-content doclet-tabs-content-instance-3228 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#add(E)">add(E)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">addCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addAll(java.util.Collection<? extends E>)">addAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">addCollection(ConcurrentLinkedDeque&lt;E&gt;)</a></span><br>
+         Add a collection inside this multicollection.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#clear()">clear</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#contains(java.lang.Object)">contains(Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#containsAll(java.util.Collection<?>)">containsAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#isEmpty()">isEmpty</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Iterator</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#iterator()">iterator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#remove(java.lang.Object)">remove(Object)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeAll(java.util.Collection<?>)">removeAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque&lt;E&gt;)</a></span><br>
+         Remove a collection from this multicollection.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#retainAll(java.util.Collection<?>)">retainAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">int</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#size()">size</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Object</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#toArray()">toArray</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Object</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#toArray(T[])">toArray(Object)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID7953" class="doclet-tabs-content doclet-tabs-content-instance-3228 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#add(E)">add(E)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">addCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addAll(java.util.Collection<? extends E>)">addAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">addCollection(ConcurrentLinkedDeque&lt;E&gt;)</a></span><br>
+         Add a collection inside this multicollection.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#clear()">clear</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#contains(java.lang.Object)">contains(Object)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#containsAll(java.util.Collection<?>)">containsAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#isEmpty()">isEmpty</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Iterator</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#iterator()">iterator</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#remove(java.lang.Object)">remove(Object)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeAll(java.util.Collection<?>)">removeAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque&lt;E&gt;)</a></span><br>
+         Remove a collection from this multicollection.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#retainAll(java.util.Collection<?>)">retainAll(Collection&lt;E&gt;)</a></span><br>
+         This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">int</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#size()">size</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Object</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#toArray()">toArray</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Object</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#toArray(T[])">toArray(Object)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="add(E)">
+      add(E)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> add(E) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">addCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+     </dd>
+     <dt class="doclet-detailbox" id="addAll(java.util.Collection<? extends E>)">
+      addAll(Collection&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addAll(Collection&lt;E&gt;) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">a collection</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">nothing but exception</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="addCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">
+      addCollection(ConcurrentLinkedDeque&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> addCollection(ConcurrentLinkedDeque&lt;E&gt;) : boolean</pre>
+      <div>
+       Add a collection inside this multicollection.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">the collection to add.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the multi-collection has changed, otherwise  <code class="doclet-tags-return-comment">false</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="clear()">
+      clear
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> clear</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="contains(java.lang.Object)">
+      contains(Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> contains(Object) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="containsAll(java.util.Collection<?>)">
+      containsAll(Collection&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> containsAll(Collection&lt;E&gt;) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">a collection</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">nothing but exception</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isEmpty()">
+      isEmpty
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> isEmpty : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="iterator()">
+      iterator
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> iterator : <span>java.util.Iterator</span>&lt;E&gt;</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="remove(java.lang.Object)">
+      remove(Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> remove(Object) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        obj - <span class="doclet-tags-param-comment">an object</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">nothing but exception</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="removeAll(java.util.Collection<?>)">
+      removeAll(Collection&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> removeAll(Collection&lt;E&gt;) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">a collection</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">nothing but exception</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">
+      removeCollection(ConcurrentLinkedDeque&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> removeCollection(ConcurrentLinkedDeque&lt;E&gt;) : boolean</pre>
+      <div>
+       Remove a collection from this multicollection.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">the collection to remove.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the multi-collection has changed, otherwise  <code class="doclet-tags-return-comment">false</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="retainAll(java.util.Collection<?>)">
+      retainAll(Collection&lt;E&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> retainAll(Collection&lt;E&gt;) : boolean</pre>
+      <div>
+       This function is not supported, see <a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList.html#removeCollection(java.util.concurrent.ConcurrentLinkedDeque<? extends E>)">removeCollection(ConcurrentLinkedDeque)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        collection - <span class="doclet-tags-param-comment">- a collection</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">nothing but exception</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="size()">
+      size
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> size : int</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="toArray()">
+      toArray
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> toArray : <span>java.lang.Object</span></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="toArray(T[])">
+      toArray(Object)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> toArray(Object) : <span>java.lang.Object</span><p class="doclet-pre-indent"> <span class="doclet-keyword">with</span> T</p></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/skills/internal/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/skills/internal/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/skills/internal/ConcurrentMultiList/MultiIterator.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

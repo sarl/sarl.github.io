@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.13.0</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../library/index.html">Library</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0130">Changes in 0.13.0</h1>
+
+<p>Release date: 2023-09-19.</p>
+
+<h2 id="1-major-changes">1. Major Changes</h2>
+
+<p>Number of major changes: 3</p>
+
+<h3 id="11-transition-from-java-8-to-java-17">1.1. Transition from Java 8 to Java 17</h3>
+
+<p>Since the beginning of its life, SARL supports version 8 of Java.
+However, Java has considerably evolved during the past decade; And the lastest long-time-support version of Java is 17.
+New features have been added and enhancements have been made since Java 8.
+These features and enhancements improve startup, performance, memory usage, and provide better integration with containers.
+Moreover, the recent tools such as Eclipse and Xtext require to use at least the version 17 of Java to have benefits of the feature enhancements and bug fixes.</p>
+
+<p>Consequently, the SARL development team as decided in 2021 to apply to SARL a transition from Java 8 to Java 17.
+Moving from Java 8 to Java 17 was a significant amount of work (approximatively 18 months) and will apply major changes in all the SARL projects.</p>
+
+<p><strong>Version 0.13.0 requires Java 17 as a minimum requirement.</strong></p>
+
+<p><strong>Many the modules and artifacts of SARL have change of their names to obtain a unified naming convention that is also compatible with those that must be used for Java modules.</strong></p>
+
+<p>Details: [<a href="http://sarl.io/sarl/sarl/commit/079af872c0c1f8f063c0925a629bf96177386e78">1</a>, <a href="http://sarl.io/sarl/sarl/commit/b2cb9bd8a27a7f49712f82f76ec814b66784d408">2</a>, <a href="http://sarl.io/sarl/sarl/commit/3170b8426f0949938711df74ced0da4936b576ed">3</a>, <a href="http://sarl.io/sarl/sarl/commit/8ac12eb1f94eedfdca3c86de1c517752ff08e6df">4</a>, <a href="http://sarl.io/sarl/sarl/commit/5f2a09a6a631b10968e34e518d94ee768f1cca48">5</a>, <a href="http://sarl.io/sarl/sarl/commit/708960de1ad87f18698b7427a051bcaf1d7a80fe">6</a>, <a href="http://sarl.io/sarl/sarl/commit/ea2f6bf8e0aa054f7a90e2dec259274c3e5b9862">7</a>, <a href="http://sarl.io/sarl/sarl/commit/38a48bf4ce9c3e24c2e29c3a5de99b803d08b3b2">8</a>, <a href="http://sarl.io/sarl/sarl/commit/2c037bbc9f574ccbae0984203681096909d51db8">9</a>].</p>
+
+<h3 id="12-novel-sarl-project-structure">1.2. Novel SARL Project Structure</h3>
+
+<p>Since few years, contributors to SARL notify the high complexity of the SARL project structure.
+It was almost impossible to compile a sub-project of SARL without downloading and compiling all the sub-projects.</p>
+
+<p>The transition from Java 8 to Java 17 gives us the opportunity to rethink the structure of the SARL project and its sub-projects.
+There is not any more a single project for all SARL (with its associated root pom file).
+The SARL project is splitted into different sub-projects that may be compiled independently.
+Each project is dedicated to a specific set of features and tools. These sub-projects are:</p>
+
+<ul>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-bom">sarl-bom</a>: Provide the Build-of-Material, i.e., a shared list of Maven dependency, for all the SARL sub-projects;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-baseutils">sarl-baseutils</a>: Set of Maven artifacts that are independent of SARL but needed to build the SARL artifacts;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-lang">sarl-lang</a>: Provides the language definition, the associated compiler (including the Maven plugin) and code formatting styles for different text editors;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-sdk">sarl-sdk</a>: Set of Maven artifacts that constitute the SDK for all the SARL developers;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-apputils">sarl-apputils</a>: Shared projects for building applications that are using a SARL compiler;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-sdk">sarl-sre</a>: SARL runtime environment (or SARL virtual machine);</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-docs">sarl-docs</a>: Tools and Doclet for the generation of the documentation, including the API documentation pages;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-cli">sarl-cli</a>: Set of command-line tools (sarlc, sarldoc, janus…);</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-eclipse">sarl-eclipse</a>: Eclipse-based editor for SARL;</li>
+  <li><a href="https://github.com/sarl/sarl/tree/master/sarl-officialdoc">sarl-officialdoc</a>: Markdown files of the official documentation of SARL.</li>
+</ul>
+
+<h3 id="13-integration-of-a-goal-oriented-behavior-in-the-sarl-api">1.3. Integration of a Goal-oriented Behavior in the SARL API</h3>
+
+<p>The SARL Standard Development Kit (SDK) includes a novel API dedicated to time-based goal-oriented behaviors.
+Goal-Oriented Behavior (GOB) is a general term that covers any technique taking into account goals of the agents.
+GOB is not supported by a single technique.
+This new feature of the SARL API corresponds to a standard GOB that is used in video game applications.
+This API equips the agents with an action selection mechanism to select the best action to be realized for archieving one of the agent goals.</p>
+
+<p>Documentation: <a href="http://www.sarl.io/docs/official/reference/gob/Gob.html">SARL website</a></p>
+
+<h2 id="2-detailed-changes">2. Detailed Changes</h2>
+
+<h3 id="21-sarl-language">2.1. SARL Language</h3>
+
+<h4 id="211-sarl-language-and-grammar">2.1.1. SARL Language and Grammar</h4>
+
+<ul>
+  <li>Enable the <code>static</code> modifier for the members of agent-oriented type declarations. [<a href="http://sarl.io/sarl/sarl/commit/9af132e078d6be1aa0226edf3b81bed868298801">more details</a>]</li>
+  <li>Add automatic variable converters from <code>Object</code> type to base/native types. [<a href="http://sarl.io/sarl/sarl/commit/00698d4771147d5d1dcce6c22970c86f5b990d00">more details</a>]</li>
+</ul>
+
+<h4 id="212-sarl-validator">2.1.2. SARL Validator</h4>
+
+<ul>
+  <li>When the unary minus operator and a call to an extension method are used in the same expression, the operational semantic of this expression may be not the one expected by the developper, e.g., <code>-2.abs</code>. In the example, according to the priorities of the SARL operators, it must be interpreted as <code>-abs(2) == -2</code>. However, some developper could misinterpret this expression as <code>abs(-2) == 2</code>. When this type of expression is found in the code, the SARL compiler generates a warning to notify the deveopper that he/she may have not coded the correct expression. [<a href="http://sarl.io/sarl/sarl/commit/b2fe5288671aeb26c063e2b8c2100d3ae8ebcbdf">more details</a>]</li>
+</ul>
+
+<h4 id="213-java-model-inferrer">2.1.3. Java Model Inferrer</h4>
+
+<ul>
+  <li>The detector of pure functions that is embedded in SARL may cause a stack-overflow error when it is analysis a recursive function. The code of the detector was rewritten to avoid this error. [<a href="http://sarl.io/sarl/sarl/commit/521947a7d0618a75f688ff601e790f44b22d4519">more details</a>]</li>
+  <li>Several null-pointer exception were fixed in the SARL compiler. [<a href="http://sarl.io/sarl/sarl/commit/51ed8bbfbc48a7c6933e751af19b69f7be62cc4a">1</a>, <a href="http://sarl.io/sarl/sarl/commit/362ec750fc1e653a5caa4cbab8734192aab4ab7f">more details</a>, <a href="http://sarl.io/sarl/sarl/commit/2aa42acc2e089158c220dcb69889ba3fbd7939a3">3</a>, <a href="http://sarl.io/sarl/sarl/commit/1ec99f928d453fffa74c681a1808aa68ba40712c">4</a>]</li>
+  <li>Do not generate import statements for types that are declared in the default package. [<a href="http://sarl.io/sarl/sarl/commit/f094ad531a7141c67ba7df69a3d60bdf386b5c0a">more details</a>]</li>
+</ul>
+
+<h4 id="214-sarl-batch-compiler">2.1.4. SARL Batch Compiler</h4>
+
+<ul>
+  <li>Add an option for converting the warnings to errors. [<a href="http://sarl.io/sarl/sarl/commit/df805b7e4b6410ac1542e47bb7d04c334891853f">more details</a>]</li>
+</ul>
+
+<h3 id="22-sarl-development-toolkit-sdk">2.2. SARL Development Toolkit (SDK)</h3>
+
+<ul>
+  <li>Add in the SARL API an implementation of the time-based goal-oriented behavior that is used in video games. [<a href="http://sarl.io/sarl/sarl/commit/873886e5b1311902c7f478d15dd68578a785c3d7">more details</a>]</li>
+</ul>
+
+<h3 id="23-sarl-user-interface">2.3. SARL User Interface</h3>
+
+<h4 id="231-eclipse-products">2.3.1. Eclipse Products</h4>
+
+<ul>
+  <li>Fixing the classpath containers of SARL and Janus for devel and release versions of the IDE. [<a href="http://sarl.io/sarl/sarl/commit/85a1342a7d1d20ee539fb1814b2d1154f5d7c2c0">more details</a>]</li>
+</ul>
+
+<h5 id="232-maven-integration-in-eclipse">2.3.2. Maven Integration in Eclipse</h5>
+
+<ul>
+  <li>Fixing the m2e configurator to properly set the classpath for a SARL project. [<a href="http://sarl.io/sarl/sarl/commit/f4a0dcd67f025dde0b66a9ce523b93f432232d57">more details</a>]</li>
+  <li>Integration tests are usually coded in the source folder <code>src/it</code>. These folders are now supported by the SARL m2e plugin and automatically created. [<a href="http://sarl.io/sarl/sarl/commit/6d8454793334168fabbfdae53919486be5924f66">more details</a>]</li>
+</ul>
+
+<h5 id="233-launching-configurations">2.3.3. Launching Configurations</h5>
+
+<ul>
+  <li>Ensure that the classpaths that are used for launching an application in the Eclipse IDE contain unique bundle entries. [<a href="http://sarl.io/sarl/sarl/commit/bf61181a4e9fae33b8634e4fa32216a5107a3643">more details</a>]</li>
+</ul>
+
+<h5 id="234-preferences">2.3.4. Preferences</h5>
+
+<ul>
+  <li>When the SRE is preinstalled in the Eclipse IDE (as it is the case for Janus), the property page associated to this SRE must not allow to change the name and location of the SRE. A read-only editing page for the preinstalled SRE’s properties has been included in the Eclipse products. [<a href="http://sarl.io/sarl/sarl/commit/266b5c06e1dc8565c5084bc5ad62a270a712091c">more details</a>]</li>
+  <li>When the page for editing the SRE properties cannot be created, an error message is shown in a dialog box. [<a href="http://sarl.io/sarl/sarl/commit/fe4a880c6e0624be977b2067f2bd86ed3d1628f5">more details</a>]</li>
+</ul>
+
+<h5 id="235-wizards">2.3.5. Wizards</h5>
+
+<ul>
+  <li>In the dialog box that permits to create a SARL Maven project, the box “Create simple Maven project” is now selected by default. [<a href="http://sarl.io/sarl/sarl/commit/43e5f8d2d8ed107461782892662804cdc765d809">more details</a>]</li>
+  <li>When a SARL Maven project is created, the wizard creates by default the all folders for SARL code. [<a href="http://sarl.io/sarl/sarl/commit/274860efcdccb5c6f4fb3f4800fd0d04b77eb6ae">more details</a>]</li>
+</ul>
+
+<h5 id="236-other-ui-components">2.3.6. Other UI Components</h5>
+
+<ul>
+  <li>The Xtext editor that is used for editing SARL code is extended to avoid null-pointer exception and the loose of the link between the SARL file and the editor. [<a href="http://sarl.io/sarl/sarl/commit/0c7bdc5577a4bb5f417d189a789169ed08fbb102">1</a>, <a href="http://sarl.io/sarl/sarl/commit/fca1921a239284736399b34d21a905ac9840e365">2</a>]</li>
+  <li>Fixing the condition for enabling the popup-menu action dedicated to the transformation of a regular SARL project to SARL Maven project. [<a href="http://sarl.io/sarl/sarl/commit/f2ad4d771f642afda0e794ece528d0f7c3c8cf67">more details</a>]</li>
+  <li>The Java package explorer is located in the bottom panel. [<a href="http://sarl.io/sarl/sarl/commit/3122c1c76e16f469ccc6fbbdbde52aed105db05c">more details</a>]</li>
+  <li>Add onboarding images in SARL perspectives. [<a href="http://sarl.io/sarl/sarl/commit/9ae9702068576257f3b280fc572d51c401124e4c">1</a>, <a href="http://sarl.io/sarl/sarl/commit/0ee5d5885229eca591983e6b605e71568bb84fc1">2</a>]</li>
+</ul>
+
+<h3 id="24-external-contributions-to-sarl">2.4. External Contributions to SARL</h3>
+
+<ul>
+  <li>An example of the usage of the new API dedicated to time-based goal-oriented behavior is introduced. [<a href="http://sarl.io/sarl/sarl/commit/a4fdc1cabea3258e0afe00f3de39ce39b9806655">more details</a>]</li>
+</ul>
+
+<h3 id="25-janus-run-time-environment">2.5. Janus Run-time Environment</h3>
+
+<ul>
+  <li>Replace the Google Service Manager by a specific service manager. The Google Service Manager launches the services asynchronously with a thread that is not marked as daemon. This thread avoids the SRE to stop its run when no more agent is alive. For solving this problem, a simple service manager is implemented in the Janus SRE [<a href="http://sarl.io/sarl/sarl/commit/6e21380804dc1d46e419394b96c500c3d73e93e1">more details</a>]</li>
+</ul>
+
+<h3 id="26-maven-tools">2.6. Maven Tools</h3>
+
+<ul>
+  <li>The <code>sarl-maven-plugin</code> is printing out a warning message when it does not detect a SRE inthe project classpath. This message notifies the developper that it is necessary to use a specific tool for launching the SARL program, e.g. <code>janus</code> or a launch configuration the Eclipse product. [<a href="http://sarl.io/sarl/sarl/commit/acd8ca32c882c7cb89454c298b25acdf4e99253f">more details</a>]</li>
+  <li>Add an option for converting the warnings to errors. [<a href="http://sarl.io/sarl/sarl/commit/df805b7e4b6410ac1542e47bb7d04c334891853f">more details</a>]</li>
+</ul>
+
+<h3 id="27-command-line-tools">2.7. Command-Line Tools</h3>
+
+<h4 id="271-sarlc">2.7.1. sarlc</h4>
+
+<ul>
+  <li>Add current directory in the default classpath of <code>sarlc</code>. [<a href="http://sarl.io/sarl/sarl/commit/27a01163fe127f93c16b5c286391d9b972db7d72">more details</a>]</li>
+  <li>Add an option for converting the warnings to errors. [<a href="http://sarl.io/sarl/sarl/commit/df805b7e4b6410ac1542e47bb7d04c334891853f">more details</a>]</li>
+</ul>
+
+<h4 id="272-sarldoc">2.7.2. sarldoc</h4>
+
+<ul>
+  <li>Add current directory in the default classpath of <code>sarldoc</code>. [<a href="http://sarl.io/sarl/sarl/commit/27a01163fe127f93c16b5c286391d9b972db7d72">more details</a>]</li>
+</ul>
+
+<h4 id="273-janus">2.7.3. janus</h4>
+
+<ul>
+  <li>Add current directory in the default classpath of <code>janus</code> and <code>janusnode</code>. [<a href="http://sarl.io/sarl/sarl/commit/27a01163fe127f93c16b5c286391d9b972db7d72">more details</a>]</li>
+</ul>
+
+<h3 id="28-sarl-documentation">2.8. SARL Documentation</h3>
+
+<h4 id="281-documentation-of-the-sarl-sdk">2.8.1. Documentation of the SARL SDK</h4>
+
+<ul>
+  <li>Add a reference documentation for the time-based goal-oriented behavior that is usually used in video game agents. [<a href="http://sarl.io/sarl/sarl/commit/ebdbd13393a9f2a7ffa1898251e78ddfaad908b8">more details</a>]</li>
+</ul>
+
+<h4 id="282-documentation-of-tutorials">2.8.2. Documentation of tutorials</h4>
+
+<ul>
+  <li>Add tutorial for creating a runnable file for SARL application. [<a href="http://sarl.io/sarl/sarl/commit/a755b1331ba7e264e25d0908cbfa318fe0ee3f81">more details</a>]</li>
+  <li>Add a tutorial for creating an agent that is deciding of the next actions using a time-based goal-oriented behavior. [<a href="http://sarl.io/sarl/sarl/commit/ebdbd13393a9f2a7ffa1898251e78ddfaad908b8">more details</a>]</li>
+</ul>
+
+<h4 id="283-faq">2.8.3. FAQ</h4>
+
+<ul>
+  <li>Update the FAQ for fixing the starting issue of the SARL product on MacOS. [<a href="http://sarl.io/sarl/sarl/commit/f61b623555e532aae03f031da3d798d37b5eef1b">more details</a>]</li>
+</ul>
+
+<h4 id="284-documentation-generators">2.8.4. Documentation Generators</h4>
+
+<ul>
+  <li>Fixing the SARL doclet for being used on Java 17 platform. [<a href="http://sarl.io/sarl/sarl/commit/4bebc5bcb4c11601b20341e4942015823fc5e162">1</a>, <a href="http://sarl.io/sarl/sarl/commit/a2d3601e9b3eabcf2152caf9767cff030cf978c5">2</a>]</li>
+</ul>
+
+<h3 id="29-tools-for-sarl-contributors">2.9. Tools for SARL Contributors</h3>
+
+<ul>
+  <li>The new Eclipse plugin developement framework, and Tycho, now enable the directly include Maven artifacts in the target platform. This feature allows to avoid the create of specific P2 repositories for artifacts that are not bundlified. The SARL P2 repository will disappear in short time. [<a href="http://sarl.io/sarl/sarl/commit/89cb5a71be7bfb5012550375a6afb38e33be5e6b">more details</a>]</li>
+  <li>Add a specific product for SARL contributors. This products includes standard SARL IDE, Eclipse RCP and Eclipse DSL tools. [<a href="http://sarl.io/sarl/sarl/commit/e69376bb4e29c6d6aea5d11550fae80ecb21e0b6">1</a>, <a href="http://sarl.io/sarl/sarl/commit/4978435f53c794e69d64393ca345c07f03f5fe57">2</a>]</li>
+  <li>With the introduction of the BOM project for SARL, all the constants accross the SARL projects becomes unified. They are used by Maven for injecting the values in the code or property files. [<a href="http://sarl.io/sarl/sarl/commit/d9fa6dca1f046f2beaacd6c9a8e772eef1f597c3">1</a>, <a href="http://sarl.io/sarl/sarl/commit/56ae854f7694ec54ad9e77e53825003b1d0c3dc5">more details</a>]</li>
+  <li>Write the information arguments (since, isRemoval) for all the <code>Deprecated</code> annotations. These information arguments were introducted in recent Java API. [<a href="http://sarl.io/sarl/sarl/commit/15f6a6383a56c8287073689b56270ccdeef9629d">1</a>, <a href="http://sarl.io/sarl/sarl/commit/8441b769ca0ac798356a6ff9e7bf50802f4f1755">2</a>]</li>
+  <li>Replace the use of the Maven plugin <code>maven-bundle-plugin</code> by <code>bnd-maven-plugin</code>. The first plugin is no more maintained. The second plugin provides more configurations features than the first plugin. [<a href="http://sarl.io/sarl/sarl/commit/f218de07848b64047ce6524daf0fff696bf18df4">more details</a>]</li>
+  <li>Upgrade major libraries:
+    <ul>
+      <li>Eclipse 2023-06.</li>
+      <li>Xtext 2.31.0.</li>
+      <li>Maven 3.9.4. [<a href="http://sarl.io/sarl/sarl/commit/80eacd2cf871565768398cbb58c3d181b240746f">more details</a>]</li>
+      <li>Guice 5.1. [<a href="http://sarl.io/sarl/sarl/commit/cc1f62abe8452e8ab0739d46e53373c61d38413a">more details</a>]</li>
+      <li>Guava to 32.1. [<a href="http://sarl.io/sarl/sarl/commit/ea6c472edd8c43ba955dbae071a6e06f3e98720f">more details</a>]</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="3-changes-in-the-previous-versions">3. Changes in the Previous Versions</h2>
+
+<ul>
+  <li><a href="./changes_0.12.0.html">Changes in the version 0.12.0</a></li>
+</ul>
+
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

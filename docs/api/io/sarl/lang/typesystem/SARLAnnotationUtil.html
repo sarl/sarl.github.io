@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SARLAnnotationUtil</title>
+  <link rel="stylesheet" href="../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../css/index.css">
+  <script src="../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/PureOperationNameValidator.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLExpressionHelper.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../io/sarl/lang/typesystem/package-summary.html" class="doclet-header-packagename">io.sarl.lang.typesystem</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class SARLAnnotationUtil
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html" class="doclet-inheritancetree-type">SARLAnnotationUtil</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <div class="doclet-typesignature">
+     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">javax.inject.Singleton</span><br></span>class <span class="doclet-typesignature-typename">SARLAnnotationUtil</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Utilities for JVM annotations. 
+      <p></p>This class provides additional utilities than <span class="doclet-typedescription-main">org.eclipse.xtext.xbase.annotations.typing.XAnnotationUtil</span> and <span class="doclet-typedescription-main">AnnotationLookup</span>.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      See:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment"><span class="doclet-tags-see-comment">org.eclipse.xtext.xbase.annotations.typing.XAnnotationUtil</span> for Xbase annotations, <span class="doclet-tags-see-comment">org.eclipse.xtext.common.types.util.AnnotationLookup</span> for retreiving annotations.</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1139 active" onclick="openTabElement(this,'ID2795', 'doclet-tabs-button-instance-1139', 'doclet-tabs-content-instance-1139')">Constructors</button>
+    </div>
+    <div id="ID2795" class="doclet-tabs-content doclet-tabs-content-instance-1139 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1140 active" onclick="openTabElement(this,'ID2796', 'doclet-tabs-button-instance-1140', 'doclet-tabs-content-instance-1140')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1140" onclick="openTabElement(this,'ID2799', 'doclet-tabs-button-instance-1140', 'doclet-tabs-content-instance-1140')">Instance actions</button>
+    </div>
+    <div id="ID2796" class="doclet-tabs-content doclet-tabs-content-instance-1140 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmAnnotationReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.String)">findAnnotation(JvmAnnotationTarget,String)</a></span><br>
+         Find an annotation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findBooleanValue(JvmAnnotationReference)</a></span><br>
+         Extract the boolean value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findBooleanValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the boolean value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findBooleanValues(JvmAnnotationReference)</a></span><br>
+         Extract the boolean values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findBooleanValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the boolean values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Integer</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findIntValue(JvmAnnotationReference)</a></span><br>
+         Extract the integer value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Integer</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findIntValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the integer value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findIntValues(JvmAnnotationReference)</a></span><br>
+         Extract the integer values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findIntValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the integer values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findStringValue(JvmAnnotationReference)</a></span><br>
+         Extract the string value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findStringValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the string value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findStringValues(JvmAnnotationReference)</a></span><br>
+         Extract the string values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findStringValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the string values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findTypeValues(JvmAnnotationReference)</a></span><br>
+         Extract the type values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findTypeValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the type values of the given annotation, if they exist.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2799" class="doclet-tabs-content doclet-tabs-content-instance-1140 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.xtext.common.types.JvmAnnotationReference</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.String)">findAnnotation(JvmAnnotationTarget,String)</a></span><br>
+         Find an annotation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findBooleanValue(JvmAnnotationReference)</a></span><br>
+         Extract the boolean value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Boolean</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findBooleanValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the boolean value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findBooleanValues(JvmAnnotationReference)</a></span><br>
+         Extract the boolean values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findBooleanValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the boolean values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Integer</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findIntValue(JvmAnnotationReference)</a></span><br>
+         Extract the integer value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.Integer</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findIntValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the integer value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findIntValues(JvmAnnotationReference)</a></span><br>
+         Extract the integer values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findIntValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findIntValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the integer values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">findStringValue(JvmAnnotationReference)</a></span><br>
+         Extract the string value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.lang.String</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findStringValue(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the string value of the given annotation, if it exists.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findStringValues(JvmAnnotationReference)</a></span><br>
+         Extract the string values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findStringValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findStringValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the string values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">findTypeValues(JvmAnnotationReference)</a></span><br>
+         Extract the type values of the given annotation, if they exist.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.List</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/typesystem/SARLAnnotationUtil.html#findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">findTypeValues(JvmAnnotationTarget,Class&lt;T&gt;)</a></span><br>
+         Extract the type values of the given annotation, if they exist.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="findAnnotation(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.String)">
+      findAnnotation(JvmAnnotationTarget,String)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findAnnotation(JvmAnnotationTarget,String) : <span>org.eclipse.xtext.common.types.JvmAnnotationReference</span></pre>
+      <div>
+       Find an annotation.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        annotationTarget - <span class="doclet-tags-param-comment">the annotation target.</span>
+        <br>
+        lookupType - <span class="doclet-tags-param-comment">the name of the type to look for.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the annotation or  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        See:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><span class="doclet-tags-see-comment">findAnnotation(JvmAnnotationTarget,Class&lt;T&gt;)</span> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findBooleanValue(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findBooleanValue(JvmAnnotationReference) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Extract the boolean value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findBooleanValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findBooleanValue(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findBooleanValue(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.lang.Boolean</span></pre>
+      <div>
+       Extract the boolean value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findBooleanValues(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findBooleanValues(JvmAnnotationReference) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the boolean values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findBooleanValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findBooleanValues(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findBooleanValues(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the boolean values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findIntValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findIntValue(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findIntValue(JvmAnnotationReference) : <span>java.lang.Integer</span></pre>
+      <div>
+       Extract the integer value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findIntValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findIntValue(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findIntValue(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.lang.Integer</span></pre>
+      <div>
+       Extract the integer value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findIntValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findIntValues(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findIntValues(JvmAnnotationReference) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the integer values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findIntValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findIntValues(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findIntValues(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the integer values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findStringValue(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findStringValue(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findStringValue(JvmAnnotationReference) : <span>java.lang.String</span></pre>
+      <div>
+       Extract the string value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findStringValue(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findStringValue(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findStringValue(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.lang.String</span></pre>
+      <div>
+       Extract the string value of the given annotation, if it exists.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the value of the annotation, or  <code class="doclet-tags-return-comment">null</code>  if no annotation or no value.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findStringValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findStringValues(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findStringValues(JvmAnnotationReference) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the string values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findStringValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findStringValues(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findStringValues(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the string values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationReference)">
+      findTypeValues(JvmAnnotationReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findTypeValues(JvmAnnotationReference) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the type values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        reference - <span class="doclet-tags-param-comment">the reference to the annotation.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findTypeValues(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class<? extends java.lang.annotation.Annotation>)">
+      findTypeValues(JvmAnnotationTarget,Class&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> findTypeValues(JvmAnnotationTarget,Class&lt;T&gt;) : <span>java.util.List</span>&lt;E&gt;</pre>
+      <div>
+       Extract the type values of the given annotation, if they exist.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        op - <span class="doclet-tags-param-comment">the annotated element.</span>
+        <br>
+        annotationType - <span class="doclet-tags-param-comment">the type of the annotation to consider</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the values of the annotation, never  <code class="doclet-tags-return-comment">null</code> .</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../io/sarl/lang/typesystem/package-tree.html">Tree</a></li>
+      <li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/PureOperationNameValidator.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../io/sarl/lang/typesystem/SARLExpressionHelper.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>ObjectAndPrimitiveBasedCastOperationCandidateSelector</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/typesystem/cast/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/typesystem/cast/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperatorLinkingCandidate.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector/ObjectAndPrimitiveBasedSelector.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/typesystem/cast/package-summary.html" class="doclet-header-packagename">io.sarl.lang.typesystem.cast</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class ObjectAndPrimitiveBasedCastOperationCandidateSelector
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector.html" class="doclet-inheritancetree-type">ObjectAndPrimitiveBasedCastOperationCandidateSelector</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperationCandidateSelector.html" class="doclet-superinterfacelist">ICastOperationCandidateSelector</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">ObjectAndPrimitiveBasedCastOperationCandidateSelector</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperationCandidateSelector.html" class="doclet-typesignature">ICastOperationCandidateSelector</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Select the functions that should be called in place of a classic cast operator. 
+      <p></p>This selector searches for the functions with: 
+      <ul>
+       <li>the prefix text <code class="doclet-typedescription-main">to</code> for the object types, e.g. <code class="doclet-typedescription-main">toString</code>; and</li>
+       <li>the post-fix text <code class="doclet-typedescription-main">Value</code> for the primitive types, e.g. (<code class="doclet-typedescription-main">intValue</code>.</li>
+      </ul>
+      <p></p>This selector also applies the following criteria, assuming <code class="doclet-typedescription-main">E</code> is the type of the expression to cast and <code class="doclet-typedescription-main">T</code> is the destination type: 
+      <ul>
+       <li><code class="doclet-typedescription-main">T</code> is assignable from the the return value's type.</li>
+       <li><code class="doclet-typedescription-main">E</code> is assignable from the argument's type.</li>
+      </ul>
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">
+      Since:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.9</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="nested.classes.summary.box">
+    <div class="doclet-summarybox-title">
+     Nested Type Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1204 active" onclick="openTabElement(this,'ID2954', 'doclet-tabs-button-instance-1204', 'doclet-tabs-content-instance-1204')">Nested Types</button>
+    </div>
+    <div id="ID2954" class="doclet-tabs-content doclet-tabs-content-instance-1204 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Type and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector/ObjectAndPrimitiveBasedSelector.html">ObjectAndPrimitiveBasedCastOperationCandidateSelector.ObjectAndPrimitiveBasedSelector</a></span><br>
+         Select the functions that should be called in place of a classic cast operator.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1206 active" onclick="openTabElement(this,'ID2960', 'doclet-tabs-button-instance-1206', 'doclet-tabs-content-instance-1206')">Constructors</button>
+    </div>
+    <div id="ID2960" class="doclet-tabs-content doclet-tabs-content-instance-1206 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector.html#<init>()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1207 active" onclick="openTabElement(this,'ID2961', 'doclet-tabs-button-instance-1207', 'doclet-tabs-content-instance-1207')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1207" onclick="openTabElement(this,'ID2964', 'doclet-tabs-button-instance-1207', 'doclet-tabs-content-instance-1207')">Instance actions</button>
+    </div>
+    <div id="ID2961" class="doclet-tabs-content doclet-tabs-content-instance-1207 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperationCandidateSelector/ISelector.html">ISelector</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector.html#prepare(org.eclipse.xtext.xbase.typesystem.internal.AbstractTypeComputationState,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">prepare(AbstractTypeComputationState,LightweightTypeReference,LightweightTypeReference)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2964" class="doclet-tabs-content doclet-tabs-content-instance-1207 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperationCandidateSelector/ISelector.html">ISelector</a></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector.html#prepare(org.eclipse.xtext.xbase.typesystem.internal.AbstractTypeComputationState,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">prepare(AbstractTypeComputationState,LightweightTypeReference,LightweightTypeReference)</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>()">
+      new
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="prepare(org.eclipse.xtext.xbase.typesystem.internal.AbstractTypeComputationState,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference,org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference)">
+      prepare(AbstractTypeComputationState,LightweightTypeReference,LightweightTypeReference)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> prepare(AbstractTypeComputationState,LightweightTypeReference,LightweightTypeReference) : <a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperationCandidateSelector/ISelector.html">ISelector</a></pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/typesystem/cast/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/typesystem/cast/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/typesystem/cast/ICastOperatorLinkingCandidate.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/typesystem/cast/ObjectAndPrimitiveBasedCastOperationCandidateSelector/ObjectAndPrimitiveBasedSelector.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

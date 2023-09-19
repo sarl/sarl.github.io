@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>MemoryBasedContextService</title>
+  <link rel="stylesheet" href="../../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../../css/index.css">
+  <script src="../../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/services/context/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/services/context/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../../io/sarl/sre/janus/services/context/package-summary.html" class="doclet-header-packagename">io.sarl.sre.janus.services.context</a>
+   </div>
+   <div class="doclet-header-typename">
+    Class MemoryBasedContextService
+   </div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html" class="doclet-inheritancetree-type">AbstractContextService</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/services/context/AbstractInjectionBasedContextService.html" class="doclet-inheritancetree-type">AbstractInjectionBasedContextService</a>
+          <ul class="doclet-inheritancetree-tree">
+           <li class="doclet-inheritancetree-tree"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html" class="doclet-inheritancetree-type">MemoryBasedContextService</a></li>
+          </ul></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">
+      All Superinterfaces:
+     </dt>
+     <dd class="doclet-superinterfacelist">
+      <a href="../../../../../../io/sarl/sre/janus/services/context/ContextService.html" class="doclet-superinterfacelist">ContextService</a>, <span class="doclet-superinterfacelist">org.arakhne.afc.services.IService</span>
+     </dd>
+    </dl>
+    <dl class="doclet-directsubtypelist">
+     <dt class="doclet-directsubtypelist">
+      All Known Subclasses:
+     </dt>
+     <dd class="doclet-directsubtypelist">
+      <a href="../../../../../../io/sarl/sre/janus/network/services/HazelcastContextService.html" class="doclet-directsubtypelist">HazelcastContextService</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">MemoryBasedContextService</span>
+     <br>
+     extends <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractInjectionBasedContextService.html" class="doclet-typesignature">AbstractInjectionBasedContextService</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      A service managing the root context and enabling the creation of contexts by injection into the local memory. The context repository is not shared among different instances of the SRE kernel. 
+      <p></p>This service is thread-safe.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">
+      Maven Group Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sre.janus</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">
+      Maven Artifact Identifier:
+     </dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">janus.kernel</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">
+     Property Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3933 active" onclick="openTabElement(this,'ID9652', 'doclet-tabs-button-instance-3933', 'doclet-tabs-content-instance-3933')">Properties</button>
+    </div>
+    <div id="ID9652" class="doclet-tabs-content doclet-tabs-content-instance-3933 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Collection</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getAllContexts()">allContexts</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getContextInternalStructure()">contextInternalStructure</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#getReferenceType()">referenceType</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#getRootContext()">rootContext</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">
+     Field Summary
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#lock">lock</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#logger">logger</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">
+     Constructor Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3936 active" onclick="openTabElement(this,'ID9659', 'doclet-tabs-button-instance-3936', 'doclet-tabs-content-instance-3936')">Constructors</button>
+    </div>
+    <div id="ID9659" class="doclet-tabs-content doclet-tabs-content-instance-3936 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#<init>(io.sarl.sre.janus.services.context.Context,io.sarl.sre.janus.services.logging.LoggingService,io.bootique.di.Injector,io.sarl.sre.janus.services.context.ContextFactory,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>)">new(Context,LoggingService,Injector,ContextFactory,Provider&lt;T&gt;)</a></span><br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">
+     Action Summary
+    </div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3937 active" onclick="openTabElement(this,'ID9660', 'doclet-tabs-button-instance-3937', 'doclet-tabs-content-instance-3937')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3937" onclick="openTabElement(this,'ID9663', 'doclet-tabs-button-instance-3937', 'doclet-tabs-content-instance-3937')">Instance actions</button>
+    </div>
+    <div id="ID9660" class="doclet-tabs-content doclet-tabs-content-instance-3937 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Collection</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getAllContexts()">getAllContexts</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getContextInternalStructure()">getContextInternalStructure</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID9663" class="doclet-tabs-content doclet-tabs-content-instance-3937 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Collection</span>&lt;E&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getAllContexts()">getAllContexts</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.util.Map</span>&lt;K,V&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getContextInternalStructure()">getContextInternalStructure</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#createContext(java.util.UUID,java.util.UUID,io.sarl.lang.core.Agent)">createContext(UUID,UUID,Agent)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#createContextWithoutRegistration(java.util.UUID,java.util.UUID,io.sarl.lang.core.Agent)">createContextWithoutRegistration(UUID,UUID,Agent)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#createLogger(io.sarl.sre.janus.services.logging.LoggingService)">createLogger(LoggingService)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#getContext(java.util.UUID)">getContext(UUID)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#getReferenceType()">getReferenceType</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#getRootContext()">getRootContext</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractInjectionBasedContextService.html#newContextInstance(java.util.UUID,java.util.UUID,io.sarl.lang.core.Agent)">newContextInstance(UUID,UUID,Agent)</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#onStart()">onStart</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#onStop()">onStop</a>, <a href="../../../../../../io/sarl/sre/janus/services/context/AbstractContextService.html#removeContext(java.util.UUID)">removeContext(UUID)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">
+     Property Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">
+      allContexts
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> allContexts : <span>java.util.Collection</span>&lt;E&gt;</pre>
+      <p>This property is an alias for the action: <a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getAllContexts()">getAllContexts</a></p>
+     </dd>
+     <dt class="doclet-detailbox">
+      contextInternalStructure
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">val</span> contextInternalStructure : <span>java.util.Map</span>&lt;K,V&gt;</pre>
+      <p>This property is an alias for the action: <a href="../../../../../../io/sarl/sre/janus/services/context/MemoryBasedContextService.html#getContextInternalStructure()">getContextInternalStructure</a></p>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">
+     Constructor Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="<init>(io.sarl.sre.janus.services.context.Context,io.sarl.sre.janus.services.logging.LoggingService,io.bootique.di.Injector,io.sarl.sre.janus.services.context.ContextFactory,javax.inject.Provider<io.sarl.sre.janus.internal.Factories>)">
+      new(Context,LoggingService,Injector,ContextFactory,Provider&lt;T&gt;)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(Context,LoggingService,Injector,ContextFactory,Provider&lt;T&gt;)</pre>
+      <div>
+       Constructor.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        rootContext - <span class="doclet-tags-param-comment">the root context.</span>
+        <br>
+        logger - <span class="doclet-tags-param-comment">the logging service to be used.</span>
+        <br>
+        injector - <span class="doclet-tags-param-comment">is the injector.</span>
+        <br>
+        factory - <span class="doclet-tags-param-comment">is the factory of contexts.</span>
+        <br>
+        factories - <span class="doclet-tags-param-comment">the provider of factories tool.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">
+     Action Details
+    </div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="getAllContexts()">
+      getAllContexts
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getAllContexts : <span>java.util.Collection</span>&lt;E&gt;</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="getContextInternalStructure()">
+      getContextInternalStructure
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getContextInternalStructure : <span>java.util.Map</span>&lt;K,V&gt;</pre>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../../io/sarl/sre/janus/services/context/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../../io/sarl/sre/janus/services/context/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/context/LocalSpaceRepository.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/context/SpaceRepository.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

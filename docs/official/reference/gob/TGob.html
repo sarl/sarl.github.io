@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Time-based Simple Goal-oriented Behavior API</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="time-based-simple-goal-oriented-behavior-api">Time-based Simple Goal-oriented Behavior API</h1>
+
+<p>This reference documentation is dedicated to a Goal-Oriented Behavior (GOB) that is used in video games, and is a simple action selection mechanism including time constraints.</p>
+
+<p>To use this part of the API, you have to include a specific dependency in your SARL project.
+The Maven dependency to add is:</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;io.sarl.sdk&lt;/groupId&gt;
+	&lt;artifactId&gt;api.gametgob&lt;/artifactId&gt;
+	&lt;version&gt;0.13.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Basically, an action selection mechanism enables the agent to select the best action to be realized in order to archieve one of its goals.</p>
+
+<h2 id="1-general-tgob-metamodel">1. General TGob Metamodel</h2>
+
+<p>Goals and actions are defined in the TGob metamodel, as illustrated by the UML class diagram below:</p>
+
+<p><img src="./Gob.png" alt="GOB Metamodel" /></p>
+
+<p>The agent has goals and knows actions.
+The concepts of <code>Goal</code> and <code>Action</code> are defined as object-oriented interfaces, i.e., they impose the definition of functions but do not provide the concrete implementation.
+The SARL API designers have defined these two concepts as interface to enable the SARL developpers to define their own implementation of the goals and actions.
+However, a base implementation is provided for helping the SARL developpers to build an agent that is applying the TGob mechaism.
+They take the form of the two implementation classes <code>BaseGoal</code> and <code>BaseAction</code>.</p>
+
+<h3 id="11-goal">1.1. Goal</h3>
+
+<p>The concept of goal is a fundamental aspect of agent behavior in video games and artificial intelligence research.
+The major key components that are related to the goals are:</p>
+
+<ol>
+  <li><strong>Goals or Motives</strong>: Agents can have one or more goals or motives. These goals represent what the agent wants to achieve or accomplish in the game world. Goals could include actions like eating, regenerating health, or killing enemies. These goals are what drive the agent’s actions and decisions.</li>
+  <li><strong>Multiple Active Goals</strong>: Agents can have multiple goals simultaneously. This means that an agent may be pursuing several objectives at the same time, each with its own level of importance or insistence.</li>
+  <li><strong>Importance or Insistence</strong>: Each goal is associated with a numerical value that represents its level of importance or insistence. A goal with a high insistence value will have a stronger influence on the agent’s behavior. This numeric representation helps prioritize which goals the agent should focus on.</li>
+  <li><strong>Goal Fulfillment</strong>: The agent’s primary objective is to fulfill its goals or reduce their insistence. In other words, agents will take actions and make decisions in the game world to achieve their goals. The more important a goal is (higher insistence), the more the agent will strive to accomplish it.</li>
+  <li><strong>Goal Satisfaction</strong>: Some games allow goals to be completely satisfied, such as when an enemy is killed. In contrast, other games may have fixed, always-present goals that are not entirely satisfiable but can have their insistence reduced. For example, an agent may always have a low-insistence goal of “get healthy” even when they are already healthy. A goal with zero insistence is considered completely satisfied.</li>
+  <li><strong>Blurring Goals and Motives</strong>: The distinction between goals and motives can be blurred in the context of creating game agents. In some artificial intelligence research, motives may give rise to goals based on a agent’s beliefs or motivations. However, for the purpose of designing game character behavior, goals and motives are often treated as the same thing or closely related concepts.</li>
+  <li><strong>Insistence Values</strong>: The use of real numbers to represent insistence values allows for more nuanced decision-making in agent behavior. It enables agents to prioritize goals based on their importance, and this can lead to more dynamic and engaging gameplay experiences.</li>
+  <li><strong>On/Off Goals</strong>: While real numbers are used to represent insistence values, some games with many agents and goals may opt for a simpler binary approach (on/off) to save storage space. This means that goals are either active or inactive without nuanced insistence values.</li>
+</ol>
+
+<p>The concept of goal is defined as:</p>
+
+<pre><code class="language-sarl">interface Goal {
+	def getDiscontentmentFor(double) : double
+	def getInsistence : double
+	def getInsistenceChangePerTimeUnit : double
+	def getName : String
+	def setInsistence(double)
+}
+</code></pre>
+
+<h3 id="12-actions">1.2. Actions</h3>
+
+<p>The concept of action is a fundamental aspect of agent behavior in video games and artificial intelligence systems.
+The major key components that are related to the actions are:</p>
+
+<ol>
+  <li><strong>Possible Actions</strong>: Actions are a set of activities or behaviors that an agent can perform within the game world. These actions can be generated centrally by the game’s AI system or by objects and entities within the game world. The availability of actions can vary depending on the agent’s current context and the state of the game.</li>
+  <li><strong>Action Generation</strong>: In some games, actions are generated by objects or entities in the game world. For example, a kettle may add a “boil kettle” action, or an enemy may introduce an “attack me” action. These actions become part of the agent’s list of possible choices.</li>
+  <li><strong>Dynamic Action Availability</strong>: The availability of actions can depend on the current state of the game and theagent’s situation. For instance, an empty oven may offer an “insert raw food” action, but it would check if the agent is carrying raw food before presenting this action. If the oven contains raw food, it may expose a “cook food” action instead.</li>
+  <li><strong>Action Dependencies</strong>: Some actions may have dependencies or prerequisites. For example, unlocking a door may require an “insert key” action before the “unlock” action becomes available. These dependencies add realism and complexity to agent interactions with the game world.</li>
+  <li><strong>Rating Actions</strong>: Each action is rated against the agent’s motives or goals. This rating reflects how much impact the action would have on a particular motive. For example, a “playing with the games console” action might increase the agent’s happiness but decrease their energy. This rating helps the agent prioritize actions based on their current goals and motives.</li>
+  <li><strong>Atomic Actions</strong>: In action games, actions are often more atomic or granular. Each action corresponds to a specific game mechanic or behavior. For instance, a “shoot” action can fulfill a “kill enemy” goal, and a “spring-trap” action may have a similar effect. These actions are often essential for combat and gameplay dynamics.</li>
+  <li><strong>Action Sequences</strong>: Some games allow actions to be composed of sequences of sub-actions. For example, a “shoot” action might involve sub-actions like “draw weapon,” “aim,” and “fire.” This allows for more detailed and realistic execution of complex actions in the game.</li>
+  <li><strong>Goal Fulfillment</strong>: Actions promise to fulfill specific goals or motives. These goals may be achieved through a sequence of actions. For example, picking up raw food promises to fulfill the hunger goal, but it may require subsequent actions like cooking the food, removing it from the oven, and eating it to fully satisfy the hunger goal.</li>
+</ol>
+
+<p>The concept of action is defined as:</p>
+
+<pre><code class="language-sarl">interface Action {
+	def getDuration : int
+	def getInsistenceChangeFor(Goal) : double
+	def getName : String
+}
+</code></pre>
+
+<h3 id="13-capacity-for-selecting-an-agent">1.3. Capacity for selecting an agent</h3>
+
+<p>When the agent would select an action according to the TGob mechanism, it has to use the capacity SelectAction.</p>
+
+<pre><code class="language-sarl">capacity SelectAction {
+	def selectAction(List&lt;Action&gt;, List&lt;Goal&gt;) : Action
+}
+</code></pre>
+
+<h3 id="14-skill-for-simple-action-selection">1.4. Skill for Simple Action Selection</h3>
+
+<p>The skill that is implementing the <code>SelectAction</code> capacity is StandardActionSelectionSkill.</p>
+
+<h4 id="base-algorithm">Base Algorithm</h4>
+
+<p>The suggested approach for agent decision-making involves selecting actions based on the urgency of the agent’s goals.
+The agent prioritizes goals by their insistence levels, aiming to either fully satisfy the most pressing goal or significantly reduce its insistence.
+This prioritization is done using a heuristic estimate of utility, which is determined by the expected change in goal insistence that each action promises.
+The agent seeks the action with the highest utility to achieve its objectives.
+If multiple actions can fulfill a goal, the agent may randomly choose among them or select the first one encountered.</p>
+
+<pre><code class="language-sarl">def selectAction(actions : List&lt;Action&gt;, goals : List&lt;Goal&gt;) : Action {
+	// Find the goal to try and fulfil
+	var topGoal : Goal = null
+	for (goal : goals) {
+		if (topGoal === null || goal.insistence &gt; topGoal.insistence) {
+			topGoal = goal
+		}
+	}
+	// Find the best action to take
+	var bestAction : Action = null
+	var bestUtility = 0.0
+	for (action : actions) {
+		// We invert the change because a low change value
+		// is good (we want to reduce the value for the goal)
+		// but utilities are typically scaled so high values
+		// are good.
+		var utility = -action.getInsistenceChangeFor(topGoal)
+		// We look for the lowest change (highest utility)
+		if (bestAction === null || utility &gt; bestUtility) {
+			bestUtility = utility
+			bestAction = action
+		}
+	}
+	return bestAction
+}
+</code></pre>
+
+<p>This approach is simple, fast, and can give surprisingly sensible results, especially in games with a limited number of actions available.
+It has two major weaknesses: it fails to take account of side effects that an action may have, and it doesn’t incorporate any timing information.</p>
+
+<h4 id="introducing-overall-utility-the-discontentment">Introducing Overall Utility: the discontentment</h4>
+
+<p>Let the following example, provided in the book “Artificial Intelligence for Games”, by Ian Millington (published by MK):</p>
+
+<pre><code>Goal: Eat = 4
+Goal: Bathroom = 3
+Action: Drink-Soda (Eat -2; Bathroom +3)
+Action: Visit-Bathroom (Bathroom -4)
+</code></pre>
+
+<p>The agent has two goals <code>Eat</code> and <code>Bathroom</code>, with associated insistences of 4 and 3 respectively.
+The agent has also access to two actions, that enable to decrease the insistences of goals.</p>
+
+<p>It is important to consider the side effects of agent actions in decision-making. Agent should prioritize actions that reduce their overall discontentment level, which is calculated based on all goal insistence values.
+High insistence values contribute more to the agent’s discontentment. To achieve this, the concept of discontentment may be introduced, based on the squaring the goal values, which accentuates high-priority goals and prevents medium-priority goals from overshadowing critical ones.
+This approach ensures that agents make more sensible decisions in complex situations, even if it might be embarrassing or detrimental in the short term.</p>
+
+<p>For example, when the action below is applied, we could compute associated discontments:</p>
+
+<ul>
+  <li><code>Drink-Soda: Eat = 2, Bathroom = 5, Discontentment = 29</code></li>
+  <li><code>Visit-Bathroom: Eat = 4, Bathroom = 0, Discontentment = 16</code></li>
+</ul>
+
+<p>To make a decision, each possible action is considered in turn. A prediction is made of the total discontentment after the action is completed. The action that leads to the lowest discontentment is chosen, here <code>Visit-Bathroom</code>.
+This action is selected instead of <code>Drink-Soda</code>, even if the <code>Eat</code> insistence is the highest value.</p>
+
+<p>To include discontentment in the computation, the action selection algorithm must be rewritten as:</p>
+
+<pre><code class="language-sarl">def selectAction(actions : List&lt;Action&gt;, goals : List&lt;Goal&gt;) : Action {
+	// Go through each action, and calculate the discontentment
+	var bestAction : Action = null
+	var bestDiscontentment = 0.0
+	for (action : actions) {
+		var discontentment = calculateDiscontentment(action, goals)
+		if (bestAction === null || discontentment &lt; bestDiscontentment) {
+			bestDiscontentment = discontentment
+			bestAction = action
+		}
+	}
+	return bestAction
+}
+def calculateDiscontentment(action : Action, goals : List&lt;Goal&gt;) {
+	var discontentment = 0.0
+	for (goal : goals) {
+		var newInsistence = goal.insistence + action.getInsistenceChangeFor(goal)
+		discontentment += goal.getDiscontentmentFor(newInsistence)
+	}
+	return discontentment
+}
+</code></pre>
+
+<h4 id="introducing-time-in-the-decision-process">Introducing Time in the Decision Process</h4>
+
+<p>To make informed choices, an agent needs to be aware of how long an action will take to complete. For instance, an energy-deficient agent may prefer a quick energy boost from eating a chocolate bar rather than spending hours sleeping.
+Actions may expose their durations, allowing agents to factor this into their decision-making process.
+Timing in games is often divided into two components: the time it takes to complete an action and the time it takes to reach the location where the action can start.
+Calculating the journey time to begin an action is not always straightforward. It can be estimated using heuristics, such as a straight-line distance-based guess, or calculated accurately through pathfinding algorithms.
+However, pathfinding for every possible action in a game, especially in large game levels with numerous objects and actions, can be impractical. Therefore, heuristics are often used as a practical alternative.</p>
+
+<p>To use time in ythe agent decision making, two choices may be considered:</p>
+<ul>
+  <li>incorporate the time into the discontentment or utility calculation, or</li>
+  <li>prefer actions that are short over those that are long.</li>
+</ul>
+
+<p>This is relatively easy to add to the previous structures and algorithms by modifying the <code>calculateDiscontentment</code> function to return a lower value for shorter actions.
+A more interesting approach is to take into account the consequences of the extra time. In some games goal values change over time: a character might get increasingly hungry unless
+it gets food, a character might tend to run out of ammo unless it finds an ammo pack, or a character might gain power for a combo attack the longer it holds its defensive position.
+When goal insistences change on their own, an action not only directly affects some goals, but the time it takes to complete an action may cause others to change naturally.
+This can be factored into the discontentment calculation. If it is known how goal values will change over time, then those changes could be included into the discontentment calculation.</p>
+
+<p>Let the following example, provided in the book “Artificial Intelligence for Games”, by Ian Millington (published by MK):</p>
+
+<pre><code>Goal: Eat = 4 changing at +4 per hour
+Goal: Bathroom = 3 changing at +2 per hour
+Action: Eat-Snack (Eat -2) 15 minutes
+Action: Eat-Main-Meal (Eat -4) 1 hour
+Action: Visit-Bathroom (Bathroom -4) 15 minutes
+</code></pre>
+
+<p>The computation of the discontentment for each action is:</p>
+
+<ul>
+  <li><code>Action: Eat-Snack, Eat = 2, Bathroom = 3.5, Discontentment = 21.25</code></li>
+  <li><code>Action: Eat-Main-Meal, Eat = 0, Bathroom = 5, Discontentment = 25</code></li>
+  <li><code>Action: Visit-Bathroom, Eat = 5, Bathroom = 0, Discontentment = 25</code></li>
+</ul>
+
+<p>The agent will clearly be looking for some food before worrying about the bathroom.
+The quick snack is now the action of choice.
+The long meal will take so long that by the time it is completed, the need to go to the bathroom will be extreme.
+The overall discontentment with this action is high.
+On the other hand, the snack action is over quickly and allows ample time.
+Going directly to the bathroom isn’t the best option, because the hunger motive is so pressing.</p>
+
+<p>To include time support, the previous algorithm must be adapted as follows:</p>
+
+<pre><code class="language-sarl">def calculateDiscontentmentFunction(action : Action, goals : List&lt;Goal&gt;) {
+	var discontentment = 0.0
+	for (goal : goals) {
+		var newInsistence = goal.insistence + action.getInsistenceChangeFor(goal)
+		newInsistence = action.duration * goal.getInsistenceChangePerTimeUnit
+		discontentment += goal.getDiscontentmentFor(newInsistence)
+	}
+	return discontentment
+}
+</code></pre>
+
+<h2 id="2-creating-an-agent-using-tgob">2. Creating an Agent using TGob</h2>
+
+<p>For creating an agent that is using the TGob mechanism, please refer to the tutorial on <a href="../../tutorials/GameTGob.html">Goal-oriented Action Selection from Video Game Field</a>.</p>
+
+<h2 id="3-legal-notice">3. Legal Notice</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.13</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2023-09-19</li>
+</ul>
+
+<blockquote>
+  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.13.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
