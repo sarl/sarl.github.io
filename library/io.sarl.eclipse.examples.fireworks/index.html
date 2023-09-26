@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+
+    <title>Fireworks (JavaFX interface)</title>
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/pygments.css">
+    <link rel="stylesheet" href="../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../download/index.html">Download</a></li>
+        <li><a href="../../library/index.html">Library</a></li>
+        <li><a href="../../docs/index.html">Documentation</a></li>
+        <li><a href="../../community/index.html">Community</a></li>
+        <li><a href="../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="fireworks-demonstration">Fireworks demonstration</h1>
+
+<p>The goal of this demo is to bring out some fireworks using SARL agents.</p>
+
+<h2 id="launching-the-demonstration">Launching the demonstration</h2>
+
+<ul>
+  <li>From SARL ID:
+    <ol>
+      <li>Create a launch configuration of type “SARL Application”</li>
+      <li>As the main class, select <code>io.sarl.demos.fireworks.Fireworks</code></li>
+    </ol>
+  </li>
+  <li>From command-line interface:
+    <ol>
+      <li>Launch the application as a standard Java program.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="description-of-the-software">Description of the software</h2>
+
+<p>The application is composed of 4 agents. The whole structure is holonic.</p>
+
+<p><img src="Firework_en.png" alt="Agents organization in the fireworks demo" /></p>
+
+<p>The main agent is the <em>LaunchingArea</em> which is linked with the GUI and and contains the other agents inside its inner context.
+This agent creates the <em>RocketLauncher</em>, one by rocket asked by the user. It also transmits the gravity and other parameters.
+This agent also registers the GUI on a dedicated OpenEventSpace for communication.</p>
+
+<pre><code class="language-sarl">agent LaunchingArea {
+
+    ...
+
+    /*
+     * Get setup event from the GUI
+     */
+    on SetupSettings {
+        this.rocketsQuantity = occurrence.rocketsQuantity
+        this.fireQuantity = occurrence.fireQuatity
+        this.gravity = occurrence.gravity
+        this.maxWidth = occurrence.maxWidth
+    }
+
+    /*
+     * Agent initialisation when spawned by the GUI
+     * A communication space is opened between
+     *      the GUI and this agent
+     */
+    on Initialize [!occurrence.parameters.empty] {
+        var ctrl = occurrence.parameters.get(0) as FXMLViewerController
+        var ispace = defaultContext.createSpace(
+            OpenEventSpaceSpecification, UUID.randomUUID)
+        ctrl.setGUISpace(ispace)
+        ispace.register(asEventListener)
+
+        ctrl.listenAndDraw(grid)
+
+        info("Finishing initialization of Launching Area")
+
+    }
+
+    ...
+}
+</code></pre>
+
+<p>Then, each RocketLauncher creates a <em>Rocket</em>. When this one is destroyed, the <em>RocketLauncher</em> is going to generate another one. This allows to displace the verification of the existence of the <em>Rocket</em> out of the LaunchingArea. It also isolates the <em>Rocket</em> and avoid that emitted events disrupt the managing of the simulation.</p>
+
+<pre><code class="language-sarl">agent RocketLauncher {
+
+    ...
+
+    /*
+     * A new rocket is launched when the previous
+     *      one is destroyed
+     */
+    on MemberLeft [!isFromMe(occurrence) &amp;&amp; !exited] {
+        // wake allows to send the event at the agent itself
+        wake(new Launch)
+    }
+    ...
+}
+</code></pre>
+
+<p><em>Rocket</em> agents are the heart of this demo. Each one create a task with a fixed delay where they updates their position by writing it in a object shared with the GUI, here named <em>Positions</em>. When the <em>Rocket</em> reach the end of its lifetime, they create <em>Fire</em> agent within their inner context according to the quantity asked by the user and then wait for the destruction of every <em>Fire</em> to kill themselves.</p>
+
+<pre><code class="language-sarl">agent Rocket {
+
+    ...
+
+    on Initialize {
+
+        ...
+
+        /*
+         * Create a new background task to update
+         *      the agent position at a fixed delay
+         */
+        move = atFixedDelay(
+            Configuration.RocketLifeCycleSchedulingRate) [
+            try {
+                wake(new UpdateRocketPosition);
+            } catch (e : Exception) {
+                e.printStackTrace
+            }
+        ]
+    }
+
+    on UpdateRocketPosition [isFromMe(occurrence) &amp;&amp;
+                             !frozen &amp;&amp; !exploded] {
+        var vect = new Vector(2)
+        x = x + speedx
+        y = y + speedy
+        vect.clear()
+        vect.add(x)
+        vect.add(y)
+        lifetime = lifetime - 10
+
+        /* Updates the Position object */
+        if (grid !== null)
+            grid.setRocketPosition(id, vect)
+        if (lifetime &lt;= 0) {
+            exploded = true
+            move.cancel(true)
+            grid.hideHocketPosition(id)
+            wake(new Explode)
+        }
+    }
+
+    ...
+}
+
+</code></pre>
+<p>The <em>Fire</em> is the last agent of the demo. It have a list of positions and is subjected to gravity. As <em>Rocket</em> agent, the <em>Fire</em> launch a task at a fixed delay to update its actual position, add it at the end of the actual list and then update the <em>Positions</em> object. When its lifetime is over, the <em>Fire</em> is destroyed.</p>
+
+<h2 id="mvc-pattern">MVC pattern</h2>
+
+<p>This application follows a MVC (Model-View-Controller) pattern for the GUI communication.</p>
+
+<p><img src="MVC_en.png" alt="MVC pattern applied on this project" /></p>
+
+<p>When the GUI is closed, an event <em>Exit</em> is sent to the <em>LaunchingArea</em> which transmits it to the other agents she owns. It waits for their elimination to destroy the next one, until itself.</p>
+
+<h2 id="user-interface">User Interface</h2>
+
+<p><img src="firework_screenshot.png" alt="Application with the GUI" /></p>
+
+<h2 id="code">Code</h2>
+
+<p><a href="https://github.com/sarl/sarl/tree/master/sarl-eclipse/plugins/io.sarl.eclipse.examples/projects/io-sarl-demos-fireworks"><strong>Code on GitHub</strong></a></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/run_prettify.js"></script>
+	<script src="../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
