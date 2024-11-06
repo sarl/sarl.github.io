@@ -193,7 +193,8 @@
      Action Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-70 active" onclick="openTabElement(this,'ID165', 'doclet-tabs-button-instance-70', 'doclet-tabs-content-instance-70')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-70" onclick="openTabElement(this,'ID168', 'doclet-tabs-button-instance-70', 'doclet-tabs-content-instance-70')">Instance actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-70 active" onclick="openTabElement(this,'ID165', 'doclet-tabs-button-instance-70', 'doclet-tabs-content-instance-70')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-70" onclick="openTabElement(this,'ID168', 'doclet-tabs-button-instance-70', 'doclet-tabs-content-instance-70')">Instance actions</button>
     </div>
     <div id="ID165" class="doclet-tabs-content doclet-tabs-content-instance-70 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
@@ -251,6 +252,26 @@
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">int</td>
         <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#hashCode()">hashCode</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_equals(io.sarl.lang.core.SpaceID)">operator_equals(SpaceID)</a></span><br>
+         Replies if the identifier in this address is equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_equals(java.util.UUID)">operator_equals(UUID)</a></span><br>
+         Replies if the identifier in this address is equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_notEquals(io.sarl.lang.core.SpaceID)">operator_notEquals(SpaceID)</a></span><br>
+         Replies if the identifier in this address is not equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_notEquals(java.util.UUID)">operator_notEquals(UUID)</a></span><br>
+         Replies if the identifier in this address is not equal to the given identifier.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable"><span>java.lang.String</span></td>
@@ -315,6 +336,26 @@
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">int</td>
         <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#hashCode()">hashCode</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_equals(io.sarl.lang.core.SpaceID)">operator_equals(SpaceID)</a></span><br>
+         Replies if the identifier in this address is equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_equals(java.util.UUID)">operator_equals(UUID)</a></span><br>
+         Replies if the identifier in this address is equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_notEquals(io.sarl.lang.core.SpaceID)">operator_notEquals(SpaceID)</a></span><br>
+         Replies if the identifier in this address is not equal to the given identifier.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/core/Address.html#operator_notEquals(java.util.UUID)">operator_notEquals(UUID)</a></span><br>
+         Replies if the identifier in this address is not equal to the given identifier.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable"><span>java.lang.String</span></td>
@@ -618,6 +659,122 @@
      </dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> hashCode : int</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="operator_equals(io.sarl.lang.core.SpaceID)">
+      operator_equals(SpaceID)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> operator_equals(SpaceID) : boolean</pre>
+      <div>
+       Replies if the identifier in this address is equal to the given identifier. It is equivalent to <code>getID().equals(id)</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        id - <span class="doclet-tags-param-comment">the identifier to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the identifier is equal to the address' identifier.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.14</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="operator_equals(java.util.UUID)">
+      operator_equals(UUID)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> operator_equals(UUID) : boolean</pre>
+      <div>
+       Replies if the identifier in this address is equal to the given identifier. It is equivalent to <code>getID().equals(id)</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        id - <span class="doclet-tags-param-comment">the identifier to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the identifier is equal to the address' identifier.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.14</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="operator_notEquals(io.sarl.lang.core.SpaceID)">
+      operator_notEquals(SpaceID)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> operator_notEquals(SpaceID) : boolean</pre>
+      <div>
+       Replies if the identifier in this address is not equal to the given identifier. It is equivalent to <code>!getID().equals(id)</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        id - <span class="doclet-tags-param-comment">the identifier to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">false</code>  if the identifier is equal to the address' identifier.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.14</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="operator_notEquals(java.util.UUID)">
+      operator_notEquals(UUID)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> operator_notEquals(UUID) : boolean</pre>
+      <div>
+       Replies if the identifier in this address is not equal to the given identifier. It is equivalent to <code>!getID().equals(id)</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">
+        Parameters:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        id - <span class="doclet-tags-param-comment">the identifier to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Returns:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">false</code>  if the identifier is equal to the address' identifier.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">
+        Since:
+       </dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.14</span>
+       </dd>
+      </dl>
      </dd>
      <dt class="doclet-detailbox" id="toString()">
       toString

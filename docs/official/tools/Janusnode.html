@@ -245,7 +245,7 @@ more options may become available.</p>
     </tr>
     <tr>
       <td>–min-threads=number</td>
-      <td>Specify the minimal number of threads that should be created by the SRE; Default is 0.</td>
+      <td>Specify the minimal number of threads that should be created by the SRE; Default is 1.</td>
     </tr>
     <tr>
       <td>–name=name</td>
@@ -258,6 +258,10 @@ more options may become available.</p>
     <tr>
       <td>–no-agent</td>
       <td>Start the SRE without agent at boot time. In this case, the fully qualified name that may be provided on the command line is simply ignored. Agents should be spawned later by calling the programmatic API of the SRE.</td>
+    </tr>
+    <tr>
+      <td>-o {true|false}<br />–on-processors={true|false}</td>
+      <td>Specify if the executor service maps thread number to available processor number; Default is: false.</td>
     </tr>
     <tr>
       <td>-C<br />–printconfig</td>
@@ -308,12 +312,12 @@ help page of the <a href="./Janus.html">main command-line tool</a>.</p>
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.14</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2023-09-26</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -326,7 +330,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

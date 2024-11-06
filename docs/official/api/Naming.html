@@ -80,6 +80,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#16-naming-for-space">1.6. Naming for Space</a></li>
   <li><a href="#17-naming-for-service">1.7. Naming for Service</a></li>
   <li><a href="#18-naming-for-artifact">1.8. Naming for Artifact</a></li>
+  <li><a href="#19-naming-for-protocol">1.9. Naming for Protocol</a></li>
 </ul>
 <li><a href="#2-namespace-service">2. Namespace Service</a></li>
 <ul>
@@ -285,6 +286,26 @@ not provide a support for it.</p>
 <pre><code class="language-text">ARTIFACT_NAME = "artifact:" &lt;ODSL&gt; &lt;UUID&gt; &lt;FRG&gt;
 </code></pre>
 
+<h3 id="19-naming-for-protocol">1.9. Naming for Protocol</h3>
+
+<p>A protocol is the specification of interactions between agents.
+When agents are running a given protocol, the interaction are supported by a protocol instance dedicated to the protocol and the participants.
+Please note that because the concept of protocol is not related to the agent definition itself, the underlying SRE may
+not provide a support for it.</p>
+
+<p>The path of the protocol name specifies the identification of the protocol instance, i.e. its identifier. You could refer a protocol instance with:</p>
+
+<ul>
+  <li>Referring a protocol instance from its identifier. In this case, you have to specify only the protocol’s identifier, e.g. <code>protocol:37b13185-a9d5-43e5-9d7b-da2fa3ba3d54</code>.</li>
+</ul>
+
+<p>Where, <code>37b13185-a9d5-43e5-9d7b-da2fa3ba3d54</code> is the identifier of the protocol instance.</p>
+
+<p>The general syntax of the service names is defined by the following BNF grammar (BNF rules in the previous section are re-used):</p>
+
+<pre><code class="language-text">PROTOCOL_NAME = "protocol:" &lt;ODSL&gt; &lt;UUID&gt;
+</code></pre>
+
 <h2 id="2-namespace-service">2. Namespace Service</h2>
 
 <h3 id="21-general-principles">2.1. General Principles</h3>
@@ -474,12 +495,12 @@ Any other field cannot be observed.</p>
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.14</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2023-09-26</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -492,7 +513,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

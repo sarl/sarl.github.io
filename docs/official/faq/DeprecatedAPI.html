@@ -73,9 +73,10 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#1-changes-in-the-sarl-api">1. Changes in the SARL API</a></li>
 <ul>
   <li><a href="#11-since-0-12">1.1. Since 0.12</a></li>
-  <li><a href="#12-since-0-11">1.2. Since 0.11</a></li>
-  <li><a href="#13-since-0-10">1.3. Since 0.10</a></li>
-  <li><a href="#14-since-0-5">1.4. Since 0.5</a></li>
+  <li><a href="#12-since-0-12">1.2. Since 0.12</a></li>
+  <li><a href="#13-since-0-11">1.3. Since 0.11</a></li>
+  <li><a href="#14-since-0-10">1.4. Since 0.10</a></li>
+  <li><a href="#15-since-0-5">1.5. Since 0.5</a></li>
 </ul>
 <li><a href="#2-changes-in-the-sarl-run-time-environment">2. Changes in the SARL Run-time Environment</a></li>
 <li><a href="#3-since-0-10-janus-3-0-10-0">3. Since 0.10 (Janus 3.0.10.0)</a></li>
@@ -95,6 +96,20 @@ the SARL Run-time Environment (SRE).</p>
 
 <table>
 <thead>
+<tr><th>Deprecated Type</th><th>Deprecated Feature</th><th>Removal?</th><th>Replacement</th></tr>
+</thead><tbody>
+<tr><td>io.sarl.lang.util.Utils</td><td>compareVersions(String, String)</td><td>Yes</td>
+	<td>Replace with <code>compareMajorMinorVersions(String, String)</code>.
+	</td></tr>
+<tr><td>io.sarl.docs.validator.DocumentationLogger</td><td>setLogger(Logger)</td><td>Yes</td>
+	<td>No replacement.
+	</td></tr>
+</tbody></table>
+
+<h3 id="12-since-012">1.2. Since 0.12</h3>
+
+<table>
+<thead>
 <tr><th>Deprecated Type or Module</th><th>Deprecated Feature</th><th>Replacement</th></tr>
 </thead><tbody>
 
@@ -106,13 +121,13 @@ the SARL Run-time Environment (SRE).</p>
 
 
 <tr><td>AbstractSARLLaunchConfiguration</td><td>getClasspath</td>
-	<td>Replace `getClasspath(...)` by `getClasspathAndModulepath(...)`.
+	<td>Replace <code>getClasspath(...)</code> by <code>getClasspathAndModulepath(...)</code>.
 	</td></tr>
 
 
 
 <tr><td>Address</td><td>getUUID</td>
-	<td>Replace `getUUID` by `getID`.
+	<td>Replace <code>getUUID</code> by <code>getID</code>.
 	</td></tr>
 
 
@@ -125,7 +140,7 @@ the SARL Run-time Environment (SRE).</p>
 
 
 <tr><td>OpenEventSpace</td><td>register</td>
-	<td>Replace `register(listener, true)` by `registerWeakParticipant(listener)`, and `register(listener, false)` by `registerStrongParticipant(listener)`.
+	<td>Replace <code>register(listener, true)</code> by <code>registerWeakParticipant(listener)</code>, and <code>register(listener, false)</code> by <code>registerStrongParticipant(listener)</code>.
 	</td></tr>
 
 
@@ -133,10 +148,10 @@ the SARL Run-time Environment (SRE).</p>
 
 
 <tr><td>ReflectExtensions</td><td>getDefaultNameFormatter</td>
-	<td>Replace `getDefaultNameFormatter` by `getDefaultMethodNameFormatter`.
+	<td>Replace <code>getDefaultNameFormatter</code> by <code>getDefaultMethodNameFormatter</code>.
 	</td></tr>
 <tr><td>ReflectExtensions</td><td>setDefaultNameFormatter</td>
-	<td>Replace `setDefaultNameFormatter` by `setDefaultMethodNameFormatter`.
+	<td>Replace <code>setDefaultNameFormatter</code> by <code>setDefaultMethodNameFormatter</code>.
 	</td></tr>
 
 
@@ -181,27 +196,27 @@ the SARL Run-time Environment (SRE).</p>
 
 </tbody></table>
 
-<h3 id="12-since-011">1.2. Since 0.11</h3>
+<h3 id="13-since-011">1.3. Since 0.11</h3>
 
 <table>
 <thead>
 <tr><th>Deprecated Type</th><th>Deprecated Feature</th><th>Replacement</th></tr>
 </thead><tbody>
 <tr><td>DefaultContextInteractions</td><td>willReceive</td>
-	<td>Replace `receiver.willReceive(new MyEvent)` by `emit(new MyEvent) [it.ID == receiver]`.
-	The number of functions in the API should be limited. This function is assumed to be redundant with `emit`.
+	<td>Replace <code>receiver.willReceive(new MyEvent)</code> by <code>emit(new MyEvent) [it.ID == receiver]</code>.
+	The number of functions in the API should be limited. This function is assumed to be redundant with <code>emit</code>.
 	</td></tr>
 
 
 
 
-<tr><td>Lifecycle</td><td>return type of `spawn`</td>
+<tr><td>Lifecycle</td><td>return type of <code>spawn</code></td>
 	<td>In SRE 2.x, we could spawn an agent and get their assigned UUID code via the spawn method
-	the `Lifecycle` capacity, e.g.:
+	the <code>Lifecycle</code> capacity, e.g.:
 <pre><code>val agent_UUID = spawn(typeof(MyAgent))
 </code></pre>
-	Because of problems and inconsistencies caused by the parallel execution of the `spawn` function,
-	the return value of this method has been deprecated. The `spawn` function replies nothing since version
+	Because of problems and inconsistencies caused by the parallel execution of the <code>spawn</code> function,
+	the return value of this method has been deprecated. The <code>spawn</code> function replies nothing since version
 	0.11 of the API.
 	To spawn an agent and grab its UUID code, we first generate the identifier and then spawn the agent with it:
 ```sarl
@@ -209,7 +224,7 @@ val agent_UUID = UUID::randomUUID
 spawnInContextWithID(typeof(MyAgent), agent_UUID, defaultContext)
 ```
 
-	(`defaultContext` is the short for `getDefaultContext` provided by `DefaultContextInteractions`)
+	(<code>defaultContext</code> is the short for <code>getDefaultContext</code> provided by <code>DefaultContextInteractions</code>)
 	<br />
 	or, with the version 0.12 of the API:
 ```sarl
@@ -221,8 +236,8 @@ spawnWithID(typeof(MyAgent), agent_UUID)
 
 
 <tr><td>OpenEventSpace</td><td>register</td>
-	<td>Replace `space.register(participant, isWeak)` by `registerStrongParticipant(participant)`
-	if `isWeak` is true, or `registerWeakParticipant(participant)` if `isWeak` is false. This change
+	<td>Replace <code>space.register(participant, isWeak)</code> by <code>registerStrongParticipant(participant)</code>
+	if <code>isWeak</code> is true, or <code>registerWeakParticipant(participant)</code> if <code>isWeak</code> is false. This change
 	is applied by internal design on the space implementation.
 	</td></tr>
 
@@ -230,55 +245,55 @@ spawnWithID(typeof(MyAgent), agent_UUID)
 
 </tbody></table>
 
-<h3 id="13-since-010">1.3. Since 0.10</h3>
+<h3 id="14-since-010">1.4. Since 0.10</h3>
 
 <table>
 <thead>
 <tr><th>Deprecated Type</th><th>Deprecated Feature</th><th>Removal Version</th><th>Replacement</th></tr>
 </thead><tbody>
 <tr><td>DefaultContextInteractions</td><td>spawn</td><td></td>
-	<td>Replace `spawn(type, args)` by `Lifecycle.spawn(type, args)`.
-	The definition of the `spawn`into `DefaultContextInteractions` is not expected by SARL
+	<td>Replace <code>spawn(type, args)</code> by <code>Lifecycle.spawn(type, args)</code>.
+	The definition of the <code>spawn</code> into <code>DefaultContextInteractions</code> is not expected by SARL
 	users since this capacity seems to be
-	dedicated to interactions. `Lifecycle` capacity is a better place for defining the `spawn`
+	dedicated to interactions. <code>Lifecycle</code> capacity is a better place for defining the <code>spawn</code>
 	functions.
 
 
 
-	</td></tr>
+</td></tr>
+
 <tr><td>Logging</td><td>println</td><td></td>
-	<td>Replace `println(msg)` by `info(msg)`. The semantic of `println` is linked to the system console.
+	<td>Replace <code>println(msg)</code> by <code>info(msg)</code>. The semantic of <code>println</code> is linked to the system console.
 	Agents are supposed to log their messages on the agent console.
 
 
 
-	</td></tr>
+</td></tr>
+
 <tr><td>SarlSpecificationChecker</td><td>getSarlSpecificationVersion</td><td></td>
-	<td>Replaced by `getSarlSpecificationVersionObject`. Change due to the change of the return type
-	that is now of type `Version`.
+<td>Replaced by <code>getSarlSpecificationVersionObject</code>. Change due to the change of the return type that is now of type <code>Version</code>.
 
 
 
-	&lt;/td/&gt;&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
+</td></tr>
 
+</tbody></table>
 
-### 1.4. Since 0.5
+<h3 id="15-since-05">1.5. Since 0.5</h3>
 
 <table>
 <thead>
 <tr><th>Deprecated Type</th><th>Deprecated Feature</th><th>Removal Version</th><th>Replacement</th></tr>
 </thead><tbody>
 <tr><td>DefaultContextInteractions</td><td>receive</td><td>0.10</td>
-	<td>Replace `receiver.receive(new Event)` by `emit(new Event) [it.ID == receiver]`. The number of
-	functions in the API should be limited. This function is assumed to be redundant with `emit`.
+	<td>Replace <code>receiver.receive(new Event)</code> by <code>emit(new Event) [it.ID == receiver]</code>. The number of
+	functions in the API should be limited. This function is assumed to be redundant with <code>emit</code>.
 	</td></tr>
 </tbody></table>
 
+<h2 id="2-changes-in-the-sarl-run-time-environment">2. Changes in the SARL Run-time Environment</h2>
 
-## 2. Changes in the SARL Run-time Environment
-
-## 3. Since 0.10 (Janus 3.0.10.0)
+<h2 id="3-since-010-janus-30100">3. Since 0.10 (Janus 3.0.10.0)</h2>
 
 <table>
 <thead>
@@ -291,14 +306,14 @@ spawnWithID(typeof(MyAgent), agent_UUID)
 	that could be extended with plugins by only adding these plugins on the classpath of the application.
 	In the context of Janus, the network features were moved into a plugin. One could easily add the
 	network feature by adding the corresponding plugin jar file in the classpath (equivalent to the old
-	`Boot.offline = false`) or remove it from the classpath (equivalent to `Boot.offline = true`), or
+	<code>Boot.offline = false</code>) or remove it from the classpath (equivalent to <code>Boot.offline = true</code>), or
 	even add another networking plugin that is based on another technology (e.g. MQTT, etc.).
-	So, `Boot.offline` function is not any more into the Janus kernel (i.e. the Boot class, see below)
+	So, <code>Boot.offline</code> function is not any more into the Janus kernel (i.e. the Boot class, see below)
 	but into the configuration of the networking plugin. This plugin is under validation and is planned
 	to be back in SARL 0.12.
 	</td></tr>
 <tr><td>Boot</td><td>setVerboseLevel(level)</td><td>0.10</td>
-	<td>This function is removed from `Boot`. The `SRE` utility class provides the replacing function.
+	<td>This function is removed from <code>Boot</code>. The <code>SRE</code> utility class provides the replacing function.
 	Note that it must be called before any launch of agent since the configuration level of Janus is set at start up.
 
 
@@ -320,28 +335,30 @@ sre.startAgent(typeof(MyAgent))
 	</td></tr>
 </tbody></table>
 
+<h2 id="4-legal-notice">4. Legal Notice</h2>
 
-## 4. Legal Notice
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.14</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
+</ul>
 
-* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
-* Version: 0.14
-* Status: Draft Release
-* Release: 2023-09-26
+<blockquote>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
-&gt; Copyright &copy; 2014-2023 [SARL.io, the Original Authors and Main Authors](https://www.sarl.io/about/index.html).
-&gt;
-&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
-&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
-&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
-&gt;
-&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
-&gt; you may not use this file except in compliance with the Apache License.
-&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
-&gt;
-&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
 
-<small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small>
-</td></tr></tbody></table>
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

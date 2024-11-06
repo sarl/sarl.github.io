@@ -89,6 +89,8 @@
      class <span class="doclet-typesignature-typename">PyGeneratorPlugin</span>
      <br>
      extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <span class="doclet-typesignature">org.osgi.framework.BundleActivator</span>
     </div>
     <div class="doclet-typedescription">
      <div class="doclet-typedescription-main">
@@ -119,9 +121,10 @@
      Field Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2189 active" onclick="openTabElement(this,'ID5409', 'doclet-tabs-button-instance-2189', 'doclet-tabs-content-instance-2189')">All fields</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2189" onclick="openTabElement(this,'ID5412', 'doclet-tabs-button-instance-2189', 'doclet-tabs-content-instance-2189')">Static values</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2314 active" onclick="openTabElement(this,'ID5716', 'doclet-tabs-button-instance-2314', 'doclet-tabs-content-instance-2314')">All fields</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2314" onclick="openTabElement(this,'ID5719', 'doclet-tabs-button-instance-2314', 'doclet-tabs-content-instance-2314')">Static values</button>
     </div>
-    <div id="ID5409" class="doclet-tabs-content doclet-tabs-content-instance-2189 doclet-summarybox-tab-content">
+    <div id="ID5716" class="doclet-tabs-content doclet-tabs-content-instance-2314 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -143,7 +146,7 @@
       </tbody>
      </table>
     </div>
-    <div id="ID5412" class="doclet-tabs-content doclet-tabs-content-instance-2189 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID5719" class="doclet-tabs-content doclet-tabs-content-instance-2314 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -171,9 +174,9 @@
      Constructor Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2190 active" onclick="openTabElement(this,'ID5414', 'doclet-tabs-button-instance-2190', 'doclet-tabs-content-instance-2190')">Constructors</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2315 active" onclick="openTabElement(this,'ID5721', 'doclet-tabs-button-instance-2315', 'doclet-tabs-content-instance-2315')">Constructors</button>
     </div>
-    <div id="ID5414" class="doclet-tabs-content doclet-tabs-content-instance-2190 doclet-summarybox-tab-content">
+    <div id="ID5721" class="doclet-tabs-content doclet-tabs-content-instance-2315 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -182,8 +185,7 @@
       </thead>
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#<init>()">new</a></span><br>
-         Construct an Eclipse plugin for SARL.</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#<init>()">new</a></span></td>
        </tr>
       </tbody>
      </table>
@@ -194,9 +196,11 @@
      Action Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2191 active" onclick="openTabElement(this,'ID5415', 'doclet-tabs-button-instance-2191', 'doclet-tabs-content-instance-2191')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2191" onclick="openTabElement(this,'ID5416', 'doclet-tabs-button-instance-2191', 'doclet-tabs-content-instance-2191')">Static actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2191" onclick="openTabElement(this,'ID5418', 'doclet-tabs-button-instance-2191', 'doclet-tabs-content-instance-2191')">Instance actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2316 active" onclick="openTabElement(this,'ID5722', 'doclet-tabs-button-instance-2316', 'doclet-tabs-content-instance-2316')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2316" onclick="openTabElement(this,'ID5723', 'doclet-tabs-button-instance-2316', 'doclet-tabs-content-instance-2316')">Static actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2316" onclick="openTabElement(this,'ID5725', 'doclet-tabs-button-instance-2316', 'doclet-tabs-content-instance-2316')">Instance actions</button>
     </div>
-    <div id="ID5415" class="doclet-tabs-content doclet-tabs-content-instance-2191 doclet-summarybox-tab-content">
+    <div id="ID5722" class="doclet-tabs-content doclet-tabs-content-instance-2316 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -206,24 +210,22 @@
       </thead>
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable"><span>org.eclipse.core.runtime.IStatus</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#createStatus(int,java.lang.Throwable)">createStatus(int,Throwable)</a></span><br>
-         Create a status.</td>
+        <td class="doclet-summarytable">static&nbsp;<span>org.osgi.framework.Bundle</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#getBundle()">getBundle</a></span><br>
+         Replies the bundle of this plugin.</td>
        </tr>
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html">PyGeneratorPlugin</a></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#getDefault()">getDefault</a></span><br>
-         Replies the instance of the plugin.</td>
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#start(org.osgi.framework.BundleContext)">start(BundleContext)</a></span></td>
        </tr>
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;void</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#setDefault(io.sarl.lang.pythongenerator.PyGeneratorPlugin)">setDefault(PyGeneratorPlugin)</a></span><br>
-         Set the default instance of the plugin.</td>
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#stop(org.osgi.framework.BundleContext)">stop(BundleContext)</a></span></td>
        </tr>
       </tbody>
      </table>
     </div>
-    <div id="ID5416" class="doclet-tabs-content doclet-tabs-content-instance-2191 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID5723" class="doclet-tabs-content doclet-tabs-content-instance-2316 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -233,19 +235,14 @@
       </thead>
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html">PyGeneratorPlugin</a></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#getDefault()">getDefault</a></span><br>
-         Replies the instance of the plugin.</td>
-       </tr>
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;void</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#setDefault(io.sarl.lang.pythongenerator.PyGeneratorPlugin)">setDefault(PyGeneratorPlugin)</a></span><br>
-         Set the default instance of the plugin.</td>
+        <td class="doclet-summarytable">static&nbsp;<span>org.osgi.framework.Bundle</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#getBundle()">getBundle</a></span><br>
+         Replies the bundle of this plugin.</td>
        </tr>
       </tbody>
      </table>
     </div>
-    <div id="ID5418" class="doclet-tabs-content doclet-tabs-content-instance-2191 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID5725" class="doclet-tabs-content doclet-tabs-content-instance-2316 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -255,9 +252,12 @@
       </thead>
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable"><span>org.eclipse.core.runtime.IStatus</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#createStatus(int,java.lang.Throwable)">createStatus(int,Throwable)</a></span><br>
-         Create a status.</td>
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#start(org.osgi.framework.BundleContext)">start(BundleContext)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html#stop(org.osgi.framework.BundleContext)">stop(BundleContext)</a></span></td>
        </tr>
       </tbody>
      </table>
@@ -272,7 +272,7 @@
       PLUGIN_ID
      </dt>
      <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">public static val</span> PLUGIN_ID : <span>java.lang.String</span> = "io.sarl.pythongenerator.generator"</pre>
+      <pre><span class="doclet-keyword">public static val</span> PLUGIN_ID : <span>java.lang.String</span> = "io.sarl.lang.pythongenerator"</pre>
       <div>
        Identifier of the plugin.
       </div>
@@ -281,7 +281,7 @@
       PREFERENCE_ID
      </dt>
      <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">public static val</span> PREFERENCE_ID : <span>java.lang.String</span> = "io.sarl.pythongenerator.generator"</pre>
+      <pre><span class="doclet-keyword">public static val</span> PREFERENCE_ID : <span>java.lang.String</span> = "io.sarl.lang.pythongenerator"</pre>
       <div>
        Identifier of the preference container.
       </div>
@@ -298,9 +298,6 @@
      </dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">new</span></pre>
-      <div>
-       Construct an Eclipse plugin for SARL.
-      </div>
      </dd>
     </dl>
    </div>
@@ -309,64 +306,34 @@
      Action Details
     </div>
     <dl class="doclet-detailbox">
-     <dt class="doclet-detailbox" id="createStatus(int,java.lang.Throwable)">
-      createStatus(int,Throwable)
+     <dt class="doclet-detailbox" id="getBundle()">
+      getBundle
      </dt>
      <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> createStatus(int,Throwable) : <span>org.eclipse.core.runtime.IStatus</span></pre>
+      <pre><span class="doclet-keyword">def</span> getBundle : <span>org.osgi.framework.Bundle</span></pre>
       <div>
-       Create a status.
-      </div>
-      <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
-       <dd class="doclet-detailbox-tag">
-        severity - <span class="doclet-tags-param-comment">the severity level, see <span class="doclet-tags-param-comment">IStatus</span>.</span>
-        <br>
-        cause - <span class="doclet-tags-param-comment">the cause of the problem.</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
-       <dd class="doclet-detailbox-tag">
-        <span class="doclet-tags-return-comment">the status.</span>
-       </dd>
-      </dl>
-     </dd>
-     <dt class="doclet-detailbox" id="getDefault()">
-      getDefault
-     </dt>
-     <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> getDefault : <a href="../../../../io/sarl/lang/pythongenerator/PyGeneratorPlugin.html">PyGeneratorPlugin</a></pre>
-      <div>
-       Replies the instance of the plugin.
+       Replies the bundle of this plugin.
       </div>
       <dl class="doclet-detailbox-tag">
        <dt class="doclet-detailbox-tag">
         Returns:
        </dt>
        <dd class="doclet-detailbox-tag">
-        <span class="doclet-tags-return-comment">the default plugin instance.</span>
+        <span class="doclet-tags-return-comment">the bundle.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="setDefault(io.sarl.lang.pythongenerator.PyGeneratorPlugin)">
-      setDefault(PyGeneratorPlugin)
+     <dt class="doclet-detailbox" id="start(org.osgi.framework.BundleContext)">
+      start(BundleContext)
      </dt>
      <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> setDefault(PyGeneratorPlugin)</pre>
-      <div>
-       Set the default instance of the plugin.
-      </div>
-      <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
-       <dd class="doclet-detailbox-tag">
-        defaultInstance - <span class="doclet-tags-param-comment">the default plugin instance.</span>
-       </dd>
-      </dl>
+      <pre><span class="doclet-keyword">def</span> start(BundleContext)<p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>java.lang.Exception</span></p></pre>
+     </dd>
+     <dt class="doclet-detailbox" id="stop(org.osgi.framework.BundleContext)">
+      stop(BundleContext)
+     </dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> stop(BundleContext)<p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>java.lang.Exception</span></p></pre>
      </dd>
     </dl>
    </div>

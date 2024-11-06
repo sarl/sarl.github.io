@@ -33,8 +33,8 @@
     </div>
     <div class="doclet-navigation-local">
      <ul class="doclet-navigation-list">
-      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/executor/EarlyExitException.html">Prev Type</a></span></li>
-      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/executor/JreExecutorService.html">Next Type</a></span></li>
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph">Next Type</span></li>
      </ul>
      <ul class="doclet-navigation-list">
       <li><a href="../../../../../../all-types.html">All Types</a></li>
@@ -82,11 +82,11 @@
       All Known Implementing Classes:
      </dt>
      <dd class="doclet-implementingclasslist">
-      <a href="../../../../../../io/sarl/sre/janus/services/executor/JreExecutorService.html" class="doclet-implementingclasslist">JreExecutorService</a>
+      <a href="../../../../../../io/sarl/sre/janus/services/executor/jreservice/JreExecutorService.html" class="doclet-implementingclasslist">JreExecutorService</a>
      </dd>
     </dl>
     <div class="doclet-typesignature">
-     interface <span class="doclet-typesignature-typename">ExecutorService</span>
+     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">org.eclipse.xtext.xbase.lib.XbaseGenerated</span><br></span>interface <span class="doclet-typesignature-typename">ExecutorService</span>
      <br>
      implements <span class="doclet-typesignature">org.arakhne.afc.services.IService</span>
     </div>
@@ -119,9 +119,9 @@
      Property Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4056 active" onclick="openTabElement(this,'ID9957', 'doclet-tabs-button-instance-4056', 'doclet-tabs-content-instance-4056')">Properties</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4171 active" onclick="openTabElement(this,'ID10240', 'doclet-tabs-button-instance-4171', 'doclet-tabs-content-instance-4171')">Properties</button>
     </div>
-    <div id="ID9957" class="doclet-tabs-content doclet-tabs-content-instance-4056 doclet-summarybox-tab-content">
+    <div id="ID10240" class="doclet-tabs-content doclet-tabs-content-instance-4171 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -144,9 +144,11 @@
      Action Summary
     </div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4059 active" onclick="openTabElement(this,'ID9964', 'doclet-tabs-button-instance-4059', 'doclet-tabs-content-instance-4059')">All actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4059" onclick="openTabElement(this,'ID9965', 'doclet-tabs-button-instance-4059', 'doclet-tabs-content-instance-4059')">Static actions</button><button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4059" onclick="openTabElement(this,'ID9966', 'doclet-tabs-button-instance-4059', 'doclet-tabs-content-instance-4059')">Abstract actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4174 active" onclick="openTabElement(this,'ID10247', 'doclet-tabs-button-instance-4174', 'doclet-tabs-content-instance-4174')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4174" onclick="openTabElement(this,'ID10248', 'doclet-tabs-button-instance-4174', 'doclet-tabs-content-instance-4174')">Static actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-4174" onclick="openTabElement(this,'ID10249', 'doclet-tabs-button-instance-4174', 'doclet-tabs-content-instance-4174')">Abstract actions</button>
     </div>
-    <div id="ID9964" class="doclet-tabs-content doclet-tabs-content-instance-4059 doclet-summarybox-tab-content">
+    <div id="ID10247" class="doclet-tabs-content doclet-tabs-content-instance-4174 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -238,7 +240,7 @@
       </tbody>
      </table>
     </div>
-    <div id="ID9965" class="doclet-tabs-content doclet-tabs-content-instance-4059 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID10248" class="doclet-tabs-content doclet-tabs-content-instance-4174 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -255,7 +257,7 @@
       </tbody>
      </table>
     </div>
-    <div id="ID9966" class="doclet-tabs-content doclet-tabs-content-instance-4059 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID10249" class="doclet-tabs-content doclet-tabs-content-instance-4174 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -505,7 +507,7 @@
        <pre><code>br for(i in [ 1 .. (nbExecutions/runGroupSize) ])br dobr execute({br for(j in [1..runGroupSize]) {br task.runbr }br })br donebr </code></pre>
        <p></p>Caution: if a <code>task</code> is failing, the exception will be output on the logger. This function never fails. 
        <p></p>According to the implementation of the service, the given task may be run in the same or separated thread than the one of the caller. 
-       <p></p>If an exception occurs into the given consume, the exception is logged. It is never thrown by this function.
+       <p></p>If an exception occurs into the given task, the exception is logged. It is never thrown by this function.
       </div>
       <dl class="doclet-detailbox-tag">
        <dt class="doclet-detailbox-tag">
@@ -628,7 +630,7 @@
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> neverReturn(Runnable)</pre>
       <div>
-       This function simulate the never return from this call. The <a href="../../../../../../io/sarl/sre/janus/services/executor/EarlyExitException.html">EarlyExitException</a> is thrown.
+       This function simulate the never return from this call. The EarlyExitException is thrown.
       </div>
       <dl class="doclet-detailbox-tag">
        <dt class="doclet-detailbox-tag">
@@ -848,8 +850,8 @@
     </div>
     <div class="doclet-navigation-local">
      <ul class="doclet-navigation-list">
-      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/executor/EarlyExitException.html">Prev Type</a></span></li>
-      <li><span class="doclet-emph"><a href="../../../../../../io/sarl/sre/janus/services/executor/JreExecutorService.html">Next Type</a></span></li>
+      <li><span class="doclet-emph">Prev Type</span></li>
+      <li><span class="doclet-emph">Next Type</span></li>
      </ul>
      <ul class="doclet-navigation-list">
       <li><a href="../../../../../../all-types.html">All Types</a></li>

@@ -97,7 +97,8 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#43-reactive-behaviors">4.3. Reactive Behaviors</a></li>
   <li><a href="#44-parallel-execution-of-the-reactive-behaviors">4.4. Parallel Execution of the Reactive Behaviors</a></li>
   <li><a href="#45-pro-active-behaviors">4.5. Pro-active Behaviors</a></li>
-  <li><a href="#46-specific-agent-architectures">4.6. Specific Agent Architectures</a></li>
+  <li><a href="#46-generic-events-in-handlers">4.6. Generic Events in Handlers</a></li>
+  <li><a href="#47-specific-agent-architectures">4.7. Specific Agent Architectures</a></li>
 </ul>
 <li><a href="#5-capacities-and-skills">5. Capacities and Skills</a></li>
 <ul>
@@ -435,7 +436,7 @@ an event handler using the following syntax:</p>
 }
 </code></pre>
 
-<p><code>EventName</code> is the name of the events to wait for. <code>Guard</code> is the optional definition of a predicate
+<p><code>EventName</code> is the name of the events to wait for. It could contains generic type declaration. <code>Guard</code> is the optional definition of a predicate
 that may be true for executing the <code>Statements</code>. The statements are executed only if an event with the given name is
 received, <strong>and</strong> if the guard is true.</p>
 
@@ -701,7 +702,64 @@ In the following example, the agent execute its proactive behavior every second.
 }
 </code></pre>
 
-<h3 id="46-specific-agent-architectures">4.6. Specific Agent Architectures</h3>
+<h3 id="46-generic-events-in-handlers">4.6. Generic Events in Handlers</h3>
+
+<p>Since the version <code>0.14</code> of SARL, it is possible to define an <a href="./Event.html">event with generic types</a>.
+The counterpart of this type of event definition is related to the definition of generic types in the event handlers.
+The specific of the generic types within the event handlers could be assimilated to an implict guard condition.
+In other word, the event handler is run only if the received event is matching the specific generic types.</p>
+
+<p>Let the following example in which the event <code>MyGenericEvent</code> is defined with two generic types <code>T1</code> and <code>T2</code>.
+Several event handlers have been defined for illustrating multiple cases.</p>
+
+<pre><code class="language-sarl">event MyGenericEvent&lt;T1, T2 extends Number&gt; {
+	var field0 : T1
+	var field1 : T2
+}
+
+agent MyAgent {
+	uses Logging
+	on MyGenericEvent {
+		info("Run whatever the values of field0 and field1")
+	}
+	on MyGenericEvent&lt;?, ?&gt; {
+		info("Run whatever the values of field0 and field1")
+	}
+	on MyGenericEvent&lt;String, ?&gt; {
+		info("Run if field0 is a String, whatever the value of field1")
+	}
+	on MyGenericEvent&lt;?, Double&gt; {
+		info("Run if field1 is a Double, whatever the value of field0")
+	}
+	on MyGenericEvent&lt;String, Double&gt; {
+		info("Run only if field0 is a String and field1 is a Double")
+	}
+	on MyGenericEvent&lt;? extends String, Double&gt; {
+		info("Run only if field0 is a String and field1 is a Double")
+	}
+	on MyGenericEvent&lt;Number, Integer&gt; {
+		info("Run only if field0 is a String and field1 is a Double")
+	}
+}
+</code></pre>
+
+<p>Basically, when an event <code>MyGenericEvent</code> is received, it is associated to the definition of concrete types for <code>T1</code> and <code>T2</code>.
+For example, the event corresponding to <code>new MyGenericEvent&lt;String, Double&gt;</code> is received, then <code>T1</code> is assimilated to <code>String</code> and <code>T2</code> to <code>Double</code>.</p>
+
+<p>From this example of event occurrence, the activated event handlers will be because the declared geneic types ar ematching <code>&lt;String, Double&gt;</code> from the event:</p>
+
+<ul>
+  <li><code>on MyGenericEvent</code></li>
+  <li><code>on MyGenericEvent&lt;?, ?&gt;</code></li>
+  <li><code>on MyGenericEvent&lt;String, ?&gt;</code></li>
+  <li><code>on MyGenericEvent&lt;?, Double&gt;</code></li>
+  <li><code>on MyGenericEvent&lt;String, Double&gt;</code></li>
+  <li><code>on MyGenericEvent&lt;? extends String, Double&gt;</code></li>
+</ul>
+
+<p>But, <code>on MyGenericEvent&lt;Number, Integer&gt;</code> is not run because the generic types are not matching those from the event.</p>
+
+<h3 id="47-specific-agent-architectures">4.7. Specific Agent Architectures</h3>
 
 <p>It is possible to define the behaviors of an agent according to a specific and already known agent architecture.
 SARL API provides a list of well-known agent architectures that are listed <a href="./AgentArchitectures.html">here</a>.</p>
@@ -857,12 +915,12 @@ with the name <code>action</code> is invoked. This action is defined in the <cod
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.14</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2023-09-26</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -875,7 +933,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

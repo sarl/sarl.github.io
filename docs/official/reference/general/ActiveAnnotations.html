@@ -73,10 +73,11 @@ Considering the variety of existing approaches and meta-models in the field of a
 <li><a href="#1-accessors">1. @Accessors</a></li>
 <li><a href="#2-data">2.  @Data</a></li>
 <li><a href="#3-delegate">3.  @Delegate</a></li>
-<li><a href="#4-noequalitytestfunctionsgeneration">4. @NoEqualityTestFunctionsGeneration</a></li>
-<li><a href="#5-tostring">5. @ToString</a></li>
-<li><a href="#6-acknowledgements">6. Acknowledgements</a></li>
-<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+<li><a href="#4-inline">4. @Inline</a></li>
+<li><a href="#5-noequalitytestfunctionsgeneration">5. @NoEqualityTestFunctionsGeneration</a></li>
+<li><a href="#6-tostring">6. @ToString</a></li>
+<li><a href="#7-acknowledgements">7. Acknowledgements</a></li>
+<li><a href="#8-legal-notice">8. Legal Notice</a></li>
 
 </ul>
 
@@ -282,7 +283,124 @@ create the delegate object or use a different one each time.</p>
 }
 </code></pre>
 
-<h2 id="4-noequalitytestfunctionsgeneration">4. @NoEqualityTestFunctionsGeneration</h2>
+<h2 id="4-inline">4. @Inline</h2>
+
+<p>The <code>@Inline</code> annotation is related to the feature of the SARL compiler that suggests that the compiler substitutes the code within the annotation definition in place of each call to that function.</p>
+
+<p>In theory, using <code>@Inline</code> functions can make your program faster because they eliminate the overhead associated with function calls.
+From background point-of-view, calling a function requires pushing the return address on the stack, pushing arguments onto the stack, jumping to the function body, and then executing a return instruction when the function finishes.
+This process is eliminated by inlining the function.
+The compiler also has different opportunities to optimize functions expanded inline versus those that aren’t.
+A tradeoff of inline functions is that the overall size of your program can increase.</p>
+
+<p>The following code is an example of the usage of the <code>@Inline</code> annotation.
+The defined function is computing the double of the multiplication of the two arguments.
+The annotation specifies the <strong>Java</strong> expression that will be used as a replacement in the Java code for the function call to <code>mul</code>.</p>
+
+<pre><code class="language-sarl">import org.eclipse.xtext.xbase.lib.Inline
+class MyClass {
+	@Inline("((﹩1) * (﹩2) * 2)")
+	def mul(a : int, b : int) : int {
+		a * b * 2
+	}
+}
+</code></pre>
+
+<p>As it is illustrated before, the value of the annotation represents the Java code replacement.
+This inline format string contains valid Java code with several placeholders like <code>$1</code>, <code>$2</code>, etc.
+The number after the dollar sign corresponds to the index of the information that is used during the replacement process.
+When the inlined function has <code>1..n</code> parameters, then <code>$1</code> to <code>$n</code> are used to represent there parameters, and the subsequent <code>m</code> values corresponds to the <code>m</code> types specified with the <code>imported</code> parameter of the <code>@Inline</code> annotation.
+The next index <code>$n+m+1</code>} can be used to insert all type parameters of the original declaration.
+And, finally the last indices refer to the upper bound substitute of the type parameters individually.</p>
+
+<p>In the case a not-static function, two special numbers are reserved: <code>$0</code> is replaced by the object expression for which the inlined function was called, followed by a <code>.</code> character; and <code>$-1</code> is replaced by the object expression for which the inlined function was called, without a following <code>.</code> character.</p>
+
+<p>Let the following example for illustrating the values of the <code>@Inline</code> placeholders.</p>
+
+<pre><code class="language-sarl">@Inline(value="......", imported = typeof(BigDecimal))
+def myMethod(p1 : String, p2 : String) : void with T1, T2 extends Byte
+</code></pre>
+
+<p>The call to the previously defined function is:</p>
+
+<pre><code class="language-sarl">var obj : MyInterface
+obj.&lt;Integer, Byte&gt;myMethod("abc", "def")
+</code></pre>
+
+<p>The following table provides a synthetic view of the <code>@Inline</code> placeholders.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>N.</th>
+      <th>Description</th>
+      <th>In the example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-1</td>
+      <td>The calling receiver of the function without final dot character</td>
+      <td><code>obj</code></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>The calling receiver of the function with final dot character</td>
+      <td><code>obj.</code></td>
+    </tr>
+    <tr>
+      <td>[1..n]</td>
+      <td><code>n</code> parameters of the function</td>
+      <td><code>"abc"</code>, <code>"def"</code></td>
+    </tr>
+    <tr>
+      <td>(n..k]</td>
+      <td><code>m</code> imported types (k=n+1+m)</td>
+      <td><code>typeof(BigDecimal)</code></td>
+    </tr>
+    <tr>
+      <td>k+1</td>
+      <td>all of the <code>p</code> generic types of the function</td>
+      <td><code>T1, T2 extends Byte</code></td>
+    </tr>
+    <tr>
+      <td>(k+1..i]</td>
+      <td>Upper bound of the type parameters (i=k+p+2)</td>
+      <td><code>Object</code>, <code>Byte</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code>@Inline</code> annotation has different arguments:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>value</code></td>
+      <td>The inline format string</td>
+    </tr>
+    <tr>
+      <td><code>imported</code></td>
+      <td>Types that should be imported to inline the operation</td>
+    </tr>
+    <tr>
+      <td><code>statementExpression</code></td>
+      <td>Whether the inlined expression is a statement expression in the Java code</td>
+    </tr>
+    <tr>
+      <td><code>constantExpression</code></td>
+      <td>Whether the compiled Java is a constant expression operator, i.e. <code>$0</code> is not automatically written as a prefix of the provided inline format string</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-noequalitytestfunctionsgeneration">5. @NoEqualityTestFunctionsGeneration</h2>
 
 <p>The <code>@NoEqualityTestFunctionsGeneration</code> annotation disables the generation the equality test functions, i.e. <code>equals()</code> and <code>hashCode()</code> from
 the field declarations.</p>
@@ -314,7 +432,7 @@ by the <code>hashCode()</code> function does not include the hash code of the <c
 }
 </code></pre>
 
-<h2 id="5-tostring">5. @ToString</h2>
+<h2 id="6-tostring">6. @ToString</h2>
 
 <p>The <code>@ToString</code> annotation enables to generate the function that replies the string representation
 of an object, a.k.a. as the <code>toString()</code> function in a Java program.
@@ -348,23 +466,23 @@ class MyClass {
 
 <p>For brevity there are options to the annotation to hide field names, skip fields with null values and print everything on one line.</p>
 
-<h2 id="6-acknowledgements">6. Acknowledgements</h2>
+<h2 id="7-acknowledgements">7. Acknowledgements</h2>
 
 <p>This documentation is inspired by the documentations from the
 <a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a> and
 <a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a> projects.</p>
 
-<h2 id="7-legal-notice">7. Legal Notice</h2>
+<h2 id="8-legal-notice">8. Legal Notice</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.14</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2023-09-26</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -377,7 +495,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

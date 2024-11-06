@@ -76,8 +76,9 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#21-define-an-empty-event">2.1. Define an empty event</a></li>
   <li><a href="#22-define-an-event-with-attributes">2.2. Define an event with attributes</a></li>
   <li><a href="#23-define-an-event-with-value-attributes">2.3. Define an event with value attributes</a></li>
-  <li><a href="#24-extending-events">2.4. Extending Events</a></li>
-  <li><a href="#25-modifiers">2.5. Modifiers</a></li>
+  <li><a href="#24-define-an-event-with-generic-type-parameter">2.4. Define an event with generic type parameter</a></li>
+  <li><a href="#25-extending-events">2.5. Extending Events</a></li>
+  <li><a href="#26-modifiers">2.6. Modifiers</a></li>
 </ul>
 <li><a href="#3-reserved-events">3. Reserved Events</a></li>
 <li><a href="#4-legal-notice">4. Legal Notice</a></li>
@@ -97,8 +98,9 @@ inside a given <a href="./Space.html">Space</a>.</p>
 
 <ul>
   <li>a type, i.e. its qualified name;</li>
-  <li>a source, the identifier of the sender of the event; and</li>
-  <li>a collection of name-value pairs, i.e. the attributes of the event.</li>
+  <li>a source, the identifier of the sender of the event;</li>
+  <li>an optional list of generic type parameters; and</li>
+  <li>a collection of name-value pairs, i.e. the attributes of the event, where each pair may be of one of the generic type of a predefined type.</li>
 </ul>
 
 <h2 id="1-event-vs-message">1. Event vs. Message</h2>
@@ -107,14 +109,14 @@ inside a given <a href="./Space.html">Space</a>.</p>
 for communicating between entities: (1) an event and (2) a message.</p>
 
 <p>An event and a message are similar in that they each have a name 
-or type), a source, and optional data (arguments or parameters).
+(or type), a source, and optional data (arguments or parameters).
 The difference is in whether there is a receiver:
 an event does not specify a receiver,
 while a message needs to have at least
 one receiver (even if it is a group such as “all”<br />
 possible receivers).</p>
 
-<p>Because the event approach is more general, it is preferred 
+<p>Because the event approach is more general and close to the typical agent definitions in SARL, it is preferred 
 by the designers of SARL.</p>
 
 <p>So, to send data to another entity in SARL,
@@ -197,7 +199,40 @@ Implicit constructors has the same prototypes as the constructors of the super t
 Details on implicit constructors are given in the reference documentation related to the
 <a href="./general/SyntheticFunctions.html">synthetic functions</a>.</p>
 
-<h3 id="24-extending-events">2.4. Extending Events</h3>
+<h3 id="24-define-an-event-with-generic-type-parameter">2.4. Define an event with generic type parameter</h3>
+
+<p>Generics are a facility of <a href="https://en.wikipedia.org/wiki/Generic_programming">generic programming</a> that were added in several programming languages such as Java.
+They were designed to extend SARL type system to allow “a type or method to operate on objects of various types while providing compile-time type safety”.</p>
+
+<p>A type parameter is an unqualified identifier.
+Type parameters are introduced by generic declarations, e.g. of events, classes, interfaces or actions/methods.</p>
+
+<p>A event is generic if it declares one or more type parameters.
+A generic event declaration defines a set of parameterized types, one for each possible invocation of the type parameter section.
+All of these parameterized types share the same class at runtime.</p>
+
+<p>Each type parameter is defined by:</p>
+
+<ul>
+  <li>a name, that is identifying the type parameter;</li>
+  <li>a bounding specification that specifies the accepted types for the values that are declared ith a type equal to this type parameter. The bound may represents the uppest type or the lowest type from a type hierarchy.</li>
+</ul>
+
+<p>To define the type parameters for an event, you should define them in a list between the characters lower-than <code>&lt;</code> and upper-then <code>&gt;</code>.
+In the following example, three type parameters are defined: <code>T1</code>, <code>T2</code> and <code>T3</code>.
+The first type parameter <code>T1</code> is defined without explicit bound, that means that all the values of <code>T1</code> type must be a subtype of <code>Object</code>.
+The second type parameter <code>T2</code> is defined to have all the values with a type being a subtype of <code>String</code>.
+The third type parameter <code>T3</code> is defined to have all the values with a type being subtype of <code>Double</code> and <code>Iterable&lt;Character&gt;</code>.
+THe type parameters <code>T1</code>, <code>T2</code> and <code>T3</code> are used as regular types for the declarations of the fields <code>value0</code>, <code>value1</code> and <code>value2</code>, respectively.</p>
+
+<pre><code class="language-sarl">event MyEvent&lt;T1, T2 extends String, T3 extends Double &amp; Iterable&lt;Character&gt;&gt; {
+	var value0 : T1
+	var value1 : T2
+	var value2 : T3
+}
+</code></pre>
+
+<h3 id="25-extending-events">2.5. Extending Events</h3>
 
 <p>In some use cases, it is useful to specialize the definition
 of an event. This mechanism is supported by the inheritance
@@ -238,7 +273,7 @@ e2.string = "abc"
 e2.number = 345
 </code></pre>
 
-<h3 id="25-modifiers">2.5. Modifiers</h3>
+<h3 id="26-modifiers">2.6. Modifiers</h3>
 
 <p>Modifiers are used to modify declarations of types and type members.
 This section introduces the modifiers for the event.
@@ -307,12 +342,12 @@ They describe the minimal set of events that a runtime environment must support 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
   <li>Version: 0.14</li>
-  <li>Status: Draft Release</li>
-  <li>Release: 2023-09-26</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2024-11-06</li>
 </ul>
 
 <blockquote>
-  <p>Copyright © 2014-2023 <a href="https://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -325,7 +360,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0-SNAPSHOT.</small></p>
+<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.14.0</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../library/index.html">Library</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0140">Changes in 0.14.0</h1>
+
+<p>Release date: 2024-11-06.</p>
+
+<h2 id="major-changes">Major Changes</h2>
+
+<p>Number of major changes: 4</p>
+
+<h3 id="definition-of-type-parameters-for-events">Definition of Type Parameters for Events</h3>
+
+<p>Generics are a facility of <a href="https://en.wikipedia.org/wiki/Generic_programming">generic programming</a> that were added in several programming languages such as Java.
+They were designed to extend SARL type system to allow “a type or method to operate on objects of various types while providing compile-time type safety”.</p>
+
+<p>A type parameter is an unqualified identifier.
+Type parameters are introduced by generic declarations, e.g. of events, classes, interfaces or actions/methods.</p>
+
+<p>A event is generic if it declares one or more type parameters.
+A generic event declaration defines a set of parameterized types, one for each possible invocation of the type parameter section.
+All of these parameterized types share the same class at runtime.</p>
+
+<p>Documentation: <a href="http://www.sarl.io/docs/official/reference/Event.html">in official documentation</a></p>
+
+<p>Change details: <a href="http://sarl.io/sarl/sarl/commit/7222fea427ccc30c5f463fc68d306625a1574ffa">1</a>, <a href="http://sarl.io/sarl/sarl/commit/c25a092b75bf6495d1c9f62256c56259cfb97be8">2</a>, <a href="http://sarl.io/sarl/sarl/commit/d808e052c2bc895be25ffe70d7818d2f5d3a7ccd">3</a>, <a href="http://sarl.io/sarl/sarl/commit/137be5acf36264a02b727409c98f0fcf06f251f4">4</a>, <a href="http://sarl.io/sarl/sarl/commit/e96140bb028fc6c450bf7112253534034df66ccf">5</a>, <a href="http://sarl.io/sarl/sarl/commit/47b6a0b82139a4c946494c0abd0030e6ea87f401">6</a></p>
+
+<h3 id="transition-from-java-17-to-java-21">Transition from Java 17 to Java 21</h3>
+
+<p>Since the beginning of its life, SARL supports version 8 (before 2021) and 17 (after 2021) of Java.
+However, several modules from Eclipse are now requiring the version 21 of Java.
+Consequently, the SARL development team as decided in 2024 to apply to SARL a transition from Java 17 to Java 21.</p>
+
+<p><strong>Version 0.14.0 requires Java 21 as a minimum requirement.</strong></p>
+
+<h3 id="new-product-for-macos-silicon">New Product for MacOS Silicon</h3>
+
+<p>From version 0.14.0 of SARL, a new OS architecture is officially supported: MacOS Silicon on ARM architecture.
+In additional to the previous products for Linux, Windows and MacOS on Intel, the product for MacOS on ARM (Silicon) is now available for download. [<a href="http://sarl.io/sarl/sarl/commit/406672ac8dca59163b99834733bb73b2292021c0">more details</a>]</p>
+
+<h3 id="make-easier-the-scoping-of-emitted-events">Make easier the scoping of emitted events</h3>
+
+<p>From the SARL API, it is possible to scope the receivers of SARL events, with a guard associated to the emit function.
+For example, the following code emit the event <code>MyEvent</code> only to the agents that have there identifier equals to the identifier <code>value</code>.</p>
+
+<pre><code class="language-sarl">emit(new MyEvent) [it.UUID == value]
+</code></pre>
+
+<p>To make the scope coding more easy, operators have been introduction for comparing <code>Address</code> (the argument of the scope) to <code>UUID</code> value, and for comparing <code>Address</code> to <code>SpaceID</code>. Therefore the previous code could be simplified to:</p>
+
+<pre><code class="language-sarl">emit(new MyEvent) [it == value]
+</code></pre>
+
+<h2 id="detailed-changes">Detailed Changes</h2>
+
+<h3 id="1-sarl-language">1. SARL Language</h3>
+
+<h4 id="11-sarl-language-and-grammar">1.1. SARL Language and Grammar</h4>
+
+<ul>
+  <li>Events could be defined with generic type parameters. [<a href="http://sarl.io/sarl/sarl/commit/7222fea427ccc30c5f463fc68d306625a1574ffa">more details</a>]</li>
+  <li>Implementation of generic events in the event bus of the Janus SRE. [<a href="http://sarl.io/sarl/sarl/commit/e96140bb028fc6c450bf7112253534034df66ccf">more details</a>]</li>
+  <li>Reserve the keyword “protocol” for futur usage. [<a href="http://sarl.io/sarl/sarl/commit/35bd5c37c6145784b19d912b901b0b04ee3e3f2c">more details</a>]</li>
+  <li>Fixing NPE in MWE2 code builder generator. [<a href="http://sarl.io/sarl/sarl/commit/4325e41409907ca80f1a037289f14390d8399cba">more details</a>]</li>
+</ul>
+
+<h4 id="12-sarl-validator">1.2. SARL Validator</h4>
+
+<ul>
+  <li>Events could be defined with generic type parameters. Add warning messages related to the use of generic type parameters in events. These messages are related to the code efficiency that is assumed to be lower than for not-generic events. [<a href="http://sarl.io/sarl/sarl/commit/137be5acf36264a02b727409c98f0fcf06f251f4">more details</a>]</li>
+  <li>Add missed check of generic arguments when extending a generic super type (class, interface). [<a href="http://sarl.io/sarl/sarl/commit/a0f450ddcf9965462dc07d3ae1944769197c11af">more details</a>]</li>
+</ul>
+
+<h4 id="13-java-model-inferrer">1.3. Java Model Inferrer</h4>
+
+<ul>
+  <li>Events could be defined with generic type parameters. Generate specific Java code for generic events. [<a href="http://sarl.io/sarl/sarl/commit/c25a092b75bf6495d1c9f62256c56259cfb97be8">more details</a>]</li>
+  <li>Avoid NPE when the JVM model is partially generated by the model inferrer. [<a href="http://sarl.io/sarl/sarl/commit/1f92cef8df5789bfadf0240f472ba42198b7db4c">more details</a>]</li>
+</ul>
+
+<h3 id="2-sarl-development-toolkit-sdk">2. SARL Development Toolkit (SDK)</h3>
+
+<ul>
+  <li>Add operator for comparing Address and UUID, and Address and SpaceID. [<a href="http://sarl.io/sarl/sarl/commit/fbef0a93654447bf174c838f7787e60205014dcc">more details</a>]</li>
+</ul>
+
+<h3 id="3-sarl-user-interface">3. SARL User Interface</h3>
+
+<h4 id="31-eclipse-products">3.1. Eclipse Products</h4>
+
+<ul>
+  <li>Enable the building of the macOS product for Apple Silicon. [<a href="http://sarl.io/sarl/sarl/commit/406672ac8dca59163b99834733bb73b2292021c0">more details</a>]</li>
+  <li>Include the Java Runtime Environment (JRE) in the SARL Eclipse products. [<a href="http://sarl.io/sarl/sarl/commit/2cd3f33ffee9b03aa946c4c2cde515960457bba9">more details</a>]</li>
+  <li>Avoid exceptions due to unlinked editors. [<a href="http://sarl.io/sarl/sarl/commit/e294e6b813dcc50d2fb1bc11dc835a944d481f44">more details</a>]</li>
+  <li>Activate the SARL debug perspective when a SARL program is suspended for debug. [<a href="http://sarl.io/sarl/sarl/commit/65a5706b0d119e5c529344cb51ca62689252e166">more details</a>]</li>
+  <li>Fixing the links to the examples’ wizards from the welcome page. [<a href="http://sarl.io/sarl/sarl/commit/56a2643f2a98d10cd6f2e8512491820db92f5b90">more details</a>]</li>
+  <li>The information in the “about texts” are injected from the global properties from the BOM. [<a href="http://sarl.io/sarl/sarl/commit/52564ac040751ed4aae5657b1315c5281629687f">more details</a>]</li>
+</ul>
+
+<h3 id="4-janus-run-time-environment">4. Janus Run-time Environment</h3>
+
+<ul>
+  <li>Implementation of generic events in the event bus of the Janus SRE. [<a href="http://sarl.io/sarl/sarl/commit/e96140bb028fc6c450bf7112253534034df66ccf">more details</a>]</li>
+</ul>
+
+<h3 id="5-command-line-tools">5. Command-Line Tools</h3>
+
+<h4 id="51-janus">5.1. janus</h4>
+
+<ul>
+  <li>Add more command line options for selecting the type of JVM executor service. [<a href="http://sarl.io/sarl/sarl/commit/155e8f7295e15d9ad84b3c5dd52dc1ea33991953">more details</a>]</li>
+</ul>
+
+<h3 id="6-sarl-documentation">6. SARL Documentation</h3>
+
+<h4 id="61-documentation-of-the-sarl-sdk">6.1. Documentation of the SARL SDK</h4>
+
+<ul>
+  <li>Fixing document for the definition of generic events. [<a href="http://sarl.io/sarl/sarl/commit/47b6a0b82139a4c946494c0abd0030e6ea87f401">1</a>, <a href="http://sarl.io/sarl/sarl/commit/0d4ecd1b78b701648695b1a9b6e032c05b97d0b7">2</a>]</li>
+</ul>
+
+<h4 id="62-documentation-of-tutorials">6.2. Documentation of tutorials</h4>
+
+<ul>
+  <li>Add exercises:
+    <ul>
+      <li>Basics of SARL syntax. [<a href="http://sarl.io/sarl/sarl/commit/9cd4a32780775c8f8106875108a322c89535dc9c">more details</a>]</li>
+    </ul>
+  </li>
+  <li>Fixing the documentation of the TGOB library. [<a href="http://sarl.io/sarl/sarl/commit/4f78d0688d8a4686b769e5ea0b529a15b838e0d8">more details</a>]</li>
+  <li>Fixing the URL to the source code in the examples’ documentations. [<a href="http://sarl.io/sarl/sarl/commit/e3a963df6761163ae8f35a67683886ed4acfff9d">more details</a>]</li>
+</ul>
+
+<h3 id="7-tools-for-sarl-contributors">7. Tools for SARL Contributors</h3>
+
+<ul>
+  <li>Fixing security alert about http connexion. [<a href="http://sarl.io/sarl/sarl/commit/02fe4f14a55d0669c91ac647e680eeabe15f8eb4">1</a>, <a href="http://sarl.io/sarl/sarl/commit/5dc9faaa052023b29c636b23d64d1c905f403cd6">2</a>, <a href="http://sarl.io/sarl/sarl/commit/e3896d379650f8de3300c40e011d73fdbd555fbb">3</a>, <a href="http://sarl.io/sarl/sarl/commit/31951460b7391a63e692f4404514cba3d55e6e50">4</a>, <a href="http://sarl.io/sarl/sarl/commit/872763ed7f66b5beb12f3964bae4326c17adc893">5</a>, <a href="http://sarl.io/sarl/sarl/commit/30b146a362e1d0ddbdb52c597c8a29f45591c9d9">6</a>, <a href="http://sarl.io/sarl/sarl/commit/2b42aa7c1ad167f10708d3ae5b130c8f334991b3">7</a>]</li>
+  <li>Add scripts for updated the hard-coded versions of maven plugins. [<a href="http://sarl.io/sarl/sarl/commit/a4640851ccf9dacc8371904b81a10bb490af2a2f">more details</a>]</li>
+  <li>Code quality:
+    <ul>
+      <li>Fixing code for removing warnings on boxing and outboxing. [<a href="http://sarl.io/sarl/sarl/commit/b6fb1014f2ce86688e17578e49740795ac02914a">more details</a>]</li>
+    </ul>
+  </li>
+  <li>CodeQL Action on Github:
+    <ul>
+      <li>Add cache in CodeQL setup. [<a href="http://sarl.io/sarl/sarl/commit/a4b3cc940e49c87067c4cb891eb5c1b868c61cc7">more details</a>]</li>
+      <li>Upgrade versions of actions in CodeQL setup. [<a href="http://sarl.io/sarl/sarl/commit/8043b0296dba3e6741c33311b2dd2e622f3cd097">1</a>, <a href="http://sarl.io/sarl/sarl/commit/e658eb197e79c0360a889f78bae0b1d18693076f">2</a>]</li>
+      <li>Create codeql.yml [<a href="http://sarl.io/sarl/sarl/commit/68caa160a50661c06a7413a6a759de3a45a0ab63">more details</a>]</li>
+    </ul>
+  </li>
+  <li>The API documentation is fixed. [<a href="http://sarl.io/sarl/sarl/commit/6cebdca94654c2c5b0332bd7997855812c935d5b">more details</a>]</li>
+  <li>Upgrade major libraries:
+    <ul>
+      <li>Java 21: Apply Java 14 syntax for var and instanceof constructs. [<a href="http://sarl.io/sarl/sarl/commit/8f91a7c1d5ad44670beed60f3588cc262df7c482">more details</a>]</li>
+      <li>Eclipse 2024-06. [<a href="http://sarl.io/sarl/sarl/commit/7b3f212c7c5cb467f757d783e597d9594fa42377">1</a>, <a href="http://sarl.io/sarl/sarl/commit/54d00705604e4470092998251e8e3a0aeb42a87f">2</a>]</li>
+      <li>Xtext 2.36.0 [<a href="http://sarl.io/sarl/sarl/commit/decb940c2637c9e1b76f9857cfa60c08ed42fbb1">1</a>, <a href="http://sarl.io/sarl/sarl/commit/906ec8a06fce8b0a1883019c74dcce039d1b680c">2</a>, <a href="http://sarl.io/sarl/sarl/commit/54d00705604e4470092998251e8e3a0aeb42a87f">3</a>, <a href="http://sarl.io/sarl/sarl/commit/a25e4b94e844de64aa99584f27c5965a80a6a8e5">4</a>, <a href="http://sarl.io/sarl/sarl/commit/025f0760f2e2f94af1972829e05edd6fc74653f6">5</a>, <a href="http://sarl.io/sarl/sarl/commit/d347b370fbe353705be83101387f808d60772289">6</a>, <a href="http://sarl.io/sarl/sarl/commit/a256cc7329c9d1083a4f1debdbd85941b010898e">7</a>, <a href="http://sarl.io/sarl/sarl/commit/00495b83443d9e25306d650a6eb8da1d2db11f35">8</a>, <a href="http://sarl.io/sarl/sarl/commit/7b3f212c7c5cb467f757d783e597d9594fa42377">9</a>]</li>
+      <li>Maven 3.9.9.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="8-changes-in-the-previous-versions">8. Changes in the Previous Versions</h2>
+
+<ul>
+  <li><a href="./changes_0.13.0.html">Changes in the version 0.13.0</a></li>
+</ul>
+
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="../community/forums.html">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
