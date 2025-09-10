@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>General Syntax Reference of he SARL Language</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="general-syntax-reference-of-he-sarl-language">General Syntax Reference of he SARL Language</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-basic-language-constructs">1. Basic Language Constructs</a></li>
+<ul>
+  <li><a href="#11-structure-of-sarl-scripts">1.1. Structure of SARL Scripts</a></li>
+  <li><a href="#12-variables-and-types">1.2. Variables and Types</a></li>
+  <li><a href="#13-literals-and-operators">1.3. Literals and Operators</a></li>
+  <li><a href="#14-feature-access">1.4. Feature Access</a></li>
+</ul>
+<li><a href="#2-control-flow">2. Control Flow</a></li>
+<ul>
+  <li><a href="#21-conditional-statements">2.1. Conditional Statements</a></li>
+  <li><a href="#22-loops">2.2. Loops</a></li>
+</ul>
+<li><a href="#3-functions-and-lambda-expressions">3. Functions and Lambda Expressions</a></li>
+<ul>
+  <li><a href="#31-function-declarations">3.1. Function Declarations</a></li>
+  <li><a href="#32-lambda-expressions">3.2. Lambda Expressions</a></li>
+</ul>
+<li><a href="#4-advanced-features">4. Advanced Features</a></li>
+<ul>
+  <li><a href="#41-error-handling-and-code-quality-improvement">4.1. Error Handling and Code Quality Improvement</a></li>
+  <li><a href="#42-synchronization-of-resources">4.2. Synchronization of Resources</a></li>
+  <li><a href="#43-extensions-and-metaprogramming">4.3. Extensions and Metaprogramming</a></li>
+</ul>
+<li><a href="#5-references">5. References</a></li>
+<li><a href="#6-version-specification">6. Version Specification</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+
+</ul>
+
+<p>SARL is designed to facilitate the creation of agent-based systems. It combines agent-specific constructs with several functional, imperative and object-oriented principles, providing a robust framework for developing autonomous and interactive agents. Below is an overview of the core features of SARL.</p>
+
+<h2 id="1-basic-language-constructs">1. Basic Language Constructs</h2>
+
+<h3 id="11-structure-of-sarl-scripts">1.1. Structure of SARL Scripts</h3>
+
+<ul>
+  <li><a href="./Script.html">Script</a>: SARL scripts are the basic units of execution, containing a series of types, statements and expressions.</li>
+  <li><a href="./Names.html">Naming Convention</a>: SARL has specific rules and conventions for naming variables, functions, and other constructs.</li>
+  <li><a href="./Statements.html">Statements</a>: Statements in SARL are used to perform actions, including variable declarations, control flow, and more.</li>
+  <li><a href="./Block.html">Block Documentation</a>: Blocks in SARL define scopes for variables and control structures.</li>
+</ul>
+
+<h3 id="12-variables-and-types">1.2. Variables and Types</h3>
+
+<ul>
+  <li><a href="./VarDecls.html">Variable Declarations</a>: SARL supports various ways to declare variables, including type inference and explicit typing.</li>
+  <li><a href="./Types.html">Types</a>: SARL provides a rich type system, including primitive types, custom types, and collections.</li>
+  <li><a href="./Cast.html">Cast Operator</a>: SARL supports type casting, allowing for explicit conversion between types.</li>
+</ul>
+
+<h3 id="13-literals-and-operators">1.3. Literals and Operators</h3>
+
+<ul>
+  <li><a href="./Literals.html">Literals</a>: These are fixed values that can be directly used in code, such as numbers, strings, and booleans.</li>
+  <li><a href="./Operators.html">Operators</a>: SARL supports a wide range of operators for arithmetic, logical, and relational operations.</li>
+</ul>
+
+<h3 id="14-feature-access">1.4. Feature Access</h3>
+
+<ul>
+  <li><a href="./MemberAccess.html">Member Access</a>: This feature allows access to the members (fields and methods) of objects and classes.</li>
+  <li><a href="./JavaInterroperability.html">Java Interoperability</a>: SARL is designed to interoperate seamlessly with Java, allowing for the integration of Java libraries and frameworks.</li>
+</ul>
+
+<h2 id="2-control-flow">2. Control Flow</h2>
+
+<h3 id="21-conditional-statements">2.1. Conditional Statements</h3>
+
+<ul>
+  <li><a href="./IfExpression.html">If Expression</a>: Conditional logic in SARL is handled through <code>if</code> expressions, allowing for branching execution paths.</li>
+  <li><a href="./SwitchExpression.html">Switch Expression</a>: Switch expressions provide a concise way to handle multiple conditional branches.</li>
+</ul>
+
+<h3 id="22-loops">2.2. Loops</h3>
+
+<ul>
+  <li><a href="./LoopExpression.html">Loop Expressions</a>: SARL supports various loop constructs for iterative execution, including for, while, and do-while loops.</li>
+</ul>
+
+<h2 id="3-functions-and-lambda-expressions">3. Functions and Lambda Expressions</h2>
+
+<h3 id="31-function-declarations">3.1. Function Declarations</h3>
+
+<ul>
+  <li><a href="./FuncDecls.html">Function Declarations</a>: Functions in SARL can be declared to encapsulate reusable pieces of code.</li>
+</ul>
+
+<h3 id="32-lambda-expressions">3.2. Lambda Expressions</h3>
+
+<ul>
+  <li><a href="./Lambda.html">Lambda</a>: Lambdas provide a concise way to define anonymous functions, facilitating functional programming patterns.</li>
+</ul>
+
+<h2 id="4-advanced-features">4. Advanced Features</h2>
+
+<h3 id="41-error-handling-and-code-quality-improvement">4.1. Error Handling and Code Quality Improvement</h3>
+
+<ul>
+  <li><a href="./Exception.html">Exceptions</a>: SARL includes mechanisms for handling exceptions, allowing for robust error management.</li>
+  <li><a href="./Assertion.html">Assertions</a>: Assertions are used to validate assumptions within the code, aiding in debugging and testing.</li>
+</ul>
+
+<h3 id="42-synchronization-of-resources">4.2. Synchronization of Resources</h3>
+
+<ul>
+  <li><a href="./Synchronization.html">Synchronization</a>: SARL provides constructs for synchronizing access to shared resources, ensuring parallel execution (thread) safety.</li>
+</ul>
+
+<h3 id="43-extensions-and-metaprogramming">4.3. Extensions and Metaprogramming</h3>
+
+<ul>
+  <li><a href="./Extension.html">Extension Methods</a>: SARL supports extension methods to enhance the functionality of types.</li>
+  <li><a href="./ActiveAnnotations.html">Active Annotations</a>: Annotations in SARL can be used to add metadata and influence the behavior of agents.</li>
+  <li><a href="./SyntheticFunctions.html">Synthetic Functions</a>: These are automatically generated functions that facilitate common patterns and reduce boilerplate code.</li>
+</ul>
+
+<h2 id="5-references">5. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="6-version-specification">6. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

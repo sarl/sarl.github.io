@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Function Declarations</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="function-declarations">Function Declarations</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-standard-declarations">1. Standard Declarations</a></li>
+<li><a href="#2-declare-exceptions-in-the-function-prototype">2. Declare exceptions in the function prototype</a></li>
+<li><a href="#3-generic-function">3. Generic Function</a></li>
+<ul>
+  <li><a href="#31-definition-with-with-keyword">3.1. Definition with "with" keyword</a></li>
+  <li><a href="#32-definition-with-brackets">3.2. Definition with brackets</a></li>
+  <li><a href="#33-bounded-type-parameters">3.3. Bounded Type Parameters</a></li>
+</ul>
+<li><a href="#4-variadic-function">4. Variadic Function</a></li>
+<li><a href="#5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</a></li>
+<li><a href="#6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</a></li>
+<li><a href="#7-dispatch-function">7. Dispatch Function</a></li>
+<li><a href="#8-purity-of-the-functions">8. Purity of the Functions</a></li>
+<ul>
+  <li><a href="#81-general-definition">8.1. General Definition</a></li>
+  <li><a href="#82-i-o-in-pure-functions">8.2. I/O in Pure Functions</a></li>
+  <li><a href="#83-automatic-determination-of-the-function-purity-in-sarl">8.3. Automatic Determination of the Function Purity in SARL</a></li>
+  <li><a href="#84-manually-tagging-of-pure-functions">8.4. Manually Tagging of Pure Functions</a></li>
+</ul>
+<li><a href="#9-references">9. References</a></li>
+<li><a href="#10-version-specification">10. Version Specification</a></li>
+<li><a href="#11-legal-notice">11. Legal Notice</a></li>
+
+</ul>
+
+<p>A function, or method, or action, is a named block of code that can be invoked.</p>
+
+<p>A function declaration starts with the keyword <code>def</code>. This declaration can only occur
+in top-level features, such as <code>agent</code>.</p>
+
+<h2 id="1-standard-declarations">1. Standard Declarations</h2>
+
+<p>The standard function declaration follows the following syntax:</p>
+
+<pre><code class="language-text">def NAME [([PARAMETER, PARAMETER, PARAMETER...])] [: RETURN TYPE] [BLOCK]
+</code></pre>
+
+<p><span class="label label-info">Note</span> The parameters are implicitly declared with the keyword <code>val</code> so are read-only.</p>
+
+<p>The following code gives examples of function declarations:</p>
+
+<pre><code class="language-sarl">// No parameter.
+// Return type: void
+def action1 {
+}
+
+// No parameter.
+// Return type: int
+def action2 : int {
+	return 0
+}
+
+// Parameter 1, named 'a', of type int.
+// Return type: void
+def action3(a : int) {
+}
+
+// Parameter 1, named 'a', of type int.
+// Parameter 2, named 'b', of type String.
+// Return type: void
+def action4(a : int, b : String) {
+}
+
+// Parameter 1, named 'a', of type int.
+// Return type: double
+def action5(a : int) : double {
+	return 0
+}
+
+// Parameter 1, named 'a', of type int.
+// Parameter 2, named 'b', of type String.
+// Return type: String
+def action6(a : int, b : String) : String {
+}
+</code></pre>
+
+<h2 id="2-declare-exceptions-in-the-function-prototype">2. Declare exceptions in the function prototype</h2>
+
+<p>The section “<a href="./Exception.html">Exception Support</a>” shows how to write
+an exception handler in the code. Sometimes, it is appropriate for code
+to catch exceptions that can occur within it. In other cases, however,
+it is better to let a method further down the call stack handle the exception.</p>
+
+<p>If a function doesn’t catch the checked exceptions that can occur within
+it, the function may specify that it can throw these exceptions.</p>
+
+<p><span class="label label-info">Note</span> This specification is optional since the SARL compiler determines the exceptions that are not catched, and assumes that they are implicitly thrown outside the function.</p>
+
+<p>The declaration of the thrown exceptions is done with the 
+<code>throws</code> keyword, followed by a list of thrown exception types.
+This declaration must be put between the list of formal parameters and the function’s code.</p>
+
+<p>In the following example, the function <code>myaction</code> is defined with no formal
+parameters and no return type.
+This function indicates to its caller that it could throw an exception of
+type <code>IllegalStateException</code>.</p>
+
+<pre><code class="language-sarl">def myaction throws IllegalStateException {
+}
+</code></pre>
+
+<h2 id="3-generic-function">3. Generic Function</h2>
+
+<p>Generic functions are methods that introduce their own type parameters. This is similar to declaring a
+<a href="../oop/Class.html#define-a-generic-class">generic type</a>,
+but the type parameter’s scope is limited to the function where it is declared.
+Static and non-static generic functions are allowed.</p>
+
+<p>You can write a single generic method declaration that can be called with arguments of
+different types. Based on the types of the arguments passed to the generic method,
+the compiler handles each method call appropriately. Following are the rules to define
+generic functions:</p>
+
+<ul>
+  <li>All generic method declarations have a type parameter section written with the <code>with</code> or the bracket syntax.</li>
+  <li>Each type parameter section contains one or more type parameters separated by commas. A type parameter, also known as a type variable, is an identifier that specifies a generic type name.</li>
+  <li>The type parameters can be used to declare the return type and acts as placeholders for the types of the arguments passed to the generic method, which are known as actual type arguments.</li>
+</ul>
+
+<p>A generic method’s body is declared like that of any other method.</p>
+
+<p><span class="label label-info">Note</span> Type parameters can represent only reference types, not primitive types (like <code>int</code>, <code>double</code> and <code>char</code>).</p>
+
+<p>Two syntaxes are allowed for defining the type parameters of the actions: the <code>with</code> syntax, and the bracket syntax.</p>
+
+<h3 id="31-definition-with-with-keyword">3.1. Definition with “with” keyword</h3>
+
+<p>The <code>with</code> syntax for a generic function includes a type parameter, after the <code>with</code>
+keyword, between the function’s return type and the function’s body.</p>
+
+<p>In the following example, the function specifies a type <code>T</code>, which is used both
+as type for the element parameter and the generic type of the Collection.</p>
+
+<pre><code class="language-sarl">def addAndReturn(element : T, collection : Collection&lt;T&gt;) : T with T {
+    collection.add(element)
+    return element
+}
+</code></pre>
+
+<h3 id="32-definition-with-brackets">3.2. Definition with brackets</h3>
+
+<p>The bracket syntax for a generic function includes a type parameter, inside angle brackets, and
+appears before the function’s name.</p>
+
+<p>In the following example, the function specifies a type <code>T</code>, which is used both
+as type for the element parameter and the generic type of the Collection.</p>
+
+<pre><code class="language-sarl">def &lt;T&gt; addAndReturn(element : T, collection : Collection&lt;T&gt;) : T {
+    collection.add(element)
+    return element
+}
+</code></pre>
+
+<h3 id="33-bounded-type-parameters">3.3. Bounded Type Parameters</h3>
+
+<p>There may be times when you’ll want to restrict the kinds of types that are allowed to be
+passed to a type parameter. For example, a method that operates on numbers might only want
+to accept instances of Number or its subclasses. This is what bounded type parameters are for.</p>
+
+<p>To declare a bounded type parameter, list the type parameter’s name, followed by the
+<code>extends</code> keyword, followed by a class name. This keyword indicates that <code>T</code>
+must be a subtype of the following type.</p>
+
+<pre><code class="language-sarl">def print(value : T) with T extends Number {
+    System.out.println("Type = " + value.getClass)
+    System.out.println("Value = " + value)
+}
+</code></pre>
+
+<h2 id="4-variadic-function">4. Variadic Function</h2>
+
+<p>A variadic function is a function of indefinite arity: one which accepts a variable number of arguments.</p>
+
+<p>SARL allows you to define the last parameter of a function as variadic with the operator <code>*</code>.
+This operator has an informal meaning similar to the cardinality in
+<a href="https://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a>: zero to many.</p>
+
+<p>In the code of the variadic function, the variadic parameter is assumed to be an array of objects of
+the parameter type.</p>
+
+<p>In other languages, such as Java and C++, the variadic operator is <code>...</code>.</p>
+
+<p>In the following example, two variadic functions are defined:</p>
+
+<pre><code class="language-sarl">// Function with indefinite number of integers as parameters
+def action1(v : int*) {
+	for (value : v) {
+		info(value)
+	}
+}
+// Function which takes a boolean, a double and an indefinite 
+// number of integers as parameters
+def action2(a : boolean, b : double, c : int*) {
+	info(a)
+	info(b)
+	for (value : c) {
+		info(value)
+	}
+}
+</code></pre>
+
+<p>Examples of calls to the two previous variadic functions are:</p>
+
+<pre><code class="language-sarl">action1()
+action1(1)
+action1(1, 3)
+action2(true, 3.0)
+action2(true, 3.0, 1)
+action2(true, 3.0, 1, 5)
+</code></pre>
+
+<h2 id="5-default-value-for-the-formal-parameters">5. Default Value for the Formal Parameters</h2>
+
+<p>SARL allows you to specify a default value for a formal parameter.</p>
+
+<p>When a default value is specified, it means that the caller of
+the action can skip passing a value for the corresponding argument.
+And, when the function is called, the default value is given to the
+skipped argument.</p>
+
+<p><span class="label label-warning">Important Note</span> In SARL, if a formal parameter has a default value, the following formal parameters do not need to have default values as well. This is a major difference with the default values in other languages, such as C++.</p>
+
+<pre><code class="language-sarl">// Function with one parameter with a default value.
+def action1(v : int = 5) {
+	info("v == " + v)
+}
+// Function which takes a boolean, a double and an integer as parameters.
+// The first and third parameters have default values. 
+def action2(a : boolean=true, b : double, c : int=7) {
+	info("a == " + a)
+	info("b == " + b)
+	info("c == " + c)
+}
+</code></pre>
+
+<p>Examples of calls to the two previous functions are:</p>
+
+<pre><code class="language-sarl">// v == 1
+action1(1)
+
+// v == 5
+action1()
+
+// a == true, b == 3.0, c == 1
+action2(true, 3.0, 1)
+
+// a == false, b == 4.0, c == 7
+action2(false, 4.0)
+
+// a == true, b == 7.0, c == 56
+action2(7.0, 56)
+
+// a == true, b == 9.0, c == 7
+action2(9.0)
+</code></pre>
+
+<h2 id="6-mixing-variadic-parameter-and-default-values">6. Mixing Variadic Parameter and Default Values</h2>
+
+<p>It is possible to mix the variadic parameter and the default values,
+except that the variadic parameter cannot have a default value.</p>
+
+<pre><code class="language-sarl">def action(v : int = 5, a : float*) { }
+</code></pre>
+
+<h2 id="7-dispatch-function">7. Dispatch Function</h2>
+
+<p>Generally, method resolution and binding is done statically at compile time.
+Method calls are bound based on the static types of arguments.</p>
+
+<p>Sometimes this is not what you want. Especially in the context of extension methods
+you would like to have polymorphic behavior.</p>
+
+<p>The <code>dispatch</code> modifier permits defining a dispatch method.</p>
+
+<pre><code class="language-sarl">dispatch def getType(x : Integer) { 
+  "it's an int" 
+}
+dispatch def getType(x : String) { 
+  "it's a string" 
+}
+dispatch def getType(x : Number) { 
+  "it's a number" 
+}
+ 
+def clientCode {
+	getType(4.5).println
+	getType(4).println
+	getType("a string").println
+}
+</code></pre>
+
+<p>For a set of visible dispatch methods in the current type hierarchy with the same name and
+the same number of arguments, the compiler infers a synthetic dispatcher method.
+From the example above, the SARL compiler infers the following function, named the synthesized dispatcher.</p>
+
+<pre><code class="language-sarl">def printType(x : Object) { 
+  if (x instanceof Integer) {
+    printType(x as Integer)
+  } else if (x instanceof Number) {
+    printType(x as Number)
+  } else if (x instanceof String) {
+    printType(x as String)
+  }
+}
+</code></pre>
+
+<p>This dispatcher uses the common super type of all declared arguments.
+Client code always binds to the synthesized dispatcher method.</p>
+
+<p>In the example, the calls to the <code>getType</code> functions produces the output:</p>
+
+<pre><code class="language-text">it's a number
+it's an int
+it's a string
+</code></pre>
+
+<h2 id="8-purity-of-the-functions">8. Purity of the Functions</h2>
+
+<h3 id="81-general-definition">8.1. General Definition</h3>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Pure_function">pure function</a> is a function that has the following properties:</p>
+
+<ol>
+  <li>Its return value is the same for the same arguments (no variation with local static variables, non-local variables, 
+mutable reference arguments or input streams from I/O devices).</li>
+  <li>Its evaluation has no side effects (no mutation of local static variables, non-local variables, mutable
+reference arguments or I/O streams).</li>
+</ol>
+
+<p>Most of the time, a pure function is a computational analogue of a mathematical function. Some authors, particularly from the
+imperative language community, use the term “pure” for all functions that just have the above property.</p>
+
+<p>In SARL, a pure function is a function that has no side-effect on the state of the invoked object,  the static state, and
+I/O targets. The following examples of SARL functions are pure:</p>
+
+<pre><code class="language-sarl">def floor(value : double) : double {
+	val fvalue = value as int
+	return fvalue
+}
+def max(a : double, b : double) : double {
+	if (a &gt;= b) a
+	else b
+}
+def f : void {
+	var x = 0
+	x++
+}
+</code></pre>
+
+<p>The following examples of SARL functions are impure:</p>
+
+<pre><code class="language-sarl">class MyClass {
+	var ifield : int
+	static var sfield : int
+	def incrementField : void {
+		this.ifield ++
+	}
+	def incrementGlobalField : void {
+		sfield ++
+	}
+	static def incrementGlobalField2 : void {
+		sfield ++
+	}
+}
+</code></pre>
+
+<h3 id="82-io-in-pure-functions">8.2. I/O in Pure Functions</h3>
+
+<p>I/O is inherently impure: input operations undermine
+<a href="https://en.wikipedia.org/wiki/Referential_transparency">referential transparency</a>,
+and output operations create side effects.
+Nevertheless, there is a sense in which function can perform input or output and still be pure, if the sequence of
+operations on the relevant I/O devices is modeled explicitly as both an argument and a result, and I/O operations are
+taken to fail when the input sequence does not describe the operations actually taken since the program began execution.</p>
+
+<p>The second point ensures that the only sequence usable as an argument must change with each I/O action; the first allows
+different calls to an I/O-performing function to return different results on account of the sequence arguments having changed.</p>
+
+<h3 id="83-automatic-determination-of-the-function-purity-in-sarl">8.3. Automatic Determination of the Function Purity in SARL</h3>
+
+<p>SARL compiler tries to figure out if the functions have side-effect. 
+It does some clever analysis of the name of the method (e.g., getters) and also tries to check if the
+body has any method that is impure, i.e., that may have side-effects.</p>
+
+<p>SARL compiler considers the following cases for determining if a function must be tagged as pure or not:</p>
+
+<ol>
+  <li>The function name follows one of the regular expression pattern that corresponds to functions that are
+usually pure:
+    <ul>
+      <li>For getter functions:
+        <ul>
+          <li>
+            <p>name starts with <code>get</code>, <code>has</code> or <code>is</code></p>
+          </li>
+          <li>
+            <p>name equals to <code>length</code></p>
+          </li>
+        </ul>
+      </li>
+      <li>For comparison functions:
+        <ul>
+          <li>name equals to <code>equals</code>, <code>hashCode</code>, <code>compare</code> or <code>compareTo</code>.</li>
+        </ul>
+      </li>
+      <li>For container functions:
+        <ul>
+          <li>
+            <p>name equals to <code>size</code></p>
+          </li>
+          <li>
+            <p>name starts with <code>contains</code>, optionally followed by characters according to the
+<a href="https://en.wikipedia.org/wiki/Camel_case">camel-case standard</a></p>
+          </li>
+        </ul>
+      </li>
+      <li>For iteration:
+        <ul>
+          <li>name equals to <code>iterator</code></li>
+        </ul>
+      </li>
+      <li>For cloning:
+        <ul>
+          <li>name equals to <code>clone</code></li>
+        </ul>
+      </li>
+      <li>For data conversion:
+        <ul>
+          <li>name starts with <code>to</code> following the <a href="https://en.wikipedia.org/wiki/Camel_case">camel-case standard</a></li>
+        </ul>
+      </li>
+      <li>For well-known pure functions:
+        <ul>
+          <li>name equals to one of <code>abs</code>, <code>acos</code>, <code>asin</code>, <code>atan</code>, <code>atan2</code>, <code>cbrt</code>, <code>ceil</code>, <code>cos</code>, <code>cosh</code>, <code>exp</code>, <code>floor</code>,
+<code>hypot</code>, <code>log</code>, <code>log10</code>, <code>log1p</code>, <code>max</code>, <code>min</code>, <code>pow</code>, <code>random</code>, <code>rint</code>, <code>round</code>, <code>scalb</code>, <code>signum</code>, <code>sin</code>,
+<code>sinh</code>, <code>sqrt</code>, <code>tan</code>, <code>tanh</code>, <code>ulp</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The code of the function, <em>if it is written in SARL</em>, is analyzed in order to determine if it contains no
+call to a side-effect (impure) features.</li>
+</ol>
+
+<p>If none of the cases above is matching the current definition of a function, then the function is assumed to be impure.</p>
+
+<h3 id="84-manually-tagging-of-pure-functions">8.4. Manually Tagging of Pure Functions</h3>
+
+<p>In the case the SARL compiler is not able to automatically determine the purity of a function, but you are sure that the function
+is pure, it is possible to mark the function as pure manually.</p>
+
+<pre><code class="language-sarl">@Pure
+def myFunction() : int {
+	// Do something complex
+	return 0
+}
+</code></pre>
+
+<h2 id="9-references">9. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="10-version-specification">10. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="11-legal-notice">11. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

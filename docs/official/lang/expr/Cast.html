@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Cast and Type Conversions</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="cast-and-type-conversions">Cast and Type Conversions</h1>
+
+<p>Because SARL is statically-typed at compile time, after a variable is declared, it cannot be declared again or assigned a
+value of another type unless that type is implicitly convertible to the variable’s type.
+For example, the <code>String</code> cannot be implicitly converted to <code>int</code>. Therefore, after you declare <code>i</code> as an <code>int</code>, you
+cannot assign the string <code>"Hello"</code> to it, as the following code shows:</p>
+
+<pre><code class="language-sarl">var i : int
+i = "Hello" // Error: "Cannot cast String to int"
+</code></pre>
+
+<p>However, you might sometimes need to copy a value into a variable or method parameter of another type.
+For example, you might have an integer variable that you need to pass to a method whose parameter is typed as <code>double</code>.
+Or you might need to assign a class variable to a variable of an interface type. These kinds of operations are
+called <em>type conversions</em>.
+In SARL, you can perform the following kinds of conversions:</p>
+
+<ul>
+  <li><strong>Implicit conversions:</strong> No special syntax is required because the conversion is type safe and no data will be lost.
+Examples include conversions from smaller to larger number types, and conversions from derived classes to base classes.</li>
+  <li><strong>Explicit conversions (casts):</strong> Explicit conversions require a casting operator. Casting is required when information
+might be lost in the conversion, or when the conversion might not succeed for other reasons. Typical examples include
+numeric conversion to a type that has less precision or a smaller range, and conversion of a base-class instance to a
+derived class.</li>
+  <li><strong>User-defined conversions:</strong> User-defined conversions are performed by special methods that you can define to enable
+explicit and implicit conversions between custom types that do not have a base class–derived class relationship.
+For more information, see <a href="#conversion-operators">Conversion Operators</a>.</li>
+</ul>
+
+<h2 id="1-implicit-conversions">1. Implicit Conversions</h2>
+
+<p>For built-in types, e.g. numeric types, an implicit conversion can be made when the value to be stored can fit into
+the variable without being truncated or rounded off. For example, a variable of type long (64-bit integer) 
+can store any value that an int (32-bit integer) can store. In the following example, the compiler implicitly
+converts the value of <code>num</code> on the right to a type long before assigning it to <code>bigNum</code>.</p>
+
+<pre><code class="language-sarl">var num : int = 2147483647
+var bigNum : long = num
+</code></pre>
+
+<p>The following table shows the predefined implicit conversions between SARL types.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T[]</td>
+      <td>List<T></T></td>
+    </tr>
+    <tr>
+      <td>boolean</td>
+      <td>Boolean</td>
+    </tr>
+    <tr>
+      <td>Boolean</td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>byte</td>
+      <td>Byte, short, int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>Byte</td>
+      <td>byte, short, int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>Character, String</td>
+    </tr>
+    <tr>
+      <td>Character</td>
+      <td>char, String</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>Double</td>
+    </tr>
+    <tr>
+      <td>Double</td>
+      <td>double</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>Float, double</td>
+    </tr>
+    <tr>
+      <td>Float</td>
+      <td>float, double</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>Integer, long, float, double</td>
+    </tr>
+    <tr>
+      <td>Integer</td>
+      <td>int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>List<T></T></td>
+      <td>T[]</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>Long, float, double</td>
+    </tr>
+    <tr>
+      <td>Long</td>
+      <td>long, float, double</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>Short, int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>Short</td>
+      <td>short, int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td>char, Character (if string length is 1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="2-explicit-conversions">2. Explicit Conversions</h2>
+
+<p>However, if a conversion cannot be made without a risk of losing information, the compiler requires that you perform
+an explicit conversion, which is called a cast. A cast is a way of explicitly informing the compiler that you
+intend to make the conversion and that you are aware that data loss might occur. To perform a cast, specify
+the value or variable to be converted, followed by the <code>as</code> keyword and the type that you are casting.
+The following program casts a <code>double</code> to an <code>int</code>. The program will not compile without the cast.</p>
+
+<pre><code class="language-sarl">var x : double = 1234.7
+var a : int
+// Cast double to int.
+a = x as int
+</code></pre>
+
+<p>For object types, an explicit cast is required if you need to convert from a base type to a derived type:</p>
+
+<pre><code class="language-sarl">// Create a new derived type
+var g = new Giraffe
+
+// implicit conversion to base type is safe.
+var a : Animal = g
+
+// Explicit conversion is required to cast back to derived type.
+// Note: This will compile but will throw an exception at run time if the right-side
+// object is not in fact a Giraffe.
+var g2 : Giraffe
+g2 = a as Giraffe
+</code></pre>
+
+<p>A casting operation between reference types does not change the run-time type of the underlying object; it only changes
+the type of the value that is being used as a reference to that object.</p>
+
+<p>The following table shows the predefined explicit conversions that are predefined into 
+SARL.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>boolean</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>byte</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>Number</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>Object</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>byte, short, int, long, float, double, AtomicInteger, AtomicLong, AtomicDouble, BigInteger, BigDecimal</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td>boolean, char, byte, short, int, long, float, double, AtomicInteger,  AtomicLong, AtomicDouble</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>BigInteger, BigDecimal</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="3-type-conversion-exceptions-at-run-time">3. Type Conversion Exceptions at Run Time</h2>
+
+<p>In some reference type conversions, the compiler cannot determine whether a cast will be valid. It is possible for
+a casting operation that compiles correctly to fail at run time. As shown in the following example, a type cast
+that fails at run time will cause an <code>ClassCastException</code> to be thrown.</p>
+
+<pre><code class="language-sarl">class Animal {}
+
+class Reptile extends Animal {}
+
+class Mammal extends Animal {}
+
+class Test {
+    static def program {
+    	test(new Mammal())
+    }
+    static def test(a : Animal) {
+    	// Cause a ClassCastException at run time
+    	// because Mammal is not convertible to [:reptiletype].
+    	var r : Reptile
+    	r = a as Reptile
+    }
+}
+</code></pre>
+
+<p>SARL provides the <code>instanceof</code> operator to enable you to test for compatibility before actually performing a cast.</p>
+
+<p>The <code>instanceof</code> operator evaluates type compatibility at runtime. It determines whether an object instance or
+the result of an expression can be converted to a specified type. It has the syntax:</p>
+
+<pre><code class="language-sarl">expr instanceof type
+</code></pre>
+
+<p>where <code>expr</code> is an expression that evaluates to an instance of some type, and <code>type</code> is the name of the
+type to which the result of <code>expr</code> is to be converted. The <code>instanceof</code> operator is <code>true</code> if
+<code>expr</code> is non-null and the object that results from evaluating the expression can be converted to
+<code>type</code>; otherwise, it returns <code>false</code>.</p>
+
+<h2 id="4-conversion-operators">4. Conversion Operators</h2>
+
+<p>SARL enables programmers to declare conversions on classes or basic types so that classes or basic types can
+be converted to and/or from other classes or basic types. Conversions are associated to the <code>as</code>
+type casting operator. When the compiler cannot proceed an implicit nor explicit casting, it tries
+to find within the current code scope the definition of a casting operator function.
+Depending on the category of the type to cast to, the name of this casting operator function is different:</p>
+
+<ul>
+  <li><strong>Object type:</strong> the casting operator function’s name must have the prefix <code>to</code> followed by the simple name
+(first letter upper case) of the cast type, e.g. <code>toString</code>.</li>
+  <li><strong>Basic type:</strong> the casting operator function’s name must start with the name of the basic type (all lower
+case) following by the post-fix <code>Value</code>, e.g. <code>intValue</code>.</li>
+</ul>
+
+<p>Additionnally, the return type of the casting operator function must be the cast type, and not a sub-type of the
+type specified as right operand of the casting operator.</p>
+
+<p>A single parameter may be specified or not. If it is specified, it is the expression to cast.
+It means that the type of the formal parameter is the expected type of the expression.
+If the formal parameter is omitted, the current object (<code>this</code>) is assumed to be converted.</p>
+
+<p>In the following example, the function <code>toInteger</code> is defined for converting a <code>Type</code> to <code>Integer</code>.
+When the expression <code>obj as Integer</code> is evaluated by the compiler, the function <code>toInteger</code> is discovered and used
+for proceeding the cast.</p>
+
+<pre><code class="language-sarl">class Type {
+	def toInteger : Integer { 0 }
+}
+class Test {
+    static def program {
+    	var obj : Type
+    	var value = obj as Integer
+    }
+}
+</code></pre>
+
+<p>In the second example below, the function <code>toInteger</code> is defined in the same class as the one where the cast operator is
+defined.
+When the expression <code>obj as Integer</code> is evaluated by the compiler, the function <code>toInteger</code> is discovered and used
+for proceeding the cast.</p>
+
+<pre><code class="language-sarl">class Type {
+}
+class Test {
+    static def program {
+    	var obj : Type
+    	var value = obj as Integer
+    }
+    def toInteger(v : Type) : Integer { 0 }
+}
+</code></pre>
+
+<p>Any function that is declared into the scope of the cast operator, and following the rules that are described above, may
+be a candidate for being the cast operator function.</p>
+
+<p>The two previous example have an object type as the cast type. The two following examples have the basic type <code>int</code>.
+The declarations of the <code>toInteger</code> are replaced by declarations of <code>intValue</code>.</p>
+
+<pre><code class="language-sarl">class Type {
+	def intValue : int { 0 }
+}
+class Test {
+    static def program {
+    	var obj : Type
+    	var value = obj as int
+    }
+}
+</code></pre>
+
+<pre><code class="language-sarl">class Type {
+}
+class Test {
+    def program {
+    	var obj : Type
+    	var value = obj as int
+    }
+    def intValue(v : Type) : int { 0 }
+}
+</code></pre>
+
+<h2 id="5-references">5. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="6-version-specification">6. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

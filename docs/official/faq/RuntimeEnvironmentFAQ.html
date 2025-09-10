@@ -90,6 +90,7 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#29-error-agent-class-not-found">2.9. Error: "Agent class not found."</a></li>
   <li><a href="#210-error-invalid-byte-2-of-4-byte-utf-8-sequence">2.10. Error: "Invalid byte 2 of 4-byte UTF-8 sequence."</a></li>
   <li><a href="#211-how-to-create-a-runnable">2.11. How to create a runnable?</a></li>
+  <li><a href="#212-how-to-create-a-runnable-jar-file">2.12. How to create a runnable JAR file?</a></li>
 </ul>
 <li><a href="#3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</a></li>
 <ul>
@@ -104,7 +105,8 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#42-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</a></li>
   <li><a href="#43-how-can-i-report-a-problem-or-a-bug-in-janus-components">4.3. How can I report a problem or a bug in Janus components?</a></li>
 </ul>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+<li><a href="#5-version-specification">5. Version Specification</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
 </ul>
 
@@ -114,7 +116,7 @@ Considering the variety of existing approaches and meta-models in the field of a
 
 <p>SRE stands for “SARL Runtime Environment”. The SRE is an implementation of an agent platform, which is able to
 run a SARL program. The official standard SRE supported by the SARL developers is the
-<a href="http://www.janusproject.io">Janus platform</a>.</p>
+<a href="http://www.sarl.io/runtime/janus/">Janus platform</a>.</p>
 
 <h3 id="12-what-is-janus">1.2. What is Janus?</h3>
 
@@ -132,7 +134,7 @@ organizational platform, and/or a holonic platform. It
 also natively manages the concept of recursive agents and 
 holons.</p>
 
-<p>Official website: <a href="http://www.janusproject.io">www.janusproject.io</a></p>
+<p>Official website: <a href="http://www.sarl.io/runtime/janus/">http://www.sarl.io/runtime/janus/</a></p>
 
 <h3 id="13-where-can-i-ask-my-question">1.3. Where can I ask my question?</h3>
 
@@ -156,7 +158,7 @@ on Github.</p>
 
 <h3 id="22-is-my-operating-system-compatible-with-janus">2.2. Is my operating system compatible with Janus?</h3>
 
-<p>The <a href="http://www.janusproject.io">Janus runtime platform</a>
+<p>The <a href="http://www.sarl.io/runtime/janus/">Janus runtime platform</a>
 is a Java application. Every operating system which has 
 a Java Virtual Machin, especially the Java Development Kit (JDK),
 with at least with the 21
@@ -175,10 +177,10 @@ depending of the current supported standard on Android platforms.</p>
 <p>Three methods are available for launching one or more agents in the Janus platform:</p>
 
 <ul>
-  <li><a href="../gettingstarted/RunSARLAgentCLI.html">From the command line</a>.</li>
-  <li><a href="../gettingstarted/RunSARLAgentEclipse.html">Inside the Eclipse IDE</a>.</li>
-  <li><a href="../gettingstarted/RunSARLAgentJava.html">From a Java program</a>.</li>
-  <li><a href="../tutorials/CreateRunnableJar.html">By creating a runnable application file</a>.</li>
+  <li><a href="../getstarted/RunSARLAgentCLI.html">From the command line</a>.</li>
+  <li><a href="../getstarted/RunSARLAgentEclipse.html">Inside the Eclipse IDE</a>.</li>
+  <li><a href="../getstarted/RunSARLAgentJava.html">From a Java program</a>.</li>
+  <li><a href="../tutorials/runtime/CreateRunnableJar.html">By creating a runnable application file</a>.</li>
 </ul>
 
 <h3 id="25-in-the-eclipse-sarl-product-what-is-the-difference-between-the-launch-configurations-sarl-agent-and-sarl-application">2.5. In the Eclipse SARL product, what is the difference between the launch configurations “SARL Agent” and “SARL Application”?</h3>
@@ -219,7 +221,7 @@ Eclipse environment, OR when the installed SRE is not compatible with the instal
 version of the SARL tools, which are embedded in Eclipse.</p>
 
 <p>For solving this problem, you must download the latest
-<a href="http://www.janusproject.io">Janus platform</a>, and install it in your Eclipse
+<a href="http://www.sarl.io/runtime/janus/">Janus platform</a>, and install it in your Eclipse
 (Menu <code>Window&amp;gt; Preferences&amp;gt; SARL&amp;gt; Installed SREs</code>).</p>
 
 <h3 id="28-error-incompatible-sre-with-sarl-1111-version-must-be-lower-than-000">2.8. Error: “Incompatible SRE with SARL 1.1.1.1. Version must be lower than 0.0.0.”</h3>
@@ -232,9 +234,7 @@ the capacities’ definitions may not be the same.</p>
 <p>For solving this problem, you must download the version of the SARL Runtime Environment (SRE)
 that is implementing the version of the SARL specification that you’re using on Eclipse IDE.
 For the Janus platform, the versions of the latest stable and development releases are displayed on
-<a href="http://maven.janusproject.io/VERSION.txt">this page</a>.
-For determining if the Janus platform implements the correct version of the SARL specification,
-please read the explanation  on <a href="http://www.janusproject.io/#versionnumber">how Janus version numbers are built</a>.</p>
+<a href="http://www.sarl.io/runtime/janus/">this page</a>.</p>
 
 <h3 id="29-error-agent-class-not-found">2.9. Error: “Agent class not found.”</h3>
 
@@ -283,6 +283,104 @@ The “Java Application” does not.</p>
 <p>Consequently, if you need to run agents and if you start your application with a “Java 
 Application” launch configuration, you must add manually the SRE libraries in the classpath.</p>
 
+<p>If you want ot create a runnable jar file, read the following comment.</p>
+
+<h3 id="212-how-to-create-a-runnable-jar-file">2.12. How to create a runnable JAR file?</h3>
+
+<p>In the Java programming environment, a runnable JAR (Java Archive) file represents a self-contained and executable unit that encapsulates both compiled bytecode and necessary metadata, facilitating the distribution and execution of the application. The creation of a runnable JAR file involves the compilation of SARL and Java source code into bytecode by the SARL and Java compilers, followed by the packaging of these class files along with any associated resources into the JAR archive. This process is typically managed through build tools such as Maven or Gradle, which automate the compilation, packaging, and dependency management tasks.</p>
+
+<p>Different methods may be used for creating the runnable JAR for your application:</p>
+
+<h4 id="if-you-are-using-maven-for-compiling-your-application">If you are using Maven for compiling your application</h4>
+
+<ol>
+  <li>First, you have to include in the class path all the needed libraries for running the SARL application, including the SARL runtime environment (SRE) itself. See the section for <a href="../getstarted/CreateFirstProject.html#configuration-of-a-runtime-environment-optional">adding Janus SRE in the classpth</a>.</li>
+  <li>Create a file in the same folder on the Maven POM configuration file that is defining the packaging of the runnable JAR file. The name of this file is assumed to be <code>run.xml</code>. More details on the format of this file could be found on the <a href="https://maven.apache.org/plugins/maven-assembly-plugin/assembly.html">Maven Assembly plugin page</a>.
+```xml</li>
+</ol>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+  <id>run</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <unpack>true</unpack>
+      <scope>runtime</scope>
+    </dependencySet>
+  </dependencySets>
+  <containerDescriptorHandlers>
+		<!-- Merge service description's files in a proper way -->
+		<containerDescriptorHandler>
+			<handlerName>metaInf-services</handlerName>
+		</containerDescriptorHandler>
+		<!-- Merge plugin description's files in a proper way -->
+		<containerDescriptorHandler>
+			<handlerName>file-aggregator</handlerName>
+			<configuration>
+				<filePattern>plugin.properties</filePattern>
+				<outputPath>plugin.properties</outputPath>
+			</configuration>
+		</containerDescriptorHandler>
+  </containerDescriptorHandlers>
+</assembly>
+<pre><code>3. Update the Maven POM configuration for creating the runnable JAR file. Here, we use the [Maven Assembly plugin](https://maven.apache.org/plugins/maven-assembly-plugin/assembly.html). In this XML configuration, replace the name of the main class `io.sarl.mycode.application.MainClass` by the name of the class in your code that is containing the `main()` function.
+```xml
+&lt;build&gt;
+  ...
+  &lt;plugins&gt;
+      ...
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+        &lt;version&gt;3.7.1&lt;/version&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;run-application&lt;/id&gt;
+            &lt;phase&gt;package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;single&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;descriptors&gt;
+                &lt;descriptor&gt;run.xml&lt;/descriptor&gt;
+              &lt;/descriptors&gt;
+              &lt;archive&gt;
+                &lt;manifest&gt;
+                  &lt;mainClass&gt;io.sarl.mycode.application.MainClass&lt;/mainClass&gt;
+                &lt;/manifest&gt;
+              &lt;/archive&gt;
+              &lt;attach&gt;false&lt;/attach&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+      ...
+  &lt;/plugins&gt;
+  ...
+&lt;/build&gt;
+</code></pre>
+<ol>
+  <li>Run Maven tool:
+    <pre><code class="language-bash">$ mvn clean install
+</code></pre>
+  </li>
+  <li>Your runnable JAR file will be generated in the <code>target</code> folder generated by the Maven tool.</li>
+</ol>
+
+<h4 id="if-you-are-not-using-maven-for-compiling-your-application">If you are not using Maven for compiling your application</h4>
+
+<ol>
+  <li>First, you have to be sure that you are running your application with a <code>SARL Application</code> launch configuration. It is mandatory in order to have a <code>main()</code> function for running the application.</li>
+  <li>Second, you have to include in the class path all the needed libraries for running the SARL application, including the SARL runtime environment (SRE) itself. See the section for <a href="../getstarted/CreateFirstProject.html#configuration-of-a-runtime-environment-optional">adding Janus SRE in the classpth</a>.</li>
+  <li>In the SARL development environment, right click on your projet name.</li>
+  <li>Select the <code>Export</code> item in the contextual menu.</li>
+  <li>In the Export dialog box, open the <code>SARL</code> section and select the export wizard with the name <code>Runnable SARL application</code>, and click on <code>Next</code>.</li>
+  <li>Select your launch configuration. It is not appearing, it means that your have not defining a <code>SARL application</code> launch configuration for your application.</li>
+  <li>Specify the path where to create your runnable JAR file, and click on finish.</li>
+</ol>
+
 <h2 id="3-runtime-behavior-of-janus">3. Runtime Behavior of Janus</h2>
 
 <h3 id="31-are-events-received-in-the-same-order-than-when-they-are-sent">3.1. Are events received in the same order than when they are sent?</h3>
@@ -292,7 +390,7 @@ Application” launch configuration, you must add manually the SRE libraries in 
 <p>There is no warranty on the receiving order of the events.
 This is a particular implementation choice of the runtime
 environment. For example, the
-<a href="http://www.janusproject.io">Janus runtime environment</a> executes
+<a href="http://www.sarl.io/runtime/janus/">Janus runtime environment</a> executes
 the event handlers in parallel. The real order of execution depends on
 how the Java executor is running the handlers on the threads.</p>
 
@@ -360,17 +458,19 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 <p>You should submit your issue on 
 <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="5-version-specification">5. Version Specification</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.14</li>
+  <li>Version: 0.15</li>
   <li>Status: Stable Release</li>
-  <li>Release: 2024-11-06</li>
+  <li>Release: 2025-09-10</li>
 </ul>
 
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
 <blockquote>
-  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -383,7 +483,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
 
     </div> <!-- /default layout container -->
 
@@ -440,7 +540,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
       <ul class="fa-ul">
 		  <li>
-			<a href="../../../community/forums.html">
+			<a href="https://groups.google.com/d/forum/sarl">
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
@@ -482,7 +582,6 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <ul class="fa-ul">
         <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
         <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
-        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
       </ul>
       </div> 
     </div>

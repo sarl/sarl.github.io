@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Introduction and exercises to the general SARL syntax</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="introduction-and-exercises-to-the-general-sarl-syntax">Introduction and exercises to the general SARL syntax</h1>
+
+<script>
+function exerciseToggle(id) {
+    var x = document.getElementById('exercise' + id.toString());
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<p><span class="label label-info">Note</span> If you don’t know how to solve an problem, or what is the function to be used, you could search on Internet for the answer using the API of the Java programming language. Indeed, since SARL is fully compatible with the Java API, you could use all the types or functions that are defined in this Java API.</p>
+
+<h2 id="1-exercise-1">1. Exercise 1</h2>
+
+<ul>
+  <li>Write a SARL program to print the following string in a specific format (see the output).</li>
+  <li>Expected output:</li>
+</ul>
+
+<pre><code>
+Twinkle, twinkle, little star,
+	How I wonder what you are! 
+		Up above the world so high,   		
+		Like a diamond in the sky. 
+Twinkle, twinkle, little star, 
+	How I wonder what you are
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(1)">Answer</a></p>
+<div id="exercise1" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		println("Twinkle, twinkle, little star,ntHow I wonder what you are!nttUp above the world so high,nttLike a diamond in the sky.ntTwinkle, twinkle, little star,ntHow I wonder what you are")
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="2-exercise-2">2. Exercise 2</h2>
+
+<ul>
+  <li>Write a SARL program to display the current date and time.</li>
+  <li>Expected output :</li>
+</ul>
+
+<pre><code class="language-text">Current date and time:
+2014-07-05 14:34:14
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(2)">Answer</a></p>
+<div id="exercise2" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.util.Date
+agent Solution {
+	on Initialize {
+		var dt = new Date
+		println(dt)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="3-exercise-3">3. Exercise 3</h2>
+
+<ul>
+  <li>Write a SARL program that calculates the area of a circle based on the radius entered by the user from the command line when your are launching the agent.</li>
+  <li>Expected output:</li>
+</ul>
+
+<pre><code class="language-text">r = 1.1;
+Area = 3.8013271108436504
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(3)">Answer</a></p>
+<div id="exercise3" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var r = occurrence.parameters.get(0) as Double
+		var area = Math::PI * r**2
+		println("r = " + r)
+		println("; Area = " + area)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="4-exercise-4">4. Exercise 4</h2>
+
+<ul>
+  <li>Write a SARL program that accepts the user’s first and last name as inputs from the command line, and prints them in reverse order with a space between them.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(4)">Answer</a></p>
+<div id="exercise4" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent A {
+	on Initialize {
+		var firstname = occurrence.parameters.get(0) as String
+		var lastname = occurrence.parameters.get(1) as String
+		println(lastname + " " + firstname)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="5-exercise-5">5. Exercise 5</h2>
+
+<ul>
+  <li>Write a SARL program that accepts a sequence of comma-separated numbers from the command line and generates a list of those numbers.</li>
+  <li>Example of input string: <code>3, 5, 7, 23</code></li>
+  <li>Expected output:</li>
+</ul>
+
+<pre><code class="language-text">List : ['3', ' 5', ' 7', ' 23']
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(5)">Answer</a></p>
+<div id="exercise5" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent A {
+	on Initialize {
+		var numberListString = occurrence.parameters.get(0) as String
+		var numberArray = numberListString.split("\s*,\s*")
+		var numberList = newArrayList(numberArray)
+		println("List : " + numberList)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="6-exercise-6">6. Exercise 6</h2>
+
+<ul>
+  <li>Write a SARL program that accepts a filename from the command line, and prints the extension of the file.</li>
+  <li>Input filename: <code>abc.sarl</code></li>
+  <li>Expected output: <code>sarl</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(6)">Answer</a></p>
+<div id="exercise6" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var filename = occurrence.parameters.get(0) as String
+		var idx = filename.indexOf('.')
+		if (idx &gt;= 0) {
+			println(filename.substring(idx + 1))
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="7-exercise-7">7. Exercise 7</h2>
+
+<ul>
+  <li>Write a SARL program to display the first and last colors from the following list.</li>
+  <li>Example of inut list: <code>color_list = ["Red","Green","White" ,"Black"]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(7)">Answer</a></p>
+<div id="exercise7" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var color_list = #["Red", "Green", "White", "Black"]
+		println(color_list.get(0))
+		println(color_list.get(color_list.length - 1))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="8-exercise-8">8. Exercise 8</h2>
+
+<ul>
+  <li>Write a SARL program that accepts an integer <code>n</code> on the command line and computes the value of n+n<em>n+n</em>n*n.</li>
+  <li>For example, input value for n is <code>5</code></li>
+  <li>Expected result : <code>615</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(8)">Answer</a></p>
+<div id="exercise8" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var n = occurrence.parameters.get(0) as Integer
+		var value = n + n**2 + n**3
+		println("Result : " + value)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="9-exercise-9">9. Exercise 9</h2>
+
+<ul>
+  <li>Write a SARL program that prints the calendar for a given month and year.</li>
+</ul>
+
+<blockquote>
+  <p><em><strong>Note:</strong></em> Use ‘GregorianCalendar’ type from the Java API.</p>
+</blockquote>
+
+<p><a href="javascript:exerciseToggle(9)">Answer</a></p>
+<div id="exercise9" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.util.GregorianCalendar
+agent Solution {
+	on Initialize {
+		var month = occurrence.parameters.get(0) as Integer
+		var year = occurrence.parameters.get(1) as Integer
+		var cal = new GregorianCalendar(year, month, 1)
+		println(cal)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="10-exercise-10">10. Exercise 10</h2>
+
+<ul>
+  <li>Write a SARL program to calculate the number of days between two dates.</li>
+  <li>Examples of input dates: <code>(2014, 7, 2)</code>, <code>(2014, 7, 11)</code></li>
+  <li>Expected output : 9 days</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(10)">Answer</a></p>
+<div id="exercise10" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
+agent Solution {
+	on Initialize {
+		var day0 = occurrence.parameters.get(0) as Integer
+		var month0 = occurrence.parameters.get(1) as Integer
+		var year0 = occurrence.parameters.get(2) as Integer
+		
+		var day1 = occurrence.parameters.get(3) as Integer
+		var month1 = occurrence.parameters.get(4) as Integer
+		var year1 = occurrence.parameters.get(5) as Integer
+		
+		var cal0 = LocalDate::of(year0, month0, day0)
+		var cal1 = LocalDate::of(year1, month1, day1)
+		
+		var days = ChronoUnit::DAYS.between(cal1, cal0)
+		println(days + " days")
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="11-exercise-11">11. Exercise 11</h2>
+
+<ul>
+  <li>Write a SARL program to get the volume of a sphere with radius six.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(11)">Answer</a></p>
+<div id="exercise11" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var volume = 4/3 * Math::PI * 6**3;
+		println(volume)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="12-exercise-12">12. Exercise 12</h2>
+
+<ul>
+  <li>Write a SARL program to calculate the difference between a given number and 17. If the number is greater than 17, return twice the absolute difference.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(12)">Answer</a></p>
+<div id="exercise12" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number = occurrence.parameters.get(0) as Integer
+		var diff = number - 17
+		if (diff &lt; 0) {
+			diff = 2 * -diff
+		}
+		println(diff)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="13-exercise-13">13. Exercise 13</h2>
+
+<ul>
+  <li>Write a SARL program to test whether a number is within a distance 100 to 1000 or 2000.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(13)">Answer</a></p>
+<div id="exercise13" style="display:none;">
+```sarl
+import io.sarl.api.core.Initialize
+import static java.lang.Math.*
+agent Solution {
+	on Initialize {
+		var n = occurrence.parameters.get(0) as Integer
+		var result = ((abs(1000 - n) &lt;= 100) || (abs(2000 - n) &lt;= 100))
+		println(result)
+	}
+}
+```
+
+</div>
+
+<h2 id="14-exercise-14">14. Exercise 14</h2>
+
+<ul>
+  <li>Write a SARL program to calculate the sum of three given numbers, that are provided on the command line. If the values are equal, return three times their sum.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(14)">Answer</a></p>
+<div id="exercise14" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number0 = occurrence.parameters.get(0) as Integer
+		var number1 = occurrence.parameters.get(1) as Integer
+		var number2 = occurrence.parameters.get(2) as Integer
+		
+		var sum = number0 + number1 + number2
+		if (number0 == number1 &amp;&amp; number1 == number2) {
+			sum *= 3
+		}
+		println(sum)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="15-exercise-15">15. Exercise 15</h2>
+
+<ul>
+  <li>Write a SARL program to get a newly-generated string from a given string where <code>Is</code> has been added to the front. Return the string unchanged if the given string already begins with <code>Is</code>.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(15)">Answer</a></p>
+<div id="exercise15" style="display:none;">
+```sarl
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var str = occurrence.parameters.get(0) as String
+		if (!str.startsWith("Is ")) {
+			str = "Is " + str
+		}
+		println(str)
+	}
+}
+```
+
+</div>
+
+<h2 id="16-exercise-16">16. Exercise 16</h2>
+
+<ul>
+  <li>Write a SARL program that returns a string that is n (non-negative integer) copies of a given string (from the command line).</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(16)">Answer</a></p>
+<div id="exercise16" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var str = occurrence.parameters.get(0) as String
+		var n = occurrence.parameters.get(1) as Integer
+		var result = ""
+		for (i : 1..n) {
+			result += str
+		}
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="17-exercise-17">17. Exercise 17</h2>
+
+<ul>
+  <li>Write a SARL program that determines whether a given number (accepted from the command line) is even or odd, and prints an appropriate message to the user.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(17)">Answer</a></p>
+<div id="exercise17" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var n = occurrence.parameters.get(0) as Integer
+		if ((n%2) == 0) {
+			println("Even number: " + n)
+		} else {
+			println("Odd number: " + n)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="18-exercise-18">18. Exercise 18</h2>
+
+<ul>
+  <li>Write a SARL program to count the number 4 in a given list, provided on the command line.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(18)">Answer</a></p>
+<div id="exercise18" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var n = 0
+		for (arg : occurrence.parameters) {
+			try {
+				var nb = arg as Integer
+				if (nb == 4) {
+					n++
+				}
+			} catch (ex : Throwable) {
+			}
+		}
+		println(n)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="19-exercise-19">19. Exercise 19</h2>
+
+<ul>
+  <li>Write a SARL program to get n (non-negative integer) copies of the first 2 characters of a given string (from the command line). Return n copies of the whole string if the length is less than 2.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(19)">Answer</a></p>
+<div id="exercise19" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var input = occurrence.parameters.get(0) as String
+		var n = occurrence.parameters.get(1) as Integer
+		var token : String
+		if (input.length &lt; 2) {
+		    token = input
+		} else {
+		    token = input.substring(0, 2)
+		}
+		var result = ""
+		for (i : 1..n) {
+		    result += input
+		}
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="20-exercise-20">20. Exercise 20</h2>
+
+<ul>
+  <li>Write a SARL program to test whether a passed letter from the command line is a vowel or not.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(20)">Answer</a></p>
+<div id="exercise20" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	val vowels = newArrayList('a', 'e', 'i', 'o', 'u', 'y')
+	
+	on Initialize {
+		var str = occurrence.parameters.get(0) as String
+		var letter = (str.charAt(0) as Character).toLowerCase
+		if (vowels.contains(letter)) {
+			println("The letter is a vowel")
+		} else {
+			println("The letter is not a vowel")
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="21-exercise-21">21. Exercise 21</h2>
+
+<ul>
+  <li>Write a SARL program that checks whether a specified value is contained within a group of values.</li>
+  <li>Examples:</li>
+</ul>
+
+<pre><code class="language-text">3 -&gt; [1, 5, 8, 3] : True
+-1 -&gt; [1, 5, 8, 3] : False
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(21)">Answer</a></p>
+<div id="exercise21" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	val group = newArrayList(1, 5, 8, 3)
+	
+	on Initialize {
+		var value = occurrence.parameters.get(0) as Integer
+		println(value + " -&gt; " + group + " : " + group.contains(value))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="22-exercise-22">22. Exercise 22</h2>
+
+<ul>
+  <li>Write a SARL program that concatenates all elements in a list into a string and returns it.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(22)">Answer</a></p>
+<div id="exercise22" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var list = <String>newArrayList
+		for (arg : occurrence.parameters) {
+			var str = arg as String
+			list += str
+		}
+		println(list)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 23. Exercise 23
+
+* Write a SARL program to print all even numbers from a given list of numbers in the same order and stop printing any after 237 in the sequence.
+* Sample numbers list:
+
+```text
+numbers = [    
+    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345, 
+    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 
+    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 
+    958,743, 527
+    ]
+```
+
+<a href="javascript:exerciseToggle(23)">Answer</a>
+<div id="exercise23" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	var numbers : int[] = #[    
+	    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345, 
+	    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 
+	    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 
+	    958,743, 527
+	]
+	on Initialize {
+		var i = 0
+		while (i &lt; numbers.length &amp;&amp; i &lt; 237) {
+			println(numbers.get(i))
+			i++
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 24. Exercise 24
+
+* Write a SARL program that prints out all colors from `color_list_1` that are not present in `color_list_2`.
+* Test data:
+
+```text
+color_list_1 = set(["White", "Black", "Red"])
+color_list_2 = set(["Red", "Green"])
+```
+
+* Expected output:
+
+```text
+{'Black', 'White'}
+```
+
+<a href="javascript:exerciseToggle(24)">Answer</a>
+<div id="exercise24" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	var color_list_1 = newHashSet(#["White", "Black", "Red"])
+	var color_list_2 = newHashSet(#["Red", "Green"])
+	on Initialize {
+		for (col : color_list_1) {
+			if (!color_list_2.contains(col)) {
+				println(col)
+			}
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 25. Exercise 25
+
+* Write a SARL program that will accept the base and height of a triangle and compute its area.
+
+<a href="javascript:exerciseToggle(25)">Answer</a>
+<div id="exercise25" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var base = occurrence.parameters.get(0) as Double
+		var height = occurrence.parameters.get(1) as Double
+		var area = (base * height) / 2
+		println("Area = " + area)
+	}
+}
+</code></pre>
+
+</div>
+
+## 26. Exercise 26
+
+* Write a SARL program that computes the greatest common divisor (GCD) of two positive integers.
+
+<a href="javascript:exerciseToggle(26)">Answer</a>
+<div id="exercise26" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0) as Double
+		var number2 = occurrence.parameters.get(1) as Double
+		var gcd = gcd(number1, number2)
+		println("GCD(" + number1 + ", "+ number2 + ") = " + gcd)
+	}
+	def gcd(a : double, b : double) : double {
+		var da = a
+		var db = b
+		while (da != db) {
+			if (da &gt; db) {
+				da = da - db
+			} else {
+				db = db - da
+			}
+		}
+		return da
+	}
+}
+</code></pre>
+
+</div>
+
+## 27. Exercise 27
+
+* Write a SARL program to find the least common multiple (LCM) of two positive integers.
+
+<a href="javascript:exerciseToggle(27)">Answer</a>
+<div id="exercise27" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import static java.lang.Math.*
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0) as Double
+		var number2 = occurrence.parameters.get(1) as Double
+		var lcm = lcm(number1, number2)
+		println("LCM(" + number1 + ", "+ number2 + ") = " + lcm)
+	}
+	def lcm(a : double, b : double) : double {
+		abs(a * b) / gcd(a, b)
+	}
+	def gcd(a : double, b : double) : double {
+		var da = a
+		var db = b
+		while (da != db) {
+			if (da &gt; db) {
+				da = da - db
+			} else {
+				db = db - da
+			}
+		}
+		return da
+	}
+}
+</code></pre>
+
+</div>
+
+## 28. Exercise 28
+
+* Write a SARL program to sum three given integers. However, if two values are equal, the sum will be zero.
+
+<a href="javascript:exerciseToggle(28)">Answer</a>
+<div id="exercise28" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0) as Integer
+		var number2 = occurrence.parameters.get(1) as Integer
+		var number3 = occurrence.parameters.get(2) as Integer
+		var sum = 0
+		if (number1 != number2 &amp;&amp; number2 != number3 &amp;&amp; number1 != number3) {
+			sum = number1 + number2 + number3
+		}
+		println(sum);
+	}
+}
+</code></pre>
+
+</div>
+
+## 29. Exercise 29
+
+* Write a SARL program to sum two given integers. However, if the sum is between 15 and 20 it will return 20.
+
+<a href="javascript:exerciseToggle(29)">Answer</a>
+<div id="exercise29" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0) as Integer
+		var number2 = occurrence.parameters.get(1) as Integer
+		var sum = number1 + number2
+		if ((15..20).contains(sum)) {
+			sum = 20
+		}
+		println(sum);
+	}
+}
+</code></pre>
+
+</div>
+
+## 30. Exercise 30
+
+* Write a SARL program that returns `true` if the two given integer values are equal or their sum or difference is 5.
+
+<a href="javascript:exerciseToggle(30)">Answer</a>
+<div id="exercise30" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0) as Integer
+		var number2 = occurrence.parameters.get(1) as Integer
+		var result = program(number1, number2)
+		println(result);
+	}
+	def program(number1 : int, number2 : int) : boolean {
+		number1 == number2 || number1 + number2 == 5
+	}
+}
+</code></pre>
+
+</div>
+
+## 31. Exercise 31
+
+* Write a SARL program to add two objects if both objects are integers.
+
+<a href="javascript:exerciseToggle(31)">Answer</a>
+<div id="exercise31" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var number1 = occurrence.parameters.get(0)
+		var number2 = occurrence.parameters.get(1)
+		var result = sum(number1, number2)
+		println(result);
+	}
+	def sum(number1 : Object, number2 : Object) : int {
+		if (number1 instanceof Number) {
+			if (number2 instanceof Number) {
+				return number1.intValue + number2.intValue
+			}
+		}
+		return 0
+	}
+}
+</code></pre>
+
+</div>
+
+## 32. Exercise 32
+
+* Write a SARL program to solve `(x + y) * (x + y)`.
+* Test Data: `x = 4, y = 3`
+* Expected Output: `(4 + 3) ^ 2 = 49`
+
+<a href="javascript:exerciseToggle(32)">Answer</a>
+<div id="exercise32" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var x = occurrence.parameters.get(0) as Double
+		var y = occurrence.parameters.get(1) as Double
+		var result = solve(x, y)
+		println(result);
+	}
+	def solve(x : double, y : double) : double {
+		(x + y) ** 2
+	}
+}
+</code></pre>
+
+</div>
+
+## 33. Exercise 33
+
+* Write a SARL program to calculate the distance between the points (x1, y1) and (x2, y2).
+
+<a href="javascript:exerciseToggle(33)">Answer</a>
+<div id="exercise33" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var x1 = occurrence.parameters.get(0) as Double
+		var y1 = occurrence.parameters.get(1) as Double
+		var x2 = occurrence.parameters.get(2) as Double
+		var y2 = occurrence.parameters.get(3) as Double
+		var result = distance(x1, y1, x2, y2)
+		println(result);
+	}
+	def distance(x1 : double, y1 : double, x2 : double, y2 : double) : double {
+		Math::sqrt((x2 - x1)**2 + (y2 - y1)**2)
+	}
+}
+</code></pre>
+
+</div>
+
+## 34. Exercise 34
+
+* Write a SARL program to check whether a file exists, when the name of the file is provided from the command line. Use the Java API.
+
+<a href="javascript:exerciseToggle(34)">Answer</a>
+<div id="exercise34" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.io.File
+agent Solution {
+	on Initialize {
+		var filename = occurrence.parameters.get(0) as String
+		var file = new File(filename)
+		var isExist = file.exists
+		println(isExist);
+	}
+}
+</code></pre>
+
+</div>
+
+## 35. Exercise 35
+
+* Write a SARL program to parse a string to float or integer.
+
+<a href="javascript:exerciseToggle(35)">Answer</a>
+<div id="exercise35" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var value = occurrence.parameters.get(0) as String
+		try {
+			var floatNumber = value as Double
+			println("Double value = " + floatNumber)
+		} catch (ex : Throwable) {
+			var intNumber = value as Long
+			println("Long value = " + intNumber)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 36. Exercise 36
+
+* Write a SARL program to list all files in a directory.
+
+<a href="javascript:exerciseToggle(36)">Answer</a>
+<div id="exercise36" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.io.File
+agent Solution {
+	on Initialize {
+		var folderName = occurrence.parameters.get(0) as String
+		var folder = new File(folderName)
+		var list = folder.listFiles
+		println(list)
+	}
+}
+</code></pre>
+
+</div>
+
+## 37. Exercise 37
+
+* Write a SARL program to print a message provided from the command line without a newline or space.
+
+<a href="javascript:exerciseToggle(37)">Answer</a>
+<div id="exercise37" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var value = occurrence.parameters.get(0) as String
+		value = value.replaceAll("[n ]+", "")
+		println(value)
+	}
+}
+</code></pre>
+
+</div>
+
+## 38. Exercise 38
+
+* Write a SARL program to print to STDERR (standard error output of the process).
+
+<a href="javascript:exerciseToggle(38)">Answer</a>
+<div id="exercise38" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import io.sarl.api.core.Logging
+agent Solution {
+	uses Logging
+	on Initialize {
+		var value = occurrence.parameters.get(0) as String
+		error(value)
+	}
+}
+</code></pre>
+
+</div>
+
+
+## 39. Exercise 39
+
+* Write a SARL program to access environment variables.
+
+<a href="javascript:exerciseToggle(39)">Answer</a>
+<div id="exercise39" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var variableName = occurrence.parameters.get(0) as String
+		println(System::getProperty(variableName))
+	}
+}
+</code></pre>
+
+</div>
+
+## 40. Exercise 40
+
+* Write a SARL program to get the current username.
+
+<a href="javascript:exerciseToggle(40)">Answer</a>
+<div id="exercise40" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		println(System::getProperty("user.name"))
+	}
+}
+</code></pre>
+
+</div>
+
+## 41. Exercise 41
+
+* Write a SARL program to sum the first n positive integers.
+
+<a href="javascript:exerciseToggle(41)">Answer</a>
+<div id="exercise41" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var n = occurrence.parameters.get(0) as Integer
+		var sum = 0
+		for (i : 1..n) {
+			sum += i
+		}
+		println(sum)
+	}
+}
+</code></pre>
+
+</div>
+
+## 42. Exercise 42
+
+* Write a SARL program to convert height (in feet and inches) to centimeters, when the value is provided from the command line.
+
+<a href="javascript:exerciseToggle(42)">Answer</a>
+<div id="exercise42" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var height = occurrence.parameters.get(0) as Double
+		height = 2.54 * height
+		println(height)
+	}
+}
+</code></pre>
+
+</div>
+
+## 43. Exercise 43
+
+* Write a SARL program to calculate the hypotenuse of a right angled triangle.
+
+<a href="javascript:exerciseToggle(43)">Answer</a>
+<div id="exercise43" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var side1 = occurrence.parameters.get(0) as Double
+		var side2 = occurrence.parameters.get(1) as Double
+		var hypotenuse = Math::sqrt(side1**2 + side2**2)
+		println(hypotenuse)
+	}
+}
+</code></pre>
+
+</div>
+
+## 44. Exercise 44
+
+* Write a SARL program to convert all units of time into seconds.
+
+<a href="javascript:exerciseToggle(44)">Answer</a>
+<div id="exercise44" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import static java.util.concurrent.TimeUnit.*
+agent Solution {
+	on Initialize {
+		var days = occurrence.parameters.get(0) as Long
+		var hours = occurrence.parameters.get(1) as Long
+		var minutes = occurrence.parameters.get(1) as Long
+		var seconds = occurrence.parameters.get(1) as Long
+		var total = DAYS.toSeconds(days) + HOURS.toSeconds(hours) + MINUTES.toSeconds(hours) + seconds
+		println(total)
+	}
+}
+</code></pre>
+
+</div>
+
+## 45. Exercise 45
+
+* Write a SARL program to get an absolute file path from a name that is provided on the command line.
+
+<a href="javascript:exerciseToggle(45)">Answer</a>
+<div id="exercise45" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.io.File
+agent Solution {
+	on Initialize {
+		var name = occurrence.parameters.get(0) as String
+		var file = new File(name)
+		var absoluteFilename = file.absolutePath
+		println(absoluteFilename)
+	}
+}
+</code></pre>
+
+</div>
+
+## 46. Exercise 46
+
+* Write a SARL program that converts seconds into days, hours, minutes, and seconds.
+
+<a href="javascript:exerciseToggle(46)">Answer</a>
+<div id="exercise46" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var seconds = occurrence.parameters.get(0) as Integer
+		var days = (seconds / (3600 * 24)) as int
+		seconds = seconds - days * 3600 * 24
+		var hours = (seconds / 3600) as int
+		seconds = seconds - hours * 3600
+		var minutes = (seconds / 60) as int
+		seconds = seconds - minutes * 60
+		println("Days = " + days)
+		println("Hours = " + hours)
+		println("Minutes = " + minutes)
+		println("Seconds = " + seconds)
+	}
+}
+</code></pre>
+
+</div>
+
+## 47. Exercise 47
+
+* Write a SARL program to calculate the body mass index.
+
+<a href="javascript:exerciseToggle(47)">Answer</a>
+<div id="exercise47" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var weight = occurrence.parameters.get(0) as Double
+		var height = occurrence.parameters.get(1) as Double
+		var bmi = weight / height**2
+		println(bmi)
+	}
+}
+</code></pre>
+
+</div>
+
+## 48. Exercise 48
+
+* Write a SARL program to convert pressure in kilopascals to pounds per square inch, a millimeter of mercury (mmHg) and atmosphere pressure.
+
+<a href="javascript:exerciseToggle(48)">Answer</a>
+<div id="exercise48" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var kilopascals = occurrence.parameters.get(0) as Double
+		var psl = kilopascals * 0.145038
+		println("Pounds per square inch = " + psl + " Psl")
+		var mmhg = kilopascals * 7.50062
+		println("Millimeters of mercury = " + mmhg + " mmHg")
+		var atmosphere = kilopascals / 101.325
+		println("Atmosphere pressure = " + atmosphere + " atmosphere")
+	}
+}
+</code></pre>
+
+</div>
+
+## 49. Exercise 49
+
+* Write a SARL program to calculate sum of digits, from a string of characters, of a number.
+
+<a href="javascript:exerciseToggle(49)">Answer</a>
+<div id="exercise49" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var value = occurrence.parameters.get(0) as String
+		var sum = 0
+		for (c : value.toCharArray) {
+			if (c &gt;= '0' &amp;&amp; c &lt;= '9') {
+				sum += (c - '0') as int
+			}
+		}
+		println(sum)
+	}
+}
+</code></pre>
+
+</div>
+
+## 50. Exercise 50
+
+* Write a SARL program to sort three integers without using conditional statements and loops.
+
+<a href="javascript:exerciseToggle(50)">Answer</a>
+<div id="exercise50" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import static java.lang.Math.*
+agent Solution {
+	on Initialize {
+		var x = occurrence.parameters.get(0) as Integer
+		var y = occurrence.parameters.get(1) as Integer
+		var z = occurrence.parameters.get(2) as Integer
+		var a1 = min(x, min(y, z))
+		var a3 = max(x, max(y, z))
+		var a2 = (x + y + z) - a1 - a3
+		println("Numbers in sorted order: (" + a1 + ", " + a2 + ", "  + a3 + ")")
+	}
+}
+</code></pre>
+
+</div>
+
+## 51. Exercise 51
+
+* Write a SARL program to concatenate N strings.
+
+<a href="javascript:exerciseToggle(51)">Answer</a>
+<div id="exercise51" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var all = ""
+		for (p : occurrence.parameters) {
+			all += p as String
+		}
+		println(all)
+	}
+}
+</code></pre>
+
+</div>
+
+## 52. Exercise 52
+
+* Write a SARL program to calculate the sum of all items of a container (array, list, set).
+
+<a href="javascript:exerciseToggle(52)">Answer</a>
+<div id="exercise52" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.util.stream.Collectors
+import static extension java.util.Arrays.*
+agent Solution {
+	on Initialize {
+		var s = sum(occurrence.parameters.asList.stream
+			.filter[it instanceof Number]
+			.map[it as Number].collect(Collectors.toList))
+		println(s)
+	}
+	def sum(container : Iterable&lt;? extends Number&gt;) : double {
+		var s = 0.0
+		var iter = container.iterator
+		while (iter.hasNext) {
+			var elt = iter.next
+			s += elt as double
+		}
+		return s
+	}
+}
+</code></pre>
+
+</div>
+
+## 53. Exercise 53
+
+* Write a SARL program to test whether all numbers in a list, provided on the command line, are greater than a certain number, provided also on command line.
+
+<a href="javascript:exerciseToggle(53)">Answer</a>
+<div id="exercise53" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import static extension java.util.Arrays.*
+agent Solution {
+	on Initialize {
+		var input = occurrence.parameters.asList.stream
+			.filter[it instanceof Number]
+			.map[it as Number]
+		var iter = input.iterator
+		var reference = iter.next as double
+		var output = newArrayList
+		while (iter.hasNext) {
+			var n = iter.next as double
+			if (n &gt; reference) {
+				output += n
+			}
+		}
+		println(output)
+	}
+}
+</code></pre>
+
+</div>
+
+## 54. Exercise 54
+
+* Write a SARL program to count the number of occurrences of a specific character in a string.
+
+<a href="javascript:exerciseToggle(54)">Answer</a>
+<div id="exercise54" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var c = occurrence.parameters.get(0) as Character
+		var value = occurrence.parameters.get(1) as String
+		var count = value.chars.filter[it == c].count
+		println(count)
+	}
+}
+</code></pre>
+
+</div>
+
+## 55. Exercise 55
+
+* Write a SARL program to check whether a file path, provided on the command line, is a file or a directory.
+
+<a href="javascript:exerciseToggle(55)">Answer</a>
+<div id="exercise55" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+import java.io.File
+agent Solution {
+	on Initialize {
+		var filename = occurrence.parameters.get(0) as String
+		var file = new File(filename)
+		println(file.isFile || file.isDirectory)
+	}
+}
+</code></pre>
+
+</div>
+
+## 56. Exercise 56
+
+* Write a SARL program to swap two variables.
+
+<a href="javascript:exerciseToggle(56)">Answer</a>
+<div id="exercise56" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var var1 = occurrence.parameters.get(0)
+		var var2 = occurrence.parameters.get(1)
+		var tmp = var1
+		var1 = var2
+		var2 = tmp
+		println("var1 = " + var1)
+		println("var2 = " + var2)
+	}
+}
+</code></pre>
+
+</div>
+
+## 57. Exercise 57
+
+* Write a SARL program to check whether a string is numeric.
+
+<a href="javascript:exerciseToggle(57)">Answer</a>
+<div id="exercise57" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var value = occurrence.parameters.get(0) as String
+		println(isNumeric(value))
+	}
+	def isNumeric(value : String) : boolean {
+		try {
+			Double::parseDouble(value)
+			return true
+		} catch (ex : Throwable) {
+			return false
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 58. Exercise 58
+
+* Write a SARL program to prove that two string variables of the same value point to the same memory location.
+
+<a href="javascript:exerciseToggle(58)">Answer</a>
+<div id="exercise58" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		var value1 = occurrence.parameters.get(0) as String
+		var value2 = occurrence.parameters.get(2) as String
+		println(isSameAddressInMemory(value1, value2))
+	}
+	def isSameAddressInMemory(value1 : String, value2 : String) : boolean {
+		value1 === value2
+	}
+}
+</code></pre>
+
+</div>
+
+## 59. Exercise 59
+
+* Write a SARL program to determine the largest and smallest integers, longs, and floats.
+
+<a href="javascript:exerciseToggle(59)">Answer</a>
+<div id="exercise59" style="display:none;">
+<pre><code class="language-sarl">
+import io.sarl.api.core.Initialize
+agent Solution {
+	on Initialize {
+		println("Min integer = " + Integer::MIN_VALUE)
+		println("Max integer = " + Integer::MAX_VALUE)
+		println("Min long = " + Long::MIN_VALUE)
+		println("Max long = " + Long::MAX_VALUE)
+		println("Min float = " + Float::MIN_VALUE)
+		println("Max float = " + Float::MAX_VALUE)
+	}
+}
+</code></pre>
+
+</div>
+
+## 60. Version Specification
+
+* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
+* Version: 0.15
+* Status: Stable Release
+* Release: 2025-09-10
+
+## 61. Legal Notice
+
+&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
+&gt;
+&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
+&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+&gt;
+&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
+&gt; you may not use this file except in compliance with the Apache License.
+&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+&gt;
+&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+
+<small>Generated with the translator docs.generator 0.15.0.</small>
+</String></code></pre></div>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

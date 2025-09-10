@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Active Annotations</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="active-annotations">Active Annotations</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-accessors">1. @Accessors</a></li>
+<li><a href="#2-data">2.  @Data</a></li>
+<li><a href="#3-delegate">3.  @Delegate</a></li>
+<li><a href="#4-inline">4. @Inline</a></li>
+<li><a href="#5-noequalitytestfunctionsgeneration">5. @NoEqualityTestFunctionsGeneration</a></li>
+<li><a href="#6-tostring">6. @ToString</a></li>
+<li><a href="#7-references">7. References</a></li>
+<li><a href="#8-version-specification">8. Version Specification</a></li>
+<li><a href="#9-legal-notice">9. Legal Notice</a></li>
+
+</ul>
+
+<p>Active annotations allow developers to participate in the translation process of SARL source code to Java.
+An active annotation is just an annotation that is processed by a specific annotation processor during
+the compilation of a SARL program.
+Depending on the meaning of the active annotation, the generated Java code could be completed by the annotation processor.</p>
+
+<p>SARL comes with ready-to-use active annotations for common code patterns.
+The following sections describe there annotations.</p>
+
+<h2 id="1-accessors">1. @Accessors</h2>
+
+<p>If you want to add getter and or setter methods for your fields, <code>@Accessors</code> is your friend.
+This annotation can be applied to either object-oriented types and several agent-oriented types.
+The agent-oriented types in which you could uses the <code>@Accessors</code> annotation are the agents,
+the behaviors and the skills.
+To uses this annotation, you have to import it as:</p>
+
+<pre><code class="language-sarl">import org.eclipse.xtend.lib.annotations.Accessors
+</code></pre>
+
+<p>Let’s a basic example.</p>
+
+<pre><code class="language-sarl">@Accessors var name : String
+</code></pre>
+
+<p>It is compiled to the code:</p>
+<pre><code class="language-sarl">private var name : String
+ 
+public def getName : String {
+			this.name
+}
+	
+public def setName(name : String) : void {
+  this.name = name
+}
+</code></pre>
+
+<p>By default, a public getter and a public setter method is created. The <code>@Accessors</code> can be configured to tell
+that you only want one or the other, and to change the visibility. This is done by passing one or more values of
+type <code>AccessorType</code> for representing the visibility categories
+as parameters to the annotation: <code>PUBLIC_GETTER</code>, <code>PROTECTED_GETTER</code>, <code>PACKAGE_GETTER</code>,
+<code>PRIVATE_GETTER</code>, <code>PUBLIC_SETTER</code>, <code>PROTECTED_SETTER</code>, <code>PACKAGE_SETTER</code>,
+<code>PRIVATE_SETTER</code>, <code>NONE</code>.</p>
+
+<p>You can also use the annotation on class level to do the same for all fields.</p>
+
+<p>Here is a more complex example, that shows how it works:</p>
+
+<pre><code class="language-sarl">@Accessors class Person {
+  var name : String
+  var firstName : String
+  @Accessors(PUBLIC_GETTER, PROTECTED_SETTER) var age : int
+  @Accessors(NONE) var internalField : String
+}
+</code></pre>
+
+<p>It is compiled to the code:</p>
+<pre><code class="language-sarl">class Person {
+  private var name : String
+  private var firstName : String
+  private var age : int
+  private var internalField : String
+  
+  public def getName : String {
+    this.name
+  }
+  
+  public def setName(name : String) : void {
+    this.name = name
+  }
+  
+  public def getFirstName : String {
+    this.firstName
+  }
+  
+  public def setFirstName(firstName : String) : void {
+    this.firstName = firstName
+  }
+  
+  public def getAge : int {
+    this.age
+  }
+  
+  protected def setAge(age : int) : void {
+    this.age = age
+  }
+}
+</code></pre>
+
+<h2 id="2-data">2.  @Data</h2>
+
+<p>The annotation <code>@Data</code> will turn an annotated class into a value object class. A class annotated with
+<code>@Data</code> is processed according to the following rules:</p>
+
+<ul>
+  <li>all fields are final, i.e. they must be declared with <code>val</code>,</li>
+  <li>getter methods will be generated (if they do not yet exist),</li>
+  <li>a constructor with parameters for all non-initialized fields will be generated (if it does not exist),</li>
+  <li>equals(Object) / hashCode() methods will be generated (if they do not exist),</li>
+  <li>a toString() method will be generated (if it does not exist).</li>
+</ul>
+
+<p>This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
+
+<p>Example:</p>
+<pre><code class="language-sarl">import org.eclipse.xtend.lib.annotations.Data
+@Data class Person {
+  val firstName : String
+  val lastName : String
+  static def main(args : String*) {
+    val p = new Person(args.get(0), args.get(1))
+    println(p.getFirstName + ' ' + p.lastName)
+  }
+}
+</code></pre>
+
+<h2 id="3-delegate">3.  @Delegate</h2>
+
+<p>The <code>@Delegate</code> annotation automatically generates delegate methods for all interfaces shared between the delegate
+and the currently implemented class. You can optionally restrict it to explicitly stated interfaces.
+This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
+
+<p>Let’s start with a basic example:</p>
+<pre><code class="language-sarl">import org.eclipse.xtend.lib.annotations.Delegate
+interface SomeInterface {
+	def function(param : String) : int
+}
+interface SubTypeOfSomeInterface extends SomeInterface {
+	def anotherFunction
+}
+class MyClass implements SomeInterface {
+ 
+  // generates all methods of SomeInterface and delegates to this field
+  @Delegate var myDelegate : SubTypeOfSomeInterface
+ 
+}
+</code></pre>
+
+<p>The previous code is equivalent to:</p>
+<pre><code class="language-sarl">class MyClass implements SomeInterface {			 
+  var myDelegate : SubTypeOfSomeInterface
+  
+  def function(param : String) : int {
+    return this.myDelegate.function(param)
+  }
+}
+</code></pre>
+
+<p>It is not only possible to delegate to fields, but also to methods so you could lazily
+create the delegate object or use a different one each time.</p>
+
+<pre><code class="language-sarl">class MyClass implements SomeInterface {
+	@Delegate def provideDelegate : SomeInterface {
+		return new MyDelegate
+	}
+}
+</code></pre>
+
+<p>The previous code is equivalent to:</p>
+<pre><code class="language-sarl">class MyClass implements SomeInterface {
+	def function(param : String) : int {
+		return provideDelegate().function(param)
+	}
+
+	def provideDelegate : SomeInterface {
+		return new MyDelegate
+	}
+}
+</code></pre>
+
+<p>If you use a method, additional parameters could be declared, that will tell you about the method that should be invoked:</p>
+
+<ul>
+  <li>the name of the method,</li>
+  <li>the types of the formal parameters, and</li>
+  <li>the arguments to the method.</li>
+</ul>
+
+<p>Let’s the following example:</p>
+
+<pre><code class="language-sarl">class MyClass implements SomeInterface {
+	@Delegate def provideDelegate(methodName : String, parameterTypes : Class&lt;?&gt;[], arguments : Object[]) : SomeInterface {
+		return new MyDelegate
+	}
+}
+</code></pre>
+
+<p>The previous code is equivalent to:</p>
+
+<pre><code class="language-sarl">class MyClass implements SomeInterface {
+	def function(param : String) : int {
+		return provideDelegate(
+			"function",
+			#[typeof(String)],
+			#[param]).function(param)
+	}
+
+	def provideDelegate(methodName : String, parameterTypes : Class&lt;?&gt;[], arguments : Object[]) : SomeInterface {
+		return new MyDelegate
+	}
+}
+</code></pre>
+
+<h2 id="4-inline">4. @Inline</h2>
+
+<p>The <code>@Inline</code> annotation is related to the feature of the SARL compiler that suggests that the compiler substitutes the code within the annotation definition in place of each call to that function.</p>
+
+<p>In theory, using <code>@Inline</code> functions can make your program faster because they eliminate the overhead associated with function calls.
+From background point-of-view, calling a function requires pushing the return address on the stack, pushing arguments onto the stack, jumping to the function body, and then executing a return instruction when the function finishes.
+This process is eliminated by inlining the function.
+The compiler also has different opportunities to optimize functions expanded inline versus those that aren’t.
+A tradeoff of inline functions is that the overall size of your program can increase.</p>
+
+<p>The following code is an example of the usage of the <code>@Inline</code> annotation.
+The defined function is computing the double of the multiplication of the two arguments.
+The annotation specifies the <strong>Java</strong> expression that will be used as a replacement in the Java code for the function call to <code>mul</code>.</p>
+
+<pre><code class="language-sarl">import org.eclipse.xtext.xbase.lib.Inline
+class MyClass {
+	@Inline("((﹩1) * (﹩2) * 2)")
+	def mul(a : int, b : int) : int {
+		a * b * 2
+	}
+}
+</code></pre>
+
+<p>As it is illustrated before, the value of the annotation represents the Java code replacement.
+This inline format string contains valid Java code with several placeholders like <code>$1</code>, <code>$2</code>, etc.
+The number after the dollar sign corresponds to the index of the information that is used during the replacement process.
+When the inlined function has <code>1..n</code> parameters, then <code>$1</code> to <code>$n</code> are used to represent there parameters, and the subsequent <code>m</code> values corresponds to the <code>m</code> types specified with the <code>imported</code> parameter of the <code>@Inline</code> annotation.
+The next index <code>$n+m+1</code>} can be used to insert all type parameters of the original declaration.
+And, finally the last indices refer to the upper bound substitute of the type parameters individually.</p>
+
+<p>In the case a not-static function, two special numbers are reserved: <code>$0</code> is replaced by the object expression for which the inlined function was called, followed by a <code>.</code> character; and <code>$-1</code> is replaced by the object expression for which the inlined function was called, without a following <code>.</code> character.</p>
+
+<p>Let the following example for illustrating the values of the <code>@Inline</code> placeholders.</p>
+
+<pre><code class="language-sarl">@Inline(value="......", imported = typeof(BigDecimal))
+def myMethod(p1 : String, p2 : String) : void with T1, T2 extends Byte
+</code></pre>
+
+<p>The call to the previously defined function is:</p>
+
+<pre><code class="language-sarl">var obj : MyInterface
+obj.&lt;Integer, Byte&gt;myMethod("abc", "def")
+</code></pre>
+
+<p>The following table provides a synthetic view of the <code>@Inline</code> placeholders.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>N.</th>
+      <th>Description</th>
+      <th>In the example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-1</td>
+      <td>The calling receiver of the function without final dot character</td>
+      <td><code>obj</code></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>The calling receiver of the function with final dot character</td>
+      <td><code>obj.</code></td>
+    </tr>
+    <tr>
+      <td>[1..n]</td>
+      <td><code>n</code> parameters of the function</td>
+      <td><code>"abc"</code>, <code>"def"</code></td>
+    </tr>
+    <tr>
+      <td>(n..k]</td>
+      <td><code>m</code> imported types (k=n+1+m)</td>
+      <td><code>typeof(BigDecimal)</code></td>
+    </tr>
+    <tr>
+      <td>k+1</td>
+      <td>all of the <code>p</code> generic types of the function</td>
+      <td><code>T1, T2 extends Byte</code></td>
+    </tr>
+    <tr>
+      <td>(k+1..i]</td>
+      <td>Upper bound of the type parameters (i=k+p+2)</td>
+      <td><code>Object</code>, <code>Byte</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code>@Inline</code> annotation has different arguments:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>value</code></td>
+      <td>The inline format string</td>
+    </tr>
+    <tr>
+      <td><code>imported</code></td>
+      <td>Types that should be imported to inline the operation</td>
+    </tr>
+    <tr>
+      <td><code>statementExpression</code></td>
+      <td>Whether the inlined expression is a statement expression in the Java code</td>
+    </tr>
+    <tr>
+      <td><code>constantExpression</code></td>
+      <td>Whether the compiled Java is a constant expression operator, i.e. <code>$0</code> is not automatically written as a prefix of the provided inline format string</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-noequalitytestfunctionsgeneration">5. @NoEqualityTestFunctionsGeneration</h2>
+
+<p>The <code>@NoEqualityTestFunctionsGeneration</code> annotation disables the generation the equality test functions, i.e. <code>equals()</code> and <code>hashCode()</code> from
+the field declarations.</p>
+
+<p>By default, the SARL compiler generates the equality test functions from the type’s fields. In several cases, this automatic
+behavior should be avoiding because the standard equality test that is provided by the Java run-time environment should be used.
+In this case, <code>@NoEqualityTestFunctionsGeneration</code> annotation may be used to mark a type or a field for being excluded of the equality test generation.</p>
+
+<p>The annotation may mark a type, as in the following example.
+In this case, no equality test function is generated within the marked type and all its subtypes.</p>
+
+<pre><code class="language-sarl">import io.sarl.lang.core.annotation.NoEqualityTestFunctionsGeneration
+@NoEqualityTestFunctionsGeneration
+class MyClass {
+  var field1 : int
+  var field2 : String
+}
+</code></pre>
+
+<p>The annotation may mark a specific field in order to exclude it from the equality test generation.
+In the following example, the <code>field2</code> field is marked with the annotation. Consequently, it
+is not included within the equality test within the <code>equals()</code> function, and the hash code replied
+by the <code>hashCode()</code> function does not include the hash code of the <code>field2</code> field.</p>
+
+<pre><code class="language-sarl">class MyClass {
+  var field1 : int
+  @NoEqualityTestFunctionsGeneration
+  var field2 : String
+}
+</code></pre>
+
+<h2 id="6-tostring">6. @ToString</h2>
+
+<p>The <code>@ToString</code> annotation enables to generate the function that replies the string representation
+of an object, a.k.a. as the <code>toString()</code> function in a Java program.
+All non-static fields of the annotated class, and all of its superclasses are used for generating the <code>toString()</code> function.
+This annotation can be applied to object-oriented types. The agent-oriented types cannot be annotated.</p>
+
+<p>Let’s a basic example:</p>
+
+<pre><code class="language-sarl">import org.eclipse.xtend.lib.annotations.ToString
+@ToString
+class MyClass {
+  var field1 : int
+  var field2 : String
+}
+</code></pre>
+
+<p>The previous code is equivalent to:</p>
+
+<pre><code class="language-sarl">class MyClass {
+  var field1 : int
+  var field2 : String
+
+  def toString() : String {
+    var buffer = new ToStringBuilder(this)
+    buffer.add("field1", this.field1);
+    buffer.add("field2", this.field2);
+    return buffer.toString
+  }
+}
+</code></pre>
+
+<p>For brevity there are options to the annotation to hide field names, skip fields with null values and print everything on one line.</p>
+
+<h2 id="7-references">7. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="8-version-specification">8. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="9-legal-notice">9. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

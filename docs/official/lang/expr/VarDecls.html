@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Variable and Field Declaration</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="variable-and-field-declaration">Variable and Field Declaration</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-variable-vs-value-declaration">1. Variable vs. Value Declaration</a></li>
+<li><a href="#2-typing">2. Typing</a></li>
+<li><a href="#3-implicit-or-anaphoric-variables-this-super-it-and-occurrence">3. Implicit or Anaphoric Variables: this, super, it and occurrence</a></li>
+<li><a href="#4-references">4. References</a></li>
+<li><a href="#5-version-specification">5. Version Specification</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
+
+</ul>
+
+<p>Variables and fields can be declared in SARL. To declare a variable or a field, you must specify if it is a value or a
+variable (see below for details), its name, and optionally its type and its initial value.</p>
+
+<p>The variable/value declaration follows the syntax:</p>
+
+<pre><code class="language-text">var NAME [: TYPE] [= INITIAL VALUE]
+val NAME [: TYPE] [= INITIAL VALUE]
+</code></pre>
+
+<p>Shadowing variables from outer scopes is not allowed, the only exception is the implicit variable <code>it</code>.</p>
+
+<h2 id="1-variable-vs-value-declaration">1. Variable vs. Value Declaration</h2>
+
+<p>A variable declaration starting with the keyword <code>val</code> denotes a value, which is essentially a final, unsettable variable.</p>
+
+<p>The variable needs to be declared with the keyword <code>var</code>, which stands for ‘variable’, if its value can change.</p>
+
+<p>Variables declared outside a lambda expression using the <code>var</code> or <code>val</code> keyword are accessible from within the
+lambda expressions.</p>
+
+<p>Fields declared outside a lambda expression using the <code>var</code> keyword or the <code>val</code> keyword are
+accessible from within the lambda expressions.</p>
+
+<h2 id="2-typing">2. Typing</h2>
+
+<p>The type of the variable itself can either be explicitly declared or it can be inferred from the initializer expression.</p>
+
+<p>In the following example, the type of the variable is explicitly given:</p>
+
+<pre><code class="language-sarl">var a : String = "abc"
+</code></pre>
+
+<p>In the following example, the type of the variable is inferred to <code>String</code>:</p>
+
+<pre><code class="language-sarl">var a = "abc"
+</code></pre>
+
+<h2 id="3-implicit-or-anaphoric-variables-this-super-it-and-occurrence">3. Implicit or Anaphoric Variables: this, super, it and occurrence</h2>
+
+<p>In the domain of computer science and programming language theory, an <a href="https://en.wikipedia.org/wiki/Anaphoric_macro">anaphoric macro or variable</a> refers to a linguistic construct that enables the implicit capture and reuse of intermediate computation results within an expression. The term anaphora originates from linguistics, where it denotes a word or phrase that refers back to a previously mentioned entity. In programming, this concept is adapted to allow a macro or variable to automatically bind to the result of a preceding computation, thereby reducing redundancy and enhancing expressiveness.
+Anaphoric macros are most commonly associated with Lisp-family languages and domain-specific languages that support advanced macro systems.
+The core characteristics of anaphoric variables are:</p>
+
+<ul>
+  <li><strong>Implicit Binding:</strong> The variable does not require explicit assignment; instead, it is bound to the result of the most recent relevant computation.</li>
+  <li><strong>Lexical Scoping:</strong> The binding is typically confined to the lexical scope of the variable use, ensuring referential transparency and avoiding unintended side effects.</li>
+  <li><strong>Abstraction:</strong> Anaphoric constructs abstract away repetitive patterns, such as repeatedly referencing the result of a function call or expression.</li>
+</ul>
+
+<p>The following table describes the four anaphoric variables that are defined in SARL.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name of the implicit variable</th>
+      <th>Operational Semantic</th>
+      <th>Implicitly in naming scope w/ priority level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>this</code></td>
+      <td>Reference to the current instance of agent, behavior, skill, class or enumeration. The type of <code>this</code> is the type where it is mentionned in the code</td>
+      <td>Yes (2)</td>
+    </tr>
+    <tr>
+      <td><code>super</code></td>
+      <td>Reference to the current instance of agent, behavior, skill, class or enumeration. The type of <code>this</code> is the super-type of the type where it is mentionned in the code</td>
+      <td>Yes (3)</td>
+    </tr>
+    <tr>
+      <td><code>it</code></td>
+      <td>Reference to an object that depends on the current of usage in the code according to the concept of the <a href="https://en.wikipedia.org/wiki/Anaphoric_macro">anamorphic macros or variables</a>. To determine if <code>it</code> is defined at a specific locaiton in the code, you have to refer to the document of the enclosing features</td>
+      <td>Yes (1)</td>
+    </tr>
+    <tr>
+      <td><code>occurrence</code></td>
+      <td>Reference to the current instance of an event received by an agent, behavior or skill</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Like in Java the current object is bound to the keyword <code>this</code>. This allows for implicit field access or method invocations.
+For example, in the following code, <code>this</code> represents the current agent instance in memory. Therefore, the code is changing the value of the agent’s field <code>myvariable</code>. In this code, the type of <code>this</code> is <code>A</code>.</p>
+
+<pre><code class="language-sarl">agent A {
+	var myvariable : int
+	def action(value : int) {
+		this.myvariable = value
+	}
+}
+</code></pre>
+
+<p>In the following code, <code>super</code> represents the current agent instance in memory but with a type different than <code>this</code>: <code>super</code> has the super-type, here <code>B</code>. <code>super</code> is equivalent to <code>this as B</code> in this example.</p>
+
+<pre><code class="language-sarl">agent B {
+	protected var mysupervariable : int
+}
+agent A extends B {
+	var thisexamplefield : int
+	def action(value : int) {
+		super.mysupervariable = value
+	}
+}
+</code></pre>
+
+<p>The <code>it</code> variable is defined and binded by some SARL constructs. For example, Let a [lambda expression][./Lambda.md] declared as a formal formater of a <code>function</code>. This lambda expression takes one argument:</p>
+
+<pre><code class="language-sarl">static def function(parameter : (int) =&gt; boolean) {
+	println(parameter.apply(45))
+}
+static def main {
+	function [ p | p &gt; 30 ]
+	function [ it &gt; 30 ]
+}
+</code></pre>
+
+<p>The two lines in the <code>main</code> function are equivalent. On the first line, the formal parameter of the lambda expression is explicitly named. On the second line, the formal parameter is not explicitly named. Therefore, the SARL compiler assumes that this parameter becomes the anphoric variable <code>it</code> with the value given as argument to the lambda expression.</p>
+
+<p>SARL also defines the <code>it</code> variable in the <a href="../aop/Agent.html#behaviors-of-an-agent">guards of the agent’s behaviors units</a>. The three guards in the following code are equivalent. Here <code>it</code> is binding to the <code>occurrence</code> variable. The <code>occurrence</code> variable is the forth anaphoric variable supported by SARL. It is binded to the instance of a received event.</p>
+
+<pre><code class="language-sarl">event E {
+	var attr : int
+}
+
+agent A {
+	on E [occurrence.attr &gt; 10] {
+	}
+	on E [it.attr &gt; 10] {
+	}
+	on E [attr &gt; 10] {
+	}
+}
+</code></pre>
+
+<h2 id="4-references">4. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="5-version-specification">5. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Behaviors Capacity</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="behaviors-capacity">Behaviors Capacity</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-registering-a-behavior">1. Registering a Behavior</a></li>
+<li><a href="#2-unregistering-a-behavior">2. Unregistering a Behavior</a></li>
+<li><a href="#3-registering-a-behavior-with-an-event-filter">3. Registering a Behavior with an event filter</a></li>
+<li><a href="#4-executing-a-behavior">4. Executing a Behavior</a></li>
+<ul>
+  <li><a href="#41-awaking-all-behaviors-and-sub-agents">4.1. Awaking all behaviors and sub-agents</a></li>
+  <li><a href="#42-awaking-a-specific-behavior">4.2. Awaking a specific behavior</a></li>
+  <li><a href="#43-awaking-multiple-specific-behaviors">4.3. Awaking multiple specific behaviors</a></li>
+</ul>
+<li><a href="#5-creating-an-event-listener">5. Creating an Event Listener</a></li>
+<li><a href="#6-accessing-to-the-collection-of-the-registered-behaviors">6. Accessing to the collection of the registered behaviors</a></li>
+<li><a href="#7-version-specification">7. Version Specification</a></li>
+<li><a href="#8-legal-notice">8. Legal Notice</a></li>
+
+</ul>
+
+<p>The built-in capacity <code>Behaviors</code> provides the tools to the agents for dynamically
+registering and unregistering sub-behaviors.</p>
+
+<p>This capacity is closely related to the <code>InnerContextAccess</code> for enabling a
+high-level abstraction for holonic multi-agent system development.</p>
+
+<p>The definition of a behavior is not detailed in this reference document.
+Please read the <a href="./Behavior.html">Behavior Reference</a> for details.</p>
+
+<h2 id="1-registering-a-behavior">1. Registering a Behavior</h2>
+
+<p>Assuming that a behavior was already defined, it is possible for an agent to register this behavior:</p>
+
+<pre><code class="language-sarl">def registerBehavior(attitude : Behavior) : Behavior
+</code></pre>
+
+<p>This function takes the behavior to be registered, and replies the same behavior.
+When a behavior is registered, it is receiving the events in the default space of
+the inner context of the agent, or received by the agent itself.</p>
+
+<p>An example of call to the registration function is:</p>
+
+<pre><code class="language-sarl">var beh = new MyBehavior
+registerBehavior(beh)
+</code></pre>
+
+<p>According to the SARL syntax reference, the example could be also written as:</p>
+
+<pre><code class="language-sarl">var beh = new MyBehavior
+beh.registerBehavior
+</code></pre>
+
+<h2 id="2-unregistering-a-behavior">2. Unregistering a Behavior</h2>
+
+<p>Assuming that a behavior was already registered, it is possible for an agent to unregister it:</p>
+
+<pre><code class="language-sarl">def unregisterBehavior(attitude : Behavior) : Behavior
+</code></pre>
+
+<p>This function takes the behavior to be unregistered, and replies the same behavior.
+When a behavior is unregistering, it is no more receiving the events
+in the default space of the inner context of the agent, and the ones received by the
+agent itself.</p>
+
+<pre><code class="language-sarl">agent A {
+	uses Behaviors
+	var b : MyBehavior
+	var c : Behavior
+	def myaction {
+		b = new MyBehavior
+		c = unregisterBehavior(b)
+	}
+}
+</code></pre>
+
+<h2 id="3-registering-a-behavior-with-an-event-filter">3. Registering a Behavior with an event filter</h2>
+
+<p>Assuming that a behavior was already defined, it is possible for an agent to
+register this behavior that may received only the events matching a specific
+filtering function. For registering such a behavior with its filter, the
+following function could be used:</p>
+
+<pre><code class="language-sarl">def registerBehavior(attitude : Behavior, filter : (Event) =&gt; boolean) : Behavior
+</code></pre>
+
+<p>This function takes the behavior to be registered, and replies the same behavior.
+When a behavior is registered, it is receiving the events that are matching the given
+filter in the default space of the inner context of the agent, or received by the agent
+itself.
+The filtering function is invoked for each event that should be given to the behavior.
+If the filtering function replies <code>true</code>, the event is really dispatching into the behavior.
+If the function replies <code>false</code>, the event is discarded to the behavior.</p>
+
+<p>An example of call to the registration function is:</p>
+
+<pre><code class="language-sarl">var beh = new MyBehavior
+registerBehavior(beh, [^event | ^event instanceof MyEvent])
+</code></pre>
+
+<p>According to the SARL syntax reference, the example could be also written as:</p>
+
+<pre><code class="language-sarl">var beh = new MyBehavior
+beh.registerBehavior [^event | ^event instanceof MyEvent]
+</code></pre>
+
+<h2 id="4-executing-a-behavior">4. Executing a Behavior</h2>
+
+<p>A behavior is executed through its event handlers. Consequently, for running a behavior, it is mandatory
+to wake it with an event. 
+This section describes the functions for awaking
+the behaviors with an event occurrence.</p>
+
+<h3 id="41-awaking-all-behaviors-and-sub-agents">4.1. Awaking all behaviors and sub-agents</h3>
+
+<p>The regular way for awaking agent behaviors is to fire an event into all the registered behaviors.
+This particular feature is supported by:</p>
+
+<pre><code class="language-sarl">def wake(evt : Event, scope : Scope&lt;Address&gt; = null)
+</code></pre>
+
+<p>This function emits the given event into the inner context of the agent (in the default space).</p>
+
+<p>If a scope is provided, it is used for filtering the agents that will
+receive the event. The filterable agents are the current agent itself, and
+all the sub-agents (sub-holons) that were created inside the current agent.</p>
+
+<p><span class="label label-warning">Important Note</span> Because a behavior has no associated address, it cannot be filtered by the scope. All the agent’s behaviors that are waiting for a given event will be executed.</p>
+
+<pre><code class="language-sarl">var e : Event
+e = new MyEvent
+wake(e)
+wake(e, null)
+var scope : Scope&lt;Address&gt; = [ it.ID !== null ]
+wake(e, scope)
+</code></pre>
+
+<h3 id="42-awaking-a-specific-behavior">4.2. Awaking a specific behavior</h3>
+
+<p>In some specific cases, you may want to wake up a single specific behavior with an event, such that, the other
+behaviors of the agents and its sub-agents are not receiving the event occurrence.
+This particular feature is supported by:</p>
+
+<pre><code class="language-sarl">def wake(beh : Behavior, evt : Event)
+</code></pre>
+
+<p>This function emits the given event into the given behavior, and neither in the inner space of the agent nor the other
+registered behaviors of the agent.</p>
+
+<h3 id="43-awaking-multiple-specific-behaviors">4.3. Awaking multiple specific behaviors</h3>
+
+<p>As an extension of the <code>wake</code> function that is presented into the previous section, you could wake up multiple
+behaviors with a single event occurrence, assuming that the list of the behaviors to wake up is known and provided.
+This feature is implemented by:</p>
+
+<pre><code class="language-sarl">def wake(behs : Iterable&lt;Behavior&gt;, evt : Event)
+</code></pre>
+
+<p>This function emits the given event into each of the given behaviors, and neither in the inner space of the agent nor the other
+registered behaviors of the agent that are not specified into the <code>behs</code> argument.</p>
+
+<h2 id="5-creating-an-event-listener">5. Creating an Event Listener</h2>
+
+<p>Sometimes, it is useful or mandatory for an agent to listen on the events in a
+given space. The following function permits retrieving the event listener of
+the agent:</p>
+
+<pre><code class="language-sarl">def asEventListener : EventListener
+</code></pre>
+
+<p>The listener replied by this function is the one used by the agent (and its behaviors)
+for listening events related to all the contexts (default, external, and inner).</p>
+
+<pre><code class="language-sarl">var l : EventListener
+l = asEventListener
+</code></pre>
+
+<h2 id="6-accessing-to-the-collection-of-the-registered-behaviors">6. Accessing to the collection of the registered behaviors</h2>
+
+<p>Two functions are provided for accessing to the collection of the registered behaviors:</p>
+
+<pre><code class="language-sarl">def hasRegisteredBehavior : boolean
+def getRegisteredBehaviors : ConcurrentCollection&lt;Behavior&gt;
+</code></pre>
+
+<p>The hasRegisteredBehavior replies a boolean value, which is indicating if
+a behavior is registered.
+The getRegisteredBehaviors replies an unmodifiable collection of the registered behaviors.</p>
+
+<pre><code class="language-sarl">var b : boolean = hasRegisteredBehavior
+var c : ConcurrentCollection&lt;Behavior&gt; = getRegisteredBehaviors
+</code></pre>
+
+<h2 id="7-version-specification">7. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="8-legal-notice">8. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

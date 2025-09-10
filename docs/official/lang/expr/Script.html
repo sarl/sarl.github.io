@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Script Format</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="script-format">Script Format</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-package-declaration">1. Package Declaration</a></li>
+<li><a href="#2-import-directive">2. Import Directive</a></li>
+<li><a href="#3-static-import-directive">3. Static Import Directive</a></li>
+<li><a href="#4-top-level-features">4. Top-Level Features</a></li>
+<li><a href="#5-references">5. References</a></li>
+<li><a href="#6-version-specification">6. Version Specification</a></li>
+<li><a href="#7-legal-notice">7. Legal Notice</a></li>
+
+</ul>
+
+<p>A script is a text file containing SARL code. Each script must follow the format:</p>
+
+<pre><code class="language-text">&lt;package declaration&gt;
+&lt;imports&gt;
+&lt;top-level features&gt;
+</code></pre>
+
+<h2 id="1-package-declaration">1. Package Declaration</h2>
+
+<p>To structure your software, it is common to put scripts in different packages (as Java does for the classes).</p>
+
+<p>The keyword <code>package</code> permits you to define the name of the package associated with a
+SARL file. Consequently, all the features defined in the script are contained in this package,
+and their names are qualified with the name of the package.</p>
+
+<p>The package’s name also affects the generation of the Java files implementing the SARL script. Indeed,
+all the Java files are generated in a folder with the name of the package.</p>
+
+<p>In the following example, the qualified name of an agent defined in the file is <code>io.sarl.docs.reference.gsr</code>.</p>
+
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
+</code></pre>
+
+<p><span class="label label-info">Note</span> If the <code>package</code> keyword is not used, the default package will be used. The default package has an empty name. It is recommended in the SARL Best Practices to specify a package’s name.</p>
+
+<h2 id="2-import-directive">2. Import Directive</h2>
+
+<p>The <em>imports</em> section of a SARL script is dedicated to declaring imported classes.
+Each time you want to use a feature defined in another package, (a different file)
+you include it with the <code>import</code> directive.</p>
+
+<p><span class="label label-info">Note</span> This directive works in a similar way as in the Java language.</p>
+
+<p>The <code>import</code> keyword is followed by the qualified name of the feature to import.
+In the following code, the first directive imports <code>java.util.List</code>.</p>
+
+<p>Optionally, you can import all the features defined by a package.
+This can be done by replacing the name of the feature by the
+wildcard character <code>*</code>. The second import directive is an example of the inclusion of
+all the classes defined in <code>java.net</code>.</p>
+
+<pre><code class="language-sarl">import java.util.List
+import java.net.*
+</code></pre>
+
+<h2 id="3-static-import-directive">3. Static Import Directive</h2>
+
+<p>Sometimes, it is necessary to import a class to access its statically defined functions,
+i.e., a function that can be called without any associated object’s instance.</p>
+
+<p>To do this, you may invoke the static function with the fully qualified name of the
+class. For example, the function <code>max</code> is invoked with this syntax in the example below.</p>
+
+<pre><code class="language-sarl">import java.util.Collections
+//...
+
+		var col : Collection&lt;Integer&gt;
+		Collections::max(col)
+</code></pre>
+
+<p>As an alternative, the static-import mechanism permits you to reference the function directly.
+A static import is specified with the <code>static</code> keyword just after the <code>import</code> keyword.
+The following identifier must be a fully qualified name of one or more functions (with the
+wildcard character).</p>
+
+<p>In the example below, all the functions defined in <code>java.util.Collections</code> are imported.
+Following this import, it is possible to invoke a static function with its unqualified
+name, as the call to <code>max</code> below.</p>
+
+<pre><code class="language-sarl">import static java.util.Collections.*
+//...
+
+		var col : Collection&lt;Integer&gt;
+		max(col)
+</code></pre>
+
+<h2 id="4-top-level-features">4. Top-Level Features</h2>
+
+<p>Most of a SARL script consists of the definitions of top-level features. These features are the
+core concepts of SARL, such as <code>agent</code>, <code>event</code>, or <code>capacity</code>.
+All these top-level features are documented in their own reference documents.</p>
+
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
+agent MyAgent {
+}
+
+event MyEvent
+
+capacity MyCapacity {
+}
+</code></pre>
+
+<p>Additionally, it is possible to write object-oriented statements with
+the SARL syntax for <code>class</code>, <code>interface</code>, <code>enum</code>, and <code>annotation</code>.
+The inclusion of these object-oriented statements will help you to write your
+application with a single language: SARL. The object-oriented programmation support
+is described in the <a href="./index.html">reference documentation</a>.</p>
+
+<pre><code class="language-sarl">package io.sarl.docs.reference.gsr
+
+class MyClass {
+}
+
+interface MyInterface {
+}
+
+enum MyEnum {
+	CONSTANT
+}
+
+annotation MyAnnotation {
+}
+</code></pre>
+
+<h2 id="5-references">5. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="6-version-specification">6. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="7-legal-notice">7. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

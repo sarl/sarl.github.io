@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <title>Changes in 0.15.0</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pygments.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../download/index.html">Download</a></li>
+        <li><a href="../library/index.html">Library</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+        <li><a href="../runtime/index.html">Run-time</a></li>
+        <li><a href="../news/index.html">News &amp; Events</a></li>
+        <li><a href="../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="changes-in-0150">Changes in 0.15.0</h1>
+
+<p>Release date: 2025-09-09.</p>
+
+<h2 id="major-changes">Major Changes</h2>
+
+<p>Number of major changes: 4</p>
+
+<h3 id="generation-of-implicit-event-constructors">Generation of implicit event constructors</h3>
+
+<p>In SARL, events are fundamental constructs for agent communication, often requiring explicit constructor definitions to initialize their fields. Prior to this change, developers had to manually define constructors for every event, even when the event’s structure was simple or followed a predictable pattern. This manual process introduced several inefficiencies:</p>
+
+<ul>
+  <li>Repetitive constructor definitions for events with standard field initializations.</li>
+  <li>Manual constructor writing increased the risk of inconsistencies or omissions, especially in large codebases.</li>
+  <li>Developers spent unnecessary time on repetitive tasks, detracting from core logic implementation.</li>
+</ul>
+
+<p>To streamline event definition and improve developer productivity, SARL introduced automatic constructor generation for events. This feature:</p>
+
+<ul>
+  <li>Infers Constructors from Field Declarations:</li>
+</ul>
+
+<p>The compiler automatically generates constructors based on an event’s declared fields, eliminating the need for manual implementation.
+Example:</p>
+
+<pre><code class="language-sarl">event MyEvent {
+	var description : String
+	var payload : double
+}
+</code></pre>
+
+<p>The SARL compiler now automatically generates constructors that are equivalent to the following SARL code:</p>
+
+<pre><code class="language-sarl">event MyEvent {
+	var description : String
+	var payload : double
+	new (description : String = null, payload : double = 0.0) {
+		this.description = description
+		this.payload = payload
+	}
+}
+</code></pre>
+
+<h3 id="space-api-outside-the-janus-sre">Space API outside the Janus SRE</h3>
+
+<p>In earlier versions of SARL, the Space Implementation API was tightly coupled with the Janus SRE (SARL Runtime Environment). This design choice introduced several limitations:</p>
+
+<ul>
+  <li>The API’s integration within SRE-specific code restricted its reusability in alternative runtime environments or custom implementations.</li>
+  <li>Developers could not leverage the Space API independently of SRE, limiting the portability of agent-based systems.</li>
+  <li>Changes to the SRE could inadvertently affect the Space API, complicating updates and extensions.</li>
+</ul>
+
+<p>These constraints hindered SARL’s goal of providing a generic, modular, and runtime-agnostic agent programming framework.
+To address these issues, the Space Implementation API was moved from the SRE codebase to the SARL SDK.
+The Space API is now part of the SARL standard library, making it independent of any specific runtime environment.
+The API was redesigned to rely on abstract interfaces and runtime-agnostic contracts, ensuring compatibility with any SARL-compliant environment. Key abstractions, such as Space and SpaceSpecification, are now defined in the SARL SDK, while concrete implementations (e.g., SRE-based) are provided as plugins or extensions.</p>
+
+<p>Existing SRE-based applications continue to function seamlessly, as the SRE now implements the generic Space API rather than defining it.</p>
+
+<h3 id="library-for-creating-agent-working-memory">Library for creating agent working memory</h3>
+
+<p>Agent-based systems often require temporary storage and efficient manipulation of data during their execution, particularly for tasks such as reasoning, decision-making, or maintaining contextual state.
+Prior to this change, SARL lacked built-in utilities for managing such short-term data structures. Developers had to rely on ad-hoc solutions—such as custom collections or external libraries.</p>
+
+<p>SARL 0.15 introduced a simple “working memory” utility toolset. The working memory utilities are directly accessible within agent behaviors with the <code>WorkingMemory</code> capacity, enabling seamless interaction with other SARL constructs. A default skill is provided for implementing the <code>WorkingMemory</code> capacity based on data structure that maps knowledge names (or identifiers) to their values.</p>
+
+<h3 id="robust-type-checker-for-type-parameters">Robust Type Checker for Type Parameters</h3>
+
+<p>SARL supports generic constructs, such as parameterized events, to enable flexible and reusable agent-based systems. However, prior to the recent update, SARL’s type checking mechanism—built on the Xtext framework—lacked robust validation for type parameter conformance. This limitation led to several challenges:</p>
+
+<ul>
+  <li>Insufficient compile-time validation of type parameters could result in undetected type mismatches, manifesting as runtime exceptions.</li>
+  <li>Developers could not fully leverage advanced generic programming features, such as bounded polymorphism or variance annotations, due to the absence of a dedicated type conformance checker.</li>
+</ul>
+
+<p>To overcome these limitations, SARL implemented a dedicated type checker that builds upon the existing Xtext framework. This enhanced checker ensures that generic type arguments adhere to their specified bounds (for example, <code>T extends Number</code>). Additionally, it validates conformance in subtype hierarchies and enforces correct type relationships within inheritance chains and interface implementations, including complex scenarios.</p>
+
+<h2 id="detailed-changes">Detailed Changes</h2>
+
+<h3 id="1-sarl-language">1. SARL Language</h3>
+
+<h4 id="11-sarl-language-and-grammar">1.1. SARL Language and Grammar</h4>
+
+<ul>
+  <li>Add the automatic generation of events’ constructors. [<a href="https://github.com/sarl/sarl/commit/afb20ea576f7cccb510fdb4efc51a701e30a6bbf">more details</a>]</li>
+  <li>Accept different syntaxes for the specification of a main function in a class. [<a href="https://github.com/sarl/sarl/commit/3ed2e4b3d18125fb00f9a493b376fac4d4c81ed5">more details</a>]</li>
+  <li>Remove references to protocol features in the SARL metamodel. [<a href="https://github.com/sarl/sarl/commit/0c8cdb38dd2426a0fdcd3b82830c1c02142c8a46">1</a>, <a href="https://github.com/sarl/sarl/commit/4bbfbe3cf3c848213bed6631e43421a09863de4e">2</a>, <a href="https://github.com/sarl/sarl/commit/b8a9fff6794d078933bcd1899058b6773e3b9daf">3</a>]</li>
+</ul>
+
+<h4 id="12-sarl-validator">1.2. SARL Validator</h4>
+
+<ul>
+  <li>Implementation of a robust type checker for type parameters’ conformance. [<a href="https://github.com/sarl/sarl/commit/271cda14b1b351034046f74c7c118e8d3a9cde98">more details</a>]</li>
+  <li>Ensure singleton for the provider of configurable issue severities. [<a href="https://github.com/sarl/sarl/commit/53e132df3ec2754042046cd2cd72e0f853fd4b87">more details</a>]</li>
+</ul>
+
+<h4 id="13-java-model-inferrer">1.3. Java Model Inferrer</h4>
+
+<ul>
+  <li>Enable the generation of multiple Java files from a single SARL construct. [<a href="https://github.com/sarl/sarl/commit/54b43e718fadfb3445d83b28fc9fa1c1b4797039">more details</a>]</li>
+  <li>Introduce fragments in the code of the <code>JvmModelInferrer</code> for enabling eaiser extension and specialization of the inferring process. [<a href="https://github.com/sarl/sarl/commit/bc7880f8b0d605526eb50cf5999fe80c6c9b3a66">1</a>, <a href="https://github.com/sarl/sarl/commit/b720de66bca33ad56e7431ccaae29339955d4a99">2</a>]</li>
+  <li>Avoid Null Pointer Exception when the supertype of a event in unspecified in the compiled code. [<a href="https://github.com/sarl/sarl/commit/df269b82cc0e4cffd1ed1bf1fc3afad67cf85742">more details</a>]</li>
+</ul>
+
+<h4 id="14-programmatic-code-builder">1.4. Programmatic Code Builder</h4>
+
+<ul>
+  <li>Code builder includes new function that take JVM type references as arguments in addition to the String names. [<a href="https://github.com/sarl/sarl/commit/d31f1a35a0cd0d0368c34bcec4d91ec23d449a7d">more details</a>]</li>
+  <li>Regenerate the code builders for SARL for fixing the support of type parameters. [<a href="https://github.com/sarl/sarl/commit/e2f8dc29cfe161f216f5a0717f40eb1c2be66536">1</a>, <a href="https://github.com/sarl/sarl/commit/c25ad70ed18a9a6d5066bec4d9322f66dff1455a">2</a>]</li>
+  <li>Avoid to create multiple <code>XBlockExpression</code> when calling the getter function of the code builder. [<a href="https://github.com/sarl/sarl/commit/07f3ec5c3ea2b39e6d6fd378755cbd7e556f0d93">more details</a>]</li>
+  <li>Avoid NPE when retreiving the resource from an expression builder. [<a href="https://github.com/sarl/sarl/commit/2fa0b810793df2e243f38abf10089c762eb69474">more details</a>]</li>
+  <li>Add tests of the support of type parameters by the code builders [<a href="https://github.com/sarl/sarl/commit/ba4a8e7880d660108cbdf932021c2344f9a60172">more details</a>]</li>
+</ul>
+
+<h4 id="15-third-party-syntax-color-style">1.5. Third-party Syntax Color Style</h4>
+
+<ul>
+  <li>Add configuration expansion macros in the SARL’s TeX style for specifying font size of the SARL code. [<a href="https://github.com/sarl/sarl/commit/d42864890b81124182b94a62259686455fb8a063">more details</a>]</li>
+</ul>
+
+<h3 id="2-sarl-development-toolkit-sdk">2. SARL Development Toolkit (SDK)</h3>
+
+<ul>
+  <li>Add the library for creating an agent “working memory”. [<a href="https://github.com/sarl/sarl/commit/fba9336537ef0032548c0a3e83b98a0cf6137700">more details</a>]</li>
+  <li>Move the space implementation API from the SRE code to the SARL API to be more generic and SRE-independent. [<a href="https://github.com/sarl/sarl/commit/93f49ca27abcc1e4ebd7c54fcbc06a674955e186">1</a>, <a href="https://github.com/sarl/sarl/commit/2eed39ad06649be4b40f9f3094f7a2e015297235">2</a>]</li>
+  <li>Add the function <code>injectMembers(Object)</code> in the <code>SRE</code> utility class to enable to inject the SRE-dependent objects. [<a href="https://github.com/sarl/sarl/commit/5bfb53ffd21241a6af8e6a34dd6d9bc43390a779">more details</a>]</li>
+  <li>Add the class <code>MutableOptional</code>. [<a href="https://github.com/sarl/sarl/commit/e6bae4e68d25cde59f7abfb4ec3c68f3895f59d2">more details</a>]</li>
+</ul>
+
+<h4 id="3-eclipse-products">3. Eclipse Products</h4>
+
+<ul>
+  <li>Avoid duplicate source folders when SARL and project extension have the same folders. [<a href="https://github.com/sarl/sarl/commit/33163a21fc77b2c4d5a8e3c3d6f75d81306a7682">more details</a>]</li>
+  <li>Decrease the memory footprint for the SARL image provider. [<a href="https://github.com/sarl/sarl/commit/473df66ae69ea6689e8c374b1afb97202c4f5115">more details</a>]</li>
+  <li>Fixing the implementation type of the default SARL editor in the plugin definition. [<a href="https://github.com/sarl/sarl/commit/0edede757389ed2588d0760fafcf02124c302ae7">more details</a>]</li>
+  <li>Remove uncessary event constructors from the embedded examples. [<a href="https://github.com/sarl/sarl/commit/8c3c1d551249ad59d19152d32f6f76f595277ea4">more details</a>]</li>
+  <li>Remove references to protocol features in the standard SARL UI and Eclipse plugins. [<a href="https://github.com/sarl/sarl/commit/4bbfbe3cf3c848213bed6631e43421a09863de4e">1</a>, <a href="https://github.com/sarl/sarl/commit/b8a9fff6794d078933bcd1899058b6773e3b9daf">2</a>]</li>
+  <li>Use of the new code builder API in the Eclipse wizard when generating SARL files. [<a href="https://github.com/sarl/sarl/commit/e5eb86699a35b289566e29ebd303fb77ba151236">more details</a>]</li>
+  <li>Disable the warning related to the usage of javax inject annotations. [<a href="https://github.com/sarl/sarl/commit/97fccec08c6415aa288344db98f289c91e681883">more details</a>]</li>
+</ul>
+
+<h3 id="4-janus-run-time-environment">4. Janus Run-time Environment</h3>
+
+<ul>
+  <li>Add the function <code>injectMembers(Object)</code> in the <code>SRE</code> utility class to enable to inject the SRE-dependent objects. [<a href="https://github.com/sarl/sarl/commit/5bfb53ffd21241a6af8e6a34dd6d9bc43390a779">more details</a>]</li>
+  <li>Upgrade to Bootique 3.0-RC1. [<a href="https://github.com/sarl/sarl/commit/7ab9e1b9fbbdd3f1f0256f0dd74e3bac49374cfe">more details</a>]</li>
+  <li>Fixing the name of the integration tests in the code repository. [<a href="https://github.com/sarl/sarl/commit/689817897222c0c1eb27463a71e4830fff8ded7a">more details</a>]</li>
+</ul>
+
+<h3 id="5-maven-compiler-plugin">5. Maven Compiler Plugin</h3>
+
+<ul>
+  <li>Add a configuration parameter in the Maven compiler plugin for specifying the issue severities in the POM file. [<a href="https://github.com/sarl/sarl/commit/7816fe0a73d406a21339493aa67f19e931ebee4c">more details</a>]</li>
+</ul>
+
+<h3 id="6-sarl-documentation">6. SARL Documentation</h3>
+
+<ul>
+  <li>Refactoring of the structure of the official documentation for making it easier to read. [<a href="https://github.com/sarl/sarl/commit/225a2ac58ed663a5c3d81990460ce5fc8bc17524">1</a>, <a href="https://github.com/sarl/sarl/commit/83da817d85db60548f3df1f0ba6eef0ed0f53314">2</a>]</li>
+  <li>Extension of the documentation of the keywords <code>this</code>, <code>super</code>, <code>it</code> and <code>occurrence</code>. [<a href="https://github.com/sarl/sarl/commit/090b4739ba72c91359e4ab2f782933e975555052">more details</a>]</li>
+  <li>Update the documentation related to the automatic generation of the event constructors. [<a href="https://github.com/sarl/sarl/commit/df127814ddfb4cb42ba0848b4da2ec95a3224a73">more details</a>]</li>
+</ul>
+
+<h3 id="7-for-sarl-contributors">7. For SARL Contributors</h3>
+
+<ul>
+  <li>Upgrade major libraries:
+    <ul>
+      <li>Eclipse 2025-09. [<a href="https://github.com/sarl/sarl/commit/bdf5d65d2ba10557024993b9866df56cd7995bc2">more details</a>]</li>
+      <li>Xtext 2.40.0. [<a href="https://github.com/sarl/sarl/commit/bdf5d65d2ba10557024993b9866df56cd7995bc2">more details</a>]</li>
+      <li>Maven 3.9.11.</li>
+    </ul>
+  </li>
+  <li>Create the <code>uiextensions</code> and <code>eclipseextensions</code> modules for helping the extension of the SARL IDE by third-party modules. [<a href="https://github.com/sarl/sarl/commit/7809fabf53dd8a8d0df5fda3b9266b9b23125573">1</a>, <a href="https://github.com/sarl/sarl/commit/661fd25d1646051367ba6a27907f72afc953bc37">2</a>]</li>
+  <li>Add <code>fileGen</code> functions in the testing API for SARL projects. These functions enables to obtain an <code>EObject</code> instance from a SARL code. [<a href="https://github.com/sarl/sarl/commit/c39c6e55ac626d8be86dd0eae0ee7c9ec19e04f2">more details</a>]</li>
+  <li>Fixing unit tests in the compiler module because of the upgrade of the version of Jupiter Junit. [<a href="https://github.com/sarl/sarl/commit/6da1032bb16f261682446cf3119c1b58b7ffd7d9">more details</a>]</li>
+  <li>Fixing variable definition in the developer’s launching scripts for the SARL IDE. [<a href="https://github.com/sarl/sarl/commit/0570908a4738b483d3f093db26a6ab9b2b6c1558">more details</a>]</li>
+  <li>Update the versions of the plugins in the Maven extension specifications. [<a href="https://github.com/sarl/sarl/commit/3e60339663dd756471c5ec68064782642ad1d4a2">more details</a>]</li>
+  <li>Change copyrights in file headers. [<a href="https://github.com/sarl/sarl/commit/f18ea85c156ba5aaa6cf473063988bcbbdbe6df1">1</a>, <a href="https://github.com/sarl/sarl/commit/5156c538c1c7f0e5c9382dd00daf7a4138ec82a3">2</a>]</li>
+  <li>Add missed tests for the generic event serialization. [<a href="https://github.com/sarl/sarl/commit/96e4607b08485c5a6fa75433871d1ce8494063f2">more details</a>]</li>
+  <li>Add missed tests for generic event formatting. [<a href="https://github.com/sarl/sarl/commit/8f7f1ae89565d570bc0136f06b0369a1242631de">more details</a>]</li>
+  <li>Fixing invalid carriage-return character for Windows OS. [<a href="https://github.com/sarl/sarl/commit/b8ef0f9fbf17db6373260164ecad8c5f21e830d4">more details</a>]</li>
+  <li>Fixing the deployment configuration. [<a href="https://github.com/sarl/sarl/commit/1e7c88db6e66bcb69e2ca7179d637f8f0a0c931b">more details</a>]</li>
+  <li>Fixing the Powershell script for CI. [<a href="https://github.com/sarl/sarl/commit/038d711a70d6433a172f5b9af157ad45370a9637">1</a>, <a href="https://github.com/sarl/sarl/commit/5b8321eda79ba7a022c765aea57b40928437fcd9">2</a>]</li>
+  <li>Enable CI on multiple OS. [<a href="https://github.com/sarl/sarl/commit/bbfc7c006c77e56efb94b39faae7cad6d1ecdbc0">more details</a>]</li>
+</ul>
+
+<h2 id="8-changes-in-the-previous-versions">8. Changes in the Previous Versions</h2>
+
+<ul>
+  <li><a href="./changes_0.14.0.html">Changes in the version 0.14.0</a></li>
+</ul>
+
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/run_prettify.js"></script>
+	<script src="../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

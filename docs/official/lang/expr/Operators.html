@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Operators</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="operators">Operators</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-assignments">1. Assignments</a></li>
+<li><a href="#2-arithmetic-operators">2. Arithmetic operators</a></li>
+<li><a href="#3-comparison-operators">3. Comparison operators</a></li>
+<ul>
+  <li><a href="#31-comparison-operators-on-primitive-types">3.1. Comparison operators on primitive types</a></li>
+  <li><a href="#32-comparison-operators-on-objects">3.2. Comparison operators on objects</a></li>
+</ul>
+<li><a href="#4-boolean-operators">4. Boolean Operators</a></li>
+<li><a href="#5-bitwise-operators">5. Bitwise Operators</a></li>
+<li><a href="#6-string-operators">6. String Operators</a></li>
+<li><a href="#7-number-range-operators">7. Number Range operators</a></li>
+<li><a href="#8-collection-operators">8. Collection Operators</a></li>
+<li><a href="#9-other-operators">9. Other operators</a></li>
+<li><a href="#10-operator-precedence">10. Operator Precedence</a></li>
+<li><a href="#11-operator-overloading">11. Operator Overloading</a></li>
+<li><a href="#12-references">12. References</a></li>
+<li><a href="#13-version-specification">13. Version Specification</a></li>
+<li><a href="#14-legal-notice">14. Legal Notice</a></li>
+
+</ul>
+
+<p>SARL supports a collection of operators. Most of them are infix operators, and several are postfix operators.</p>
+
+<h2 id="1-assignments">1. Assignments</h2>
+
+<p>The assignment operators are listed below. Local variables and fields can be assigned using the <code>=</code> operator.
+Compound assignment operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, and <code>%=</code>) can be used as a shorthand for the assignment
+of a binary expression. They work automatically when the corresponding infix operator is declared.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a = b</td>
+      <td>Set the variable a with the value of b.</td>
+    </tr>
+    <tr>
+      <td>a += b</td>
+      <td>Alias to: <code>a = a + b</code></td>
+    </tr>
+    <tr>
+      <td>a -= b</td>
+      <td>Alias to: <code>a = a - b</code></td>
+    </tr>
+    <tr>
+      <td>a *= b</td>
+      <td>Alias to: <code>a = a * b</code></td>
+    </tr>
+    <tr>
+      <td>a /= b</td>
+      <td>Alias to: <code>a = a / b</code></td>
+    </tr>
+    <tr>
+      <td>a %= b</td>
+      <td>Alias to: <code>a = a % b</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="label label-info">Note</span> The assignment operator is the only one operator that cannot be overridden yet. See the <a href="#operator-overloading">operator overloading section</a> for details.</p>
+
+<h2 id="2-arithmetic-operators">2. Arithmetic operators</h2>
+
+<p>The arithmetic operators are listed below and take numbers as operands. 
+There are either unary (one operand) or binary (two operands).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a + b</td>
+      <td>operator_plus</td>
+      <td>Add a and b.</td>
+    </tr>
+    <tr>
+      <td>a - b</td>
+      <td>operator_minus</td>
+      <td>Subtract b to a. Binary operator.</td>
+    </tr>
+    <tr>
+      <td>a * b</td>
+      <td>operator_multiply</td>
+      <td>Multiply a by b.</td>
+    </tr>
+    <tr>
+      <td>a / b</td>
+      <td>operator_divide</td>
+      <td>Divide a by b.</td>
+    </tr>
+    <tr>
+      <td>a % b</td>
+      <td>operator_modulo</td>
+      <td>Modulo of the division of a by b.</td>
+    </tr>
+    <tr>
+      <td>a ** b</td>
+      <td>operator_power</td>
+      <td>Compute the power b of a.</td>
+    </tr>
+    <tr>
+      <td>- a</td>
+      <td>operator_minus</td>
+      <td>Negate the value of a. Unary operator.</td>
+    </tr>
+    <tr>
+      <td>a ++</td>
+      <td>operator_plusPlus</td>
+      <td>Increment a by 1, reply the value before the incrementation.</td>
+    </tr>
+    <tr>
+      <td>a –</td>
+      <td>operator_moinsMoins</td>
+      <td>Decrement a by 1, reply the value before the decrementation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<h2 id="3-comparison-operators">3. Comparison operators</h2>
+
+<h3 id="31-comparison-operators-on-primitive-types">3.1. Comparison operators on primitive types</h3>
+
+<p>The comparison operators on primitive types are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a == b</td>
+      <td>operator_equals</td>
+      <td>Test if a and b are equal.</td>
+    </tr>
+    <tr>
+      <td>a != b</td>
+      <td>operator_notEquals</td>
+      <td>Test if a and b are not equal.</td>
+    </tr>
+    <tr>
+      <td>a === b</td>
+      <td>operator_tripleEquals</td>
+      <td>Test if a and b are equal.</td>
+    </tr>
+    <tr>
+      <td>a !== b</td>
+      <td>operator_tripleNotEquals</td>
+      <td>Test if a and b are not equal.</td>
+    </tr>
+    <tr>
+      <td>a &lt; b</td>
+      <td>operator_lessThan</td>
+      <td>Test if a is lower than b (a, b cannot be boolean).</td>
+    </tr>
+    <tr>
+      <td>a &gt; b</td>
+      <td>operator_greaterThan</td>
+      <td>Test if a is greater than b (a, b cannot be boolean).</td>
+    </tr>
+    <tr>
+      <td>a &lt;= b</td>
+      <td>operator_lessEqualsThan</td>
+      <td>Test if a is lower than or equal to b (a, b cannot be boolean).</td>
+    </tr>
+    <tr>
+      <td>a &gt;= b</td>
+      <td>operator_greaterEqualsThan</td>
+      <td>Test if a is greater than or equal to b (a, b cannot be boolean).</td>
+    </tr>
+    <tr>
+      <td>a &lt;=&gt; b</td>
+      <td>operator_spaceship</td>
+      <td>Replies a negative value if a &lt; b, a positive value if a &gt; b, otherwise 0.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+operator overloading section](#operator-overloading).</p>
+
+<h3 id="32-comparison-operators-on-objects">3.2. Comparison operators on objects</h3>
+
+<p>The comparison operators on objects are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a == b</td>
+      <td>operator_equals</td>
+      <td>Test if a and b are equal.</td>
+    </tr>
+    <tr>
+      <td>a != b</td>
+      <td>operator_notEquals</td>
+      <td>Test if a and b are not equal.</td>
+    </tr>
+    <tr>
+      <td>a === b</td>
+      <td>operator_tripleEquals</td>
+      <td>Test if a and b are equal.</td>
+    </tr>
+    <tr>
+      <td>a !== b</td>
+      <td>operator_tripleNotEquals</td>
+      <td>Test if a and b are not equal.</td>
+    </tr>
+    <tr>
+      <td>a &lt; b</td>
+      <td>operator_lessThan</td>
+      <td>Test if a is lower than b (a must be Comparable).</td>
+    </tr>
+    <tr>
+      <td>a &gt; b</td>
+      <td>operator_greaterThan</td>
+      <td>Test if a is greater than b (a must be Comparable).</td>
+    </tr>
+    <tr>
+      <td>a &lt;= b</td>
+      <td>operator_lessEqualsThan</td>
+      <td>Test if a is lower than or equal to b (a must be Comparable).</td>
+    </tr>
+    <tr>
+      <td>a &gt;= b</td>
+      <td>operator_greaterEqualsThan</td>
+      <td>Test if a is greater than or equal to b (a must be Comparable).</td>
+    </tr>
+    <tr>
+      <td>a &lt;=&gt; b</td>
+      <td>operator_spaceship</td>
+      <td>Replies a negative value if a &lt; b, a positive value if a &gt; b, otherwise 0.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the
+operator overloading section](#operator-overloading).</p>
+
+<h2 id="4-boolean-operators">4. Boolean Operators</h2>
+
+<p>The boolean operators are listed below. Each operator takes one or two boolean values as operands, and
+replies the boolean value resulting from the operational semantic of the operator.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a || b</td>
+      <td>operator_or</td>
+      <td>If a then true else b.</td>
+    </tr>
+    <tr>
+      <td>a &amp;&amp; b</td>
+      <td>operator_and</td>
+      <td>If a then b else false.</td>
+    </tr>
+    <tr>
+      <td>! a</td>
+      <td>operator_not</td>
+      <td>If a then false else true.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<h2 id="5-bitwise-operators">5. Bitwise Operators</h2>
+
+<p>The bit operators are listed below. The bit operators apply operations on the bits that represent
+a numeric value.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a &lt;&lt; b</td>
+      <td>operator_doubleLessThan</td>
+      <td>Shift the signed bit representation of a to the left by b units.</td>
+    </tr>
+    <tr>
+      <td>a &gt;&gt; b</td>
+      <td>operator_doubleGreaterThan</td>
+      <td>Shift the signed bit representation of a to the left by b units.</td>
+    </tr>
+    <tr>
+      <td>a &lt;&lt;&lt; b</td>
+      <td>operator_tripleLessThan</td>
+      <td>Not supported.</td>
+    </tr>
+    <tr>
+      <td>a &gt;&gt;&gt; b</td>
+      <td>operator_tripleGreaterThan</td>
+      <td>Shift the unsigned bit representation of a to the left by b units</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<p>Additional bitwise operators are available into the SARL library, but not associated to any operator:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a.bitwiseAnd(b)</td>
+      <td>Do a bit-per-bit AND operation.</td>
+    </tr>
+    <tr>
+      <td>a.bitwiseOr(b)</td>
+      <td>Do a bit-per-bit OR operation.</td>
+    </tr>
+    <tr>
+      <td>a.bitwiseXor(b)</td>
+      <td>Do a bit-per-bit XOR operation.</td>
+    </tr>
+    <tr>
+      <td>a.bitwiseNot</td>
+      <td>Do a bit-per-bit NEGATION operation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="6-string-operators">6. String Operators</h2>
+
+<p>The string operators are listed below. These operators are dedicated to strings of characters.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a + b</td>
+      <td>operator_plus</td>
+      <td>Concatenate the string representations of a and b.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<h2 id="7-number-range-operators">7. Number Range operators</h2>
+
+<p>This section presents a collection of operators that define ranges of values.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a .. b</td>
+      <td>operator_upTo</td>
+      <td>Create a list of integer values from a (inclusive) to b (inclusive). <code>1..5</code> is the range from 1 to 5 with 1 &lt;= x &lt;= 5.  <code>5..1</code> is the range from 5 to 1 with 5 &gt;= x &gt;= 1.  The type of this expression is <code>IntegerRange</code>.</td>
+    </tr>
+    <tr>
+      <td>a &gt;.. b</td>
+      <td>operator_greaterThanDoubleDot</td>
+      <td>Create a list of integer values from a (exclusive) to b (inclusive). <code>5&amp;gt;..1</code> is the range from 4 to 1 with 5 &gt; x &gt;= 1.  <code>1&amp;gt;..5</code> is the empty range since the constraint is wrong 1 &gt; x &gt;= 5.  See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for discussion on the operational semantics of this operator. The type of this expression is <code>ExclusiveRange</code>.</td>
+    </tr>
+    <tr>
+      <td>a ..&lt; b</td>
+      <td>operator_doubleDotLessThan</td>
+      <td>Create a list of integer values from a (inclusive) to b (exclusive). <code>1..&amp;lt;5</code> is the range from 1 to 5 with 1 &lt;= x &lt; 5. <code>5..&amp;lt;1</code> is the empty range since the constraint is wrong 5 &lt;= x &lt; 1. See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443258">Xtext</a> for discussion on the operational semantics of this operator. The type of this expression is <code>ExclusiveRange</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<h2 id="8-collection-operators">8. Collection Operators</h2>
+
+<p>The collection operators are listed below. These operators are dedicated to the collections (lists, sets, maps…)
+Most of the time, the first operand is the collection on which the operator must be applied.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>c += e</td>
+      <td>operator_add</td>
+      <td>Equivalent to: <code>c.add(e)</code></td>
+    </tr>
+    <tr>
+      <td>c -= e</td>
+      <td>operator_remove</td>
+      <td>Equivalent to: <code>c.remove(e)</code></td>
+    </tr>
+    <tr>
+      <td>c1 + c2</td>
+      <td>operator_plus</td>
+      <td>Create a collection that is containing the elements of the collections <code>c1</code> and <code>c2</code>.</td>
+    </tr>
+    <tr>
+      <td>m + p</td>
+      <td>operator_plus</td>
+      <td>Create a map of type <code>Map&lt;A,B&gt;</code> that is containing the elements of the map <code>m</code> and the new pair <code>p</code> of type <code>Pair&lt;A,B&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>m - p</td>
+      <td>operator_moins</td>
+      <td>Create a map of type <code>Map&lt;A,B&gt;</code> that is containing the elements of the map <code>m</code>, except the pair <code>p</code> of type <code>Pair&lt;A,B&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>a -&gt; b</td>
+      <td>operator_mappedTo</td>
+      <td>Create an instance of <code>Pair&lt;A,B&gt;</code> where <code>A</code> and <code>B</code> are the types of a and b respectively.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<h2 id="9-other-operators">9. Other operators</h2>
+
+<p>This section presents a collection of operators that are not related to the categories in the previous sections.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Function Name</th>
+      <th>Operator Semantic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a ?: b</td>
+      <td>operator_elvis</td>
+      <td>If a is not null then a else b.</td>
+    </tr>
+    <tr>
+      <td>a =&gt; b</td>
+      <td>operator_doubleArrow</td>
+      <td>Used as a  ‘with’- or ‘let’-operation. It allows you to bind an object to a local scope in order to do something on it. b must be a lambda expression.</td>
+    </tr>
+    <tr>
+      <td>a &lt;&gt; b</td>
+      <td>operator_diamond</td>
+      <td>Not yet supported.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each operator has an associated function name. This function contains
+the concrete implementation of the operational semantic of the
+operator. This function can be redefined as explained in the 
+<a href="#operator-overloading">operator overloading section</a>.</p>
+
+<p>For an example of the <code>=&amp;gt;</code> operator, consider the class <code>Person</code> with two attributes inside: <code>firstName</code> and <code>lastName</code>.
+The creation of an instance of <code>Person</code> could be done with:</p>
+
+<pre><code class="language-sarl">new Person =&gt; [
+	firstName = 'Han';
+	lastName = 'Solo'
+]
+</code></pre>
+
+<p><span class="label label-info">Note</span> Note how the <code>;</code> allows two expressions on one line.</p>
+
+<p>In this example, the instance of Person is created and passed to the
+lambda expression. Inside this expression, the new Person instance is accessible with the <code>it</code>
+reserved pseudo-variable, which does not need to be typed out since it is the default object in
+lambda expression. The lambda expression replies the value of <code>it</code>.</p>
+
+<h2 id="10-operator-precedence">10. Operator Precedence</h2>
+
+<p>The following table lists the precedence and associativity of SARL operators. Operators are listed top to bottom,
+in ascending precedence, i.e. from the lower priority to the higher priority.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operators</th>
+      <th>Associativity</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>=</td>
+      <td>right to left</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>left to right</td>
+    </tr>
+    <tr>
+      <td>&amp;&amp;</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>==, !=, ===, !==</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>&gt;=, &lt;=, &lt;, &gt;</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>instanceof</td>
+      <td>not associative</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>&lt;=&gt;, &lt;&gt;, .., &gt;.., ..&lt;, -&gt;, =&gt;, ?:, », «, »&gt;, «&lt;</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+, -</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>*, /, %</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>as</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>**</td>
+      <td>left to right</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>!, - (unary), + (unrary)</td>
+      <td>right to left</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++, –</td>
+      <td>not associative</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>feature, literal, closure, structure expressions</td>
+      <td>not associative</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When parsing an expression, an operator which is listed on some row of the table above with a precedence will
+be bound tighter (as if by parentheses) to its arguments than any operator that is listed on a row further 
+above it with a lower precedence.</p>
+
+<p>For example, the expressions <code>c &lt;&lt; a == b</code> and <code>-p++</code> are parsed as <code>(c &lt;&lt; a) == b</code> and <code>-(p++)</code>, and not as
+<code>c &lt;&lt; (a == b)</code> or <code>(-p)++</code>.</p>
+
+<p>Operators that have the same precedence are bound to their arguments in the direction of their associativity.
+For example, the expression <code>a = b = c</code> is parsed as <code>a = (b = c)</code>, and not as <code>(a = b) = c</code> because of
+right-to-left associativity of assignment, but <code>a + b - c</code> is parsed <code>(a + b) - c</code> and not <code>a + (b - c)</code>
+because of left-to-right associativity of addition and subtraction.
+Associativity specification is redundant for unary operators and is only shown for completeness:
+unary postfix operators always associate left-to-right.
+Note that the associativity is meaningful for member access operators, even though they are grouped with
+unary postfix operators: <code>a.b++</code> is parsed <code>(a.b)++</code> and not <code>a.(b++)</code>.
+Operator precedence is unaffected by operator overloading.</p>
+
+<p>Another example of operator precedence could be related to the <a href="./Extension.html">extension method</a> and the
+expression <code>-125.abs</code>.
+This expression means that the function <code>abs</code> is invoked with the value that is
+mentioned before the dot character as first argument.
+According to the precedence table above, this expression must be interpreted as <code>-abs(125</code>.
+Indeed, the feature call to the function <code>abs</code> has a higher precedence than the minus
+unary operator.</p>
+
+<h2 id="11-operator-overloading">11. Operator Overloading</h2>
+
+<p>In SARL, it is easy to overload or re-define an existing operator.</p>
+
+<p>You should define the operator mapping function (see the previous sections for a comprehensive list of them).</p>
+
+<p>The following example, the addition operator [:plusop] for two <code>Pair</code> objects is defined.
+The function that is defining the operator must be named with the <code>operator_</code> prefix, and have one parameter
+for each operand associated with the operator. In the example, the addition of two pairs <code>1 -&gt; 3</code> and <code>4 -&gt; 5</code>.
+gives the pair (a,d).</p>
+
+<pre><code class="language-sarl">def operator_plus(
+			a : Pair&lt;Integer,Integer&gt;,
+			b : Pair&lt;Integer,Integer&gt;) : Pair&lt;Integer,Integer&gt; {
+	return new Pair(a.key, b.value)
+}
+def example {
+	var x = 1 -&gt; 3
+	var y = 4 -&gt; 5
+	
+	// Old-fashion-style call to the overloaded operator
+	var z1 = operator_plus(x, y)
+	
+	// Operator-style call to the overloaded operator
+	var z2 = x + y 
+	
+	// z1 == (1 -&gt; 5)
+	println(z1.toString)
+	
+	// z2 == (1 -&gt; 5)
+	println(z2.toString)
+}
+</code></pre>
+
+<p>In addition to the overloading of the operators that are described on this page, it 
+is possible to overload the casting operator. See <a href="./Cast.html">details</a>.</p>
+
+<h2 id="12-references">12. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="13-version-specification">13. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="14-legal-notice">14. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>SarlClassPathDetector</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/apputils/uiextensions/classpath/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/apputils/uiextensions/classpath/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/JavaClasspathParser.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlDefaultClassPathProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/apputils/uiextensions/classpath/package-summary.html" class="doclet-header-packagename">io.sarl.apputils.uiextensions.classpath</a>
+   </div>
+   <div class="doclet-header-typename">Class SarlClassPathDetector</div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html" class="doclet-inheritancetree-type">SarlClassPathDetector</a></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-superinterfacelist">
+     <dt class="doclet-superinterfacelist">All Superinterfaces:</dt>
+     <dd class="doclet-superinterfacelist">
+      <span class="doclet-superinterfacelist">org.eclipse.core.resources.IResourceProxyVisitor</span>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     class <span class="doclet-typesignature-typename">SarlClassPathDetector</span>
+     <br>
+     extends <span class="doclet-typesignature">java.lang.Object</span>
+     <br>
+     implements <span class="doclet-typesignature">org.eclipse.core.resources.IResourceProxyVisitor</span>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">
+      Detect the classpath entries according to the Java and SARL conventions.
+      <p></p>
+      Class mostly inspired from JDT. See ClassPathDetector. Unfortunately, the ClassPathDetector class cannot be overridden because most of its logic is defined in protected methods.
+     </div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">Maven Group Identifier:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.apputils</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">Maven Artifact Identifier:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">uiextensions</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">Since:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.15</span>
+     </dd>
+     <dt class="doclet-typetaginfo">See:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">ClassPathDetector </span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="properties.summary.box">
+    <div class="doclet-summarybox-title">Property Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3430 active" onclick="openTabElement(this,'ID8491', 'doclet-tabs-button-instance-3430', 'doclet-tabs-content-instance-3430')">Properties</button>
+    </div>
+    <div id="ID8491" class="doclet-tabs-content doclet-tabs-content-instance-3430 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Property and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.jdt.core.IClasspathEntry</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getClasspath()">classpath</a></span>
+         <br>
+         Replies the detected classpath.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Comparator</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getCPEntryComparator()">cPEntryComparator</a></span>
+         <br>
+         Replies the comparator of classpath entries.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getOutputLocation()">outputLocation</a></span>
+         <br>
+         Replies the detected output location.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">Constructor Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3433 active" onclick="openTabElement(this,'ID8498', 'doclet-tabs-button-instance-3433', 'doclet-tabs-content-instance-3433')">Constructors</button>
+    </div>
+    <div id="ID8498" class="doclet-tabs-content doclet-tabs-content-instance-3433 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#&lt;init&gt;(org.eclipse.core.resources.IProject,io.sarl.apputils.uiextensions.classpath.SarlDefaultClassPathProvider,org.eclipse.core.runtime.IProgressMonitor)">new(IProject,SarlDefaultClassPathProvider,IProgressMonitor)</a></span>
+         <br>
+         Constructor.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">Action Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3434 active" onclick="openTabElement(this,'ID8499', 'doclet-tabs-button-instance-3434', 'doclet-tabs-content-instance-3434')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3434" onclick="openTabElement(this,'ID8500', 'doclet-tabs-button-instance-3434', 'doclet-tabs-content-instance-3434')">Static actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3434" onclick="openTabElement(this,'ID8502', 'doclet-tabs-button-instance-3434', 'doclet-tabs-content-instance-3434')">Instance actions</button>
+    </div>
+    <div id="ID8499" class="doclet-tabs-content doclet-tabs-content-instance-3434 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#addToMap(java.util.Map&lt;org.eclipse.core.runtime.IPath,java.util.List&lt;org.eclipse.core.runtime.IPath&gt;&gt;,org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">addToMap(Map&lt;K,V&gt;,IPath,IPath)</a></span>
+         <br>
+         Utility function for updating the given map.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectClasspath()">detectClasspath</a></span>
+         <br>
+         Detect the classpath components.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectLibraries(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;,org.eclipse.core.runtime.IPath)">detectLibraries(List&lt;E&gt;,IPath)</a></span>
+         <br>
+         Detect the libraries.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectOutputFolder()">detectOutputFolder</a></span>
+         <br>
+         Detect the output folder for binary files.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectSourceFolders(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;)">detectSourceFolders(List&lt;E&gt;)</a></span>
+         <br>
+         Detect the source folders according to the Java and SARL conventions.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#findInSourceFolders(org.eclipse.core.runtime.IPath)">findInSourceFolders(IPath)</a></span>
+         <br>
+         Retrieve the source folder for the given path.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.jdt.core.IClasspathEntry</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getClasspath()">getClasspath</a></span>
+         <br>
+         Replies the detected classpath.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Comparator</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getCPEntryComparator()">getCPEntryComparator</a></span>
+         <br>
+         Replies the comparator of classpath entries.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getFolderPath(org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">getFolderPath(IPath,IPath)</a></span>
+         <br>
+         Replies the folder path.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getOutputLocation()">getOutputLocation</a></span>
+         <br>
+         Replies the detected output location.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#isValidJavaCUName(java.lang.String)">isValidJavaCUName(String)</a></span>
+         <br>
+         Replies if the given name is valid for a Java compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#isValidSarlCUName(java.lang.String)">isValidSarlCUName(String)</a></span>
+         <br>
+         Replies if the given name is valid for a SARL compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visit(org.eclipse.core.resources.IResourceProxy)">visit(IResourceProxy)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visitJavaCompilationUnit(org.eclipse.core.resources.IFile)">visitJavaCompilationUnit(IFile)</a></span>
+         <br>
+         Visit the given Java compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visitSarlCompilationUnit(org.eclipse.core.resources.IFile)">visitSarlCompilationUnit(IFile)</a></span>
+         <br>
+         Visit the given SARL compilation unit.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID8500" class="doclet-tabs-content doclet-tabs-content-instance-3434 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#addToMap(java.util.Map&lt;org.eclipse.core.runtime.IPath,java.util.List&lt;org.eclipse.core.runtime.IPath&gt;&gt;,org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">addToMap(Map&lt;K,V&gt;,IPath,IPath)</a></span>
+         <br>
+         Utility function for updating the given map.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected static&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getFolderPath(org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">getFolderPath(IPath,IPath)</a></span>
+         <br>
+         Replies the folder path.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID8502" class="doclet-tabs-content doclet-tabs-content-instance-3434 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectClasspath()">detectClasspath</a></span>
+         <br>
+         Detect the classpath components.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectLibraries(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;,org.eclipse.core.runtime.IPath)">detectLibraries(List&lt;E&gt;,IPath)</a></span>
+         <br>
+         Detect the libraries.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectOutputFolder()">detectOutputFolder</a></span>
+         <br>
+         Detect the output folder for binary files.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#detectSourceFolders(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;)">detectSourceFolders(List&lt;E&gt;)</a></span>
+         <br>
+         Detect the source folders according to the Java and SARL conventions.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#findInSourceFolders(org.eclipse.core.runtime.IPath)">findInSourceFolders(IPath)</a></span>
+         <br>
+         Retrieve the source folder for the given path.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.jdt.core.IClasspathEntry</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getClasspath()">getClasspath</a></span>
+         <br>
+         Replies the detected classpath.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>java.util.Comparator</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getCPEntryComparator()">getCPEntryComparator</a></span>
+         <br>
+         Replies the comparator of classpath entries.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span>org.eclipse.core.runtime.IPath</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getOutputLocation()">getOutputLocation</a></span>
+         <br>
+         Replies the detected output location.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#isValidJavaCUName(java.lang.String)">isValidJavaCUName(String)</a></span>
+         <br>
+         Replies if the given name is valid for a Java compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#isValidSarlCUName(java.lang.String)">isValidSarlCUName(String)</a></span>
+         <br>
+         Replies if the given name is valid for a SARL compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">boolean</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visit(org.eclipse.core.resources.IResourceProxy)">visit(IResourceProxy)</a></span></td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visitJavaCompilationUnit(org.eclipse.core.resources.IFile)">visitJavaCompilationUnit(IFile)</a></span>
+         <br>
+         Visit the given Java compilation unit.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#visitSarlCompilationUnit(org.eclipse.core.resources.IFile)">visitSarlCompilationUnit(IFile)</a></span>
+         <br>
+         Visit the given SARL compilation unit.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="properties.details.box">
+    <div class="doclet-detailbox-title">Property Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox">classpath</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> classpath : <span>org.eclipse.jdt.core.IClasspathEntry</span></pre>
+      <div>Replies the detected classpath.</div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getClasspath()">getClasspath</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the classpath.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox">cPEntryComparator</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> cPEntryComparator : <span>java.util.Comparator</span>&lt;T&gt;</pre>
+      <div>Replies the comparator of classpath entries.</div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getCPEntryComparator()">getCPEntryComparator</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comparator</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox">outputLocation</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">val</span> outputLocation : <span>org.eclipse.core.runtime.IPath</span></pre>
+      <div>Replies the detected output location.</div>
+      <p>This property is an alias for the action: <a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlClassPathDetector.html#getOutputLocation()">getOutputLocation</a></p>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the output location.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">Constructor Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="&lt;init&gt;(org.eclipse.core.resources.IProject,io.sarl.apputils.uiextensions.classpath.SarlDefaultClassPathProvider,org.eclipse.core.runtime.IProgressMonitor)">new(IProject,SarlDefaultClassPathProvider,IProgressMonitor)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span>(IProject,SarlDefaultClassPathProvider,IProgressMonitor)<p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
+      <div>Constructor.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        project - <span class="doclet-tags-param-comment">the project to scan.</span>
+        <br>
+        monitor - <span class="doclet-tags-param-comment">the progress monitor.</span>
+        <br>
+        defaultCPProvider - <span class="doclet-tags-param-comment">the provider of default classpath.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Throws exception:</dt>
+       <dd class="doclet-detailbox-tag">
+        <ul class="doclet-tags-throws-comment">
+         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">if is it impossible to scan the project.</span></li>
+        </ul>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">Action Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="addToMap(java.util.Map&lt;org.eclipse.core.runtime.IPath,java.util.List&lt;org.eclipse.core.runtime.IPath&gt;&gt;,org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">addToMap(Map&lt;K,V&gt;,IPath,IPath)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> addToMap(Map&lt;K,V&gt;,IPath,IPath)</pre>
+      <div>Utility function for updating the given map.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        map - <span class="doclet-tags-param-comment">the map to update.</span>
+        <br>
+        folderPath - <span class="doclet-tags-param-comment">the folder patth.</span>
+        <br>
+        relPath - <span class="doclet-tags-param-comment">the sub path.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="detectClasspath()">detectClasspath</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> detectClasspath<p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
+      <div>Detect the classpath components.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Throws exception:</dt>
+       <dd class="doclet-detailbox-tag">
+        <ul class="doclet-tags-throws-comment">
+         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">in case of any failure.</span></li>
+         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.OperationCanceledException</span></span>: <span class="doclet-tags-throws-comment">a runtime exception</span></li>
+        </ul>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="detectLibraries(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;,org.eclipse.core.runtime.IPath)">detectLibraries(List&lt;E&gt;,IPath)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> detectLibraries(List&lt;E&gt;,IPath)</pre>
+      <div>Detect the libraries.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        cpEntries - <span class="doclet-tags-param-comment">the classpath entries to be updated with libraries.</span>
+        <br>
+        outputLocation - <span class="doclet-tags-param-comment">the detected output location.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="detectOutputFolder()">detectOutputFolder</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> detectOutputFolder : <span>org.eclipse.core.runtime.IPath</span><p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
+      <div>Detect the output folder for binary files.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the detected output folder.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Throws exception:</dt>
+       <dd class="doclet-detailbox-tag">
+        <ul class="doclet-tags-throws-comment">
+         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">in case of any failure.</span></li>
+        </ul>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="detectSourceFolders(java.util.List&lt;org.eclipse.jdt.core.IClasspathEntry&gt;)">detectSourceFolders(List&lt;E&gt;)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> detectSourceFolders(List&lt;E&gt;)</pre>
+      <div>Detect the source folders according to the Java and SARL conventions.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        resEntries - <span class="doclet-tags-param-comment">the list of entries that should be updated.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="findInSourceFolders(org.eclipse.core.runtime.IPath)">findInSourceFolders(IPath)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> findInSourceFolders(IPath) : <span>org.eclipse.core.runtime.IPath</span></pre>
+      <div>
+       Retrieve the source folder for the given path.
+       <p></p>
+       This function assumes that the list of files in the source folders are known.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        path - <span class="doclet-tags-param-comment">the path to check.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the source folder or  <code class="doclet-tags-return-comment">null</code>  if the path is not inside a source folder.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getClasspath()">getClasspath</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getClasspath : <span>org.eclipse.jdt.core.IClasspathEntry</span></pre>
+      <div>Replies the detected classpath.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the classpath.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getCPEntryComparator()">getCPEntryComparator</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getCPEntryComparator : <span>java.util.Comparator</span>&lt;T&gt;</pre>
+      <div>Replies the comparator of classpath entries.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the comparator</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getFolderPath(org.eclipse.core.runtime.IPath,org.eclipse.core.runtime.IPath)">getFolderPath(IPath,IPath)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getFolderPath(IPath,IPath) : <span>org.eclipse.core.runtime.IPath</span></pre>
+      <div>Replies the folder path.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        packPath - <span class="doclet-tags-param-comment">the path to path.</span>
+        <br>
+        relpath - <span class="doclet-tags-param-comment">the relative path.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the folder path or  <code class="doclet-tags-return-comment">null</code>  if it cannot be computed.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getOutputLocation()">getOutputLocation</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> getOutputLocation : <span>org.eclipse.core.runtime.IPath</span></pre>
+      <div>Replies the detected output location.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the output location.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isValidJavaCUName(java.lang.String)">isValidJavaCUName(String)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isValidJavaCUName(String) : boolean</pre>
+      <div>Replies if the given name is valid for a Java compilation unit.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the name is valid.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="isValidSarlCUName(java.lang.String)">isValidSarlCUName(String)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> isValidSarlCUName(String) : boolean</pre>
+      <div>Replies if the given name is valid for a SARL compilation unit.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        name - <span class="doclet-tags-param-comment">the name to test.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment"><code class="doclet-tags-return-comment">true</code>  if the name is valid.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="visit(org.eclipse.core.resources.IResourceProxy)">visit(IResourceProxy)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">def</span> visit(IResourceProxy) : boolean</pre>
+     </dd>
+     <dt class="doclet-detailbox" id="visitJavaCompilationUnit(org.eclipse.core.resources.IFile)">visitJavaCompilationUnit(IFile)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> visitJavaCompilationUnit(IFile)</pre>
+      <div>Visit the given Java compilation unit.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        jfile - <span class="doclet-tags-param-comment">the compilation unit.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="visitSarlCompilationUnit(org.eclipse.core.resources.IFile)">visitSarlCompilationUnit(IFile)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> visitSarlCompilationUnit(IFile)</pre>
+      <div>Visit the given SARL compilation unit.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        sfile - <span class="doclet-tags-param-comment">the compilation unit.</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/apputils/uiextensions/classpath/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/apputils/uiextensions/classpath/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/JavaClasspathParser.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/uiextensions/classpath/SarlDefaultClassPathProvider.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

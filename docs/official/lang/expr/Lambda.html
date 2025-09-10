@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Lambda Expressions</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="lambda-expressions">Lambda Expressions</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-basic-definition">1. Basic Definition</a></li>
+<li><a href="#2-inferred-parameter-type">2. Inferred Parameter Type</a></li>
+<li><a href="#3-implicit-parameters">3. Implicit Parameters</a></li>
+<ul>
+  <li><a href="#31-case-of-a-single-parameter-it">3.1. Case of a single parameter: it</a></li>
+  <li><a href="#32-case-of-multiple-parameters">3.2. Case of multiple parameters</a></li>
+</ul>
+<li><a href="#4-empty-list-of-parameters">4. Empty List of Parameters</a></li>
+<li><a href="#5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</a></li>
+<li><a href="#6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</a></li>
+<li><a href="#7-type-of-a-lambda-expression">7. Type of a Lambda Expression</a></li>
+<ul>
+  <li><a href="#71-pure-sarl-notation">7.1. Pure SARL Notation</a></li>
+  <li><a href="#72-java-like-notation">7.2. Java-like Notation</a></li>
+</ul>
+<li><a href="#8-references">8. References</a></li>
+<li><a href="#9-version-specification">9. Version Specification</a></li>
+<li><a href="#10-legal-notice">10. Legal Notice</a></li>
+
+</ul>
+
+<p>A lambda expression is basically a piece of code, which is wrapped 
+in an object to pass it around. As a Java developer it is best to 
+think of a lambda expression as an anonymous class with a single 
+method.</p>
+
+<h2 id="1-basic-definition">1. Basic Definition</h2>
+
+<p>A lambda expression is code surrounded by square brackets (inspired from Smalltalk).
+Like a method declaration, a lambda expression may declare parameters.</p>
+
+<pre><code class="language-sarl">[ e : ActionEvent |
+	textField.text = "Something happened!" + e.toString
+]
+</code></pre>
+
+<p>The lambda above has one parameter called <code>e</code> which is of type <code>ActionEvent</code>.
+The code after the <code>|</code> operator is the internal code of the lambda expression.</p>
+
+<h2 id="2-inferred-parameter-type">2. Inferred Parameter Type</h2>
+
+<p>You do not have to specify the type explicitly because it can be inferred from the context.
+For example, when using inferred type, the code in the previous section becomes:</p>
+
+<pre><code class="language-sarl">[ e |
+	textField.text = "Something happened!" + e.toString
+]
+</code></pre>
+
+<p>The type of <code>e</code> is inferred according to its usage.</p>
+
+<h2 id="3-implicit-parameters">3. Implicit Parameters</h2>
+
+<h3 id="31-case-of-a-single-parameter-it">3.1. Case of a single parameter: it</h3>
+
+<p>As lambdas with one parameter are a common case, there  a special short hand notation
+for these parameters, which is to leave the declaration including the vertical bar out.</p>
+
+<p>The name of the single parameter becomes <code>it</code>.</p>
+
+<pre><code class="language-sarl">[
+	textField.text = "Something happened!" + it.toString
+]
+</code></pre>
+
+<h3 id="32-case-of-multiple-parameters">3.2. Case of multiple parameters</h3>
+
+<p>When a lambda has multiple parameters, and no name is provided by the SARL developer, 
+the compiler generates default names for each of the formal parameters.
+The implicit name for the first parameter is <code>$0</code>, <code>$1</code> for the second,
+<code>$2</code> for the third, etc.</p>
+
+<p>Let the following interface declaration:</p>
+
+<pre><code class="language-sarl">interface MyInterface {
+    def myfct(a : int, b : int, c : int)
+}
+</code></pre>
+
+<p>The following code is a lambda expression implementing the <code>MyInterface</code> interface.
+Because the <code>myfct</code> function has four formal parameters, the lambda expression 
+has four parameters with implicit the following implicit names: <code>$0</code>, <code>$1</code>, and <code>$2</code>.</p>
+
+<pre><code class="language-sarl">[
+    [:Success:]
+    package io.sarl.docs.reference.gsr
+    interface MyInterface {
+        def myfct(a : int, b : int, c : int) : int
+    }
+    agent A {
+        def called(p : MyInterface) {}
+        def example {
+            called(
+            [:On]
+            [
+                $0 + $1 + $2
+            ]
+            [:Off])
+        }
+    }
+[:End:] +  + 
+]
+</code></pre>
+
+<h2 id="4-empty-list-of-parameters">4. Empty List of Parameters</h2>
+
+<p>A lambda expression with zero arguments is written with a bar after the opening bracket:</p>
+
+<pre><code class="language-sarl">val runnable : Runnable = [ |
+	println("Hello I'm executed!")
+]
+</code></pre>
+
+<h2 id="5-short-notation-of-a-lambda-expression">5. Short notation of a Lambda Expression</h2>
+
+<p>When the lamda expression is passed to a single-parameter function, the brackets that are enclosing the lambda
+declaration could be missed. It specific syntax is called the short notation of a lambda expression.</p>
+
+<p>Consider the following definition of a function with lambda expression as a single parameter:</p>
+
+<pre><code class="language-sarl">def aFunction(aParameter : (Object) =&gt; Object) {
+}
+</code></pre>
+
+<p>The call to the previously defined function with the short notation is:</p>
+
+<pre><code class="language-sarl">aFunction(a | new Object)
+</code></pre>
+
+<p>This call is equivalent to the following one, with the standard notation:</p>
+
+<pre><code class="language-sarl">aFunction([a | new Object])
+</code></pre>
+
+<p>As for the standard notation, the parameter and the bar could be missed when their is no formal parameter.</p>
+
+<h2 id="6-lambda-as-the-last-parameter-of-a-method">6. Lambda as the Last Parameter of a Method</h2>
+
+<p>When the last argument of a method call is a lambda, it can be passed right after the argument list.</p>
+
+<p>For instance if you want to sort some strings by their length, you could use either of the following two examples.
+The first example uses the notation with the lambda expression inside the argument list.</p>
+
+<pre><code class="language-sarl">var t : List&lt;String&gt;
+// Lambda expression is written outside the parenthesis
+Collections.sort(t, [ a, b | a.length - b.length ])
+</code></pre>
+
+<p>The second example uses the notation with the lambda expression outside the argument list.</p>
+
+<pre><code class="language-sarl">var t : List&lt;String&gt;
+// Lambda expression is written outside the parenthesis
+Collections.sort(t) [ a, b | a.length - b.length ]
+</code></pre>
+
+<h2 id="7-type-of-a-lambda-expression">7. Type of a Lambda Expression</h2>
+
+<h3 id="71-pure-sarl-notation">7.1. Pure SARL Notation</h3>
+
+<p>Because SARL is a strongly typed programming language, each lambda expression has a type.
+The syntax for specifying the type of a lambda is: <code>(parameter types) =&gt; return type</code></p>
+
+<p>The following example defines a variable <code>f</code>, which is a lambda taking one parameter of <code>String</code>, and
+returning a value of <code>Boolean</code>.</p>
+
+<pre><code class="language-sarl">var f : (String) =&gt; Boolean
+</code></pre>
+
+<p>If the lambda is a procedure, i.e. it has no return type, then the return type to specify must be <code>void</code>.</p>
+
+<h3 id="72-java-like-notation">7.2. Java-like Notation</h3>
+
+<p>The SARL lambda expressions are mapped to the Java types defined in <code>Functions</code> or <code>Procedures</code>.</p>
+
+<p>These two Java interfaces contains the definitions of inner interfaces for function/procedure with
+different numbers of parameters.</p>
+
+<p>For example, the SARL erasure <code>(String) =&gt; Boolean</code> may be written with the Java notation:</p>
+
+<pre><code class="language-sarl">// Same type of function.
+var f2 : Functions.Function1&lt;? super String,? extends Boolean&gt;
+</code></pre>
+
+<p>The <code>Function1</code> interface represents a function with a single formal parameter (with the type equals to the first generic parameter),
+and returning a value of type equals to the second generic parameter.
+Depending of the number of parameters, you may use <code>Function0</code> to <code>Function5</code>, or <code>Procedure0</code> to <code>Procedure6</code>.</p>
+
+<h2 id="8-references">8. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="9-version-specification">9. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="10-legal-notice">10. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

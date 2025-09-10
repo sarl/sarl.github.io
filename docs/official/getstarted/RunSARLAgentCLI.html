@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Run SARL Agent from the Command Line</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../library/index.html">Library</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="run-sarl-agent-from-the-command-line">Run SARL Agent from the Command Line</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-use-the-janus-command-line-tool">1. Use the Janus command-line tool</a></li>
+<ul>
+  <li><a href="#11-download-the-janus-command-line-tool">1.1. Download the janus command-line tool</a></li>
+  <li><a href="#12-launching-the-agent">1.2. Launching the agent</a></li>
+</ul>
+<li><a href="#2-use-the-standard-java-method">2. Use the standard java method</a></li>
+<ul>
+  <li><a href="#21-boot-of-janus">2.1. Boot of Janus</a></li>
+  <li><a href="#22-specify-the-agent-to-launch">2.2. Specify the Agent to Launch</a></li>
+  <li><a href="#23-what-is-app-jar">2.3. What is app.jar?</a></li>
+  <li><a href="#24-splitting-app-jar-in-separated-jar-files-by-hand">2.4. Splitting app.jar in separated jar files by hand</a></li>
+  <li><a href="#25-creating-app-jar-with-maven-assembly-plugin">2.5. Creating app.jar with maven-assembly-plugin</a></li>
+  <li><a href="#26-janus-command-line-options">2.6. Janus Command Line Options</a></li>
+</ul>
+<li><a href="#3-use-maven-execution-plugin">3. Use Maven Execution Plugin</a></li>
+<ul>
+  <li><a href="#31-boot-of-janus">3.1. Boot of Janus</a></li>
+  <li><a href="#32-specify-the-agent-to-launch">3.2. Specify the Agent to Launch</a></li>
+  <li><a href="#33-janus-command-line-options">3.3. Janus Command Line Options</a></li>
+</ul>
+<li><a href="#4-what-s-next">4. What's next?</a></li>
+<li><a href="#5-version-specification">5. Version Specification</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
+
+</ul>
+
+<p>For running an agent, you must launch this agent on the runtime environment.
+This document explains how to launch an agent on the
+<a href="http://www.sarl.io/runtime/janus/">Janus platform</a> from the command line.</p>
+
+<p>Three methods could be used for launching an agent with Janus:</p>
+
+<ul>
+  <li><a href="#1-use-the-janus-command-line-tool">Using the provided janus command-line tool</a>;</li>
+  <li><a href="#2-use-the-standard-java-method">Using the standard java method</a>;</li>
+  <li><a href="#3-use-maven-execution-plugin">Using Maven execution plugin</a>.</li>
+</ul>
+
+<h2 id="1-use-the-janus-command-line-tool">1. Use the Janus command-line tool</h2>
+
+<p>The SARL project provides a <a href="../tools/Janus.html">command-line tool for launching agents</a> on the Janus runtime environment.</p>
+
+<h3 id="11-download-the-janus-command-line-tool">1.1. Download the janus command-line tool</h3>
+
+<p>You could download this command line tool, named “janus” on the <a href="http://www.sarl.io/download/index.html">downloading page of SARL</a>.</p>
+
+<h3 id="12-launching-the-agent">1.2. Launching the agent</h3>
+
+<p>For launching an agent, you must launch the command-line tool with the fully-qualified
+name of the agent as parameter, <code>myapp.MyAgent</code> in the following example.</p>
+
+<pre><code class="language-text">janus myapp.MyAgent
+</code></pre>
+
+<p>The janus command-line tool provides options that will enable you to tune the launching configuration:</p>
+
+<pre><code class="language-text">janus --help
+</code></pre>
+
+<p>One of the command-line options that is usually mandatory is the –jar option, which enables you to specify the jar files that contains your application:</p>
+
+<pre><code class="language-text">janus --jar path/to/app.jar myapp.MyAgent
+</code></pre>
+
+<p>If the <code>janus</code> script indicates to you an error “agent not found”, most of the time it is because your application’s jar file is not on the class path.
+The –jar option becomes mandatory for specifying the jar file.</p>
+
+<p><span class="label label-danger">Very Important Note</span> The Janus command-line tool adds automatically the Jar files of the SRE (i.e., Janus) on the application classpath. It means that you don’t need to add any SRE, including Janus, in the dependencies of your project if you plan to use the Janus command line tool.</p>
+
+<h2 id="2-use-the-standard-java-method">2. Use the standard java method</h2>
+
+<h3 id="21-boot-of-janus">2.1. Boot of Janus</h3>
+
+<p>The Janus platform provides a <code>Boot</code> class. For launching the platform, you must execute this
+boot class in a Java Virtual Machine.</p>
+
+<p>The typical command line is:</p>
+
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.janus.boot.Boot
+</code></pre>
+
+<p>The option <code>-cp</code> specifies the Jar file that contains
+the compiled classes. The given <code>app.jar</code> file is a Jar file that must contain the Janus
+platform, the SARL libraries, and the application classes.
+The creation of this <code>app.jar</code> file is explained in this <a href="../tutorials/runtime/CreateRunnableJar.html">tutorial</a>.
+The last argument is the fully qualified name of the booting class of Janus: <code>io.sarl.sre.janus.boot.Boot</code></p>
+
+<p><span class="label label-danger">Very Important Note</span> With this method, you must add the SRE, e.g., Janus, on the classpath (or in the dependencies) of your project.</p>
+
+<h3 id="22-specify-the-agent-to-launch">2.2. Specify the Agent to Launch</h3>
+
+<p>The example given in the previous section causes an error. Indeed, it is mandatory to
+specify the fully qualified name of the agent to launch:</p>
+
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.janus.boot.Boot myapp.MyAgent
+</code></pre>
+
+<p><span class="label label-danger">Very Important Note</span> The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:  * launch a separate Janus platform instance for each agent, or * launch an agent that is spawning the other agents.</p>
+
+<h3 id="23-what-is-appjar">2.3. What is app.jar?</h3>
+
+<p>In the previous section, we assume that all the application binary files are
+contained into the <code>app.jar</code> file.</p>
+
+<h3 id="24-splitting-appjar-in-separated-jar-files-by-hand">2.4. Splitting app.jar in separated jar files by hand</h3>
+
+<p>You may replace the app.jar in the previous command lines by the classpath
+that is containing all the jar files required for running your application, including
+the Janus jar file(s):</p>
+
+<pre><code class="language-text">java -cp /path/to/myapplication.jar:/path/to/janus.kernel-&lt;version&gt;-with-dependencies.jar io.sarl.sre.janus.boot.Boot myapp.MyAgent
+</code></pre>
+
+<p>The <code>janus.kernel-&lt;version&gt;-with-dependencies.jar</code> file must be dowloaded from the <a href="http://www.sarl.io/runtime/janus/">Janus website</a></p>
+
+<h3 id="25-creating-appjar-with-maven-assembly-plugin">2.5. Creating app.jar with maven-assembly-plugin</h3>
+
+<p>You may also create the app.jar file with Maven by using the assembly plugin for creating a jar file with all the dependencies inside.
+To do so, you have to update the <code>pom.xml</code> file of your project and to define the assembly specification.</p>
+
+<p>The content of the <code>pom.xml</code> must include the assembly plugin definition:</p>
+
+<pre><code class="language-xml">&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+  &lt;version&gt;3.3.0&lt;/version&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;id&gt;make-assembly-with-deps&lt;/id&gt;
+      &lt;phase&gt;package&lt;/phase&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;single&lt;/goal&gt;
+      &lt;/goals&gt;
+      &lt;configuration&gt;
+        &lt;descriptors&gt;
+          &lt;descriptor&gt;with-dependencies.xml&lt;/descriptor&gt;
+        &lt;/descriptors&gt;
+      &lt;/configuration&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;
+</code></pre>
+
+<p>The previous definition mentions the file <code>with-dependencies.xml</code> that contains the assembly specification.
+The content of this file could be:</p>
+
+<pre><code class="language-xml">&lt;assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd"&gt;
+  &lt;id&gt;with-dependencies&lt;/id&gt;
+  &lt;formats&gt;
+    &lt;format&gt;jar&lt;/format&gt;
+  &lt;/formats&gt;
+  &lt;includeBaseDirectory&gt;false&lt;/includeBaseDirectory&gt;
+  &lt;dependencySets&gt;
+    &lt;dependencySet&gt;
+      &lt;unpack&gt;true&lt;/unpack&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependencySet&gt;
+  &lt;/dependencySets&gt;
+  &lt;containerDescriptorHandlers&gt;
+    &lt;!-- Merge service description's files in a proper way --&gt;
+    &lt;containerDescriptorHandler&gt;
+      &lt;handlerName&gt;metaInf-services&lt;/handlerName&gt;
+    &lt;/containerDescriptorHandler&gt;
+  &lt;/containerDescriptorHandlers&gt;
+&lt;/assembly&gt;
+</code></pre>
+
+<p>The tag <code>containerDescriptorHandlers</code> is <strong>very important</strong> to be present into the definition.
+Without this tag, the SARL and Janus services will not be correctly merged into the
+generated Jar file with all the dependencies.</p>
+
+<p><span class="label label-danger">Caution</span> You must use the version 3.3.0 (or higher) of <code>maven-assembly-plugin</code> to have access to the mentioned capability.</p>
+
+<h3 id="26-janus-command-line-options">2.6. Janus Command Line Options</h3>
+
+<p>The Janus platform provides a collection of command line options.
+For obtaining the list of these options, you should type:</p>
+
+<pre><code class="language-text">java -cp app.jar io.sarl.sre.janus.boot.Boot --help
+</code></pre>
+
+<h2 id="3-use-maven-execution-plugin">3. Use Maven Execution Plugin</h2>
+
+<p>Maven provides a plugin for launching an application after automatically building
+the application’s classpath. This plugin may be used for launching an agent.</p>
+
+<h3 id="31-boot-of-janus">3.1. Boot of Janus</h3>
+
+<p>Based on the fact that the Janus platform provides a <code>Boot</code> class for launching itself,
+you may use the Maven execution plugin for classing this booting class.</p>
+
+<p>The typical command line is:</p>
+
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.janus.boot.Boot"
+</code></pre>
+
+<p>The option <code>-Dexec.executable</code> specifies the Java executable.</p>
+
+<p>The option <code>-Dexec.args</code> contains the command line arguments to pass to Java.
+The first argument is the classpath of the project. You must not change <code>%classpath</code> because it will be dynamically
+replaced by the Maven plugin.</p>
+
+<p><span class="label label-danger">Very Important Note</span> With this method, you must add the SRE, e.g., Janus, on the classpath (or in the dependencies) of your project.</p>
+
+<h3 id="32-specify-the-agent-to-launch">3.2. Specify the Agent to Launch</h3>
+
+<p>The example given in the previous section causes an error.
+Indeed, it is mandatory to specify the fully qualified name
+of the agent to launch:</p>
+
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.janus.boot.Boot &lt;qualified_name_of_the_agent&gt;"
+</code></pre>
+
+<p><span class="label label-danger">Very Important Note</span> The Janus platform allows to start only one agent from the command line. If you want to start a collection of agents, you must select one of the following approaches:  * launch a separate Janus platform instance for each agent, or * launch an agent that is spawning the other agents.</p>
+
+<h3 id="33-janus-command-line-options">3.3. Janus Command Line Options</h3>
+
+<p>The Janus platform provides a collection of command line options.
+For obtaining the list of these options, you should type:</p>
+
+<pre><code class="language-text">mvn exec:exec -Dexec.executable=java -Dexec.args="-cp %classpath io.sarl.sre.janus.boot.Boot --help"
+</code></pre>
+
+<h2 id="4-whats-next">4. What’s next?</h2>
+
+<p>In the next section, we will learn how to launch your SARL project from a Java program or a SARL class.</p>
+
+<p><a href="./RunSARLAgentJava.html">Next&gt;</a></p>
+
+<h2 id="5-version-specification">5. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Definition of All the Supported Modifiers</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="definition-of-all-the-supported-modifiers">Definition of All the Supported Modifiers</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-abstract-modifier">1. abstract Modifier</a></li>
+<li><a href="#2-access-modifiers-public-protected-package-private">2. Access Modifiers: public, protected, package, private</a></li>
+<li><a href="#3-dispatch-modifier">3. dispatch Modifier</a></li>
+<li><a href="#4-extension-modifier">4. extension Modifier</a></li>
+<li><a href="#5-final-modifier">5. final Modifier</a></li>
+<li><a href="#6-native-modifier">6. native Modifier</a></li>
+<li><a href="#7-static-modifier">7. static Modifier</a></li>
+<li><a href="#8-strictfp-modifier">8. strictfp Modifier</a></li>
+<li><a href="#9-synchronized-modifier">9. synchronized Modifier</a></li>
+<li><a href="#10-transient-modifier">10. transient Modifier</a></li>
+<li><a href="#11-volatile-modifier">11. volatile Modifier</a></li>
+<li><a href="#12-references">12. References</a></li>
+<li><a href="#13-version-specification">13. Version Specification</a></li>
+<li><a href="#14-legal-notice">14. Legal Notice</a></li>
+
+</ul>
+
+<p>In this section, the semantic of the different modifiers is explained.</p>
+
+<h2 id="1-abstract-modifier">1. abstract Modifier</h2>
+
+<p>An abstract type is a type that is declared <code>abstract</code> (it may or may not include abstract methods).
+Abstract types cannot be instantiated, but they can be derived.</p>
+
+<p>An abstract method is a method that is declared without an implementation 
+(without braces, and followed by a semicolon), like this:</p>
+
+<pre><code class="language-sarl">abstract def moveTo(deltaX : double, deltaY : double)
+</code></pre>
+
+<p>If a type includes abstract methods, then the type itself must be declared abstract, as in:</p>
+
+<pre><code class="language-sarl">abstract class GraphicObject {
+	// declare fields
+	// declare nonabstract methods
+	abstract def draw
+}
+</code></pre>
+
+<p>When an abstract type is derived, the subtype usually provides implementations for all of the
+abstract methods in its parent type. However, if it does not, then the subtype must also be
+declared abstract.</p>
+
+<h2 id="2-access-modifiers-public-protected-package-private">2. Access Modifiers: public, protected, package, private</h2>
+
+<p>Access level modifiers determine whether other types can use a particular field or invoke
+a particular method. There are two levels of access control:</p>
+
+<ul>
+  <li>At the top level in a SARL script.</li>
+  <li>At the member level - inside another type.</li>
+</ul>
+
+<p>A type may be declared with the modifier <code>public</code>, in which case that type is visible to
+all types everywhere. If a type has the modifier <code>package</code>, it is visible only within its own package
+(packages are named groups of related types).</p>
+
+<p>At the member level, you can also use the <code>public</code> modifier or <code>package</code> modifier just as
+with top-level types, and with the same meaning.
+For members, there are two additional access modifiers: <code>private</code> and <code>protected</code>.
+The <code>private</code> modifier specifies that the member can only be accessed in its own type.
+The <code>protected</code> modifier specifies that the member can only be accessed within its own package
+as with <code>package</code>) and, in addition, by a derived type of its type in another package.</p>
+
+<p>The following table shows the access to members permitted by each modifier.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modifier</th>
+      <th>From the type</th>
+      <th>From the package</th>
+      <th>From subtypes</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>public</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code>protected</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>package</code></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>private</code></td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The first column indicates whether the type itself has access to the member defined by the
+access level. As you can see, a type always has access to its own members.
+The second column indicates whether types in the same package as the type (regardless of their parentage)
+have access to the member.
+The third column indicates whether subtypes of the type declared outside this package have access to the member.
+The fourth column indicates whether all types have access to the member.</p>
+
+<p>Examples:</p>
+
+<pre><code class="language-sarl">class C1 {
+   public def pubfct {}
+   protected def protfct {}
+   package def packfct {}
+   private def privfct {}
+
+   def test0 {
+   	pubfct;
+   	protfct;
+   	packfct;
+    privfct;
+   }
+}
+class C2 extends C1 {
+   def test1 {
+   	pubfct;
+   	protfct;
+   	packfct;
+   }
+}
+class C3 {
+   def test3(obj : C1) {
+   	obj.pubfct;
+   	obj.protfct;
+   	obj.packfct;
+   }
+}
+</code></pre>
+
+<h2 id="3-dispatch-modifier">3. dispatch Modifier</h2>
+
+<p>Generally, method resolution and binding is done statically at compile time.
+Method calls are bound based on the static types of arguments.</p>
+
+<p>Sometimes this is not what you want. Especially in the context of extension methods
+you would like to have polymorphic behavior.</p>
+
+<p>The <code>dispatch</code> modifier permits defining a <a href="../expr/FuncDecls.html#dispatch-function">dispatch method</a>.
+For a set of visible dispatch methods in the current type hierarchy with the same name and
+the same number of arguments, the compiler infers a synthetic dispatcher method.
+This dispatcher uses the common super type of all declared arguments.</p>
+
+<pre><code class="language-sarl">dispatch def getType(x : Number) { 
+  "it's a number" 
+}
+ 
+dispatch def getType(x : Integer) { 
+  "it's an int" 
+}
+dispatch def getType(x : String) { 
+  "it's a string" 
+}
+def clientCode {
+	getType(4.5).println
+	getType(4).println
+	getType("a string").println
+}
+</code></pre>
+
+<h2 id="4-extension-modifier">4. extension Modifier</h2>
+
+<p>This modifier enables to mark a field, a formal parameter, or a local variable as
+an <a href="../expr/Extension.html">extension provider</a>.</p>
+
+<p>Extension methods allow adding new methods to existing  types without modifying them. This is really 
+helpful as they can greatly improve the readability. They use a simple syntactic trick: the first parameter of a method
+can either be passed in after opening the parentheses or before the method call. For example, given a method:</p>
+
+<pre><code class="language-sarl">def removeVowels(s : String) { 
+	s.replaceAll("[aeiouAEIOU]", "") 
+}
+</code></pre>
+
+<p>We can call this method either like in Java:</p>
+
+<pre><code class="language-sarl">removeVowels("Hello")
+</code></pre>
+
+<p>or as an extension method of String:</p>
+
+<pre><code class="language-sarl">"Hello".removeVowels
+</code></pre>
+
+<p>By adding the <code>extension</code> keyword to a field, a local variable or a parameter declaration, its
+instance methods become extension methods.</p>
+
+<p>In the following example, three functions are defined for illustrating the three types of
+extension providers.</p>
+
+<pre><code class="language-sarl">class Examples {
+	//
+	// Example of an extension provider on a class field.
+	//
+	extension var list : ArrayList&lt;String&gt; = newArrayList
+	
+	def extensionFieldExample(value : String) : boolean {
+		value.contains // calls this.list.contains(value)
+	}
+	
+	//
+	// Example of an extension provider on a method parameter.
+	//
+	def extensionParameterExample(value : String, extension o : ArrayList&lt;String&gt;) : boolean {
+		value.contains // calls o.contains(value)
+	}
+	
+	//
+	// Example of an extension provider on a local variable.
+	//
+	def extensionLocalVariableExample(value : String) : boolean {
+		extension var o : ArrayList&lt;String&gt; = newArrayList
+		value.contains // calls o.contains(value)
+	}
+}
+</code></pre>
+
+<h2 id="5-final-modifier">5. final Modifier</h2>
+
+<p>The <code>final</code> keyword is used in several different contexts to define an entity which may only be
+assigned once.</p>
+
+<p>Once a final variable has been assigned, it always contains the same value. If a final variable
+holds a reference to an object, then the state of the object may be changed by operations on the
+object, but the variable will always refer to the same object.</p>
+
+<p><span class="label label-danger">Caution</span> The SARL compiler complains if you write the <code>final</code> modifer in conjonction with the <code>var</code> or <code>val</code> modifiers. Indeed, the <code>val</code> modifier defines a final variable; and the <code>var</code> modifier defines a no-final variable.</p>
+
+<p>This applies also to arrays, because arrays are objects; if a final variable holds a reference to
+an array, then the components of the array may be changed by operations on the array, but the variable
+will always refer to the same array.</p>
+
+<p>A final method cannot be overridden or hidden by subclasses. This is used to prevent unexpected
+behavior from a subtype altering a method that may be crucial to the function or consistency of
+the type.</p>
+
+<p>A final type cannot be derived. Doing this can confer security and efficiency benefits, so many
+of the Java standard library classes are final, such as <code>java.lang.System</code> and
+<code>java.lang.String</code>. All methods in a final type are implicitly final.</p>
+
+<pre><code class="language-sarl">class A {
+	//
+	// Final field
+	//
+	val field = 4
+	
+	//
+	// Final method
+	//
+	final def cannotBeOverriden {
+	}
+}
+final class B {
+	// This class cannot be derived
+}
+</code></pre>
+
+<h2 id="6-native-modifier">6. native Modifier</h2>
+
+<p>The <code>native</code> keyword is applied to a method to indicate that the method is implemented in
+native code, i.e. outside SARL and Java, using the Java Native Interface.</p>
+
+<p><span class="label label-info">Note</span> This modifier is provided for enabling agents to access to low-level resources that are not supported by the Java API. You should not use this modifier if you can use a higher-level API in place of.</p>
+
+<pre><code class="language-sarl">class A {
+	native def fct
+}
+</code></pre>
+
+<h2 id="7-static-modifier">7. static Modifier</h2>
+
+<p>The <code>static</code> keyword is used for creating fields and methods that belong to the type, rather than to an
+instance of the type.</p>
+
+<p>Sometimes, you want to have variables that are common to all instances. This is accomplished with
+the <code>static</code> modifier. Fields that have the static modifier in their declaration are called static
+fields (or class variables in object-oriented programming). They are associated with the type,
+rather than with any instance. Every instance of the type shares a static field, which is in one
+fixed location in memory. Any instance can change the value of a static variable, but static variables
+can also be manipulated without creating an instance of the type.</p>
+
+<p><span class="label label-info">Note</span> Constants are usually defined as final static fields.</p>
+
+<p>Static methods, which have the <code>static</code> modifier in their declarations, should be invoked with the
+type name, without the need for creating an instance of the type.</p>
+
+<pre><code class="language-sarl">class A {
+	//
+	// Static field
+	//
+	static var field : int
+	//
+	// Constant
+	//
+	static val constant = 4
+	//
+	// Static method
+	//
+	static def aMethod {
+	}
+}
+</code></pre>
+
+<h2 id="8-strictfp-modifier">8. strictfp Modifier</h2>
+
+<p>The <code>strictfp</code> modifier is a keyword that restricts floating-point calculations to ensure portability.
+The <code>strictfp</code> command was originally introduced into Java with the Java virtual machine (JVM) version 1.2
+and is available for use on all currently updated Java VMs.</p>
+
+<p>The IEEE standard IEEE 754 specifies a standard method for both floating-point calculations and
+storage of floating-point values in either single (32-bit, used in float) or double (64-bit, used in double)
+precision, and, for intermediate calculations, also extended precision formats.</p>
+
+<p>Since JVM 1.2, intermediate computations are not limited to the standard 32 bit and 64 bit precisions.
+On platforms that can handle other representations e.g. 80-bit double extended on x86 or x86-64 platforms,
+those representations can be used, helping to prevent round-off errors and overflows, thereby increasing
+precision.</p>
+
+<p>For some applications, a programmer might need every platform to have precisely the same floating-point
+behavior, even on platforms that could handle greater precision. However, if this level of precision is not
+necessary the VM does not use intermediates by default.</p>
+
+<p>From the VM perspective, turning on this higher precision means the following:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Precision</th>
+      <th>Intermediate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>32 bits</td>
+      <td>64 bits</td>
+    </tr>
+    <tr>
+      <td>64 bits</td>
+      <td>80 bits (if available)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code>strictfp</code> modifier accomplishes this by truncating all intermediate values to IEEE single precision and
+double precision, as occurred in earlier versions of the JVM.</p>
+
+<pre><code class="language-sarl">class A {
+	strictfp def fct { }
+}
+</code></pre>
+
+<h2 id="9-synchronized-modifier">9. synchronized Modifier</h2>
+
+<p>The SARL programming language provides two basic synchronization idioms: synchronized methods and synchronized
+statements.
+The synchronized statements are described in the
+<a href="../expr/Synchronization.html">general reference</a>.
+This section is about synchronized methods.</p>
+
+<p>To make a method synchronized, simply add the <code>synchronized</code> modifier to its declaration (see
+example below).</p>
+
+<p>Synchronized methods enable a simple strategy for preventing thread interference and memory
+consistency errors: if an object is visible to more than one thread, all reads or writes to that
+object’s variables are done through synchronized methods.
+(An important exception: final fields, which cannot be modified after the object is constructed, 
+can be safely read through non-synchronized methods, once the object is constructed)
+This strategy is effective, but can present problems with liveness.</p>
+
+<pre><code class="language-sarl">class SynchronizedCounter {
+	var c = 0
+
+	synchronized def increment {
+		c++
+	}
+
+	synchronized def decrement {
+		c--
+	}
+
+	synchronized def value {
+		return c
+	}
+}
+</code></pre>
+
+<h2 id="10-transient-modifier">10. transient Modifier</h2>
+
+<p>Java and SARL provide a mechanism, called object serialization where an object can be represented as
+a sequence of bytes that includes the object’s data as well as information about the object’s type and
+the types of data stored in the object.</p>
+
+<p>The <code>transient</code> modifier is a keyword used as a field modifier.
+When a field is declared transient, it would not be serialized even if the type to which it belongs
+is serialized.</p>
+
+<pre><code class="language-sarl">class A {
+	transient var field : int = 4
+}
+</code></pre>
+
+<h2 id="11-volatile-modifier">11. volatile Modifier</h2>
+
+<p>While the <code>volatile</code> modifier itself comes from the C programming language, it has a completely
+different meaning in Java, and then in SARL. This may not help in growing an understanding of it, 
+googling for volatile could lead to different results. Let’s take a quick side step and see what
+volatile means in C first.</p>
+
+<p>In the C language the compiler ordinarily assumes that variables cannot change value by themselves.
+While this makes sense as default behavior, sometimes a variable may represent a location that
+can be changed (like a hardware register). Using a volatile variable instructs the compiler
+not to apply these optimizations.</p>
+
+<p>Back to Java and SARL. The meaning of volatile in C would be useless in Java. The JVM uses
+native libraries to interact with the OS and hardware. Further more, it is simply impossible
+to point Java variables to specific addresses, so variables actually won’t change value by themselves.</p>
+
+<p>However, the value of variables on the JVM can be changed by different threads. By default the
+compiler assumes that variables won’t change in other threads. Hence it can apply optimizations such
+as reordering memory operations and caching the variable in a CPU register. Using a volatile variable
+instructs the compiler not to apply these optimizations. This guarantees that a reading thread
+always reads the variable from memory (or from a shared cache), never from a local cache.</p>
+
+<pre><code class="language-sarl">class A {
+	volatile var field : int = 4
+}
+</code></pre>
+
+<h2 id="12-references">12. References</h2>
+
+<p>This documentation is based on documentations from the Xtext and Xtend projects, and from the Java tutorials.
+Thank you to the contributors to these documents.</p>
+
+<ul>
+  <li><a href="https://www.eclipse.org/xtend/documentation.html">Xtend</a></li>
+  <li><a href="https://www.eclipse.org/Xtext/documentation.html">Xtext</a></li>
+  <li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+</ul>
+
+<h2 id="13-version-specification">13. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="14-legal-notice">14. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

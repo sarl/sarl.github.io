@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico">
+
+    <title>Markdown Format for the SARL Reference Documentation</title>
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../download/index.html">Download</a></li>
+        <li><a href="../../../library/index.html">Library</a></li>
+        <li><a href="../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../community/index.html">Community</a></li>
+        <li><a href="../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../about/index.html">About</a></li>
+        <li><a href="../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="markdown-format-for-the-sarl-reference-documentation">Markdown Format for the SARL Reference Documentation</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-link-syntax">1. Link Syntax</a></li>
+<li><a href="#2-extra-macros">2. Extra Macros</a></li>
+<ul>
+  <li><a href="#21-compile-a-sarl-code-with-success">2.1. Compile a SARL code with success</a></li>
+  <li><a href="#22-compile-a-sarl-code-with-expected-errors">2.2. Compile a SARL code with expected errors</a></li>
+  <li><a href="#23-changing-the-visibility-of-the-sarl-code">2.3. Changing the visibility of the SARL code</a></li>
+  <li><a href="#24-configuring-internal-properties">2.4. Configuring Internal Properties</a></li>
+  <li><a href="#25-evaluating-a-sarl-expression">2.5. Evaluating a SARL expression</a></li>
+  <li><a href="#26-capture-sarl-code-into-the-documentation">2.6. Capture SARL code into the documentation</a></li>
+  <li><a href="#27-dynamic-generation-of-the-markdown-text">2.7. Dynamic generation of the Markdown text</a></li>
+  <li><a href="#28-generate-code-from-java-type">2.8. Generate code from Java type</a></li>
+  <li><a href="#29-generating-an-outline">2.9. Generating an Outline</a></li>
+</ul>
+<li><a href="#3-syntax-extensions">3. Syntax Extensions</a></li>
+<ul>
+  <li><a href="#31-changing-the-characters-for-enclosing-the-macro-parameter">3.1. Changing the characters for enclosing the macro parameter</a></li>
+  <li><a href="#32-comments-in-the-file">3.2. Comments in the file</a></li>
+</ul>
+<li><a href="#4-maven-tool-for-generating-the-documentation">4. Maven Tool for Generating the Documentation</a></li>
+<li><a href="#5-version-specification">5. Version Specification</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
+
+</ul>
+
+<p>The SARL documentation is built from a collection of <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> files that may contain
+additional macros in order to validate the content of the documentation.</p>
+
+<p>The Mardown support is extended in order to:</p>
+
+<ol>
+  <li>check if a SARL code is compiling or not;</li>
+  <li>check if SARL expression could be interpreted to a valid value;</li>
+  <li>copy and paste virtually pieces of SARL code into the text;</li>
+  <li>check if the links are pointing to existing local files;</li>
+  <li>check if the reference to the local images are pointing to existing files.</li>
+</ol>
+
+<h2 id="1-link-syntax">1. Link Syntax</h2>
+
+<p>Markdown standard enables to specify hypertext links to resources that are outside the current Markdown document.
+The syntax is:</p>
+
+<pre><code class="language-text">[label](url)
+</code></pre>
+
+<p>If the given URL is a link to a local Markdown resource within the SARL documentation, you have to specify the
+local path (following the URL standard notation), e.g.:</p>
+
+<pre><code class="language-text">[My link 1](./index.md) 
+</code></pre>
+
+<p>The result of the parsing of this link is: <a href="./index.html">My link 1</a>.</p>
+
+<p>It has the same effect to have the file extensions <code>.html</code> or <code>.md</code> for the targeted resource. For example, the previous
+example is equivalent to:</p>
+
+<pre><code class="language-text">[My link 2](./index.html) 
+</code></pre>
+
+<p>The result of the parsing of this link is: <a href="./index.html">My link 2</a>.</p>
+
+<p>Sometimes, it is useful to point an internal section out within the targeted resource. You could use the standard HTML anchor
+notation. The format of the anchor name is the title of the section, in lower case, with all characters that are not
+alphanumeric to be replaced by the <code>-</code> character.</p>
+
+<pre><code class="language-text">[My link 3](./index.md#link-syntax)
+</code></pre>
+
+<p>The result of the parsing of this link is: <a href="./DocumentationContribution.html#link-syntax">My link 3</a>.</p>
+
+<h2 id="2-extra-macros">2. Extra Macros</h2>
+
+<h3 id="21-compile-a-sarl-code-with-success">2.1. Compile a SARL code with success</h3>
+
+<p>For compiling a SARL code, and failing the validation if it cannot be compiled with success, you may use the <code>Success</code> macro:</p>
+
+<pre><code class="language-text">[:Success:]
+	type your SARL code here.
+[:End:]
+</code></pre>
+
+<p>Any piece of text in this macro, i.e. between <code>Success</code> and <code>End</code> is assumed to be a SARL code, except the other macros
+explained in this documentation.</p>
+
+<p>The SARL code inside this macro is not rendered into the final Markdown document.
+If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
+
+<h3 id="22-compile-a-sarl-code-with-expected-errors">2.2. Compile a SARL code with expected errors</h3>
+
+<p>For compiling a SARL code, and failing the validation if it can be compiled with success, you may use the <code>Failure</code> macro:</p>
+
+<pre><code class="language-text">[:Failure:]
+	type your SARL code here.
+[:End:]
+</code></pre>
+
+<p>Any piece of text in this macro, i.e. between <code>Success</code> and <code>End</code>  is assumed to be a SARL code, except the other macros
+explained in this documentation.</p>
+
+<p>The SARL code inside this macro is not rendered into the final Markdown document.
+If you want to render a part of the code, you should use the <code>On</code> macro (see below).</p>
+
+<h3 id="23-changing-the-visibility-of-the-sarl-code">2.3. Changing the visibility of the SARL code</h3>
+
+<p>With two previous macros, i.e. <code>Success</code> and <code>Failure</code>, the SARL code is not put into the final Markdown document by default.
+In order to output a part of the SARL code, you should manually turn on the rendering of the code with the <code>On</code> macro.
+Turning off the visibility flag could be done with the <code>Off</code> macro.</p>
+
+<p>The following example gives you the general syntax of the two macros:</p>
+
+<pre><code class="language-text">[:Success:]
+	this part of the code is invisible
+	[:On]
+	this part of the code is visible
+	[:Off]
+	this part of the code is invisible again 
+[:End:] 
+</code></pre>
+
+<p>You could use <code>OnHtml</code> macro in place of <code>On</code> for forcing the output of the code block with HTML tags.</p>
+
+<h3 id="24-configuring-internal-properties">2.4. Configuring Internal Properties</h3>
+
+<p>With two previous macros, i.e. <code>Success</code> and <code>Failure</code>, it is possible to change the value of internal properties that may influence the outputs of these macros.
+The <code>Configure</code> macro is defined for change the value of a property. It get a parameter that is a name-value pair.</p>
+
+<p>The following example gives you the general syntax of the macro, where <code>propertyName</code> and <code>propertyValue</code> are the name to be changed and the new value:</p>
+
+<pre><code class="language-text">[:Success:]
+	[:Configure](propertyName=propertyValue)
+	this part of the code is invisible
+	[:On]
+	this part of the code is visible
+	[:Off]
+	this part of the code is invisible again 
+[:End:] 
+</code></pre>
+
+<p>The supported properties are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>PropertyName</th>
+      <th>Possible Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>deprecationAsError</code></td>
+      <td><code>true</code> to considered all deprecation issues as an errors; <code>false</code> to ignore all deprecation issues</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="25-evaluating-a-sarl-expression">2.5. Evaluating a SARL expression</h3>
+
+<p>Several validation may need to interpret and evaluate a SARL expression. The <code>Fact</code> macro takes a parameter that is a valid SARL
+expression. This expression is interpreted and the result is evaluated.</p>
+
+<pre><code class="language-text">[:Fact:](expression)
+</code></pre>
+
+<p>The <code>Fact</code> macro is succeeding is the expression is evaluated to:</p>
+
+<ol>
+  <li>a boolean value that is equal to <code>true</code>, or</li>
+  <li>an object instance that is not <code>null</code>.</li>
+</ol>
+
+<h3 id="26-capture-sarl-code-into-the-documentation">2.6. Capture SARL code into the documentation</h3>
+
+<p>Many times, a part of the SARL code is mentionned in the documentation text. In order to have the same value in
+the code itself and in the documentation text, you could use the copying and referencing macros.</p>
+
+<p>For saving a piece of the SARL code, you should use the macro <code>[:id](value)</code>, where
+<code>id</code> is a name that you should give to the saved value (only alphnumerical and dot characters are allowed).
+The <code>value</code> is the text to capture. If the parenthesis characters may cause problem for enclosing the <code>value</code>, you
+could replace them by one of <code>{}</code>, <code>||</code> or <code>$$</code>.</p>
+
+<p>For putting back in the text the captured text, you should use the macro <code>[:id:]</code>, with
+the <code>id</code> is the name of the captured value. This macro put the saved text inside a Markdown code environment.</p>
+
+<p>If the given <code>id</code> is not associated to a captured value, the parser will search for an environment property that has its name
+equals to the <code>id</code>.</p>
+
+<p>If you want to avoid the generation of a Markdown block around the captured text, you should use the syntax:</p>
+
+<pre><code class="language-text">[:my.id.without.code.block!]
+</code></pre>
+
+<p>This protection is implicit in the parameters and the content of the other macros that are described on this page.</p>
+
+<h3 id="27-dynamic-generation-of-the-markdown-text">2.7. Dynamic generation of the Markdown text</h3>
+
+<p>Sometimes, it is useful to create the Markdown text via a script in order to introduce dynamic building of the documentation.
+The following macro provides you the ability to run a SARL script for generating the documentation.</p>
+
+<pre><code class="language-text">[:Dynamic:](expression)
+</code></pre>
+
+<p>The <code>Dynamic</code> macro is supposed to replies a value that could be interpreted as a string of characters.
+The given string of characters will replace the <code>Dynamic</code> macro into the generated Markdown text.</p>
+
+<p>The replied value by <code>Dynamic</code> is assumed to be a valid Markdown text. If this value should
+be automatically formatted within a block of code, you should use the following macro:</p>
+
+<pre><code class="language-text">[:DynamicCode:](expression)
+</code></pre>
+
+<h3 id="28-generate-code-from-java-type">2.8. Generate code from Java type</h3>
+
+<p>You could generate a piece of code from a Java type with the following macro:</p>
+
+<pre><code class="language-text">[:ShowType:](typename)
+</code></pre>
+
+<p>This macro extracts the type definition with the reflection mechanism for the given <code>typename</code>.
+The output of this macro is a formatted SARL code that corresponds to the extracted information.</p>
+
+<h3 id="29-generating-an-outline">2.9. Generating an Outline</h3>
+
+<p>By default, Markdown does not include a specific tag for generating the outline.
+If you put the <code>Outline</code> macro, it will be replaced by a generated outline.</p>
+
+<pre><code class="language-text">[:Outline:]
+</code></pre>
+
+<p>The section headings will be updating with a section number.</p>
+
+<h2 id="3-syntax-extensions">3. Syntax Extensions</h2>
+
+<h3 id="31-changing-the-characters-for-enclosing-the-macro-parameter">3.1. Changing the characters for enclosing the macro parameter</h3>
+
+<p>Several of the macros above take a parameter. Sometimes the characters <code>(</code> and <code>)</code> are not suitable for enclosing a parameter
+value because the <code>)</code> character is inside the value.</p>
+
+<p>In order to enable you to put a special character in a parameter value, you are able to change the characters for enclosing
+the parameter values. The accepted characters are:</p>
+
+<ul>
+  <li><code>( value )</code></li>
+  <li><code>{ value }</code></li>
+  <li><code>| value |</code></li>
+  <li><code>$ value $</code></li>
+</ul>
+
+<h3 id="32-comments-in-the-file">3.2. Comments in the file</h3>
+
+<p>Any text enclosing by <code>&amp;lt;!---</code> and <code>--&amp;gt;</code> is assumed to be a comment that should not appear in the generated files.</p>
+
+<p>Note that the standard HTML comments are still copied into the generated files.</p>
+
+<h2 id="4-maven-tool-for-generating-the-documentation">4. Maven Tool for Generating the Documentation</h2>
+
+<p>The parser that is supporting the macros above is provided in a Maven plugin. You may create a Maven project with the following
+configuration:</p>
+
+<pre><code class="language-xml">&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;io.sarl.docs&lt;/groupId&gt;
+		&lt;artifactId&gt;docs.validator&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+
+&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;io.sarl.docs&lt;/groupId&gt;
+			&lt;artifactId&gt;docs.generator&lt;/artifactId&gt;
+			&lt;extensions&gt;true&lt;/extensions&gt;
+			&lt;executions&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-initialize&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;initialize&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;initialize&lt;/phase&gt;
+				&lt;/execution&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-generate&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;generate&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;compile&lt;/phase&gt;
+				&lt;/execution&gt;
+				&lt;execution&gt;
+					&lt;id&gt;mytests-validate&lt;/id&gt;
+					&lt;goals&gt;
+						&lt;goal&gt;generatetests&lt;/goal&gt;
+					&lt;/goals&gt;
+					&lt;phase&gt;generate-test-sources&lt;/phase&gt;
+				&lt;/execution&gt;
+			&lt;/executions&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>By default, the Markdown code should be in the <code>src/main/documentation</code> folder.
+The other resources, such as images should be in the <code>src/main/resources</code> folder.</p>
+
+<h2 id="5-version-specification">5. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/run_prettify.js"></script>
+	<script src="../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>AbstractJvmModelInferrerTypeFragment</title>
+  <link rel="stylesheet" href="../../../../../css/general.css">
+  <link rel="stylesheet" href="../../../../../css/header.css">
+  <link rel="stylesheet" href="../../../../../css/inheritancetree.css">
+  <link rel="stylesheet" href="../../../../../css/typeinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/moduleinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/packageinfobox.css">
+  <link rel="stylesheet" href="../../../../../css/summarybox.css">
+  <link rel="stylesheet" href="../../../../../css/detailbox.css">
+  <link rel="stylesheet" href="../../../../../css/inline.css">
+  <link rel="stylesheet" href="../../../../../css/tabs.css">
+  <link rel="stylesheet" href="../../../../../css/navigation.css">
+  <link rel="stylesheet" href="../../../../../css/index.css">
+  <script src="../../../../../js/tabs.js"></script>
+ </head>
+ <body>
+  <div class="doclet-header">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/jvmmodel/fragments/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/jvmmodel/fragments/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment/Impl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment/BehaviorUnitDefinitions.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="doclet-content">
+   <div class="doclet-header-packagename">
+    <a href="../../../../../io/sarl/lang/jvmmodel/fragments/package-summary.html" class="doclet-header-packagename">io.sarl.lang.jvmmodel.fragments</a>
+   </div>
+   <div class="doclet-header-typename">Class AbstractJvmModelInferrerTypeFragment</div>
+   <div class="doclet-inheritancetree">
+    <ul class="doclet-inheritancetree-tree">
+     <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
+      <ul class="doclet-inheritancetree-tree">
+       <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html" class="doclet-inheritancetree-type">AbstractJvmModelInferrerFragment</a>
+        <ul class="doclet-inheritancetree-tree">
+         <li class="doclet-inheritancetree-tree"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html" class="doclet-inheritancetree-type">AbstractJvmModelInferrerTypeFragment</a></li>
+        </ul></li>
+      </ul></li>
+    </ul>
+   </div>
+   <div class="doclet-typeinfobox">
+    <dl class="doclet-directsubtypelist">
+     <dt class="doclet-directsubtypelist">All Known Subclasses:</dt>
+     <dd class="doclet-directsubtypelist">
+      <a href="../../../../../io/sarl/lang/jvmmodel/fragments/aop/impl/AgentInferrerFragment.html" class="doclet-directsubtypelist">AgentInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/aop/impl/BehaviorInferrerFragment.html" class="doclet-directsubtypelist">BehaviorInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/aop/impl/CapacityInferrerFragment.html" class="doclet-directsubtypelist">CapacityInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/aop/impl/EventInferrerFragment.html" class="doclet-directsubtypelist">EventInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/aop/impl/SkillInferrerFragment.html" class="doclet-directsubtypelist">SkillInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/oop/impl/AnnotationTypeInferrerFragment.html" class="doclet-directsubtypelist">AnnotationTypeInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/oop/impl/ClassInferrerFragment.html" class="doclet-directsubtypelist">ClassInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/oop/impl/EnumInferrerFragment.html" class="doclet-directsubtypelist">EnumInferrerFragment</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/oop/impl/InterfaceInferrerFragment.html" class="doclet-directsubtypelist">InterfaceInferrerFragment</a>
+     </dd>
+    </dl>
+    <div class="doclet-typesignature">
+     abstract class <span class="doclet-typesignature-typename">AbstractJvmModelInferrerTypeFragment</span>
+     <br>
+     extends <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html" class="doclet-typesignature">AbstractJvmModelInferrerFragment</a>
+    </div>
+    <div class="doclet-typedescription">
+     <div class="doclet-typedescription-main">Abstract implementation of a fragment that may be used for inferring type to JVM model.</div>
+    </div>
+    <dl class="doclet-typetaginfo">
+     <dt class="doclet-typetaginfo">Maven Group Identifier:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.lang</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo">Maven Artifact Identifier:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">compiler</span></span>
+     </dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo"></dt>
+     <dd class="doclet-typetaginfo"></dd>
+     <dt class="doclet-typetaginfo">Since:</dt>
+     <dd class="doclet-typetaginfo">
+      <span class="doclet-tags-see-comment">0.15</span>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-summarybox" id="nested.classes.summary.box">
+    <div class="doclet-summarybox-title">Nested Type Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1200 active" onclick="openTabElement(this,'ID2943', 'doclet-tabs-button-instance-1200', 'doclet-tabs-content-instance-1200')">Nested Types</button>
+    </div>
+    <div id="ID2943" class="doclet-tabs-content doclet-tabs-content-instance-1200 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Type and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment/BehaviorUnitDefinitions.html">AbstractJvmModelInferrerTypeFragment.BehaviorUnitDefinitions</a></span>
+         <br>
+         Informations about the behavior units and the guards.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected record</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><span>AbstractJvmModelInferrerTypeFragment.BehaviorUnitFunction</span></span>
+         <br>
+         Functions about an event for the behavior units.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected class</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment/BehaviorUnitFunctions.html">AbstractJvmModelInferrerTypeFragment.BehaviorUnitFunctions</a></span>
+         <br>
+         Functions about an event for the behavior units.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="fields.summary.box">
+    <div class="doclet-summarybox-title">Field Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1201 active" onclick="openTabElement(this,'ID2944', 'doclet-tabs-button-instance-1201', 'doclet-tabs-content-instance-1201')">All fields</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1201" onclick="openTabElement(this,'ID2946', 'doclet-tabs-button-instance-1201', 'doclet-tabs-content-instance-1201')">Instance fields</button>
+    </div>
+    <div id="ID2944" class="doclet-tabs-content doclet-tabs-content-instance-1201 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected var&nbsp;<span>org.eclipse.xtext.xbase.validation.ReadAndWriteTracking</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#readAndWriteTracking">readAndWriteTracking</a></span>
+         <br>
+         The tracker of the read/write accesses to the fields.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2946" class="doclet-tabs-content doclet-tabs-content-instance-1201 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Field and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected var&nbsp;<span>org.eclipse.xtext.xbase.validation.ReadAndWriteTracking</span></td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#readAndWriteTracking">readAndWriteTracking</a></span>
+         <br>
+         The tracker of the read/write accesses to the fields.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#GENERATED_NAME">GENERATED_NAME</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#RUNNABLE_COLLECTION">RUNNABLE_COLLECTION</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#annotationUtils">annotationUtils</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#associator">associator</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#defaultValueProvider">defaultValueProvider</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#grammarKeywordAccess">grammarKeywordAccess</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#jvmAnnotationFinder">jvmAnnotationFinder</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#jvmTypeBuilder">jvmTypeBuilder</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#jvmTypeReferences">jvmTypeReferences</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#jvmTypesFactory">jvmTypesFactory</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#nameClashResolver">nameClashResolver</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#sarlAssociations">sarlAssociations</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#sarlSignatureProvider">sarlSignatureProvider</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#services">services</a>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="constructors.summary.box">
+    <div class="doclet-summarybox-title">Constructor Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1202 active" onclick="openTabElement(this,'ID2949', 'doclet-tabs-button-instance-1202', 'doclet-tabs-content-instance-1202')">Constructors</button>
+    </div>
+    <div id="ID2949" class="doclet-tabs-content doclet-tabs-content-instance-1202 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Constructor and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#&lt;init&gt;()">new</a></span></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="doclet-summarybox" id="actions.summary.box">
+    <div class="doclet-summarybox-title">Action Summary</div>
+    <div>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1203 active" onclick="openTabElement(this,'ID2950', 'doclet-tabs-button-instance-1203', 'doclet-tabs-content-instance-1203')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-1203" onclick="openTabElement(this,'ID2953', 'doclet-tabs-button-instance-1203', 'doclet-tabs-content-instance-1203')">Instance actions</button>
+    </div>
+    <div id="ID2950" class="doclet-tabs-content doclet-tabs-content-instance-1203 doclet-summarybox-tab-content">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendAOPMembers(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">appendAOPMembers(IBaseJvmModelInferrer,JvmGenericType,XtendTypeDeclaration,GenerationContext)</a></span>
+         <br>
+         Generate the code for the given SARL members in a agent-oriented container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunctionIfCloneable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the clone function only if the type is a subtype of <span>Cloneable</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendComparisonFunctions(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendComparisonFunctions(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Create the functions that permits to compare the object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span>
+         <br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</a></span>
+         <br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedImplements(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedImplements(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span>
+         <br>
+         Generate the implemented types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendDefaultConstructors(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendDefaultConstructors(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Add the default constructors.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendFunctionalInterfaceAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType)">appendFunctionalInterfaceAnnotation(IBaseJvmModelInferrer,JvmGenericType)</a></span>
+         <br>
+         Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendInjectableAnnotationIfInjectable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">appendInjectableAnnotationIfInjectable(IBaseJvmModelInferrer,JvmDeclaredType,GenerationContext)</a></span>
+         <br>
+         Append the injectable annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSARLElementType(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLElementType(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType)</a></span>
+         <br>
+         Append the SARL element type as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLSpecificationVersion(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</a></span>
+         <br>
+         Append the SARL specification version as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumber(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumber(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the serial number field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumberIfSerializable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the serial number field if and only if the container type is serializable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSyntheticDefaultValuedParameterMethods(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">appendSyntheticDefaultValuedParameterMethods(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</a></span>
+         <br>
+         Generate the missed operations that are the results from the generation of actions with default value parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendXbaseGeneratedAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget)">appendXbaseGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget)</a></span>
+         <br>
+         Add the @XbaseGenerated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#copyNonStaticPublicJvmOperations(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set&lt;io.sarl.lang.sarl.actionprototype.ActionPrototype&gt;,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2&lt;? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable&gt;)">copyNonStaticPublicJvmOperations(IBaseJvmModelInferrer,JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</a></span>
+         <br>
+         Copy the JVM operations from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#copyTypeParametersFromJvmOperation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">copyTypeParametersFromJvmOperation(IBaseJvmModelInferrer,JvmOperation,JvmOperation)</a></span>
+         <br>
+         Copy the type parameters from a JvmOperation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Iterable</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#getVisibleInheritedJvmConstructors(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType)">getVisibleInheritedJvmConstructors(JvmGenericType,JvmGenericType)</a></span>
+         <br>
+         Replies the constructors from the super type that are visible.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div id="ID2953" class="doclet-tabs-content doclet-tabs-content-instance-1203 doclet-summarybox-tab-content" style="display:none;">
+     <table class="doclet-summarytable">
+      <thead class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <th class="doclet-summarytable">Modifier and type</th>
+        <th class="doclet-summarytable">Action and description</th>
+       </tr>
+      </thead>
+      <tbody class="doclet-summarytable">
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendAOPMembers(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">appendAOPMembers(IBaseJvmModelInferrer,JvmGenericType,XtendTypeDeclaration,GenerationContext)</a></span>
+         <br>
+         Generate the code for the given SARL members in a agent-oriented container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunctionIfCloneable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the clone function only if the type is a subtype of <span>Cloneable</span>.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendComparisonFunctions(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendComparisonFunctions(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Create the functions that permits to compare the object.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span>
+         <br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</a></span>
+         <br>
+         Generate the extended types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendConstrainedImplements(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedImplements(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</a></span>
+         <br>
+         Generate the implemented types for the given SARL statement.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendDefaultConstructors(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendDefaultConstructors(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Add the default constructors.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendFunctionalInterfaceAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType)">appendFunctionalInterfaceAnnotation(IBaseJvmModelInferrer,JvmGenericType)</a></span>
+         <br>
+         Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendInjectableAnnotationIfInjectable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">appendInjectableAnnotationIfInjectable(IBaseJvmModelInferrer,JvmDeclaredType,GenerationContext)</a></span>
+         <br>
+         Append the injectable annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSARLElementType(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLElementType(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType)</a></span>
+         <br>
+         Append the SARL element type as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLSpecificationVersion(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</a></span>
+         <br>
+         Append the SARL specification version as an annotation to the given container.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumber(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumber(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the serial number field.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumberIfSerializable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a></span>
+         <br>
+         Append the serial number field if and only if the container type is serializable.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSyntheticDefaultValuedParameterMethods(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">appendSyntheticDefaultValuedParameterMethods(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</a></span>
+         <br>
+         Generate the missed operations that are the results from the generation of actions with default value parameters.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendXbaseGeneratedAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget)">appendXbaseGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget)</a></span>
+         <br>
+         Add the @XbaseGenerated annotation to the given target.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#copyNonStaticPublicJvmOperations(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set&lt;io.sarl.lang.sarl.actionprototype.ActionPrototype&gt;,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2&lt;? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable&gt;)">copyNonStaticPublicJvmOperations(IBaseJvmModelInferrer,JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</a></span>
+         <br>
+         Copy the JVM operations from the source to the destination.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;void</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#copyTypeParametersFromJvmOperation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">copyTypeParametersFromJvmOperation(IBaseJvmModelInferrer,JvmOperation,JvmOperation)</a></span>
+         <br>
+         Copy the type parameters from a JvmOperation.</td>
+       </tr>
+       <tr class="doclet-summarytable">
+        <td class="doclet-summarytable">protected&nbsp;<span>java.lang.Iterable</span>&lt;T&gt;</td>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#getVisibleInheritedJvmConstructors(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType)">getVisibleInheritedJvmConstructors(JvmGenericType,JvmGenericType)</a></span>
+         <br>
+         Replies the constructors from the super type that are visible.</td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="doclet-summarybox-inherited">
+     <span class="doclet-summarybox-inherited">Inherited: </span><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#addAnnotationSafe(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class&lt;?&gt;,java.lang.String[])">addAnnotationSafe(IBaseJvmModelInferrer,JvmAnnotationTarget,Class&lt;T&gt;,String*)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#addAnnotationSafe(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.String,java.lang.String[])">addAnnotationSafe(IBaseJvmModelInferrer,JvmAnnotationTarget,String,String*)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#addAnnotationSafe(org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class&lt;?&gt;,int)">addAnnotationSafe(JvmAnnotationTarget,Class&lt;T&gt;,int)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#annotationClassRef(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,java.lang.Class&lt;? extends java.lang.annotation.Annotation&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmTypeReference&gt;)">annotationClassRef(IBaseJvmModelInferrer,Class&lt;T&gt;,List&lt;E&gt;)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#appendGeneratedAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext)">appendGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget,GenerationContext)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#appendGeneratedAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget,io.sarl.lang.jvmmodel.GenerationContext,java.lang.String)">appendGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget,GenerationContext,String)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#cloneWithProxiesFromOtherResource(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable,io.sarl.lang.jvmmodel.IBaseJvmModelInferrer)">cloneWithProxiesFromOtherResource(JvmTypeReference,JvmExecutable,IBaseJvmModelInferrer)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable,io.sarl.lang.jvmmodel.IBaseJvmModelInferrer)">cloneWithTypeParametersAndProxies(JvmTypeReference,JvmExecutable,IBaseJvmModelInferrer)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#copyAndCleanDocumentationTo(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(JvmExecutable,JvmExecutable)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#copyAndCleanDocumentationTo(org.eclipse.xtend.core.xtend.XtendExecutable,org.eclipse.xtext.common.types.JvmExecutable)">copyAndCleanDocumentationTo(XtendExecutable,JvmExecutable)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#inferLocalClass(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.AnonymousClass,java.lang.String,org.eclipse.xtext.common.types.JvmFeature)">inferLocalClass(IBaseJvmModelInferrer,AnonymousClass,String,JvmFeature)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#initializeLocalTypes(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmFeature,org.eclipse.xtext.xbase.XExpression)">initializeLocalTypes(IBaseJvmModelInferrer,GenerationContext,JvmFeature,XExpression)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#setBody(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.XExpression)">setBody(IBaseJvmModelInferrer,JvmExecutable,XExpression)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtext.xbase.lib.Procedures.Procedure1&lt;org.eclipse.xtext.xbase.compiler.output.ITreeAppendable&gt;)">setBody(JvmExecutable,Procedure1&lt;Param&gt;)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#setBody(org.eclipse.xtext.common.types.JvmExecutable,org.eclipse.xtend2.lib.StringConcatenationClient)">setBody(JvmExecutable,StringConcatenationClient)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#setVisibility(org.eclipse.xtext.common.types.JvmMember,org.eclipse.xtend.core.xtend.XtendMember)">setVisibility(JvmMember,XtendMember)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#skipTypeParameters(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.emf.common.notify.Notifier)">skipTypeParameters(JvmTypeReference,Notifier)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#toStringConcatenation(java.lang.String[])">toStringConcatenation(String*)</a>, <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#translateAnnotationsTo(java.util.List&lt;org.eclipse.xtext.common.types.JvmAnnotationReference&gt;,org.eclipse.xtext.common.types.JvmAnnotationTarget,java.lang.Class&lt;?&gt;[])">translateAnnotationsTo(List&lt;E&gt;,JvmAnnotationTarget,Class&lt;T&gt;*)</a>
+    </div>
+   </div>
+   <div class="doclet-detailbox" id="fields.details.box">
+    <div class="doclet-detailbox-title">Field Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="readAndWriteTracking">readAndWriteTracking</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected var</span> readAndWriteTracking : <span>org.eclipse.xtext.xbase.validation.ReadAndWriteTracking</span></pre>
+      <div>The tracker of the read/write accesses to the fields.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Since:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.15</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="constructors.details.box">
+    <div class="doclet-detailbox-title">Constructor Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="&lt;init&gt;()">new</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">new</span></pre>
+     </dd>
+    </dl>
+   </div>
+   <div class="doclet-detailbox" id="action.details.box">
+    <div class="doclet-detailbox-title">Action Details</div>
+    <dl class="doclet-detailbox">
+     <dt class="doclet-detailbox" id="appendAOPMembers(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,io.sarl.lang.jvmmodel.GenerationContext)">appendAOPMembers(IBaseJvmModelInferrer,JvmGenericType,XtendTypeDeclaration,GenerationContext)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendAOPMembers(IBaseJvmModelInferrer,JvmGenericType,XtendTypeDeclaration,GenerationContext)</pre>
+      <div>Generate the code for the given SARL members in a agent-oriented container.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        featureContainerType - <span class="doclet-tags-param-comment">the feature container.</span>
+        <br>
+        container - <span class="doclet-tags-param-comment">the SARL container.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">description of the generation context in which the members must be considered.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendCloneFunctionIfCloneable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendCloneFunctionIfCloneable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendCloneFunctionIfCloneable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the clone function only if the type is a subtype of <span>Cloneable</span>.
+       <p></p>
+       The clone function replies a value of the current type, not <code>Object</code>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Since:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.6</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendComparisonFunctions(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendComparisonFunctions(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendComparisonFunctions(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Create the functions that permits to compare the object. The comparaison functions are <span>equals(Object)</span> and <span>hashCode()</span>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</pre>
+      <div>Generate the extended types for the given SARL statement.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default Sarl type.</span>
+        <br>
+        supertypes - <span class="doclet-tags-param-comment">the supertypes.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedExtends(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,org.eclipse.xtext.common.types.JvmParameterizedTypeReference)">appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedExtends(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,JvmParameterizedTypeReference)</pre>
+      <div>Generate the extended types for the given SARL statement.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default SARL type.</span>
+        <br>
+        supertype - <span class="doclet-tags-param-comment">the supertype.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendConstrainedImplements(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtext.common.types.JvmGenericType,java.lang.Class&lt;?&gt;,java.lang.Class&lt;? extends org.eclipse.xtend.core.xtend.XtendTypeDeclaration&gt;,java.util.List&lt;? extends org.eclipse.xtext.common.types.JvmParameterizedTypeReference&gt;)">appendConstrainedImplements(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendConstrainedImplements(IBaseJvmModelInferrer,GenerationContext,JvmGenericType,Class&lt;T&gt;,Class&lt;T&gt;,List&lt;E&gt;)</pre>
+      <div>Generate the implemented types for the given SARL statement.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the context of the generation.</span>
+        <br>
+        owner - <span class="doclet-tags-param-comment">the JVM element to change.</span>
+        <br>
+        defaultJvmType - <span class="doclet-tags-param-comment">the default JVM type.</span>
+        <br>
+        defaultSarlType - <span class="doclet-tags-param-comment">the default SARL type.</span>
+        <br>
+        implementedtypes - <span class="doclet-tags-param-comment">the implemented types.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendDefaultConstructors(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendDefaultConstructors(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendDefaultConstructors(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Add the default constructors.
+       <p></p>
+       The default constructors have the same signature as the constructors of the super class.
+       <p></p>
+       This function adds the default constructors if no constructor was already added. This condition is determined with a call to <a href="../../../../../io/sarl/lang/jvmmodel/GenerationContext.html#hasConstructor()">hasConstructor()</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the SARL element in which no constructor was specified. This SARL element should be associated to the <code class="doclet-tags-param-comment">target</code> element.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the JVM type that is receiving the default constructor.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">See:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../../io/sarl/lang/jvmmodel/GenerationContext.html#hasConstructor()" class="doclet-tags-see-comment">hasConstructor</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendFunctionalInterfaceAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType)">appendFunctionalInterfaceAnnotation(IBaseJvmModelInferrer,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendFunctionalInterfaceAnnotation(IBaseJvmModelInferrer,JvmGenericType)</pre>
+      <div>Append the @FunctionalInterface to the given type if it is a functional interface according to the Java 8 specification definition.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        type - <span class="doclet-tags-param-comment">the type to update.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendInjectableAnnotationIfInjectable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmDeclaredType,io.sarl.lang.jvmmodel.GenerationContext)">appendInjectableAnnotationIfInjectable(IBaseJvmModelInferrer,JvmDeclaredType,GenerationContext)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendInjectableAnnotationIfInjectable(IBaseJvmModelInferrer,JvmDeclaredType,GenerationContext)</pre>
+      <div>Append the injectable annotation to the given container.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the generation context.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Since:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSARLElementType(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLElementType(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSARLElementType(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType)</pre>
+      <div>
+       Append the SARL element type as an annotation to the given container.
+       <p></p>
+       The added annotation may be used by any underground platform for determining what is the type of the SARL element without invoking the costly "instanceof" operations.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSARLSpecificationVersion(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType)">appendSARLSpecificationVersion(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSARLSpecificationVersion(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmDeclaredType)</pre>
+      <div>
+       Append the SARL specification version as an annotation to the given container.
+       <p></p>
+       The added annotation may be used by any underground platform for determining what is the version of the SARL specification that was used for generating the container.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSerialNumber(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumber(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSerialNumber(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the serial number field.
+       <p></p>
+       The serial number field is computed from the given context and from the generated fields. The field is added if no field with name "serialVersionUID" was defined.
+       <p></p>
+       This function does not test if the field container is serializable.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">See:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendSerialNumberIfSerializable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSerialNumberIfSerializable(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)">appendSerialNumberIfSerializable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSerialNumberIfSerializable(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</pre>
+      <div>
+       Append the serial number field if and only if the container type is serializable.
+       <p></p>
+       The serial number field is computed from the given context and from the generated fields.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">the current generation context.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source object.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the inferred JVM object.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">See:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment.html#appendSerialNumber(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,io.sarl.lang.jvmmodel.GenerationContext,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmGenericType)" class="doclet-tags-see-comment">appendSerialNumber(IBaseJvmModelInferrer,GenerationContext,XtendTypeDeclaration,JvmGenericType)</a> </span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendSyntheticDefaultValuedParameterMethods(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtend.core.xtend.XtendTypeDeclaration,org.eclipse.xtext.common.types.JvmDeclaredType,boolean,io.sarl.lang.jvmmodel.GenerationContext)">appendSyntheticDefaultValuedParameterMethods(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendSyntheticDefaultValuedParameterMethods(IBaseJvmModelInferrer,XtendTypeDeclaration,JvmDeclaredType,boolean,GenerationContext)</pre>
+      <div>Generate the missed operations that are the results from the generation of actions with default value parameters.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the SARL container.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the JVM feature container.</span>
+        <br>
+        ignoreOverridableOperations - <span class="doclet-tags-param-comment">indicates if the operations must not be added if they are marked has overridable.</span>
+        <br>
+        context - <span class="doclet-tags-param-comment">description of the generation context in which the members must be considered.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="appendXbaseGeneratedAnnotation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmAnnotationTarget)">appendXbaseGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> appendXbaseGeneratedAnnotation(IBaseJvmModelInferrer,JvmAnnotationTarget)</pre>
+      <div>Add the @XbaseGenerated annotation to the given target.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the target of the annotation.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyNonStaticPublicJvmOperations(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType,java.util.Set&lt;io.sarl.lang.sarl.actionprototype.ActionPrototype&gt;,boolean,org.eclipse.xtext.xbase.lib.Procedures.Procedure2&lt;? super org.eclipse.xtext.common.types.JvmOperation,? super org.eclipse.xtext.xbase.compiler.output.ITreeAppendable&gt;)">copyNonStaticPublicJvmOperations(IBaseJvmModelInferrer,JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyNonStaticPublicJvmOperations(IBaseJvmModelInferrer,JvmGenericType,JvmGenericType,Set&lt;E&gt;,boolean,Procedure2&lt;P1,P2&gt;)</pre>
+      <div>Copy the JVM operations from the source to the destination.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        source - <span class="doclet-tags-param-comment">the source.</span>
+        <br>
+        target - <span class="doclet-tags-param-comment">the destination.</span>
+        <br>
+        createdActions - <span class="doclet-tags-param-comment">the set of actions that are created before (input) or during (output) the invocation.</span>
+        <br>
+        copyHiddenNames - <span class="doclet-tags-param-comment">indicates if the operations with hidden name are copied.</span>
+        <br>
+        bodyBuilder - <span class="doclet-tags-param-comment">the builder of the target's operations.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Since:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.12</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="copyTypeParametersFromJvmOperation(io.sarl.lang.jvmmodel.IBaseJvmModelInferrer,org.eclipse.xtext.common.types.JvmOperation,org.eclipse.xtext.common.types.JvmOperation)">copyTypeParametersFromJvmOperation(IBaseJvmModelInferrer,JvmOperation,JvmOperation)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> copyTypeParametersFromJvmOperation(IBaseJvmModelInferrer,JvmOperation,JvmOperation)</pre>
+      <div>
+       Copy the type parameters from a JvmOperation.
+       <p></p>
+       This function differs from <a href="../../../../../io/sarl/lang/jvmmodel/SARLJvmModelInferrer.html#copyAndFixTypeParameters(java.util.List&lt;org.eclipse.xtext.common.types.JvmTypeParameter&gt;,org.eclipse.xtext.common.types.JvmTypeParameterDeclarator)">copyAndFixTypeParameters(List, org.eclipse.xtext.common.types.JvmTypeParameterDeclarator)</a> and <span>copyTypeParameters(List, org.eclipse.xtext.common.types.JvmTypeParameterDeclarator)</span> in the fact that the type parameters were already generated and fixed. The current function supper generic types by clone the types references with <a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment.html#cloneWithTypeParametersAndProxies(org.eclipse.xtext.common.types.JvmTypeReference,org.eclipse.xtext.common.types.JvmExecutable,io.sarl.lang.jvmmodel.IBaseJvmModelInferrer)">cloneWithTypeParametersAndProxies(JvmTypeReference, JvmExecutable, IBaseJvmModelInferrer)</a>.
+      </div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
+       <dd class="doclet-detailbox-tag">
+        baseInferrer - <span class="doclet-tags-param-comment">the inferrer that is the considered as the base (starting point) of inferring process.</span>
+        <br>
+        fromOperation - <span class="doclet-tags-param-comment">the operation from which the type parameters are copied.</span>
+        <br>
+        toOperation - <span class="doclet-tags-param-comment">the operation that will receives the new type parameters.</span>
+       </dd>
+      </dl>
+     </dd>
+     <dt class="doclet-detailbox" id="getVisibleInheritedJvmConstructors(org.eclipse.xtext.common.types.JvmGenericType,org.eclipse.xtext.common.types.JvmGenericType)">getVisibleInheritedJvmConstructors(JvmGenericType,JvmGenericType)</dt>
+     <dd class="doclet-detailbox">
+      <pre><span class="doclet-keyword">protected</span> <span class="doclet-keyword">def</span> getVisibleInheritedJvmConstructors(JvmGenericType,JvmGenericType) : <span>java.lang.Iterable</span>&lt;T&gt;</pre>
+      <div>Replies the constructors from the super type that are visible.</div>
+      <dl class="doclet-detailbox-tag">
+       <dt class="doclet-detailbox-tag">Returns:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-return-comment">the visible inherited constructors.</span>
+       </dd>
+       <dt class="doclet-detailbox-tag">Since:</dt>
+       <dd class="doclet-detailbox-tag">
+        <span class="doclet-tags-see-comment">0.15</span>
+       </dd>
+      </dl>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <div class="doclet-footer">
+   <div class="doclet-navigation">
+    <div class="doclet-navigation-global">
+     <ul class="doclet-navigation-mainlist">
+      <li><a href="../../../../../overview-summary.html">Overview</a></li>
+      <li><a href="../../../../../unnamed-module-summary.html">Module</a></li>
+      <li><a href="../../../../../io/sarl/lang/jvmmodel/fragments/package-summary.html">Package</a></li>
+      <li class="doclet-active">Type</li>
+      <li><a href="../../../../../io/sarl/lang/jvmmodel/fragments/package-tree.html">Tree</a></li>
+      <li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+      <li><a href="../../../../../index-all.html">Index</a></li>
+     </ul>
+    </div>
+    <div class="doclet-navigation-local">
+     <ul class="doclet-navigation-list">
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerFragment/Impl.html">Prev Type</a></span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/lang/jvmmodel/fragments/AbstractJvmModelInferrerTypeFragment/BehaviorUnitDefinitions.html">Next Type</a></span></li>
+     </ul>
+     <ul class="doclet-navigation-list">
+      <li><a href="../../../../../all-types.html">All Types</a></li>
+     </ul>
+     <br>
+     <ul class="doclet-navigation-sublist">
+      <li>Summary:</li>
+      <li><a href="#actions.summary.box">Actio</a>&nbsp;|</li>
+      <li><a href="#capacity.uses.summary.box">Capac</a>&nbsp;|</li>
+      <li><a href="#constructors.summary.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.summary.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.summary.box">Field</a>&nbsp;|</li>
+      <li><a href="#nested.classes.summary.box">Nested</a>&nbsp;|</li>
+      <li><a href="#properties.summary.box">Propr</a></li>
+     </ul>
+     <ul class="doclet-navigation-sublist">
+      <li>Details:</li>
+      <li><a href="#action.details.box">Actio</a>&nbsp;|</li>
+      <li><a href="#constructors.details.box">Constr</a>&nbsp;|</li>
+      <li><a href="#event.handlers.details.box">Handl</a>&nbsp;|</li>
+      <li><a href="#fields.details.box">Field</a>&nbsp;|</li>
+      <li><a href="#properties.details.box">Propr</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

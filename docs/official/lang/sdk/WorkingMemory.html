@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Working Memory for Agents</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="working-memory-for-agents">Working Memory for Agents</h1>
+
+<ul class="page_outline" id="page_outline">
+
+<li><a href="#1-general-principle-of-a-working-memory">1. General Principle of a Working Memory</a></li>
+<ul>
+  <li><a href="#11-generic-implementation-vs-hard-coded-implementation">1.1. Generic Implementation vs. Hard-coded Implementation</a></li>
+</ul>
+<li><a href="#2-integration-with-sarl-agents">2. Integration with SARL Agents</a></li>
+<li><a href="#3-capacity-for-using-a-working-memory">3. Capacity for using a Working Memory</a></li>
+<ul>
+  <li><a href="#31-knowledge-storage">3.1. Knowledge Storage</a></li>
+  <li><a href="#32-knowledge-retrieval">3.2. Knowledge Retrieval</a></li>
+  <li><a href="#33-knowledge-existence-and-metadata">3.3. Knowledge Existence and Metadata</a></li>
+  <li><a href="#34-knowledge-removal">3.4. Knowledge Removal</a></li>
+  <li><a href="#35-thread-safety">3.5. Thread Safety</a></li>
+</ul>
+<li><a href="#4-version-specification">4. Version Specification</a></li>
+<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+
+</ul>
+
+<p>An agent working memory serves as a fundamental component designed to enable autonomous entities to store, retrieve, and manipulate knowledge dynamically during their operational lifecycle. The primary goal of such a memory system is to provide agents with a localized, efficient, and context-aware repository for maintaining internal state, facilitating reasoning, and supporting adaptive behavior in response to environmental stimuli or internal objectives.</p>
+
+<h2 id="1-general-principle-of-a-working-memory">1. General Principle of a Working Memory</h2>
+
+<p>One of the core objectives of an agent working memory is to support dynamic reasoning and reactivity. Agents operate in environments that are often dynamic, uncertain, or partially observable, necessitating a mechanism to retain and update information that reflects the most recent state of their surroundings or internal computations. This memory system acts as an intermediary between perception and action, allowing agents to integrate sensory inputs, maintain intermediate results, and track the progress of ongoing tasks. By doing so, it bridges the gap between the agent’s perceptual capabilities and its deliberative or reactive processes, ensuring that decisions are grounded in up-to-date and contextually relevant information.</p>
+
+<p>A fundamental principle underlying the design of an agent working memory is structured accessibility. Knowledge stored within this memory must be retrievable with minimal computational overhead, as agents frequently require rapid access to critical data to respond to time-sensitive events. This principle is often realized through key-value associations, where knowledge is indexed by unique identifiers or <a href="./Naming.html#naming-for-data-with-scopes">scoped names</a>, enabling efficient lookup and modification. The use of scopes further enhances this structure by allowing agents to disambiguate between different instances of similarly named knowledge, such as distinguishing between “temperature” in an indoor versus outdoor context. Such organization not only optimizes retrieval but also supports modularity, enabling agents to manage multiple, potentially overlapping, knowledge sets without conflict.</p>
+
+<p>The flexibility of knowledge representation is also a key consideration. An agent’s working memory must accommodate a diverse range of data types, from primitive values to complex objects, and support operations such as conditional updates, existence checks, and bulk removal. This adaptability allows the memory to serve a variety of use cases, including maintaining task-specific state, caching intermediate computations, or storing contextual information that influences decision-making. Additionally, the memory system should provide mechanisms to handle edge cases, such as the presence of null or undefined values, either by explicitly permitting them or enforcing policies that remove or replace them to maintain consistency.</p>
+
+<p>Another essential principle is concurrency control, particularly in multi-threaded or distributed agent architectures of SARL. Since agents may operate concurrently or interact with shared resources, working memory must incorporate mechanisms to prevent inconsistencies arising from simultaneous access or modification. Synchronization primitives, such as locks or atomic operations, are commonly employed to ensure thread safety, thereby preserving the integrity of the stored knowledge.</p>
+
+<h3 id="11-generic-implementation-vs-hard-coded-implementation">1.1. Generic Implementation vs. Hard-coded Implementation</h3>
+
+<p>The SARL framework provides two complementary approaches for managing an agent’s internal state: a generic <strong>working memory API</strong> (that is described in the rest of this manual page) and <strong>direct access to local fields</strong>.
+These mechanisms offer developers flexibility in how agents store, retrieve, and manipulate knowledge, catering to both structured, dynamic data management and efficient, low-level state handling.</p>
+
+<p>The working memory API is a high-level, capacity-based interface that allows agents to store and manage knowledge in a structured, key-value manner. This API abstracts the underlying storage mechanism, enabling agents to associate data with unique identifiers (e.g., <code>ScopedDataName</code>) and perform operations such as insertion, retrieval, conditional updates, and deletion.</p>
+
+<p>In contrast, SARL also allows agents to define local fields, which are very close to the traditional object-oriented member variables that can be accessed and modified directly within the agent’s code. Local fields provide a lightweight and efficient way to store agent-specific state, offering the performance benefits of direct memory access. They are well-suited for simple, static, or frequently accessed data that does not require the overhead of the working memory API.</p>
+
+<p>While local fields lack the advanced features of the working memory — such as scoping or synchronization — they offer simplicity and speed, making them ideal for managing core agent attributes.</p>
+
+<h4 id="concept-of-scope">Concept of Scope</h4>
+
+<p>In SARL, the concept of <strong>scope</strong> refers to a mechanism for organizing and disambiguating knowledge or data within an agent’s memory by associating it with a specific context or namespace. Scope serves as a logical container that groups related pieces of information, enabling agents to manage multiple instances of similarly named knowledge without conflict.</p>
+
+<p>Scopes are often implemented as part of a composite <code>ScopedDataName</code>, which combines a base name (e.g., “temperature”) with a scope (e.g., “indoor” or “outdoor”). This allows the agent to store and retrieve knowledge precisely, even when the same name is reused across different contexts. According to the <a href="./Naming.html#naming-for-data-with-scopes">naming convention for scoped names</a>, it is possible to refer to a scoped data with a URI string. For example, <code>data:/indoor/temperature</code> and <code>data:/outdoor/temperature</code> represent two distinct knowledge entries, each associated with its own value.</p>
+
+<h2 id="2-integration-with-sarl-agents">2. Integration with SARL Agents</h2>
+
+<p>For using an working memory in your agent, you have not to do more than using the <code>WorkingMemory</code> capacity:</p>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		setKnowledge(new ScopedDataName("a", "b", "name"), "a value")
+	}
+}
+</code></pre>
+
+<p>By default, a working memory implemented with a dictionary is used. You could select your preferred working memory implementation by changing the skill related to the <code>WorkingMemory</code> capacity in the agent.</p>
+
+<h2 id="3-capacity-for-using-a-working-memory">3. Capacity for using a Working Memory</h2>
+
+<p>The <code>WorkingMemory</code> capacity in SARL enables agents to store, retrieve, and manipulate internal knowledge dynamically. It provides a structured, thread-safe, and context-aware memory system, allowing agents to maintain state, reason about their environment, and adapt their behavior based on stored information.</p>
+
+<p>This capacity abstracts the underlying storage mechanism, offering a uniform API for knowledge management while supporting custom implementations (e.g., in-memory dictionaries, persistent databases, or distributed stores). By default, SARL provides a dictionary-based implementation (<code>DictionaryWorkingMemory</code>), but developers can replace it with domain-specific solutions just by setting up the corresponding SARL skill in the agent.</p>
+
+<h3 id="31-knowledge-storage">3.1. Knowledge Storage</h3>
+
+<ul>
+  <li><code>setKnowledge(id : ScopedDataName, value : Object) : Object</code> inserts or updates a knowledge entry. The <code>id</code> is the name of the scoped data (see <a href="./Naming.html#naming-for-data-with-scopes">Naming convention</a>). The previous value associated with <code>id</code>, or <code>null</code> if none existed is returned by this function.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		setKnowledge(new ScopedDataName("a", "b", "name"), "a value")
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>setKnowledgeIfAbsent(id : ScopedDataName, value : Object)</code> inserts a knowledge entry <strong>only if it does not already exist</strong>.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		setKnowledgeIfAbsent(new ScopedDataName("a", "b", "name"), "a value")
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>setKnowledgeIfPresent(id : ScopedDataName, value : Object) : Object</code> updates a knowledge entry <strong>only if it already exists</strong>. The previous value, or <code>null</code> if the entry did not exist is returned by this function.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		setKnowledgeIfPresent(new ScopedDataName("a", "b", "name"), "a value")
+	}
+}
+</code></pre>
+
+<h3 id="32-knowledge-retrieval">3.2. Knowledge Retrieval</h3>
+
+<ul>
+  <li><code>getKnowledge(id : ScopedDataName, type : Class&lt;T&gt; = null) : T</code> retrieves the value associated with <code>id</code>. If the <code>type</code> is provided, the value from the working memory is casted to this type. Exception <code>KnowledgeMissingException</code> is thrown if the entry does not exist.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		var objectValue : Object = getKnowledge(new ScopedDataName("a", "b", "name"))
+		var stringValue : Object = getKnowledge(new ScopedDataName("a", "b", "name"), typeof(String))
+	}
+}
+</code></pre>
+
+<h3 id="33-knowledge-existence-and-metadata">3.3. Knowledge Existence and Metadata</h3>
+
+<ul>
+  <li><code>isDefined(id : ScopedDataName) : boolean</code> checks if a knowledge entry exists.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		if (isDefined(new ScopedDataName("a", "b", "name"))) {
+			info("The knowledge 'name' is defined in the working memory")
+		} else {
+			info("The knowledge 'name' is not defined in the working memory")
+		}
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>getDefinedNames : Stream&lt;ScopedDataName&gt;</code> returns a stream of all stored <code>ScopedDataName</code> identifiers.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		var definedData = getDefinedNames
+		info(definedData.toArray)
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>getDefinedForName](name : String) : Stream&lt;ScopedDataName&gt;</code> returns a stream of all <code>ScopedDataName</code> identifiers matching the given <code>name</code> (across all scopes).</li>
+  <li><code>getDefinedListForName](name : String) : List&lt;ScopedDataName&gt;</code> returns a list of all <code>ScopedDataName</code> identifiers matching the given <code>name</code> (across all scopes).</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		var definedData = getDefinedForName("name")
+		info(definedData.toArray)
+	}
+	on Event {
+		var definedData = getDefinedListForName("name")
+		info(definedData.toArray)
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>[getMemorySizeFct!]] : long</code> returns the total number of stored knowledge entries.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		var size = getMemorySize
+		info(size)
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>isMemoryEmpty : boolean</code> checks if the working memory is empty.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		if (isMemoryEmpty) {
+			info("Working memory is empty")
+		} else {
+			info("Working memory is not empty")
+		}
+	}
+}
+</code></pre>
+
+<h3 id="34-knowledge-removal">3.4. Knowledge Removal</h3>
+
+<ul>
+  <li><code>removeKnowledge(id : ScopedDataName) : Object</code> removes a knowledge entry. The removed value is returned by this function.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		removeKnowledge(new ScopedDataName("a", "b", "name"))
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>removeNullValuedKnowledges</code> removes all entries with <code>null</code> values.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		removeNullValuedKnowledges
+	}
+}
+</code></pre>
+
+<ul>
+  <li><code>clearMemory</code> removes <em>all</em> knowledge entries.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory
+	
+	on Event {
+		clearMemory
+	}
+}
+</code></pre>
+
+<h3 id="35-thread-safety">3.5. Thread Safety</h3>
+
+<ul>
+  <li><code>getWorkingMemoryLock : Object</code> provides a lock object for synchronized blocks outside the control of the working memory’s implementation itself. This function is useful when you want to use the streams provided by the working memory.</li>
+</ul>
+
+<pre><code class="language-sarl">agent A {
+	uses WorkingMemory, Logging
+	
+	on Event {
+		synchronized(getWorkingMemoryLock) {
+			getDefinedForName("name").forEach [
+				info(it)
+			]
+		}
+	}
+}
+</code></pre>
+
+<h2 id="4-version-specification">4. Version Specification</h2>
+
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-10</li>
+</ul>
+
+<h2 id="5-legal-notice">5. Legal Notice</h2>
+
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

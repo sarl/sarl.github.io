@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Introduction to Map-based or Dictionary Data Structures with SARL</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="introduction-to-map-based-or-dictionary-data-structures-with-sarl">Introduction to Map-based or Dictionary Data Structures with SARL</h1>
+
+<script>
+function exerciseToggle(id) {
+    var x = document.getElementById('exercise' + id.toString());
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<p><span class="label label-info">Note 1</span> In SARL, a map is a data structure that is also known as dictionary in other programming languages. This type of data structure maps keys to values.</p>
+
+<p><span class="label label-info">Note 2</span> If you don’t know how to solve an problem, or what is the function to be used, you could search on Internet for the answer using the API of the Java programming language. Indeed, since SARL is fully compatible with the Java API, you could use all the types or functions that are defined in this Java API.</p>
+
+<h2 id="1-exercise-1">1. Exercise 1</h2>
+
+<ul>
+  <li>Write a SARL script to sort (ascending and descending) a map by value.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(1)">Answer</a></p>
+<div id="exercise1" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+import java.util.Map
+import java.util.Map.Entry
+class Solution {
+	static var original = #{1 -&gt; 2, 3 -&gt; 4, 4 -&gt; 3, 2 -&gt; 1, 0 -&gt; 0}
+	static def ascending_sort(map : Map&lt;Integer, Integer&gt;) : List&lt;Entry&lt;Integer, Integer&gt;&gt; {
+		original.entrySet.sortWith[a, b | a.value &lt;=&gt; b.value]
+	}
+	static def descending_sort(map : Map&lt;Integer, Integer&gt;) : List&lt;Entry&lt;Integer, Integer&gt;&gt; {
+		original.entrySet.sortWith[a, b | b.value &lt;=&gt; a.value]
+	}
+	static def main : void {
+		println(ascending_sort(original))
+		println(descending_sort(original))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="2-exercise-2">2. Exercise 2</h2>
+
+<ul>
+  <li>Write a SARL script to add a key to a map.</li>
+  <li>Sample Map: <code>{0: 10, 1: 20}</code></li>
+  <li>Expected Result: <code>{0: 10, 1: 20, 2: 30}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(2)">Answer</a></p>
+<div id="exercise2" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{0 -&gt; 10, 1 -&gt; 20}
+	static def main : void {
+		original.put(2, 30)
+		println(original)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="3-exercise-3">3. Exercise 3</h2>
+
+<ul>
+  <li>Write a SARL script to concatenate the following maps to create a new one.</li>
+  <li>Sample Maps:</li>
+</ul>
+
+<pre><code class="language-text">dic1={1:10, 2:20}
+dic2={3:30, 4:40}
+dic3={5:50,6:60}
+</code></pre>
+
+<ul>
+  <li>Expected Result : <code>{1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(3)">Answer</a></p>
+<div id="exercise3" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var dic1 = #{1 -&gt; 10, 2 -&gt; 20}
+	static var dic2 = #{3 -&gt; 30, 4 -&gt; 40}
+	static var dic3 = #{5 -&gt; 50, 6-&gt; 60}
+	static def main : void {
+		var newmap = newHashMap
+		for (e : dic1.entrySet) {
+			newmap.put(e.key, e.value)
+		}
+		for (e : dic2.entrySet) {
+			newmap.put(e.key, e.value)
+		}
+		for (e : dic3.entrySet) {
+			newmap.put(e.key, e.value)
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var dic1 = #{1 -&gt; 10, 2 -&gt; 20}
+	static var dic2 = #{3 -&gt; 30, 4 -&gt; 40}
+	static var dic3 = #{5 -&gt; 50, 6-&gt; 60}
+	static def main : void {
+		var newmap = newHashMap
+		newmap.putAll(dic1)
+		newmap.putAll(dic2)
+		newmap.putAll(dic3)
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="4-exercise-4">4. Exercise 4</h2>
+
+<ul>
+  <li>Write a SARL script to check whether a given key already exists in a map.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(4)">Answer</a></p>
+<div id="exercise4" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var dic = #{1 -&gt; 10, 2 -&gt; 20}
+	static def main : void {
+		println(dic.containsKey(1))
+		println(dic.containsKey(5))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="5-exercise-5">5. Exercise 5</h2>
+
+<ul>
+  <li>Write a SARL program to iterate over maps using for loops.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(5)">Answer</a></p>
+<div id="exercise5" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var dic = #{1 -&gt; 10, 2 -&gt; 20}
+	static def main : void {
+		for (e : dic.entrySet) {
+			println(e.key + " -&gt; " + e.value)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="6-exercise-6">6. Exercise 6</h2>
+
+<ul>
+  <li>Write a SARL script to generate and print a map that contains a number (between 1 and n) in the form (x, x*x).</li>
+  <li>n = 5</li>
+  <li>Expected Output: <code>{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(6)">Answer</a></p>
+<div id="exercise6" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static def generate(n : int) : Map&lt;Integer, Double&gt; {
+		var map = newHashMap
+		for (i : 1..n) {
+			map.put(i, i**2)
+		}
+		return map
+	}
+	static def main : void {
+		println(generate(5))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static def generate(n : int) : Map&lt;Integer, Double&gt; {
+		(1..n).toInvertedMap[it**2]
+	}
+	static def main : void {
+		println(generate(5))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="7-exercise-7">7. Exercise 7</h2>
+
+<ul>
+  <li>Write a SARL script to print a map where the keys are numbers between 1 and 15 (both included) and the values are the square of the keys.</li>
+  <li>Sample map: <code>{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(7)">Answer</a></p>
+<div id="exercise7" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static def main : void {
+		println((1..15).toInvertedMap[it**2 as int])
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="8-exercise-8">8. Exercise 8</h2>
+
+<ul>
+  <li>Write a SARL script to merge two SARL maps.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(8)">Answer</a></p>
+<div id="exercise8" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original1 = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static var original2 = #{4 -&gt; 16, 5 -&gt; 25}
+	static def merge(m1 : Map<? extends K, ? extends V>, m2 : Map<? extends K, ? extends V>) : Map<K, V> with K, V {
+		var newmap = newHashMap
+		newmap.putAll(m1)
+		newmap.putAll(m2)
+		return newmap
+	}
+	static def main : void {
+		println(merge(original1, original2))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original1 = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static var original2 = #{4 -> 16, 5 -> 25}
+	static def main : void {
+		println(original1.union(original2))
+	}
+}
+</code></pre>
+
+</div>
+
+## 9. Exercise 9
+
+* Write a SARL program to sum all the values in a maps.
+
+<a href="javascript:exerciseToggle(9)">Answer</a>
+<div id="exercise9" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static def sum(m : Map<Integer, Integer>) : int {
+		var s = 0
+		for (v : m.values) {
+			s += v
+		}
+		return s
+	}
+	static def main : void {
+		println(sum(original))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static def sum(m : Map<Integer, Integer>) : int {
+		m.values.reduce[accumulator, current | accumulator + current]
+	}
+	static def main : void {
+		println(sum(original))
+	}
+}
+</code></pre>
+
+</div>
+
+## 10. Exercise 10
+
+* Write a SARL program to multiply all the values in a map.
+
+<a href="javascript:exerciseToggle(10)">Answer</a>
+<div id="exercise10" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static def mul(m : Map<Integer, Integer>) : int {
+		var s = 1
+		for (v : m.values) {
+			s *= v
+		}
+		return s
+	}
+	static def main : void {
+		println(mul(original))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static def mul(m : Map<Integer, Integer>) : int {
+		m.values.reduce[accumulator, current | accumulator * current]
+	}
+	static def main : void {
+		println(mul(original))
+	}
+}
+</code></pre>
+
+</div>
+
+## 11. Exercise 11
+
+* Write a SARL program to remove a key from a map.
+
+<a href="javascript:exerciseToggle(11)">Answer</a>
+<div id="exercise11" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static def main : void {
+		original.remove(2)
+		println(original)
+	}
+}
+</code></pre>
+
+</div>
+
+## 12. Exercise 12
+
+* Write a SARL program to map two lists into a map.
+
+<a href="javascript:exerciseToggle(10)">Answer</a>
+<div id="exercise10" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original1 = #[1, 2, 9]
+	static var original2 = #[154, 44, 9]
+	static def main : void {
+		var map = newHashMap
+		var iter1 = original1.iterator
+		var iter2 = original2.iterator
+		while (iter1.hasNext && iter2.hasNext) {
+			map.put(iter1.next, iter2.next)
+		}
+		println(map)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original1 = #[1, 2, 9]
+	static var original2 = #[154, 44, 9]
+	static def main : void {
+		var iter1 = original1.iterator
+		var map = original2.toMap[iter1.next]
+		println(map)
+	}
+}
+</code></pre>
+
+</div>
+
+## 13. Exercise 13
+
+* Write a SARL program to sort a given map by key.
+
+<a href="javascript:exerciseToggle(13)">Answer</a>
+<div id="exercise13" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static def main : void {
+		var sortedMap = newTreeSet(null)
+		sortedMap.addAll(original)
+		println(sortedMap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 14. Exercise 14
+
+* Write a SARL program to get the maximum and minimum values of a map.
+
+<a href="javascript:exerciseToggle(14)">Answer</a>
+<div id="exercise14" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static def main : void {
+		var min = Integer::MAX_VALUE
+		var max = Integer::MIN_VALUE
+		for (e : original.entrySet) {
+			if (e.value < min) {
+				min = e.value
+			}
+			if (e.value > max) {
+				max = e.value
+			}
+		}
+		println("Min = " + min)
+		println("Max = " + max)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static def main : void {
+		var min = original.values.min
+		var max = original.values.max
+		println("Min = " + min)
+		println("Max = " + max)
+	}
+}
+</code></pre>
+
+</div>
+
+## 15. Exercise 15
+
+* Write a SARL program to remove duplicated values from the map.
+
+<a href="javascript:exerciseToggle(15)">Answer</a>
+<div id="exercise15" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static def main : void {
+		var newmap = newHashMap
+		for (e : original.entrySet) {
+			if (!newmap.containsValue(e.value)) {
+				newmap.put(e.key, e.value)
+			}
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 16. Exercise 16
+
+* Write a SARL program to check if a map is empty or not.
+
+<a href="javascript:exerciseToggle(16)">Answer</a>
+<div id="exercise16" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static def main : void {
+		println(original.isEmpty)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static def main : void {
+		println(original.size == 0)
+	}
+}
+</code></pre>
+
+</div>
+
+## 17. Exercise 17
+
+* Write a SARL program to combine two maps by adding values for common keys.
+* Inputs:
+
+```text
+d1 = {'a': 100, 'b': 200, 'c':300}
+d2 = {'a': 300, 'b': 200, 'd':400}
+```
+
+* Sample output: `{'a': 400, 'b': 400, 'd': 400, 'c': 300}`
+
+<a href="javascript:exerciseToggle(13)">Answer</a>
+<div id="exercise13" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var d1 = #{'a' -> 100, 'b' -> 200, 'c' -> 300}
+	static var d2 = #{'a' -> 300, 'b' -> 200, 'd' -> 400}
+	static def main : void {
+		var m = newHashMap
+		for (e : d1.entrySet) {
+			var v = d2.get(e.key)
+			if (v === null) {
+				m.put(e.key, e.value)
+			} else {
+				m.put(e.key, e.value + v)
+			}
+		}
+		for (e : d2.entrySet) {
+			m.putIfAbsent(e.key, e.value)
+		}			
+		println(m)
+	}
+}
+</code></pre>
+
+</div>
+
+## 18. Exercise 18
+
+* Write a SARL program to print all distinct values in a map.
+* Sample Data : `[{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]`
+* Expected Output : `{'S005', 'S002', 'S007', 'S001', 'S009'}`
+
+<a href="javascript:exerciseToggle(18)">Answer</a>
+<div id="exercise18" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #[
+		#{"V" -> "S001"}, #{"V" -> "S002"},
+		#{"VI" -> "S001"}, #{"VI" -> "S005"},
+		#{"VII" -> "S005"}, #{"V" -> "S009"},
+		#{"VIII" -> "S007"}
+	]
+	static def main : void {
+		var m = newTreeSet(null)
+		for (e : original) {
+			m.addAll(e.values)
+		}
+		println(m)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #[
+		#{"V" -> "S001"}, #{"V" -> "S002"},
+		#{"VI" -> "S001"}, #{"VI" -> "S005"},
+		#{"VII" -> "S005"}, #{"V" -> "S009"},
+		#{"VIII" -> "S007"}
+	]
+	static def main : void {
+		var m = newTreeSet(null)
+		original.forEach[m.addAll(it.values)]
+		println(m)
+	}
+}
+</code></pre>
+
+</div>
+
+## 19. Exercise 19
+
+* Write a SARL program to create and display all combinations of letters, selecting each letter from a different key in a map.
+* Sample data: `{'1':['a','b'], '2':['c','d']}`
+* Expected Output:
+
+```text
+ac
+ad
+bc
+bd
+```
+
+<a href="javascript:exerciseToggle(19)">Answer</a>
+<div id="exercise19" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'1' -> #['a','b'], '2' -> #['c','d']}
+	static def main : void {
+		var m = newArrayList
+		var candidates = original.get(1)
+		if (candidates.isNullOrEmpty) {
+			m.addAll(candidates)
+			var i = 2
+			candidates = original.get(i)
+			while (candidates !== null) {
+				var m2 = newArrayList
+				for (cand0 : m) {
+					for (cand1 : candidates) {
+						m2 += cand0 + cand1
+					}
+				}
+				m = m2
+				i++
+				candidates = original.get(i)
+			}
+		}
+		println(m)
+	}
+}
+</code></pre>
+
+</div>
+
+## 20. Exercise 20
+
+* Write a SARL program to find the highest 3 values of corresponding keys in a map.
+
+<a href="javascript:exerciseToggle(20)">Answer</a>
+<div id="exercise20" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{'A' -> 67, 'B' -> 23, 'C' -> 45,
+                  'D' -> 56, 'E' -> 12, 'F' -> 69} 
+	static def main : void {
+		var iter = original.entrySet.iterator
+		var en = iter.next
+		var max0 = en.value
+		var key0 = en.key
+		var max1 : int
+		var key1 : String
+		var max2 : int
+		var key2 : String
+		while (iter.hasNext) {
+			en = iter.next
+			val m = en.value
+			val k = en.key
+			if (m > max0) {
+				max2 = max1
+				key2 = key1
+				max1 = max0
+				key1 = key0
+				max0 = m
+				key0 = k
+			} else if (m > max1) {
+				max2 = max1
+				key2 = key1
+				max1 = m
+				key1 = k
+			} else if (m > max0) {
+				max2 = m
+				key2 = k
+			}
+		}
+		var newmap = #{key0 -> max0, key1 -> max1, key2 -> max2}
+		println(newmap)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #[
+		#{"V" -> "S001"}, #{"V" -> "S002"},
+		#{"VI" -> "S001"}, #{"VI" -> "S005"},
+		#{"VII" -> "S005"}, #{"V" -> "S009"},
+		#{"VIII" -> "S007"}
+	]
+	static def main : void {
+		var m = newTreeSet(null)
+		original.forEach[m.addAll(it.values)]
+		println(m)
+	}
+}
+</code></pre>
+
+</div>
+
+## 21. Exercise 21
+
+* Write a SARL program to combine values in a list of maps.
+* Sample data: `[{'item': 'item1', 'amount': 400}, {'item': 'item2', 'amount': 300}, {'item': 'item1', 'amount': 750}]`
+* Expected Output: `{'item1': 1150, 'item2': 300}`
+
+<a href="javascript:exerciseToggle(21)">Answer</a>
+<div id="exercise21" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #[
+		#{'item' -> 'item1', 'amount' -> 400},
+		#{'item' -> 'item2', 'amount' -> 300},
+		#{'item' -> 'item1', 'amount' -> 750}
+	] 
+	static def main : void {
+		var newmap = newHashMap
+		for (m : original) {
+			newmap.put(m.get("item"), m.get("amount"))
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 22. Exercise 22
+
+* Write a SARL program to create a map from a string. Track the count of the letters from the string.
+* Sample string: `w3resource`
+* Expected output: `{'w': 1, '3': 1, 'r': 2, 'e': 2, 's': 1, 'o': 1, 'u': 1, 'c': 1}`
+
+<a href="javascript:exerciseToggle(22)">Answer</a>
+<div id="exercise22" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static def letters(value : String) : Map<Character, Integer> {
+		var map = newHashMap
+		for (b : value.bytes) {
+			var c = b as char
+			var n = map.getOrDefault(c, 0)
+			map.put(c, n + 1)
+		}
+		return map
+	}
+	static def main : void {
+		println(letters("w3resource"))
+	}
+}
+</code></pre>
+
+</div>
+
+## 23. Exercise 23
+
+* Write a SARL program to print a map in table format.
+* Sample Input:
+
+```text
+{1: ["Samuel", 21, 'Data Structures'],
+ 2: ["Richie", 20, 'Machine Learning'],
+ 3: ["Lauren", 21, 'OOPS with java'],
+}
+```
+
+* Expected Output:
+
+```text
+Samuel	21	Data Structures
+Richie	20	Machine Learning
+Lauren	21	OOPS with java
+```
+
+<a href="javascript:exerciseToggle(23)">Answer</a>
+<div id="exercise23" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{
+		1 -> #["Samuel", 21, 'Data Structures'],
+			2 -> #["Richie", 20, 'Machine Learning'],
+			3 -> #["Lauren", 21, 'OOPS with java']
+	}
+	
+	static def main : void {
+		var i = 1
+		var row = original.get(i)
+		while (row !== null) {
+			if (!row.isEmpty) {
+				var iter = row.iterator
+				print(iter.next)
+				while (iter.hasNext) {
+					print(" " + iter.next)
+				}
+			}
+			println
+			i++
+			row = original.get(i)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+
+## 24. Exercise 24
+
+* Write a SARL program to sort a list alphabetically in a map.
+* Sample Input:  `{'n1': [2, 3, 1], 'n2': [5, 1, 2], 'n3': [3, 2, 4]}`
+* Expected Output: `{'n1': [1, 2, 3], 'n2': [1, 2, 5], 'n3': [2, 3, 4]}`
+
+<a href="javascript:exerciseToggle(24)">Answer</a>
+<div id="exercise24" style="display:none;">
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{'n1' -> #[2, 3, 1], 'n2' -> #[5, 1, 2], 'n3' -> #[3, 2, 4]}
+	
+	static def main : void {
+		var newmap = newHashMap
+		for (e : original.entrySet) {
+			var nv = e.value.sort
+			newmap.put(e.key, nv)
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 25. Exercise 25
+
+* Write a SARL program to remove spaces from map keys.
+
+<a href="javascript:exerciseToggle(25)">Answer</a>
+<div id="exercise25" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'P 01' -> 'DBMS', 'P 02' -> 'OS', 'P 0 3 ' -> 'Soft Computing'}
+	
+	static def main : void {
+		var newmap = newHashMap
+		for (e : original.entrySet) {
+			var nk = e.key.replaceAll("\s+", "")
+			newmap.put(nk, e.value)
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 26. Exercise 26
+
+* Write a SARL program to get the top three items in a shop.
+* Sample data: `{'item1': 45.50, 'item2':35, 'item3': 41.30, 'item4':55, 'item5': 24}`
+* Expected Output:
+
+```text
+item4 55
+item1 45.5
+item3 41.3
+```
+
+<a href="javascript:exerciseToggle(26)">Answer</a>
+<div id="exercise26" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{'item1' -> 45.50, 'item2' -> 35.0, 'item3' -> 41.30, 'item4' -> 55.0, 'item5' -> 24.0}
+	
+	static def main : void {
+		var iter = original.entrySet.iterator
+		var en = iter.next
+		var max0 = en.value
+		var key0 = en.key
+		var max1 : double
+		var key1 : String
+		var max2 : double
+		var key2 : String
+		while (iter.hasNext) {
+			en = iter.next
+			val m = en.value
+			val k = en.key
+			if (m > max0) {
+				max2 = max1
+				key2 = key1
+				max1 = max0
+				key1 = key0
+				max0 = m
+				key0 = k
+			} else if (m > max1) {
+				max2 = max1
+				key2 = key1
+				max1 = m
+				key1 = k
+			} else if (m > max0) {
+				max2 = m
+				key2 = k
+			}
+		}
+		println(key0 + " " + max0)
+		println(key1 + " " + max1)
+		println(key2 + " " + max2)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #{'item1' -> 45.50, 'item2' -> 35.0, 'item3' -> 41.30, 'item4' -> 55.0, 'item5' -> 24.0}
+	
+	static def main : void {
+		var max0 = original.values.max
+		var max1 = original.values.filter[it < max0].max
+		var max2 = original.values.filter[it < max1].max
+		var newmap = original.filter[k, v | v >= max2]
+		for (e : newmap.entrySet) {
+			println(e.key + " " + e.value)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 27. Exercise 27
+
+*Write a SARL program to get the key, value and item in a map.
+
+<a href="javascript:exerciseToggle(27)">Answer</a>
+<div id="exercise27" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{1 -> 10, 2 -> 20, 3 -> 30, 4 -> 40, 5 -> 50, 6 -> 60}
+	
+	static def main : void {
+		for (e : original.entrySet) {
+			println(e.key + "t" + e.value + "t" + e)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 28. Exercise 28
+
+* Write a SARL program to print a map line by line.
+
+<a href="javascript:exerciseToggle(28)">Answer</a>
+<div id="exercise28" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{1 -> 10, 2 -> 20, 3 -> 30, 4 -> 40, 5 -> 50, 6 -> 60}
+	
+	static def main : void {
+		for (e : original.entrySet) {
+			println(e.key + "t" + e.value)
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 29. Exercise 29
+
+* Write a SARL program to count the number of items in a map value that is a list.
+
+<a href="javascript:exerciseToggle(29)">Answer</a>
+<div id="exercise29" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var original = #{
+		'Alex' -> #['subj1', 'subj2', 'subj3'],
+		'David' -> #['subj1', 'subj2']
+	}
+	
+	static def main : void {
+		var sum = 0
+		for (v : original.values) {
+			sum += v.size
+		}
+		println(sum)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #{
+		'Alex' -> #['subj1', 'subj2', 'subj3'],
+		'David' -> #['subj1', 'subj2']
+	}
+	
+	static def main : void {
+		var sum = original.values.map[it.size].reduce(accumulator, current | accumulator + current)
+		println(sum)
+	}
+}
+</code></pre>
+
+</div>
+
+## 30. Exercise 30
+
+* Write a SARL program to sort items by value in reverse order.
+* Sample data: `{'Math':81, 'Physics':83, 'Chemistry':87}`
+* Expected data: `[('Chemistry', 87), ('Physics', 83), ('Math', 81)]`
+
+<a href="javascript:exerciseToggle(30)">Answer</a>
+<div id="exercise30" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{
+		'Math' -> 81, 'Physics' -> 83, 'Chemistry' -> 87
+	}
+	static def main : void {
+		var result = original.entrySet.sortWith[a, b | b.value <=> a.value].map[#[it.key, it.value]].toList
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 31. Exercise 31
+
+* Write a SARL program to create a map from two lists without losing duplicate values.
+* Sample lists: `['Class-V', 'Class-VI', 'Class-VII', 'Class-VIII']` and `[1, 2, 2, 3]`
+* Expected Output: `{'Class-V': {1}, 'Class-VI': {2}, 'Class-VII': {2}, 'Class-VIII': {3}}`
+
+<a href="javascript:exerciseToggle(31)">Answer</a>
+<div id="exercise31" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original1 = #['Class-V', 'Class-VI', 'Class-VII', 'Class-VIII']
+	static var original2 = #[1, 2, 2, 3]
+	
+	static def main : void {
+		var iter1 = original1.iterator
+		var iter2 = original2.iterator
+		var newmap = newHashMap
+		while (iter1.hasNext && iter2.hasNext) {
+			newmap.put(iter1.next, iter2.next)
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+## 32. Exercise 32
+
+* Write a SARL program to match key values in two dictionaries.
+* Sample maps: `{'key1': 1, 'key2': 3, 'key3': 2}` and `{'key1': 1, 'key2': 2}`
+* Expected output: `{'key1': 1}` is present in both input maps
+
+<a href="javascript:exerciseToggle(32)">Answer</a>
+<div id="exercise32" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original1 = #{'key1' -> 1, 'key2' -> 3, 'key3' -> 2}
+	static var original2 = #{'key1' -> 1, 'key2' -> 2}
+	
+	static def main : void {
+		var newmap = newHashMap
+		for (e1 : original1.entrySet) {
+			var v2 = original2.get(e1.key)
+			if (v2 == e1.value) {
+				newmap.put(e1.key, e1.value)
+			}
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+
+## 33. Exercise 33
+
+* Write a SARL program to store map data in a JSON file.
+* Original map:
+
+```json
+{'students': [{'firstName': 'Nikki', 'lastName': 'Roysden'}, {'firstName': 'Mervin', 'lastName': 'Friedland'}, {'firstName': 'Aron ', 'lastName': 'Wilkins'}], 'teachers': [{'firstName': 'Amberly', 'lastName': 'Calico'}, {'firstName': 'Regine', 'lastName': 'Agtarap'}]}
+```
+
+* Json file:
+
+```json
+{'students': [{'firstName': 'Nikki', 'lastName': 'Roysden'}, {'firstName': 'Mervin', 'lastName': 'Friedland'}, {'firstName': 'Aron ', 'lastName': 'Wilkins'}], 'teachers': [{'firstName': 'Amberly', 'lastName': 'Calico'}, {'firstName': 'Regine', 'lastName': 'Agtarap'}]}
+```
+
+<a href="javascript:exerciseToggle(33)">Answer</a>
+<div id="exercise33" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static var original = #{'students' -> #[
+			#{'firstName' -> 'Nikki', 'lastName' -> 'Roysden'},
+			#{'firstName' -> 'Mervin', 'lastName' -> 'Friedland'},
+			#{'firstName' -> 'Aron ', 'lastName' -> 'Wilkins'}
+		],
+		'teachers' -> #[
+			#{'firstName' -> 'Amberly', 'lastName' -> 'Calico'},
+			#{'firstName' -> 'Regine', 'lastName' -> 'Agtarap'}
+		]
+	}
+	static def toJson(data : Object, buffer : StringBuilder) {
+		if (data instanceof Map) {
+			buffer.append("{")
+			var iter = (data as Map<String, ?>).entrySet.iterator
+			if (iter.hasNext) {
+				var me = iter.next
+				buffer.append(me.key).append(":")
+				toJson(me.value, buffer)
+				while (iter.hasNext) {
+					buffer.append(", ")
+					me = iter.next
+					buffer.append(me.key).append(":")
+					toJson(me.value, buffer)
+				}
+			}
+			buffer.append("}")
+		} else if (data instanceof Iterable) {
+			buffer.append("[")
+			var iter = data.iterator
+			if (iter.hasNext) {
+				toJson(iter.next, buffer)
+				while (iter.hasNext) {
+					buffer.append(", ")
+					toJson(iter.next, buffer)
+				}
+			}
+			buffer.append("]")
+		} else {
+			buffer.append(data)
+		}
+	}
+	
+	static def main : void {
+		var json = new StringBuilder
+		original.toJson(json)
+		println(json.toString)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="34-exercise-34">34. Exercise 34</h2>
+
+<ul>
+  <li>Write a SARL program to create a map of keys x, y, and z where each key has as value a list from 11-20, 21-30, and 31-40 respectively. Access the fifth value of each key from the map.</li>
+</ul>
+
+<pre><code class="language-text">{'x': [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+'y': [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+'z': [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]}
+15
+25
+35
+x has value [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+y has value [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+z has value [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(34)">Answer</a></p>
+<div id="exercise34" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static def main : void {
+		var map = #{
+			"x" -&gt; (11..20).toList,
+			"y" -&gt; (21..30).toList,
+			"z" -&gt; (31..40).toList
+		}
+		println(map)
+		#["x", "y", "z"].forEach[
+			println(map.get(it).get(4))
+		]
+		#["x", "y", "z"].forEach[
+			println(it + " has the value " + map.get(it))
+		]
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="35-exercise-35">35. Exercise 35</h2>
+
+<ul>
+  <li>Write a SARL program to drop empty items from a given map.</li>
+  <li>Original Map: <code>{'c1': 'Red', 'c2': 'Green', 'c3': null}</code></li>
+  <li>New map after dropping empty items: <code>{'c1': 'Red', 'c2': 'Green'}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(35)">Answer</a></p>
+<div id="exercise35" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'c1' -&gt; 'Red', 'c2' -&gt; 'Green', 'c3' -&gt; null}
+	
+	static def main : void {
+		var newmap = original.filter[k, v | v.isNullOrEmpty]
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="36-exercise-36">36. Exercise 36</h2>
+
+<ul>
+  <li>Write a SARL program to filter a map based on values.</li>
+  <li>Original Map: <code>{'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190}</code></li>
+  <li>Marks greater than 170: <code>{'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(36)">Answer</a></p>
+<div id="exercise36" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'Cierra Vega' -&gt; 175, 'Alden Cantrell' -&gt; 180, 'Kierra Gentry' -&gt; 165, 'Pierre Cox' -&gt; 190}
+	static def main : void {
+		var newmap = original.filter[k, v | v &gt; 170]
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="37-exercise-37">37. Exercise 37</h2>
+
+<ul>
+  <li>Write a SARL program to convert more than one list to a nested map.</li>
+  <li>Original strings: <code>['S001', 'S002', 'S003', 'S004']</code>, and <code>['Adina Park', 'Leyton Marsh', 'Duncan Boyle', 'Saim Richards']</code>, and <code>[85, 98, 89, 92]</code></li>
+  <li>Nested map: <code>[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(37)">Answer</a></p>
+<div id="exercise37" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original1 = #['S001', 'S002', 'S003', 'S004']
+	static var original2 = #['Adina Park', 'Leyton Marsh', 'Duncan Boyle', 'Saim Richards']
+	static var original3 = #[85, 98, 89, 92]
+	static def main : void {
+		var iter1 = original1.iterator
+		var iter2 = original2.iterator
+		var iter3 = original3.iterator
+		var newmap = newHashMap
+		while (iter1.hasNext &amp;&amp; iter2.hasNext &amp;&amp; iter3.hasNext) {
+			var newmap1 = newHashMap
+			newmap1.put(iter2.next, iter3.next)
+			newmap.put(iter1.next, newmap1)
+		}
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="38-exercise-38">38. Exercise 38</h2>
+
+<ul>
+  <li>Write a SARL program to filter the height and width of students, which are stored in a map.</li>
+  <li>Original Map: <code>{'Cierra Vega': (6.2, 70), 'Alden Cantrell': (5.9, 65), 'Kierra Gentry': (6.0, 68), 'Pierre Cox': (5.8, 66)}</code></li>
+  <li>Height &gt; 6ft and Weight&gt; 70kg: <code>{'Cierra Vega': (6.2, 70)}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(38)">Answer</a></p>
+<div id="exercise38" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{
+		'Cierra Vega' -&gt; #[6.2, 70],
+		'Alden Cantrell' -&gt; #[5.9, 65],
+		'Kierra Gentry' -&gt; #[6.0, 68],
+		'Pierre Cox' -&gt; #[5.8, 66]}
+	static def main : void {
+		val height = 6.0
+		val weight = 70.0
+		var newmap = original.filter[k, v | v.get(0) &gt; height &amp;&amp; v.get(1) &gt; weight]
+		println(newmap)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="39-exercise-39">39. Exercise 39</h2>
+
+<ul>
+  <li>Write a SARL program to verify that all values in a map are the same.</li>
+  <li>Original Map: <code>{'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12}</code></li>
+  <li>Check all are 12 in the map: <code>true</code></li>
+  <li>Check all are 10 in the map: <code>false</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(39)">Answer</a></p>
+<div id="exercise39" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original = #{
+		'Cierra Vega' -&gt; 12,
+		'Alden Cantrell' -&gt; 12,
+		'Kierra Gentry' -&gt; 12,
+		'Pierre Cox' -&gt; 12}
+	static def check(map : Map&lt;String, Integer&gt;, n : int) : boolean {
+		for (v : map.values) {
+			if (v != n) {
+				return false
+			}
+		}
+		return true
+	}
+	static def main : void {
+		println(original.check(12))
+		println(original.check(10))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original = #{
+		'Cierra Vega' -&gt; 12,
+		'Alden Cantrell' -&gt; 12,
+		'Kierra Gentry' -&gt; 12,
+		'Pierre Cox' -&gt; 12}
+	static def check(map : Map&lt;String, Integer&gt;, n : int) : boolean {
+		map.values.forall[it == n]
+	}
+	static def main : void {
+		println(original.check(12))
+		println(original.check(10))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="40-exercise-40">40. Exercise 40</h2>
+
+<ul>
+  <li>Write a SARL program to create a map  grouping a sequence of key-value pairs into a map of lists.</li>
+  <li>Original list: <code>[('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]</code></li>
+  <li>Grouping a sequence of key-value pairs into a map of lists: <code>{'yellow': [1, 3], 'blue': [2, 4], 'red': [1]}</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(40)">Answer</a></p>
+<div id="exercise40" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #[
+		#['yellow', 1], #['blue', 2], #['yellow', 3], #['blue', 4], #['red', 1]
+	]
+	static def main : void {
+		var map = newHashMap
+		for (e : original) {
+			var list = map.computeIfAbsent(e.get(0)) [newArrayList]
+			list += e.get(1)
+		}
+		println(map)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="41-exercise-41">41. Exercise 41</h2>
+
+<ul>
+  <li>Write a SARL program to split a given map of lists into lists of maps.</li>
+  <li>Original map of lists: <code>{'Science': [88, 89, 62, 95], 'Language': [77, 78, 84, 80]}</code></li>
+  <li>Split said map of lists into list of dictionaries: <code>[{'Science': 88, 'Language': 77}, {'Science': 89, 'Language': 78}, {'Science': 62, 'Language': 84}, {'Science': 95, 'Language': 80}]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(41)">Answer</a></p>
+<div id="exercise41" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution {
+	static var original = #{'Science' -&gt; #[88, 89, 62, 95], 'Language' -&gt; #[77, 78, 84, 80]}
+	static def list_of_dicts(marks : Map&lt;String, List<Integer>&gt;) : List&lt;Map&lt;String, Integer&gt;&gt; {
+		var list = newArrayList
+		for (value : marks.entrySet) {
+			var i = 0
+			for (value0 : value.value) {
+				var m : Map&lt;String, Integer&gt;
+				if (i &gt;= list.size) {
+					m = newHashMap
+					list.add(m)
+				} else {
+					m = list.get(i)
+				}
+				m.put(value.key, value0)
+				i++
+			}
+		}
+	    return list
+	}
+  		static def main : void {
+		println(list_of_dicts(original))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 42. Exercise 42
+
+* Write a SARL program to remove a specified map from a given list.
+* Original list of map: `[{'id': '#FF0000', 'color': 'Red'}, {'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]`
+* Remove id `#FF0000` from the said list of map: `[{'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]`
+
+<a href="javascript:exerciseToggle(42)">Answer</a>
+<div id="exercise42" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #[
+		#{'id' -&gt; '#FF0000', 'color' -&gt; 'Red'},
+		#{'id' -&gt; '#800000', 'color' -&gt; 'Maroon'},
+		#{'id' -&gt; '#FFFF00', 'color' -&gt; 'Yellow'},
+		#{'id' -&gt; '#808000', 'color' -&gt; 'Olive'}
+	]
+	static def remove_color(colors : List&lt;Map&lt;String, String&gt;&gt;, id : String) : List&lt;Map&lt;String, String&gt;&gt; {
+		var newlist = newArrayList
+		for (c : colors) {
+			if (c.get("id") != id) {
+				newlist.add(c)
+			}
+		}
+		return newlist
+	}
+  		static def main : void {
+		println(remove_color(original, '#FF0000'))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #[
+		#{'id' -&gt; '#FF0000', 'color' -&gt; 'Red'},
+		#{'id' -&gt; '#800000', 'color' -&gt; 'Maroon'},
+		#{'id' -&gt; '#FFFF00', 'color' -&gt; 'Yellow'},
+		#{'id' -&gt; '#808000', 'color' -&gt; 'Olive'}
+	]
+	static def remove_color(colors : List&lt;Map&lt;String, String&gt;&gt;, id : String) : List&lt;Map&lt;String, String&gt;&gt; {
+		colors.filter[it.get("id") != id].toList
+	}
+  		static def main : void {
+		println(remove_color(original, '#FF0000'))
+	}
+}
+</code></pre>
+
+</div>
+
+## 43. Exercise 43
+
+* Write a SARL program to convert string values of a given map into integer/float datatypes.
+* Original list: `[{'x': '10', 'y': '20', 'z': '30'}, {'p': '40', 'q': '50', 'r': '60'}]`
+* String values of a given map, into integer types: `[{'x': 10, 'y': 20, 'z': 30}, {'p': 40, 'q': 50, 'r': 60}]`
+* Original list: `[{'x': '10.12', 'y': '20.23', 'z': '30'}, {'p': '40.00', 'q': '50.19', 'r': '60.99'}]`
+* String values of a given map, into float types: `[{'x': 10.12, 'y': 20.23, 'z': 30.0}, {'p': 40.0, 'q': 50.19, 'r': 60.99}]`
+
+<a href="javascript:exerciseToggle(43)">Answer</a>
+<div id="exercise43" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #[
+		#{'x' -&gt; '10', 'y' -&gt; '20', 'z' -&gt; '30'},
+		#{'p' -&gt; '40', 'q' -&gt; '50', 'r' -&gt; '60'}
+	]
+	static def isInteger(value : String) : boolean {
+		try {
+			Long::parseLong(value)
+			return true
+		} catch (ex : Throwable) {
+			return false
+		}
+	}
+	static def numbers(list : List&lt;Map&lt;String, String&gt;&gt;) : List&lt;Map&lt;String, Number&gt;&gt; {
+		var newlist = newArrayList
+		for (l : list) {
+			var map = newHashMap
+			for (e : l.entrySet) {
+				var value = if (e.value.isInteger) (e.value as Integer) else (e.value as Float)
+				map.put(e.key, value)
+			}
+		}
+		return newlist
+	}
+  		static def main : void {
+		println(numbers(original))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #[
+		#{'x' -&gt; '10', 'y' -&gt; '20', 'z' -&gt; '30'},
+		#{'p' -&gt; '40', 'q' -&gt; '50', 'r' -&gt; '60'}
+	]
+	static def isInteger(value : String) : boolean {
+		try {
+			Long::parseLong(value)
+			return true
+		} catch (ex : Throwable) {
+			return false
+		}
+	}
+	static def numbers(list : List&lt;Map&lt;String, String&gt;&gt;) : List&lt;Map&lt;String, Number&gt;&gt; {
+		list.map[
+			it.mapValues[
+				if (it.isInteger) (it as Integer) else (it as Float)
+			]
+		]
+	}
+  		static def main : void {
+		println(numbers(original))
+	}
+}
+</code></pre>
+
+</div>
+
+## 44. Exercise 44
+
+* A SARL map contains List as a value. Write a SARL program to clear the list values in the said map.
+* Original Map: `{'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}`
+* Clear the list values in the said map: `{'C1': [], 'C2': [], 'C3': []}`
+
+<a href="javascript:exerciseToggle(44)">Answer</a>
+<div id="exercise44" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #{'C1' -&gt; #[10, 20, 30], 'C2' -&gt; #[20, 30, 40], 'C3' -&gt; #[12, 34]}
+	static def clear(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+		var newmap = newHashMap
+		for (e : map.entrySet) {
+			newmap.put(e.key, <Integer>newArrayList)
+		}
+		return newmap
+	}
+  		static def main : void {
+		println(clear(original))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #{'C1' -&gt; #[10, 20, 30], 'C2' -&gt; #[20, 30, 40], 'C3' -&gt; #[12, 34]}
+	static def clear(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+		map.mapValues[newArrayList]
+	}
+  		static def main : void {
+		println(clear(original))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 45. Exercise 45
+
+* A SARL map contains List as a value. Write a SARL program to update the list values in the said map by adding 1 to the scores in Math and substracting 2 to the scores in Physics
+* Original Map: `{'Math': [88, 89, 90], 'Physics': [92, 94, 89], 'Chemistry': [90, 87, 93]}`
+* Update the list values of the said map: `{'Math': [89, 90, 91], 'Physics': [90, 92, 87], 'Chemistry': [90, 87, 93]}`
+
+<a href="javascript:exerciseToggle(45)">Answer</a>
+<div id="exercise45" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #{'Math' -&gt; #[88, 89, 90], 'Physics' -&gt; #[92, 94, 89], 'Chemistry' -&gt; #[90, 87, 93]}
+	static def update(map : Map&lt;String, List<Integer>&gt;, name : String, delta : int) : Map&lt;String, List<Integer>&gt; {
+		var newmap = newHashMap
+		for (e : map.entrySet) {
+			if (e.key == name) {
+				var ns = newArrayList
+				for (s : e.value) {
+					ns += s + delta
+				}
+				newmap.put(e.key, ns)
+			} else {
+				newmap.put(e.key, e.value)
+			}
+		}
+		return newmap
+	}
+  		static def main : void {
+  			var m = original.update("Math", 1)
+  			m = m.update("Physics", -2)
+		println(m)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #{'Math' -&gt; #[88, 89, 90], 'Physics' -&gt; #[92, 94, 89], 'Chemistry' -&gt; #[90, 87, 93]}
+	static def update(map : Map&lt;String, List<Integer>&gt;, name : String, delta : int) : Map&lt;String, List<Integer>&gt; {
+		map.entrySet.toMap(
+			[it.key],
+			[
+				if (it.key == name) {
+					it.value.map[it + delta]
+				} else {
+					it.value
+				}
+			]
+		)
+	}
+  		static def main : void {
+  			var m = original.update("Math", 1)
+  			m = m.update("Physics", -2)
+		println(m)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 46. Exercise 46
+
+* Write a SARL program to extract a list of values from a given list of maps.
+* Original Map: `[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]`
+* Extract a list of values from said list of maps where subject = Science: `[92, 94, 88]`
+* Original Map: `[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]`
+* Extract a list of values from said list of maps where subject = Math: `[90, 89, 92]`
+
+<a href="javascript:exerciseToggle(46)">Answer</a>
+<div id="exercise46" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #[
+		#{'Math' -&gt; 90, 'Science' -&gt; 92},
+		#{'Math' -&gt; 89, 'Science' -&gt; 94},
+		#{'Math' -&gt; 92, 'Science' -&gt; 88}
+	]
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+		var scores = newArrayList
+		for (map : list) {
+			var score = map.get(name)
+			if (score !== null) {
+				scores += score
+			}
+		}
+		return scores
+	}
+  		static def main : void {
+  			println(original.extract("Science"))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #[
+		#{'Math' -&gt; 90, 'Science' -&gt; 92},
+		#{'Math' -&gt; 89, 'Science' -&gt; 94},
+		#{'Math' -&gt; 92, 'Science' -&gt; 88}
+	]
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+		list.map[it.get(name)]
+	}
+  		static def main : void {
+  			println(original.extract("Science"))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 47. Exercise 47
+
+* Write a SARL program to find the length of a map of values.
+* Original Map: `{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}`
+* Length of map values: `{'red': 3, 'green': 5, 'black': 5, 'white': 5}`
+* Original Map: `{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}`
+* Length of map values: `{'Austin Little': 13, 'Natasha Howard': 14, 'Alfred Mullins': 14, 'Jamie Rowe': 10}`
+
+<a href="javascript:exerciseToggle(47)">Answer</a>
+<div id="exercise47" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.List
+import java.util.Map
+class Solution1 {
+	static var original = #[
+		#{'Math' -&gt; 90, 'Science' -&gt; 92},
+		#{'Math' -&gt; 89, 'Science' -&gt; 94},
+		#{'Math' -&gt; 92, 'Science' -&gt; 88}
+	]
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+		var scores = newArrayList
+		for (map : list) {
+			var score = map.get(name)
+			if (score !== null) {
+				scores += score
+			}
+		}
+		return scores
+	}
+  		static def main : void {
+  			println(original.extract("Science"))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.List
+import java.util.Map
+class Solution2 {
+	static var original = #{1 -&gt; 'red', 2 -&gt; 'green', 3 -&gt; 'black', 4 -&gt; 'white', 5 -&gt; 'black'}
+	static def sizes(map : Map&lt;Integer, String&gt;) : Map&lt;String, Integer&gt; {
+		map.values.toInvertedMap[it.length]
+	}
+  		static def main : void {
+  			println(original.sizes)
+	}
+}
+</code></pre>
+
+&lt;/div&gt;
+
+## 48. Exercise 48
+
+* Write a SARL program to get the depth of a map.
+
+<a href="javascript:exerciseToggle(48)">Answer</a>
+<div id="exercise48" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution1 {
+	static var original = #{'a' -&gt; 1, 'b' -&gt; #{'c' -&gt; #{'d' -&gt; #{}}}}
+	static def depth(map : Object) : int {
+		if (map instanceof Map) {
+			var iter = map.values.iterator
+			if (iter.hasNext) {
+				var max = depth(iter.next)
+				while (iter.hasNext) {
+					var m = depth(iter.next)
+					if (m &gt; max) {
+						max = m
+					}
+				}
+				return max + 1
+			}
+		}
+		return 0
+	}
+  		static def main : void {
+  			println(original.depth)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution2 {
+	static var original = #{'a' -&gt; 1, 'b' -&gt; #{'c' -&gt; #{'d' -&gt; #{}}}}
+	static def depth(map : Object) : int {
+		if (map instanceof Map) {
+			return map.values.map[depth(it)].max + 1
+		}
+		return 0
+	}
+  		static def main : void {
+  			println(original.depth)
+	}
+}
+</code></pre>
+
+</div>
+
+## 49. Exercise 49
+
+* Write a SARL program to access map key's element by index.
+* Sample Input: `{'physics': 80, 'math': 90, 'chemistry': 86}`
+* Expected Output:
+
+```text
+0 = physics
+1 = math
+2 = chemistry
+```
+
+<a href="javascript:exerciseToggle(49)">Answer</a>
+<div id="exercise49" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'physics' -&gt; 80, 'math' -&gt; 90, 'chemistry' -&gt; 86}
+  		static def main : void {
+  			for (i : 0..&lt;3) {
+   			println(i + " = " + original.keySet.get(i))
+  			}
+	}
+}
+</code></pre>
+
+</div>
+
+## 50. Exercise 50
+
+* Write a SARL program to convert a map into a list of lists.
+* Original Map: `{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}`
+* Convert the said map into a list of lists: `[[1, 'red'], [2, 'green'], [3, 'black'], [4, 'white'], [5, 'black']]`
+* Original Map: `{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}`
+* Convert the said map into a list of lists: `[['1', 'Austin Little'], ['2', 'Natasha Howard'], ['3', 'Alfred Mullins'], ['4', 'Jamie Rowe']]`
+
+<a href="javascript:exerciseToggle(50)">Answer</a>
+<div id="exercise50" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #{1 -&gt; 'red', 2 -&gt; 'green', 3 -&gt; 'black', 4 -&gt; 'white', 5 -&gt; 'black'}
+	static def make_list(map : Map&lt;Integer, String&gt;) : List&lt;List<object>&gt; {
+		var list = newArrayList
+		for (e : map.entrySet) {
+			var tab = <object>newArrayList
+			tab += e.key
+			tab += e.value
+			list.add(tab)
+		}
+		return list
+	}
+  		static def main : void {
+  			println(original.make_list)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #{1 -&gt; 'red', 2 -&gt; 'green', 3 -&gt; 'black', 4 -&gt; 'white', 5 -&gt; 'black'}
+	static def make_list(map : Map&lt;Integer, String&gt;) : List&lt;List<object>&gt; {
+		map.entrySet.map[#[it.key, it.value] as List<object>].toList
+	}
+  		static def main : void {
+  			println(original.make_list)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 51. Exercise 51
+
+* Write a SARL program to filter even numbers from a map of values.
+* Original Map: `{'V': [1, 4, 6, 10], 'VI': [1, 4, 12], 'VII': [1, 3, 8]}`
+* Filter even numbers from said map values: `{'V': [4, 6, 10], 'VI': [4, 12], 'VII': [8]}`
+* Original Map: `{'V': [1, 3, 5], 'VI': [1, 5], 'VII': [2, 7, 9]}`
+* Filter even numbers from said map values: `{'V': [], 'VI': [], 'VII': [2]}`
+
+<a href="javascript:exerciseToggle(51)">Answer</a>
+<div id="exercise51" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #{
+		'V' -&gt; #[1, 4, 6, 10],
+		'VI' -&gt; #[1, 4, 12],
+		'VII' -&gt; #[1, 3, 8]}
+	static def even_numbers(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+		var newmap = newHashMap
+		for (e : map.entrySet) {
+			var newlist = newArrayList
+			for (v : e.value) {
+				if ((v % 2) == 0) {
+					newlist += v
+				}
+			}
+			newmap.put(e.key, newlist)
+		}
+		return newmap
+	}
+  		static def main : void {
+  			println(original.even_numbers)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #{
+		'V' -&gt; #[1, 4, 6, 10],
+		'VI' -&gt; #[1, 4, 12],
+		'VII' -&gt; #[1, 3, 8]}
+	static def even_numbers(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+		map.mapValues[it.filter[(it % 2) == 0].toList]
+	}
+  		static def main : void {
+  			println(original.even_numbers)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 52. Exercise 52
+
+* Write a SARL program to get all combinations of key-value pairs in a given map.
+* Original Map: `{'V': [1, 4, 6, 10], 'VI': [1, 4, 12], 'VII': [1, 3, 8]}`
+* Combinations of key-value pairs of the said map: `[{'V': [1, 4, 6, 10], 'VI': [1, 4, 12]}, {'V': [1, 4, 6, 10], 'VII': [1, 3, 8]}, {'VI': [1, 4, 12], 'VII': [1, 3, 8]}]`
+* Original Map: `{'V': [1, 3, 5], 'VI': [1, 5]}`
+* Combinations of key-value pairs of the said map: `[{'V': [1, 3, 5], 'VI': [1, 5]}]`
+
+<a href="javascript:exerciseToggle(52)">Answer</a>
+<div id="exercise52" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution {
+	static var original = #{
+		'V' -&gt; #[1, 4, 6, 10],
+		'VI' -&gt; #[1, 4, 12],
+		'VII' -&gt; #[1, 3, 8]}
+	static def combinations(keys : List<String>) : List&lt;List<String>&gt; {
+		var list = newArrayList()
+		for (var i = 0; i &lt; keys.size - 1; i++) {
+			for (var j = i + 1; j &lt; keys.size; j++) {
+				list.add(#[keys.get(i), keys.get(j)])
+			}
+		}
+		return list
+	}
+	static def combinations(map : Map&lt;String, List<Integer>&gt;) : List&lt;Map&lt;String, List<Integer>&gt;&gt; {
+		var list = newArrayList
+		for (keys : map.keySet.toList.combinations) {
+			var newmap = newHashMap
+			for (key : keys) {
+				newmap.put(key, map.get(key))
+			}
+			list.add(newmap)
+		}
+		return list
+	}
+  		static def main : void {
+  			println(original.combinations)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 53. Exercise 53
+
+* Write a SARL program to find the specified number of maximum values in a given map.
+* Original Map: `{'a': 5, 'b': 14, 'c': 32, 'd': 35, 'e': 24, 'f': 100, 'g': 57, 'h': 8, 'i': 100}`
+* 1 maximum value(s) in the said map: `['f']`
+* 2 maximum value(s) in the said map: `['f', 'i']`
+* 5 maximum value(s) in the said map: `['f', 'i', 'g', 'd', 'c']`
+
+<a href="javascript:exerciseToggle(53)">Answer</a>
+<div id="exercise53" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static var original = #{
+		'a' -&gt; 5, 'b' -&gt; 14, 'c' -&gt; 32, 'd' -&gt; 35, 'e' -&gt; 24,
+		'f' -&gt; 100, 'g' -&gt; 57, 'h' -&gt; 8, 'i' -&gt; 100}
+  		static def max_values(map : Map&lt;String, Integer&gt;, n : int) : Iterable<String> {
+  			map.entrySet.sortWith[a, b | b.value &lt;=&gt; a.value].map[it.key].take(n)
+	}
+  		static def main : void {
+  			println(original.max_values(1))
+  			println(original.max_values(2))
+  			println(original.max_values(5))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 54. Exercise 54
+
+* Write a SARL program to find the shortest list of values for the keys in a given map.
+* Original Map: `{'V': [10, 12], 'VI': [10], 'VII': [10, 20, 30, 40], 'VIII': [20], 'IX': [10, 30, 50, 70], 'X': [80]}`
+* Shortest list of values with the keys of the said map: `['VI', 'VIII', 'X']`
+
+<a href="javascript:exerciseToggle(54)">Answer</a>
+<div id="exercise54" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution {
+	static var original = #{
+		'V' -&gt; #[10, 12], 'VI' -&gt; #[10], 'VII' -&gt; #[10, 20, 30, 40],
+		'VIII' -&gt; #[20], 'IX' -&gt; #[10, 30, 50, 70], 'X' -&gt; #[80]}
+  		static def shorted_list(map : Map&lt;String, List<Integer>&gt;) : List<String> {
+  			val min = map.values.map[it.size].min
+  			map.entrySet.filter[it.value.size == min].map[it.key].toList
+	}
+  		static def main : void {
+  			println(original.shorted_list)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 55. Exercise 55
+
+* Write a SARL program to extract values from a given map and create a list of lists from those values.
+* Original Map: `[{'student_id': 1, 'name': 'Jean Castro', 'class': 'V'}, {'student_id': 2, 'name': 'Lula Powell', 'class': 'V'}, {'student_id': 3, 'name': 'Brian Howell', 'class': 'VI'}, {'student_id': 4, 'name': 'Lynne Foster', 'class': 'VI'}, {'student_id': 5, 'name': 'Zachary Simon', 'class': 'VII'}]`
+* Extract values from the said map and create a list of lists using those values:
+  * For `['student_id', 'name', 'class']`: `[[1, 'Jean Castro', 'V'], [2, 'Lula Powell', 'V'], [3, 'Brian Howell', 'VI'], [4, 'Lynne Foster', 'VI'], [5, 'Zachary Simon', 'VII']]`
+  * For `['student_id', 'name']`: `[[1, 'Jean Castro'], [2, 'Lula Powell'], [3, 'Brian Howell'], [4, 'Lynne Foster'], [5, 'Zachary Simon']]`
+  * For `['name', 'class']`: `[['Jean Castro', 'V'], ['Lula Powell', 'V'], ['Brian Howell', 'VI'], ['Lynne Foster', 'VI'], ['Zachary Simon', 'VII']]`
+
+<a href="javascript:exerciseToggle(55)">Answer</a>
+<div id="exercise55" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution {
+	static var original = #[
+		#{'student_id' -&gt; "1", 'name' -&gt; 'Jean Castro', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; "2", 'name' -&gt; 'Lula Powell', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; "3", 'name' -&gt; 'Brian Howell', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; "4", 'name' -&gt; 'Lynne Foster', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; "5", 'name' -&gt; 'Zachary Simon', 'class' -&gt; 'VII'}
+	]
+  		static def extract(list : List&lt;Map&lt;String, String&gt;&gt;, keys : String*) : List&lt;List<String>&gt; {
+  			var result = newArrayList
+  			for (person : list) {
+  				var personList = newArrayList
+  				for (k : keys) {
+  					personList += person.get(k)
+  				}
+  				result.add(personList)
+  			}
+  			return result
+	}
+  		static def main : void {
+  			println(original.extract("student_id", "name", "class"))
+  			println(original.extract("student_id", "name"))
+  			println(original.extract("name", "class"))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 56. Exercise 56
+
+* Write a SARL program to convert a given list of lists to a map.
+* Original list of lists: `[[1, 'Jean Castro', 'V'], [2, 'Lula Powell', 'V'], [3, 'Brian Howell', 'VI'], [4, 'Lynne Foster', 'VI'], [5, 'Zachary Simon', 'VII']]`
+* Convert the said list of lists to a map: `{1: ['Jean Castro', 'V'], 2: ['Lula Powell', 'V'], 3: ['Brian Howell', 'VI'], 4: ['Lynne Foster', 'VI'], 5: ['Zachary Simon', 'VII']}`
+
+<a href="javascript:exerciseToggle(56)">Answer</a>
+<div id="exercise56" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #[
+		#[1, 'Jean Castro', 'V'], #[2, 'Lula Powell', 'V'],
+		#[3, 'Brian Howell', 'VI'], #[4, 'Lynne Foster', 'VI'],
+		#[5, 'Zachary Simon', 'VII']
+	]
+  		static def main : void {
+  			var result = original.toMap(
+  				[it.get(0) as Integer],
+  				[#[it.get(1) as String, it.get(2) as String]]
+  			)
+  			println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 57. Exercise 57
+
+* Write a SARL program that creates key-value list pairings within a map.
+* Original map: `{1: ['Jean Castro'], 2: ['Lula Powell'], 3: ['Brian Howell'], 4: ['Lynne Foster'], 5: ['Zachary Simon']}`
+* A key-value list pairings of the said map: `[{1: 'Jean Castro', 2: 'Lula Powell', 3: 'Brian Howell', 4: 'Lynne Foster', 5: 'Zachary Simon'}]`
+
+<a href="javascript:exerciseToggle(57)">Answer</a>
+<div id="exercise57" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{1 -&gt; #['Jean Castro'], 2 -&gt; #['Lula Powell'],
+		3 -&gt; #['Brian Howell'], 4 -&gt; #['Lynne Foster'],
+		5 -&gt; #['Zachary Simon']
+	}
+  		static def main : void {
+  			var result = #[original.mapValues[it.get(0)]]
+  			println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 58. Exercise 58
+
+* Write a SARL program to get the total length of all values in a given map with string values.
+* Original map: `{'#FF0000': 'Red', '#800000': 'Maroon', '#FFFF00': 'Yellow', '#808000': 'Olive'}`
+* Total length of all values of the said map with string values: `20`
+
+<a href="javascript:exerciseToggle(58)">Answer</a>
+<div id="exercise58" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'#FF0000' -&gt; 'Red', '#800000' -&gt; 'Maroon',
+		'#FFFF00' -&gt; 'Yellow', '#808000' -&gt; 'Olive'}
+  		static def main : void {
+  			var result = original.values.map[it.length]
+  				.reduce[accumulator, current | accumulator + current]
+  			println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 59. Exercise 59
+
+* Write a SARL program to check if a specific key and a value exist in a map.
+* Original Map: `[{'student_id': 1, 'name': 'Jean Castro', 'class': 'V'}, {'student_id': 2, 'name': 'Lula Powell', 'class': 'V'}, {'student_id': 3, 'name': 'Brian Howell', 'class': 'VI'}, {'student_id': 4, 'name': 'Lynne Foster', 'class': 'VI'}, {'student_id': 5, 'name': 'Zachary Simon', 'class': 'VII'}]`
+
+<a href="javascript:exerciseToggle(59)">Answer</a>
+<div id="exercise59" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution1 {
+	static var original = #[
+		#{'student_id' -&gt; '1', 'name' -&gt; 'Jean Castro', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; '2', 'name' -&gt; 'Lula Powell', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; '3', 'name' -&gt; 'Brian Howell', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; '4', 'name' -&gt; 'Lynne Foster', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; '5', 'name' -&gt; 'Zachary Simon', 'class' -&gt; 'VII'}
+	]
+	static def check(persons : List&lt;Map&lt;String, String&gt;&gt;, key : String, value : String) : boolean {
+		for (person : persons) {
+			if (person.get(key) == value) {
+				return true
+			}
+		}
+		return false
+	}
+  		static def main : void {
+  			println(original.check("name", "Lynne Foster"))
+  			println(original.check("class", "VI"))
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+import java.util.Map
+import java.util.List
+class Solution2 {
+	static var original = #[
+		#{'student_id' -&gt; '1', 'name' -&gt; 'Jean Castro', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; '2', 'name' -&gt; 'Lula Powell', 'class' -&gt; 'V'},
+		#{'student_id' -&gt; '3', 'name' -&gt; 'Brian Howell', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; '4', 'name' -&gt; 'Lynne Foster', 'class' -&gt; 'VI'},
+		#{'student_id' -&gt; '5', 'name' -&gt; 'Zachary Simon', 'class' -&gt; 'VII'}
+	]
+	static def check(persons : List&lt;Map&lt;String, String&gt;&gt;, key : String, value : String) : boolean {
+		persons.exists[it.get(key) == value]
+	}
+  		static def main : void {
+  			println(original.check("name", "Lynne Foster"))
+  			println(original.check("class", "VI"))
+	}
+}
+</code></pre>
+
+</div>
+
+## 60. Exercise 60
+
+* Write a SARL program to invert a given map with non-unique hashable values.
+* Sample Input: `{'Ora Mckinney': 8, 'Theodore Hollandl': 7, 'Mae Fleming': 7, 'Mathew Gilbert': 8, 'Ivan Little': 7}`
+* Sample Output: `{8: ['Ora Mckinney', 'Mathew Gilbert'], 7: ['Theodore Hollandl', 'Mae Fleming', 'Ivan Little']}`
+
+<a href="javascript:exerciseToggle(60)">Answer</a>
+<div id="exercise60" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #{'Ora Mckinney' -&gt; 8, 'Theodore Hollandl' -&gt; 7,
+		'Mae Fleming' -&gt; 7, 'Mathew Gilbert' -&gt; 8, 'Ivan Little' -&gt; 7}
+  		static def main : void {
+  			var map = newHashMap
+  			for (e : original.entrySet) {
+  				var list = map.computeIfAbsent(e.value) [newArrayList]
+  				list += e.value
+  			}
+  			println(map)
+	}
+}
+</code></pre>
+
+</div>
+
+## 61. Version Specification
+
+* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
+* Version: 0.15
+* Status: Stable Release
+* Release: 2025-09-10
+
+## 62. Legal Notice
+
+&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
+&gt;
+&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
+&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+&gt;
+&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
+&gt; you may not use this file except in compliance with the Apache License.
+&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+&gt;
+&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+
+<small>Generated with the translator docs.generator 0.15.0.</small>
+</String></code></pre></div></String></Integer></code></pre></div></String></code></pre></div></Integer></Integer></String></String></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></object></object></code></pre></object></object></code></pre></div></Integer></code></pre></div></Integer></code></pre></Integer></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></Integer></Integer></code></pre></Integer></Integer></Integer></code></pre></div></Integer></code></pre></div>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>

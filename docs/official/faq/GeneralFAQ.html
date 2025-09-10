@@ -111,7 +111,8 @@ Considering the variety of existing approaches and meta-models in the field of a
   <li><a href="#42-how-can-i-find-the-current-issues">4.2. How can I find the current issues?</a></li>
   <li><a href="#43-how-can-i-report-a-problem-or-a-bug-in-sarl-components">4.3. How can I report a problem or a bug in SARL components?</a></li>
 </ul>
-<li><a href="#5-legal-notice">5. Legal Notice</a></li>
+<li><a href="#5-version-specification">5. Version Specification</a></li>
+<li><a href="#6-legal-notice">6. Legal Notice</a></li>
 
 </ul>
 
@@ -128,23 +129,23 @@ agent-oriented paradigm holds the keys to effectively meet this challenge.</p>
 <p>Syntactically and semantically SARL has its roots in the Java programming language but improves on many aspects:</p>
 
 <ul>
-  <li><a href="../index.html#agent-oriented-programming">Agent specific statements</a> - provide specific statements for agent programming</li>
-  <li><a href="../reference/GeneralSyntax.html">Type inference</a> - you rarely need to write down type signatures anymore</li>
-  <li><a href="../reference/general/Lambda.html">Lambda expressions</a> - concise syntax for anonymous function literals</li>
-  <li><a href="../reference/general/Operators.html">Operator overloading</a> - make your libraries even more expressive</li>
-  <li><a href="../reference/general/Extension.html">Extension methods</a> - enhance closed types with new functionality</li>
-  <li><a href="../reference/general/SwitchExpression.html">Powerful switch expressions</a> - type based switching with implicit casts</li>
-  <li><a href="../reference/GeneralSyntax.html#details-on-the-sarl-language-elements">No statements</a> - everything is an expression</li>
-  <li>Full support for Java generics - including all conformance and conversion rules</li>
+  <li><a href="../lang/aop/index.html">Agent specific statements</a> - provide specific statements for agent programming</li>
+  <li><a href="../lang/expr/index.html">Type inference</a> - you rarely need to write down type signatures anymore</li>
+  <li><a href="../lang/expr/Lambda.html">Lambda expressions</a> - concise syntax for anonymous function literals</li>
+  <li><a href="../lang/expr/Operators.html">Operator overloading</a> - make your libraries even more expressive</li>
+  <li><a href="../lang/expr/Extension.html">Extension methods</a> - enhance closed types with new functionality</li>
+  <li><a href="../lang/expr/SwitchExpression.html">Powerful switch expressions</a> - type based switching with implicit casts</li>
+  <li><a href="../lang/expr/index.html">No statements</a> - everything is an expression</li>
+  <li>Full support for Java generics types - including all conformance and conversion rules</li>
   <li>Translates to Java not byte code - understand what is going on and use your code for platforms such as Android or GWT</li>
 </ul>
 
-<p>Unlike other JVM languages, SARL has zero interoperability issues with Java: everything you write interacts with Java exactly as expected. At the same time, SARL is much more concise, readable and expressive.</p>
+<p>Unlike other JVM-based languages, SARL has zero interoperability issues with Java: everything you write interacts with Java exactly as expected. At the same time, SARL is much more concise, readable and expressive.</p>
 
 <p><strong>The language is platform- and architecture-independent.</strong></p>
 
 <p>For a brief comparison between SARL, Java and Xtend languages, see the Section
-“<a href="../reference/OOP.html#comparison-between-sarl-and-other-languages">Comparison between SARL and other languages</a>”.</p>
+“<a href="../lang/Comparison.html">Comparison between SARL and other languages</a>”.</p>
 
 <h3 id="12-can-i-use-sarl-to-make-agent-based-software">1.2. Can I use SARL to make agent-based software?</h3>
 
@@ -219,12 +220,12 @@ management of your project’s dependencies on the SARL libraries.</p>
 <p>SRE stands for “SARL Runtime Environment.”
 The SRE is an implementation of an agent platform which is able to run a SARL program.
 The official standard SRE supported by the SARL developers is the
-<a href="http://www.janusproject.io">Janus platform</a>.</p>
+<a href="http://www.sarl.io/runtime/janus/">Janus platform</a>.</p>
 
 <h3 id="110-what-is-the-difference-between-sarl-and-janus">1.10. What is the difference between SARL and Janus?</h3>
 
 <p>SARL is a general-purpose agent-oriented language.
-Janus is a runtime environment (SRE) for multi-agent applications
+Janus is an agent framework that is a runtime environment (SRE) for multi-agent applications
 that fully supports the concepts of SARL.</p>
 
 <p>We can compare the SARL universe with the Java universe:</p>
@@ -272,7 +273,7 @@ on the <a href="https://gitter.im/sarl/Lobby">instant messaging forum</a>.</p>
 
 <h3 id="113-where-can-i-find-more-information-and-projects-related-to-sarl">1.13. Where can I find more information and projects related to SARL?</h3>
 
-<p>A list of successful projects are given on the <a href="http://sarl.io/community/index.html#sucessstories">Community</a>
+<p>A list of successful projects are given on the <a href="http://www.sarl.io/community/index.html#sucessstories">Community</a>
 page of the SARL web site.</p>
 
 <p>Additionally, a community driven list of useful SARL libraries, frameworks and software
@@ -444,7 +445,7 @@ read the “.log” file for determining this cause.</p>
 <h4 id="c-the-eclipseapp-application-is-damaged">c) The Eclipse.app application is damaged</h4>
 
 <p>This error message is shown up on a dialog box, and you have the choices to move the application to the bin or to cancel the launch.
-This error message has the same cause as the Gatekeeper error that is described into the previous section.</p>
+This error message may due to the Gatekeeper error that is described into the previous section. Or, it may be due to corruption of the SARL product when you download it using a web browser. In this second case, please download the SARL product using a shell command-line tool, such as <a href="https://www.gnu.org/software/wget/">wget</a>.</p>
 
 <h3 id="26-why-does-the-sarl-product-launch-but-not-contain-any-features-related-to-sarl">2.6. Why does the SARL product launch but not contain any features related to SARL?</h3>
 
@@ -596,7 +597,7 @@ agent is created, the <code>spawn()</code> commands returns.</p>
 
 <h3 id="34-what-is-the-list-of-all-the-error-warning-and-information-messages-that-may-be-generated-by-the-sarl-compiler">3.4. What is the list of all the error, warning and information messages that may be generated by the SARL compiler?</h3>
 
-<p>We provide a <a href="../reference/CompilerErrors.html">page</a> that lists all the issue messages from the SARL compiler.</p>
+<p>We provide a <a href="../lang/CompilerErrors.html">page</a> that lists all the issue messages from the SARL compiler.</p>
 
 <p>Additionally, several run-time errors from the <a href="../tools/Janus.html">Janus framework</a> are explained <a href="../tools/Janus.html#list-of-errors-and-warnings">here</a>.</p>
 
@@ -641,17 +642,19 @@ The issues are listed on <a href="https://github.com/sarl/sarl/issues">Github</a
 
 <p>You should submit your issue on <a href="https://github.com/sarl/sarl/issues/new">this page</a>.</p>
 
-<h2 id="5-legal-notice">5. Legal Notice</h2>
+<h2 id="5-version-specification">5. Version Specification</h2>
 
 <ul>
   <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
-  <li>Version: 0.14</li>
+  <li>Version: 0.15</li>
   <li>Status: Stable Release</li>
-  <li>Release: 2024-11-06</li>
+  <li>Release: 2025-09-10</li>
 </ul>
 
+<h2 id="6-legal-notice">6. Legal Notice</h2>
+
 <blockquote>
-  <p>Copyright © 2014-2024 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
   <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
 you may not use this file except in compliance with CC-BY-SA-4.0.
@@ -664,7 +667,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
   <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
 </blockquote>
 
-<p><small>Generated with the translator docs.generator 0.14.0.</small></p>
+<p><small>Generated with the translator docs.generator 0.15.0.</small></p>
 
     </div> <!-- /default layout container -->
 
@@ -721,7 +724,7 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
       <ul class="fa-ul">
 		  <li>
-			<a href="../../../community/forums.html">
+			<a href="https://groups.google.com/d/forum/sarl">
 			  <i class="fa-li fa fa-comments"></i> User Forums
 			</a>
 		  </li>
@@ -763,7 +766,6 @@ You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0
       <ul class="fa-ul">
         <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
         <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
-        <li><a href="http://www.janusproject.io" target="_blank"><i class="fa-li fa fa-gears"></i>Janus Project</a></li>
       </ul>
       </div> 
     </div>

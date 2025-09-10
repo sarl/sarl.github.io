@@ -65,9 +65,7 @@
    <div class="doclet-header-packagename">
     <a href="../../../../io/sarl/api/experienceindex/package-summary.html" class="doclet-header-packagename">io.sarl.api.experienceindex</a>
    </div>
-   <div class="doclet-header-typename">
-    Class SarlExperienceIndex
-   </div>
+   <div class="doclet-header-typename">Class SarlExperienceIndex</div>
    <div class="doclet-inheritancetree">
     <ul class="doclet-inheritancetree-tree">
      <li class="doclet-inheritancetree-tree"><span class="doclet-inheritancetree-type">java.lang.Object</span>
@@ -78,31 +76,37 @@
    </div>
    <div class="doclet-typeinfobox">
     <div class="doclet-typesignature">
-     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">org.eclipse.xtext.xbase.lib.XbaseGenerated</span><br></span>final class <span class="doclet-typesignature-typename">SarlExperienceIndex</span>
+     <span class="doclet-typesignature-annotationinfo">@<span class="doclet-typesignature-annotationinfo">org.eclipse.xtext.xbase.lib.XbaseGenerated</span>
+      <br></span>final class <span class="doclet-typesignature-typename">SarlExperienceIndex</span>
      <br>
      extends <span class="doclet-typesignature">java.lang.Object</span>
     </div>
     <div class="doclet-typedescription">
      <div class="doclet-typedescription-main">
-      This class computes the SARL Experience Index (SEI) of your machine. 
-      <p></p>The SEI is inspirated by the <a href="https://en.wikipedia.org/wiki/Windows_System_Assessment_Tool">Windows Experience Index</a>. The SEI measures the capability of your computer's hardware and software configuration and expresses this measurement as a number called a base score. A higher base score generally means that your computer will perform better and faster than a computer with a lower base score. 
+      This class computes the SARL Experience Index (SEI) of your machine.
+      <p></p>
+      The SEI is inspirated by the <a href="https://en.wikipedia.org/wiki/Windows_System_Assessment_Tool">Windows Experience Index</a>. The SEI measures the capability of your computer's hardware and software configuration and expresses this measurement as a number called a base score. A higher base score generally means that your computer will perform better and faster than a computer with a lower base score.
       <h2>Global Base Score</h2>
-      <p></p>The base score is a value between 1.0 and 5.9. The base score is based on the sub scores of sub components. 
-      <p></p>The model logic is tolerant of one subscore being below the threshold for a particular level by 0.1. For example, assume that in the above example, the memory score was 4.0 and the processor score 3.9. This would mean that the processor score would marginally be the only item keeping the base score below level 4. The model addresses this issue by rounding up a single value that is below the next round level by 0.1. 
-      <p></p>After the sub scores are normalized, the global base score is the average score of the sub components. 
+      <p></p>
+      The base score is a value between 1.0 and 5.9. The base score is based on the sub scores of sub components.
+      <p></p>
+      The model logic is tolerant of one subscore being below the threshold for a particular level by 0.1. For example, assume that in the above example, the memory score was 4.0 and the processor score 3.9. This would mean that the processor score would marginally be the only item keeping the base score below level 4. The model addresses this issue by rounding up a single value that is below the next round level by 0.1.
+      <p></p>
+      After the sub scores are normalized, the global base score is the average score of the sub components.
       <h2>CPU Score</h2>
-      <p></p>The CPU score was created to measure the processor performance when tasked with common Janus usage activities. The processor is assessed on the following items:
+      <p></p>
+      The CPU score was created to measure the processor performance when tasked with common Janus usage activities. The processor is assessed on the following items:
       <ol>
        <li>Compression and decompression using the Zip compression algorithm</li>
        <li>Encryption and decryption assessment</li>
        <li>Arithmetic Operations</li>
-      </ol> The results are normalized and weight averaged in order to arrive at the final CPU sub score. 
+      </ol>
+      The results are normalized and weight averaged in order to arrive at the final CPU sub score.
       <h2>Memory Score</h2>
-      <p></p>The memory score measures the bandwidth of moving data into and out of memory in Mega Bytes per Second. The higher the bandwidth, the better the memory. Not having enough memory is a limiting factor on performance. As a result, the amount of memory in the system constrains the score value. The amount of memory limits are: 
+      <p></p>
+      The memory score measures the bandwidth of moving data into and out of memory in Mega Bytes per Second. The higher the bandwidth, the better the memory. Not having enough memory is a limiting factor on performance. As a result, the amount of memory in the system constrains the score value. The amount of memory limits are:
       <table>
-       <caption>
-        Memory Scores
-       </caption>
+       <caption>Memory Scores</caption>
        <thead>
         <tr>
          <th>Amount of memory</th>
@@ -133,19 +137,16 @@
        </tbody>
       </table>
       <h2>Disk Score</h2>
-      <p></p>The disk score measures disk bandwidth (in Mega Bytes per Second). The conversion to an index number is set up in a way that all modern disks will score at least 2.0.
+      <p></p>
+      The disk score measures disk bandwidth (in Mega Bytes per Second). The conversion to an index number is set up in a way that all modern disks will score at least 2.0.
      </div>
     </div>
     <dl class="doclet-typetaginfo">
-     <dt class="doclet-typetaginfo">
-      Maven Group Identifier:
-     </dt>
+     <dt class="doclet-typetaginfo">Maven Group Identifier:</dt>
      <dd class="doclet-typetaginfo">
       <span class="doclet-tags-mavengroupid-comment"><span class="doclet-tags-mavengroupid-comment">io.sarl.sdk</span></span>
      </dd>
-     <dt class="doclet-typetaginfo">
-      Maven Artifact Identifier:
-     </dt>
+     <dt class="doclet-typetaginfo">Maven Artifact Identifier:</dt>
      <dd class="doclet-typetaginfo">
       <span class="doclet-tags-mavenartifactid-comment"><span class="doclet-tags-mavenartifactid-comment">api.experienceindex</span></span>
      </dd>
@@ -153,22 +154,18 @@
      <dd class="doclet-typetaginfo"></dd>
      <dt class="doclet-typetaginfo"></dt>
      <dd class="doclet-typetaginfo"></dd>
-     <dt class="doclet-typetaginfo">
-      Since:
-     </dt>
+     <dt class="doclet-typetaginfo">Since:</dt>
      <dd class="doclet-typetaginfo">
       <span class="doclet-tags-see-comment">0.6</span>
      </dd>
     </dl>
    </div>
    <div class="doclet-summarybox" id="nested.classes.summary.box">
-    <div class="doclet-summarybox-title">
-     Nested Type Summary
-    </div>
+    <div class="doclet-summarybox-title">Nested Type Summary</div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2896 active" onclick="openTabElement(this,'ID7152', 'doclet-tabs-button-instance-2896', 'doclet-tabs-content-instance-2896')">Nested Types</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3269 active" onclick="openTabElement(this,'ID8099', 'doclet-tabs-button-instance-3269', 'doclet-tabs-content-instance-3269')">Nested Types</button>
     </div>
-    <div id="ID7152" class="doclet-tabs-content doclet-tabs-content-instance-2896 doclet-summarybox-tab-content">
+    <div id="ID8099" class="doclet-tabs-content doclet-tabs-content-instance-3269 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -179,7 +176,8 @@
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">class</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex/SEI.html">SarlExperienceIndex.SEI</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex/SEI.html">SarlExperienceIndex.SEI</a></span>
+         <br>
          This class contains the different SEI of your machine.</td>
        </tr>
       </tbody>
@@ -187,14 +185,12 @@
     </div>
    </div>
    <div class="doclet-summarybox" id="fields.summary.box">
-    <div class="doclet-summarybox-title">
-     Field Summary
-    </div>
+    <div class="doclet-summarybox-title">Field Summary</div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2897 active" onclick="openTabElement(this,'ID7153', 'doclet-tabs-button-instance-2897', 'doclet-tabs-content-instance-2897')">All fields</button>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2897" onclick="openTabElement(this,'ID7156', 'doclet-tabs-button-instance-2897', 'doclet-tabs-content-instance-2897')">Static values</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3270 active" onclick="openTabElement(this,'ID8100', 'doclet-tabs-button-instance-3270', 'doclet-tabs-content-instance-3270')">All fields</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3270" onclick="openTabElement(this,'ID8103', 'doclet-tabs-button-instance-3270', 'doclet-tabs-content-instance-3270')">Static values</button>
     </div>
-    <div id="ID7153" class="doclet-tabs-content doclet-tabs-content-instance-2897 doclet-summarybox-tab-content">
+    <div id="ID8100" class="doclet-tabs-content doclet-tabs-content-instance-3270 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -205,13 +201,14 @@
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#VERSION">VERSION</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#VERSION">VERSION</a></span>
+         <br>
          Version of the SEI.</td>
        </tr>
       </tbody>
      </table>
     </div>
-    <div id="ID7156" class="doclet-tabs-content doclet-tabs-content-instance-2897 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID8103" class="doclet-tabs-content doclet-tabs-content-instance-3270 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -222,7 +219,8 @@
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">public static val&nbsp;<span>java.lang.String</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#VERSION">VERSION</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#VERSION">VERSION</a></span>
+         <br>
          Version of the SEI.</td>
        </tr>
       </tbody>
@@ -230,14 +228,12 @@
     </div>
    </div>
    <div class="doclet-summarybox" id="actions.summary.box">
-    <div class="doclet-summarybox-title">
-     Action Summary
-    </div>
+    <div class="doclet-summarybox-title">Action Summary</div>
     <div>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2899 active" onclick="openTabElement(this,'ID7159', 'doclet-tabs-button-instance-2899', 'doclet-tabs-content-instance-2899')">All actions</button>
-     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-2899" onclick="openTabElement(this,'ID7160', 'doclet-tabs-button-instance-2899', 'doclet-tabs-content-instance-2899')">Static actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3272 active" onclick="openTabElement(this,'ID8106', 'doclet-tabs-button-instance-3272', 'doclet-tabs-content-instance-3272')">All actions</button>
+     <button class="doclet-tabs-title doclet-summarybox-tab-title doclet-tabs-button-instance-3272" onclick="openTabElement(this,'ID8107', 'doclet-tabs-button-instance-3272', 'doclet-tabs-content-instance-3272')">Static actions</button>
     </div>
-    <div id="ID7159" class="doclet-tabs-content doclet-tabs-content-instance-2899 doclet-summarybox-tab-content">
+    <div id="ID8106" class="doclet-tabs-content doclet-tabs-content-instance-3272 doclet-summarybox-tab-content">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -248,38 +244,44 @@
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#baseScore(io.sarl.api.experienceindex.SeiCanceler)">baseScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#baseScore(io.sarl.api.experienceindex.SeiCanceler)">baseScore([SeiCanceler])</a></span>
+         <br>
          Compute the global SEI.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#cpuScore(io.sarl.api.experienceindex.SeiCanceler)">cpuScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#cpuScore(io.sarl.api.experienceindex.SeiCanceler)">cpuScore([SeiCanceler])</a></span>
+         <br>
          Compute the CPU score.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#diskScore(io.sarl.api.experienceindex.SeiCanceler)">diskScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#diskScore(io.sarl.api.experienceindex.SeiCanceler)">diskScore([SeiCanceler])</a></span>
+         <br>
          Compute the disk score.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;<a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex/SEI.html">SEI</a></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">getJanusExperienceIndex([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">getJanusExperienceIndex([SeiCanceler])</a></span>
+         <br>
          Replies the current SEI.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;void</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#main(java.lang.String[])">main(String*)</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#main(java.lang.String[])">main(String*)</a></span>
+         <br>
          Run the SEI from the command-line.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#memoryScore(io.sarl.api.experienceindex.SeiCanceler)">memoryScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#memoryScore(io.sarl.api.experienceindex.SeiCanceler)">memoryScore([SeiCanceler])</a></span>
+         <br>
          Compute the Memory score.</td>
        </tr>
       </tbody>
      </table>
     </div>
-    <div id="ID7160" class="doclet-tabs-content doclet-tabs-content-instance-2899 doclet-summarybox-tab-content" style="display:none;">
+    <div id="ID8107" class="doclet-tabs-content doclet-tabs-content-instance-3272 doclet-summarybox-tab-content" style="display:none;">
      <table class="doclet-summarytable">
       <thead class="doclet-summarytable">
        <tr class="doclet-summarytable">
@@ -290,32 +292,38 @@
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#baseScore(io.sarl.api.experienceindex.SeiCanceler)">baseScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#baseScore(io.sarl.api.experienceindex.SeiCanceler)">baseScore([SeiCanceler])</a></span>
+         <br>
          Compute the global SEI.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#cpuScore(io.sarl.api.experienceindex.SeiCanceler)">cpuScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#cpuScore(io.sarl.api.experienceindex.SeiCanceler)">cpuScore([SeiCanceler])</a></span>
+         <br>
          Compute the CPU score.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#diskScore(io.sarl.api.experienceindex.SeiCanceler)">diskScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#diskScore(io.sarl.api.experienceindex.SeiCanceler)">diskScore([SeiCanceler])</a></span>
+         <br>
          Compute the disk score.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;<a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex/SEI.html">SEI</a></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">getJanusExperienceIndex([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">getJanusExperienceIndex([SeiCanceler])</a></span>
+         <br>
          Replies the current SEI.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;void</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#main(java.lang.String[])">main(String*)</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#main(java.lang.String[])">main(String*)</a></span>
+         <br>
          Run the SEI from the command-line.</td>
        </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;float</td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#memoryScore(io.sarl.api.experienceindex.SeiCanceler)">memoryScore([SeiCanceler])</a></span><br>
+        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex.html#memoryScore(io.sarl.api.experienceindex.SeiCanceler)">memoryScore([SeiCanceler])</a></span>
+         <br>
          Compute the Memory score.</td>
        </tr>
       </tbody>
@@ -323,153 +331,99 @@
     </div>
    </div>
    <div class="doclet-detailbox" id="fields.details.box">
-    <div class="doclet-detailbox-title">
-     Field Details
-    </div>
+    <div class="doclet-detailbox-title">Field Details</div>
     <dl class="doclet-detailbox">
-     <dt class="doclet-detailbox" id="VERSION">
-      VERSION
-     </dt>
+     <dt class="doclet-detailbox" id="VERSION">VERSION</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">public static val</span> VERSION : <span>java.lang.String</span> = "1.0"</pre>
-      <div>
-       Version of the SEI.
-      </div>
+      <div>Version of the SEI.</div>
      </dd>
     </dl>
    </div>
    <div class="doclet-detailbox" id="action.details.box">
-    <div class="doclet-detailbox-title">
-     Action Details
-    </div>
+    <div class="doclet-detailbox-title">Action Details</div>
     <dl class="doclet-detailbox">
-     <dt class="doclet-detailbox" id="baseScore(io.sarl.api.experienceindex.SeiCanceler)">
-      baseScore([SeiCanceler])
-     </dt>
+     <dt class="doclet-detailbox" id="baseScore(io.sarl.api.experienceindex.SeiCanceler)">baseScore([SeiCanceler])</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> baseScore([SeiCanceler]) : float</pre>
-      <div>
-       Compute the global SEI.
-      </div>
+      <div>Compute the global SEI.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         canceller - <span class="doclet-tags-param-comment">the object that permits to stop the computation before its end.</span>
        </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
        <dd class="doclet-detailbox-tag">
         <span class="doclet-tags-return-comment">the global SEI.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="cpuScore(io.sarl.api.experienceindex.SeiCanceler)">
-      cpuScore([SeiCanceler])
-     </dt>
+     <dt class="doclet-detailbox" id="cpuScore(io.sarl.api.experienceindex.SeiCanceler)">cpuScore([SeiCanceler])</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> cpuScore([SeiCanceler]) : float</pre>
-      <div>
-       Compute the CPU score.
-      </div>
+      <div>Compute the CPU score.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         canceller - <span class="doclet-tags-param-comment">the object that permits to stop the computation before its end.</span>
        </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
        <dd class="doclet-detailbox-tag">
         <span class="doclet-tags-return-comment">the CPU score.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="diskScore(io.sarl.api.experienceindex.SeiCanceler)">
-      diskScore([SeiCanceler])
-     </dt>
+     <dt class="doclet-detailbox" id="diskScore(io.sarl.api.experienceindex.SeiCanceler)">diskScore([SeiCanceler])</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> diskScore([SeiCanceler]) : float</pre>
-      <div>
-       Compute the disk score.
-      </div>
+      <div>Compute the disk score.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         canceller - <span class="doclet-tags-param-comment">the object that permits to stop the computation before its end.</span>
        </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
        <dd class="doclet-detailbox-tag">
         <span class="doclet-tags-return-comment">the disk score.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">
-      getJanusExperienceIndex([SeiCanceler])
-     </dt>
+     <dt class="doclet-detailbox" id="getJanusExperienceIndex(io.sarl.api.experienceindex.SeiCanceler)">getJanusExperienceIndex([SeiCanceler])</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> getJanusExperienceIndex([SeiCanceler]) : <a href="../../../../io/sarl/api/experienceindex/SarlExperienceIndex/SEI.html">SEI</a></pre>
-      <div>
-       Replies the current SEI.
-      </div>
+      <div>Replies the current SEI.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         canceller - <span class="doclet-tags-param-comment">the object that permits to stop the computation before its end.</span>
        </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
        <dd class="doclet-detailbox-tag">
         <span class="doclet-tags-return-comment">the current SEI.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="main(java.lang.String[])">
-      main(String*)
-     </dt>
+     <dt class="doclet-detailbox" id="main(java.lang.String[])">main(String*)</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> main(String*)</pre>
-      <div>
-       Run the SEI from the command-line.
-      </div>
+      <div>Run the SEI from the command-line.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         args - <span class="doclet-tags-param-comment">no used.</span>
        </dd>
       </dl>
      </dd>
-     <dt class="doclet-detailbox" id="memoryScore(io.sarl.api.experienceindex.SeiCanceler)">
-      memoryScore([SeiCanceler])
-     </dt>
+     <dt class="doclet-detailbox" id="memoryScore(io.sarl.api.experienceindex.SeiCanceler)">memoryScore([SeiCanceler])</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> memoryScore([SeiCanceler]) : float</pre>
-      <div>
-       Compute the Memory score.
-      </div>
+      <div>Compute the Memory score.</div>
       <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">
-        Parameters:
-       </dt>
+       <dt class="doclet-detailbox-tag">Parameters:</dt>
        <dd class="doclet-detailbox-tag">
         canceller - <span class="doclet-tags-param-comment">the object that permits to stop the computation before its end.</span>
        </dd>
-       <dt class="doclet-detailbox-tag">
-        Returns:
-       </dt>
+       <dt class="doclet-detailbox-tag">Returns:</dt>
        <dd class="doclet-detailbox-tag">
         <span class="doclet-tags-return-comment">the Memory score.</span>
        </dd>

@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SARL is a general-purpose agent-oriented language.
+SARL aims at providing the fundamental abstractions for dealing with concurrency, distribution, interaction, decentralization, reactivity, autonomy and dynamic reconfiguration. These high-level features are now considered as the major requirements for an easy and practical implementation of modern complex software applications. We are convinced that the agent-oriented paradigm holds the keys to effectively meet this challenge.
+Considering the variety of existing approaches and meta-models in the field of agent-oriented engineering and more generally multi-agent systems, our approach remains as generic as possible and highly extensible to easily integrate new concepts and features. The language is platform- and architecture-independent.
+">
+    <meta name="author" content="SARL Team">
+    <link rel="icon" href="../../../../images/favicon.ico" />
+    <link rel="shortcut icon" href="../../../../images/favicon.ico">
+
+    <title>Introduction to Lambda Expressions with SARL</title>
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/pygments.css">
+    <link rel="stylesheet" href="../../../../css/custom.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.sarl.io">SARL</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../index.html">Home</a></li>
+        <li><a href="../../../../download/index.html">Download</a></li>
+        <li><a href="../../../../library/index.html">Library</a></li>
+        <li><a href="../../../../docs/index.html">Documentation</a></li>
+        <li><a href="../../../../community/index.html">Community</a></li>
+        <li><a href="../../../../runtime/index.html">Run-time</a></li>
+        <li><a href="../../../../news/index.html">News &amp; Events</a></li>
+        <li><a href="../../../../publications/index.html">Publications &amp; Presentations</a></li>
+        <li><a href="../../../../about/index.html">About</a></li>
+        <li><a href="../../../../search/index.html"><i class="fa fa-search"></i></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+    <div class="container">
+		
+		<a href="https://github.com/sarl/sarl" target="_blank"><img
+			style="position: absolute; top: 40px; right: 0; border: 0;"
+			src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+			alt="Fork me on GitHub"
+			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+		
+      <h1 id="introduction-to-lambda-expressions-with-sarl">Introduction to Lambda Expressions with SARL</h1>
+
+<script>
+function exerciseToggle(id) {
+    var x = document.getElementById('exercise' + id.toString());
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<p><span class="label label-info">Note</span> If you don’t know how to solve an problem, or what is the function to be used, you could search on Internet for the answer using the API of the Java programming language. Indeed, since SARL is fully compatible with the Java API, you could use all the types or functions that are defined in this Java API.</p>
+
+<h2 id="1-exercise-1">1. Exercise 1</h2>
+
+<ul>
+  <li>Write a SARL program to create a lambda function that adds 15 to a given number passed in as an argument, also create a lambda function that multiplies argument x with argument y and prints the result.</li>
+  <li>Sample Output:</li>
+</ul>
+
+<pre><code class="language-text">25
+48
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(1)">Answer</a></p>
+<div id="exercise1" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	def firstLambda_version1 {
+		var lambda : (int) =&gt; int
+		lambda = [x : int | x + 15]
+	}
+	
+	def firstLambda_version2 {
+		var lambda : (int) =&gt; int
+		lambda = [x | x + 15]
+	}
+	def firstLambda_version3 {
+		var lambda : (int) =&gt; int
+		lambda = [it + 15]
+	}
+	def secondLambda_verison1 {
+		var lambda : (int, int) =&gt; void
+		lambda = [x : int, y : int | println(x * y)]
+	}
+	def secondLambda_verison2 {
+		var lambda : (int, int) =&gt; void
+		lambda = [x, y | println(x * y)]
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="2-exercise-2">2. Exercise 2</h2>
+
+<ul>
+  <li>Write a SARL program to create a function that takes one argument, and that argument will be multiplied with an unknown given number.</li>
+  <li>Sample Output:</li>
+</ul>
+
+<pre><code class="language-text">Double the number of 15 = 30
+Triple the number of 15 = 45
+Quadruple the number of 15 = 60
+Quintuple the number 15 = 75
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(2)">Answer</a></p>
+<div id="exercise2" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static def computeLambda(n : int) : (int) =&gt; int {
+		[x | x * n]
+	}
+	static def main {
+		var result = computeLambda(2)
+		println("Double the number of 15 =" + result.apply(15))
+		result = computeLambda(3)
+		println("Triple the number of 15 =" + result.apply(15))
+		result = computeLambda(4)
+		println("Quadruple the number of 15 =" + result.apply(15))
+		result = computeLambda(5)
+		println("Quintuple the number of 15 =" + result.apply(15))
+	}
+}
+</code></pre>
+
+</div>
+
+<p>Answer #2 is:</p>
+<pre><code class="language-sarl">
+class Solution2 {
+	static def computeLambda(n : int) : (int) =&gt; int {
+		[it * n]
+	}
+	static def main {
+		var result = computeLambda(2)
+		println("Double the number of 15 =" + result.apply(15))
+		result = computeLambda(3)
+		println("Triple the number of 15 =" + result.apply(15))
+		result = computeLambda(4)
+		println("Quadruple the number of 15 =" + result.apply(15))
+		result = computeLambda(5)
+		println("Quintuple the number of 15 =" + result.apply(15))
+	}
+}
+</code></pre>
+
+<p>&lt;/div&gt;</p>
+
+<h2 id="3-exercise-3">3. Exercise 3</h2>
+
+<ul>
+  <li>Write a SARL program to sort a list of tuples using Lambda.</li>
+  <li>Original list of tuples: <code>[('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]</code></li>
+  <li>Sorting the list of tuples: <code>[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(3)">Answer</a></p>
+<div id="exercise3" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var marks = newArrayList(#[
+		#['English', 88],
+		#['Science', 90],
+		#['Maths', 97],
+		#['Social sciences', 82]
+	])
+	static def main {
+		println("Original list of tuples: " + marks)
+		marks.sort [a, b | (a.get(1) as Integer) &lt;=&gt; (b.get(1) as Integer)]
+		println("Sorting the List of tuples: " + marks)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="4-exercise-4">4. Exercise 4</h2>
+
+<ul>
+  <li>Write a SARL program to sort a list of dictionaries using Lambda.</li>
+  <li>Original list of maps: <code>[{'make': 'Nokia', 'model': 216, 'color': 'Black'}, {'make': 'Mi Max', 'model': '2', 'color': 'Gold'}, {'make': 'Samsung', 'model': 7, 'color': 'Blue'}]</code></li>
+  <li>Sorting the list of maps: <code>[{'make': 'Nokia', 'model': 216, 'color': 'Black'}, {'make': 'Samsung', 'model': 7, 'color': 'Blue'}, {'make': 'Mi Max', 'model': '2', 'color': 'Gold'}]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(4)">Answer</a></p>
+<div id="exercise4" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var maps = newArrayList(#[
+		#{'make' -&gt; 'Nokia', 'model' -&gt; 216, 'color' -&gt; 'Black'},
+		#{'make' -&gt; 'Mi Max', 'model' -&gt; 2, 'color' -&gt; 'Gold'},
+		#{'make' -&gt; 'Samsung', 'model' -&gt; 7, 'color' -&gt; 'Blue'}
+	])
+	static def main {
+		println("Original list of maps: " + maps)
+		maps.sort [a, b | (b.get("model") as Integer) &lt;=&gt; (a.get("model") as Integer)]
+		println("Sorting the list of maps: " + maps)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="5-exercise-5">5. Exercise 5</h2>
+
+<ul>
+  <li>Write a SARL program to filter a list of integers using Lambda.</li>
+  <li>Original list of integers: <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></li>
+  <li>Even numbers from the said list: <code>[2, 4, 6, 8, 10]</code></li>
+  <li>Odd numbers from the said list: <code>[1, 3, 5, 7, 9]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(5)">Answer</a></p>
+<div id="exercise5" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.stream.Collectors
+class Solution1 {
+	static var original = #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	static def main {
+		println("Original list of integers: " + original)
+		var evenNumbers = original.stream.filter[(it % 2) == 0].collect(Collectors::toList)
+		println("Even numbers from the said list: " + evenNumbers)
+		var oddNumbers = original.stream.filter[(it % 2) != 0].collect(Collectors::toList)
+		println("Odd numbers from the said list: " + oddNumbers)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+<pre><code class="language-sarl">
+class Solution2 {
+	static var original = #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	static def main {
+		println("Original list of integers: " + original)
+		var evenNumbers = original.filter[(it % 2) == 0].toList
+		println("Even numbers from the said list: " + evenNumbers)
+		var oddNumbers = original.filter[(it % 2) != 0].toList
+		println("Odd numbers from the said list: " + oddNumbers)
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="6-exercise-6">6. Exercise 6</h2>
+
+<ul>
+  <li>Write a SARL program to square and cube every number in a given list of integers using Lambda.</li>
+  <li>Original list of integers: <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></li>
+  <li>Square every number of the said list: <code>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></li>
+  <li>Cube every number of the said list: <code>[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(6)">Answer</a></p>
+<div id="exercise6" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+import java.util.stream.Collectors
+class Solution1 {
+	static var original = #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	static def main {
+		println("Original list of integers: " + original)
+		var squareNumbers = original.stream.map[it.doubleValue ** 2].collect(Collectors::toList)
+		println("Square every number of the said list: " + squareNumbers)
+		var cubeNumbers = original.stream.map[it.doubleValue ** 3].collect(Collectors::toList)
+		println("Cube every number of the said list: " + cubeNumbers)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+
+</div>
+
+<h2 id="7-exercise-7">7. Exercise 7</h2>
+
+<ul>
+  <li>Write a SARL program to find if a given string starts with a given character using Lambda.</li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(7)">Answer</a></p>
+<div id="exercise7" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static def main {
+		var starts_with = [x : String | x.startsWith('P')]
+		println(starts_with.apply('Python'))
+		println(starts_with.apply('Java'))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="8-exercise-8">8. Exercise 8</h2>
+
+<ul>
+  <li>Write a SARL program to extract year, month, date and time using Lambda.</li>
+  <li>Sample Output:</li>
+</ul>
+
+<pre><code class="language-text">2020-01-15 09:03:32.744178
+2020
+1
+15
+09:03:32.744178
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(8)">Answer</a></p>
+<div id="exercise8" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Calendar
+class Solution {
+	static def main {
+		var now = Calendar::instance
+		println(now)
+		var year : (Calendar) =&gt; int = [it.get(Calendar::YEAR)]
+		var month : (Calendar) =&gt; int = [it.get(Calendar::MONTH)]
+		var day : (Calendar) =&gt; int = [it.get(Calendar::DAY_OF_MONTH)]
+		var time : (Calendar) =&gt; String = [it.get(Calendar::HOUR) + ":" + it.get(Calendar::MINUTE) + ":" + it.get(Calendar::SECOND) + "." + it.get(Calendar::MILLISECOND)]
+		println(year.apply(now))
+		print(month.apply(now))
+		print(day.apply(now))
+		print(time.apply(now))
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="9-exercise-9">9. Exercise 9</h2>
+
+<ul>
+  <li>Write a SARL program to check whether a given string is a number or not using Lambda.</li>
+  <li>Sample Output:</li>
+</ul>
+
+<pre><code class="language-text">26587 : true
+4.2365 : true
+-12547 : false
+00 : true
+Z001 : false
+001 : true
+-16.4 : true
+-24587.11 : true
+</code></pre>
+
+<p><a href="javascript:exerciseToggle(9)">Answer</a></p>
+<div id="exercise9" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static def dotest(n : String) {
+		var is_num = [
+			try {
+				Double.parseDouble(it.toString)
+				return true
+			} catch (ex : Throwable) {
+				return false
+			}
+		]
+		println(n + " : " + is_num.apply(n))
+	}
+	static def main {
+		dotest("26587")
+		dotest("4.2365")
+		dotest("-12547")
+		dotest("00")
+		dotest("Z001")
+		dotest("001")
+		dotest("-16.4")
+		dotest("-24587.11")
+	}
+}
+</code></pre>
+
+</div>
+
+<h2 id="10-exercise-10">10. Exercise 10</h2>
+
+<ul>
+  <li>Write a SARL program to create Fibonacci series up to n using Lambda.</li>
+  <li>Fibonacci series upto 2: <code>[0, 1]</code></li>
+  <li>Fibonacci series upto 5: <code>[0, 1, 1, 2, 3]</code></li>
+  <li>Fibonacci series upto 6: <code>[0, 1, 1, 2, 3, 5]</code></li>
+  <li>Fibonacci series upto 9: <code>[0, 1, 1, 2, 3, 5, 8, 13, 21]</code></li>
+</ul>
+
+<p><a href="javascript:exerciseToggle(10)">Answer</a></p>
+<div id="exercise10" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static def fibonacci(n : int) : List<Integer> {
+		(0..n).map[#[it]].reduce[accumulator, current |
+			var nl : List<Integer> = newArrayList(accumulator)
+			var v = accumulator.get(accumulator.size - 1).intValue + accumulator.get(accumulator.size - 2).intValue
+			nl += v
+			return nl
+		]
+	}
+	static def main {
+		println(fibonacci(2))
+		println(fibonacci(5))
+		println(fibonacci(6))
+		println(fibonacci(9))
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+
+## 11. Exercise 11
+
+* Write a SARL program to find the intersection of two given arrays using Lambda.
+* Original arrays:
+
+```text
+[1, 2, 3, 5, 7, 8, 9, 10]
+[1, 2, 4, 8, 9]
+```
+
+* Intersection of the said arrays: `[1, 2, 8, 9]`
+
+<a href="javascript:exerciseToggle(11)">Answer</a>
+<div id="exercise11" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var content1 = #[1, 2, 3, 5, 7, 8, 9, 10]
+	static var content2 = #[1, 2, 4, 8, 9]
+	static def main {
+		var result = content2.filter[content1.contains(it)].toList 
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 12. Exercise 12
+
+* Write a SARL program to rearrange positive and negative numbers in a given array using Lambda.
+* Original arrays: `[-1, 2, -3, 5, 7, 8, 9, -10]`
+* Rearrange positive and negative numbers of the said array: `[2, 5, 7, 8, 9, -10, -3, -1]`
+
+<a href="javascript:exerciseToggle(12)">Answer</a>
+<div id="exercise12" style="display:none;">
+<pre><code class="language-sarl">
+import static extension java.lang.Math.signum
+class Solution {
+	static var content : Integer[] = #[-1, 2, -3, 5, 7, 8, 9, -10]
+	static def main {
+		var result = newArrayList(content)
+		result.sort[a, b |
+			if (a.signum == b.signum) {
+				return a &lt;=&gt; b
+			} else if (a &lt; 0) {
+				return 1
+			} else {
+				return 1
+			}
+		] 
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 13. Exercise 13
+
+* Write a SARL program to count the even and odd numbers in a given array of integers using Lambda.
+* Original arrays: `[1, 2, 3, 5, 7, 8, 9, 10]`
+* Number of even numbers in the above array: `3`
+* Number of odd numbers in the above array: `5`
+
+<a href="javascript:exerciseToggle(13)">Answer</a>
+<div id="exercise13" style="display:none;">
+Two answers are possible. Answer #1 is:
+<pre><code class="language-sarl">
+class Solution1 {
+	static var content = #[1, 2, 3, 5, 7, 8, 9, 10]
+	static def main {
+		var ecount = content.filter[(it%2) == 0].size
+		var ocount = content.filter[(it%2) != 0].size
+		println("Original arrays: " + content)
+		println("Number of even numbers in the above array: " + ecount)
+		println("Number of odd numbers in the above array: " + ocount)
+	}
+}
+</code></pre>
+
+Answer #2 is:
+
+</div>
+
+## 14. Exercise 14
+
+* Write a SARL program to filter a given list to determine if the values in the list have a length of 6 using Lambda.
+* Sample Output:
+
+```text
+Monday
+Friday
+Sunday
+```
+
+<a href="javascript:exerciseToggle(14)">Answer</a>
+<div id="exercise14" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var weekdays = #['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+	static def main {
+		var result = weekdays.filter[it.length == 6].toList
+		println(result)
+	}
+}
+</code></pre>
+
+</div>
+
+## 15. Exercise 15
+
+* Write a SARL program to add two given lists using map and lambda.
+* Original list:
+
+```text
+[1, 2, 3]
+[4, 5, 6]
+```
+
+* Result: after adding two list `[5, 7, 9]`
+
+<a href="javascript:exerciseToggle(15)">Answer</a>
+<div id="exercise15" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var content1 : List<Integer> = #[1, 2, 3]
+	static var content2 : List<Integer> = #[4, 5, 6]
+	static def main {
+		var result : List<Integer>
+		if (content1.size &gt; content2.size) {
+			var iter = content1.iterator
+			result = content2.map[it.intValue + iter.next.intValue]
+		} else {
+			var iter = content2.iterator
+			result = content1.map[it.intValue + iter.next.intValue]
+		}
+		println(result)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 16. Exercise 16
+
+* Write a SARL program to find the second lowest total marks of any student(s) from the given names and marks of each student using lists and lambda. Input the number of students, the names and grades of each student.
+* Names and Grades of all students: `[['S ROY', 1.0], ['B BOSE', 3.0], ['N KAR', 2.0], ['C DUTTA', 1.0], ['G GHOSH', 1.0]]`
+
+```text
+Second lowest grade: 2.0
+Names: N KAR
+```
+
+<a href="javascript:exerciseToggle(16)">Answer</a>
+<div id="exercise16" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var marks : List&lt;List<object>&gt; = #[
+		#['S ROY', 1.0],
+		#['B BOSE', 3.0],
+		#['N KAR', 2.0],
+		#['C DUTTA', 1.0],
+		#['G GHOSH', 1.0]
+	]
+	static def main {
+		var result = marks
+			.sortWith [a, b | (b.get(1) as Double) &lt;=&gt; (a.get(1) as Double)]
+		var firstMark = result.get(0).get(1) as Double
+		var secondMark : Double
+		var studentsNames = newArrayList
+		for (student : result) {
+			var m = student.get(1) as Double
+			if (secondMark === null) {
+				if (m != firstMark) {
+					secondMark = m 
+					studentsNames += student.get(0) as String
+				}
+			} else if (m == secondMark) {
+				studentsNames += student.get(0) as String
+			} else {
+				break;					
+			}
+		}
+		println("Second lowest grade: " + secondMark)
+		println("Names: " + studentsNames)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+
+## 17. Exercise 17
+
+* Write a SARL program to find numbers divisible by nineteen or thirteen from a list of numbers using Lambda.
+* Orginal list: `[19, 65, 57, 39, 152, 639, 121, 44, 90, 190]`
+* Numbers of the above list divisible by nineteen or thirteen: `[19, 65, 57, 39, 152, 190]`
+
+<a href="javascript:exerciseToggle(17)">Answer</a>
+<div id="exercise17" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #[19, 65, 57, 39, 152, 639, 121, 44, 90, 190]
+	static def main {
+		var result = original.filter [(it % 19) == 0 || (it % 13) == 0].toList
+		println("Orginal list: " + original)
+		println("Numbers of the above list divisible by nineteen or thirteen: " + result)
+	}
+}
+</code></pre>
+
+</div>
+
+
+## 18. Exercise 18
+
+* Write a SARL program to find palindromes in a given list of strings using Lambda.
+* Orginal list of strings: `['php', 'w3r', 'SARL', 'abcd', 'Java', 'aaa']`
+* List of palindromes: `['php', 'aaa']`
+
+<a href="javascript:exerciseToggle(18)">Answer</a>
+<div id="exercise18" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #['php', 'w3r', 'SARL', 'abcd', 'Java', 'aaa']
+	static def main {
+		var result = original.filter[it.palindrome].toList
+		println("List of palindromes: " + result)
+	}
+
+	static def palindrome(value : String) : boolean {
+		var i = 0
+		var j = value.length - 1
+		while (i &lt; j) {
+			if (value.charAt(i) != value.charAt(j)) {
+				return false
+			}
+		}
+		return true
+	}
+}
+</code></pre>
+
+</div>
+
+## 19. Exercise 19
+
+* Write a SARL program to find all anagrams of a string in a given list of strings using Lambda.
+* Original list of strings: `['bcda', 'abce', 'cbda', 'cbea', 'adcb']`
+* Anagrams of 'abcd' in the above string: `['bcda', 'cbda', 'adcb']`
+
+<a href="javascript:exerciseToggle(19)">Answer</a>
+<div id="exercise19" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.Map
+class Solution {
+	static var original = #['bcda', 'abce', 'cbda', 'cbea', 'adcb']
+	static def main {
+		var search_for = "abcd".counter
+		var result = original.filter[
+			(search_for == it.counter)
+		].toList 
+		println("List of palindromes: " + result)
+	}
+	static def counter(value : String) : Map&lt;Character, Integer&gt; {
+		var counter = newHashMap
+		for (c : value.bytes) {
+			var n = counter.getOrDefault(c as char, 0)
+			n++
+			counter.put(c as char, n) 
+		}
+		return counter
+	}
+}
+</code></pre>
+
+</div>
+
+## 20. Exercise 20
+
+* Write a SARL program to find the numbers in a given string and store them in a list. Afterward, display the numbers that are longer than the length of the list in sorted form. Use the lambda function to solve the problem.
+* Original string: `sdf 23 safs8 5 sdfsd8 sdfs 56 21sfs 20 5`
+* Numbers in sorted form: `20 23 56`
+
+<a href="javascript:exerciseToggle(20)">Answer</a>
+<div id="exercise20" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = "sdf 23 safs8 5 sdfsd8 sdfs 56 21sfs 20 5"
+	static def main {
+		var words = original.split("\s+")
+		var numbers = words.filter[isInteger].map[it as Integer].sort.toList
+		println("Numbers in sorted form: " + numbers)
+		var length = words.size
+		var result = numbers.filter[it &gt; length].toList
+		println(result.join(' '))
+  		}
+	static def isInteger(value : String) : boolean {
+		try {
+			Long::parseLong(value)
+			return true
+		} catch (ex : Throwable) {
+			return false
+		}
+	}
+}
+</code></pre>
+
+</div>
+
+## 21. Exercise 21
+
+* Write a SARL program that multiplies each number in a list with a given number using lambda functions. Print the results.
+* Original list: `[2, 4, 6, 9, 11]`
+* Given number: `2`
+* Result: `4 8 12 18 22`
+
+<a href="javascript:exerciseToggle(21)">Answer</a>
+<div id="exercise21" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static var original = #[2, 4, 6, 9, 11]
+	static def main {
+		var search_for = 2
+		var result = original.map[it * search_for].toList
+		println(result)			
+  		}
+}
+</code></pre>
+
+</div>
+
+## 22. Exercise 22
+
+* Write a SARL program that sums the length of a list of names after removing those that start with lowercase letters. Use the lambda function.
+* Result: `16`
+
+<a href="javascript:exerciseToggle(22)">Answer</a>
+<div id="exercise22" style="display:none;">
+<pre><code class="language-sarl">
+import static extension java.lang.Character.isUpperCase
+class Solution {
+	static var original = #['sally', 'Dylan', 'rebecca', 'Diana', 'Joanne', 'keith']
+	static def main {
+		var result = original.filter[it.charAt(0).isUpperCase].map[it.length]
+			.reduce[accumulator, current | accumulator + current]
+		println(result)
+  		}
+}
+</code></pre>
+
+</div>
+
+## 23. Exercise 23
+
+* Write a SARL program to calculate the sum of the positive and negative numbers of a given list of numbers using the lambda function.
+* Original list: `[2, 4, -6, -9, 11, -12, 14, -5, 17]`
+* Sum of the positive numbers: `-32`
+* Sum of the negative numbers: `48`
+
+<a href="javascript:exerciseToggle(23)">Answer</a>
+<div id="exercise23" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original = #[2, 4, -6, -9, 11, -12, 14, -5, 17]
+	static def main {
+		var positive = original.filter[it &gt;= 0].sum
+		var negative = original.filter[it &lt; 0].sum
+		println("Sum of the positive numbers: " + positive)
+		println("Sum of the negative numbers: " + negative)
+  		}
+
+		static def sum(value : Iterable<Integer>) : int {
+			var sum = 0
+			for (c : value) {
+				sum += c
+			}
+			return sum
+		}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+
+## 24. Exercise 24
+
+* Write a SARL program to find numbers within a given range where every number is divisible by every digit it contains.
+* Input Range: `1..22`
+* Sample Output: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]`
+
+<a href="javascript:exerciseToggle(24)">Answer</a>
+<div id="exercise24" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static def divisible_by_digits(start_num : int, end_num : int) : List<Integer> {
+		(start_num..end_num).filter[n |
+			((n as String).bytes).forall[digit | (n%(digit as int)) == 0]
+		].toList
+	}
+	static def main {
+		println(divisible_by_digits(1,22))
+  		}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 25. Exercise 25
+
+* Write a SARL program to create the next bigger number by rearranging the digits of a given number.
+* Original number: `12`
+* Next bigger number: `21`
+* Original number: `10`
+* Next bigger number: `null`
+* Original number: `201`
+* Next bigger number: `210`
+* Original number: `102`
+* Next bigger number: `120`
+* Original number: `445`
+* Next bigger number: `454`
+
+<a href="javascript:exerciseToggle(25)">Answer</a>
+<div id="exercise25" style="display:none;">
+<pre><code class="language-sarl">
+class Solution {
+	static def rearrange_bigger(n : int) : Integer {
+	    var nums = (n as String).bytes.map[it as Integer]
+	    for (i : (nums.size-2)..0) {
+	        if (nums.get(i) &lt; nums.get(i+1)) {
+	            var z = nums.subList(i, nums.size)
+	            var y = z.filter[it &gt; z.get(0)].min
+	            z -= y
+	            z = z.sort
+	            var new_nums = (nums.subList(0, i) + #[y] + z)
+	            return (new_nums.join("")) as Integer
+			}
+		}
+	    return null
+	}
+	static def dotest(n : int) {
+		println("Original number: " + n)
+		println("Next bigger number: " + rearrange_bigger(n))
+	}
+	static def main {
+		dotest(12)
+		dotest(10)
+		dotest(201)
+		dotest(102)
+		dotest(445)
+  		}
+}
+</code></pre>
+
+</div>
+
+## 26. Exercise 26
+
+* Write a SARL program to find a list with maximum and minimum length using lambda.
+* Original list: `[[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]]`
+* List with maximum length of lists: `(3, [13, 15, 17])`
+* List with minimum length of lists: `(1, [0])`
+
+<a href="javascript:exerciseToggle(26)">Answer</a>
+<div id="exercise26" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original = #[#[0], #[1, 3], #[5, 7], #[9, 11], #[13, 15, 17]]
+
+	static def max_length_list(input_list : List&lt;List<Integer>&gt;) : List<object> {
+	    var max_length = input_list.map[it.size].max 
+	    var max_list = input_list.filter[it.size == max_length].toList    
+	    return #[max_length, max_list]
+	}
+   
+	static def min_length_list(input_list : List&lt;List<Integer>&gt;) : List<object> {
+	    var min_length = input_list.map[it.size].min
+	    var min_list = input_list.filter[it.size == min_length].toList    
+	    return #[min_length, min_list]
+	}
+     
+	static def main {
+		println("Original list: " + original)
+		println("List with maximum length of lists: " + max_length_list(original))
+		println("List with minimum length of lists: " + min_length_list(original))
+  		}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 27. Exercise 27
+
+* Write a SARL program to sort each sublist of strings in a given list of lists using lambda.
+* Original list: `[['green', 'orange'], ['black', 'white'], ['white', 'black', 'orange']]`
+* After sorting each sublist of the said list of lists: `[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]`
+
+<a href="javascript:exerciseToggle(27)">Answer</a>
+<div id="exercise27" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original = #[
+		#['green', 'orange'],
+		#['black', 'white'],
+		#['white', 'black', 'orange']
+	]
+
+	static def main {
+		var result = original.map[it.sort]
+		println(result)
+  		}
+}
+</code></pre>
+
+</div>
+
+## 28. Exercise 28
+
+* Write a SARL program to sort a given list of lists by length and value using lambda.
+* Original list: `[[2], [0], [1, 3], [0, 7], [9, 11], [13, 15, 17]]`
+* Sort the list of lists by length and value: `[[0], [2], [0, 7], [1, 3], [9, 11], [13, 15, 17]]`
+
+<a href="javascript:exerciseToggle(28)">Answer</a>
+<div id="exercise28" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original = #[
+		#[2], #[0], #[1, 3], #[0, 7], #[9, 11], #[13, 15, 17]
+	]
+
+	static def main {
+		var result = original.map[it.sort].sortWith[a, b | a &lt;=&gt; b] 
+		println(result)
+  		}
+	static def operator_spaceship(a : List<Integer>, b : List<Integer>) : int {
+		var cmp = a.size &lt;=&gt; b.size
+		if (cmp != 0) {
+			return cmp
+		}
+		var i0 = a.iterator
+		var i1 = b.iterator
+		while (i0.hasNext &amp;&amp; i1.hasNext) {
+			var va = i0.next
+			var vb = i1.next
+			cmp = va &lt;=&gt; vb
+			if (cmp != 0) {
+				return cmp
+			}
+		}
+		return 0
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 29. Exercise 29
+
+* Write a SARL program to find the maximum value in a given heterogeneous list using lambda.
+* Original list: `['SARL', 3, 2, 4, 5, 'version']`
+* Maximum values in the said list using lambda: `5`
+
+<a href="javascript:exerciseToggle(29)">Answer</a>
+<div id="exercise29" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original = #['SARL', 3, 2, 4, 5, 'version']
+
+	static def main {
+		var result = original.filter[it instanceof Number].map[(it as Number).longValue].max
+		println(result)
+  		}
+}
+</code></pre>
+
+</div>
+
+## 30. Exercise 30
+
+* Write a SARL program to sort a given matrix in ascending order according to the sum of its rows using lambda.
+* Original Matrix: `[[1, 2, 3], [2, 4, 5], [1, 1, 1]]`
+* Sort the said matrix in ascending order according to the sum of its rows: `[[1, 1, 1], [1, 2, 3], [2, 4, 5]]`
+* Original Matrix: `[[1, 2, 3], [-2, 4, -5], [1, -1, 1]]`
+* Sort the said matrix in ascending order according to the sum of its rows: `[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]`
+
+<a href="javascript:exerciseToggle(30)">Answer</a>
+<div id="exercise30" style="display:none;">
+<pre><code class="language-sarl">
+import java.util.List
+class Solution {
+	static var original1 = #[
+		#[1, 2, 3], #[2, 4, 5], #[1, 1, 1]
+	]
+
+	static var original2 = #[
+		#[1, 2, 3], #[-2, 4, -5], #[1, -1, 1]
+	]
+	static def sort_matrix(m : List&lt;List<Integer>&gt;) : List&lt;List<Integer>&gt; {
+		m.sortWith[a, b | a.sum &lt;=&gt; b.sum]
+	}
+	static def sum(m : List<Integer>) : int {
+		m.reduce[accumulator, current | accumulator + current]
+	}
+	static def main {
+		println(sort_matrix(original1))
+		println(sort_matrix(original2))
+  		}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+## 31. Version Specification
+
+* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
+* Version: 0.15
+* Status: Stable Release
+* Release: 2025-09-10
+
+## 32. Legal Notice
+
+&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
+&gt;
+&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
+&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+&gt;
+&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
+&gt; you may not use this file except in compliance with the Apache License.
+&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+&gt;
+&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+
+<small>Generated with the translator docs.generator 0.15.0.</small>
+</Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></object></Integer></object></Integer></code></pre></div></Integer></code></pre></div></Integer></code></pre></div></object></code></pre></div></Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div>
+
+    </div> <!-- /default layout container -->
+
+    <div class="container">
+  <!-- FOOTER -->
+  <footer>
+    <div class="row">
+      
+    <div class="col-lg-3">
+    <div class="well well-sm">
+      
+      <center>
+      <h2>SARL</h2>
+      <div>Agent-Oriented Programming Language</div>
+      <img src="../../../../images/SARL-logo.png" style="width:30%;max-width:64px;"/><br/>
+      <small><a href="../../../../images/SARL-logo.png">png</a>&nbsp;&middot;&nbsp;<a href="../../../../images/SARL-logo.svg">svg</a></small>
+      </center>
+    </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-th-large"></i> Quick Links </h2> 
+      <ul class="fa-ul">
+		  <li>
+			<a href="../../../../search/index.html">
+			  <i class="fa-li fa fa-search"></i> Search
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../news/index.html">
+			  <i class="fa-li fa fa-feed"></i> News
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html">
+			  <i class="fa-li fa fa-info"></i> About
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../about/index.html#license">
+			  <i class="fa-li fa fa-legal"></i> License
+			</a>
+		  </li>
+		  <li>
+			<a href="../../../../supports/index.html">
+			  <i class="fa-li fa fa-asterisk"></i> Supports&amp;Sponsors
+			</a>
+		  </li>
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-cog"></i> Support</h2>
+      <ul class="fa-ul">
+		  <li>
+			<a href="https://groups.google.com/d/forum/sarl">
+			  <i class="fa-li fa fa-comments"></i> User Forums
+			</a>
+		  </li>
+		
+		  <li>
+			<a href="https://gitter.im/sarl/Lobby" target="_blank">
+			  <i class="fa-li fa fa-wechat"></i> Chat Room
+			</a>
+		  </li>
+		
+		
+		  <li>
+			<a href="https://github.com/sarl/sarl" target="_blank">
+			  <i class="fa-li fa fa-github"></i> GitHub
+			</a>
+		  </li>
+		  <li>
+			<a href="https://github.com/sarl/sarl/issues" target="_blank">
+			  <i class="fa-li fa fa-bug"></i> Report an Issue
+			</a>
+		  </li>
+		
+		
+		
+		  <li>
+			<a href="https://www.facebook.com/sarllanguage" target="_blank">
+			  <i class="fa-li fa fa-facebook"></i> Facebook
+			</a>
+		  </li>
+		
+		
+		
+      </ul>
+      </div> 
+    </div>
+    <div class="col-lg-3">
+      <div class="well well-sm">
+      <h2><i class="glyphicon glyphicon-link"></i> Links</h2>
+      <ul class="fa-ul">
+        <li><a href="http://www.ciad-lab.fr" target="_blank"><i class="fa-li fa fa-university"></i>MAS Group - CIAD - UBFC</a></li>
+        <li><a href="https://www.rmit.edu.au/contact/staff-contacts/academic-staff/r/rodriguez-dr-sebastian" target="_blank"><i class="fa-li fa fa-university"></i>RMIT</a></li>
+      </ul>
+      </div> 
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/run_prettify.js"></script>
+	<script src="../../../../js/lang-sarl.js"></script>
+
+
+	<!-- Google analystics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-106498978-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+  </body>
+</html>
