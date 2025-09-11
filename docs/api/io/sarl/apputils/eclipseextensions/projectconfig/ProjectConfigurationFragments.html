@@ -34,7 +34,7 @@
     <div class="doclet-navigation-local">
      <ul class="doclet-navigation-list">
       <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragment.html">Prev Type</a></span></li>
-      <li><span class="doclet-emph">Next Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectFolderAccessor.html">Next Type</a></span></li>
      </ul>
      <ul class="doclet-navigation-list">
       <li><a href="../../../../../all-types.html">All Types</a></li>
@@ -161,24 +161,6 @@
       </thead>
       <tbody class="doclet-summarytable">
        <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureGeneratedSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureGeneratedSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a generated source folder.</td>
-       </tr>
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureOutputFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureOutputFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a folder for the output.</td>
-       </tr>
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a source folder.</td>
-       </tr>
-       <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
         <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#getConfigurationFragmentsFromExtension()">getConfigurationFragmentsFromExtension</a></span>
          <br>
@@ -202,24 +184,6 @@
        </tr>
       </thead>
       <tbody class="doclet-summarytable">
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureGeneratedSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureGeneratedSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a generated source folder.</td>
-       </tr>
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureOutputFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureOutputFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a folder for the output.</td>
-       </tr>
-       <tr class="doclet-summarytable">
-        <td class="doclet-summarytable">static&nbsp;<span>org.eclipse.core.resources.IFolder</span></td>
-        <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#ensureSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</a></span>
-         <br>
-         Create a source folder.</td>
-       </tr>
        <tr class="doclet-summarytable">
         <td class="doclet-summarytable">static&nbsp;<span>java.util.List</span>&lt;E&gt;</td>
         <td class="doclet-summarytable"><span class="doclet-summarybox-id"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragments.html#getConfigurationFragmentsFromExtension()">getConfigurationFragmentsFromExtension</a></span>
@@ -249,93 +213,6 @@
    <div class="doclet-detailbox" id="action.details.box">
     <div class="doclet-detailbox-title">Action Details</div>
     <dl class="doclet-detailbox">
-     <dt class="doclet-detailbox" id="ensureGeneratedSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureGeneratedSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</dt>
-     <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> ensureGeneratedSourceFolder(IProject,String,boolean,boolean,IProgressMonitor) : <span>org.eclipse.core.resources.IFolder</span><p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
-      <div>Create a generated source folder.</div>
-      <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">Parameters:</dt>
-       <dd class="doclet-detailbox-tag">
-        project - <span class="doclet-tags-param-comment">the project in which a source folder must be created.</span>
-        <br>
-        folderPath - <span class="doclet-tags-param-comment">the path of the folder to create.</span>
-        <br>
-        isIFolderRequired - <span class="doclet-tags-param-comment">is <code class="doclet-tags-param-comment">true</code> if the folder is required for the project.</span>
-        <br>
-        createFolder - <span class="doclet-tags-param-comment">indicates if the source folder must be created on the hard-disk.</span>
-        <br>
-        monitor - <span class="doclet-tags-param-comment">the progress monitor.</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Returns:</dt>
-       <dd class="doclet-detailbox-tag">
-        <span class="doclet-tags-return-comment">the created folder</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Throws exception:</dt>
-       <dd class="doclet-detailbox-tag">
-        <ul class="doclet-tags-throws-comment">
-         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">is thrown if the folder cannot be created.</span></li>
-        </ul>
-       </dd>
-      </dl>
-     </dd>
-     <dt class="doclet-detailbox" id="ensureOutputFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureOutputFolder(IProject,String,boolean,boolean,IProgressMonitor)</dt>
-     <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> ensureOutputFolder(IProject,String,boolean,boolean,IProgressMonitor) : <span>org.eclipse.core.resources.IFolder</span><p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
-      <div>Create a folder for the output.</div>
-      <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">Parameters:</dt>
-       <dd class="doclet-detailbox-tag">
-        project - <span class="doclet-tags-param-comment">the project in which a source folder must be created.</span>
-        <br>
-        folderPath - <span class="doclet-tags-param-comment">the path of the folder to create.</span>
-        <br>
-        isIFolderRequired - <span class="doclet-tags-param-comment">is <code class="doclet-tags-param-comment">true</code> if the folder is required for the project.</span>
-        <br>
-        createFolder - <span class="doclet-tags-param-comment">indicates if the source folder must be created on the hard-disk.</span>
-        <br>
-        monitor - <span class="doclet-tags-param-comment">the progress monitor.</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Returns:</dt>
-       <dd class="doclet-detailbox-tag">
-        <span class="doclet-tags-return-comment">the created folder</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Throws exception:</dt>
-       <dd class="doclet-detailbox-tag">
-        <ul class="doclet-tags-throws-comment">
-         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">is thrown if the folder cannot be created.</span></li>
-        </ul>
-       </dd>
-      </dl>
-     </dd>
-     <dt class="doclet-detailbox" id="ensureSourceFolder(org.eclipse.core.resources.IProject,java.lang.String,boolean,boolean,org.eclipse.core.runtime.IProgressMonitor)">ensureSourceFolder(IProject,String,boolean,boolean,IProgressMonitor)</dt>
-     <dd class="doclet-detailbox">
-      <pre><span class="doclet-keyword">def</span> ensureSourceFolder(IProject,String,boolean,boolean,IProgressMonitor) : <span>org.eclipse.core.resources.IFolder</span><p class="doclet-pre-indent"> <span class="doclet-keyword">throws</span> <span>org.eclipse.core.runtime.CoreException</span></p></pre>
-      <div>Create a source folder.</div>
-      <dl class="doclet-detailbox-tag">
-       <dt class="doclet-detailbox-tag">Parameters:</dt>
-       <dd class="doclet-detailbox-tag">
-        project - <span class="doclet-tags-param-comment">the project in which a source folder must be created.</span>
-        <br>
-        folderPath - <span class="doclet-tags-param-comment">the path of the folder to create.</span>
-        <br>
-        isIFolderRequired - <span class="doclet-tags-param-comment">is <code class="doclet-tags-param-comment">true</code> if the folder is required for the project.</span>
-        <br>
-        createFolder - <span class="doclet-tags-param-comment">indicates if the source folder must be created on the hard-disk.</span>
-        <br>
-        monitor - <span class="doclet-tags-param-comment">the progress monitor.</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Returns:</dt>
-       <dd class="doclet-detailbox-tag">
-        <span class="doclet-tags-return-comment">the created folder</span>
-       </dd>
-       <dt class="doclet-detailbox-tag">Throws exception:</dt>
-       <dd class="doclet-detailbox-tag">
-        <ul class="doclet-tags-throws-comment">
-         <li class="doclet-tags-throws-comment"><span class="doclet-tags-throws-comment"><span>org.eclipse.core.runtime.CoreException</span></span>: <span class="doclet-tags-throws-comment">is thrown if the folder cannot be created.</span></li>
-        </ul>
-       </dd>
-      </dl>
-     </dd>
      <dt class="doclet-detailbox" id="getConfigurationFragmentsFromExtension()">getConfigurationFragmentsFromExtension</dt>
      <dd class="doclet-detailbox">
       <pre><span class="doclet-keyword">def</span> getConfigurationFragmentsFromExtension : <span>java.util.List</span>&lt;E&gt;</pre>
@@ -377,7 +254,7 @@
     <div class="doclet-navigation-local">
      <ul class="doclet-navigation-list">
       <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectConfigurationFragment.html">Prev Type</a></span></li>
-      <li><span class="doclet-emph">Next Type</span></li>
+      <li><span class="doclet-emph"><a href="../../../../../io/sarl/apputils/eclipseextensions/projectconfig/ProjectFolderAccessor.html">Next Type</a></span></li>
      </ul>
      <ul class="doclet-navigation-list">
       <li><a href="../../../../../all-types.html">All Types</a></li>
