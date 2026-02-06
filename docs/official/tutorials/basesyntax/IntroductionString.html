@@ -482,31 +482,34 @@ import java.util.List
 class Solution {
 	static def main(args : String*) : void {
 		var words = args.map[newArrayList(it.split("\s*,\s*"))]
-			.reduce[accumulator : List<String>, current : List<String> |
-				(accumulator + current) as List<String>
+			.reduce[accumulator : List&lt;String&gt;, current : List&lt;String&gt; |
+				(accumulator + current) as List&lt;String&gt;
 			]
 		println(words)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 15. Exercise 15
+<h2 id="15-exercise-15">15. Exercise 15</h2>
 
-* Write a SARL function to create an HTML string with tags around the word(s).
-* Sample function and result:
+<ul>
+  <li>Write a SARL function to create an HTML string with tags around the word(s).</li>
+  <li>
+    <p>Sample function and result:</p>
+  </li>
+  <li><code>['i', 'SARL']</code> gives <code>&lt;i&gt;SARL&lt;/i&gt;</code></li>
+  <li><code>['b', 'SARL Tutorial']</code> gives <code>&lt;b&gt;SARL Tutorial&lt;/b&gt;</code></li>
+</ul>
 
-* `['i', 'SARL']` gives `<i>SARL</i>`
-* `['b', 'SARL Tutorial']` gives `<b>SARL Tutorial</b>`
-
-<a href="javascript:exerciseToggle(15)">Answer</a>
+<p><a href="javascript:exerciseToggle(15)">Answer</a></p>
 <div id="exercise15" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static def to_html(words : List<String>) : String {
+	static def to_html(words : List&lt;String&gt;) : String {
 		var str = ""
 		var action : String = null
 		for (w : words) {
@@ -524,13 +527,13 @@ class Solution1 {
 		println(args.to_html)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static def to_html(words : List<String>) : String {
+	static def to_html(words : List&lt;String&gt;) : String {
 		var str = new StringBuilder
 		var action : String = null
 		for (w : words) {
@@ -549,18 +552,20 @@ class Solution2 {
 		println(args.to_html)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 16. Exercise 16
+<h2 id="16-exercise-16">16. Exercise 16</h2>
 
-* Write a SARL function to insert a string in the middle of a string.
-Sample function and result :
-* arguments `('[[]]', 'SARL')` gives `[[SARL]]`
-* arguments `('', 'PHP')` gives ``
+<ul>
+  <li>Write a SARL function to insert a string in the middle of a string.
+Sample function and result :</li>
+  <li>arguments <code>('[[]]', 'SARL')</code> gives <code>[[SARL]]</code></li>
+  <li>arguments <code>('', 'PHP')</code> gives ``</li>
+</ul>
 
-<a href="javascript:exerciseToggle(16)">Answer</a>
+<p><a href="javascript:exerciseToggle(16)">Answer</a></p>
 <div id="exercise16" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -577,14 +582,16 @@ class Solution {
 
 </div>
 
-## 17. Exercise 17
+<h2 id="17-exercise-17">17. Exercise 17</h2>
 
-* Write a SARL function to get a string made of 4 copies of the last two characters of a specified string (length must be at least 2).
-Sample function and result :
-* `SARL` gives `RLRLRL`
-* `Exercises` -&gt; `eseseses`
+<ul>
+  <li>Write a SARL function to get a string made of 4 copies of the last two characters of a specified string (length must be at least 2).
+Sample function and result :</li>
+  <li><code>SARL</code> gives <code>RLRLRL</code></li>
+  <li><code>Exercises</code> -&gt; <code>eseseses</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(17)">Answer</a>
+<p><a href="javascript:exerciseToggle(17)">Answer</a></p>
 <div id="exercise17" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -628,13 +635,15 @@ class Solution2 {
 
 </div>
 
-## 18. Exercise 18
+<h2 id="18-exercise-18">18. Exercise 18</h2>
 
-* Write a SARL function to get a string made of the first three characters of a specified string. If the length of the string is less than 3, return the original string.
-* `ipy` gives `ipy`
-* `SARL` gives `SAR`
+<ul>
+  <li>Write a SARL function to get a string made of the first three characters of a specified string. If the length of the string is less than 3, return the original string.</li>
+  <li><code>ipy</code> gives <code>ipy</code></li>
+  <li><code>SARL</code> gives <code>SAR</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(18)">Answer</a>
+<p><a href="javascript:exerciseToggle(18)">Answer</a></p>
 <div id="exercise18" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -650,11 +659,13 @@ class Solution {
 
 </div>
 
-## 19. Exercise 19
+<h2 id="19-exercise-19">19. Exercise 19</h2>
 
-* Write a SARL function to reverse a string if its length is a multiple of 4.
+<ul>
+  <li>Write a SARL function to reverse a string if its length is a multiple of 4.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(19)">Answer</a>
+<p><a href="javascript:exerciseToggle(19)">Answer</a></p>
 <div id="exercise19" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -670,11 +681,13 @@ class Solution {
 
 </div>
 
-## 20. Exercise 20
+<h2 id="20-exercise-20">20. Exercise 20</h2>
 
-* Write a SARL function to convert a given string to all uppercase if it contains at least 2 uppercase characters in the first 4 characters.
+<ul>
+  <li>Write a SARL function to convert a given string to all uppercase if it contains at least 2 uppercase characters in the first 4 characters.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(20)">Answer</a>
+<p><a href="javascript:exerciseToggle(20)">Answer</a></p>
 <div id="exercise20" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -691,11 +704,13 @@ class Solution {
 
 </div>
 
-## 21. Exercise 21
+<h2 id="21-exercise-21">21. Exercise 21</h2>
 
-* Write a SARL program to sort a string lexicographically.
+<ul>
+  <li>Write a SARL program to sort a string lexicographically.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(21)">Answer</a>
+<p><a href="javascript:exerciseToggle(21)">Answer</a></p>
 <div id="exercise21" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -711,11 +726,13 @@ class Solution {
 
 </div>
 
-## 22. Exercise 22
+<h2 id="22-exercise-22">22. Exercise 22</h2>
 
-* Write a SARL program to remove a newline in a string.
+<ul>
+  <li>Write a SARL program to remove a newline in a string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(22)">Answer</a>
+<p><a href="javascript:exerciseToggle(22)">Answer</a></p>
 <div id="exercise22" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -731,11 +748,13 @@ class Solution {
 
 </div>
 
-## 23. Exercise 23
+<h2 id="23-exercise-23">23. Exercise 23</h2>
 
-* Write a SARL program to check whether a string starts with specified characters.
+<ul>
+  <li>Write a SARL program to check whether a string starts with specified characters.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(23)">Answer</a>
+<p><a href="javascript:exerciseToggle(23)">Answer</a></p>
 <div id="exercise23" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -759,13 +778,15 @@ class Solution {
 
 </div>
 
-## 24. Exercise 24
+<h2 id="24-exercise-24">24. Exercise 24</h2>
 
-* Write a SARL program to create a Caesar encryption.
+<ul>
+  <li>Write a SARL program to create a Caesar encryption.</li>
+</ul>
 
 <p><span class="label label-info">Note</span> In cryptography, a Caesar cipher, also known as Caesar’s cipher, the shift cipher, Caesar’s code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence.</p>
 
-<a href="javascript:exerciseToggle(24)">Answer</a>
+<p><a href="javascript:exerciseToggle(24)">Answer</a></p>
 <div id="exercise24" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -799,11 +820,13 @@ class Solution2 {
 
 </div>
 
-## 25. Exercise 25
+<h2 id="25-exercise-25">25. Exercise 25</h2>
 
-* Write a SARL program to remove existing indentation from all of the lines in a given text.
+<ul>
+  <li>Write a SARL program to remove existing indentation from all of the lines in a given text.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(25)">Answer</a>
+<p><a href="javascript:exerciseToggle(25)">Answer</a></p>
 <div id="exercise25" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -845,11 +868,13 @@ class Solution2 {
 
 </div>
 
-## 26. Exercise 26
+<h2 id="26-exercise-26">26. Exercise 26</h2>
 
-* Write a SARL program to add prefix text to all of the lines in a string.
+<ul>
+  <li>Write a SARL program to add prefix text to all of the lines in a string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(26)">Answer</a>
+<p><a href="javascript:exerciseToggle(26)">Answer</a></p>
 <div id="exercise26" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -893,11 +918,13 @@ class Solution2 {
 
 </div>
 
-## 27. Exercise 27
+<h2 id="27-exercise-27">27. Exercise 27</h2>
 
-* Write a SARL program to print the real numbers up to 2 decimal places.
+<ul>
+  <li>Write a SARL program to print the real numbers up to 2 decimal places.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(27)">Answer</a>
+<p><a href="javascript:exerciseToggle(27)">Answer</a></p>
 <div id="exercise27" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -938,11 +965,13 @@ class Solution2 {
 
 </div>
 
-## 28. Exercise 28
+<h2 id="28-exercise-28">28. Exercise 28</h2>
 
-* Write a SARL program to print the real numbers up to 2 decimal places with a sign.
+<ul>
+  <li>Write a SARL program to print the real numbers up to 2 decimal places with a sign.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(28)">Answer</a>
+<p><a href="javascript:exerciseToggle(28)">Answer</a></p>
 <div id="exercise28" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -982,11 +1011,13 @@ class Solution2 {
 
 </div>
 
-## 29. Exercise 29
+<h2 id="29-exercise-29">29. Exercise 29</h2>
 
-* Write a SARL program to print the real positive and negative numbers with no decimal places.
+<ul>
+  <li>Write a SARL program to print the real positive and negative numbers with no decimal places.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(29)">Answer</a>
+<p><a href="javascript:exerciseToggle(29)">Answer</a></p>
 <div id="exercise29" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1018,11 +1049,13 @@ class Solution2 {
 
 </div>
 
-## 30. Exercise 30
+<h2 id="30-exercise-30">30. Exercise 30</h2>
 
-* Write a SARL program to print the integers with zeros to the left of the specified width.
+<ul>
+  <li>Write a SARL program to print the integers with zeros to the left of the specified width.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(30)">Answer</a>
+<p><a href="javascript:exerciseToggle(30)">Answer</a></p>
 <div id="exercise30" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1045,11 +1078,13 @@ Answer #2 is:
 
 </div>
 
-## 31. Exercise 31
+<h2 id="31-exercise-31">31. Exercise 31</h2>
 
-* Write a SARL program to print the integers with '*' to the right of the specified width.
+<ul>
+  <li>Write a SARL program to print the integers with ‘*’ to the right of the specified width.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(31)">Answer</a>
+<p><a href="javascript:exerciseToggle(31)">Answer</a></p>
 <div id="exercise31" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1069,11 +1104,13 @@ class Solution {
 
 </div>
 
-## 32. Exercise 32
+<h2 id="32-exercise-32">32. Exercise 32</h2>
 
-* Write a SARL program to count occurrences of a substring in a string, both provided on the command line.
+<ul>
+  <li>Write a SARL program to count occurrences of a substring in a string, both provided on the command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(32)">Answer</a>
+<p><a href="javascript:exerciseToggle(32)">Answer</a></p>
 <div id="exercise32" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1110,11 +1147,13 @@ class Solution {
 
 </div>
 
-## 33. Exercise 33
+<h2 id="33-exercise-33">33. Exercise 33</h2>
 
-* Write a SARL program to reverse a string that is provided on the command line.
+<ul>
+  <li>Write a SARL program to reverse a string that is provided on the command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(33)">Answer</a>
+<p><a href="javascript:exerciseToggle(33)">Answer</a></p>
 <div id="exercise33" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1150,11 +1189,13 @@ class Solution2 {
 
 </div>
 
-## 34. Exercise 34
+<h2 id="34-exercise-34">34. Exercise 34</h2>
 
-* Write a SARL program to reverse words in a string that is provided on the command line.
+<ul>
+  <li>Write a SARL program to reverse words in a string that is provided on the command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(34)">Answer</a>
+<p><a href="javascript:exerciseToggle(34)">Answer</a></p>
 <div id="exercise34" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1194,25 +1235,27 @@ class Solution2 {
 
 </div>
 
-## 35. Exercise 35
+<h2 id="35-exercise-35">35. Exercise 35</h2>
 
-* Write a SARL program to print the square and cube symbols in the area of a rectangle and the volume of a cylinder, using the string formatting tool of the API.
-* Input variables:
+<ul>
+  <li>Write a SARL program to print the square and cube symbols in the area of a rectangle and the volume of a cylinder, using the string formatting tool of the API.</li>
+  <li>Input variables:</li>
+</ul>
 
-```text
-area = 1256.66
+<pre><code class="language-text">area = 1256.66
 volume = 1254.725
 decimals = 2
-```
+</code></pre>
 
-* Sample output:
+<ul>
+  <li>Sample output:</li>
+</ul>
 
-```text
-The area of the rectangle is 1256.66cm2
+<pre><code class="language-text">The area of the rectangle is 1256.66cm2
 The volume of the cylinder is 1254.725cm3
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(35)">Answer</a>
+<p><a href="javascript:exerciseToggle(35)">Answer</a></p>
 <div id="exercise35" style="display:none;">
 <pre><code class="language-sarl">
 import static extension com.google.common.base.Strings.repeat
@@ -1232,22 +1275,23 @@ class Solution {
 
 </div>
 
-## 36. Exercise 36
+<h2 id="36-exercise-36">36. Exercise 36</h2>
 
-* Write a SARL program to print the index of a character in a string.
-* Sample string: `w3resource`
-* Expected output:
+<ul>
+  <li>Write a SARL program to print the index of a character in a string.</li>
+  <li>Sample string: <code>w3resource</code></li>
+  <li>Expected output:</li>
+</ul>
 
-```text
-Current character w position at 0
+<pre><code class="language-text">Current character w position at 0
 Current character 3 position at 1
 Current character r position at 2
 ....
 Current character c position at 8
 Current character e position at 9
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(36)">Answer</a>
+<p><a href="javascript:exerciseToggle(36)">Answer</a></p>
 <div id="exercise36" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1291,11 +1335,13 @@ class Solution2 {
 
 </div>
 
-## 37. Exercise 37
+<h2 id="37-exercise-37">37. Exercise 37</h2>
 
-* Write a SARL program to check whether a string contains all letters of the alphabet.
+<ul>
+  <li>Write a SARL program to check whether a string contains all letters of the alphabet.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(37)">Answer</a>
+<p><a href="javascript:exerciseToggle(37)">Answer</a></p>
 <div id="exercise37" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1326,23 +1372,24 @@ class Solution {
 
 </div>
 
-## 38. Exercise 38
+<h2 id="38-exercise-38">38. Exercise 38</h2>
 
-* Write a SARL program to convert a given string into a list of words.
-* Input: `The quick brown fox jumps over the lazy dog.`
-* Sample Output:
+<ul>
+  <li>Write a SARL program to convert a given string into a list of words.</li>
+  <li>Input: <code>The quick brown fox jumps over the lazy dog.</code></li>
+  <li>Sample Output:</li>
+</ul>
 
-```text
-['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']
-```
+<pre><code class="language-text">['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']
+</code></pre>
 
-<a href="javascript:exerciseToggle(38)">Answer</a>
+<p><a href="javascript:exerciseToggle(38)">Answer</a></p>
 <div id="exercise38" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static def split_words(str : String) : List<String> {
+	static def split_words(str : String) : List&lt;String&gt; {
 		var list = newArrayList
 		var word = new StringBuilder
 		str.chars.forEach[
@@ -1362,7 +1409,7 @@ class Solution1 {
 		}
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1376,13 +1423,15 @@ class Solution2 {
 }
 </code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 39. Exercise 39
+<h2 id="39-exercise-39">39. Exercise 39</h2>
 
-* Write a SARL program to lowercase the first n characters in a string.
+<ul>
+  <li>Write a SARL program to lowercase the first n characters in a string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(39)">Answer</a>
+<p><a href="javascript:exerciseToggle(39)">Answer</a></p>
 <div id="exercise39" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1423,13 +1472,15 @@ class Solution2 {
 
 </div>
 
-## 40. Exercise 40
+<h2 id="40-exercise-40">40. Exercise 40</h2>
 
-* Write a SARL program to swap commas and dots in a string.
-* Sample string: `32.054,23`
-* Expected Output: `32,054.23`
+<ul>
+  <li>Write a SARL program to swap commas and dots in a string.</li>
+  <li>Sample string: <code>32.054,23</code></li>
+  <li>Expected Output: <code>32,054.23</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(40)">Answer</a>
+<p><a href="javascript:exerciseToggle(40)">Answer</a></p>
 <div id="exercise40" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1485,16 +1536,18 @@ class Solution2 {
 
 </div>
 
-## 41. Exercise 41
+<h2 id="41-exercise-41">41. Exercise 41</h2>
 
-* Write a SARL program to count and display vowels in text.
+<ul>
+  <li>Write a SARL program to count and display vowels in text.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(41)">Answer</a>
+<p><a href="javascript:exerciseToggle(41)">Answer</a></p>
 <div id="exercise41" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
-	static var VOWELS = <Character>newTreeSet(null, "a", "e", "i", "o", "u", "y")
+	static var VOWELS = &lt;Character&gt;newTreeSet(null, "a", "e", "i", "o", "u", "y")
 	static def vowels(str : String) : int {
 		var count = 0
 		for (var i = 0; i &lt; str.length; i++) {
@@ -1508,12 +1561,12 @@ class Solution1 {
 		println("W3RESOURCE".vowels)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
-	static var VOWELS = <Character>newTreeSet(null, "a", "e", "i", "o", "u", "y")
+	static var VOWELS = &lt;Character&gt;newTreeSet(null, "a", "e", "i", "o", "u", "y")
 	static def vowels(str : String) : int {
 		str.toCharArray.filter[VOWELS.contains(it)].size
 	}
@@ -1521,15 +1574,17 @@ class Solution2 {
 		println("W3RESOURCE".vowels)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 42. Exercise 42
+<h2 id="42-exercise-42">42. Exercise 42</h2>
 
-* Write a SARL program to split a string on the last occurrence of the delimiter.
+<ul>
+  <li>Write a SARL program to split a string on the last occurrence of the delimiter.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(42)">Answer</a>
+<p><a href="javascript:exerciseToggle(42)">Answer</a></p>
 <div id="exercise42" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1578,11 +1633,13 @@ class Solution2 {
 
 </div>
 
-## 43. Exercise 43
+<h2 id="43-exercise-43">43. Exercise 43</h2>
 
-* Write a SARL program to find the first non-repeating character in a given string.
+<ul>
+  <li>Write a SARL program to find the first non-repeating character in a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(43)">Answer</a>
+<p><a href="javascript:exerciseToggle(43)">Answer</a></p>
 <div id="exercise43" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1610,16 +1667,18 @@ class Solution {
 
 </div>
 
-## 44. Exercise 44
+<h2 id="44-exercise-44">44. Exercise 44</h2>
 
-* Write a SARL program to print all permutations with a given repetition number of characters of a given string.
+<ul>
+  <li>Write a SARL program to print all permutations with a given repetition number of characters of a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(44)">Answer</a>
+<p><a href="javascript:exerciseToggle(44)">Answer</a></p>
 <div id="exercise44" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def all_repeat(str : String, n : int) : List<String> {
+	static def all_repeat(str : String, n : int) : List&lt;String&gt; {
 		var chars = str.toCharArray
 		var result = newArrayList
 		if (n &gt; 0) {
@@ -1643,15 +1702,17 @@ class Solution {
 		println(all_repeat('abcd', 4))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 45. Exercise 45
+<h2 id="45-exercise-45">45. Exercise 45</h2>
 
-* Write a SARL program to find the first repeated character in a given string.
+<ul>
+  <li>Write a SARL program to find the first repeated character in a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(45)">Answer</a>
+<p><a href="javascript:exerciseToggle(45)">Answer</a></p>
 <div id="exercise45" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1679,11 +1740,13 @@ class Solution {
 
 </div>
 
-## 46. Exercise 46
+<h2 id="46-exercise-46">46. Exercise 46</h2>
 
-* Write a SARL program to find the first repeated character in a given string where the index of the first occurrence is smallest.
+<ul>
+  <li>Write a SARL program to find the first repeated character in a given string where the index of the first occurrence is smallest.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(46)">Answer</a>
+<p><a href="javascript:exerciseToggle(46)">Answer</a></p>
 <div id="exercise46" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1737,11 +1800,13 @@ class Solution2 {
 
 </div>
 
-## 47. Exercise 47
+<h2 id="47-exercise-47">47. Exercise 47</h2>
 
-* Write a SARL program to find the first repeated word in a given string.
+<ul>
+  <li>Write a SARL program to find the first repeated word in a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(47)">Answer</a>
+<p><a href="javascript:exerciseToggle(47)">Answer</a></p>
 <div id="exercise47" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1766,11 +1831,13 @@ class Solution {
 
 </div>
 
-## 48. Exercise 48
+<h2 id="48-exercise-48">48. Exercise 48</h2>
 
-* Write a SARL program to find the second most repeated word in a given string.
+<ul>
+  <li>Write a SARL program to find the second most repeated word in a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(48)">Answer</a>
+<p><a href="javascript:exerciseToggle(48)">Answer</a></p>
 <div id="exercise48" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1793,11 +1860,13 @@ class Solution {
 
 </div>
 
-## 49. Exercise 49
+<h2 id="49-exercise-49">49. Exercise 49</h2>
 
-* Write a SARL program to remove spaces from a given string.
+<ul>
+  <li>Write a SARL program to remove spaces from a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(49)">Answer</a>
+<p><a href="javascript:exerciseToggle(49)">Answer</a></p>
 <div id="exercise49" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1834,11 +1903,13 @@ class Solution2 {
 
 </div>
 
-## 50. Exercise 50
+<h2 id="50-exercise-50">50. Exercise 50</h2>
 
-* Write a SARL program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print `No common characters`.
+<ul>
+  <li>Write a SARL program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print <code>No common characters</code>.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(50)">Answer</a>
+<p><a href="javascript:exerciseToggle(50)">Answer</a></p>
 <div id="exercise50" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Map
@@ -1878,11 +1949,13 @@ class Solution {
 
 </div>
 
-## 51. Exercise 51
+<h2 id="51-exercise-51">51. Exercise 51</h2>
 
-* Write a SARL program to make two given strings (lower case, may or may not be of the same length) anagrams without removing any characters from any of the strings.
+<ul>
+  <li>Write a SARL program to make two given strings (lower case, may or may not be of the same length) anagrams without removing any characters from any of the strings.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(51)">Answer</a>
+<p><a href="javascript:exerciseToggle(51)">Answer</a></p>
 <div id="exercise51" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Map
@@ -1926,11 +1999,13 @@ class Solution {
 
 </div>
 
-## 52. Exercise 52
+<h2 id="52-exercise-52">52. Exercise 52</h2>
 
-* Write a SARL program to remove all consecutive duplicates of a given string.
+<ul>
+  <li>Write a SARL program to remove all consecutive duplicates of a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(52)">Answer</a>
+<p><a href="javascript:exerciseToggle(52)">Answer</a></p>
 <div id="exercise52" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Map
@@ -1961,16 +2036,18 @@ class Solution {
 
 </div>
 
-## 53. Exercise 53
+<h2 id="53-exercise-53">53. Exercise 53</h2>
 
-* Write a SARL program to find the longest common sub-string from two given strings.
+<ul>
+  <li>Write a SARL program to find the longest common sub-string from two given strings.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(53)">Answer</a>
+<p><a href="javascript:exerciseToggle(53)">Answer</a></p>
 <div id="exercise53" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Set
 class Solution {
-	static def longest_substring(s : String, t : String) : Set<String> {
+	static def longest_substring(s : String, t : String) : Set&lt;String&gt; {
 		var m = s.length
 		var n = t.length
 		var counter = newArrayList
@@ -2004,15 +2081,17 @@ class Solution {
 		println(longest_substring('abcdefgh', 'xswerabcdwd'))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 54. Exercise 54
+<h2 id="54-exercise-54">54. Exercise 54</h2>
 
-* Write a SARL program to count Uppercase, Lowercase, special characters and numeric values in a given string.
+<ul>
+  <li>Write a SARL program to count Uppercase, Lowercase, special characters and numeric values in a given string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(54)">Answer</a>
+<p><a href="javascript:exerciseToggle(54)">Answer</a></p>
 <div id="exercise54" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Set
@@ -2049,19 +2128,20 @@ class Solution {
 
 </div>
 
-## 55. Exercise 55
+<h2 id="55-exercise-55">55. Exercise 55</h2>
 
-* Write a SARL program to wrap a given string into a paragraph with a given width.
-* Input a string: `The quick brown fox.`
-* Input the width of the paragraph: `10`
-* Result:
+<ul>
+  <li>Write a SARL program to wrap a given string into a paragraph with a given width.</li>
+  <li>Input a string: <code>The quick brown fox.</code></li>
+  <li>Input the width of the paragraph: <code>10</code></li>
+  <li>Result:</li>
+</ul>
 
-```text
-The quick
+<pre><code class="language-text">The quick
 brown fox.
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(55)">Answer</a>
+<p><a href="javascript:exerciseToggle(55)">Answer</a></p>
 <div id="exercise55" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -2095,13 +2175,15 @@ class Solution {
 
 </div>
 
-## 56. Exercise 56
+<h2 id="56-exercise-56">56. Exercise 56</h2>
 
-* Write a SARL program to swap cases in a given string.
-* Input: `SARL eXERiCISES`
-* Output: `sarl ExerIcises`
+<ul>
+  <li>Write a SARL program to swap cases in a given string.</li>
+  <li>Input: <code>SARL eXERiCISES</code></li>
+  <li>Output: <code>sarl ExerIcises</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(56)">Answer</a>
+<p><a href="javascript:exerciseToggle(56)">Answer</a></p>
 <div id="exercise56" style="display:none;">
 <pre><code class="language-sarl">
 import static extension java.lang.Character.*
@@ -2127,11 +2209,13 @@ class Solution {
 
 </div>
 
-## 57. Exercise 57
+<h2 id="57-exercise-57">57. Exercise 57</h2>
 
-* Write a SARL program to check whether a given string contains a capital letter, a lower case letter, a number and a minimum length.
+<ul>
+  <li>Write a SARL program to check whether a given string contains a capital letter, a lower case letter, a number and a minimum length.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(57)">Answer</a>
+<p><a href="javascript:exerciseToggle(57)">Answer</a></p>
 <div id="exercise57" style="display:none;">
 <pre><code class="language-sarl">
 import static extension java.lang.Character.*
@@ -2158,13 +2242,15 @@ class Solution {
 
 </div>
 
-## 58. Exercise 58
+<h2 id="58-exercise-58">58. Exercise 58</h2>
 
-* Write a SARL program to convert a given heterogeneous list of scalars into a string.
-* Original list: `['Red', 100, -50, 'green', 'w,3,r', 12.12, false]`
-* Convert the heterogeneous list of scalars into a string: `Red,100,-50,green,w,3,r,12.12,false`
+<ul>
+  <li>Write a SARL program to convert a given heterogeneous list of scalars into a string.</li>
+  <li>Original list: <code>['Red', 100, -50, 'green', 'w,3,r', 12.12, false]</code></li>
+  <li>Convert the heterogeneous list of scalars into a string: <code>Red,100,-50,green,w,3,r,12.12,false</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(58)">Answer</a>
+<p><a href="javascript:exerciseToggle(58)">Answer</a></p>
 <div id="exercise58" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -2203,14 +2289,15 @@ class Solution2 {
 
 </div>
 
+<h2 id="59-exercise-59">59. Exercise 59</h2>
 
-## 59. Exercise 59
+<ul>
+  <li>Write a SARL program to extract numbers from a given string.</li>
+  <li>Original string: <code>red 12 black 45 green</code></li>
+  <li>Extract numbers from the said string: <code>[12, 45]</code></li>
+</ul>
 
-* Write a SARL program to extract numbers from a given string.
-* Original string: `red 12 black 45 green`
-* Extract numbers from the said string: `[12, 45]`
-
-<a href="javascript:exerciseToggle(58)">Answer</a>
+<p><a href="javascript:exerciseToggle(58)">Answer</a></p>
 <div id="exercise58" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -2270,13 +2357,15 @@ class Solution2 {
 
 </div>
 
-## 60. Exercise 60
+<h2 id="60-exercise-60">60. Exercise 60</h2>
 
-* Write a SARL program to replace each character of a word of length five and more with a hash character (`#`).
-* Original string: `Count the lowercase letters in the said list of words:`
-* Replace words (length five or more) with hash characters in the said string: `##### the ######### ####### in the said list of ######`
+<ul>
+  <li>Write a SARL program to replace each character of a word of length five and more with a hash character (<code>#</code>).</li>
+  <li>Original string: <code>Count the lowercase letters in the said list of words:</code></li>
+  <li>Replace words (length five or more) with hash characters in the said string: <code>##### the ######### ####### in the said list of ######</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(58)">Answer</a>
+<p><a href="javascript:exerciseToggle(58)">Answer</a></p>
 <div id="exercise58" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -2326,30 +2415,32 @@ class Solution2 {
 
 </div>
 
+<h2 id="61-version-specification">61. Version Specification</h2>
 
-## 61. Version Specification
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-11</li>
+</ul>
 
-* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
-* Version: 0.15
-* Status: Stable Release
-* Release: 2025-09-11
+<h2 id="62-legal-notice">62. Legal Notice</h2>
 
-## 62. Legal Notice
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
-&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
-&gt;
-&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
-&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
-&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
-&gt;
-&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
-&gt; you may not use this file except in compliance with the Apache License.
-&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
-&gt;
-&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
 
-<small>Generated with the translator docs.generator 0.15.1.</small>
-</String></code></pre></div></String></code></pre></div></Character></code></pre></Character></code></pre></div></String></code></pre></div></String></code></pre></String></code></pre></div></String></String></String></code></pre></div>
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.1.</small></p>
 
     </div> <!-- /default layout container -->
 

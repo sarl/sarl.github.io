@@ -308,7 +308,7 @@ import java.util.Map
 class Solution1 {
 	static var original1 = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
 	static var original2 = #{4 -&gt; 16, 5 -&gt; 25}
-	static def merge(m1 : Map<? extends K, ? extends V>, m2 : Map<? extends K, ? extends V>) : Map<K, V> with K, V {
+	static def merge(m1 : Map&lt;? extends K, ? extends V&gt;, m2 : Map<? extends K, ? extends V>) : Map&lt;K, V> with K, V {
 		var newmap = newHashMap
 		newmap.putAll(m1)
 		newmap.putAll(m2)
@@ -324,8 +324,8 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution2 {
-	static var original1 = #{1 -> 154, 2 -> 44, 3 -> 9}
-	static var original2 = #{4 -> 16, 5 -> 25}
+	static var original1 = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static var original2 = #{4 -&gt; 16, 5 -&gt; 25}
 	static def main : void {
 		println(original1.union(original2))
 	}
@@ -333,6 +333,8 @@ class Solution2 {
 </code></pre>
 
 </div>
+
+
 
 ## 9. Exercise 9
 
@@ -344,8 +346,8 @@ Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution1 {
-	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
-	static def sum(m : Map<Integer, Integer>) : int {
+	static var original = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static def sum(m : Map&lt;Integer, Integer>) : int {
 		var s = 0
 		for (v : m.values) {
 			s += v
@@ -362,8 +364,8 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution2 {
-	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
-	static def sum(m : Map<Integer, Integer>) : int {
+	static var original = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static def sum(m : Map&lt;Integer, Integer>) : int {
 		m.values.reduce[accumulator, current | accumulator + current]
 	}
 	static def main : void {
@@ -384,8 +386,8 @@ Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution1 {
-	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
-	static def mul(m : Map<Integer, Integer>) : int {
+	static var original = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static def mul(m : Map&lt;Integer, Integer>) : int {
 		var s = 1
 		for (v : m.values) {
 			s *= v
@@ -402,8 +404,8 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution2 {
-	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
-	static def mul(m : Map<Integer, Integer>) : int {
+	static var original = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
+	static def mul(m : Map&lt;Integer, Integer>) : int {
 		m.values.reduce[accumulator, current | accumulator * current]
 	}
 	static def main : void {
@@ -423,7 +425,7 @@ class Solution2 {
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution {
-	static var original = #{1 -> 154, 2 -> 44, 3 -> 9}
+	static var original = #{1 -&gt; 154, 2 -&gt; 44, 3 -&gt; 9}
 	static def main : void {
 		original.remove(2)
 		println(original)
@@ -482,7 +484,7 @@ class Solution2 {
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44}
 	static def main : void {
 		var sortedMap = newTreeSet(null)
 		sortedMap.addAll(original)
@@ -502,7 +504,7 @@ class Solution {
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44}
 	static def main : void {
 		var min = Integer::MAX_VALUE
 		var max = Integer::MIN_VALUE
@@ -523,7 +525,7 @@ class Solution1 {
 Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44}
 	static def main : void {
 		var min = original.values.min
 		var max = original.values.max
@@ -543,7 +545,7 @@ class Solution2 {
 <div id="exercise15" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44, 6 -&gt; 9}
 	static def main : void {
 		var newmap = newHashMap
 		for (e : original.entrySet) {
@@ -567,7 +569,7 @@ class Solution {
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44, 6 -&gt; 9}
 	static def main : void {
 		println(original.isEmpty)
 	}
@@ -577,7 +579,7 @@ class Solution1 {
 Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
-	static var original = #{1 -> 154, 3 -> 9, 2 -> 44, 6 -> 9}
+	static var original = #{1 -&gt; 154, 3 -&gt; 9, 2 -&gt; 44, 6 -&gt; 9}
 	static def main : void {
 		println(original.size == 0)
 	}
@@ -602,8 +604,8 @@ d2 = {'a': 300, 'b': 200, 'd':400}
 <div id="exercise13" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var d1 = #{'a' -> 100, 'b' -> 200, 'c' -> 300}
-	static var d2 = #{'a' -> 300, 'b' -> 200, 'd' -> 400}
+	static var d1 = #{'a' -&gt; 100, 'b' -&gt; 200, 'c' -&gt; 300}
+	static var d2 = #{'a' -&gt; 300, 'b' -&gt; 200, 'd' -&gt; 400}
 	static def main : void {
 		var m = newHashMap
 		for (e : d1.entrySet) {
@@ -636,10 +638,10 @@ Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
 	static var original = #[
-		#{"V" -> "S001"}, #{"V" -> "S002"},
-		#{"VI" -> "S001"}, #{"VI" -> "S005"},
-		#{"VII" -> "S005"}, #{"V" -> "S009"},
-		#{"VIII" -> "S007"}
+		#{"V" -&gt; "S001"}, #{"V" -&gt; "S002"},
+		#{"VI" -&gt; "S001"}, #{"VI" -&gt; "S005"},
+		#{"VII" -&gt; "S005"}, #{"V" -&gt; "S009"},
+		#{"VIII" -&gt; "S007"}
 	]
 	static def main : void {
 		var m = newTreeSet(null)
@@ -655,10 +657,10 @@ Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
 	static var original = #[
-		#{"V" -> "S001"}, #{"V" -> "S002"},
-		#{"VI" -> "S001"}, #{"VI" -> "S005"},
-		#{"VII" -> "S005"}, #{"V" -> "S009"},
-		#{"VIII" -> "S007"}
+		#{"V" -&gt; "S001"}, #{"V" -&gt; "S002"},
+		#{"VI" -&gt; "S001"}, #{"VI" -&gt; "S005"},
+		#{"VII" -&gt; "S005"}, #{"V" -&gt; "S009"},
+		#{"VIII" -&gt; "S007"}
 	]
 	static def main : void {
 		var m = newTreeSet(null)
@@ -687,7 +689,7 @@ bd
 <div id="exercise19" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original = #{'1' -> #['a','b'], '2' -> #['c','d']}
+	static var original = #{'1' -&gt; #['a','b'], '2' -&gt; #['c','d']}
 	static def main : void {
 		var m = newArrayList
 		var candidates = original.get(1)
@@ -723,8 +725,8 @@ class Solution {
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
-	static var original = #{'A' -> 67, 'B' -> 23, 'C' -> 45,
-                  'D' -> 56, 'E' -> 12, 'F' -> 69} 
+	static var original = #{'A' -&gt; 67, 'B' -&gt; 23, 'C' -&gt; 45,
+                  'D' -&gt; 56, 'E' -&gt; 12, 'F' -&gt; 69} 
 	static def main : void {
 		var iter = original.entrySet.iterator
 		var en = iter.next
@@ -755,7 +757,7 @@ class Solution1 {
 				key2 = k
 			}
 		}
-		var newmap = #{key0 -> max0, key1 -> max1, key2 -> max2}
+		var newmap = #{key0 -&gt; max0, key1 -&gt; max1, key2 -&gt; max2}
 		println(newmap)
 	}
 }
@@ -765,10 +767,10 @@ Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
 	static var original = #[
-		#{"V" -> "S001"}, #{"V" -> "S002"},
-		#{"VI" -> "S001"}, #{"VI" -> "S005"},
-		#{"VII" -> "S005"}, #{"V" -> "S009"},
-		#{"VIII" -> "S007"}
+		#{"V" -&gt; "S001"}, #{"V" -&gt; "S002"},
+		#{"VI" -&gt; "S001"}, #{"VI" -&gt; "S005"},
+		#{"VII" -&gt; "S005"}, #{"V" -&gt; "S009"},
+		#{"VIII" -&gt; "S007"}
 	]
 	static def main : void {
 		var m = newTreeSet(null)
@@ -791,9 +793,9 @@ class Solution2 {
 <pre><code class="language-sarl">
 class Solution {
 	static var original = #[
-		#{'item' -> 'item1', 'amount' -> 400},
-		#{'item' -> 'item2', 'amount' -> 300},
-		#{'item' -> 'item1', 'amount' -> 750}
+		#{'item' -&gt; 'item1', 'amount' -&gt; 400},
+		#{'item' -&gt; 'item2', 'amount' -&gt; 300},
+		#{'item' -&gt; 'item1', 'amount' -&gt; 750}
 	] 
 	static def main : void {
 		var newmap = newHashMap
@@ -860,9 +862,9 @@ Lauren	21	OOPS with java
 <pre><code class="language-sarl">
 class Solution {
 	static var original = #{
-		1 -> #["Samuel", 21, 'Data Structures'],
-			2 -> #["Richie", 20, 'Machine Learning'],
-			3 -> #["Lauren", 21, 'OOPS with java']
+		1 -&gt; #["Samuel", 21, 'Data Structures'],
+			2 -&gt; #["Richie", 20, 'Machine Learning'],
+			3 -&gt; #["Lauren", 21, 'OOPS with java']
 	}
 	
 	static def main : void {
@@ -897,7 +899,7 @@ class Solution {
 <div id="exercise24" style="display:none;">
 <pre><code class="language-sarl">
 class Solution1 {
-	static var original = #{'n1' -> #[2, 3, 1], 'n2' -> #[5, 1, 2], 'n3' -> #[3, 2, 4]}
+	static var original = #{'n1' -&gt; #[2, 3, 1], 'n2' -&gt; #[5, 1, 2], 'n3' -&gt; #[3, 2, 4]}
 	
 	static def main : void {
 		var newmap = newHashMap
@@ -920,7 +922,7 @@ class Solution1 {
 <div id="exercise25" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original = #{'P 01' -> 'DBMS', 'P 02' -> 'OS', 'P 0 3 ' -> 'Soft Computing'}
+	static var original = #{'P 01' -&gt; 'DBMS', 'P 02' -&gt; 'OS', 'P 0 3 ' -&gt; 'Soft Computing'}
 	
 	static def main : void {
 		var newmap = newHashMap
@@ -952,7 +954,7 @@ item3 41.3
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
-	static var original = #{'item1' -> 45.50, 'item2' -> 35.0, 'item3' -> 41.30, 'item4' -> 55.0, 'item5' -> 24.0}
+	static var original = #{'item1' -&gt; 45.50, 'item2' -&gt; 35.0, 'item3' -&gt; 41.30, 'item4' -&gt; 55.0, 'item5' -&gt; 24.0}
 	
 	static def main : void {
 		var iter = original.entrySet.iterator
@@ -994,7 +996,7 @@ class Solution1 {
 Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
-	static var original = #{'item1' -> 45.50, 'item2' -> 35.0, 'item3' -> 41.30, 'item4' -> 55.0, 'item5' -> 24.0}
+	static var original = #{'item1' -&gt; 45.50, 'item2' -&gt; 35.0, 'item3' -&gt; 41.30, 'item4' -&gt; 55.0, 'item5' -&gt; 24.0}
 	
 	static def main : void {
 		var max0 = original.values.max
@@ -1018,7 +1020,7 @@ class Solution2 {
 <div id="exercise27" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original = #{1 -> 10, 2 -> 20, 3 -> 30, 4 -> 40, 5 -> 50, 6 -> 60}
+	static var original = #{1 -&gt; 10, 2 -&gt; 20, 3 -&gt; 30, 4 -&gt; 40, 5 -&gt; 50, 6 -&gt; 60}
 	
 	static def main : void {
 		for (e : original.entrySet) {
@@ -1038,7 +1040,7 @@ class Solution {
 <div id="exercise28" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original = #{1 -> 10, 2 -> 20, 3 -> 30, 4 -> 40, 5 -> 50, 6 -> 60}
+	static var original = #{1 -&gt; 10, 2 -&gt; 20, 3 -&gt; 30, 4 -&gt; 40, 5 -&gt; 50, 6 -&gt; 60}
 	
 	static def main : void {
 		for (e : original.entrySet) {
@@ -1060,8 +1062,8 @@ Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 class Solution1 {
 	static var original = #{
-		'Alex' -> #['subj1', 'subj2', 'subj3'],
-		'David' -> #['subj1', 'subj2']
+		'Alex' -&gt; #['subj1', 'subj2', 'subj3'],
+		'David' -&gt; #['subj1', 'subj2']
 	}
 	
 	static def main : void {
@@ -1078,8 +1080,8 @@ Answer #2 is:
 <pre><code class="language-sarl">
 class Solution2 {
 	static var original = #{
-		'Alex' -> #['subj1', 'subj2', 'subj3'],
-		'David' -> #['subj1', 'subj2']
+		'Alex' -&gt; #['subj1', 'subj2', 'subj3'],
+		'David' -&gt; #['subj1', 'subj2']
 	}
 	
 	static def main : void {
@@ -1102,7 +1104,7 @@ class Solution2 {
 <pre><code class="language-sarl">
 class Solution {
 	static var original = #{
-		'Math' -> 81, 'Physics' -> 83, 'Chemistry' -> 87
+		'Math' -&gt; 81, 'Physics' -&gt; 83, 'Chemistry' -&gt; 87
 	}
 	static def main : void {
 		var result = original.entrySet.sortWith[a, b | b.value <=> a.value].map[#[it.key, it.value]].toList
@@ -1150,8 +1152,8 @@ class Solution {
 <div id="exercise32" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
-	static var original1 = #{'key1' -> 1, 'key2' -> 3, 'key3' -> 2}
-	static var original2 = #{'key1' -> 1, 'key2' -> 2}
+	static var original1 = #{'key1' -&gt; 1, 'key2' -&gt; 3, 'key3' -&gt; 2}
+	static var original2 = #{'key1' -&gt; 1, 'key2' -&gt; 2}
 	
 	static def main : void {
 		var newmap = newHashMap
@@ -1189,20 +1191,20 @@ class Solution {
 <pre><code class="language-sarl">
 import java.util.Map
 class Solution {
-	static var original = #{'students' -> #[
-			#{'firstName' -> 'Nikki', 'lastName' -> 'Roysden'},
-			#{'firstName' -> 'Mervin', 'lastName' -> 'Friedland'},
-			#{'firstName' -> 'Aron ', 'lastName' -> 'Wilkins'}
+	static var original = #{'students' -&gt; #[
+			#{'firstName' -&gt; 'Nikki', 'lastName' -&gt; 'Roysden'},
+			#{'firstName' -&gt; 'Mervin', 'lastName' -&gt; 'Friedland'},
+			#{'firstName' -&gt; 'Aron ', 'lastName' -&gt; 'Wilkins'}
 		],
-		'teachers' -> #[
-			#{'firstName' -> 'Amberly', 'lastName' -> 'Calico'},
-			#{'firstName' -> 'Regine', 'lastName' -> 'Agtarap'}
+		'teachers' -&gt; #[
+			#{'firstName' -&gt; 'Amberly', 'lastName' -&gt; 'Calico'},
+			#{'firstName' -&gt; 'Regine', 'lastName' -&gt; 'Agtarap'}
 		]
 	}
 	static def toJson(data : Object, buffer : StringBuilder) {
 		if (data instanceof Map) {
 			buffer.append("{")
-			var iter = (data as Map<String, ?>).entrySet.iterator
+			var iter = (data as Map&lt;String, ?>).entrySet.iterator
 			if (iter.hasNext) {
 				var me = iter.next
 				buffer.append(me.key).append(":")
@@ -1485,7 +1487,7 @@ import java.util.Map
 import java.util.List
 class Solution {
 	static var original = #{'Science' -&gt; #[88, 89, 62, 95], 'Language' -&gt; #[77, 78, 84, 80]}
-	static def list_of_dicts(marks : Map&lt;String, List<Integer>&gt;) : List&lt;Map&lt;String, Integer&gt;&gt; {
+	static def list_of_dicts(marks : Map&lt;String, List&lt;Integer&gt;&gt;) : List&lt;Map&lt;String, Integer&gt;&gt; {
 		var list = newArrayList
 		for (value : marks.entrySet) {
 			var i = 0
@@ -1507,17 +1509,19 @@ class Solution {
 		println(list_of_dicts(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 42. Exercise 42
+<h2 id="42-exercise-42">42. Exercise 42</h2>
 
-* Write a SARL program to remove a specified map from a given list.
-* Original list of map: `[{'id': '#FF0000', 'color': 'Red'}, {'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]`
-* Remove id `#FF0000` from the said list of map: `[{'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]`
+<ul>
+  <li>Write a SARL program to remove a specified map from a given list.</li>
+  <li>Original list of map: <code>[{'id': '#FF0000', 'color': 'Red'}, {'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]</code></li>
+  <li>Remove id <code>#FF0000</code> from the said list of map: <code>[{'id': '#800000', 'color': 'Maroon'}, {'id': '#FFFF00', 'color': 'Yellow'}, {'id': '#808000', 'color': 'Olive'}]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(42)">Answer</a>
+<p><a href="javascript:exerciseToggle(42)">Answer</a></p>
 <div id="exercise42" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1567,15 +1571,17 @@ class Solution2 {
 
 </div>
 
-## 43. Exercise 43
+<h2 id="43-exercise-43">43. Exercise 43</h2>
 
-* Write a SARL program to convert string values of a given map into integer/float datatypes.
-* Original list: `[{'x': '10', 'y': '20', 'z': '30'}, {'p': '40', 'q': '50', 'r': '60'}]`
-* String values of a given map, into integer types: `[{'x': 10, 'y': 20, 'z': 30}, {'p': 40, 'q': 50, 'r': 60}]`
-* Original list: `[{'x': '10.12', 'y': '20.23', 'z': '30'}, {'p': '40.00', 'q': '50.19', 'r': '60.99'}]`
-* String values of a given map, into float types: `[{'x': 10.12, 'y': 20.23, 'z': 30.0}, {'p': 40.0, 'q': 50.19, 'r': 60.99}]`
+<ul>
+  <li>Write a SARL program to convert string values of a given map into integer/float datatypes.</li>
+  <li>Original list: <code>[{'x': '10', 'y': '20', 'z': '30'}, {'p': '40', 'q': '50', 'r': '60'}]</code></li>
+  <li>String values of a given map, into integer types: <code>[{'x': 10, 'y': 20, 'z': 30}, {'p': 40, 'q': 50, 'r': 60}]</code></li>
+  <li>Original list: <code>[{'x': '10.12', 'y': '20.23', 'z': '30'}, {'p': '40.00', 'q': '50.19', 'r': '60.99'}]</code></li>
+  <li>String values of a given map, into float types: <code>[{'x': 10.12, 'y': 20.23, 'z': 30.0}, {'p': 40.0, 'q': 50.19, 'r': 60.99}]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(43)">Answer</a>
+<p><a href="javascript:exerciseToggle(43)">Answer</a></p>
 <div id="exercise43" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1643,13 +1649,15 @@ class Solution2 {
 
 </div>
 
-## 44. Exercise 44
+<h2 id="44-exercise-44">44. Exercise 44</h2>
 
-* A SARL map contains List as a value. Write a SARL program to clear the list values in the said map.
-* Original Map: `{'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}`
-* Clear the list values in the said map: `{'C1': [], 'C2': [], 'C3': []}`
+<ul>
+  <li>A SARL map contains List as a value. Write a SARL program to clear the list values in the said map.</li>
+  <li>Original Map: <code>{'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}</code></li>
+  <li>Clear the list values in the said map: <code>{'C1': [], 'C2': [], 'C3': []}</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(44)">Answer</a>
+<p><a href="javascript:exerciseToggle(44)">Answer</a></p>
 <div id="exercise44" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1657,10 +1665,10 @@ import java.util.Map
 import java.util.List
 class Solution1 {
 	static var original = #{'C1' -&gt; #[10, 20, 30], 'C2' -&gt; #[20, 30, 40], 'C3' -&gt; #[12, 34]}
-	static def clear(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+	static def clear(map : Map&lt;String, List&lt;Integer&gt;&gt;) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		var newmap = newHashMap
 		for (e : map.entrySet) {
-			newmap.put(e.key, <Integer>newArrayList)
+			newmap.put(e.key, &lt;Integer&gt;newArrayList)
 		}
 		return newmap
 	}
@@ -1668,7 +1676,7 @@ class Solution1 {
 		println(clear(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1676,24 +1684,26 @@ import java.util.Map
 import java.util.List
 class Solution2 {
 	static var original = #{'C1' -&gt; #[10, 20, 30], 'C2' -&gt; #[20, 30, 40], 'C3' -&gt; #[12, 34]}
-	static def clear(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+	static def clear(map : Map&lt;String, List&lt;Integer&gt;&gt;) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		map.mapValues[newArrayList]
 	}
   		static def main : void {
 		println(clear(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 45. Exercise 45
+<h2 id="45-exercise-45">45. Exercise 45</h2>
 
-* A SARL map contains List as a value. Write a SARL program to update the list values in the said map by adding 1 to the scores in Math and substracting 2 to the scores in Physics
-* Original Map: `{'Math': [88, 89, 90], 'Physics': [92, 94, 89], 'Chemistry': [90, 87, 93]}`
-* Update the list values of the said map: `{'Math': [89, 90, 91], 'Physics': [90, 92, 87], 'Chemistry': [90, 87, 93]}`
+<ul>
+  <li>A SARL map contains List as a value. Write a SARL program to update the list values in the said map by adding 1 to the scores in Math and substracting 2 to the scores in Physics</li>
+  <li>Original Map: <code>{'Math': [88, 89, 90], 'Physics': [92, 94, 89], 'Chemistry': [90, 87, 93]}</code></li>
+  <li>Update the list values of the said map: <code>{'Math': [89, 90, 91], 'Physics': [90, 92, 87], 'Chemistry': [90, 87, 93]}</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(45)">Answer</a>
+<p><a href="javascript:exerciseToggle(45)">Answer</a></p>
 <div id="exercise45" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1701,7 +1711,7 @@ import java.util.Map
 import java.util.List
 class Solution1 {
 	static var original = #{'Math' -&gt; #[88, 89, 90], 'Physics' -&gt; #[92, 94, 89], 'Chemistry' -&gt; #[90, 87, 93]}
-	static def update(map : Map&lt;String, List<Integer>&gt;, name : String, delta : int) : Map&lt;String, List<Integer>&gt; {
+	static def update(map : Map&lt;String, List&lt;Integer&gt;&gt;, name : String, delta : int) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		var newmap = newHashMap
 		for (e : map.entrySet) {
 			if (e.key == name) {
@@ -1722,7 +1732,7 @@ class Solution1 {
 		println(m)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1730,7 +1740,7 @@ import java.util.Map
 import java.util.List
 class Solution2 {
 	static var original = #{'Math' -&gt; #[88, 89, 90], 'Physics' -&gt; #[92, 94, 89], 'Chemistry' -&gt; #[90, 87, 93]}
-	static def update(map : Map&lt;String, List<Integer>&gt;, name : String, delta : int) : Map&lt;String, List<Integer>&gt; {
+	static def update(map : Map&lt;String, List&lt;Integer&gt;&gt;, name : String, delta : int) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		map.entrySet.toMap(
 			[it.key],
 			[
@@ -1748,19 +1758,21 @@ class Solution2 {
 		println(m)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 46. Exercise 46
+<h2 id="46-exercise-46">46. Exercise 46</h2>
 
-* Write a SARL program to extract a list of values from a given list of maps.
-* Original Map: `[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]`
-* Extract a list of values from said list of maps where subject = Science: `[92, 94, 88]`
-* Original Map: `[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]`
-* Extract a list of values from said list of maps where subject = Math: `[90, 89, 92]`
+<ul>
+  <li>Write a SARL program to extract a list of values from a given list of maps.</li>
+  <li>Original Map: <code>[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]</code></li>
+  <li>Extract a list of values from said list of maps where subject = Science: <code>[92, 94, 88]</code></li>
+  <li>Original Map: <code>[{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}]</code></li>
+  <li>Extract a list of values from said list of maps where subject = Math: <code>[90, 89, 92]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(46)">Answer</a>
+<p><a href="javascript:exerciseToggle(46)">Answer</a></p>
 <div id="exercise46" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1772,7 +1784,7 @@ class Solution1 {
 		#{'Math' -&gt; 89, 'Science' -&gt; 94},
 		#{'Math' -&gt; 92, 'Science' -&gt; 88}
 	]
-	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List&lt;Integer&gt; {
 		var scores = newArrayList
 		for (map : list) {
 			var score = map.get(name)
@@ -1786,7 +1798,7 @@ class Solution1 {
   			println(original.extract("Science"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1798,26 +1810,28 @@ class Solution2 {
 		#{'Math' -&gt; 89, 'Science' -&gt; 94},
 		#{'Math' -&gt; 92, 'Science' -&gt; 88}
 	]
-	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List&lt;Integer&gt; {
 		list.map[it.get(name)]
 	}
   		static def main : void {
   			println(original.extract("Science"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 47. Exercise 47
+<h2 id="47-exercise-47">47. Exercise 47</h2>
 
-* Write a SARL program to find the length of a map of values.
-* Original Map: `{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}`
-* Length of map values: `{'red': 3, 'green': 5, 'black': 5, 'white': 5}`
-* Original Map: `{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}`
-* Length of map values: `{'Austin Little': 13, 'Natasha Howard': 14, 'Alfred Mullins': 14, 'Jamie Rowe': 10}`
+<ul>
+  <li>Write a SARL program to find the length of a map of values.</li>
+  <li>Original Map: <code>{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}</code></li>
+  <li>Length of map values: <code>{'red': 3, 'green': 5, 'black': 5, 'white': 5}</code></li>
+  <li>Original Map: <code>{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}</code></li>
+  <li>Length of map values: <code>{'Austin Little': 13, 'Natasha Howard': 14, 'Alfred Mullins': 14, 'Jamie Rowe': 10}</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(47)">Answer</a>
+<p><a href="javascript:exerciseToggle(47)">Answer</a></p>
 <div id="exercise47" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1829,7 +1843,7 @@ class Solution1 {
 		#{'Math' -&gt; 89, 'Science' -&gt; 94},
 		#{'Math' -&gt; 92, 'Science' -&gt; 88}
 	]
-	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List<Integer> {
+	static def extract(list : List&lt;Map&lt;String, Integer&gt;&gt;, name : String) : List&lt;Integer&gt; {
 		var scores = newArrayList
 		for (map : list) {
 			var score = map.get(name)
@@ -1843,7 +1857,7 @@ class Solution1 {
   			println(original.extract("Science"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1860,13 +1874,15 @@ class Solution2 {
 }
 </code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 48. Exercise 48
+<h2 id="48-exercise-48">48. Exercise 48</h2>
 
-* Write a SARL program to get the depth of a map.
+<ul>
+  <li>Write a SARL program to get the depth of a map.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(48)">Answer</a>
+<p><a href="javascript:exerciseToggle(48)">Answer</a></p>
 <div id="exercise48" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1914,19 +1930,20 @@ class Solution2 {
 
 </div>
 
-## 49. Exercise 49
+<h2 id="49-exercise-49">49. Exercise 49</h2>
 
-* Write a SARL program to access map key's element by index.
-* Sample Input: `{'physics': 80, 'math': 90, 'chemistry': 86}`
-* Expected Output:
+<ul>
+  <li>Write a SARL program to access map key’s element by index.</li>
+  <li>Sample Input: <code>{'physics': 80, 'math': 90, 'chemistry': 86}</code></li>
+  <li>Expected Output:</li>
+</ul>
 
-```text
-0 = physics
+<pre><code class="language-text">0 = physics
 1 = math
 2 = chemistry
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(49)">Answer</a>
+<p><a href="javascript:exerciseToggle(49)">Answer</a></p>
 <div id="exercise49" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1941,15 +1958,17 @@ class Solution {
 
 </div>
 
-## 50. Exercise 50
+<h2 id="50-exercise-50">50. Exercise 50</h2>
 
-* Write a SARL program to convert a map into a list of lists.
-* Original Map: `{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}`
-* Convert the said map into a list of lists: `[[1, 'red'], [2, 'green'], [3, 'black'], [4, 'white'], [5, 'black']]`
-* Original Map: `{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}`
-* Convert the said map into a list of lists: `[['1', 'Austin Little'], ['2', 'Natasha Howard'], ['3', 'Alfred Mullins'], ['4', 'Jamie Rowe']]`
+<ul>
+  <li>Write a SARL program to convert a map into a list of lists.</li>
+  <li>Original Map: <code>{1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}</code></li>
+  <li>Convert the said map into a list of lists: <code>[[1, 'red'], [2, 'green'], [3, 'black'], [4, 'white'], [5, 'black']]</code></li>
+  <li>Original Map: <code>{'1': 'Austin Little', '2': 'Natasha Howard', '3': 'Alfred Mullins', '4': 'Jamie Rowe'}</code></li>
+  <li>Convert the said map into a list of lists: <code>[['1', 'Austin Little'], ['2', 'Natasha Howard'], ['3', 'Alfred Mullins'], ['4', 'Jamie Rowe']]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(50)">Answer</a>
+<p><a href="javascript:exerciseToggle(50)">Answer</a></p>
 <div id="exercise50" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -2009,7 +2028,7 @@ class Solution1 {
 		'V' -&gt; #[1, 4, 6, 10],
 		'VI' -&gt; #[1, 4, 12],
 		'VII' -&gt; #[1, 3, 8]}
-	static def even_numbers(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+	static def even_numbers(map : Map&lt;String, List&lt;Integer&gt;&gt;) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		var newmap = newHashMap
 		for (e : map.entrySet) {
 			var newlist = newArrayList
@@ -2026,7 +2045,7 @@ class Solution1 {
   			println(original.even_numbers)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -2037,16 +2056,16 @@ class Solution2 {
 		'V' -&gt; #[1, 4, 6, 10],
 		'VI' -&gt; #[1, 4, 12],
 		'VII' -&gt; #[1, 3, 8]}
-	static def even_numbers(map : Map&lt;String, List<Integer>&gt;) : Map&lt;String, List<Integer>&gt; {
+	static def even_numbers(map : Map&lt;String, List&lt;Integer&gt;&gt;) : Map&lt;String, List&lt;Integer&gt;&gt; {
 		map.mapValues[it.filter[(it % 2) == 0].toList]
 	}
   		static def main : void {
   			println(original.even_numbers)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 ## 52. Exercise 52
 
@@ -2066,7 +2085,7 @@ class Solution {
 		'V' -&gt; #[1, 4, 6, 10],
 		'VI' -&gt; #[1, 4, 12],
 		'VII' -&gt; #[1, 3, 8]}
-	static def combinations(keys : List<String>) : List&lt;List<String>&gt; {
+	static def combinations(keys : List&lt;String&gt;) : List&lt;List&lt;String&gt;&gt; {
 		var list = newArrayList()
 		for (var i = 0; i &lt; keys.size - 1; i++) {
 			for (var j = i + 1; j &lt; keys.size; j++) {
@@ -2075,7 +2094,7 @@ class Solution {
 		}
 		return list
 	}
-	static def combinations(map : Map&lt;String, List<Integer>&gt;) : List&lt;Map&lt;String, List<Integer>&gt;&gt; {
+	static def combinations(map : Map&lt;String, List&lt;Integer&gt;&gt;) : List&lt;Map&lt;String, List&lt;Integer&gt;&gt;&gt; {
 		var list = newArrayList
 		for (keys : map.keySet.toList.combinations) {
 			var newmap = newHashMap
@@ -2090,9 +2109,9 @@ class Solution {
   			println(original.combinations)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 ## 53. Exercise 53
 
@@ -2110,7 +2129,7 @@ class Solution {
 	static var original = #{
 		'a' -&gt; 5, 'b' -&gt; 14, 'c' -&gt; 32, 'd' -&gt; 35, 'e' -&gt; 24,
 		'f' -&gt; 100, 'g' -&gt; 57, 'h' -&gt; 8, 'i' -&gt; 100}
-  		static def max_values(map : Map&lt;String, Integer&gt;, n : int) : Iterable<String> {
+  		static def max_values(map : Map&lt;String, Integer&gt;, n : int) : Iterable&lt;String&gt; {
   			map.entrySet.sortWith[a, b | b.value &lt;=&gt; a.value].map[it.key].take(n)
 	}
   		static def main : void {
@@ -2119,9 +2138,9 @@ class Solution {
   			println(original.max_values(5))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 ## 54. Exercise 54
 
@@ -2138,7 +2157,7 @@ class Solution {
 	static var original = #{
 		'V' -&gt; #[10, 12], 'VI' -&gt; #[10], 'VII' -&gt; #[10, 20, 30, 40],
 		'VIII' -&gt; #[20], 'IX' -&gt; #[10, 30, 50, 70], 'X' -&gt; #[80]}
-  		static def shorted_list(map : Map&lt;String, List<Integer>&gt;) : List<String> {
+  		static def shorted_list(map : Map&lt;String, List&lt;Integer&gt;&gt;) : List&lt;String&gt; {
   			val min = map.values.map[it.size].min
   			map.entrySet.filter[it.value.size == min].map[it.key].toList
 	}
@@ -2146,9 +2165,9 @@ class Solution {
   			println(original.shorted_list)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 ## 55. Exercise 55
 
@@ -2172,7 +2191,7 @@ class Solution {
 		#{'student_id' -&gt; "4", 'name' -&gt; 'Lynne Foster', 'class' -&gt; 'VI'},
 		#{'student_id' -&gt; "5", 'name' -&gt; 'Zachary Simon', 'class' -&gt; 'VII'}
 	]
-  		static def extract(list : List&lt;Map&lt;String, String&gt;&gt;, keys : String*) : List&lt;List<String>&gt; {
+  		static def extract(list : List&lt;Map&lt;String, String&gt;&gt;, keys : String*) : List&lt;List&lt;String&gt;&gt; {
   			var result = newArrayList
   			for (person : list) {
   				var personList = newArrayList
@@ -2189,9 +2208,9 @@ class Solution {
   			println(original.extract("name", "class"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 ## 56. Exercise 56
 
@@ -2370,7 +2389,7 @@ class Solution {
 &gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
 
 <small>Generated with the translator docs.generator 0.15.1.</small>
-</String></code></pre></div></String></Integer></code></pre></div></String></code></pre></div></Integer></Integer></String></String></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></object></object></code></pre></object></object></code></pre></div></Integer></code></pre></div></Integer></code></pre></Integer></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></Integer></Integer></code></pre></Integer></Integer></Integer></code></pre></div></Integer></code></pre></div>
+</object></object></code></pre></object></object></code></pre></div>
 
     </div> <!-- /default layout container -->
 

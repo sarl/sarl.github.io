@@ -424,9 +424,9 @@ class Solution {
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def fibonacci(n : int) : List<Integer> {
+	static def fibonacci(n : int) : List&lt;Integer&gt; {
 		(0..n).map[#[it]].reduce[accumulator, current |
-			var nl : List<Integer> = newArrayList(accumulator)
+			var nl : List&lt;Integer&gt; = newArrayList(accumulator)
 			var v = accumulator.get(accumulator.size - 1).intValue + accumulator.get(accumulator.size - 2).intValue
 			nl += v
 			return nl
@@ -439,24 +439,26 @@ class Solution {
 		println(fibonacci(9))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
+<h2 id="11-exercise-11">11. Exercise 11</h2>
 
-## 11. Exercise 11
+<ul>
+  <li>Write a SARL program to find the intersection of two given arrays using Lambda.</li>
+  <li>Original arrays:</li>
+</ul>
 
-* Write a SARL program to find the intersection of two given arrays using Lambda.
-* Original arrays:
-
-```text
-[1, 2, 3, 5, 7, 8, 9, 10]
+<pre><code class="language-text">[1, 2, 3, 5, 7, 8, 9, 10]
 [1, 2, 4, 8, 9]
-```
+</code></pre>
 
-* Intersection of the said arrays: `[1, 2, 8, 9]`
+<ul>
+  <li>Intersection of the said arrays: <code>[1, 2, 8, 9]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(11)">Answer</a>
+<p><a href="javascript:exerciseToggle(11)">Answer</a></p>
 <div id="exercise11" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -471,13 +473,15 @@ class Solution {
 
 </div>
 
-## 12. Exercise 12
+<h2 id="12-exercise-12">12. Exercise 12</h2>
 
-* Write a SARL program to rearrange positive and negative numbers in a given array using Lambda.
-* Original arrays: `[-1, 2, -3, 5, 7, 8, 9, -10]`
-* Rearrange positive and negative numbers of the said array: `[2, 5, 7, 8, 9, -10, -3, -1]`
+<ul>
+  <li>Write a SARL program to rearrange positive and negative numbers in a given array using Lambda.</li>
+  <li>Original arrays: <code>[-1, 2, -3, 5, 7, 8, 9, -10]</code></li>
+  <li>Rearrange positive and negative numbers of the said array: <code>[2, 5, 7, 8, 9, -10, -3, -1]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(12)">Answer</a>
+<p><a href="javascript:exerciseToggle(12)">Answer</a></p>
 <div id="exercise12" style="display:none;">
 <pre><code class="language-sarl">
 import static extension java.lang.Math.signum
@@ -501,14 +505,16 @@ class Solution {
 
 </div>
 
-## 13. Exercise 13
+<h2 id="13-exercise-13">13. Exercise 13</h2>
 
-* Write a SARL program to count the even and odd numbers in a given array of integers using Lambda.
-* Original arrays: `[1, 2, 3, 5, 7, 8, 9, 10]`
-* Number of even numbers in the above array: `3`
-* Number of odd numbers in the above array: `5`
+<ul>
+  <li>Write a SARL program to count the even and odd numbers in a given array of integers using Lambda.</li>
+  <li>Original arrays: <code>[1, 2, 3, 5, 7, 8, 9, 10]</code></li>
+  <li>Number of even numbers in the above array: <code>3</code></li>
+  <li>Number of odd numbers in the above array: <code>5</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(13)">Answer</a>
+<p><a href="javascript:exerciseToggle(13)">Answer</a></p>
 <div id="exercise13" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -528,18 +534,19 @@ Answer #2 is:
 
 </div>
 
-## 14. Exercise 14
+<h2 id="14-exercise-14">14. Exercise 14</h2>
 
-* Write a SARL program to filter a given list to determine if the values in the list have a length of 6 using Lambda.
-* Sample Output:
+<ul>
+  <li>Write a SARL program to filter a given list to determine if the values in the list have a length of 6 using Lambda.</li>
+  <li>Sample Output:</li>
+</ul>
 
-```text
-Monday
+<pre><code class="language-text">Monday
 Friday
 Sunday
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(14)">Answer</a>
+<p><a href="javascript:exerciseToggle(14)">Answer</a></p>
 <div id="exercise14" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -553,25 +560,28 @@ class Solution {
 
 </div>
 
-## 15. Exercise 15
+<h2 id="15-exercise-15">15. Exercise 15</h2>
 
-* Write a SARL program to add two given lists using map and lambda.
-* Original list:
+<ul>
+  <li>Write a SARL program to add two given lists using map and lambda.</li>
+  <li>Original list:</li>
+</ul>
 
-```text
-[1, 2, 3]
+<pre><code class="language-text">[1, 2, 3]
 [4, 5, 6]
-```
+</code></pre>
 
-* Result: after adding two list `[5, 7, 9]`
+<ul>
+  <li>Result: after adding two list <code>[5, 7, 9]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(15)">Answer</a>
+<p><a href="javascript:exerciseToggle(15)">Answer</a></p>
 <div id="exercise15" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static var content1 : List<Integer> = #[1, 2, 3]
-	static var content2 : List<Integer> = #[4, 5, 6]
+	static var content1 : List&lt;Integer&gt; = #[1, 2, 3]
+	static var content2 : List&lt;Integer&gt; = #[4, 5, 6]
 	static def main {
 		var result : List<Integer>
 		if (content1.size &gt; content2.size) {
@@ -603,7 +613,7 @@ Names: N KAR
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static var marks : List&lt;List<object>&gt; = #[
+	static var marks : List&lt;List&lt;Object&gt;&gt; = #[
 		#['S ROY', 1.0],
 		#['B BOSE', 3.0],
 		#['N KAR', 2.0],
@@ -633,9 +643,9 @@ class Solution {
 		println("Names: " + studentsNames)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
 
 ## 17. Exercise 17
@@ -1086,7 +1096,7 @@ class Solution {
 &gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
 
 <small>Generated with the translator docs.generator 0.15.1.</small>
-</Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></object></Integer></object></Integer></code></pre></div></Integer></code></pre></div></Integer></code></pre></div></object></code></pre></div></Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div>
+</Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></object></Integer></object></Integer></code></pre></div></Integer></code></pre></div></Integer></code></pre></div></Integer></code></pre></div>
 
     </div> <!-- /default layout container -->
 

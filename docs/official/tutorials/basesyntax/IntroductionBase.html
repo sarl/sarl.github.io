@@ -634,7 +634,7 @@ agent Solution {
 import io.sarl.api.core.Initialize
 agent Solution {
 	on Initialize {
-		var list = <String>newArrayList
+		var list = &lt;String&gt;newArrayList
 		for (arg : occurrence.parameters) {
 			var str = arg as String
 			list += str
@@ -642,25 +642,25 @@ agent Solution {
 		println(list)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
 
-&lt;/div&gt;
+<h2 id="23-exercise-23">23. Exercise 23</h2>
 
-## 23. Exercise 23
+<ul>
+  <li>Write a SARL program to print all even numbers from a given list of numbers in the same order and stop printing any after 237 in the sequence.</li>
+  <li>Sample numbers list:</li>
+</ul>
 
-* Write a SARL program to print all even numbers from a given list of numbers in the same order and stop printing any after 237 in the sequence.
-* Sample numbers list:
-
-```text
-numbers = [    
+<pre><code class="language-text">numbers = [    
     386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345, 
     399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 
     815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 
     958,743, 527
     ]
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(23)">Answer</a>
+<p><a href="javascript:exerciseToggle(23)">Answer</a></p>
 <div id="exercise23" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -683,23 +683,25 @@ agent Solution {
 
 </div>
 
-## 24. Exercise 24
+<h2 id="24-exercise-24">24. Exercise 24</h2>
 
-* Write a SARL program that prints out all colors from `color_list_1` that are not present in `color_list_2`.
-* Test data:
+<ul>
+  <li>Write a SARL program that prints out all colors from <code>color_list_1</code> that are not present in <code>color_list_2</code>.</li>
+  <li>Test data:</li>
+</ul>
 
-```text
-color_list_1 = set(["White", "Black", "Red"])
+<pre><code class="language-text">color_list_1 = set(["White", "Black", "Red"])
 color_list_2 = set(["Red", "Green"])
-```
+</code></pre>
 
-* Expected output:
+<ul>
+  <li>Expected output:</li>
+</ul>
 
-```text
-{'Black', 'White'}
-```
+<pre><code class="language-text">{'Black', 'White'}
+</code></pre>
 
-<a href="javascript:exerciseToggle(24)">Answer</a>
+<p><a href="javascript:exerciseToggle(24)">Answer</a></p>
 <div id="exercise24" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -718,11 +720,13 @@ agent Solution {
 
 </div>
 
-## 25. Exercise 25
+<h2 id="25-exercise-25">25. Exercise 25</h2>
 
-* Write a SARL program that will accept the base and height of a triangle and compute its area.
+<ul>
+  <li>Write a SARL program that will accept the base and height of a triangle and compute its area.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(25)">Answer</a>
+<p><a href="javascript:exerciseToggle(25)">Answer</a></p>
 <div id="exercise25" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -738,11 +742,13 @@ agent Solution {
 
 </div>
 
-## 26. Exercise 26
+<h2 id="26-exercise-26">26. Exercise 26</h2>
 
-* Write a SARL program that computes the greatest common divisor (GCD) of two positive integers.
+<ul>
+  <li>Write a SARL program that computes the greatest common divisor (GCD) of two positive integers.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(26)">Answer</a>
+<p><a href="javascript:exerciseToggle(26)">Answer</a></p>
 <div id="exercise26" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -770,11 +776,13 @@ agent Solution {
 
 </div>
 
-## 27. Exercise 27
+<h2 id="27-exercise-27">27. Exercise 27</h2>
 
-* Write a SARL program to find the least common multiple (LCM) of two positive integers.
+<ul>
+  <li>Write a SARL program to find the least common multiple (LCM) of two positive integers.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(27)">Answer</a>
+<p><a href="javascript:exerciseToggle(27)">Answer</a></p>
 <div id="exercise27" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -806,11 +814,13 @@ agent Solution {
 
 </div>
 
-## 28. Exercise 28
+<h2 id="28-exercise-28">28. Exercise 28</h2>
 
-* Write a SARL program to sum three given integers. However, if two values are equal, the sum will be zero.
+<ul>
+  <li>Write a SARL program to sum three given integers. However, if two values are equal, the sum will be zero.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(28)">Answer</a>
+<p><a href="javascript:exerciseToggle(28)">Answer</a></p>
 <div id="exercise28" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -830,11 +840,13 @@ agent Solution {
 
 </div>
 
-## 29. Exercise 29
+<h2 id="29-exercise-29">29. Exercise 29</h2>
 
-* Write a SARL program to sum two given integers. However, if the sum is between 15 and 20 it will return 20.
+<ul>
+  <li>Write a SARL program to sum two given integers. However, if the sum is between 15 and 20 it will return 20.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(29)">Answer</a>
+<p><a href="javascript:exerciseToggle(29)">Answer</a></p>
 <div id="exercise29" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -853,11 +865,13 @@ agent Solution {
 
 </div>
 
-## 30. Exercise 30
+<h2 id="30-exercise-30">30. Exercise 30</h2>
 
-* Write a SARL program that returns `true` if the two given integer values are equal or their sum or difference is 5.
+<ul>
+  <li>Write a SARL program that returns <code>true</code> if the two given integer values are equal or their sum or difference is 5.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(30)">Answer</a>
+<p><a href="javascript:exerciseToggle(30)">Answer</a></p>
 <div id="exercise30" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -876,11 +890,13 @@ agent Solution {
 
 </div>
 
-## 31. Exercise 31
+<h2 id="31-exercise-31">31. Exercise 31</h2>
 
-* Write a SARL program to add two objects if both objects are integers.
+<ul>
+  <li>Write a SARL program to add two objects if both objects are integers.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(31)">Answer</a>
+<p><a href="javascript:exerciseToggle(31)">Answer</a></p>
 <div id="exercise31" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -904,13 +920,15 @@ agent Solution {
 
 </div>
 
-## 32. Exercise 32
+<h2 id="32-exercise-32">32. Exercise 32</h2>
 
-* Write a SARL program to solve `(x + y) * (x + y)`.
-* Test Data: `x = 4, y = 3`
-* Expected Output: `(4 + 3) ^ 2 = 49`
+<ul>
+  <li>Write a SARL program to solve <code>(x + y) * (x + y)</code>.</li>
+  <li>Test Data: <code>x = 4, y = 3</code></li>
+  <li>Expected Output: <code>(4 + 3) ^ 2 = 49</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(32)">Answer</a>
+<p><a href="javascript:exerciseToggle(32)">Answer</a></p>
 <div id="exercise32" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -929,11 +947,13 @@ agent Solution {
 
 </div>
 
-## 33. Exercise 33
+<h2 id="33-exercise-33">33. Exercise 33</h2>
 
-* Write a SARL program to calculate the distance between the points (x1, y1) and (x2, y2).
+<ul>
+  <li>Write a SARL program to calculate the distance between the points (x1, y1) and (x2, y2).</li>
+</ul>
 
-<a href="javascript:exerciseToggle(33)">Answer</a>
+<p><a href="javascript:exerciseToggle(33)">Answer</a></p>
 <div id="exercise33" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -954,11 +974,13 @@ agent Solution {
 
 </div>
 
-## 34. Exercise 34
+<h2 id="34-exercise-34">34. Exercise 34</h2>
 
-* Write a SARL program to check whether a file exists, when the name of the file is provided from the command line. Use the Java API.
+<ul>
+  <li>Write a SARL program to check whether a file exists, when the name of the file is provided from the command line. Use the Java API.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(34)">Answer</a>
+<p><a href="javascript:exerciseToggle(34)">Answer</a></p>
 <div id="exercise34" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -975,11 +997,13 @@ agent Solution {
 
 </div>
 
-## 35. Exercise 35
+<h2 id="35-exercise-35">35. Exercise 35</h2>
 
-* Write a SARL program to parse a string to float or integer.
+<ul>
+  <li>Write a SARL program to parse a string to float or integer.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(35)">Answer</a>
+<p><a href="javascript:exerciseToggle(35)">Answer</a></p>
 <div id="exercise35" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -999,11 +1023,13 @@ agent Solution {
 
 </div>
 
-## 36. Exercise 36
+<h2 id="36-exercise-36">36. Exercise 36</h2>
 
-* Write a SARL program to list all files in a directory.
+<ul>
+  <li>Write a SARL program to list all files in a directory.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(36)">Answer</a>
+<p><a href="javascript:exerciseToggle(36)">Answer</a></p>
 <div id="exercise36" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1020,11 +1046,13 @@ agent Solution {
 
 </div>
 
-## 37. Exercise 37
+<h2 id="37-exercise-37">37. Exercise 37</h2>
 
-* Write a SARL program to print a message provided from the command line without a newline or space.
+<ul>
+  <li>Write a SARL program to print a message provided from the command line without a newline or space.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(37)">Answer</a>
+<p><a href="javascript:exerciseToggle(37)">Answer</a></p>
 <div id="exercise37" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1039,11 +1067,13 @@ agent Solution {
 
 </div>
 
-## 38. Exercise 38
+<h2 id="38-exercise-38">38. Exercise 38</h2>
 
-* Write a SARL program to print to STDERR (standard error output of the process).
+<ul>
+  <li>Write a SARL program to print to STDERR (standard error output of the process).</li>
+</ul>
 
-<a href="javascript:exerciseToggle(38)">Answer</a>
+<p><a href="javascript:exerciseToggle(38)">Answer</a></p>
 <div id="exercise38" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1059,12 +1089,13 @@ agent Solution {
 
 </div>
 
+<h2 id="39-exercise-39">39. Exercise 39</h2>
 
-## 39. Exercise 39
+<ul>
+  <li>Write a SARL program to access environment variables.</li>
+</ul>
 
-* Write a SARL program to access environment variables.
-
-<a href="javascript:exerciseToggle(39)">Answer</a>
+<p><a href="javascript:exerciseToggle(39)">Answer</a></p>
 <div id="exercise39" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1078,11 +1109,13 @@ agent Solution {
 
 </div>
 
-## 40. Exercise 40
+<h2 id="40-exercise-40">40. Exercise 40</h2>
 
-* Write a SARL program to get the current username.
+<ul>
+  <li>Write a SARL program to get the current username.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(40)">Answer</a>
+<p><a href="javascript:exerciseToggle(40)">Answer</a></p>
 <div id="exercise40" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1095,11 +1128,13 @@ agent Solution {
 
 </div>
 
-## 41. Exercise 41
+<h2 id="41-exercise-41">41. Exercise 41</h2>
 
-* Write a SARL program to sum the first n positive integers.
+<ul>
+  <li>Write a SARL program to sum the first n positive integers.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(41)">Answer</a>
+<p><a href="javascript:exerciseToggle(41)">Answer</a></p>
 <div id="exercise41" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1117,11 +1152,13 @@ agent Solution {
 
 </div>
 
-## 42. Exercise 42
+<h2 id="42-exercise-42">42. Exercise 42</h2>
 
-* Write a SARL program to convert height (in feet and inches) to centimeters, when the value is provided from the command line.
+<ul>
+  <li>Write a SARL program to convert height (in feet and inches) to centimeters, when the value is provided from the command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(42)">Answer</a>
+<p><a href="javascript:exerciseToggle(42)">Answer</a></p>
 <div id="exercise42" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1136,11 +1173,13 @@ agent Solution {
 
 </div>
 
-## 43. Exercise 43
+<h2 id="43-exercise-43">43. Exercise 43</h2>
 
-* Write a SARL program to calculate the hypotenuse of a right angled triangle.
+<ul>
+  <li>Write a SARL program to calculate the hypotenuse of a right angled triangle.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(43)">Answer</a>
+<p><a href="javascript:exerciseToggle(43)">Answer</a></p>
 <div id="exercise43" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1156,11 +1195,13 @@ agent Solution {
 
 </div>
 
-## 44. Exercise 44
+<h2 id="44-exercise-44">44. Exercise 44</h2>
 
-* Write a SARL program to convert all units of time into seconds.
+<ul>
+  <li>Write a SARL program to convert all units of time into seconds.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(44)">Answer</a>
+<p><a href="javascript:exerciseToggle(44)">Answer</a></p>
 <div id="exercise44" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1179,11 +1220,13 @@ agent Solution {
 
 </div>
 
-## 45. Exercise 45
+<h2 id="45-exercise-45">45. Exercise 45</h2>
 
-* Write a SARL program to get an absolute file path from a name that is provided on the command line.
+<ul>
+  <li>Write a SARL program to get an absolute file path from a name that is provided on the command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(45)">Answer</a>
+<p><a href="javascript:exerciseToggle(45)">Answer</a></p>
 <div id="exercise45" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1200,11 +1243,13 @@ agent Solution {
 
 </div>
 
-## 46. Exercise 46
+<h2 id="46-exercise-46">46. Exercise 46</h2>
 
-* Write a SARL program that converts seconds into days, hours, minutes, and seconds.
+<ul>
+  <li>Write a SARL program that converts seconds into days, hours, minutes, and seconds.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(46)">Answer</a>
+<p><a href="javascript:exerciseToggle(46)">Answer</a></p>
 <div id="exercise46" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1227,11 +1272,13 @@ agent Solution {
 
 </div>
 
-## 47. Exercise 47
+<h2 id="47-exercise-47">47. Exercise 47</h2>
 
-* Write a SARL program to calculate the body mass index.
+<ul>
+  <li>Write a SARL program to calculate the body mass index.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(47)">Answer</a>
+<p><a href="javascript:exerciseToggle(47)">Answer</a></p>
 <div id="exercise47" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1247,11 +1294,13 @@ agent Solution {
 
 </div>
 
-## 48. Exercise 48
+<h2 id="48-exercise-48">48. Exercise 48</h2>
 
-* Write a SARL program to convert pressure in kilopascals to pounds per square inch, a millimeter of mercury (mmHg) and atmosphere pressure.
+<ul>
+  <li>Write a SARL program to convert pressure in kilopascals to pounds per square inch, a millimeter of mercury (mmHg) and atmosphere pressure.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(48)">Answer</a>
+<p><a href="javascript:exerciseToggle(48)">Answer</a></p>
 <div id="exercise48" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1270,11 +1319,13 @@ agent Solution {
 
 </div>
 
-## 49. Exercise 49
+<h2 id="49-exercise-49">49. Exercise 49</h2>
 
-* Write a SARL program to calculate sum of digits, from a string of characters, of a number.
+<ul>
+  <li>Write a SARL program to calculate sum of digits, from a string of characters, of a number.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(49)">Answer</a>
+<p><a href="javascript:exerciseToggle(49)">Answer</a></p>
 <div id="exercise49" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1294,11 +1345,13 @@ agent Solution {
 
 </div>
 
-## 50. Exercise 50
+<h2 id="50-exercise-50">50. Exercise 50</h2>
 
-* Write a SARL program to sort three integers without using conditional statements and loops.
+<ul>
+  <li>Write a SARL program to sort three integers without using conditional statements and loops.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(50)">Answer</a>
+<p><a href="javascript:exerciseToggle(50)">Answer</a></p>
 <div id="exercise50" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1318,11 +1371,13 @@ agent Solution {
 
 </div>
 
-## 51. Exercise 51
+<h2 id="51-exercise-51">51. Exercise 51</h2>
 
-* Write a SARL program to concatenate N strings.
+<ul>
+  <li>Write a SARL program to concatenate N strings.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(51)">Answer</a>
+<p><a href="javascript:exerciseToggle(51)">Answer</a></p>
 <div id="exercise51" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1339,11 +1394,13 @@ agent Solution {
 
 </div>
 
-## 52. Exercise 52
+<h2 id="52-exercise-52">52. Exercise 52</h2>
 
-* Write a SARL program to calculate the sum of all items of a container (array, list, set).
+<ul>
+  <li>Write a SARL program to calculate the sum of all items of a container (array, list, set).</li>
+</ul>
 
-<a href="javascript:exerciseToggle(52)">Answer</a>
+<p><a href="javascript:exerciseToggle(52)">Answer</a></p>
 <div id="exercise52" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1370,11 +1427,13 @@ agent Solution {
 
 </div>
 
-## 53. Exercise 53
+<h2 id="53-exercise-53">53. Exercise 53</h2>
 
-* Write a SARL program to test whether all numbers in a list, provided on the command line, are greater than a certain number, provided also on command line.
+<ul>
+  <li>Write a SARL program to test whether all numbers in a list, provided on the command line, are greater than a certain number, provided also on command line.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(53)">Answer</a>
+<p><a href="javascript:exerciseToggle(53)">Answer</a></p>
 <div id="exercise53" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1400,11 +1459,13 @@ agent Solution {
 
 </div>
 
-## 54. Exercise 54
+<h2 id="54-exercise-54">54. Exercise 54</h2>
 
-* Write a SARL program to count the number of occurrences of a specific character in a string.
+<ul>
+  <li>Write a SARL program to count the number of occurrences of a specific character in a string.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(54)">Answer</a>
+<p><a href="javascript:exerciseToggle(54)">Answer</a></p>
 <div id="exercise54" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1420,11 +1481,13 @@ agent Solution {
 
 </div>
 
-## 55. Exercise 55
+<h2 id="55-exercise-55">55. Exercise 55</h2>
 
-* Write a SARL program to check whether a file path, provided on the command line, is a file or a directory.
+<ul>
+  <li>Write a SARL program to check whether a file path, provided on the command line, is a file or a directory.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(55)">Answer</a>
+<p><a href="javascript:exerciseToggle(55)">Answer</a></p>
 <div id="exercise55" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1440,11 +1503,13 @@ agent Solution {
 
 </div>
 
-## 56. Exercise 56
+<h2 id="56-exercise-56">56. Exercise 56</h2>
 
-* Write a SARL program to swap two variables.
+<ul>
+  <li>Write a SARL program to swap two variables.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(56)">Answer</a>
+<p><a href="javascript:exerciseToggle(56)">Answer</a></p>
 <div id="exercise56" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1463,11 +1528,13 @@ agent Solution {
 
 </div>
 
-## 57. Exercise 57
+<h2 id="57-exercise-57">57. Exercise 57</h2>
 
-* Write a SARL program to check whether a string is numeric.
+<ul>
+  <li>Write a SARL program to check whether a string is numeric.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(57)">Answer</a>
+<p><a href="javascript:exerciseToggle(57)">Answer</a></p>
 <div id="exercise57" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1489,11 +1556,13 @@ agent Solution {
 
 </div>
 
-## 58. Exercise 58
+<h2 id="58-exercise-58">58. Exercise 58</h2>
 
-* Write a SARL program to prove that two string variables of the same value point to the same memory location.
+<ul>
+  <li>Write a SARL program to prove that two string variables of the same value point to the same memory location.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(58)">Answer</a>
+<p><a href="javascript:exerciseToggle(58)">Answer</a></p>
 <div id="exercise58" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1511,11 +1580,13 @@ agent Solution {
 
 </div>
 
-## 59. Exercise 59
+<h2 id="59-exercise-59">59. Exercise 59</h2>
 
-* Write a SARL program to determine the largest and smallest integers, longs, and floats.
+<ul>
+  <li>Write a SARL program to determine the largest and smallest integers, longs, and floats.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(59)">Answer</a>
+<p><a href="javascript:exerciseToggle(59)">Answer</a></p>
 <div id="exercise59" style="display:none;">
 <pre><code class="language-sarl">
 import io.sarl.api.core.Initialize
@@ -1533,29 +1604,32 @@ agent Solution {
 
 </div>
 
-## 60. Version Specification
+<h2 id="60-version-specification">60. Version Specification</h2>
 
-* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
-* Version: 0.15
-* Status: Stable Release
-* Release: 2025-09-11
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-11</li>
+</ul>
 
-## 61. Legal Notice
+<h2 id="61-legal-notice">61. Legal Notice</h2>
 
-&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
-&gt;
-&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
-&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
-&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
-&gt;
-&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
-&gt; you may not use this file except in compliance with the Apache License.
-&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
-&gt;
-&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
-<small>Generated with the translator docs.generator 0.15.1.</small>
-</String></code></pre></div>
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
+
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.1.</small></p>
 
     </div> <!-- /default layout container -->
 

@@ -321,7 +321,7 @@ Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static def words(list : List<String>, n : int) {
+	static def words(list : List&lt;String&gt;, n : int) {
 		var cp = newArrayList
 		for (e : list) {
 			if (e.length &gt; n) {
@@ -331,31 +331,33 @@ class Solution1 {
 		return cp
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static def words(list : List<String>, n : int) {
+	static def words(list : List&lt;String&gt;, n : int) {
 		list.filter[it.length &gt; n].toList
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 10. Exercise 10
+<h2 id="10-exercise-10">10. Exercise 10</h2>
 
-* Write a SARL function that takes two lists and returns `true` if they have at least one common member.
+<ul>
+  <li>Write a SARL function that takes two lists and returns <code>true</code> if they have at least one common member.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(10)">Answer</a>
+<p><a href="javascript:exerciseToggle(10)">Answer</a></p>
 <div id="exercise10" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List	
 class Solution1 {
-	static def common(list1 : List<?>, list2 : List<?>) {
+	static def common(list1 : List&lt;?&gt;, list2 : List&lt;?&gt;) {
 		for (e : list1) {
 			if (list2.contains(e)) {
 				return true
@@ -370,7 +372,7 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static def words(list1 : List<String>, list2 : List<?>) {
+	static def words(list1 : List&lt;String&gt;, list2 : List&lt;?&gt;) {
 		list1.exists[list2.contains(it)]
 	}
 }
@@ -378,13 +380,15 @@ class Solution2 {
 
 </div>
 
-## 11. Exercise 11
+<h2 id="11-exercise-11">11. Exercise 11</h2>
 
-* Write a SARL program to print a specified list after removing the 0th, 4th and 5th elements.
-* Sample List: `['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']`
-* Expected Output : `['Green', 'White', 'Black']`
+<ul>
+  <li>Write a SARL program to print a specified list after removing the 0th, 4th and 5th elements.</li>
+  <li>Sample List: <code>['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']</code></li>
+  <li>Expected Output : <code>['Green', 'White', 'Black']</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(11)">Answer</a>
+<p><a href="javascript:exerciseToggle(11)">Answer</a></p>
 <div id="exercise11" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -400,11 +404,13 @@ class Solution {
 
 </div>
 
-## 12. Exercise 12
+<h2 id="12-exercise-12">12. Exercise 12</h2>
 
-* Write a SARL program to generate a 3*4*6 3D array whose each element is `*`.
+<ul>
+  <li>Write a SARL program to generate a 3<em>4</em>6 3D array whose each element is <code>*</code>.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(12)">Answer</a>
+<p><a href="javascript:exerciseToggle(12)">Answer</a></p>
 <div id="exercise12" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -444,17 +450,19 @@ class Solution2 {
 
 </div>
 
-## 13. Exercise 13
+<h2 id="13-exercise-13">13. Exercise 13</h2>
 
-* Write a SARL program to print the numbers of a specified list after removing even numbers from it.
+<ul>
+  <li>Write a SARL program to print the numbers of a specified list after removing even numbers from it.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(13)">Answer</a>
+<p><a href="javascript:exerciseToggle(13)">Answer</a></p>
 <div id="exercise13" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static def remove_even(list : List<Integer>) : List<Integer> {
+	static def remove_even(list : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var nlist = newArrayList
 		for (e : list) {
 			if ((e % 2) != 0) {
@@ -470,7 +478,7 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static def remove_even(list : List<Integer>) : List<Integer> {
+	static def remove_even(list : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		list.filter[(it % 2) != 0].toList
 	}
 }
@@ -478,11 +486,13 @@ class Solution2 {
 
 </div>
 
-## 14. Exercise 14
+<h2 id="14-exercise-14">14. Exercise 14</h2>
 
-* Write a SARL program to shuffle and print a specified list.
+<ul>
+  <li>Write a SARL program to shuffle and print a specified list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(14)">Answer</a>
+<p><a href="javascript:exerciseToggle(14)">Answer</a></p>
 <div id="exercise14" style="display:none;">
 <pre><code class="language-sarl">
 import static extension java.util.Collections.shuffle
@@ -497,11 +507,13 @@ class Solution {
 
 </div>
 
-## 15. Exercise 15
+<h2 id="15-exercise-15">15. Exercise 15</h2>
 
-* Write a SARL program to generate all permutations of a list in SARL.  
+<ul>
+  <li>Write a SARL program to generate all permutations of a list in SARL.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(15)">Answer</a>
+<p><a href="javascript:exerciseToggle(15)">Answer</a></p>
 <div id="exercise15" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
@@ -511,15 +523,15 @@ class Solution {
 		elements.set(index0, elements.get(index1))
 		elements.set(index1, tmp);
 	}
-	static def permuts(list : List<Object>) : List<List<Object>> {
+	static def permuts(list : List&lt;Object&gt;) : List&lt;List&lt;Object&gt;&gt; {
 		var permuts = newArrayList
 		permuts.add(list.immutableCopy)
-		if (list.size > 1) {
+		if (list.size &gt; 1) {
 			var elements = list.toArray
 			var indexes = newIntArrayOfSize(list.size)
 			var i = 0
-			while (i < list.size) {
-			    if (indexes.get(i) < i) {
+			while (i &lt; list.size) {
+			    if (indexes.get(i) &lt; i) {
 			       swap(elements, if (i % 2 == 0) 0 else indexes.get(i), i)
 					permuts.add(newArrayList(elements))
 			       indexes.set(i, indexes.get(i) + 1);
@@ -537,16 +549,18 @@ class Solution {
 
 </div>
 
-## 16. Exercise 16
+<h2 id="16-exercise-16">16. Exercise 16</h2>
 
-* Write a SARL program to calculate the difference between the two lists.  
+<ul>
+  <li>Write a SARL program to calculate the difference between the two lists.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(16)">Answer</a>
+<p><a href="javascript:exerciseToggle(16)">Answer</a></p>
 <div id="exercise16" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def difference(a : List<Object>, b : List<Object>) : List<Object> {
+	static def difference(a : List&lt;Object&gt;, b : List&lt;Object&gt;) : List&lt;Object&gt; {
 		var diff = newArrayList
 		for (element : a) {
 			if (!b.contains(element)) {
@@ -560,21 +574,22 @@ class Solution {
 
 </div>
 
-## 17. Exercise 17
+<h2 id="17-exercise-17">17. Exercise 17</h2>
 
-* Write a SARL program to access the index of a list.
-* Sample Input: `[5, 15, 35, 8, 98]`
-* Sample Output:
+<ul>
+  <li>Write a SARL program to access the index of a list.</li>
+  <li>Sample Input: <code>[5, 15, 35, 8, 98]</code></li>
+  <li>Sample Output:</li>
+</ul>
 
-```text
-0 5
+<pre><code class="language-text">0 5
 1 15
 2 35
 3 8
 4 98
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(17)">Answer</a>
+<p><a href="javascript:exerciseToggle(17)">Answer</a></p>
 <div id="exercise17" style="display:none;">
 Three answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -595,7 +610,7 @@ Answer #2 is:
 class Solution2 {
 	static var original = #[5, 15, 35, 8, 98]
 	static def main : void {
-		for (var i = 0; i < original.size; i++) {
+		for (var i = 0; i &lt; original.size; i++) {
 			println(i + " " + original.get(i))
 		}
 	}
@@ -616,18 +631,19 @@ class Solution3 {
 
 </div>
 
+<h2 id="18-exercise-18">18. Exercise 18</h2>
 
-## 18. Exercise 18
+<ul>
+  <li>Write a SARL program to convert a list of characters into a string.</li>
+</ul>
 
-* Write a SARL program to convert a list of characters into a string.  
-
-<a href="javascript:exerciseToggle(18)">Answer</a>
+<p><a href="javascript:exerciseToggle(18)">Answer</a></p>
 <div id="exercise18" style="display:none;">
 Three answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static var original : List<Character> = #['h', 'e', 'l', 'l', 'o']
+	static var original : List&lt;Character&gt; = #['h', 'e', 'l', 'l', 'o']
 	static def main : void {
 		var str = ""
 		for (c : original) {
@@ -642,7 +658,7 @@ Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static var original : List<Character> = #['h', 'e', 'l', 'l', 'o']
+	static var original : List&lt;Character&gt; = #['h', 'e', 'l', 'l', 'o']
 	static def main : void {
 		var str_buffer = new StringBuilder
 		for (c : original) {
@@ -658,7 +674,7 @@ Answer #3 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution3 {
-	static var original : List<Character> = #['h', 'e', 'l', 'l', 'o']
+	static var original : List&lt;Character&gt; = #['h', 'e', 'l', 'l', 'o']
 	static def main : void {
 		var str = original.join("")
 		println(str)
@@ -668,18 +684,20 @@ class Solution3 {
 
 </div>
 
-## 19. Exercise 19
+<h2 id="19-exercise-19">19. Exercise 19</h2>
 
-* Write a SARL program to find the index of an item in a specified list.  
+<ul>
+  <li>Write a SARL program to find the index of an item in a specified list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(19)">Answer</a>
+<p><a href="javascript:exerciseToggle(19)">Answer</a></p>
 <div id="exercise19" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
-	static var original : List<Character> = #['h', 'e', 'l', 'l', 'o']
-	static def findIndexOf(list : List<?>, element : Object) : int {
+	static var original : List&lt;Character&gt; = #['h', 'e', 'l', 'l', 'o']
+	static def findIndexOf(list : List&lt;?&gt;, element : Object) : int {
 		var i = 0
 		for (elt : list) {
 			if (elt == element) {
@@ -696,13 +714,13 @@ class Solution1 {
 		println(original.findIndexOf('o'))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
-	static var original : List<Character> = #['h', 'e', 'l', 'l', 'o']
+	static var original : List&lt;Character&gt; = #['h', 'e', 'l', 'l', 'o']
 	static def main : void {
 		println(original.indexOf('h'))
 		println(original.indexOf('e'))
@@ -710,25 +728,26 @@ class Solution2 {
 		println(original.indexOf('o'))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
+<h2 id="20-exercise-20">20. Exercise 20</h2>
 
-## 20. Exercise 20
+<ul>
+  <li>Write a SARL program to flatten a shallow list.</li>
+  <li>Sample Input: <code>[[4], [0, 658, 4, 6], [1, 2, 3]]</code></li>
+  <li>Expected Output: <code>[4, 0, 658, 4, 6, 1, 2, 3]</code></li>
+</ul>
 
-* Write a SARL program to flatten a shallow list.
-* Sample Input: `[[4], [0, 658, 4, 6], [1, 2, 3]]`
-* Expected Output: `[4, 0, 658, 4, 6, 1, 2, 3]`
-
-<a href="javascript:exerciseToggle(20)">Answer</a>
+<p><a href="javascript:exerciseToggle(20)">Answer</a></p>
 <div id="exercise20" style="display:none;">
 Three answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
 	static var original = #[#[4], #[0, 658, 4, 6], #[1, 2, 3]]
-	static def flattenList(list : List&lt;List<Integer>&gt;) : List<Integer> {
+	static def flattenList(list : List&lt;List&lt;Integer&gt;&gt;) : List&lt;Integer&gt; {
 		var output = newArrayList
 		for (sublist : list) {
 			for (element : sublist) {
@@ -741,14 +760,14 @@ class Solution1 {
 		println(original.flattenList)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
 	static var original = #[#[4], #[0, 658, 4, 6], #[1, 2, 3]]
-	static def flattenList(list : List&lt;List<Integer>&gt;) : List<Integer> {
+	static def flattenList(list : List&lt;List&lt;Integer&gt;&gt;) : List&lt;Integer&gt; {
 		var output = newArrayList
 		for (sublist : list) {
 			output += sublist
@@ -759,7 +778,7 @@ class Solution2 {
 		println(original.flattenList)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #3 is:
 <pre><code class="language-sarl">
@@ -772,13 +791,15 @@ class Solution3 {
 }
 </code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 21. Exercise 21
+<h2 id="21-exercise-21">21. Exercise 21</h2>
 
-* Write a SARL program to append a list to the second list.  
+<ul>
+  <li>Write a SARL program to append a list to the second list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(21)">Answer</a>
+<p><a href="javascript:exerciseToggle(21)">Answer</a></p>
 <div id="exercise21" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -808,11 +829,13 @@ class Solution2 {
 
 </div>
 
-## 22. Exercise 22
+<h2 id="22-exercise-22">22. Exercise 22</h2>
 
-* Write a SARL program to select an item randomly from a list.  
+<ul>
+  <li>Write a SARL program to select an item randomly from a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(22)">Answer</a>
+<p><a href="javascript:exerciseToggle(22)">Answer</a></p>
 <div id="exercise22" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.Random
@@ -828,35 +851,42 @@ class Solution {
 
 </div>
 
-## 23. Exercise 23
+<h2 id="23-exercise-23">23. Exercise 23</h2>
 
-* Write a SARL program to check whether two lists are circularly identical.
+<ul>
+  <li>
+    <p>Write a SARL program to check whether two lists are circularly identical.</p>
+  </li>
+  <li>
+    <p>Input 1:</p>
+  </li>
+</ul>
 
-* Input 1:
-
-```text
-list1 = [10, 10, 0, 0, 10]
+<pre><code class="language-text">list1 = [10, 10, 0, 0, 10]
 list2 = [10, 10, 10, 0, 0]
-```
+</code></pre>
 
-* Output 1: `true`
-* Input 2:
+<ul>
+  <li>Output 1: <code>true</code></li>
+  <li>Input 2:</li>
+</ul>
 
-```text
-list1 = [10, 10, 0, 10, 0]
+<pre><code class="language-text">list1 = [10, 10, 0, 10, 0]
 list2 = [10, 10, 10, 0, 0]
-```
+</code></pre>
 
-* Output 2: `false`
+<ul>
+  <li>Output 2: <code>false</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(23)">Answer</a>
+<p><a href="javascript:exerciseToggle(23)">Answer</a></p>
 <div id="exercise23" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var list1 = #[10, 10, 0, 0, 10]
 	static var list2 = #[10, 10, 10, 0, 0]
-	static def circularly_identical(list1 : List<Integer>, list2 : List<Integer>) : boolean {
+	static def circularly_identical(list1 : List&lt;Integer&gt;, list2 : List&lt;Integer&gt;) : boolean {
 		// doubling list
 		var list3 = newArrayList(list1)
 	    list3.addAll(list1)
@@ -884,15 +914,17 @@ class Solution {
 		println(circularly_identical(list1, list2))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 24. Exercise 24
+<h2 id="24-exercise-24">24. Exercise 24</h2>
 
-* Write a SARL program to find the second smallest number in a list.  
+<ul>
+  <li>Write a SARL program to find the second smallest number in a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(24)">Answer</a>
+<p><a href="javascript:exerciseToggle(24)">Answer</a></p>
 <div id="exercise24" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -930,18 +962,20 @@ class Solution2 {
 
 </div>
 
-## 25. Exercise 25
+<h2 id="25-exercise-25">25. Exercise 25</h2>
 
-* Write a SARL program to get unique values from a list.  
+<ul>
+  <li>Write a SARL program to get unique values from a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(25)">Answer</a>
+<p><a href="javascript:exerciseToggle(25)">Answer</a></p>
 <div id="exercise25" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
 	static var original = #[1, 45, -45, 1, 2, 987, 45]
-	static def get_uniq(list : List<Integer>) : List<Integer> {
+	static def get_uniq(list : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var uniq = newArrayList
 		for (c : list) {
 			if (!uniq.contains(c)) {
@@ -954,14 +988,14 @@ class Solution1 {
 		println(get_uniq(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
 	static var original = #[1, 45, -45, 1, 2, 987, 45]
-	static def get_uniq(list : List<Integer>) : List<Integer> {
+	static def get_uniq(list : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var uniq = newTreeSet(null)
 		uniq.addAll(list)
 		return uniq.toList
@@ -970,22 +1004,24 @@ class Solution2 {
 		println(get_uniq(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 26. Exercise 26
+<h2 id="26-exercise-26">26. Exercise 26</h2>
 
-* Write a SARL program to get the frequency of elements in a list.  
+<ul>
+  <li>Write a SARL program to get the frequency of elements in a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(26)">Answer</a>
+<p><a href="javascript:exerciseToggle(26)">Answer</a></p>
 <div id="exercise26" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 import java.util.Map
 class Solution {
 	static var original = #[1, 45, -45, 1, 2, 987, 45]
-	static def frequency(list : List<T>) : Map&lt;T, Integer&gt; with T {
+	static def frequency(list : List&lt;T&gt;) : Map&lt;T, Integer&gt; with T {
 		var map = newHashMap
 		for (c : list) {
 			var n = map.getOrDefault(c, 0)
@@ -997,21 +1033,23 @@ class Solution {
 		println(frequency(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 27. Exercise 27
+<h2 id="27-exercise-27">27. Exercise 27</h2>
 
-* Write a SARL program to check whether a list contains a sublist.  
+<ul>
+  <li>Write a SARL program to check whether a list contains a sublist.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(27)">Answer</a>
+<p><a href="javascript:exerciseToggle(27)">Answer</a></p>
 <div id="exercise27" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[1, 45, -45, 1, 2, 987, 45]
-	static def is_sublist(list : List<Integer>, search_for : List<Integer>) : boolean {
+	static def is_sublist(list : List&lt;Integer&gt;, search_for : List&lt;Integer&gt;) : boolean {
 		if (search_for.isEmpty) {
 			return true
 		}
@@ -1036,17 +1074,19 @@ class Solution {
 		println(is_sublist(original, #[1, 987, 2]))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 28. Exercise 28
+<h2 id="28-exercise-28">28. Exercise 28</h2>
 
-* Write a SARL program that uses the Sieve of Eratosthenes method to compute prime numbers up to a specified number.
+<ul>
+  <li>Write a SARL program that uses the Sieve of Eratosthenes method to compute prime numbers up to a specified number.</li>
+</ul>
 
 <p><span class="label label-info">Note</span> In mathematics, the sieve of Eratosthenes, one of a number of prime number sieves, is a simple, ancient algorithm for finding all prime numbers up to any given limit.</p>
 
-<a href="javascript:exerciseToggle(28)">Answer</a>
+<p><a href="javascript:exerciseToggle(28)">Answer</a></p>
 <div id="exercise28" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1117,19 +1157,21 @@ class Solution2 {
 
 </div>
 
-## 29. Exercise 29
+<h2 id="29-exercise-29">29. Exercise 29</h2>
 
-* Write a SARL program to create a list by concatenating a given list with a range from 1 to n.  
-* Sample list: `['p', 'q']`
-* n = 5
-* Sample Output: `['p1', 'q1', 'p2', 'q2', 'p3', 'q3', 'p4', 'q4', 'p5', 'q5']`
+<ul>
+  <li>Write a SARL program to create a list by concatenating a given list with a range from 1 to n.</li>
+  <li>Sample list: <code>['p', 'q']</code></li>
+  <li>n = 5</li>
+  <li>Sample Output: <code>['p1', 'q1', 'p2', 'q2', 'p3', 'q3', 'p4', 'q4', 'p5', 'q5']</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(29)">Answer</a>
+<p><a href="javascript:exerciseToggle(29)">Answer</a></p>
 <div id="exercise29" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def concat(list : List<String>, num : int) : List<String> {
+	static def concat(list : List&lt;String&gt;, num : int) : List&lt;String&gt; {
 		var new_list = newArrayList
 		for (element : list) {
 			for (i : 1..num) {
@@ -1142,20 +1184,22 @@ class Solution {
 		println(concat(#['p', 'q'], 5))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 30. Exercise 30
+<h2 id="30-exercise-30">30. Exercise 30</h2>
 
-* Write a SARL program to find common items in two lists.  
+<ul>
+  <li>Write a SARL program to find common items in two lists.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(30)">Answer</a>
+<p><a href="javascript:exerciseToggle(30)">Answer</a></p>
 <div id="exercise30" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def common(list1 : List<Integer>, list2 : List<Integer>) : List<Integer> {
+	static def common(list1 : List&lt;Integer&gt;, list2 : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var common_list = newArrayList
 		for (element : list1) {
 			if (list2.contains(element)) {
@@ -1168,22 +1212,24 @@ class Solution {
 		println(common(#[1, 2, 4, 6], #[2, 34, 6, 122]))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 31. Exercise 31
+<h2 id="31-exercise-31">31. Exercise 31</h2>
 
-* Write a SARL program to change the position of every n-th value to the (n+1)th in a list.  
-* Sample list: `[0,1,2,3,4,5]`
-* Expected Output: `[1, 0, 3, 2, 5, 4]`
+<ul>
+  <li>Write a SARL program to change the position of every n-th value to the (n+1)th in a list.</li>
+  <li>Sample list: <code>[0,1,2,3,4,5]</code></li>
+  <li>Expected Output: <code>[1, 0, 3, 2, 5, 4]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(31)">Answer</a>
+<p><a href="javascript:exerciseToggle(31)">Answer</a></p>
 <div id="exercise31" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def change(list : List<Integer>) : List<Integer> {
+	static def change(list : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var new_list = newArrayList
 		for (var i = 0; i &lt; list.size; i += 2) {
 			var tmp = list.get(i)
@@ -1196,17 +1242,19 @@ class Solution {
 		println(change(#[0,1,2,3,4,5]))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 32. Exercise 32
+<h2 id="32-exercise-32">32. Exercise 32</h2>
 
-* Write a SARL program to convert a list of multiple integers into a single integer.  
-* Sample list: `[11, 33, 50]`
-* Expected Output: `113350`
+<ul>
+  <li>Write a SARL program to convert a list of multiple integers into a single integer.</li>
+  <li>Sample list: <code>[11, 33, 50]</code></li>
+  <li>Expected Output: <code>113350</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(32)">Answer</a>
+<p><a href="javascript:exerciseToggle(32)">Answer</a></p>
 <div id="exercise32" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
@@ -1218,7 +1266,7 @@ class Solution {
 		}
 		return d
 	}
-	static def merge(list : List<Integer>) : Integer {
+	static def merge(list : List&lt;Integer&gt;) : Integer {
 		var result = 0
 		for (element : list) {
 			result *= diz(element)
@@ -1230,25 +1278,27 @@ class Solution {
 		println(merge(#[11, 33, 50]))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 33. Exercise 33
+<h2 id="33-exercise-33">33. Exercise 33</h2>
 
-* Write a SARL program to split a list based on the first character of a word.
-* Sample Input:
+<ul>
+  <li>Write a SARL program to split a list based on the first character of a word.</li>
+  <li>Sample Input:</li>
+</ul>
 
-```text
-['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
+<pre><code class="language-text">['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
  'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel',
  'leave', 'call']
-```
+</code></pre>
 
-* Expected Output:
+<ul>
+  <li>Expected Output:</li>
+</ul>
 
-```text
-{ 'a': ['ask'],
+<pre><code class="language-text">{ 'a': ['ask'],
   'b': ['be'],
   'c': ['come', 'call'],
   'd': ['do'],
@@ -1263,9 +1313,9 @@ class Solution {
   'u': ['use'],
   'w': ['want', 'work']
 }
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(33)">Answer</a>
+<p><a href="javascript:exerciseToggle(33)">Answer</a></p>
 <div id="exercise33" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1278,8 +1328,8 @@ class Solution1 {
 		'look', 'want', 'give', 'use', 'find',
 		'tell', 'ask', 'work', 'seem', 'feel',
 		'leave', 'call']
-	static def split_by_letter(words : List<String>) : Map&lt;Character, List<String>&gt; {
-		var map : Map&lt;Character, List<String>&gt; = newHashMap
+	static def split_by_letter(words : List&lt;String&gt;) : Map&lt;Character, List&lt;String&gt;&gt; {
+		var map : Map&lt;Character, List&lt;String&gt;&gt; = newHashMap
 		for (word : words) {
 			var letter = word.charAt(0)
 			var list = map.computeIfAbsent(letter, [newArrayList])
@@ -1291,7 +1341,7 @@ class Solution1 {
 		println(split_by_letter(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
@@ -1304,25 +1354,27 @@ class Solution2 {
 		'look', 'want', 'give', 'use', 'find',
 		'tell', 'ask', 'work', 'seem', 'feel',
 		'leave', 'call']
-	static def split_by_letter(words : List<String>) : Map&lt;Character, List<String>&gt; {
+	static def split_by_letter(words : List&lt;String&gt;) : Map&lt;Character, List&lt;String&gt;&gt; {
 		return words.groupBy[it.charAt(0)]
 	} 
 	static def main : void {
 		println(split_by_letter(original))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 34. Exercise 34
+<h2 id="34-exercise-34">34. Exercise 34</h2>
 
-* Write a SARL program to create multiple lists.  
-* Sample Input: `1..10`
-* Expected Output: `{'1': [], '8': [], '14': [], '5': [], '17': [], '9': [], '2': [], '7': [], '16': [], '19': [], '4': [], '18': 
-[], '13': [], '3': [], '15': [], '11': [], '20': [], '6': [], '12': [], '10': []}`
+<ul>
+  <li>Write a SARL program to create multiple lists.</li>
+  <li>Sample Input: <code>1..10</code></li>
+  <li>Expected Output: <code>{'1': [], '8': [], '14': [], '5': [], '17': [], '9': [], '2': [], '7': [], '16': [], '19': [], '4': [], '18': 
+[], '13': [], '3': [], '15': [], '11': [], '20': [], '6': [], '12': [], '10': []}</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(34)">Answer</a>
+<p><a href="javascript:exerciseToggle(34)">Answer</a></p>
 <div id="exercise34" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1349,13 +1401,15 @@ class Solution2 {
 
 </div>
 
-## 35. Exercise 35
+<h2 id="35-exercise-35">35. Exercise 35</h2>
 
-* Write a SARL program to convert a pair of values into a sorted unique array.  
-* Original List:  `[(1, 2), (3, 4), (1, 2), (5, 6), (7, 8), (1, 2), (3, 4), (3, 4), (7, 8), (9, 10)]`
-* Sorted Unique Data: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+<ul>
+  <li>Write a SARL program to convert a pair of values into a sorted unique array.</li>
+  <li>Original List:  <code>[(1, 2), (3, 4), (1, 2), (5, 6), (7, 8), (1, 2), (3, 4), (3, 4), (7, 8), (9, 10)]</code></li>
+  <li>Sorted Unique Data: <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(35)">Answer</a>
+<p><a href="javascript:exerciseToggle(35)">Answer</a></p>
 <div id="exercise35" style="display:none;">
 Three answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1416,11 +1470,13 @@ class Solution3 {
 
 </div>
 
-## 36. Exercise 36
+<h2 id="36-exercise-36">36. Exercise 36</h2>
 
-* Write a SARL program to select the odd items from a list.  
+<ul>
+  <li>Write a SARL program to select the odd items from a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(36)">Answer</a>
+<p><a href="javascript:exerciseToggle(36)">Answer</a></p>
 <div id="exercise36" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1451,17 +1507,19 @@ class Solution2 {
 
 </div>
 
-## 37. Exercise 37
+<h2 id="37-exercise-37">37. Exercise 37</h2>
 
-* Write a SARL program to insert an element before each element of a list.  
+<ul>
+  <li>Write a SARL program to insert an element before each element of a list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(37)">Answer</a>
+<p><a href="javascript:exerciseToggle(37)">Answer</a></p>
 <div id="exercise37" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-	static def appendBefore(list : List<Integer>, prefix : Integer) : List<Integer> {
+	static def appendBefore(list : List&lt;Integer&gt;, prefix : Integer) : List&lt;Integer&gt; {
 		var result = newArrayList
 		for (element : list) {
 			result += prefix
@@ -1473,23 +1531,24 @@ class Solution {
 		println(appendBefore(original, 34))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 38. Exercise 38
+<h2 id="38-exercise-38">38. Exercise 38</h2>
 
-* Write a SARL program to print nested lists (each list on a new line) using the `println()` function.  
-* Sample Input: `[['assign1', 'assign2'], ['final', 'assign4'], ['exam', 'study']]`
-* Expected Output:
+<ul>
+  <li>Write a SARL program to print nested lists (each list on a new line) using the <code>println()</code> function.</li>
+  <li>Sample Input: <code>[['assign1', 'assign2'], ['final', 'assign4'], ['exam', 'study']]</code></li>
+  <li>Expected Output:</li>
+</ul>
 
-```text
-assign1 assign2
+<pre><code class="language-text">assign1 assign2
 final assign4
 exam study
-```
+</code></pre>
 
-<a href="javascript:exerciseToggle(38)">Answer</a>
+<p><a href="javascript:exerciseToggle(38)">Answer</a></p>
 <div id="exercise38" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
@@ -1512,13 +1571,15 @@ class Solution {
 
 </div>
 
-## 39. Exercise 39
+<h2 id="39-exercise-39">39. Exercise 39</h2>
 
-* Write a SARL program to convert a list to a list of maps.  
-* Sample lists: `["Black", "Red", "Maroon", "Yellow"], ["#000000", "#FF0000", "#800000", "#FFFF00"]`
-* Expected Output: `[{'color_name': 'Black', 'color_code': '#000000'}, {'color_name': 'Red', 'color_code': '#FF0000'}, {'color_name': 'Maroon', 'color_code': '#800000'}, {'color_name': 'Yellow', 'color_code': '#FFFF00'}]`
+<ul>
+  <li>Write a SARL program to convert a list to a list of maps.</li>
+  <li>Sample lists: <code>["Black", "Red", "Maroon", "Yellow"], ["#000000", "#FF0000", "#800000", "#FFFF00"]</code></li>
+  <li>Expected Output: <code>[{'color_name': 'Black', 'color_code': '#000000'}, {'color_name': 'Red', 'color_code': '#FF0000'}, {'color_name': 'Maroon', 'color_code': '#800000'}, {'color_name': 'Yellow', 'color_code': '#FFFF00'}]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(39)">Answer</a>
+<p><a href="javascript:exerciseToggle(39)">Answer</a></p>
 <div id="exercise39" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1541,20 +1602,22 @@ class Solution {
 
 </div>
 
-## 40. Exercise 40
+<h2 id="40-exercise-40">40. Exercise 40</h2>
 
-* Write a SARL program to split a list every Nth element.
-* Sample list: `['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']`
-* n = 5
-* Expected Output: `[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']]`
+<ul>
+  <li>Write a SARL program to split a list every Nth element.</li>
+  <li>Sample list: <code>['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']</code></li>
+  <li>n = 5</li>
+  <li>Expected Output: <code>[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(40)">Answer</a>
+<p><a href="javascript:exerciseToggle(40)">Answer</a></p>
 <div id="exercise40" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']
-	static def split_at_n(list : List<String>, n : int) : List&lt;List<String>&gt; {
+	static def split_at_n(list : List&lt;String&gt;, n : int) : List&lt;List&lt;String&gt;&gt; {
 		var result = newArrayList
 		var clist = newArrayList
 		for (element : list) {
@@ -1573,25 +1636,27 @@ class Solution {
 		println(split_at_n(original, 5))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 41. Exercise 41
+<h2 id="41-exercise-41">41. Exercise 41</h2>
 
-* Write a SARL program to compute the difference between two lists.  
-* Sample data: `a = ["red", "orange", "green", "blue", "white"]`, `b = ["black", "yellow", "green", "blue"]`
-* Expected Output when `a` is passed before `b`: `['white', 'orange', 'red']`
-* Expected Output when `b` is passed before `a`: `['black', 'yellow']`
+<ul>
+  <li>Write a SARL program to compute the difference between two lists.</li>
+  <li>Sample data: <code>a = ["red", "orange", "green", "blue", "white"]</code>, <code>b = ["black", "yellow", "green", "blue"]</code></li>
+  <li>Expected Output when <code>a</code> is passed before <code>b</code>: <code>['white', 'orange', 'red']</code></li>
+  <li>Expected Output when <code>b</code> is passed before <code>a</code>: <code>['black', 'yellow']</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(41)">Answer</a>
+<p><a href="javascript:exerciseToggle(41)">Answer</a></p>
 <div id="exercise41" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var a = #["red", "orange", "green", "blue", "white"]
 	static var b = #["black", "yellow", "green", "blue"]
-	static def difference(list1 : List<String>, list2 : List<String>) : List<String> {
+	static def difference(list1 : List&lt;String&gt;, list2 : List&lt;String&gt;) : List&lt;String&gt; {
 		var result = newArrayList
 		for (element : list1) {
 			if (!list2.contains(element)) {
@@ -1605,22 +1670,24 @@ class Solution {
 		println(difference(b, a))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 42. Exercise 42
+<h2 id="42-exercise-42">42. Exercise 42</h2>
 
-* Write a SARL program to replace the last element in a list with another list.  
-* Sample data: `[1, 3, 5, 7, 9, 10]` and `[2, 4, 6, 8]`
-* Expected Output: `[1, 3, 5, 7, 9, 2, 4, 6, 8]`
+<ul>
+  <li>Write a SARL program to replace the last element in a list with another list.</li>
+  <li>Sample data: <code>[1, 3, 5, 7, 9, 10]</code> and <code>[2, 4, 6, 8]</code></li>
+  <li>Expected Output: <code>[1, 3, 5, 7, 9, 2, 4, 6, 8]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(42)">Answer</a>
+<p><a href="javascript:exerciseToggle(42)">Answer</a></p>
 <div id="exercise42" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def replace_last(list1 : List<Integer>, list2 : List<Integer>) : List<Integer> {
+	static def replace_last(list1 : List&lt;Integer&gt;, list2 : List&lt;Integer&gt;) : List&lt;Integer&gt; {
 		var result = newArrayList
 		result += list1.subList(0, list1.size - 1)
 		result += list2
@@ -1630,20 +1697,22 @@ class Solution {
 		println(replace_last(#[1, 3, 5, 7, 9, 10], #[2, 4, 6, 8]))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 43. Exercise 43
+<h2 id="43-exercise-43">43. Exercise 43</h2>
 
-* Write a SARL program to check whether the n-th element exists in a given list.  
+<ul>
+  <li>Write a SARL program to check whether the n-th element exists in a given list.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(43)">Answer</a>
+<p><a href="javascript:exerciseToggle(43)">Answer</a></p>
 <div id="exercise43" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def exist_in(list : List<Integer>, position : int) : boolean {
+	static def exist_in(list : List&lt;Integer&gt;, position : int) : boolean {
 		0 &lt;= position &amp;&amp; position &lt; list.size
 	}
 	static def main : void {
@@ -1651,25 +1720,27 @@ class Solution {
 		println(exist_in(#[1, 3, 5, 7, 9, 10], 8))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 44. Exercise 44
+<h2 id="44-exercise-44">44. Exercise 44</h2>
 
-* Write a SARL program to insert a given string at the beginning of all items in a list.  
-* Sample list: `[1,2,3,4]`
-* Input string: `emp`
-* Expected output: `['emp1', 'emp2', 'emp3', 'emp4']`
+<ul>
+  <li>Write a SARL program to insert a given string at the beginning of all items in a list.</li>
+  <li>Sample list: <code>[1,2,3,4]</code></li>
+  <li>Input string: <code>emp</code></li>
+  <li>Expected output: <code>['emp1', 'emp2', 'emp3', 'emp4']</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(44)">Answer</a>
+<p><a href="javascript:exerciseToggle(44)">Answer</a></p>
 <div id="exercise44" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution1 {
 	static var original = #[1, 2, 3, 4]
-	static def append_prefix(list : List<Integer>, prefix : String) : List<String> {
+	static def append_prefix(list : List&lt;Integer&gt;, prefix : String) : List&lt;String&gt; {
 		var result = newArrayList
 		for (element : list) {
 			result += prefix + element
@@ -1680,29 +1751,31 @@ class Solution1 {
 		println(append_prefix(original, "emp"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
 Answer #2 is:
 <pre><code class="language-sarl">
 import java.util.List
 class Solution2 {
 	static var original = #[1, 2, 3, 4]
-	static def append_prefix(list : List<Integer>, prefix : String) : List<String> {
+	static def append_prefix(list : List&lt;Integer&gt;, prefix : String) : List&lt;String&gt; {
 		list.map[prefix + it].toList
 	}
 	static def main : void {
 		println(append_prefix(original, "emp"))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 45. Exercise 45
+<h2 id="45-exercise-45">45. Exercise 45</h2>
 
-* Write a SARL program to iterate over two lists simultaneously.  
+<ul>
+  <li>Write a SARL program to iterate over two lists simultaneously.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(45)">Answer</a>
+<p><a href="javascript:exerciseToggle(45)">Answer</a></p>
 <div id="exercise45" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1711,7 +1784,7 @@ import java.util.Iterator
 class Solution1 {
 	static var original1 = #[1, 2, 3]
 	static var original2 = #['red', 'white', 'black']
-	static def zip(list1 : List<?>, list2 : List<?>) : List&lt;Object[]&gt; {
+	static def zip(list1 : List&lt;?&gt;, list2 : List&lt;?&gt;) : List&lt;Object[]&gt; {
 		var result : List&lt;Object[]&gt; = newArrayList
 		val iter1 = list1.iterator
 		val iter2 = list2.iterator
@@ -1735,7 +1808,7 @@ import java.util.Iterator
 class Solution2 {
 	static var original1 = #[1, 2, 3]
 	static var original2 = #['red', 'white', 'black']
-	static def zip(list1 : List<?>, list2 : List<?>) : Iterable&lt;Object[]&gt; {
+	static def zip(list1 : List&lt;?&gt;, list2 : List&lt;?&gt;) : Iterable&lt;Object[]&gt; {
 		[
 			val iter1 = list1.iterator
 			val iter2 = list2.iterator
@@ -1761,19 +1834,21 @@ class Solution2 {
 
 </div>
 
-## 46. Exercise 46
+<h2 id="46-exercise-46">46. Exercise 46</h2>
 
-* Write a SARL program to flatten a given nested list structure.  
-* Original list: `[0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]]`
-* Flatten list: `[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]`
+<ul>
+  <li>Write a SARL program to flatten a given nested list structure.</li>
+  <li>Original list: <code>[0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]]</code></li>
+  <li>Flatten list: <code>[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(46)">Answer</a>
+<p><a href="javascript:exerciseToggle(46)">Answer</a></p>
 <div id="exercise46" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[0, 10, #[20, 30], 40, 50, #[60, 70, 80], #[90, 100, 110, 120]]
-	static def flatten_list(list : List<?>) : List<?> {
+	static def flatten_list(list : List&lt;?&gt;) : List&lt;?&gt; {
 		var result = newArrayList
 		for (element : list) {
 			if (element instanceof Iterable) {
@@ -1792,13 +1867,15 @@ class Solution {
 
 </div>
 
-## 47. Exercise 47
+<h2 id="47-exercise-47">47. Exercise 47</h2>
 
-* Write a SARL program to remove consecutive (following each other continuously) duplicates (elements) from a given list.  
-* Original list: `[0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]`
-* After removing consecutive duplicates: `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4]`
+<ul>
+  <li>Write a SARL program to remove consecutive (following each other continuously) duplicates (elements) from a given list.</li>
+  <li>Original list: <code>[0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]</code></li>
+  <li>After removing consecutive duplicates: <code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(47)">Answer</a>
+<p><a href="javascript:exerciseToggle(47)">Answer</a></p>
 <div id="exercise47" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1817,13 +1894,15 @@ class Solution {
 
 </div>
 
-## 48. Exercise 48
+<h2 id="48-exercise-48">48. Exercise 48</h2>
 
-* Write a SARL program to pack consecutive duplicates of a given list of elements into sublists.  
-* Original list: `[0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]`
-* After packing consecutive duplicates of the said list elements into sublists: `[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]`
+<ul>
+  <li>Write a SARL program to pack consecutive duplicates of a given list of elements into sublists.</li>
+  <li>Original list: <code>[0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]</code></li>
+  <li>After packing consecutive duplicates of the said list elements into sublists: <code>[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(48)">Answer</a>
+<p><a href="javascript:exerciseToggle(48)">Answer</a></p>
 <div id="exercise48" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
@@ -1831,7 +1910,7 @@ class Solution {
 	static var original = #[0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]
 	static def main : void {
 		var result = newArrayList
-		var pack : List<Integer> = null
+		var pack : List&lt;Integer&gt; = null
 		var prev : Integer = null
 		for (element : original) {
 			if (element != prev) {
@@ -1849,23 +1928,25 @@ class Solution {
 		println(result)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 49. Exercise 49
+<h2 id="49-exercise-49">49. Exercise 49</h2>
 
-* Write a SARL program to insert an element at a specified position into a given list.  
-* Original list: `[1, 1, 2, 3, 4, 4, 5, 1]`
-* After inserting an element at kth position in the said list: `[1, 1, 12, 2, 3, 4, 4, 5, 1]`
+<ul>
+  <li>Write a SARL program to insert an element at a specified position into a given list.</li>
+  <li>Original list: <code>[1, 1, 2, 3, 4, 4, 5, 1]</code></li>
+  <li>After inserting an element at kth position in the said list: <code>[1, 1, 12, 2, 3, 4, 4, 5, 1]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(48)">Answer</a>
+<p><a href="javascript:exerciseToggle(48)">Answer</a></p>
 <div id="exercise49" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[1, 1, 2, 3, 4, 4, 5, 1]
-	static def insert_at(list : List<Integer>, position : int, element : Integer) : List<Integer> {
+	static def insert_at(list : List&lt;Integer&gt;, position : int, element : Integer) : List&lt;Integer&gt; {
 		var new_list = newArrayList
 		new_list.addAll(list)
 		if (position &gt;= new_list.size) {
@@ -1879,24 +1960,26 @@ class Solution {
 		println(insert_at(original, 3, 12))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 50. Exercise 50
+<h2 id="50-exercise-50">50. Exercise 50</h2>
 
-* Write a SARL program to extract a given number of randomly selected elements from a given list.  
-* Original list: `[1, 1, 2, 3, 4, 4, 5, 1]`
-* Selected 3 random numbers of the above list: `[4, 4, 1]`
+<ul>
+  <li>Write a SARL program to extract a given number of randomly selected elements from a given list.</li>
+  <li>Original list: <code>[1, 1, 2, 3, 4, 4, 5, 1]</code></li>
+  <li>Selected 3 random numbers of the above list: <code>[4, 4, 1]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(50)">Answer</a>
+<p><a href="javascript:exerciseToggle(50)">Answer</a></p>
 <div id="exercise50" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 import java.util.Random
 class Solution {
 	static var original = #[1, 1, 2, 3, 4, 4, 5, 1]
-	static def extract_random(list : List<Integer>, n : int) : List<Integer> {
+	static def extract_random(list : List&lt;Integer&gt;, n : int) : List&lt;Integer&gt; {
 		var new_list = newArrayList
 		if (n &lt;= list.size) {
 			new_list.addAll(list)
@@ -1917,17 +2000,19 @@ class Solution {
 		println(extract_random(original, 3))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 51. Exercise 51
+<h2 id="51-exercise-51">51. Exercise 51</h2>
 
-* Write a SARL program to generate combinations of n distinct objects taken from the elements of a given list.
-* Original list: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
-* Combinations of 2 distinct objects: `[1, 2] [1, 3] [1, 4] [1, 5] .... [7, 8] [7, 9] [8, 9]`
+<ul>
+  <li>Write a SARL program to generate combinations of n distinct objects taken from the elements of a given list.</li>
+  <li>Original list: <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code></li>
+  <li>Combinations of 2 distinct objects: <code>[1, 2] [1, 3] [1, 4] [1, 5] .... [7, 8] [7, 9] [8, 9]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(51)">Answer</a>
+<p><a href="javascript:exerciseToggle(51)">Answer</a></p>
 <div id="exercise51" style="display:none;">
 <pre><code class="language-sarl">
 class Solution {
@@ -1948,14 +2033,15 @@ class Solution {
 
 </div>
 
+<h2 id="52-exercise-52">52. Exercise 52</h2>
 
-## 52. Exercise 52
+<ul>
+  <li>Write a SARL program to round every number in a given list of numbers and print the total sum multiplied by the length of the list.</li>
+  <li>Original list: <code>[22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]</code></li>
+  <li>Result: <code>243</code></li>
+</ul>
 
-* Write a SARL program to round every number in a given list of numbers and print the total sum multiplied by the length of the list.  
-* Original list: `[22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]`
-* Result: `243`
-
-<a href="javascript:exerciseToggle(52)">Answer</a>
+<p><a href="javascript:exerciseToggle(52)">Answer</a></p>
 <div id="exercise52" style="display:none;">
 Two answers are posible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -1984,16 +2070,18 @@ class Solution2 {
 
 </div>
 
-## 53. Exercise 53
+<h2 id="53-exercise-53">53. Exercise 53</h2>
 
-* Write a SARL program to create a multidimensional list (lists of lists) with zeros. Multidimensional list: `[[0, 0], [0, 0], [0, 0]]`.
+<ul>
+  <li>Write a SARL program to create a multidimensional list (lists of lists) with zeros. Multidimensional list: <code>[[0, 0], [0, 0], [0, 0]]</code>.</li>
+</ul>
 
-<a href="javascript:exerciseToggle(53)">Answer</a>
+<p><a href="javascript:exerciseToggle(53)">Answer</a></p>
 <div id="exercise53" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def create_multidimensional_list(a : int, b : int) : List&lt;List<Integer>&gt; {
+	static def create_multidimensional_list(a : int, b : int) : List&lt;List&lt;Integer&gt;&gt; {
 		var list = newArrayList
 		for (i : 1..a) {
 			var sublist = newArrayList
@@ -2008,29 +2096,32 @@ class Solution {
 		println(create_multidimensional_list(3, 2))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 54. Exercise 54
+<h2 id="54-exercise-54">54. Exercise 54</h2>
 
-* Write a SARL program to read a square matrix from the command line and print the sum of the matrix's primary diagonal. Accept the size of the square matrix and elements for each column separated with a space (for every row) as input from the user.  
-* Input the size of the matrix: 3
+<ul>
+  <li>Write a SARL program to read a square matrix from the command line and print the sum of the matrix’s primary diagonal. Accept the size of the square matrix and elements for each column separated with a space (for every row) as input from the user.</li>
+  <li>Input the size of the matrix: 3</li>
+</ul>
 
-```text
-2 3 4
+<pre><code class="language-text">2 3 4
 4 5 6
 3 4 7
-```
+</code></pre>
 
-* Sum of matrix primary diagonal: `14`
+<ul>
+  <li>Sum of matrix primary diagonal: <code>14</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(54)">Answer</a>
+<p><a href="javascript:exerciseToggle(54)">Answer</a></p>
 <div id="exercise54" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
-	static def input_matrix(args : String[]) : List&lt;List<Integer>&gt; {
+	static def input_matrix(args : String[]) : List&lt;List&lt;Integer&gt;&gt; {
 		var n = args.get(0) as int
 		var m = newArrayList
 		var k = 1
@@ -2044,7 +2135,7 @@ class Solution {
 		}
 		return m
 	}
-	static def sum_diag(matrix : List&lt;List<Integer>&gt;) : int {
+	static def sum_diag(matrix : List&lt;List&lt;Integer&gt;&gt;) : int {
 		var sum = 0
 		for (i : 0..&lt;matrix.size) {
 			sum += matrix.get(i).get(i)
@@ -2057,23 +2148,26 @@ class Solution {
 		println(result)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 55. Exercise 55
+<h2 id="55-exercise-55">55. Exercise 55</h2>
 
-* Write a SARL program to Zip two given lists of lists.  
-* Original lists:
+<ul>
+  <li>Write a SARL program to Zip two given lists of lists.</li>
+  <li>Original lists:</li>
+</ul>
 
-```text
-[[1, 3], [5, 7], [9, 11]]
+<pre><code class="language-text">[[1, 3], [5, 7], [9, 11]]
 [[2, 4], [6, 8], [10, 12, 14]]
-```
+</code></pre>
 
-* Zipped list: `[[1, 3, 2, 4], [5, 7, 6, 8], [9, 11, 10, 12, 14]]`
+<ul>
+  <li>Zipped list: <code>[[1, 3, 2, 4], [5, 7, 6, 8], [9, 11, 10, 12, 14]]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(55)">Answer</a>
+<p><a href="javascript:exerciseToggle(55)">Answer</a></p>
 <div id="exercise55" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
@@ -2081,7 +2175,7 @@ import java.util.Iterator
 class Solution {
 	static var original1 = #[#[1, 3], #[5, 7], #[9, 11]]
 	static var original2 = #[#[2, 4], #[6, 8], #[10, 12, 14]]
-	static def zip(list1 : List&lt;List<Integer>&gt;, list2 : List&lt;List<Integer>&gt;) : List&lt;List<Integer>&gt; {
+	static def zip(list1 : List&lt;List&lt;Integer&gt;&gt;, list2 : List&lt;List&lt;Integer&gt;&gt;) : List&lt;List&lt;Integer&gt;&gt; {
 		var iter1 = list1.iterator
 		var iter2 = list2.iterator
 		var result = newArrayList
@@ -2107,25 +2201,27 @@ class Solution {
 		println(result)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 56. Exercise 56
+<h2 id="56-exercise-56">56. Exercise 56</h2>
 
-* Write a SARL program to extract specified number of elements from a given list, which follows each other continuously.  
-* Original list: `[1, 1, 3, 4, 4, 5, 6, 7]`
-* Extract 2 number of elements from the said list which follows each other continuously: `[1, 4]`
-* Original list: `[0, 1, 2, 3, 4, 4, 4, 4, 5, 7]`
-* Extract 4 number of elements from the said list which follows each other continuously: `[4]`
+<ul>
+  <li>Write a SARL program to extract specified number of elements from a given list, which follows each other continuously.</li>
+  <li>Original list: <code>[1, 1, 3, 4, 4, 5, 6, 7]</code></li>
+  <li>Extract 2 number of elements from the said list which follows each other continuously: <code>[1, 4]</code></li>
+  <li>Original list: <code>[0, 1, 2, 3, 4, 4, 4, 4, 5, 7]</code></li>
+  <li>Extract 4 number of elements from the said list which follows each other continuously: <code>[4]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(56)">Answer</a>
+<p><a href="javascript:exerciseToggle(56)">Answer</a></p>
 <div id="exercise56" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[1, 1, 3, 4, 4, 5, 6, 7]
-	static def isseq(list : List<Integer>, i : int, n : int) : boolean {
+	static def isseq(list : List&lt;Integer&gt;, i : int, n : int) : boolean {
 		var elt = list.get(i)
 		for (var j = i + 1; j &lt; n; j++) {
 			if (list.get(j) != elt) {
@@ -2134,7 +2230,7 @@ class Solution {
 		}
 		return true
 	}
-	static def extract(list : List<Integer>, n : int) : List<Integer> {
+	static def extract(list : List&lt;Integer&gt;, n : int) : List&lt;Integer&gt; {
 		var result = newArrayList
 		for (var i = 0; i &lt;= list.size - n; i++) {
 			if (isseq(list, i, n)) {
@@ -2148,30 +2244,33 @@ class Solution {
 		println(result)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 57. Exercise 57
+<h2 id="57-exercise-57">57. Exercise 57</h2>
 
-* Write a SARL program to compute average of two given lists.  
-* Original list:
+<ul>
+  <li>Write a SARL program to compute average of two given lists.</li>
+  <li>Original list:</li>
+</ul>
 
-```text
-[1, 1, 3, 4, 4, 5, 6, 7]
+<pre><code class="language-text">[1, 1, 3, 4, 4, 5, 6, 7]
 [0, 1, 2, 3, 4, 4, 5, 7, 8]
-```
+</code></pre>
 
-* Average of two lists: `3.823529411764706`
+<ul>
+  <li>Average of two lists: <code>3.823529411764706</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(57)">Answer</a>
+<p><a href="javascript:exerciseToggle(57)">Answer</a></p>
 <div id="exercise57" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original1 = #[1, 1, 3, 4, 4, 5, 6, 7]
 	static var original2 = #[0, 1, 2, 3, 4, 4, 5, 7, 8]
-	static def average(lists : List<Integer>*) : double {
+	static def average(lists : List&lt;Integer&gt;*) : double {
 		var sum = 0.0
 		var count = 0
 		for (list : lists) {
@@ -2187,18 +2286,19 @@ class Solution {
 		println(result)
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
+<h2 id="58-exercise-58">58. Exercise 58</h2>
 
-## 58. Exercise 58
+<ul>
+  <li>Write a SARL program to count integers in a given mixed list.</li>
+  <li>Original list: <code>[1, 'abcd', 3, 1.2, 4, 'xyz', 5, 'pqr', 7, -5, -12.22]</code></li>
+  <li>Number of integers in the said mixed list: 6</li>
+</ul>
 
-* Write a SARL program to count integers in a given mixed list.  
-* Original list: `[1, 'abcd', 3, 1.2, 4, 'xyz', 5, 'pqr', 7, -5, -12.22]`
-* Number of integers in the said mixed list: 6
-
-<a href="javascript:exerciseToggle(58)">Answer</a>
+<p><a href="javascript:exerciseToggle(58)">Answer</a></p>
 <div id="exercise58" style="display:none;">
 Two answers are possible. Answer #1 is:
 <pre><code class="language-sarl">
@@ -2241,21 +2341,23 @@ class Solution2 {
 
 </div>
 
-## 59. Exercise 59
+<h2 id="59-exercise-59">59. Exercise 59</h2>
 
-* Write a SARL program to remove a specified column from a given nested list.  
-* Original Nested list: `[[1, 2, 3], [2, 4, 5], [1, 1, 1]]`
-* After removing 1st column: `[[2, 3], [4, 5], [1, 1]]`
-* Original Nested list: `[[1, 2, 3], [-2, 4, -5], [1, -1, 1]]`
-* After removing 3rd column: `[[1, 2], [-2, 4], [1, -1]]`
+<ul>
+  <li>Write a SARL program to remove a specified column from a given nested list.</li>
+  <li>Original Nested list: <code>[[1, 2, 3], [2, 4, 5], [1, 1, 1]]</code></li>
+  <li>After removing 1st column: <code>[[2, 3], [4, 5], [1, 1]]</code></li>
+  <li>Original Nested list: <code>[[1, 2, 3], [-2, 4, -5], [1, -1, 1]]</code></li>
+  <li>After removing 3rd column: <code>[[1, 2], [-2, 4], [1, -1]]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(59)">Answer</a>
+<p><a href="javascript:exerciseToggle(59)">Answer</a></p>
 <div id="exercise59" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[#[1, 2, 3], #[2, 4, 5], #[1, 1, 1]]
-	static def remove_column(list : List&lt;List<Integer>&gt;, col : int) : List&lt;List<Integer>&gt; {
+	static def remove_column(list : List&lt;List&lt;Integer&gt;&gt;, col : int) : List&lt;List&lt;Integer&gt;&gt; {
 		var rows = newArrayList
 		for (row : list) {
 			var ncols = newArrayList
@@ -2269,25 +2371,27 @@ class Solution {
 		println(remove_column(original, 1))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
-## 60. Exercise 60
+<h2 id="60-exercise-60">60. Exercise 60</h2>
 
-* Write a SARL program to extract a specified column from a given nested list.  
-* Original Nested list: `[[1, 2, 3], [2, 4, 5], [1, 1, 1]]`
-* Extract 1st column: `[1, 2, 1]`
-* Original Nested list: `[[1, 2, 3], [-2, 4, -5], [1, -1, 1]]`
-* Extract 3rd column: `[3, -5, 1]`
+<ul>
+  <li>Write a SARL program to extract a specified column from a given nested list.</li>
+  <li>Original Nested list: <code>[[1, 2, 3], [2, 4, 5], [1, 1, 1]]</code></li>
+  <li>Extract 1st column: <code>[1, 2, 1]</code></li>
+  <li>Original Nested list: <code>[[1, 2, 3], [-2, 4, -5], [1, -1, 1]]</code></li>
+  <li>Extract 3rd column: <code>[3, -5, 1]</code></li>
+</ul>
 
-<a href="javascript:exerciseToggle(60)">Answer</a>
+<p><a href="javascript:exerciseToggle(60)">Answer</a></p>
 <div id="exercise60" style="display:none;">
 <pre><code class="language-sarl">
 import java.util.List
 class Solution {
 	static var original = #[#[1, 2, 3], #[2, 4, 5], #[1, 1, 1]]
-	static def get_column(list : List&lt;List<Integer>&gt;, col : int) : List<Integer> {
+	static def get_column(list : List&lt;List&lt;Integer&gt;&gt;, col : int) : List&lt;Integer&gt; {
 		var column = newArrayList
 		for (row : list) {
 			column += row.get(col)
@@ -2298,34 +2402,36 @@ class Solution {
 		println(get_column(original, 1))
 	}
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;/div&gt;
+</div>
 
+<h2 id="61-version-specification">61. Version Specification</h2>
 
-## 61. Version Specification
+<ul>
+  <li>Specification: SARL General-purpose Agent-Oriented Programming Language (“Specification”)</li>
+  <li>Version: 0.15</li>
+  <li>Status: Stable Release</li>
+  <li>Release: 2025-09-11</li>
+</ul>
 
-* Specification: SARL General-purpose Agent-Oriented Programming Language ("Specification")
-* Version: 0.15
-* Status: Stable Release
-* Release: 2025-09-11
+<h2 id="62-legal-notice">62. Legal Notice</h2>
 
-## 62. Legal Notice
+<blockquote>
+  <p>Copyright © 2014-2025 <a href="http://www.sarl.io/about/index.html">SARL.io, the Original Authors and Main Authors</a>.</p>
 
-&gt; Copyright &copy; 2014-2025 [SARL.io, the Original Authors and Main Authors](http://www.sarl.io/about/index.html).
-&gt;
-&gt; Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
-&gt; you may not use this file except in compliance with CC-BY-SA-4.0.
-&gt; You may obtain a copy of [CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
-&gt;
-&gt; Examples of SARL code are licensed under the Apache License, Version 2.0;
-&gt; you may not use this file except in compliance with the Apache License.
-&gt; You may obtain a copy of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
-&gt;
-&gt; You are free to reproduce the content of this page on copyleft websites such as Wikipedia.
+  <p>Documentation text and medias are licensed under the Creative Common CC-BY-SA-4.0;
+you may not use this file except in compliance with CC-BY-SA-4.0.
+You may obtain a copy of <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-4.0</a>.</p>
 
-<small>Generated with the translator docs.generator 0.15.1.</small>
-</Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></code></pre></div></Integer></Integer></Integer></code></pre></div></Integer></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></code></pre></div></String></Integer></code></pre></String></Integer></code></pre></div></Integer></code></pre></div></Integer></Integer></Integer></code></pre></div></String></String></String></code></pre></div></String></String></code></pre></div></Integer></Integer></code></pre></div></String></String></code></pre></String></String></String></code></pre></div></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></Integer></Integer></code></pre></div></String></String></code></pre></div></Integer></Integer></code></pre></div></T></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></Integer></Integer></code></pre></div></Integer></Integer></code></pre></Integer></Integer></code></pre></div></Character></code></pre></String></code></pre></div></String></code></pre></String></code></pre></div>
+  <p>Examples of SARL code are licensed under the Apache License, Version 2.0;
+you may not use this file except in compliance with the Apache License.
+You may obtain a copy of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+
+  <p>You are free to reproduce the content of this page on copyleft websites such as Wikipedia.</p>
+</blockquote>
+
+<p><small>Generated with the translator docs.generator 0.15.1.</small></p>
 
     </div> <!-- /default layout container -->
 
